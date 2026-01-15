@@ -1,9 +1,39 @@
+---
+status: FOUNDATIONAL
+layer: 0
+depends_on:
+  - structural-language.md
+used_by:
+  - human-language-structure.md
+  - llm-experiment.md
+  - README.md
+---
+
 # Structure as State: A Unified Theory of Software Organization
 
 > **Status**: Foundational
 
 > **If it has structure, it is structure.**
 > The shape of code reveals its state. If you need labels to know what's state, the structure has failed.
+
+## Quick Summary (D≈7 Human Traversal)
+
+**Structure as State in BLD in 7 steps:**
+
+1. **Structure reveals state** — The shape of code should make state obvious without labels or conventions; topology is documentation
+2. **Horizontal: dispatch tables** — Any sequence of comparisons against the same value is an implicit state machine; make it explicit
+3. **Vertical: state space visibility** — If N values affect behavior, all N should be visible in one place (enums, tables, dataclasses)
+4. **Structural: DAG dependencies** — State flows one direction; cycles indicate hidden shared state; if you can't draw it as a DAG, refactor
+5. **Universal traversability** — Good structure is easy to traverse for humans (visual), LLMs (attentional), and compilers (static); no backtracking needed
+6. **Learning is alignment** — Understanding is refining internal structure until it matches external structure; "aha" moments are sudden alignment
+7. **Beauty is resonance** — Harmony, elegance, and satisfaction are the feeling of structure meeting structure; the content isn't what moves us, the structure is
+
+| Component | BLD |
+|-----------|-----|
+| Dispatch tables, conditionals | B (Boundary): partitions value space |
+| Dependencies, data flow | L (Link): explicit connections |
+| Arrays, repetition | D (Dimension): visible multiplicity |
+| Processing direction | Traverser: human, LLM, compiler |
 
 ---
 
@@ -522,5 +552,5 @@ The path:
 
 - [Glossary](../glossary.md) — Central definitions
 - [Structural Language](./structural-language.md) — B/L/D specification
-- [Discovery Method](./discovery-method.md) — How to find structure
+- [Discovery Method](../meta/discovery-method.md) — How to find structure
 - [LLM Experiment](./llm-experiment.md) — Testing structural introspection

@@ -1,4 +1,33 @@
+---
+status: VALIDATED
+layer: 1
+depends_on:
+  - manifold-foundations.md
+  - ../lie-theory/lie-correspondence.md
+used_by:
+  - manifold-applications.md
+  - ../../applications/ml/variational-inference.md
+---
+
 # The Structural Manifold: Geometry
+
+## Quick Summary (D≈7 Human Traversal)
+
+**Structural manifold geometry in 7 steps:**
+
+1. **Points are structures** — Each point S = (B, L, D) is a configuration of primitives
+2. **Distance = alignment cost** — Metric measures how well structures align
+3. **Fisher-Rao emerges** — For probability distributions, alignment cost recovers classical info geometry
+4. **SPD(d) is symmetric space** — Connects to Lie theory via GL⁺(d)/O(d) quotient structure
+5. **Stratified by topology** — Smooth within strata, discrete jumps between (adding/removing primitives)
+6. **Curvature from Lie bracket** — R(X,Y)Z = -[[X,Y], Z] for symmetric spaces
+7. **Geodesics = optimal paths** — Shortest transformation between structures follows manifold geometry
+
+| BLD Primitive | Lie Theory | On SPD(d) |
+|---------------|------------|-----------|
+| **D** (Dimension) | Generator | Symmetric matrix direction |
+| **L** (Link) | Structure constant | [Dᵢ, Dⱼ] = Lᵢⱼᵏ Dₖ |
+| **B** (Boundary) | Topology | Non-compact (open) |
 
 > **Status**: Validated
 

@@ -1,4 +1,30 @@
+---
+status: PROVEN
+layer: 1
+depends_on:
+  - lie-correspondence.md
+  - ../foundations/irreducibility-proof.md
+---
+
 # Constructive Lie Theory: From BLD to Homomorphisms
+
+## Quick Summary (D≈7 Human Traversal)
+
+**BLD = Lie homomorphisms in 7 steps:**
+
+1. **Three questions → Lie components** — Partitions→topology, connections→structure constants, repetitions→generators
+2. **Completeness** — Every system has BLD representation (at minimum: ∅, ∅, {point})
+3. **Alignment = homomorphism** — Map φ: S₁→S₂ preserving generators, structure, topology
+4. **Perfect alignment** — When φ is isomorphism, cost = 0 (no obstruction)
+5. **Cost = obstruction** — cost(S₁,S₂) = lost dimensions + structure violation + topology mismatch
+6. **Representation theory applies** — Reducible (parallelizable) vs irreducible (serial) structures
+7. **Examples work** — GPU (threads→SIMD), VI (correlations→variational family), neural nets (data→network)
+
+| BLD Question | What You Find | Lie Component |
+|--------------|---------------|---------------|
+| "Where does behavior partition?" | Boundaries | Group topology |
+| "What connects to what?" | Links | Structure constants |
+| "What repeats?" | Dimensions | Generators |
 
 > **Status**: Foundational
 
@@ -240,6 +266,6 @@ This connects BLD to a vast body of existing mathematics while providing an oper
 
 - [Glossary](../../glossary.md) — Central definitions
 - [Lie Correspondence](./lie-correspondence.md) — The basic BLD = Lie mapping
-- [Discovery Method](../../theory/discovery-method.md) — How to find BLD structure
+- [Discovery Method](../../meta/discovery-method.md) — How to find BLD structure
 - [Discovery Algorithm](../derived/discovery-algorithm.md) — Formal algorithm specification
 - [Manifold Geometry](../derived/manifold-geometry.md) — The geometric structure where alignments live

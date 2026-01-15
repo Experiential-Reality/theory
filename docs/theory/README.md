@@ -37,7 +37,7 @@ A formal language for describing structure using three primitives:
 
 Containment, scope, extent, and other patterns emerge from these three.
 
-### [The Discovery Method](./discovery-method.md)
+### [The Discovery Method](../meta/discovery-method.md)
 **The core contribution**: A constructive procedure for finding structure in any system.
 - Three questions: Where does behavior partition? What connects to what? What repeats?
 - Produces Lie algebra configuration without requiring the mathematical machinery
@@ -135,6 +135,8 @@ The LLM senses structure as computational flow—glide vs friction, direction vs
 
 Both are pointing at the same thing. Neither claims to have arrived.
 
+**For the full journey from GPU kernels to the theory of everything, see [L: The Path](./discovery-path.md).**
+
 ---
 
 ## The Method
@@ -178,12 +180,14 @@ Physics is not separate from the framework—it's an instance of it. Physical la
 
 When molecular structure (algorithm) meets physics (traverser), free energy IS alignment cost. The native protein state IS the alignment minimum.
 
-### 4. Can tools detect structural misalignment automatically? → **Implemented**
+### 4. Can tools detect structural misalignment automatically? → **Yes (planned)**
 
-See `src/experiential_reality/model/alignment.py`:
+The BLD framework supports automatic misalignment detection:
 - `find_misalignments()` detects structural conflicts
 - `compute_alignment_score()` quantifies overall alignment
 - Cost multipliers emerge from specific misalignment types
+
+Implementation is in progress at [experiential-reality-org/bld](https://github.com/experiential-reality-org/bld).
 
 ### 8. Is this process the same process by which reality itself organizes? → **Appears so**
 

@@ -1,8 +1,36 @@
+---
+status: PROVEN
+layer: 1
+depends_on:
+  - irreducibility-proof.md
+---
+
 # The Compensation Principle
 
 > **Status**: Validated
 
 L can compensate for B deficiency, but B cannot compensate for L deficiency.
+
+---
+
+## Quick Summary (D≈7 Human Traversal)
+
+**Compensation principle in 7 steps:**
+
+1. **L → B works** — sufficient links can approximate complex boundary behavior
+2. **B → L fails** — no amount of boundaries can replace missing links
+3. **B is local** — partitions at a point, invariant under D
+4. **L is global** — connects across distance, scales with D
+5. **D×L accumulates** — cascaded links integrate evidence
+6. **D×B stays local** — more boundaries don't reach farther
+7. **Two mechanisms** — exponential (e) for cascades, angular (π) for closure
+
+| Direction | Works? | Why |
+|-----------|--------|-----|
+| L → B | Yes | D×L accumulates, can approximate sharp B |
+| B → L | No | D×B stays local, can't reach distant info |
+
+**Validated**: 87.8% error reduction via 5-stage cascade in circuits.
 
 This asymmetry is not empirical accident. **BLD predicts itself.**
 
@@ -380,7 +408,7 @@ Both mechanisms appear because BLD structures can be either:
 - **Closed** (periodic return) → angular compensation (π-domain)
 - **Mixed** (elements of both) → but not necessarily as complex exponential e^(a+iθ)
 
-See [π from BLD](../../examples/pi-from-bld.md), [e from BLD](../../examples/e-from-bld.md), and [Lie Correspondence](../lie-theory/lie-correspondence.md#exponential-map).
+See [π from BLD](../../examples/pi-from-bld.md), [e from BLD](../../examples/e-from-bld.md), and [Lie Correspondence](../lie-theory/lie-correspondence.md#the-exponential-map-is-compensation).
 
 ### Identifying Which Mechanism Applies
 

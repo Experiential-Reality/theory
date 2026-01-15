@@ -1,4 +1,29 @@
+---
+status: PROVEN
+layer: 1
+depends_on:
+  - lie-correspondence.md
+---
+
 # Why Lie Theory?
+
+## Quick Summary (D≈7 Human Traversal)
+
+**BLD = Lie theory in 7 steps:**
+
+1. **Symmetry = unchanged under transformation** — Rotations, translations, gauge transformations
+2. **Lie algebra captures infinitesimals** — Generators (directions), structure constants (how they combine)
+3. **Noether's theorem** — Every continuous symmetry ↔ conservation law (energy, momentum, charge)
+4. **BLD maps exactly** — D = generators, L = structure constants, B = group topology
+5. **Discovery story** — Started with GPU prediction, found same patterns everywhere, arrived at 1870s math
+6. **BLD adds operational access** — Don't need grad math; handles discrete structures; focuses on prediction
+7. **Universality explained** — BLD works across domains because symmetry exists everywhere
+
+| Concept | Plain English | BLD Primitive |
+|---------|--------------|---------------|
+| Generator | Direction of continuous change | Dimension (D) |
+| Structure constant | How directions interact | Link (L) |
+| Group topology | Bounded or unbounded | Boundary (B) |
 
 > **Status**: Foundational
 
@@ -190,4 +215,4 @@ BLD = Lie theory. This explains why BLD works across physics, computation, biolo
 - [Glossary](../../glossary.md) — Central definitions
 - [Lie Correspondence](./lie-correspondence.md) — Full mapping with verification
 - [Lie Algebra Examples](../../examples/lie-algebras.md) — so(2), su(2), Heisenberg, Poincaré
-- [Discovery Method](../../theory/discovery-method.md) — How to find structure
+- [Discovery Method](../../meta/discovery-method.md) — How to find structure

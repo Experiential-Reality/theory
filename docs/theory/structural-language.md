@@ -1,18 +1,90 @@
+---
+status: Foundational
+depends_on: []
+---
+
 # Structural Description Language
 
 > **Status**: Foundational
 
 > Three primitives for describing the shape of information.
 
+## Quick Summary (D≈7 Human Traversal)
+
+**Structural Description Language in 7 steps:**
+
+1. **Three primitives only** — BLD uses exactly three concept characters: `|` (Boundary), `/` (Link), `\n` (Dimension)
+2. **Three questions** — Where does behavior partition? (B) What connects to what? (L) What repeats? (D)
+3. **Cost formula** — Cost = B + D × L; boundaries are topological (invariant), links scale with dimensions
+4. **Lie correspondence** — B = group topology, L = structure constants, D = generators; this is why BLD works universally
+5. **Irreducibility** — Each primitive provides unique capability: choice (B), reference (L), multiplicity (D); none can express another
+6. **Composition** — Complex patterns (containment, scope, conditionals) emerge from combining B/L/D primitives
+7. **Traverser as agent** — The traverser provides causal direction and temporal arrow; structure alone is static
+
+| Component | BLD |
+|-----------|-----|
+| Value partitions | B (Boundary) |
+| Dependencies, offsets, counts | L (Link) |
+| Repetition, arrays, sequences | D (Dimension) |
+| Processing direction | Traverser |
+
 ---
 
-## Quick Reference
+> **Implementation**: The self-hosted BLD compiler is being developed at [experiential-reality-org/bld](https://github.com/experiential-reality-org/bld).
 
-| Primitive | Type Constructor | What It Does | Lie Theory | Elimination |
-|-----------|-----------------|--------------|------------|-------------|
-| **Boundary** | Sum (+) | Partitions value space | Group topology | `case` analysis |
-| **Link** | Function (→) | Connects values | Structure constants fᵢⱼᵏ | `apply` |
-| **Dimension** | Product (Πₙ) | Repeats structure | Lie algebra generator | `project` |
+---
+
+## The Three Concept Characters
+
+BLD has exactly THREE concept characters:
+
+| Character | Primitive | Meaning | Lie Theory |
+|-----------|-----------|---------|------------|
+| `\|` | **B** (Boundary) | Partitions left from right | Group topology |
+| `/` | **L** (Link) | Connects, traversible both directions | Structure constants fᵢⱼᵏ |
+| `\n` | **D** (Dimension) | Each line is a position | Lie algebra generator |
+
+That's the entire language.
+
+---
+
+## The Three Questions
+
+To describe ANY structure, ask:
+
+| Question | Primitive | What to find |
+|----------|-----------|--------------|
+| **Where does behavior partition?** | B | Choices, thresholds, type tags |
+| **What connects to what?** | L | References, dependencies |
+| **What repeats?** | D | Arrays, sequences |
+
+The output is structure. This IS the description.
+
+---
+
+## The Cost Formula
+
+```
+Cost = B + D × L
+```
+
+- **B** = boundary cost (topological, invariant under scaling)
+- **D** = dimension (repetition count)
+- **L** = link cost (geometric, scales with D)
+
+D multiplies L, not B:
+- More lines → more link costs
+- Boundaries stay local
+
+---
+
+## Quick Reference (Type Theory)
+
+| Primitive | Type Constructor | What It Does | Elimination |
+|-----------|-----------------|--------------|-------------|
+| **Boundary** | Sum (+) | Partitions value space | `case` analysis |
+| **Link** | Function (→) | Connects values | `apply` |
+| **Dimension** | Product (Πₙ) | Repeats structure | `project` |
 
 **Formal Foundation**: See [BLD Calculus](../mathematics/foundations/bld-calculus.md) for the type-theoretic formalization and [Irreducibility Theorem](../mathematics/foundations/irreducibility-categorical.md) for the proof that B/L/D are independent primitives.
 
@@ -497,8 +569,8 @@ The three primitives are validated by drawing real structures:
 | Test Case | Status | Notes |
 |-----------|--------|-------|
 | ZIP file | ✓ Complete | See [ZIP Format](../examples/zip.md) |
-| GPU traverser | ✓ Complete | See `src/experiential_reality/model/traverser.py` - hardware as B/L/D |
-| GPU algorithm (IDCT, GEMM) | ✓ Complete | See `src/experiential_reality/model/structure.py` - kernels as B/L/D |
+| GPU traverser | ✓ Complete | Hardware as B/L/D |
+| GPU algorithm (IDCT, GEMM) | ✓ Complete | Kernels as B/L/D |
 | Protein folding (Prion) | ✓ Complete | See [Protein Folding](../applications/physics/protein-folding.md) - physics as traverser |
 | Probability distributions | ✓ Complete | Fisher info = alignment sensitivity, KL = traversal cost |
 | NP-hard problems (TSP) | ✓ Complete | Global boundary = structural hardness |
@@ -576,5 +648,5 @@ See [Glossary: Traverser as Causal Agent](../glossary.md#traverser-causal) and [
 - [Glossary](../glossary.md) — Central definitions
 - [Irreducibility Proof](../mathematics/foundations/irreducibility-proof.md) — Why exactly three primitives
 - [Lie Correspondence](../mathematics/lie-theory/lie-correspondence.md) — BLD = Lie theory mapping
-- [Discovery Method](./discovery-method.md) — How to find BLD structure in any system
+- [Discovery Method](../meta/discovery-method.md) — How to find BLD structure in any system
 - [ZIP Example](../examples/zip.md) — Complete worked example

@@ -1,4 +1,30 @@
+---
+status: VALIDATED
+depends_on:
+  - manifold-foundations.md
+---
+
 # Thermodynamics from Structural Alignment
+
+## Quick Summary (D≈7 Human Traversal)
+
+**Thermodynamics from BLD in 7 steps:**
+
+1. **Manifold M of structures** — Each point σ = (B, L, D) is a valid structure
+2. **Energy = alignment cost** — E(σ) = cost(σ, T_physics); low energy = good physics alignment
+3. **Temperature = thermal dimension** — T parameterizes the traverser's stochastic extent
+4. **Entropy = ln(manifold volume)** — S(E) = k_B ln Ω(E) at energy E
+5. **Boltzmann distribution emerges** — P(σ) = exp(-E/k_B T)/Z maximizes entropy at fixed ⟨E⟩
+6. **Second law is derived** — dS/dt = k_B T ∫ P|∇ln P + ∇E/k_B T|² dμ ≥ 0 (validated by 10-test suite)
+7. **Phase transitions = minima shifts** — Different alignment minima dominate at different T
+
+| Thermodynamic Concept | BLD Interpretation |
+|----------------------|---------------------|
+| Energy E(σ) | Alignment cost with physics traverser |
+| Entropy S | k ln(manifold volume at energy E) |
+| Temperature T | Thermal traverser dimension extent |
+| Free energy F | Effective cost balancing E and S |
+| Phase transition | Change in dominant alignment minimum |
 
 > **Status**: Validated
 

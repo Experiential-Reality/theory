@@ -1,8 +1,37 @@
+---
+status: VALIDATED
+depends_on:
+  - ../foundations/irreducibility-proof.md
+  - ../lie-theory/lie-correspondence.md
+---
+
 # The Structural Manifold: Applications
 
 > **Status**: Validated
 
 Domain interpretations and applications of the structural manifold.
+
+---
+
+## Quick Summary (D≈7 Human Traversal)
+
+**Manifold applications in 7 steps:**
+
+1. **Information Geometry** — probability distributions: B=modes, L=correlation, D=variables
+2. **Protein Folding** — conformations: B=Ramachandran regions, L=bonds, D=residues
+3. **Deep Learning** — neural networks: B=activations, L=weights, D=neurons
+4. **Cost = Potential** — φ_T(S) = cost(S, T), systems flow downhill
+5. **Thermodynamics** — free energy IS alignment cost, second law derived
+6. **Phase transitions** — changes in dominant alignment minimum
+7. **10/10 tests pass** — empirical validation complete
+
+| Domain | B | L | D | Cost = |
+|--------|---|---|---|--------|
+| Prob. distributions | Mode structure | Correlation | Variables | KL divergence |
+| Proteins | Ramachandran | Bonds | Residues | Free energy |
+| Neural nets | Activations | Weights | Neurons | Training loss |
+
+**Key insight**: Training loss, folding energy, and KL divergence are all alignment costs on different submanifolds.
 
 ---
 

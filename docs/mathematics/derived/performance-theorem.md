@@ -1,4 +1,30 @@
+---
+status: VALIDATED
+depends_on:
+  - ../foundations/irreducibility-proof.md
+  - manifold-applications.md
+---
+
 # Performance Comparison Theorem
+
+## Quick Summary (D≈7 Human Traversal)
+
+**Performance prediction in 7 steps:**
+
+1. **Structure S meets traverser T** — Algorithm (S) runs on hardware (T)
+2. **Cost = alignment penalty** — Misalignment between S and T creates performance loss
+3. **Cost decomposes** — cost(S,T) = Σ boundary + Σ link + Σ dimension + overhead
+4. **Compare traversers** — T₁ outperforms T₂ ⟺ cost(S,T₁) < cost(S,T₂)
+5. **Geometric view** — On manifold, better hardware is "closer" to your algorithm
+6. **Predictive** — Rank hardware options by alignment cost without running code
+7. **Universal** — Same math applies to GPU optimization, protein engineering, ML architecture search
+
+| Misalignment Type | What Causes It | Penalty |
+|-------------------|---------------|---------|
+| Link pattern | Scatter vs coalesced memory | conflict_factor (e.g., 4×) |
+| Dimension extent | extent % subgroup_width ≠ 0 | Wasted lanes |
+| Latency hiding | Insufficient parallelism | 1/hiding_ratio |
+| Boundary | Missing sync support | barrier_cost × count |
 
 > **Status**: Validated
 

@@ -1,4 +1,31 @@
+---
+status: DERIVED
+depends_on:
+  - lie-theory/lie-correspondence.md
+  - foundations/irreducibility-proof.md
+---
+
 # Comparisons to Existing Frameworks
+
+## Quick Summary (D≈7 Human Traversal)
+
+**BLD vs established frameworks in 7 steps:**
+
+1. **GPU: BLD extends Roofline** — Captures bank conflicts, cache pressure, coalescing that Roofline ignores
+2. **Proteins: BLD complements Force Fields** — Explains WHY (alignment cost) not just WHAT (energy terms)
+3. **Statistics: BLD generalizes Fisher-Rao** — Distributions are one type of structure; BLD handles non-probabilistic
+4. **Complexity: BLD characterizes P vs NP** — Local vs global temporal scope (structural, not computational)
+5. **Mathematics: BLD = constructive Lie theory** — Finds structure in any system (operational FFT : Fourier)
+6. **Pattern** — BLD doesn't replace frameworks; provides unifying perspective
+7. **Connection** — Shows why existing frameworks work and where they connect
+
+| Domain | Established | BLD Relationship |
+|--------|-------------|------------------|
+| GPU | Roofline Model | Subsumes + extends (bank conflicts, cache) |
+| Proteins | Force Fields | Complementary (explains why) |
+| Statistics | Fisher-Rao | Generalizes (distributions = structures) |
+| Complexity | Circuit Complexity | Orthogonal (structural vs computational) |
+| Math | Lie Theory | BLD is constructive Lie theory |
 
 > **Status**: Foundational
 

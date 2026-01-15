@@ -1,4 +1,29 @@
+---
+status: FOUNDATIONAL
+depends_on:
+  - ../foundations/irreducibility-proof.md
+---
+
 # The BLD Discovery Algorithm
+
+## Quick Summary (D≈7 Human Traversal)
+
+**Discovering BLD structure in 7 steps:**
+
+1. **Input any system** — Algorithm applies to code, data, neural nets, or physics
+2. **Find partitions → B** — Where does behavior change based on value? (if/switch/match)
+3. **Find connections → L** — What affects what? (pointers, calls, correlations, forces)
+4. **Find repetitions → D** — What repeats? (loops, arrays, particles, dimensions)
+5. **Output BLD structure** — Configuration equivalent to a Lie algebra
+6. **Properties hold** — Complete (every system has BLD), non-unique (multiple valid representations)
+7. **Polynomial time** — O(n+e) for code, O(n·d²) for data
+
+| Domain | Find B | Find L | Find D | Complexity |
+|--------|--------|--------|--------|------------|
+| Code (AST) | if/switch nodes | pointers/calls | for/while loops | O(n+e) |
+| Data | Clusters/modes | Correlations | Data shape | O(n·d²) |
+| Neural nets | Activations | Weights | Tensor dims | O(params) |
+| Physics | Phase transitions | Forces | Degrees of freedom | O(n²) |
 
 > **Status**: Foundational
 
@@ -440,7 +465,7 @@ See [Constructive Lie](../lie-theory/constructive-lie.md) for the mathematical c
 ## See Also
 
 - [Glossary](../../glossary.md) — Central definitions
-- [Discovery Method](../../theory/discovery-method.md) — The three questions (informal)
+- [Discovery Method](../../meta/discovery-method.md) — The three questions (informal)
 - [Structural Language](../../theory/structural-language.md) — B/L/D definitions
 - [Constructive Lie](../lie-theory/constructive-lie.md) — Why this produces Lie structures
 - [Canonical Hardness](../foundations/canonical-hardness.md) — Complexity of minimal BLD

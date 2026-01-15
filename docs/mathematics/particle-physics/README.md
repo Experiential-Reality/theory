@@ -1,0 +1,68 @@
+# BLD Particle Physics
+
+**Layer 2**: Particle physics derived from BLD structural constants.
+
+## Contents
+
+| File | Status | Description |
+|------|--------|-------------|
+| [particle-classification.md](particle-classification.md) | DERIVED | **NEW** — Complete particle spectrum from BLD |
+| [e7-derivation.md](e7-derivation.md) | DERIVED | B = 56, α⁻¹ = 137.036 from triality |
+| [fine-structure-consistency.md](fine-structure-consistency.md) | DERIVED | α⁻¹ = n×L + B + 1 + 2/B verification |
+| [strong-coupling.md](strong-coupling.md) | DERIVED | α_s⁻¹ = α⁻¹/n² − K/(n+L) = 8.482 |
+| [lepton-masses.md](lepton-masses.md) | DERIVED | Electron, muon, tau mass ratios (exact) |
+| [boson-masses.md](boson-masses.md) | DERIVED | Higgs, W, Z masses (all within measurement uncertainty) |
+| [quark-masses.md](quark-masses.md) | DERIVED | All 6 quark masses (<0.5% error) |
+| [e7-connection.md](e7-connection.md) | DERIVED | B=56 and exceptional Lie algebras |
+
+## Key Predictions
+
+| Quantity | Formula | Predicted | Observed | Error |
+|----------|---------|-----------|----------|-------|
+| α⁻¹ | n×L + B + 1 + K/B + spatial − e²×120/119 | 137.035999177 | 137.035999177 | **0.0 ppt** |
+| sin²θ_W | 3/S + K/(n×L×B) | 0.231215 | 0.23121 | **~0.002%** |
+| α_s⁻¹ | α⁻¹/n² − K/(n+L) | 8.4814 | 8.482 | **~0.02%** |
+| m_H | (v/K)(1 + 1/B) | 125.31 GeV | 125.25 GeV | 0.05% |
+| m_Z | (v/e)(137/136)(1 − K/B²) | 91.187 GeV | 91.188 GeV | **0.5 MeV** |
+| m_W | m_Z × cos(θ_W) × (209/208) × (1 + 1/6452) | 80.373 GeV | 80.377 GeV | **3.7 MeV** |
+| τ/μ | 2πe × 3 corrections | 16.817 | 16.817 | 0.004% |
+| μ/e | base × couplings + √e×X/(X+1) | 206.768282600 | 206.768282600 | **0.3 ppt** |
+| m_u | m_d / (K×S/(S-1)) | 2.16 MeV | 2.16 MeV | **0.0%** |
+| m_d | m_s / (L + K/L) | 4.65 MeV | 4.67 MeV | **0.4%** |
+| m_s | m_e × (n²S - L - L/n) | 93.5 MeV | 93.4 MeV | **0.1%** |
+| m_c | m_s × (S + K/3) | 1276 MeV | 1270 MeV | **0.5%** |
+| m_b | m_c × (3 + K/7) | 4193 MeV | 4180 MeV | **0.2%** |
+| m_t | v/√K × (1 - K/n²S) | 172.4 GeV | 172.69 GeV | **0.17%** |
+
+## Key Insight: Universal Skip Ratio K/X
+
+**Principle**: Observed = Structural + K/X(experiment)
+
+All corrections follow the universal skip ratio K/X where:
+- **K = 2** (Killing form, always)
+- **X** = structure being traversed
+- **Sign** = traversal completeness
+
+| Force | X (Structure) | K/X | What Measurement Traverses |
+|-------|---------------|-----|---------------------------|
+| EM | B = 56 | +K/B = +0.036 | Boundary structure |
+| Weak | n×L×B = 4480 | +K/(n×L×B) = +0.00045 | Full geometric-boundary |
+| Strong | n+L = 24 | −K/(n+L) = −0.083 | Geometry only |
+
+**The ± sign rule:**
+- **"+"** = traversal incomplete (something unobserved, e.g., neutrino escapes)
+- **"−"** = traversal complete (everything observed, e.g., jets fully detected)
+
+See [Force Structure](../foundations/force-structure.md) for complete derivations.
+
+## The One Empirical Input
+
+> **"SU(3) matter exists"** — This is the single empirical fact that BLD cannot derive. Everything else follows.
+
+## Reading Order
+
+1. **Start**: `particle-classification.md` — what particles can exist and why
+2. **Then**: `e7-derivation.md` — how B = 56 is derived
+3. **Then**: `lepton-masses.md` — mass ratio derivations
+4. **Then**: `fine-structure-consistency.md` — α⁻¹ verification
+5. **Finally**: `strong-coupling.md` — completing the force derivations

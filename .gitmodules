@@ -1,3 +1,0 @@
-[submodule ".claude/skills/bld"]
-	path = .claude/skills/bld
-	url = git@github.com:Experiential-Reality/bld-claude.git

@@ -1,8 +1,37 @@
+---
+status: Exploratory
+layer: 0
+depends_on:
+  - structural-language.md
+used_by:
+  - README.md
+  - ../glossary.md
+---
+
 # Structural Interest
 
 > **Status**: Exploratory
 
 Why do some structures produce richer behavior than others? This document formalizes "interest" using BLD primitives.
+
+## Quick Summary (D≈7 Human Traversal)
+
+**Structural Interest in BLD in 7 steps:**
+
+1. **Interest is relational** — A structure is interesting *to* a traverser; the same structure may bore one traverser and fascinate another
+2. **Four metrics quantify interest** — Structural entropy (configuration count), B×L synergy (non-additive coupling), curvature (sharpness), phase proximity (distance to transition)
+3. **Low interest = predictable** — Uniform structures have one configuration, sharp minimum, no synergy, far from transitions; outcome is determined
+4. **High interest = emergent** — Rich structures have many near-optimal configs, flat regions, positive synergy, accessible phase transitions
+5. **Maximum interest at phase boundaries** — Heat capacity diverges, correlation length diverges, fluctuations dominate, emergent behavior appears
+6. **Traverser determines difficulty** — High B complexity is harder for humans (7±2 limit) than LLMs (large context); long sequences hit LLM limits but humans can take notes
+7. **Compensation creates interest** — Structures where L can compensate for B (possible but not automatic) are more interesting than aligned or fundamentally misaligned
+
+| Component | BLD |
+|-----------|-----|
+| Configuration variety | Ω(E) depends on B/L/D balance |
+| Emergent coupling | B×L synergy term |
+| Phase transition points | B changing |
+| Processing limits | Traverser constraints (human: D≈7, LLM: context window) |
 
 ---
 

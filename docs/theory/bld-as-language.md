@@ -1,8 +1,37 @@
+---
+status: FOUNDATIONAL
+layer: 0
+depends_on:
+  - structural-language.md
+used_by:
+  - ../applications/code/code-generation.md
+  - ../applications/code/cross-language-compilation.md
+---
+
 # BLD as Universal Language
 
 > **Status**: Foundational
 
 BLD is not a framework for analyzing code. **BLD is a programming language** — a structural language that compiles to any substrate.
+
+## Quick Summary (D≈7 Human Traversal)
+
+**BLD as Universal Language in 7 steps:**
+
+1. **BLD is a language** — Not a framework for analysis, but a programming language that compiles to any substrate
+2. **Structure, not syntax** — Traditional compilers translate syntax to syntax; BLD aligns structure with structure (meaning to meaning)
+3. **Three primitives capture computation** — B (where behavior partitions), L (what depends on what), D (what repeats)
+4. **Same structure, many targets** — The same BLD compiles to Python, GPU cost models, SQL, hardware, and human language
+5. **Compilation is alignment** — Good alignment yields clean code; poor alignment yields awkward code
+6. **Lie theory explains universality** — D = generators, L = structure constants, B = topology; every computational system has these
+7. **Energy efficiency follows alignment** — Misaligned structure wastes energy; explicit structure enables optimization
+
+| Component | BLD |
+|-----------|-----|
+| Control flow, branching | B (Boundary) |
+| Data flow, references | L (Link) |
+| Iteration, parallelism | D (Dimension) |
+| Code generation target | Traverser (Python, GPU, etc.) |
 
 ---
 
@@ -334,7 +363,7 @@ Climate change is a coordination problem. No single company optimizing in secret
 - Every model can be analyzed
 - Every optimization compounds
 
-**A rising tide lifts all boats.** — Olivine Labs
+**A rising tide lifts all boats.**
 
 ### The Commitment
 

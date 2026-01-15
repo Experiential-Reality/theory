@@ -1,8 +1,92 @@
+---
+status: VALIDATED
+depends_on:
+  - lie-correspondence.md
+  - ../foundations/irreducibility-proof.md
+---
+
 # Boundary Cost Derivation
+
+## Quick Summary (D≈7 Human Traversal)
+
+**Boundary cost formula in 7 steps:**
+
+1. **Exact formula** — B = ½ log(1 + d²_Mahal) from Killing form + volume on SPD(d)
+2. **Two traversers** — Entropy regime (optimal Q) vs Mahalanobis regime (fixed Q)
+3. **Alignment factor g(ρ,θ)** — g = (1 - ρ sin(2θ))/(1 - ρ²); perpendicular modes cost more
+4. **α exponent varies** — α(ρ) captures transition from flat (α≈1) to curved (α≈2) geometry
+5. **Curvature drives α** — Gaussian curvature K = -1/(2(1-ρ²)²) diverges as ρ→1
+6. **Simplified formula** — B ≈ a·sep²·g^α valid in regime sep ∈ [1.5, 5.0] with <5% error
+7. **Dimension-independent** — B(d=16)/B(d=2) = 1.03 (topological, not geometric)
+
+| Aspect | L (Link) | B (Boundary) |
+|--------|----------|--------------|
+| Exact formula | L = -½ ln(1 - ρ²) | B = ½ log(1 + d²_Mahal) |
+| Origin | KL divergence | Killing form + volume |
+| Parameters | 1 (ρ) | 1 (d²_Mahal) |
+| Status | **EXACT** | **EXACT** |
 
 > **Status**: Validated
 
 This document presents the complete derivation of the Boundary (B) cost formula from information-geometric principles, following the methodology that successfully derived the Link formula L = -½ ln(1 - ρ²).
+
+---
+
+## BLD Structure of Boundary Cost
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                      BOUNDARY COST B                            │
+│                   B = ½ log(1 + d²_Mahal)                       │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+            ┌─────────────────┼─────────────────┐
+            ▼                 ▼                 ▼
+     ┌───────────┐     ┌───────────┐     ┌───────────┐
+     │     D     │     │     L     │     │     B     │
+     │  (extent) │     │ (connect) │     │ (partition│
+     │           │     │           │     │   space)  │
+     │  sep²     │     │  g(ρ,θ)   │     │  log()    │
+     │  (separ-  │     │  (align-  │     │  (vol.    │
+     │   ation)  │     │   ment)   │     │   form)   │
+     └───────────┘     └───────────┘     └───────────┘
+            │                 │                 │
+            └────────────────┴─────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    d²_Mahal = sep² × g(ρ,θ)                     │
+│                                                                  │
+│   where g(ρ,θ) = (1 - ρ sin(2θ)) / (1 - ρ²)                     │
+│                                                                  │
+│   Angular interpretation:      Statistical interpretation:       │
+│   ┌────────────────────┐      ┌────────────────────────┐        │
+│   │    θ = mode angle  │      │  d²_Mahal = Δμᵀ Σ⁻¹ Δμ │        │
+│   │    relative to     │  ←→  │  distance weighted by  │        │
+│   │    correlation     │      │  covariance structure  │        │
+│   │    eigenvector     │      │                        │        │
+│   └────────────────────┘      └────────────────────────┘        │
+│                                                                  │
+│   sin(2θ) = how much mode direction aligns with correlation     │
+│   (1-ρ²) = effective "width" of correlation structure           │
+└─────────────────────────────────────────────────────────────────┘
+
+TWO TRAVERSERS (D×L×B decomposition):
+
+  Traverser 1: Entropy regime        Traverser 2: Mahalanobis regime
+  ┌──────────────────────┐           ┌──────────────────────┐
+  │  Q optimizes fully   │           │  Q fixed to Σ_within │
+  │  B_ent = ½log(|Σ_mix│/│Σ_w│)    │  B_Mah = ½ d²_Mahal  │
+  │  → B ∝ log(sep)      │           │  → B ∝ sep²          │
+  └──────────────────────┘           └──────────────────────┘
+            │                                   │
+            └───────────┬───────────────────────┘
+                        │
+                        ▼
+              α(ρ) interpolates between regimes
+              α → 1 (flat geometry, small ρ)
+              α → 2 (curved geometry, large ρ)
+```
 
 ---
 

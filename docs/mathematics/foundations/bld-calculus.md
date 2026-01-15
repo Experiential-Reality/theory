@@ -1,10 +1,39 @@
+---
+status: PROVEN
+layer: 0
+depends_on: []
+used_by:
+  - irreducibility-proof.md
+  - irreducibility-categorical.md
+  - why-exactly-three.md
+  - factorization-calculus.md
+---
+
 # The BLD Calculus
 
-> **Status**: Foundational
+**Status**: PROVEN — Foundational type system with exactly three constructors.
 
-A typed lambda calculus with exactly three type constructors corresponding to Boundary, Link, and Dimension.
+---
 
-> **Dependency**: This document defines the formal system. The [Irreducibility Theorem](./irreducibility-categorical.md) uses these definitions to prove B/L/D independence.
+## Quick Summary (D≈7 Human Traversal)
+
+**BLD Calculus in 7 steps:**
+
+1. **Three type constructors** — Sum (+), Function (→), Product (Πₙ)
+2. **B = Sum** — τ₁ + τ₂ (choice/partition): inl, inr, case
+3. **L = Function** — τ₁ → τ₂ (reference): λ abstraction, application
+4. **D = Product** — Πₙτ (repetition): n-tuples, projection
+5. **Metatheory** — Progress + Preservation proven (type safety)
+6. **Sublanguages** — LD-calculus, BD-calculus, BL-calculus each incomplete
+7. **Purpose** — Formal foundation for irreducibility proof
+
+| Primitive | Type Constructor | Introduction | Elimination |
+|-----------|------------------|--------------|-------------|
+| B | Sum (+) | inl, inr | case |
+| L | Function (→) | λ | application |
+| D | Product (Πₙ) | tuple | projection |
+
+**Reference**: [Irreducibility Theorem](./irreducibility-categorical.md) uses these definitions.
 
 ---
 

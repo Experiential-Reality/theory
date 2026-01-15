@@ -1,8 +1,35 @@
+---
+status: FOUNDATIONAL
+layer: 0
+depends_on:
+  - structural-language.md
+used_by: []
+---
+
 # BLD Self-Reference: The Language That Defines Itself
 
 > **Status**: Foundational
 
 > BLD can define its own grammar using its own primitives. This is not circular dependency—it's structural recursion.
+
+## Quick Summary (D≈7 Human Traversal)
+
+**BLD Self-Reference in 7 steps:**
+
+1. **Languages are structures** — Token types are B (boundaries), grammar rules are L (links), repetition is D (dimensions)
+2. **BLD can describe BLD** — Because BLD describes any structure, it can describe its own grammar (bld.bld)
+3. **The three questions apply** — Where does syntax partition? (B: decl_type, token) What connects? (L: parse rules) What repeats? (D: structures, declarations)
+4. **Parsing is traversal** — A parser is a traverser over a grammar structure applied to a token stream
+5. **D×L scaling applies** — Parse cost = B_grammar + D_tokens × L_match; boundaries are topological (fixed), links scale with input
+6. **Bootstrap is recursion, not circularity** — Python parser reads bld.bld, generates Rust compiler, which can then compile bld.bld itself
+7. **Self-reference proves universality** — If BLD couldn't describe itself, it couldn't describe everything; this is the same as Gödel and Church
+
+| Component | BLD |
+|-----------|-----|
+| Token types (keyword, identifier) | B (Boundary) |
+| Production rules (A -> B -> C) | L (Link) |
+| Multiple structures/declarations | D (Dimension) |
+| The parser itself | Traverser |
 
 ---
 
@@ -64,23 +91,9 @@ These are **geometric**—they scale with input size.
 
 ---
 
-## The Bootstrap Files
-
-The `src/experiential_reality/bootstrap/` directory contains BLD files that define the BLD compiler:
-
-| File | Purpose | B | L | D |
-|------|---------|---|---|---|
-| `tokenizer.bld` | Character → Token | 5 | 7 | 8 |
-| `parser.bld` | Token → AST | 3 | 13 | 4 |
-| `types.bld` | Data structures | 1 | 0 | 4 |
-| `traverser.bld` | Structure interpretation | 3 | 9 | 6 |
-| `compiler.bld` | Pipeline composition | 2 | 5 | 6 |
-| **`bld.bld`** | **Grammar self-definition** | **7** | **16** | **6** |
-| `grammar.bld` | Production rules | 5 | 18 | 6 |
-
----
-
 ## bld.bld: The Self-Referential Grammar
+
+> **Implementation**: The self-hosted BLD compiler is being developed at [experiential-reality-org/bld](https://github.com/experiential-reality-org/bld).
 
 The file `bld.bld` describes the BLD language using BLD itself:
 
@@ -240,7 +253,6 @@ The grammar structure enables:
 
 ## See Also
 
-- [BLD Skill](../../.claude/skills/bld/SKILL.md) — The three questions
 - [Lie Correspondence](../mathematics/lie-theory/lie-correspondence.md) — Why B, L, D are fundamental
-- [Bootstrap Files](../../src/experiential_reality/bootstrap/) — The self-hosted compiler
+- [BLD Implementation](https://github.com/experiential-reality-org/bld) — The self-hosted compiler (in development)
 - [Glossary](../glossary.md) — Central definitions

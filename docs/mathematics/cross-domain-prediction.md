@@ -1,4 +1,29 @@
+---
+status: VALIDATED
+depends_on:
+  - lie-theory/lie-correspondence.md
+  - derived/manifold-foundations.md
+---
+
 # Cross-Domain Prediction Framework
+
+## Quick Summary (D≈7 Human Traversal)
+
+**Cross-domain prediction in 7 steps:**
+
+1. **Structural bridge** — Same BLD primitives describe different domains
+2. **Hypothesis** — If domains share BLD structure, their costs should correlate
+3. **Experiment** — VI cost vs neural accuracy on same data (controlled B, L)
+4. **Result** — r = -0.57 correlation; higher VI cost → harder neural learning
+5. **Formulas differ in interaction** — VI: B, L independent; Neural: L gates B; Circuits: D×L
+6. **Applications** — Estimate difficulty, select architecture, transfer domain knowledge
+7. **Validates substrate independence** — Structure determines behavior, not implementation
+
+| Domain | B-L Interaction | Why |
+|--------|-----------------|-----|
+| VI | Independent | Each mode/correlation is separate constraint |
+| Neural | L gates B | Global connectivity compensates B deficiency |
+| Circuits | Independent | Physics separates topology from geometry |
 
 > **Status**: Validated
 

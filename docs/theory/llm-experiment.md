@@ -1,6 +1,36 @@
+---
+status: EXPLORATORY
+layer: 0
+depends_on:
+  - structural-language.md
+used_by:
+  - structure-as-state.md
+  - README.md
+---
+
 # LLM Structure Perception Experiment
 
 > **Status**: Exploratory
+
+## Quick Summary (D≈7 Human Traversal)
+
+**LLM Structure Perception Experiment in 7 steps:**
+
+1. **Hypothesis** — All learning systems perceive structural properties similarly because structure is objective and substrate-independent
+2. **The test** — Ask different LLMs to introspect on processing well-structured vs poorly-structured code, using their own vocabulary
+3. **Primary question** — "Do you notice any difference in what it's like to process well-organized code versus poorly-organized code?"
+4. **Follow-up probes** — Explore cycles (A requires B requires A), completeness (are all cases covered?), and dependency direction
+5. **Cross-model comparison** — Test Claude, GPT-4, Gemini, Llama, Mistral, and others for vocabulary convergence
+6. **Initial results** — Claude Opus reports "glide" vs "friction", "complete" vs "gaps", "directional" vs "loops"
+7. **Structural prediction** — If structure is real, different architectures should independently generate similar descriptions
+
+| Component | BLD |
+|-----------|-----|
+| Code quality categories | B (Boundary): well-organized vs poorly-organized |
+| Model introspection responses | L (Link): vocabulary mapping to structural concepts |
+| Multiple LLM architectures tested | D (Dimension): Claude, GPT-4, Gemini, Llama, etc. |
+
+---
 
 ## Hypothesis
 
@@ -59,7 +89,7 @@ When you trace through code where many things depend on many other things versus
 
 ## Results
 
-### Claude Opus 4 (Anthropic)
+### Claude Opus 4.5 (Anthropic)
 
 **Date:** 2026-01-10
 

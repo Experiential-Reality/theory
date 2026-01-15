@@ -1,8 +1,114 @@
+---
+status: VALIDATED
+depends_on:
+  - ../foundations/bld-calculus.md
+---
+
 # Hardness of Canonical BLD: Formal Proof
 
 > **Status**: Validated
 
 This document proves that computing the canonical (minimal) BLD representation is NP-complete via reduction from the Minimum Grammar Problem.
+
+---
+
+## Quick Summary (D≈7 Human Traversal)
+
+**NP-completeness proof in 7 steps:**
+
+1. **CANONICAL-BLD** — decision problem: does S have BLD representation with cost ≤ k?
+2. **MINIMUM-GRAMMAR** — known NP-hard (Charikar et al., 2005)
+3. **Reduction** — Grammar G → BLD R_G: terminals→B, rules→L, non-terminals→D
+4. **Cost equivalence** — cost(R_G) = Θ(|G|), with constant factor ≤ 3
+5. **Reverse encoding** — BLD R → Grammar G_R with |G_R| ≤ 2·cost(R)
+6. **NP membership** — verification is polynomial (check cost + validity)
+7. **Conclusion** — CANONICAL-BLD is NP-complete
+
+| Step | Encoding | Cost Relationship |
+|------|----------|-------------------|
+| G → R_G | Terminals→B, Rules→L, NonTerms→D | cost(R_G) ≤ 3|G| |
+| R → G_R | Reverse mapping | |G_R| ≤ 2·cost(R) |
+
+**Key insight**: Canonical BLD requires global comparison (all representations) — this global constraint is the structural signature of NP-hardness.
+
+---
+
+## BLD Encoding Diagram
+
+```
+┌───────────────────────────────────────────────────────────────────────────┐
+│                    GRAMMAR → BLD ENCODING                                 │
+│                                                                           │
+│              NP-completeness via reduction from MINIMUM-GRAMMAR           │
+└───────────────────────────────────────────────────────────────────────────┘
+
+GRAMMAR G = (V, Σ, R, S)              BLD REPRESENTATION R_G = (B, L, D)
+┌─────────────────────────┐           ┌─────────────────────────────────────┐
+│                         │           │                                     │
+│  Σ = {a, b, c, ...}     │    B     │  B_G = {b_a, b_b, b_c, ...}         │
+│  (terminal symbols)     │  ────→   │  (boundaries = alphabet)            │
+│                         │           │                                     │
+├─────────────────────────┤           ├─────────────────────────────────────┤
+│                         │           │                                     │
+│  R = {A→XYZ, ...}       │    L     │  L_G = {(A,X,1), (A,Y,2), ...}      │
+│  (production rules)     │  ────→   │  (links = rule positions)           │
+│                         │           │                                     │
+├─────────────────────────┤           ├─────────────────────────────────────┤
+│                         │           │                                     │
+│  V = {S, A, B, ...}     │    D     │  D_G = {d_S, d_A, d_B, ...}         │
+│  (non-terminals)        │  ────→   │  (dimensions = repetition extent)   │
+│                         │           │                                     │
+└─────────────────────────┘           └─────────────────────────────────────┘
+
+COST EQUIVALENCE:
+
+  |G| = Σ(1 + |α|)  ←→  cost(R_G) = |B| + |L| + |D|
+                              ↓
+                      cost(R_G) ≤ 3|G|
+
+EXAMPLE ENCODING:
+
+  Grammar:                          BLD:
+  ┌─────────────────────┐          ┌─────────────────────────────────────┐
+  │  S → AB             │          │  B = {b_a, b_b}                     │
+  │  A → aa             │          │                                     │
+  │  B → bb             │          │  L = {(S,A,1), (S,B,2),             │
+  │                     │   →      │       (A,a,1), (A,a,2),             │
+  │  Σ = {a, b}         │          │       (B,b,1), (B,b,2)}             │
+  │  V = {S, A, B}      │          │                                     │
+  │                     │          │  D = {d_S, d_A, d_B}                │
+  └─────────────────────┘          └─────────────────────────────────────┘
+
+  L(G) = {aabb}                     R_G generates: a → a → b → b
+                                                   (same string)
+
+THE REDUCTION:
+
+  MINIMUM-GRAMMAR                   CANONICAL-BLD
+  ┌─────────────────────┐          ┌─────────────────────────────────────┐
+  │  Input: (s, k)      │          │  Input: (S_s, 3k)                   │
+  │  String s, bound k  │   →      │  System S_s, bound 3k               │
+  │                     │          │                                     │
+  │  Question:          │          │  Question:                          │
+  │  ∃G with |G|≤k      │          │  ∃R with cost(R)≤3k                 │
+  │  and L(G)={s}?      │          │  and R represents S_s?              │
+  └─────────────────────┘          └─────────────────────────────────────┘
+
+WHY NP-HARD (Global Constraint):
+
+  Verifying canonicity requires:
+  ┌─────────────────────────────────────────────────────────────────────┐
+  │                                                                     │
+  │     ∀R' valid for S: cost(R) ≤ cost(R')                            │
+  │                                                                     │
+  │     This is a GLOBAL comparison over ALL valid representations      │
+  │     → Cannot be verified locally                                    │
+  │     → This is the structural signature of NP-hardness               │
+  │                                                                     │
+  └─────────────────────────────────────────────────────────────────────┘
+
+  In BLD terms: temporal_scope = "global" → no local traverser suffices
+```
 
 ---
 
@@ -274,5 +380,5 @@ In BLD terms:
 
 - [Glossary](../../glossary.md) — Central definitions
 - [Discovery Algorithm](../derived/discovery-algorithm.md) — The algorithm being analyzed
-- [Discovery Method](../../theory/discovery-method.md) — Informal method description
+- [Discovery Method](../../meta/discovery-method.md) — Informal method description
 - [Constructive Lie](../lie-theory/constructive-lie.md) — Why BLD produces Lie structures

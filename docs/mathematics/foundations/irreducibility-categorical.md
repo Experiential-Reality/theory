@@ -1,8 +1,40 @@
+---
+status: PROVEN
+layer: 1
+depends_on:
+  - bld-calculus.md
+used_by:
+  - irreducibility-proof.md
+  - why-exactly-three.md
+---
+
 # B/L/D Irreducibility Theorem
 
 > **Status**: Validated
 
 This document provides a rigorous proof that Boundary, Link, and Dimension are irreducible primitives. The proof uses the [BLD Calculus](./bld-calculus.md) to formalize the primitives and show that none can be expressed using the other two.
+
+---
+
+## Quick Summary (D≈7 Human Traversal)
+
+**Irreducibility theorem in 7 steps:**
+
+1. **B (Sum +)** — cannot express in LD-calculus: all LD types have cardinality 1
+2. **L (Function →)** — cannot express in BD-calculus: no application construct
+3. **D (Product Πₙ)** — cannot express in BL-calculus: no parameterized arity
+4. **LD lacks choice** — Bool = 1+1 has 2 values, but LD types only have 1
+5. **BD lacks computation** — can represent function graphs but not apply them
+6. **BL lacks repetition** — fixed structure, can't express "n copies of τ"
+7. **Conservation** — any system with all three capabilities needs all three primitives
+
+| Sublanguage | Missing | Fails to Express | Why |
+|-------------|---------|------------------|-----|
+| LD | Sum (+) | Bool = 1+1 | Cardinality always 1 |
+| BD | Function (→) | 1 → Bool | No application |
+| BL | Product (Πₙ) | Πₙ1 family | No parameterized arity |
+
+**Key insight**: Each primitive captures a unique capability (choice, reference, repetition) that cannot be simulated by the other two.
 
 ---
 
