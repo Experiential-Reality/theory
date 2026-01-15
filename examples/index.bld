@@ -1,0 +1,47 @@
+# examples/index.bld - Concrete Examples
+#
+# Cost: B=4, D=4 → At the split threshold
+#
+# Four concrete demonstrations of BLD in real systems.
+
+structure Examples
+
+# =============================================================================
+# AVAILABLE EXAMPLES
+# =============================================================================
+#
+# | Example | System | Key Insight |
+# |---------|--------|-------------|
+# | ZIP | File compression | Literal/Length/Distance = B/L/D |
+# | JPEG | Image compression | DCT + quantization structure |
+# | Compiler | Code generation | BLD analyzing itself |
+# | Music | Musical structure | Tension/resolution as alignment |
+
+B example: zip | jpeg | compiler | music
+  zip -> uses=theory/examples/zip.bld
+  jpeg -> uses=theory/examples/jpeg.bld
+  compiler -> uses=theory/examples/compiler.bld
+  music -> uses=theory/examples/music.bld
+
+# =============================================================================
+# WHY THESE EXAMPLES?
+# =============================================================================
+#
+# ZIP: Shows BLD in a simple, well-understood format.
+#      Everyone knows ZIP. The mapping is exact.
+#
+# JPEG: Shows BLD in image processing pipeline.
+#       This is where BLD research started (GPU performance).
+#
+# Compiler: Meta-example - BLD analyzing code generation.
+#          Self-reference demonstrates power of the framework.
+#
+# Music: Shows BLD in human experience.
+#        Tension/resolution = alignment/misalignment.
+#        "Feel" is structural.
+
+D examples: 4 [parallel, educational]
+
+L demonstrate: theory -> example (deps=0, pattern=concrete_first)
+
+returns: ConcreteUnderstanding

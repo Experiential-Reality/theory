@@ -1,0 +1,77 @@
+# foundations.bld - BLD Foundations
+#
+# Formal proofs and type system.
+
+structure Foundations
+
+# =============================================================================
+# IRREDUCIBILITY PROOF
+# =============================================================================
+#
+# Claim: B, L, D are independent primitives.
+#
+# Proof by witness structures:
+#
+# B without L/D:
+#   S = { {}, {a} }
+#   Two partitions, no references, no repetition.
+#   Pure boundary.
+#
+# L without B/D:
+#   S = { a → b }
+#   One reference, no partition, no repetition.
+#   Pure link.
+#
+# D without B/L:
+#   S = [a, a, a]
+#   Three copies, no partition, no reference.
+#   Pure dimension.
+#
+# Each primitive can exist independently.
+# Therefore B, L, D are irreducible.
+
+B primitive: boundary | link | dimension
+  boundary -> partition_witness
+  link -> reference_witness
+  dimension -> repetition_witness
+
+# =============================================================================
+# BLD CALCULUS (Type System)
+# =============================================================================
+#
+# Types:
+#   B : Type → Type  (partition function)
+#   L : Type → Type → Type  (connection)
+#   D : Type → Nat → Type  (repetition)
+#
+# Formation rules:
+#   B(T) = partition of values of type T
+#   L(S, T) = directed edge from S to T
+#   D(T, n) = n homogeneous copies of T
+#
+# Cost typing:
+#   Cost(B(T)) = |partitions|
+#   Cost(L(S, T)) = -½ ln(1 - ρ²)
+#   Cost(D(T, n)) = n × Cost(T)
+
+L type_check: structure -> (B, L, D) (deps=1)
+
+# =============================================================================
+# CANONICAL HARDNESS
+# =============================================================================
+#
+# Claim: Finding the minimal BLD representation is NP-complete.
+#
+# Reduction from graph coloring:
+#   - Graph nodes → structure elements
+#   - Graph edges → required distinctions
+#   - Chromatic number → minimal B
+#
+# This means:
+#   - There's no polynomial algorithm for optimal BLD
+#   - Heuristics are necessary in practice
+#   - BLD predicts its own computational hardness
+
+D proofs: 3 [sequential]
+
+returns: Foundation

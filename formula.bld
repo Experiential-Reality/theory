@@ -1,0 +1,62 @@
+# formula.bld - The Cost Formula
+#
+# Cost: B=1, D=1 → Minimal, always inline
+#
+# This single equation is the heart of BLD.
+
+structure CostFormula
+
+# =============================================================================
+# THE FORMULA
+# =============================================================================
+#
+#   Cost = B + D × L
+#
+# Where:
+#   B = boundary cost (topological, mode count)
+#   D = dimension (repetition count)
+#   L = link cost (geometric, correlation strength)
+#
+# The L formula (EXACT THEOREM, not approximation):
+#
+#   L = -½ ln(1 - ρ²)
+#
+# Where ρ is the correlation coefficient.
+
+B formula: cost_equation | l_formula
+  cost_equation -> Cost = B + D × L
+  l_formula -> L = -½ ln(1 - ρ²)
+
+# =============================================================================
+# WHY THIS FORMULA?
+# =============================================================================
+#
+# Derived from KL divergence between correlated Gaussians.
+#
+# Properties:
+#   - ρ = 0 → L = 0 (independent variables, no link cost)
+#   - ρ → 1 → L → ∞ (perfect correlation, infinite cost)
+#   - L ≥ 0 always (non-negative cost)
+#
+# This is not heuristic — it's mathematically exact.
+
+# =============================================================================
+# IMPLICATIONS
+# =============================================================================
+#
+# 1. D×L SCALING: D multiplies L (geometric), not B (topological)
+#    - More transistors → more capacitance (L)
+#    - Same threshold voltage (B)
+#
+# 2. COST MINIMIZATION: Alignment minimizes total cost
+#    - Good architecture matches data structure
+#    - Misalignment creates friction
+#
+# 3. SUMMARIZATION: Reduce D while preserving B and L
+#    - Human working memory ~4 → split when D×L > 4
+
+D terms: 3 [parallel]    # B, D, L
+
+L compute: (B, D, L) -> cost (deps=1)
+
+returns: AlignmentCost

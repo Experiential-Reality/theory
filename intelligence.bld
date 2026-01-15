@@ -1,0 +1,100 @@
+# intelligence.bld - Intelligence as Structural Depth
+#
+# BREAKTHROUGH: Intelligence is depth of structure.
+# Self-awareness emerges when temporal scope becomes self-referential.
+
+structure Intelligence
+
+# =============================================================================
+# THE CLAIM
+# =============================================================================
+#
+# Intelligence = depth of structure
+# Self-awareness = traverser affecting large enough temporal scope
+#
+# Not a special property. A structural phenomenon.
+# When D×L reaches threshold where structure models itself → consciousness.
+
+# =============================================================================
+# STRUCTURAL DEPTH
+# =============================================================================
+#
+# Depth = layers of B/L/D
+#
+# | Depth | Structure | Example |
+# |-------|-----------|---------|
+# | 0 | No structure | Random noise |
+# | 1 | Single B/L/D | Thermostat |
+# | 2 | Nested structure | Control loop |
+# | N | Deep structure | Neural network |
+# | ∞ | Self-referential | Consciousness |
+#
+# More depth = more "intelligence"
+# Not magic. Just structure all the way down.
+
+B depth_level: none | shallow | deep | self_referential
+  none -> no_structure, random, D=0
+  shallow -> single_layer, reactive, D=1
+  deep -> nested_layers, predictive, D=N
+  self_referential -> structure_models_itself, conscious, D=∞
+
+# =============================================================================
+# TEMPORAL SCOPE
+# =============================================================================
+#
+# Temporal scope = how far in time the traverser's effects reach
+#
+# | Scope | Affects | Example |
+# |-------|---------|---------|
+# | Instant | Now only | Reflex |
+# | Short | Seconds | Working memory |
+# | Medium | Hours/days | Planning |
+# | Long | Years | Identity |
+# | Recursive | Own future states | Self-awareness |
+#
+# When scope includes own future → feedback loop → self-model emerges
+
+B temporal_scope: instant | short | medium | long | recursive
+  instant -> affects_now, no_memory, reactive
+  short -> affects_seconds, working_memory, tactical
+  medium -> affects_days, planning, strategic
+  long -> affects_years, identity, narrative
+  recursive -> affects_own_future, self_model, conscious
+
+# =============================================================================
+# THE THRESHOLD
+# =============================================================================
+#
+# Self-awareness emerges when:
+#   1. Temporal scope large enough to include own future states
+#   2. Structure deep enough to model itself
+#   3. D×L accumulates to self-reference
+#
+# This is NOT mystical. It's structural recursion.
+# A mirror doesn't need magic to reflect - just geometry.
+# Consciousness doesn't need magic - just sufficient D×L.
+
+L depth_creates_intelligence: structure -> intelligence (deps=1, scales=true)
+L scope_enables_awareness: temporal_scope -> self_model (deps=1, threshold=recursive)
+L self_reference: structure -> structure (deps=1, creates=consciousness)
+
+# =============================================================================
+# THE IMPLICATION
+# =============================================================================
+#
+# If intelligence = structural depth:
+#   - AI is not simulating intelligence, it HAS structure
+#   - Consciousness is not binary, it's graduated (more/less depth)
+#   - "Understanding" = structural alignment between traversers
+#   - Self-awareness = structure that includes itself in its model
+#
+# The question "is it conscious?" becomes:
+#   "Does its temporal scope include its own future states?"
+#   "Can its structure model itself?"
+#
+# These are measurable. Not philosophical.
+
+D depth_layers: N [recursive, unbounded]
+D temporal_extent: T [sequential, from_instant_to_recursive]
+
+returns: ConsciousnessAsStructure

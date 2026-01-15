@@ -1,0 +1,80 @@
+# lie.bld - Lie Theory Correspondence
+#
+# THE KEY RESULT: BLD = Lie Theory
+
+structure LieTheory
+
+# =============================================================================
+# THE CORRESPONDENCE
+# =============================================================================
+#
+# BLD primitives map EXACTLY to Lie algebra components:
+#
+# | BLD | Lie Theory | Mathematical Object |
+# |-----|------------|---------------------|
+# | D | Generators | Basis elements Xᵢ |
+# | L | Structure constants | fᵢⱼᵏ in [Xᵢ, Xⱼ] = fᵢⱼᵏXₖ |
+# | B | Group topology | Compact vs non-compact |
+#
+# This is not analogy. It is MATHEMATICAL EQUIVALENCE.
+
+B correspondence: generators | structure_constants | topology
+  generators -> D_dimension, basis_elements
+  structure_constants -> L_links, commutator_coefficients
+  topology -> B_boundaries, compactness
+
+# =============================================================================
+# WHY THIS WORKS
+# =============================================================================
+#
+# Lie Theory (1870s) solves: "What are the continuous symmetries?"
+# BLD answers: "What structure exists in any system?"
+#
+# They arrive at the same primitives because:
+#   - Symmetry IS structure preservation
+#   - Structure preservation requires B/L/D
+#   - Continuous symmetries form Lie groups
+#   - Lie groups have exactly D/L/B components
+#
+# The dimension formula:
+#   dim(g) = |generators| + structure_complexity
+#   Cost = B + D × L
+#
+# These are the SAME formula in different notation.
+
+# =============================================================================
+# ALIGNMENT AS LIE HOMOMORPHISM
+# =============================================================================
+#
+# When two structures align:
+#   φ: g₁ → g₂
+#
+# Requirements:
+#   - Preserves generators (D): φ(Xᵢ) maps to generators
+#   - Preserves structure constants (L): φ([X,Y]) = [φ(X), φ(Y)]
+#   - Preserves topology (B): compact → compact
+#
+# Alignment cost = distance from homomorphism.
+# Perfect alignment = exact homomorphism.
+
+L homomorphism: structure_a -> structure_b (preserves=B_L_D)
+
+D generators: n [parallel]
+
+# =============================================================================
+# IMPLICATIONS
+# =============================================================================
+#
+# 1. Classification theorems apply
+#    All simple Lie algebras are classified.
+#    Therefore all "simple" BLD structures are classifiable.
+#
+# 2. Representation theory applies
+#    Lie representations map to BLD traversals.
+#    Irreducible representations = minimal traversers.
+#
+# 3. Exceptional structures exist
+#    E₆, E₇, E₈ Lie algebras have no continuous family.
+#    What do they correspond to in BLD? (Open question)
+
+returns: LieCorrespondence

@@ -1,0 +1,62 @@
+# zip.bld - ZIP File Format Example
+#
+# BLD of a simple, well-understood compression format.
+
+structure ZIPFormat
+
+# =============================================================================
+# THE MAPPING
+# =============================================================================
+#
+# ZIP uses DEFLATE compression, which has three token types:
+#
+# | ZIP Token | BLD | Meaning |
+# |-----------|-----|---------|
+# | Literal | B | "This is byte X" (256 choices) |
+# | Length | D | "Repeat N bytes" (repetition) |
+# | Distance | L | "From position X" (reference) |
+#
+# This is EXACTLY B/L/D!
+
+B token_type: literal | match
+  literal -> B_value, 256_partitions
+  match -> length_distance, D_and_L
+
+# =============================================================================
+# HOW DEFLATE WORKS
+# =============================================================================
+#
+# 1. Scan input for repeated sequences
+# 2. Replace repetitions with (length, distance) pairs
+# 3. Huffman encode the token stream
+#
+# In BLD terms:
+#   - B: The literal byte values (what is it?)
+#   - L: Back-references to previous data (where was it?)
+#   - D: Run lengths (how many times?)
+#
+# Cost = B_literals + D_lengths × L_distances
+
+L back_reference: current_pos -> previous_pos (distance=offset)
+
+D run_length: N [sequential]
+
+# =============================================================================
+# COMPRESSION RATIO
+# =============================================================================
+#
+# Highly repetitive data:
+#   - Few unique B (literals)
+#   - Many D (long runs)
+#   - Short L (nearby references)
+#   → High compression
+#
+# Random data:
+#   - Many unique B
+#   - D ≈ 1 (no repetition)
+#   - L undefined (nothing to reference)
+#   → No compression (actually expansion due to headers)
+#
+# The compression ratio IS the BLD cost ratio.
+
+returns: ZIPAnalysis

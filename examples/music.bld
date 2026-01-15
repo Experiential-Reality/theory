@@ -1,0 +1,78 @@
+# music.bld - Music Theory Example
+#
+# Musical structure as BLD. Tension/resolution as alignment.
+
+structure MusicTheory
+
+# =============================================================================
+# THE MAPPING
+# =============================================================================
+#
+# | BLD | Music | Examples |
+# |-----|-------|----------|
+# | B | Structural boundaries | Key, section, cadence |
+# | L | Harmonic relationships | Voice leading, tension |
+# | D | Repetition | Beats, measures, verses |
+
+B musical_boundary: key | section | cadence | beat
+  key -> major_minor_modal, tonal_center
+  section -> verse_chorus_bridge
+  cadence -> perfect_imperfect_deceptive
+  beat -> downbeat_upbeat
+
+# =============================================================================
+# TENSION AND RESOLUTION
+# =============================================================================
+#
+# Tension = deliberate misalignment (high cost, unstable)
+# Resolution = alignment (low cost, stable)
+#
+# | Progression | Tension | Why |
+# |-------------|---------|-----|
+# | V → I | Resolution | Strong L pull satisfied |
+# | ii → V | Building | Partial alignment |
+# | V → vi | Deceptive | Expected B violated |
+#
+# The "pull" of dominant to tonic IS the L formula.
+# Musical expectation IS structural prediction.
+
+L voice_leading: chord_n -> chord_n_plus_1 (tension=L_cost)
+
+# =============================================================================
+# THE LISTENER AS TRAVERSER
+# =============================================================================
+#
+# The listener has their own BLD structure:
+#
+# Listener B: Genre expectations, cultural familiarity
+# Listener L: Memory of previous phrases, prediction
+# Listener D: Working memory (~4), attention span
+#
+# Alignment = Music B/L/D matches Listener B/L/D
+#
+# When aligned: Satisfaction, groove, meaning
+# When misaligned: Surprise, tension, confusion
+
+D repetition: beats_per_measure | measures_per_phrase | verses
+  beats_per_measure -> 4 [parallel, pulse]
+  measures_per_phrase -> 4 [sequential, phrase]
+  verses -> N [sequential, form]
+
+# =============================================================================
+# THE L FORMULA IN MUSIC
+# =============================================================================
+#
+# Consonance follows (approximately):
+#   L_consonance ~ -½ ln(1 - (a/b)²)
+#
+# Where a:b is the frequency ratio.
+#
+# Small whole-number ratios have low L cost:
+#   2:1 (octave) - most consonant
+#   3:2 (fifth) - very consonant
+#   4:3 (fourth) - consonant
+#   45:32 (tritone) - dissonant
+#
+# The "smoothness" of intervals IS the L formula.
+
+returns: MusicAnalysis

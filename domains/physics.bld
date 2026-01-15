@@ -1,0 +1,77 @@
+# physics.bld - Physics Domain
+#
+# Status: MIXED (varies by subdomain)
+#
+# Physics IS a traverser. Physical laws define structural constraints.
+
+structure Physics
+
+# =============================================================================
+# BLD MAPPING RULES
+# =============================================================================
+#
+# Rule 1: B = Topological (Invariant Under D)
+#   X(D) = X(D') for all D → X is B
+#   Examples: V_th, c, T_c, Re_c
+#
+# Rule 2: L = Geometric (Scales with D)
+#   X(αD) = α^k × X(D) for k > 0 → X is L
+#   Examples: Capacitance, field energy, entanglement
+#
+# Rule 3: D = Repetition Count
+#   X = integer count of homogeneous elements → X is D
+#   Examples: Particle number, qubits, lattice size
+
+B mapping_rule: topological | geometric | repetition
+  topological -> size_invariant, B_type
+  geometric -> scales_with_D, L_type
+  repetition -> integer_count, D_type
+
+# =============================================================================
+# SUBDOMAIN STATUS
+# =============================================================================
+#
+# | Subdomain | Status | Key Validation |
+# |-----------|--------|----------------|
+# | Thermodynamics | VALIDATED | 10/10 tests, Second Law |
+# | Circuits | VALIDATED | R² = 1.0 |
+# | Electromagnetism | EXPLORATORY | U(1) gauge reframed |
+# | Quantum | EXPLORATORY | B = measurement |
+# | Fluids | EXPLORATORY | Re as B |
+# | Phase Transitions | EXPLORATORY | Critical phenomena |
+
+B subdomain: thermo | em | quantum | fluids | phase
+  thermo -> validated, uses=theory/domains/thermo.bld
+  em -> exploratory, U1_gauge_structure
+  quantum -> exploratory, B_measurement_L_entanglement
+  fluids -> exploratory, Re_critical_as_B
+  phase -> exploratory, critical_phenomena
+
+# =============================================================================
+# INTENSIVE VS EXTENSIVE
+# =============================================================================
+#
+# | Property Type | BLD | Examples |
+# |---------------|-----|----------|
+# | Intensive (size-independent) | B | Temperature, pressure |
+# | Extensive (scales with size) | L or D | Energy, volume |
+
+L coupling: system_a -> system_b (force=F, constant=α)
+
+D particles: N [parallel]
+D spatial: 3 [parallel]
+
+# =============================================================================
+# WHAT BLD DOES NOT PREDICT
+# =============================================================================
+#
+# | Question | Status |
+# |----------|--------|
+# | Why ℏ? | Value not predicted |
+# | Why c? | Value not predicted |
+# | Why α ≈ 1/137? | Value not predicted |
+# | Why 3+1 dimensions? | Reframed, not derived |
+#
+# BLD provides structural constraints, not specific parameter values.
+
+returns: PhysicsAnalysis

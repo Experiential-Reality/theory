@@ -1,0 +1,58 @@
+# math/index.bld - Mathematical Foundations
+#
+# Cost: B=3, D=many → Split into separate files
+#
+# Rigorous mathematical treatment of BLD.
+
+structure Mathematics
+
+# =============================================================================
+# STRUCTURE
+# =============================================================================
+#
+# Three pillars of mathematical foundation:
+#   1. Foundations: Irreducibility proofs, type system
+#   2. Lie Theory: The BLD = Lie correspondence
+#   3. Derived: Manifold structure, thermodynamics
+
+B section: foundations | lie | derived
+  foundations -> uses=theory/math/foundations.bld
+  lie -> uses=theory/math/lie.bld
+  derived -> uses=theory/math/derived.bld
+
+# =============================================================================
+# KEY THEOREMS
+# =============================================================================
+#
+# 1. IRREDUCIBILITY THEOREM
+#    B, L, D are independent primitives.
+#    Proof: Witness structures for each.
+#
+# 2. LIE CORRESPONDENCE THEOREM
+#    BLD = Lie Theory (exact equivalence)
+#    D ↔ Generators, L ↔ Structure constants, B ↔ Topology
+#
+# 3. L FORMULA THEOREM
+#    L = -½ ln(1 - ρ²) (exact, from KL divergence)
+#
+# 4. COMPENSATION THEOREM
+#    L can compensate for B, not vice versa.
+#    Proof: B is topological, L is geometric.
+#
+# 5. CANONICAL HARDNESS THEOREM
+#    Finding minimal BLD is NP-complete.
+#    (As predicted by BLD itself!)
+#
+# 6. CONSERVATION THEOREM
+#    Noether's theorem in BLD.
+#    Symmetries preserve BLD structure.
+#
+# 7. THERMODYNAMICS THEOREM
+#    Second Law derived from alignment dynamics.
+#    dS/dt ≥ 0 (validated, 10/10 tests)
+
+D theorems: 7 [parallel]
+
+L prove: axioms -> theorem (deps=1, method=deduction)
+
+returns: MathematicalFoundation

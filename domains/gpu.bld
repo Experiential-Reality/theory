@@ -1,0 +1,68 @@
+# gpu.bld - GPU Performance Domain
+#
+# Status: VALIDATED (±15% prediction accuracy)
+#
+# GPU performance is alignment between algorithm and hardware traverser.
+
+structure GPUPerformance
+
+# =============================================================================
+# BLD MAPPING
+# =============================================================================
+#
+# | BLD | GPU | Examples |
+# |-----|-----|----------|
+# | B | Cache/dispatch boundaries | L2 cache (4MB), cold vs warm |
+# | L | Memory access patterns | Coalesced, strided, scattered |
+# | D | Parallelism | Threads, blocks, warps |
+
+B dispatch: cold | warm
+  cold -> first_kernel, ~2.1ms_overhead
+  warm -> subsequent, ~1.2ms_overhead
+
+B cache: in_L2 | out_L2
+  in_L2 -> working_set_lt_4MB
+  out_L2 -> cache_pressure, 1.0-3.3x_multiplier
+
+# =============================================================================
+# MEMORY PATTERN COSTS (VALIDATED)
+# =============================================================================
+#
+# | Pattern | ns/access | Description |
+# |---------|-----------|-------------|
+# | Coalesced | 0.028 | Sequential, aligned |
+# | Strided | 0.034 | Regular stride |
+# | Scattered | 0.112 | Random access |
+
+L memory: threads -> memory (pattern=coalesced|strided|scattered)
+
+# =============================================================================
+# PERFORMANCE PREDICTION
+# =============================================================================
+#
+# Time = dispatch_overhead + memory_time + compute_time
+#
+# where:
+#   memory_time = D × L_access × access_count
+#   compute_time = D × ops / throughput
+#
+# If engines overlap: Time = max(memory, compute) × overlap_factor
+#
+# Engine overlap on Intel Xe:
+#   ("memory", "compute"): 22% efficiency
+#   Compute slowed 4.5× when competing with memory
+
+D threads: T [parallel]
+D blocks: B [parallel]
+
+# =============================================================================
+# VALIDATION RESULTS
+# =============================================================================
+#
+# | Size | Predicted | Actual | Error |
+# |------|-----------|--------|-------|
+# | 256² | 1.51ms | 1.33ms | -13.6% |
+# | 1024² | 22.85ms | 20.33ms | -12.4% |
+# | 4096² | 2030ms | 1759ms | -15.4% |
+
+returns: GPUAnalysis
