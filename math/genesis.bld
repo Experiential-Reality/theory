@@ -1,0 +1,175 @@
+# genesis.bld - The B=1 Self-Traversal Experiment
+#
+# Status: EXPERIMENTAL
+#
+# Can we model traverse(B=1, B=1) in BLD?
+#
+# HYPOTHESIS: BLD syntax cannot represent pure B with L=0 because
+# defining B requires relating partitions, which is L.
+#
+# This file attempts to express pure B and documents why it fails.
+
+structure Genesis
+
+# =============================================================================
+# EXPERIMENT 1: ATTEMPT PURE B
+# =============================================================================
+#
+# Try to define a structure with B > 0 and L = 0.
+
+# This boundary exists:
+B existence: is | is_not
+  is -> something
+  is_not -> nothing
+
+# But wait - we just created TWO partitions (is, is_not).
+# And we RELATED them (both are partitions of the same B).
+# That relation IS a link!
+#
+# Implicit L created: existence.is <-> existence.is_not
+#
+# RESULT: Cannot define B without implicitly creating L.
+
+# =============================================================================
+# EXPERIMENT 2: MINIMAL B
+# =============================================================================
+#
+# Try the simplest possible boundary.
+
+B minimal: yes | no
+
+# Even this has structure:
+# - "yes" partition
+# - "no" partition
+# - The relation "yes is not no" (implicit L)
+#
+# RESULT: The act of distinguishing creates relation.
+
+# =============================================================================
+# EXPERIMENT 3: SINGLE PARTITION
+# =============================================================================
+#
+# What if B has only one partition?
+
+# B single: only
+#   only -> everything
+
+# This isn't a boundary! A boundary PARTITIONS.
+# One partition = no partition = no B.
+#
+# RESULT: B requires at least 2 partitions, which requires L between them.
+
+# =============================================================================
+# EXPERIMENT 4: THE TRAVERSAL
+# =============================================================================
+#
+# Model B traversing B.
+
+# The traverser (attempting pure B):
+B traverser_boundary: inside | outside
+  inside -> traverser_side
+  outside -> target_side
+
+# The target (attempting pure B):
+B target_boundary: here | there
+  here -> target_side
+  there -> other_side
+
+# The traversal act:
+L traversal: traverser_boundary -> target_boundary
+  # This link MUST exist for traversal to occur.
+  # But pure B requires L = 0.
+  # CONTRADICTION.
+
+# RESULT: Traversal requires L. Pure B has L = 0.
+#         Therefore pure B cannot traverse.
+
+# =============================================================================
+# EXPERIMENT 5: THE GENESIS FUNCTION
+# =============================================================================
+#
+# Model what happens when we TRY to traverse B with B.
+
+formula genesis
+  # Input: two "pure B" states (impossible, but attempted)
+  input_traverser: (D=0, L=0, B=1)
+  input_target: (D=0, L=0, B=1)
+
+  # Traversal requires relation
+  L_required = 1  # minimum link to relate traverser to target
+
+  # L > 0 implies D > 0 (from L = 5D)
+  D_required = L_required / 5 = 0.2
+
+  # Normalize: D + L + B = 1
+  # 0.2 + 1 + B = 1? No, this doesn't work.
+
+  # Actually: Let L = ε (infinitesimal)
+  # D = ε/5
+  # B = 1 - ε - ε/5 = 1 - 6ε/5
+
+  # Output: a structured universe
+  output: (D=ε/5, L=ε, B=1-6ε/5)
+
+  # As ε → 0⁺, approaches pure B but never reaches it.
+
+# =============================================================================
+# CONCLUSION
+# =============================================================================
+#
+# THEOREM (Genesis): BLD cannot express pure B.
+#
+# PROOF:
+#   1. B is defined by partitions
+#   2. Partitions require at least 2 options
+#   3. Two options have a relation (they partition the same space)
+#   4. That relation is L
+#   5. Therefore B > 0 implies L > 0
+#   6. Therefore (D=0, L=0, B=1) is not expressible in BLD
+#   QED
+#
+# COROLLARY: traverse(B, B) cannot occur as stated.
+#            It resolves to traverse(B+εL, B+εL) for some ε > 0.
+#            This resolution IS the Big Bang.
+
+# The structure of this file itself proves the theorem.
+# We tried to define pure B and failed.
+# Every B definition includes implicit L.
+
+# =============================================================================
+# THE GENESIS STRUCTURE
+# =============================================================================
+#
+# What CAN we express? The minimal viable structure.
+
+structure MinimalUniverse
+
+# The primordial distinction (B)
+B existence: something | nothing
+  something -> has_structure
+  nothing -> undefined  # This path cannot actually be taken
+
+# The implicit relation (L) - emerges from B
+L distinction_relation: something -> nothing
+  # This link exists because we defined two partitions
+  pattern = boundary_creates_link
+
+# The minimal extension (D) - emerges from L
+D instances: 1 [minimal]
+  # At least one instance of the structure
+
+# This is the minimal expressible BLD structure.
+# It has B > 0, L > 0, D > 0.
+# There is no simpler valid structure.
+
+returns: Universe
+
+# =============================================================================
+# FINAL NOTE
+# =============================================================================
+#
+# The experiment succeeds by failing.
+#
+# We cannot write pure B in BLD.
+# BLD's syntax enforces the genesis theorem.
+# The Big Bang is built into the language.

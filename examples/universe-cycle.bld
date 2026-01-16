@@ -1,0 +1,181 @@
+# universe-cycle.bld - The Eternal Cycle
+#
+# Status: DERIVED
+#
+# Models the full cycle: B → D,L,B → B → ...
+# The Big Bang, expansion, heat death, and rebirth.
+
+structure UniverseCycle
+
+# =============================================================================
+# THE STATES
+# =============================================================================
+
+# State 1: Pure B (theoretical, unstable)
+# Cannot actually be represented - see math/genesis.bld
+# B pure_b: exists | not
+#   This would require L = 0, which is impossible in BLD
+
+# State 2: Minimal structure (Big Bang)
+B big_bang: spacetime | void
+  spacetime -> D_emerges, L_emerges
+  void -> impossible  # Cannot be traversed
+
+# State 3: Structured universe (Now)
+B structured: matter | geometry | boundary
+  matter -> D_type, dilutes
+  geometry -> L_type, stretches
+  boundary -> B_type, constant
+
+# State 4: Heat death (approaches pure B)
+B heat_death: boundary_only | residual
+  boundary_only -> B_dominant, approaches_pure_B
+  residual -> epsilon_D, epsilon_L
+
+# =============================================================================
+# THE COMPOSITION AT EACH STAGE
+# =============================================================================
+
+formula early_universe
+  # Shortly after Big Bang
+  D = 0.30  # 30% matter-radiation
+  L = 0.60  # 60% geometry
+  B = 0.10  # 10% dark energy
+  era = "structure_dominated"
+
+formula now
+  # Present epoch
+  D = 0.05  # 5% ordinary matter
+  L = 0.27  # 27% dark matter (geometry)
+  B = 0.68  # 68% dark energy (boundary)
+  era = "transition"
+
+formula future
+  # Far future (a = 3.17)
+  D = 0.005  # 0.5% matter
+  L = 0.025  # 2.5% geometry
+  B = 0.970  # 97% boundary
+  era = "boundary_dominated"
+
+formula heat_death_limit
+  # a → ∞
+  D = 0  # No matter
+  L = 0  # No geometry
+  B = 1  # Pure boundary
+  era = "undefined"  # Triggers genesis
+
+# =============================================================================
+# THE EVOLUTION EQUATIONS
+# =============================================================================
+
+L evolution: early -> now -> future -> heat_death
+  # Scale factor a grows from 0 to ∞
+  D(a) = D_0 / a^3  # Matter dilutes
+  L(a) = L_0 / a^3  # Geometry stretches
+  B(a) = B_0        # Boundary constant
+
+D scale_factor: a [continuous, 0 < a < ∞]
+
+# =============================================================================
+# THE CYCLE
+# =============================================================================
+
+B cycle_phase: genesis | expansion | transition | dissolution | rebirth
+  genesis -> from_pure_B, D_L_emerge
+  expansion -> D_L_dominate, structure_forms
+  transition -> B_starts_dominating, now
+  dissolution -> D_L_approach_zero
+  rebirth -> pure_B_unstable, triggers_genesis
+
+L phase_transition: genesis -> expansion (trigger=D_L_nonzero)
+L phase_transition: expansion -> transition (trigger=B_equals_D_plus_L)
+L phase_transition: transition -> dissolution (trigger=B_dominates)
+L phase_transition: dissolution -> rebirth (trigger=D_L_negligible)
+L phase_transition: rebirth -> genesis (trigger=pure_B_instability)
+
+# The cycle closes: rebirth → genesis → expansion → ...
+
+# =============================================================================
+# THE INSTABILITY
+# =============================================================================
+
+formula pure_B_instability
+  # At heat death: (D, L, B) → (0, 0, 1)
+  # But pure B is undefined (boundary of nothing)
+
+  if D == 0 and L == 0 and B == 1:
+    state = "undefined"
+    resolution = "genesis"
+    # D and L must emerge for B to function
+
+  # Minimal emergence:
+  L_min = epsilon  # Infinitesimal but nonzero
+  D_min = epsilon / 5  # From L = 5D ratio
+
+  output = (D_min, L_min, 1 - 6*D_min)
+  # This IS the next Big Bang
+
+# =============================================================================
+# THE ETERNAL STRUCTURE
+# =============================================================================
+
+# The cycle has no beginning or end.
+# Each phase leads to the next.
+# Pure B is both the "end" and the "beginning".
+
+D cycle_count: ∞ [unbounded]
+  # Infinitely many cycles, no first, no last
+
+B temporal_structure: within_cycle | between_cycles
+  within_cycle -> time_exists, D_and_L_present
+  between_cycles -> time_undefined, pure_B
+
+# Time only exists within cycles.
+# "Between" cycles is not a temporal relation.
+# It is a logical/structural relation.
+
+# =============================================================================
+# THE CONSERVATION
+# =============================================================================
+
+# What is conserved across cycles?
+
+formula conservation
+  # Energy: NOT conserved (undefined in pure B)
+  # Entropy: NOT conserved (resets at genesis)
+  # Information: NOT conserved (no structure to carry it)
+
+  # B: CONSERVED
+  # The boundary persists through all cycles.
+  # B is the eternal substrate.
+
+  conserved = B
+  transient = D, L
+
+# =============================================================================
+# THE SUMMARY
+# =============================================================================
+#
+# The universe is a cycle:
+#
+#   Pure B (unstable)
+#      ↓
+#   Genesis: D, L emerge
+#      ↓
+#   Expansion: D + L dominate
+#      ↓
+#   Transition: B starts dominating (we are here)
+#      ↓
+#   Dissolution: D, L → 0
+#      ↓
+#   Heat Death: approaches pure B
+#      ↓
+#   Pure B (unstable)
+#      ↓
+#   ... repeat ...
+#
+# The cycle is eternal. B is eternal.
+# D and L come and go.
+# We are the transient content of an eternal boundary.
+
+returns: CosmicCycle

@@ -1,8 +1,8 @@
 # domains/index.bld - Validated Application Domains
 #
-# Cost: B=7, D=7 → Split into separate files
+# Cost: B=8, D=8 → Split into separate files
 #
-# Seven domains where BLD has been applied and validated.
+# Eight domains where BLD has been applied and validated.
 
 structure ValidatedDomains
 
@@ -17,15 +17,17 @@ structure ValidatedDomains
 # | Circuits            | VALIDATED   | R² = 1.0, 87.8% comp    | Exact     |
 # | Thermodynamics      | VALIDATED   | 10/10 tests             | Derived   |
 # | GPU Performance     | VALIDATED   | ±15% prediction         | Calibrated|
+# | Cosmology           | DERIVED     | 25% vs 27% (7% error)   | L/D=20/4  |
 # | Proteins            | EXPLORATORY | Mechanism mapped        | Predicted |
 # | Physics             | MIXED       | Varies by subdomain     | Varies    |
 
-B domain: vi | neural | circuits | thermo | gpu | proteins | physics
+B domain: vi | neural | circuits | thermo | gpu | cosmology | proteins | physics
   vi -> uses=theory/domains/vi.bld
   neural -> uses=theory/domains/neural.bld
   circuits -> uses=theory/domains/circuits.bld
   thermo -> uses=theory/domains/thermo.bld
   gpu -> uses=theory/domains/gpu.bld
+  cosmology -> uses=theory/domains/cosmology.bld
   proteins -> uses=theory/domains/proteins.bld
   physics -> uses=theory/domains/physics.bld
 
@@ -43,7 +45,7 @@ B domain: vi | neural | circuits | thermo | gpu | proteins | physics
 #   - Predictions made
 #   - Tests pending or partial
 
-D domains: 7 [parallel, lazy_load]
+D domains: 8 [parallel, lazy_load]
 
 L cross_validate: domain_a -> domain_b (deps=0, pattern=same_primitives)
 

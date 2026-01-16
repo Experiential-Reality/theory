@@ -23,6 +23,7 @@ The BLD = Lie theory correspondence.
 
 - [Lie Correspondence](./lie-theory/lie-correspondence.md) — **BLD = Lie theory** (the key result)
 - [Why Lie Theory](./lie-theory/why-lie-theory.md) — Accessible explanation
+- [Killing Form](./lie-theory/killing-form.md) — **L-cost of self-observation** (grounds observer corrections)
 - [Constructive Lie](./lie-theory/constructive-lie.md) — Alignment as Lie homomorphism
 - [Boundary Derivation](./lie-theory/boundary-derivation.md) — B from SPD curvature
 
@@ -34,6 +35,11 @@ Theorems and frameworks built on the foundations.
 
 - [The Structural Manifold](./derived/manifold-foundations.md) — Structures as points, cost as divergence
 - [Thermodynamics](./derived/thermodynamics.md) — Second law as geometric theorem
+- [Cosmology](./derived/cosmology.md) — Dark matter as geometry (L/D = 20/4 = 5)
+- [Genesis Function](./derived/genesis-function.md) — traverse(B, B) = creation (Big Bang)
+- [Particle Masses](./derived/particle-masses.md) — α⁻¹ = 137, lepton masses from BLD
+- [Quantum Mechanics](./derived/quantum-mechanics.md) — **Uncertainty from D-L irreducibility**
+- [Quantum Computing](./derived/quantum-computing.md) — **Structure traversing itself**
 - [Discovery Algorithm](./derived/discovery-algorithm.md) — Formal algorithm for finding BLD
 - [Performance Theorem](./derived/performance-theorem.md) — Traverser ordering from structure
 

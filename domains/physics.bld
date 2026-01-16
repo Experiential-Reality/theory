@@ -35,13 +35,15 @@ B mapping_rule: topological | geometric | repetition
 # |-----------|--------|----------------|
 # | Thermodynamics | VALIDATED | 10/10 tests, Second Law |
 # | Circuits | VALIDATED | R² = 1.0 |
+# | Cosmology | DERIVED | Dark matter = 25% (vs 27%), L/D = 20/4 |
 # | Electromagnetism | EXPLORATORY | U(1) gauge reframed |
 # | Quantum | EXPLORATORY | B = measurement |
 # | Fluids | EXPLORATORY | Re as B |
 # | Phase Transitions | EXPLORATORY | Critical phenomena |
 
-B subdomain: thermo | em | quantum | fluids | phase
+B subdomain: thermo | cosmology | em | quantum | fluids | phase
   thermo -> validated, uses=theory/domains/thermo.bld
+  cosmology -> derived, uses=theory/domains/cosmology.bld
   em -> exploratory, U1_gauge_structure
   quantum -> exploratory, B_measurement_L_entanglement
   fluids -> exploratory, Re_critical_as_B

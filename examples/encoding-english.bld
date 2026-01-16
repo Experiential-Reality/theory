@@ -1,0 +1,43 @@
+# encoding-english.bld - English encoding for structures
+#
+# Encoding is ONLY dimensions. It defines how to traverse structure.
+# The same structure can have many encodings (English, Spanish, ASL, etc.)
+
+structure EnglishEncoding
+
+# =============================================================================
+# DIMENSIONS (encoding only)
+# =============================================================================
+
+D words: N [sequential, variable]
+D morphemes: M [sequential, per_word]
+D phonemes: P [sequential, per_morpheme]
+D graphemes: G [sequential, per_phoneme]
+
+# =============================================================================
+# ENCODING MAP (structure -> tokens)
+# =============================================================================
+#
+# | Structure Path | English Tokens |
+# |----------------|----------------|
+# | agent.self | "I" |
+# | polarity.negative + modality | "don't" |
+# | modality.desire | "want" |
+# | completion.incomplete | "to" |
+#
+# Total: D_words = 4
+
+# =============================================================================
+# THIS IS NOT THE MEANING
+# =============================================================================
+#
+# "I don't want to" in Spanish: "No quiero"
+#   - D_words = 2 (different encoding)
+#   - SAME structure (Refusal)
+#
+# The structure is invariant. The encoding varies.
+# Meaning lives in B and L. Encoding lives in D.
+
+L encode: structure -> tokens (uses=lexicon, deps=1)
+
+returns: TokenSequence

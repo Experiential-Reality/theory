@@ -1,0 +1,81 @@
+# refusal.bld - "I don't want to" as reversible BLD
+#
+# English → BLD → English (lossless, bidirectional)
+
+structure Refusal
+
+# =============================================================================
+# SEMANTIC PRIMITIVES (B) - the logical categories
+# =============================================================================
+
+B person: first | second | third
+B number: singular | plural
+B polarity: negative | positive
+B tense: present | past | future
+B modality: desire | obligation | ability | permission
+B aspect: infinitive | gerund | participle | finite
+
+# =============================================================================
+# ACTIVE CONFIGURATION (this sentence)
+# =============================================================================
+#
+# person.first ∧ number.singular ∧ polarity.negative ∧
+# tense.present ∧ modality.desire ∧ aspect.infinitive
+
+# =============================================================================
+# SEMANTIC LINKS (L) - how primitives compose
+# =============================================================================
+
+L subject: (person, number) -> predicate (deps=1)
+L negation: polarity -> auxiliary (deps=1)
+L temporal: tense -> auxiliary (deps=1)
+L modal_verb: modality -> main_verb (deps=1)
+L complement: aspect -> continuation (deps=1)
+
+# =============================================================================
+# ENCODING DIMENSION (D) - token sequence
+# =============================================================================
+
+D tokens: 4 [sequential]
+
+# =============================================================================
+# BIDIRECTIONAL MAPPING
+# =============================================================================
+#
+# ENCODE: structure → tokens
+#
+# | Slot | Structure | Token |
+# |------|------------------------------|---------|
+# | 0 | person.first ∧ number.singular | "I" |
+# | 1 | polarity.negative ∧ tense.present | "don't" |
+# | 2 | modality.desire | "want" |
+# | 3 | aspect.infinitive | "to" |
+#
+# DECODE: tokens → structure
+#
+# | Token | Structure |
+# |---------|------------------------------|
+# | "I" | person.first ∧ number.singular |
+# | "don't" | polarity.negative ∧ tense.present |
+# | "want" | modality.desire |
+# | "to" | aspect.infinitive |
+#
+# Round-trip: encode(decode(tokens)) = tokens
+# Round-trip: decode(encode(structure)) = structure
+
+L encode: structure -> tokens (bijective=true)
+L decode: tokens -> structure (bijective=true)
+
+# =============================================================================
+# VERIFICATION
+# =============================================================================
+#
+# Input: "I don't want to"
+# Parse: ["I", "don't", "want", "to"]
+# Decode: {first, singular, negative, present, desire, infinitive}
+# Encode: ["I", "don't", "want", "to"]
+# Output: "I don't want to"
+#
+# ✓ Lossless
+
+returns: Intent
