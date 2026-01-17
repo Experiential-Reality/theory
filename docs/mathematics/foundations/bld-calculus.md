@@ -1,3 +1,7 @@
+---
+status: PROVEN
+---
+
 # The BLD Calculus
 
 > **Status**: Foundational

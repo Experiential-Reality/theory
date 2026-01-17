@@ -1,6 +1,14 @@
+---
+status: DERIVED
+depends_on:
+  - genesis-function.md
+  - nothing-instability.md
+  - dark-matter-mapping.md
+---
+
 # Cyclic Cosmology: Heat Death = Big Bang
 
-**Status: DERIVED** — Follows from BLD instability theorems
+Follows from BLD instability theorems.
 
 ---
 
@@ -18,7 +26,7 @@ The universe is cyclic — not in time, but in structure.
 
 ### The End State
 
-From [Cosmology](../mathematics/derived/cosmology.md), the universe evolves toward:
+From [Dark Matter Mapping](dark-matter-mapping.md), the universe evolves toward:
 
 ```
 Heat Death: D → 0, L → 0, B → 100%
@@ -32,7 +40,7 @@ This is "pure B" — empty de Sitter space.
 
 ### The Instability of Pure B
 
-But pure B is unstable. See [Genesis Function](../mathematics/derived/genesis-function.md).
+But pure B is unstable. See [Genesis Function](genesis-function.md).
 
 **B is a boundary — a distinction — a partition.**
 
@@ -291,6 +299,7 @@ We are the universe's way of giving its boundary something to bound.
 ## References
 
 - [Nothing Instability](nothing-instability.md) — Why something must exist
-- [Genesis Function](../mathematics/derived/genesis-function.md) — traverse(B, B) = creation
-- [Cosmology](../mathematics/derived/cosmology.md) — The quantitative framework
-- [Thermodynamics](../mathematics/derived/thermodynamics.md) — Entropy and the arrow of time
+- [Genesis Function](genesis-function.md) — traverse(B, B) = creation
+- [Cosmology Structure](cosmology-structure.md) — The L/D = 5 derivation
+- [Dark Matter Mapping](dark-matter-mapping.md) — The quantitative framework
+- [Thermodynamics](../derived/thermodynamics.md) — Entropy and the arrow of time

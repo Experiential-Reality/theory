@@ -1,6 +1,14 @@
+---
+status: DERIVED
+depends_on:
+  - quantum-mechanics.md
+  - ../lie-theory/killing-form.md
+  - ../foundations/compensation-principle.md
+---
+
 # Quantum Computing: Structure Traversing Itself
 
-**Status: DERIVED** — Quantum advantage explained as deferred L-cost via pre-established links
+Quantum advantage explained as deferred L-cost via pre-established links.
 
 ---
 

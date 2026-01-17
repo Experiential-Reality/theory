@@ -1,6 +1,12 @@
+---
+status: DERIVED
+depends_on:
+  - ../foundations/irreducibility-proof.md
+---
+
 # The Instability of Nothing
 
-**Status: DERIVED** — Logical necessity from BLD structure
+Logical necessity from BLD structure.
 
 ---
 
@@ -113,7 +119,7 @@ Minimal existence = (D=0, L=0, B=1)
 
 This is "pure boundary" — a distinction with nothing (yet) on either side.
 
-See [Genesis Function](../mathematics/derived/genesis-function.md) for why pure B is also unstable.
+See [Genesis Function](genesis-function.md) for why pure B is also unstable.
 
 ### 3. The Question Is Malformed
 
@@ -154,7 +160,7 @@ Existence bootstraps itself through the impossibility of its absence.
 From nothing-instability:
 1. B must exist (the distinction)
 
-From pure-B instability (see [Genesis Function](../mathematics/derived/genesis-function.md)):
+From pure-B instability (see [Genesis Function](genesis-function.md)):
 2. L must exist (B requires relation to function)
 3. D must exist (L requires extent)
 
@@ -214,9 +220,24 @@ BLD explains that **something** must exist. It does not fully explain why **this
 
 ---
 
+## What This Now Explains (Extended)
+
+The nothing-instability proof shows B must exist. But WHY does B partition itself?
+
+**Answer**: B has nothing else to partition. The only "content" available to a primordial boundary is direction — traversal order through D. This gives us:
+
+```
+B: forward | backward = matter | antimatter = chirality
+```
+
+See [Chirality and CPT](../quantum/chirality-cpt.md) for the full treatment of why B traversing B creates chirality, and why there's a constant L between +B and -B (enforcing CPT symmetry).
+
+---
+
 ## References
 
-- [Genesis Function](../mathematics/derived/genesis-function.md) — Why pure B is also unstable
+- [Genesis Function](genesis-function.md) — Why pure B is also unstable
+- [Chirality and CPT](../quantum/chirality-cpt.md) — Why B partitions into directions (chirality)
 - [Cyclic Cosmology](cyclic-cosmology.md) — The eternal cycle
-- [Cosmology](../mathematics/derived/cosmology.md) — Quantitative predictions
-- [Irreducibility Proof](../mathematics/foundations/irreducibility-proof.md) — Why B, L, D are the minimal set
+- [Dark Matter Mapping](dark-matter-mapping.md) — Quantitative predictions
+- [Irreducibility Proof](../foundations/irreducibility-proof.md) — Why B, L, D are the minimal set

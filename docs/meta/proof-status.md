@@ -57,7 +57,7 @@ This document provides rigorous accounting of what is proven, validated, derived
 | Uncertainty from D-L coupling | **DERIVED** | Robertson inequality | Mathematical |
 | Quantization from compact B | **PROVEN** | Lie theory theorem | Mathematical |
 
-**Reference**: [Quantum Mechanics](../mathematics/derived/quantum-mechanics.md)
+**Reference**: [Quantum Mechanics](../mathematics/quantum/quantum-mechanics.md)
 
 ### Predictions
 
@@ -69,7 +69,7 @@ This document provides rigorous accounting of what is proven, validated, derived
 | Area law entropy | **VALIDATED** | S ∝ boundary | Confirmed | - |
 | Grover's √N | **DERIVED** | √N | √N | Exact |
 
-**Reference**: [Quantum Computing](../mathematics/derived/quantum-computing.md)
+**Reference**: [Quantum Computing](../mathematics/quantum/quantum-computing.md)
 
 ### Open Questions
 
@@ -102,7 +102,7 @@ This document provides rigorous accounting of what is proven, validated, derived
 | Muon | **VALIDATED** | m_e × n² × S | 106.3 MeV | 105.7 MeV | 0.6% |
 | Tau | **VALIDATED** | m_μ × (S + n) | 1797 MeV | 1777 MeV | 1.1% |
 
-**Reference**: [Particle Masses](../mathematics/derived/particle-masses.md)
+**Reference**: [Lepton Masses](../mathematics/particle-physics/lepton-masses.md)
 
 ### Three Generations
 
@@ -123,7 +123,7 @@ This document provides rigorous accounting of what is proven, validated, derived
 | Observer correction | **VALIDATED** | +8x² = 2% | 27% total | 27% |
 | Dark energy fraction | **VALIDATED** | 1 - 6x - 8x² | 68% | 68% |
 
-**Reference**: [Cosmology](../mathematics/derived/cosmology.md)
+**Reference**: [Dark Matter Mapping](../mathematics/cosmology/dark-matter-mapping.md)
 
 ### L/D Ratio
 
@@ -230,11 +230,11 @@ This document provides rigorous accounting of what is proven, validated, derived
 
 ## References
 
-- [BLD IS Quantum Mechanics Code](bld-is-quantum-code.md) — Main proof document
+- [BLD IS Quantum Mechanics Code](../mathematics/quantum/bld-is-quantum-code.md) — Main proof document
 - [Lie Correspondence](../mathematics/lie-theory/lie-correspondence.md) — BLD = Lie theory
 - [Irreducibility Proof](../mathematics/foundations/irreducibility-proof.md) — Three primitives
-- [Quantum Mechanics](../mathematics/derived/quantum-mechanics.md) — D/L mapping
-- [Quantum Computing](../mathematics/derived/quantum-computing.md) — Structure traversal
+- [Quantum Mechanics](../mathematics/quantum/quantum-mechanics.md) — D/L mapping
+- [Quantum Computing](../mathematics/quantum/quantum-computing.md) — Structure traversal
 - [Killing Form](../mathematics/lie-theory/killing-form.md) — Observer corrections
-- [Particle Masses](../mathematics/derived/particle-masses.md) — α⁻¹ and masses
-- [Cosmology](../mathematics/derived/cosmology.md) — Dark matter
+- [Lepton Masses](../mathematics/particle-physics/lepton-masses.md) — α⁻¹ and masses
+- [Dark Matter Mapping](../mathematics/cosmology/dark-matter-mapping.md) — Dark matter

@@ -1,3 +1,9 @@
+---
+status: PROVEN
+depends_on:
+  - irreducibility-proof.md
+---
+
 # B/L/D Irreducibility Theorem
 
 > **Status**: Validated

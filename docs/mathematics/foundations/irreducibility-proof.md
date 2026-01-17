@@ -1,3 +1,7 @@
+---
+status: PROVEN
+---
+
 # Proof of B/L/D Irreducibility
 
 > **Status**: Validated

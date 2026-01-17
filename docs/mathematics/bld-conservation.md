@@ -1,3 +1,9 @@
+---
+status: DERIVED
+depends_on:
+  - lie-theory/lie-correspondence.md
+---
+
 # BLD Conservation via Noether's Theorem
 
 > **Status**: Validated

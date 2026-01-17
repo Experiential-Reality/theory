@@ -1,6 +1,14 @@
+---
+status: SPECULATIVE
+depends_on:
+  - ../lie-theory/lie-correspondence.md
+  - quantum-mechanics.md
+  - ../foundations/irreducibility-proof.md
+---
+
 # Schrödinger Equation from BLD Traversal
 
-**Status: HYPOTHESIZED** — An attempt to derive the Schrödinger equation from BLD principles
+An attempt to derive the Schrödinger equation from BLD principles.
 
 ---
 
@@ -310,7 +318,5 @@ But it is not **uniquely determined** by BLD. The derivation assumes:
 ## References
 
 - [Lie Correspondence](../lie-theory/lie-correspondence.md) — BLD = Lie theory
-- [Quantum Mechanics](../derived/quantum-mechanics.md) — Position/momentum as D/L
+- [Quantum Mechanics](quantum-mechanics.md) — Position/momentum as D/L
 - [Killing Form](../lie-theory/killing-form.md) — The "2" in uncertainty
-- [BLD IS Quantum Mechanics Code](../../theory/bld-is-quantum-code.md) — Main proof document
-- [Proof Status](../../theory/proof-status.md) — What is proven vs. open

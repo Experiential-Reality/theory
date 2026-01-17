@@ -315,7 +315,7 @@ The universal T2/T1 ≤ 2 bound is a manifestation of the Killing form: phase co
 
 All are manifestations of the same algebraic fact: observation is bidirectional, and the minimum cost is 2 links.
 
-See [Quantum Mechanics](../derived/quantum-mechanics.md) for the full BLD treatment.
+See [Quantum Mechanics](../quantum/quantum-mechanics.md) for the full BLD treatment.
 
 ---
 
@@ -338,8 +338,8 @@ The Killing form grounds the observer corrections in Lie theory. The "2" is not 
 ## References
 
 - [Lie Correspondence](lie-correspondence.md) — BLD = Lie theory mapping
-- [Particle Masses](../derived/particle-masses.md#the-particle-physics-observer-correction) — Observer correction derivation
-- [Cosmology](../derived/cosmology.md#unified-observer-framework) — Unified observer framework
-- [Quantum Mechanics](../derived/quantum-mechanics.md) — Uncertainty from D-L irreducibility
-- [Quantum Computing](../derived/quantum-computing.md) — Structure traversing itself
+- [Lepton Masses](../particle-physics/lepton-masses.md) — Observer correction derivation
+- [Observer Corrections](../cosmology/observer-correction.md) — Unified observer framework
+- [Quantum Mechanics](../quantum/quantum-mechanics.md) — Uncertainty from D-L irreducibility
+- [Quantum Computing](../quantum/quantum-computing.md) — Structure traversing itself
 - [Why Lie Theory](why-lie-theory.md) — The connection explained

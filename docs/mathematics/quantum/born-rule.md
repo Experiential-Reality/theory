@@ -1,6 +1,14 @@
+---
+status: SPECULATIVE
+depends_on:
+  - ../lie-theory/killing-form.md
+  - quantum-mechanics.md
+  - ../foundations/irreducibility-proof.md
+---
+
 # The Born Rule from BLD Alignment
 
-**Status: HYPOTHESIZED** — An attempt to derive P = |ψ|² from BLD alignment principles
+An attempt to derive P = |ψ|² from BLD alignment principles.
 
 ---
 
@@ -280,10 +288,8 @@ But it is not **derived from** BLD alone. We would need to:
 ## References
 
 - [Killing Form](../lie-theory/killing-form.md) — Bidirectional observation cost
-- [Quantum Mechanics](../derived/quantum-mechanics.md) — D-L interpretation
+- [Quantum Mechanics](quantum-mechanics.md) — D-L interpretation
 - [Schrödinger Derivation](schrodinger-derivation.md) — Attempt at dynamics
-- [BLD IS Quantum Mechanics Code](../../theory/bld-is-quantum-code.md) — Main proof document
-- [Proof Status](../../theory/proof-status.md) — What is proven vs. open
 
 ### External References
 

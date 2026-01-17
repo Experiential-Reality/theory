@@ -1,3 +1,7 @@
+---
+status: PROVEN
+---
+
 # BLD = Lie Theory: The Correspondence
 
 > **Status**: Validated

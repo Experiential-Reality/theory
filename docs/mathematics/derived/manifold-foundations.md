@@ -1,3 +1,9 @@
+---
+status: DERIVED
+depends_on:
+  - ../lie-theory/lie-correspondence.md
+---
+
 # The Structural Manifold: Foundations
 
 > **Status**: Validated

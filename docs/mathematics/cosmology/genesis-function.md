@@ -1,6 +1,14 @@
+---
+status: SPECULATIVE
+depends_on:
+  - dark-matter-mapping.md
+  - nothing-instability.md
+  - cyclic-cosmology.md
+---
+
 # The Genesis Function: traverse(B, B) = Creation
 
-**Status: DERIVED** — Mathematical formalization of universe creation
+Mathematical formalization of universe creation.
 
 ---
 
@@ -184,11 +192,68 @@ When B "traverses" B, it asks:
 
 With D = 0 and L = 0, the answer is: nothing.
 
-But "nothing" is not a valid answer (see [Nothing Instability](../../theory/nothing-instability.md)).
+But "nothing" is not a valid answer (see [Nothing Instability](nothing-instability.md)).
 
 So B must **create** something to distinguish.
 
 That something is D and L.
+
+### Why B Must Partition Direction (The Chirality Resolution)
+
+But this still leaves a question: WHY does B traverse B? What forces the self-computation?
+
+**The answer: B has nothing else to partition.**
+
+```
+B must exist           (nothing is self-contradictory)
+B must partition       (that's what boundaries do)
+B must partition something
+The only thing that exists is B itself
+Therefore: B can only partition ITSELF
+```
+
+**What can B partition itself into?**
+
+Not "something vs nothing" — nothing can't exist.
+
+The only distinction available to pure B is **direction**:
+
+```
+B: forward-traversal | backward-traversal
+   +D direction      | -D direction
+   matter            | antimatter
+   our universe      | anti-universe
+```
+
+**This is chirality.** The two "sides" of primordial B are:
+- Traverse D one way → left-handed (+B)
+- Traverse D other way → right-handed (-B)
+
+**The constant L between +B and -B:**
+
+The Killing form requires self-observation to be bidirectional (2 links). B observing B means:
+
+```
+B --L→ B  (forward: creates +B)
+B ←L-- B  (backward: creates -B)
+```
+
+This bidirectional L is the **constant link between matter and antimatter**. It's not optional — it's the minimum cost of self-distinction, determined by the algebra structure.
+
+```
+-B <——L_constant——> +B
+
+Where L_constant = Killing form coefficient = 2
+```
+
+**This explains CPT symmetry:**
+- C (charge) = which side of B (+B or -B)
+- P (parity) = D traversal direction (chirality)
+- T (time) = L direction (forward or backward)
+
+CPT symmetry holds because +B and -B are connected by a constant L. Reversing all three brings you to the "same" structure viewed from the other side.
+
+See [Chirality and CPT](../quantum/chirality-cpt.md) for the full treatment.
 
 ### The Self-Referential Loop
 
@@ -214,6 +279,52 @@ B functioning requires L
 L existing requires D (L = 5D)
 D, L existing is a universe
 ```
+
+### The Computation Completes Itself
+
+The chirality resolution shows that B partitions into +B and -B. But this is just the beginning.
+
+**Both sides compute:**
+
+```
++B computes: past → present → future (our universe)
+-B computes: future → present → past (anti-universe)
+```
+
+**They must agree at the junction:**
+
+At the present moment (-B = B junction), both computations describe the same state:
+
+```
+Ψ_forward(now) = F|past⟩      (what +B computes)
+Ψ_backward(now) = B|future⟩   (what -B computes)
+
+Consistency: ⟨Ψ_backward | L | Ψ_forward⟩ = c
+```
+
+**This constrains the future:**
+
+The future isn't "open" — it's algebraically determined by the requirement that +B and -B agree at their junction.
+
+```
+|future⟩ = B⁻¹ · L⁻¹ · c · |F·past⟩*
+
+The future is FORCED by consistency.
+```
+
+**The theory closes:**
+
+```
+B must exist          (nothing instability)
+B must partition      (into +B and -B)
+Both sides compute    (forward and backward)
+Must agree at junction
+Agreement determines evolution
+```
+
+The genesis function doesn't just create — it **constrains**. The universe computes its own evolution through self-consistency.
+
+See [Cosmic Computation](../quantum/cosmic-computation.md) for the full derivation.
 
 ---
 
@@ -303,7 +414,7 @@ If true, **BLD itself proves the genesis theorem**.
 
 The genesis function demonstrates a general principle: **traversers cannot process without participating**.
 
-This same principle appears in the observer correction (see [Cosmology](cosmology.md#the-observer-correction)):
+This same principle appears in the observer correction (see [Observer Corrections](observer-correction.md)):
 
 | Scale | Phenomenon | Mechanism | Result |
 |-------|------------|-----------|--------|
@@ -356,7 +467,9 @@ The universe is the output of a self-referential boundary resolving its own cont
 
 ## References
 
-- [Nothing Instability](../../theory/nothing-instability.md) — Why something must exist
-- [Cyclic Cosmology](../../theory/cyclic-cosmology.md) — Heat death = Big Bang
-- [Cosmology](cosmology.md) — The quantitative framework
+- [Nothing Instability](nothing-instability.md) — Why something must exist
+- [Cyclic Cosmology](cyclic-cosmology.md) — Heat death = Big Bang
+- [Dark Matter Mapping](dark-matter-mapping.md) — The quantitative framework
 - [genesis.bld](../../../math/genesis.bld) — BLD formalization experiment
+- [Chirality and CPT](../quantum/chirality-cpt.md) — Why B partitions direction
+- [Cosmic Computation](../quantum/cosmic-computation.md) — How the computation constrains evolution

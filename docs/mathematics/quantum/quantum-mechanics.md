@@ -1,10 +1,40 @@
+---
+status: DERIVED
+depends_on:
+  - ../foundations/irreducibility-proof.md
+  - ../lie-theory/lie-correspondence.md
+  - ../lie-theory/killing-form.md
+---
+
 # Quantum Mechanics in BLD
 
-**Status: DERIVED** — Uncertainty principle follows from D-L irreducibility and Lie algebra structure
+Uncertainty principle follows from D-L irreducibility and Lie algebra structure.
 
 ---
 
-## The Core Claim
+## Status Legend
+
+| Tag | Meaning |
+|-----|---------|
+| `[PROVEN]` | Follows from established BLD/Lie theory |
+| `[DERIVED]` | Logical consequence of proven statements |
+| `[POSTULATED]` | Assumed without full derivation |
+
+---
+
+## Scope Note
+
+This document derives the **uncertainty principle** from BLD. It does NOT derive:
+- The Schrödinger equation
+- Wave function collapse
+- The Born rule
+- Path integrals
+
+These remain as future work.
+
+---
+
+## The Core Claim `[DERIVED]`
 
 Position and momentum are different **BLD types**:
 - Position (x): **D-type** — location in dimensional space
@@ -77,7 +107,7 @@ For position-momentum:
 
 ---
 
-## The Uncertainty Principle
+## The Uncertainty Principle `[DERIVED]`
 
 ### From Commutator to Uncertainty
 
@@ -87,7 +117,9 @@ The Robertson-Schrödinger uncertainty relation:
 Δx · Δp ≥ |⟨[x̂, p̂]⟩| / 2 = ℏ/2
 ```
 
-This is not postulated — it follows mathematically from the commutator structure.
+This follows mathematically from the commutator structure. `[PROVEN in standard QM]`
+
+**BLD contribution**: Interpreting [x,p]=iℏ as structure constant between D-type (x) and L-type (p) primitives.
 
 ### BLD Derivation
 

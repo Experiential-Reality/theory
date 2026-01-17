@@ -1,3 +1,9 @@
+---
+status: PROVEN
+depends_on:
+  - irreducibility-proof.md
+---
+
 # The Compensation Principle
 
 > **Status**: Validated

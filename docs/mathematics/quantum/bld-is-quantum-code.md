@@ -1,6 +1,14 @@
+---
+status: PROVEN
+depends_on:
+  - ../lie-theory/lie-correspondence.md
+  - ../lie-theory/killing-form.md
+  - ../foundations/irreducibility-proof.md
+---
+
 # BLD IS Quantum Mechanics Code
 
-**Status: PROVEN** — Mathematical equivalence established
+Mathematical equivalence established.
 
 ---
 
@@ -33,7 +41,7 @@ This mapping is:
 - **Complete** — nothing left over on either side
 - **Verified** — for su(2), so(3,1), and general Lie algebras
 
-See [Lie Correspondence](../mathematics/lie-theory/lie-correspondence.md) for the formal verification.
+See [Lie Correspondence](../lie-theory/lie-correspondence.md) for the formal verification.
 
 ### Step 2: Lie Theory = Quantum Mechanics Structure
 
@@ -115,7 +123,7 @@ The number **2** appears everywhere in quantum mechanics:
 
 All are manifestations of the **Killing form diagonal value = 2**, which measures the minimum L-cost for bidirectional observation (forward query + backward response).
 
-See [Killing Form](../mathematics/lie-theory/killing-form.md) for the derivation.
+See [Killing Form](../lie-theory/killing-form.md) for the derivation.
 
 ---
 
@@ -158,7 +166,7 @@ Quantum computation: Structure evolves → observer reads result → L-cost defe
 
 Entanglement provides **pre-established L** — links that exist before measurement. This is why quantum computers can be faster: they don't pay observation cost at every step.
 
-See [Quantum Computing](../mathematics/derived/quantum-computing.md) for the full treatment.
+See [Quantum Computing](quantum-computing.md) for the full treatment.
 
 ---
 
@@ -264,13 +272,13 @@ If BLD = QM language, and QM = how reality works, then:
 
 ## References
 
-- [Lie Correspondence](../mathematics/lie-theory/lie-correspondence.md) — BLD = Lie theory verification
-- [Killing Form](../mathematics/lie-theory/killing-form.md) — The "2" in quantum mechanics
-- [Irreducibility Proof](../mathematics/foundations/irreducibility-proof.md) — Why exactly three primitives
-- [Quantum Mechanics](../mathematics/derived/quantum-mechanics.md) — Position/momentum as D/L
-- [Quantum Computing](../mathematics/derived/quantum-computing.md) — Structure traversing itself
-- [Particle Masses](../mathematics/derived/particle-masses.md) — α⁻¹ = 137, lepton masses
-- [Cosmology](../mathematics/derived/cosmology.md) — Dark matter as geometry
+- [Lie Correspondence](../lie-theory/lie-correspondence.md) — BLD = Lie theory verification
+- [Killing Form](../lie-theory/killing-form.md) — The "2" in quantum mechanics
+- [Irreducibility Proof](../foundations/irreducibility-proof.md) — Why exactly three primitives
+- [Quantum Mechanics](quantum-mechanics.md) — Position/momentum as D/L
+- [Quantum Computing](quantum-computing.md) — Structure traversing itself
+- [Lepton Masses](../particle-physics/lepton-masses.md) — α⁻¹ = 137, lepton masses
+- [Dark Matter Mapping](../cosmology/dark-matter-mapping.md) — Dark matter as geometry
 
 ---
 

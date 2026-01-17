@@ -1,3 +1,9 @@
+---
+status: DERIVED
+depends_on:
+  - manifold-foundations.md
+---
+
 # Thermodynamics from Structural Alignment
 
 > **Status**: Validated
