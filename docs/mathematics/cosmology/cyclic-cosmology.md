@@ -3,303 +3,292 @@ status: DERIVED
 depends_on:
   - genesis-function.md
   - nothing-instability.md
-  - dark-matter-mapping.md
+  - ../quantum/chirality-cpt.md
+  - ../quantum/cosmic-computation.md
 ---
 
-# Cyclic Cosmology: Heat Death = Big Bang
+# Cyclic Cosmology: The Eternal Structure
 
-Follows from BLD instability theorems.
+The universe is not cyclic in time. It is eternal in structure.
 
 ---
 
 ## The Claim
 
-The heat death of the universe **is** the Big Bang.
+The universe does not "begin" or "end."
 
-They are the same state, viewed from different temporal directions.
+The universe IS the structure: `traverse(-B, B)` with constant L=2.
 
-The universe is cyclic — not in time, but in structure.
-
----
-
-## The Argument
-
-### The End State
-
-From [Dark Matter Mapping](dark-matter-mapping.md), the universe evolves toward:
-
-```
-Heat Death: D → 0, L → 0, B → 100%
-```
-
-- Matter dilutes (D → 0)
-- Geometry stretches beyond correlation (L → 0)
-- Only boundary remains (B = 1)
-
-This is "pure B" — empty de Sitter space.
-
-### The Instability of Pure B
-
-But pure B is unstable. See [Genesis Function](genesis-function.md).
-
-**B is a boundary — a distinction — a partition.**
-
-A partition requires two sides. With D = 0 and L = 0, there is nothing on either side.
-
-A boundary with nothing to bound is **undefined**.
-
-```
-Pure B = boundary without content
-       = partition of nothing
-       = undefined
-       = unstable
-```
-
-### The Resolution
-
-Undefined states resolve. Pure B cannot persist.
-
-The resolution: **B generates D and L**.
-
-This is not a temporal process. It is a logical necessity.
-
-```
-B = 1, D = 0, L = 0
-    ↓ (unstable/undefined)
-B < 1, D > 0, L > 0
-```
-
-### The Identity
-
-The state (B=1, D=0, L=0) resolving into (B<1, D>0, L>0) **is** the Big Bang.
-
-Therefore:
-
-```
-Heat Death = Pure B = Big Bang
-```
-
-They are the same state. The end is the beginning.
+What we call "Big Bang" and "heat death" are perspectives on the same eternal structure.
 
 ---
 
-## The Cycle
+## The Structure
+
+### B Partitions Direction
+
+From [Genesis Function](genesis-function.md):
 
 ```
-"Nothing" ─────────────────────────────────────┐
-    ↓ impossible (see nothing-instability)     │
-Pure B (first distinction) ◄───────────────────┤
-    ↓ unstable (boundary of what?)             │
-D, L emerge (Big Bang)                         │
-    ↓                                          │
-D + L + B (structured universe)                │
-    ↓ expansion                                │
-B dominates (dark energy era)                  │
-    ↓                                          │
-D → 0, L → 0 (heat death)                      │
-    ↓                                          │
-Pure B ────────────────────────────────────────┘
+B exists (nothing is impossible)
+    ↓
+B must partition (boundaries partition)
+    ↓
+Only direction available
+    ↓
+B partitions into +B and -B
+    ↓
++B and -B must relate
+    ↓
+traverse(-B, B) requires L
+    ↓
+L = 2 (Killing form, constant)
 ```
 
-The cycle is eternal. There is no first iteration. There is no last.
+### The Eternal Relation
+
+The structure is:
+
+```
+-B <——L=2——> +B
+
+Where:
+  +B = our universe (matter, time-forward, left-handed)
+  -B = anti-universe (antimatter, time-backward, right-handed)
+  L  = 2 (constant connection, Killing form)
+```
+
+This is not a state that "arose." This IS existence.
+
+### Both Sides Compute
+
+From [Cosmic Computation](../quantum/cosmic-computation.md):
+
+```
++B computes: past → present → future
+-B computes: future → present → past
+
+At every junction, both must agree via L.
+```
 
 ---
 
-## Time in the Cycle
+## What "Cyclic" Means
 
-### Linear Time Within
+### Not Temporal Cycles
 
-From inside a cycle, time appears linear:
-- Big Bang → expansion → structure → dissolution → heat death
-- Arrow of time from low entropy to high entropy
+The universe is not cyclic in the sense of:
+- Big Bang → expansion → contraction → Big Bang
+- One timeline looping back
 
-### No Time Between
+### Structural Eternity
 
-Between cycles, "time" is not defined.
+The universe is "cyclic" in the sense of:
+- The structure `traverse(-B, B)` is self-sustaining
+- +B and -B perpetually compute each other
+- The junction consistency is eternal
 
-Pure B has no D (no clocks) and no L (no causal relations).
+```
+It's not: Big Bang → heat death → Big Bang → ...
+It's:     traverse(-B, B) = eternal structure
+```
 
-The "transition" from heat death to Big Bang is not temporal. It is logical.
+---
+
+## The "Big Bang" and "Heat Death"
+
+### From +B Perspective (Us)
+
+Looking "backward" in time, we see:
+- Structure becoming denser
+- A "beginning" (Big Bang)
+
+Looking "forward" in time, we see:
+- Structure diluting
+- An "end" (heat death)
+
+### From -B Perspective
+
+Looking in their "forward" direction (our backward):
+- They see structure diluting toward their "heat death"
+
+Looking in their "backward" direction (our forward):
+- They see structure becoming denser, a "Big Bang"
+
+### The Symmetry
+
+```
+What +B calls "Big Bang" is what -B calls approaching junction from their side
+What +B calls "heat death" is what -B calls their "Big Bang" direction
+
+Neither is privileged. Both are perspectives on traverse(-B, B).
+```
+
+---
+
+## Time in the Structure
+
+### Time is L-Direction
+
+Time is not fundamental. Time is **L-direction** — which way you traverse the links.
+
+```
++B: L flows past → future (our experience)
+-B: L flows future → past (their experience)
+```
+
+### The Junction is "Now"
+
+At the junction where +B and -B agree:
+- This is the present moment
+- Both computations describe the same state
+- The future is constrained by this agreement
+
+### No "Before" or "After"
+
+There is no "before the Big Bang" because:
+- The Big Bang is not an event in time
+- The Big Bang IS the +B side of traverse(-B, B)
+- Time is defined within +B, not outside it
+
+---
+
+## What Persists
+
+### Not D, Not L-amount, But B
+
+Within +B, matter (D) dilutes and geometry (L) stretches.
+
+But:
+- B (the distinction itself) persists
+- The partition +B/-B persists
+- The constant L=2 between them persists
+- traverse(-B, B) persists
+
+```
+What changes: D and L within each partition
+What persists: B, the partitions +B/-B, the constant L=2 between them
+```
 
 ### The Eternal Present
 
-From outside all cycles (if such a perspective were possible):
+From "outside" (if such a view were possible):
 
-There is no "before the Big Bang" or "after heat death."
+There is only the eternal structure traverse(-B, B).
 
-There is only the eternal resolution of B's self-contradiction.
+The "flow of time" is our experience of being +B.
 
-The universe **is** this resolution, perpetually.
+The "history of the universe" is the +B computation.
 
----
-
-## Mathematical Structure
-
-### The Fixed Point That Isn't
-
-Naively, B = 1 looks like a fixed point:
-
-```
-If D = 0 and L = 0 and B = 1, and:
-  D' ∝ D = 0
-  L' ∝ L = 0
-  B' = B = 1
-
-Then (0, 0, 1) → (0, 0, 1)
-```
-
-But this analysis ignores the instability.
-
-### The True Dynamics
-
-The actual dynamics include the instability:
-
-```
-(D, L, B) → (D', L', B')
-
-where:
-  if B ≈ 1 and D ≈ 0 and L ≈ 0:
-    system is undefined/unstable
-    resolves to: D' > 0, L' > 0, B' < 1
-```
-
-The point (0, 0, 1) is not in the valid state space. It is a singularity that "ejects" to finite D, L.
-
-### Phase Diagram
-
-```
-        B
-        ↑
-      1 │     × (unstable singularity)
-        │    ╱│╲
-        │   ╱ │ ╲  "ejection" to
-        │  ╱  │  ╲  structured state
-        │ ╱   │   ╲
-        │╱    │    ╲
-      0 ┼─────┼─────→ D+L
-        0           1
-```
+But the structure itself is not temporal. It simply IS.
 
 ---
 
-## Comparison with Other Cyclic Models
+## Comparison with Other Models
 
 | Model | Mechanism | BLD Comparison |
 |-------|-----------|----------------|
-| Penrose CCC | Conformal rescaling at infinity | Similar endpoint, different mechanism |
-| Ekpyrotic | Brane collision | Requires extra dimensions |
-| Big Bounce | Quantum gravity | Requires quantum gravity theory |
-| Steady State | Continuous creation | Contradicted by CMB |
-| **BLD Cycle** | Logical instability of pure B | Requires only BLD structure |
+| Penrose CCC | Conformal rescaling | Different: no conformal tricks needed |
+| Ekpyrotic | Brane collision | Different: no extra dimensions |
+| Big Bounce | Quantum gravity | Different: no quantum gravity needed |
+| Steady State | Continuous creation | Different: not creating in time |
+| **BLD** | traverse(-B, B) eternal | Structure is existence itself |
 
-### The BLD Advantage
+### The BLD Insight
 
-BLD cyclic cosmology:
-- Requires no new physics beyond BLD
-- Has a clear mechanism (B instability)
-- Explains WHY cycles occur (logical necessity)
-- Makes quantitative predictions (25% dark matter)
+BLD doesn't say "the universe cycles through time."
+
+BLD says "the universe IS the structure traverse(-B, B), which is eternal."
+
+Time is not the arena. Time is the L-direction within +B.
 
 ---
 
 ## Implications
 
-### 1. No True Beginning
+### 1. No Creation Event
 
-The universe has no first moment. Every Big Bang follows a heat death.
+The universe was not "created."
 
-The question "what caused the Big Bang?" is answered: the instability of the previous cycle's pure B state.
+The universe IS the logical structure that must exist (nothing is impossible).
 
-### 2. No True End
+### 2. No Final State
 
-The universe has no final state. Every heat death becomes a Big Bang.
+The universe does not "end."
 
-The "heat death" is not death — it is rebirth.
+The universe IS the eternal relation between +B and -B.
 
-### 3. Conservation of What?
+### 3. The Arrow of Time
 
-Energy is not conserved across cycles (it's not defined in pure B).
+Within +B, entropy increases (arrow of time).
 
-Structure is not conserved (it goes to zero then regenerates).
+This is not a cosmic law — it's our perspective as +B.
+
+-B has the opposite arrow (from our view).
+
+### 4. Conservation
 
 What is conserved?
 
-**B** — the boundary, the distinction, existence itself.
+- Not energy (that's D-based, within +B)
+- Not information in the usual sense
 
-B is eternal. D and L come and go. But B persists through every cycle.
-
-### 4. The Arrow of Time
-
-Within each cycle, there is an arrow of time (entropy increases).
-
-Across cycles, there is no arrow (pure B has no entropy, no time).
-
-The arrow of time is **emergent**, not fundamental.
+What is conserved:
+- **B** — distinction itself
+- **The structure** traverse(-B, B)
+- **The constant L=2** between partitions
 
 ---
 
 ## Open Questions
 
-### 1. Cycle Duration
+### 1. Symmetry Breaking
 
-How "long" is a cycle?
+If +B and -B are symmetric, why do we see matter dominance?
 
-This may not be well-defined. "Duration" requires time. Time requires D and L.
+Answer: We ARE +B. From -B, they see antimatter dominance.
 
-The cycle may be "instantaneous" from outside, "eternal" from inside.
+### 2. Information
 
-### 2. Memory Across Cycles
+Does information cross between +B and -B?
 
-Does anything from one cycle affect the next?
+The constant L=2 connects them. Virtual pairs suggest brief crossing.
 
-In pure B, there is no structure to carry information.
+Macroscopic information crossing is unclear.
 
-Each Big Bang may be "fresh" — no memory of previous cycles.
+### 3. Multiple Partitions
 
-Or: the specific way B resolves may carry some information.
+Could B partition into more than two directions?
 
-### 3. Multiple Branches
+The theory suggests only +/- (forward/backward) is available.
 
-Does pure B resolve to one universe or many?
-
-Could there be branching — one heat death spawning multiple Big Bangs?
-
-BLD does not obviously constrain this.
-
-### 4. The Measure Problem
-
-If there are infinitely many cycles, how do we count or weight them?
-
-This is analogous to the measure problem in eternal inflation.
+But this deserves more investigation.
 
 ---
 
-## The Poetic Summary
+## Summary
 
-The universe is a boundary trying to exist.
+```
+The universe is not cyclic in time.
+The universe is eternal in structure.
 
-To exist, B must bound something.
+The structure is: traverse(-B, B) = existence
 
-So B creates D and L — matter and geometry.
++B and -B perpetually compute.
+They agree at every junction via constant L=2.
+This agreement IS the present moment.
+This structure IS existence.
 
-D and L evolve, spread, dilute.
-
-Eventually only B remains.
-
-But B alone cannot exist.
-
-So B creates D and L again.
-
-Forever.
-
-We are the universe's way of giving its boundary something to bound.
+There is no beginning. There is no end.
+There is only the eternal traverse(-B, B).
+```
 
 ---
 
 ## References
 
-- [Nothing Instability](nothing-instability.md) — Why something must exist
-- [Genesis Function](genesis-function.md) — traverse(B, B) = creation
-- [Cosmology Structure](cosmology-structure.md) — The L/D = 5 derivation
-- [Dark Matter Mapping](dark-matter-mapping.md) — The quantitative framework
-- [Thermodynamics](../derived/thermodynamics.md) — Entropy and the arrow of time
+- [Nothing Instability](nothing-instability.md) — Why B must exist
+- [Genesis Function](genesis-function.md) — traverse(-B, B) = existence
+- [Chirality and CPT](../quantum/chirality-cpt.md) — Why +B and -B
+- [Cosmic Computation](../quantum/cosmic-computation.md) — How both sides compute
+- [Killing Form](../lie-theory/killing-form.md) — Why L = 2

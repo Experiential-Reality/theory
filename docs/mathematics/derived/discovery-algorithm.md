@@ -440,7 +440,7 @@ See [Constructive Lie](../lie-theory/constructive-lie.md) for the mathematical c
 ## See Also
 
 - [Glossary](../../glossary.md) — Central definitions
-- [Discovery Method](../../theory/discovery-method.md) — The three questions (informal)
+- [Discovery Method](../../meta/discovery-method.md) — The three questions (informal)
 - [Structural Language](../../theory/structural-language.md) — B/L/D definitions
 - [Constructive Lie](../lie-theory/constructive-lie.md) — Why this produces Lie structures
 - [Canonical Hardness](../foundations/canonical-hardness.md) — Complexity of minimal BLD

@@ -9,13 +9,13 @@ depends_on:
 
 # Chirality and CPT Symmetry from BLD Self-Reference
 
-Why B traverses B, and what this implies for matter/antimatter and discrete symmetries.
+Why B partitions direction, and what this implies for matter/antimatter and discrete symmetries.
 
 ---
 
 ## The Problem
 
-The genesis function posits that B traverses B, creating the universe. But "it just does" is not satisfying. What *forces* B to compute itself?
+The genesis function posits that B partitions direction, creating +B and -B. But WHY must B partition? What forces this?
 
 ---
 
@@ -365,12 +365,12 @@ See [Cosmic Computation](cosmic-computation.md) for the full treatment.
 
 ## Summary
 
-**Why B traverses B:**
+**Why B partitions direction:**
 ```
 B must exist
 B must partition
 Only direction available
-B partitions into +D and -D
+B partitions into +B and -B
 This IS chirality
 ```
 

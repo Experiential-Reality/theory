@@ -190,4 +190,4 @@ BLD = Lie theory. This explains why BLD works across physics, computation, biolo
 - [Glossary](../../glossary.md) — Central definitions
 - [Lie Correspondence](./lie-correspondence.md) — Full mapping with verification
 - [Lie Algebra Examples](../../examples/lie-algebras.md) — so(2), su(2), Heisenberg, Poincaré
-- [Discovery Method](../../theory/discovery-method.md) — How to find structure
+- [Discovery Method](../../meta/discovery-method.md) — How to find structure

@@ -91,8 +91,11 @@ This document provides rigorous accounting of what is proven, validated, derived
 |-------|--------|---------|--------|
 | α⁻¹ from BLD constants | **VALIDATED** | n×L + B + 1 = 4×20 + 56 + 1 | 137 (0.03% error) |
 | B = 56 | **FITTED** | Determined from α⁻¹ = 137 | Not independent |
+| B = 56 from E7 necessity | **RESEARCH** | See [E7 Derivation](../mathematics/particle-physics/e7-derivation.md) | In progress |
 
 **Note**: B = 56 is fitted to match α⁻¹, not independently derived. This weakens the claim.
+
+**Path to improvement**: If B=56 can be derived from E7 necessity (showing E7 is required for anomaly-free EM + triality), then α⁻¹ becomes a genuine prediction. See [E7 Derivation](../mathematics/particle-physics/e7-derivation.md) for research program.
 
 ### Lepton Masses
 
@@ -209,17 +212,21 @@ This document provides rigorous accounting of what is proven, validated, derived
 
 ## Rigor Gaps
 
+### Critical Priority (Highest Impact)
+
+1. **B=56 from E7 necessity** — Would convert all particle physics from fitted to derived. See [E7 Derivation](../mathematics/particle-physics/e7-derivation.md)
+
 ### High Priority (Close to Proof)
 
-1. **Schrödinger equation from BLD traversal** — Hypothesis exists, needs formalization
-2. **Born rule from alignment** — Hypothesis exists, needs proof
-3. **Value of ℏ from BLD constants** — May be derivable
+2. **Schrödinger equation from BLD traversal** — Hypothesis exists, needs formalization
+3. **Born rule from alignment** — Hypothesis exists, needs proof
+4. **Value of ℏ from BLD constants** — May be derivable
 
 ### Medium Priority (Requires New Work)
 
-4. **Machine-verified proofs** — Current proofs are paper-based
-5. **Path integral in BLD** — Not addressed
-6. **Discrete symmetries** — Beyond current scope
+5. **Machine-verified proofs** — Current proofs are paper-based
+6. **Path integral in BLD** — Not addressed
+7. **Discrete symmetries** — Beyond current scope
 
 ### Low Priority (Foundational/Philosophical)
 
@@ -238,3 +245,4 @@ This document provides rigorous accounting of what is proven, validated, derived
 - [Killing Form](../mathematics/lie-theory/killing-form.md) — Observer corrections
 - [Lepton Masses](../mathematics/particle-physics/lepton-masses.md) — α⁻¹ and masses
 - [Dark Matter Mapping](../mathematics/cosmology/dark-matter-mapping.md) — Dark matter
+- [E7 Derivation](../mathematics/particle-physics/e7-derivation.md) — Research program to derive B=56

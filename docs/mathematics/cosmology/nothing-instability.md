@@ -111,15 +111,19 @@ There was never "nothing" that then became "something." There cannot have been n
 
 If something must exist, what is the minimal something?
 
-The minimal structure is a single distinction: B = 1.
+**B** — the primordial distinction.
+
+B is not a quantity. B is the primitive of distinction itself.
+
+But B cannot exist alone. B must partition something. The only available content is **direction** — creating +B and -B.
+
+And +B and -B must relate (they are partitions of the same B). This relation is L.
 
 ```
-Minimal existence = (D=0, L=0, B=1)
+B exists → B partitions direction → +B and -B → traverse(-B, B) → L = 2
 ```
 
-This is "pure boundary" — a distinction with nothing (yet) on either side.
-
-See [Genesis Function](genesis-function.md) for why pure B is also unstable.
+See [Genesis Function](genesis-function.md) for why `traverse(-B, B)` is the genesis.
 
 ### 3. The Question Is Malformed
 
@@ -158,13 +162,18 @@ Existence bootstraps itself through the impossibility of its absence.
 ### Why Three Primitives?
 
 From nothing-instability:
-1. B must exist (the distinction)
+1. **B must exist** (distinction is unavoidable)
 
-From pure-B instability (see [Genesis Function](genesis-function.md)):
-2. L must exist (B requires relation to function)
-3. D must exist (L requires extent)
+From the genesis function (see [Genesis Function](genesis-function.md)):
+2. **B partitions direction** → creates +B and -B
+3. **+B and -B must relate** → traverse(-B, B) requires L
+4. **L requires extent** → D exists
 
 The three primitives are not arbitrary. They are the minimal structure that can coherently exist.
+
+```
+Nothing impossible → B exists → B partitions → +B/-B → traverse(-B, B) → L → D
+```
 
 ---
 
@@ -236,8 +245,8 @@ See [Chirality and CPT](../quantum/chirality-cpt.md) for the full treatment of w
 
 ## References
 
-- [Genesis Function](genesis-function.md) — Why pure B is also unstable
+- [Genesis Function](genesis-function.md) — traverse(-B, B) = existence
 - [Chirality and CPT](../quantum/chirality-cpt.md) — Why B partitions into directions (chirality)
-- [Cyclic Cosmology](cyclic-cosmology.md) — The eternal cycle
+- [Cyclic Cosmology](cyclic-cosmology.md) — The eternal structure
 - [Dark Matter Mapping](dark-matter-mapping.md) — Quantitative predictions
 - [Irreducibility Proof](../foundations/irreducibility-proof.md) — Why B, L, D are the minimal set

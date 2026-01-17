@@ -104,6 +104,9 @@ EXTERNAL INPUTS (Observations)
 │  particle-physics/e7-connection.md                          │
 │     ← fine-structure (B=56 coincidence)                     │
 │                                                             │
+│  particle-physics/e7-derivation.md [RESEARCH]               │
+│     ← e7-connection (attempting to derive B=56)             │
+│                                                             │
 │  particle-physics/quark-masses.md                           │
 │     ← lepton-masses (pattern extension)                     │
 │                                                             │
@@ -180,6 +183,7 @@ EXTERNAL INPUTS (Observations)
 | File | Dependencies | Status |
 |------|--------------|--------|
 | `particle-physics/e7-connection.md` | B=56 coincidence | SPECULATIVE |
+| `particle-physics/e7-derivation.md` | e7-connection, physics-traverser | RESEARCH |
 | `particle-physics/quark-masses.md` | lepton mass patterns | SPECULATIVE |
 | `particle-physics/boson-masses.md` | lepton-masses, Higgs VEV | SPECULATIVE |
 | `cosmology/genesis-function.md` | cosmology, self-reference | SPECULATIVE |
@@ -211,7 +215,24 @@ Lepton masses use S
 "Validate" α formula ← CIRCULAR
 ```
 
-**Resolution**: Label fine-structure as consistency relation, not prediction.
+**Current Resolution**: Label fine-structure as consistency relation, not prediction.
+
+**Path to Breaking Cycle**: Derive B=56 from E7 necessity (see [E7 Derivation](../mathematics/particle-physics/e7-derivation.md)):
+
+```
+E7 is necessary for anomaly-free EM + triality [RESEARCH]
+    │
+    ▼
+B = dim(E7 fund) = 56 [WOULD BE DERIVED]
+    │
+    ▼
+α⁻¹ = n×L + B + 1 = 137 [WOULD BE PREDICTION]
+    │
+    ▼
+S, lepton masses [WOULD BE DERIVED]
+```
+
+If successful, this breaks the cycle and converts all particle physics to genuine predictions.
 
 ---
 

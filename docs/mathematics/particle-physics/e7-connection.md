@@ -132,23 +132,67 @@ As the universe evolves:
 - L → 0 (links decay)
 - B → 100% (only boundary remains)
 
-### Pure B is Unstable?
+### B Partitions Direction
 
-A boundary with nothing to bound might be undefined:
-- B partitions D and L
-- Without D and L, B has nothing to partition
-- This could trigger structural instability
+From [Chirality and CPT](../quantum/chirality-cpt.md):
 
-### Speculation: Heat Death = Big Bang?
+- B must partition (that's what boundaries do)
+- The only available content is direction
+- B partitions into +B and -B
+- Connected by constant L = 2 (Killing form)
 
-If pure B is unstable:
-- Heat death (B = 100%) cannot persist
-- It must resolve by creating D and L
-- This IS a new Big Bang
+### The Eternal Structure
 
-The universe would be cyclic, with B → 100% being both end and beginning.
+From [Cyclic Cosmology](../cosmology/cyclic-cosmology.md):
 
-**Note**: This is highly speculative and not derived from BLD rigorously.
+The universe is not "cyclic in time" but "eternal in structure":
+
+```
+traverse(-B, B) = existence
+
++B and -B perpetually compute
+They agree at junction via L = 2
+This IS the present moment
+```
+
+The "Big Bang" and "heat death" are perspectives within +B, not cosmic events.
+
+**Note**: See the cosmology documents for the full treatment.
+
+---
+
+## Path to Derivation
+
+**See [E7 Derivation](e7-derivation.md)** for the full research program.
+
+### The Goal
+
+Convert this from [SPECULATIVE] to [DERIVED] by showing E7 is *necessary*, not just *coincidental*.
+
+### The Approach
+
+Apply the physics traverser methodology (three BLD questions):
+
+| Question | Applied to E7 |
+|----------|---------------|
+| Q1: Where does it partition? | What partitions the EM boundary itself? |
+| Q2: What connects within it? | How does Killing form (h∨=18) relate to dim=56? |
+| Q3: What repeats? | Why 56 = 7×8 (octonion structure)? |
+
+### Three Strategies
+
+1. **Algebraic Necessity**: Prove E7 is UNIQUE structure with SO(3,1) × U(1) + anomaly-free + triality
+
+2. **Topological Closure**: Apply P10 methodology to EM boundary → forces B dimension
+
+3. **Symmetric Space**: Show boundary manifold is uniquely E7-structured
+
+### Success Criteria
+
+If any strategy succeeds:
+- B = 56 becomes [DERIVED]
+- α⁻¹ = 137 becomes a prediction, not input
+- All particle physics gains predictive power
 
 ---
 
@@ -160,12 +204,15 @@ The universe would be cyclic, with B → 100% being both end and beginning.
 
 3. **Does E₇ predict anything?** Can we use E₇ structure to derive new physics?
 
-4. **Is the cyclic connection real?** Does pure B actually trigger creation?
+4. **Is the eternal structure testable?** Can traverse(-B, B) be probed experimentally?
+
+5. **Is E7 necessary or just sufficient?** This is the key question for derivation.
 
 ---
 
 ## References
 
-- [Fine Structure Consistency](fine-structure-consistency.md) — How B = 56 is determined
+- [E7 Derivation](e7-derivation.md) — Research program to derive B=56 from necessity
+- [Fine Structure Consistency](fine-structure-consistency.md) — How B = 56 is currently determined
 - [Cosmology Structure](../cosmology/cosmology-structure.md) — The L/D = 5 ratio
 - [Lie Correspondence](../lie-theory/lie-correspondence.md) — BLD = Lie theory

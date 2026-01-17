@@ -368,7 +368,7 @@ When you write `.bld`, you are writing in the same structural language that:
 
 **BLD is not a model of quantum mechanics. BLD IS quantum mechanics code.**
 
-See [BLD IS Quantum Mechanics Code](../../theory/bld-is-quantum-code.md) for the full proof.
+See [BLD IS Quantum Mechanics Code](../quantum/bld-is-quantum-code.md) for the full proof.
 
 ---
 
@@ -392,7 +392,7 @@ See [BLD IS Quantum Mechanics Code](../../theory/bld-is-quantum-code.md) for the
    - The physics traverser → ? → SU(3)×SU(2)×U(1)?
    - Apply three questions to "physics as traverser"
    - Constraints from locality, causality, unitarity might select specific gauge groups
-   - See [Research Directions](../../theory/research-directions.md)
+   - See [Research Directions](../../meta/research-directions.md)
 
 ---
 
@@ -410,4 +410,4 @@ Tests all five correspondences with numerical and symbolic verification.
 - [Why Lie Theory](./why-lie-theory.md) — Accessible explanation for non-mathematicians
 - [Lie Algebra Examples](../../examples/lie-algebras.md) — so(2), su(2), Heisenberg, Poincaré in BLD
 - [Constructive Lie](./constructive-lie.md) — Alignment as Lie homomorphism
-- [Discovery Method](../../theory/discovery-method.md) — How to find BLD structure
+- [Discovery Method](../../meta/discovery-method.md) — How to find BLD structure

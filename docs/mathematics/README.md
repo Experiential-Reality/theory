@@ -35,7 +35,7 @@ The BLD = Lie theory correspondence.
 
 - [Quantum Mechanics](./quantum/quantum-mechanics.md) — **Uncertainty from D-L irreducibility**
 - [Quantum Computing](./quantum/quantum-computing.md) — **Structure traversing itself**
-- [BLD IS Quantum Code](./quantum/bld-is-quantum-code.md) — Mathematical equivalence: BLD = Lie = QM
+- [BLD IS Quantum Code](./quantum/bld-is-quantum-code.md) — **BLD = Lie = QM = e^(iπ)+1=0**
 - [Schrödinger Derivation](./quantum/schrodinger-derivation.md) — Attempt to derive from BLD `[SPECULATIVE]`
 - [Born Rule](./quantum/born-rule.md) — Alignment interpretation `[SPECULATIVE]`
 - [Chirality and CPT](./quantum/chirality-cpt.md) — Why B partitions direction, CPT symmetry `[SPECULATIVE]`
@@ -48,12 +48,12 @@ The BLD = Lie theory correspondence.
 - [Dark Matter Mapping](./cosmology/dark-matter-mapping.md) — Dark matter as geometry
 - [Observer Correction](./cosmology/observer-correction.md) — Unified observer framework
 - [Nothing Instability](./cosmology/nothing-instability.md) — Why something exists
-- [Genesis Function](./cosmology/genesis-function.md) — traverse(B, B) = creation `[SPECULATIVE]`
+- [Genesis Function](./cosmology/genesis-function.md) — traverse(-B, B) = existence `[SPECULATIVE]`
 - [Cyclic Cosmology](./cosmology/cyclic-cosmology.md) — Heat death = Big Bang
 
 ### Particle Physics
 
-- [Lepton Masses](./particle-physics/lepton-masses.md) — α⁻¹ = 137, lepton masses from BLD
+- [Lepton Masses](./particle-physics/lepton-masses.md) — **τ/μ = 2πe × 3 corrections = 16.817** (exact match)
 - [Fine Structure](./particle-physics/fine-structure-consistency.md) — α⁻¹ formula and consistency
 - [Quark Masses](./particle-physics/quark-masses.md) — Extension to quarks `[SPECULATIVE]`
 - [Boson Masses](./particle-physics/boson-masses.md) — Gauge boson masses `[SPECULATIVE]`

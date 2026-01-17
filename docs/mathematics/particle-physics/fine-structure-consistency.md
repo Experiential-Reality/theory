@@ -115,19 +115,35 @@ S = 13, lepton masses (semi-empirical fits, not predictions)
 
 ## What Would Make This a Prediction
 
-To genuinely predict α⁻¹, we would need to derive B independently:
+To genuinely predict α⁻¹, we would need to derive B independently.
 
-**Option 1: From E₇ structure**
-- Prove that E₇ is necessary for spacetime topology
-- Then B = 56 follows from representation theory
-- Then α⁻¹ = n×L + B + 1 becomes a prediction
+**See [E7 Derivation](e7-derivation.md)** for the full research program.
 
-**Option 2: From dimensional analysis**
+### Option 1: From E₇ Necessity (Primary Approach)
+
+Apply three BLD questions to the EM boundary:
+1. What partitions the boundary structure itself?
+2. How does Killing form relate to E7 dimension?
+3. Why 56 = 7×8 (octonion structure)?
+
+If E7 is *necessary* (not just compatible) for anomaly-free EM + triality:
+- B = 56 follows from representation theory
+- α⁻¹ = n×L + B + 1 becomes a genuine prediction
+
+### Option 2: From Dimensional Analysis
+
 - Derive B = 14n (which gives 56 for n=4)
-- Show this follows from structural principles
+- Show this follows from structural hierarchy
 - Then α⁻¹ becomes a prediction
 
-**Current status**: Neither derivation exists. B = 56 remains empirical.
+### Option 3: From Topological Closure
+
+Apply P10 methodology (which solved strong CP) to EM:
+- Identify hidden EM boundary + link structure
+- Apply closure condition
+- May force specific B dimension
+
+**Current status**: Research in progress. B = 56 remains empirical until derivation succeeds.
 
 ---
 
@@ -163,6 +179,6 @@ To genuinely predict α⁻¹, we would need to derive B independently:
 
 ## References
 
-- Original discussion: `particle-masses.md` sections on BLD constants and fine structure
-- E₇ connection: [E₇ Connection](e7-connection.md) speculative connection section
-- Lie theory background: [Lie Correspondence](../lie-theory/lie-correspondence.md)
+- [E7 Derivation](e7-derivation.md) — Research program to derive B=56 from necessity
+- [E₇ Connection](e7-connection.md) — Post-hoc observation of B=56 = dim(E7 fund)
+- [Lie Correspondence](../lie-theory/lie-correspondence.md) — BLD = Lie theory background

@@ -90,6 +90,7 @@ BLD doesn't just describe quantum mechanics — it predicts quantum phenomena:
 | Quantization | Compact B → discrete | Angular momentum quantized | Exact |
 | Fine structure | n×L + B + 1 | α⁻¹ = 137 | 0.03% |
 | Lepton masses | Structural ratios | m_e, m_μ, m_τ | 0-1% |
+| **Tau/muon ratio** | **2πe × 3 corrections** | **τ/μ = 16.817** | **Exact** |
 | Dark matter | 5x + 8x² | 27% | 0% |
 
 ### Complete Mapping
@@ -124,6 +125,34 @@ The number **2** appears everywhere in quantum mechanics:
 All are manifestations of the **Killing form diagonal value = 2**, which measures the minimum L-cost for bidirectional observation (forward query + backward response).
 
 See [Killing Form](../lie-theory/killing-form.md) for the derivation.
+
+### The Euler Identity Connection
+
+Euler's identity **e^(iπ) + 1 = 0** is not just beautiful mathematics — it encodes the discrete/rotational duality in BLD:
+
+| Component | BLD Mode | Physical Role |
+|-----------|----------|---------------|
+| **e** | Discrete (0\|1) | Sequential accumulation, traverser |
+| **π** | Rotational (0..1) | Closure, structure completion |
+| **i** | Phase | Rotation in complex plane |
+| **1** | Identity | Base state |
+| **0** | Nothing | Boundary constraint |
+
+**The complete formula**: Three structural corrections yield exact agreement with observation:
+
+```
+τ/μ = 2πe × (n²S-1)/(n²S) × (nL-1)/(nL) × (1 + 2/(n×L×S))
+    = 2πe × (207/208) × (79/80) × (1042/1040)
+    = 16.817  (exact match to observation)
+```
+
+| Correction | Factor | Physical Meaning |
+|------------|--------|------------------|
+| Phase mismatch | 207/208 | Discrete/rotational out of phase by 1/(n²S) |
+| Observer cost | 79/80 | Killing form bidirectionality: 1/(n×L) |
+| Coupling | 1042/1040 | Phase-observer interaction: +2/(n×L×S) |
+
+See [Lepton Masses](../particle-physics/lepton-masses.md) for the full derivation.
 
 ---
 

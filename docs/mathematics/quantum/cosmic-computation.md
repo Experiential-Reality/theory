@@ -45,15 +45,17 @@ Only direction available → chirality (chirality-cpt)
     ↓
 B partitions into +B and -B
     ↓
-Connected by constant L = 2 (Killing form)
++B and -B must relate → traverse(-B, B) (genesis-function)
+    ↓
+traverse(-B, B) requires L = 2 (Killing form)
     ↓
 +B computes forward, -B computes backward
     ↓
-At junction (-B = B), both must agree    ← THIS DOCUMENT
+At junction, both must agree via L    ← THIS DOCUMENT
     ↓
 This CONSTRAINS the future algebraically
     ↓
-The theory closes: existence determines its own evolution
+The theory closes: traverse(-B, B) = existence determining itself
 ```
 
 ---
