@@ -3,7 +3,7 @@ status: DERIVED
 layer: 1
 depends_on:
   - bld-calculus.md
-  - genesis-function.md
+  - ../cosmology/genesis-function.md
   - ../lie-theory/killing-form.md
   - ../quantum/planck-derivation.md
 used_by:
@@ -231,10 +231,10 @@ Layer 3: The universe computing itself
 
 - [Special Relativity](../derived/special-relativity.md) — c, γ, E=mc² from BLD
 - [General Relativity](../derived/general-relativity.md) — Gravity as stack depth
-- [Genesis Function](genesis-function.md) — traverse(-B, B) creates existence
+- [Genesis Function](../cosmology/genesis-function.md) — traverse(-B, B) creates existence
 - [Discovery Method](discovery-method.md) — How K/X was found
 - [Force Structure](force-structure.md) — Complete force derivations
 - [Planck Derivation](../quantum/planck-derivation.md) — M_P, l_P, t_P from BLD
 - [Structural Cost Conservation](structural-cost-conservation.md) — C_total = C_visible + C_hidden
-- [BLD Conservation](bld-conservation.md) — BLD conservation = Noether's theorem
+- [BLD Conservation](../bld-conservation.md) — BLD conservation = Noether's theorem
 - [Killing Form](../lie-theory/killing-form.md) — K = 2 derivation

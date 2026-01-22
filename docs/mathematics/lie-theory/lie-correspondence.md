@@ -6,7 +6,7 @@ used_by:
   - ../foundations/octonion-derivation.md
   - ../particle-physics/e7-derivation.md
   - ../quantum/quantum-mechanics.md
-  - why-exactly-three.md
+  - ../foundations/why-exactly-three.md
 ---
 
 # BLD = Lie Theory: The Correspondence
