@@ -143,6 +143,12 @@ We're not changing physics. We're correcting how we classify gravitational effec
 
 ## References
 
+### External Sources
+- [Planck 2018 Cosmological Parameters (arXiv:1807.06209)](https://arxiv.org/abs/1807.06209) — Ω_m ≈ 0.315, Ω_Λ ≈ 0.685
+- [Riemann curvature tensor](https://en.wikipedia.org/wiki/Riemann_curvature_tensor) — 20 independent components in 4D
+- [Weyl tensor](https://en.wikipedia.org/wiki/Weyl_tensor) — 10 unconstrained components
+
+### Internal BLD References
 - [Irreducibility Proof](../foundations/irreducibility-proof.md) — L and D independence
 - [Lie Correspondence](../lie-theory/lie-correspondence.md) — BLD = Lie theory
 - [Dark Matter Mapping](dark-matter-mapping.md) — Conjectured application

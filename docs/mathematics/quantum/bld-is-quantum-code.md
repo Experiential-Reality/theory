@@ -111,7 +111,7 @@ BLD doesn't just describe quantum mechanics — it predicts quantum phenomena:
 | Uncertainty bound | ℏ/2 | Δx·Δp ≥ ℏ/2 | Exact |
 | Decoherence ratio | Killing form = 2 | T₂ ≤ 2×T₁ | Universal |
 | Quantization | Compact B → discrete | Angular momentum quantized | Exact |
-| Fine structure | n×L + B + 1 + K/B + spatial − e²×120/119 | α⁻¹ = 137.035999177 | **0.0 ppt** |
+| Fine structure | n×L + B + 1 + K/B + spatial − e²×120/(119×(n×L×B)²) | α⁻¹ = 137.035999177 | **0.0 ppt** |
 | Lepton masses | Structural ratios | m_e, m_μ, m_τ | 0-1% |
 | **Tau/muon ratio** | **2πe × 3 corrections** | **τ/μ = 16.817** | **Exact** |
 | Dark matter | 5x + 8x² | 27% | 0% |

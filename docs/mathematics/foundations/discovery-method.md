@@ -9,6 +9,7 @@ depends_on:
 used_by:
   - force-structure.md
   - ../particle-physics/fine-structure-consistency.md
+  - ../particle-physics/higgs-self-coupling.md
   - ../cosmology/observer-correction.md
 ---
 

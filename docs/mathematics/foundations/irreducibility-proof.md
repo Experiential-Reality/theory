@@ -31,9 +31,9 @@ used_by:
 
 | Primitive | Capability | Type-theoretic |
 |-----------|------------|----------------|
-| B | Choice | Sum (+) |
-| L | Reference | Function (→) |
-| D | Repetition | Product (Πₙ) |
+| B | Choice | [Sum (+)](https://ncatlab.org/nlab/show/sum+type) |
+| L | Reference | [Function (→)](https://ncatlab.org/nlab/show/function+type) |
+| D | Repetition | [Product (Πₙ)](https://ncatlab.org/nlab/show/product+type) |
 
 **Implication**: Any complete structural system requires all three. The observer (+1 in α⁻¹) exists because you cannot observe without all three primitives.
 
@@ -240,10 +240,10 @@ See [Completeness Proof](completeness-proof.md) for the full derivation.
 
 **Summary of proof**:
 
-1. **Lie theory universality**: All continuous symmetries → Lie groups → exactly 3 components (D, L, B)
-2. **Cartan classification**: Complete list of all simple Lie algebras — no fourth component needed
-3. **Turing completeness**: Branch (B), jump (L), loop (D) are computationally universal
-4. **Type theory**: Sum, function, product types are complete for all computable types
+1. **Lie theory universality**: All continuous symmetries → [Lie groups](https://ncatlab.org/nlab/show/Lie+group) → exactly 3 components (D, L, B)
+2. **[Cartan classification](https://en.wikipedia.org/wiki/Semisimple_Lie_algebra#Classification)**: Complete list of all simple Lie algebras — no fourth component needed
+3. **[Turing completeness](https://en.wikipedia.org/wiki/Turing_completeness)**: Branch (B), jump (L), loop (D) are computationally universal
+4. **[Type theory](https://ncatlab.org/nlab/show/type+theory)**: Sum, function, product types are complete for all computable types
 
 **Two independent arguments (physics + computation) both give exactly 3 primitives.**
 
@@ -298,9 +298,9 @@ The three primitives correspond to fundamental type constructors:
 
 | Primitive | Type Constructor | Elimination Form |
 |-----------|-----------------|------------------|
-| Boundary | Sum type (`τ₁ + τ₂`) | Case analysis |
-| Link | Function type (`τ₁ → τ₂`) | Application |
-| Dimension | Product type (`Πₙτ`) | Projection |
+| Boundary | [Sum type](https://ncatlab.org/nlab/show/sum+type) (`τ₁ + τ₂`) | Case analysis |
+| Link | [Function type](https://ncatlab.org/nlab/show/function+type) (`τ₁ → τ₂`) | Application |
+| Dimension | [Product type](https://ncatlab.org/nlab/show/product+type) (`Πₙτ`) | Projection |
 
 The [type-theoretic proof](./irreducibility-categorical.md) shows these are genuinely independent:
 - **Theorem 1**: Sums cannot be expressed in LD-calculus (cardinality argument)
@@ -327,15 +327,15 @@ See [bld-calculus.md](./bld-calculus.md) for the formal definitions.
 
 The fact that there are exactly three irreducible primitives is not arbitrary—it corresponds to the three components of any Lie algebra:
 
-| Primitive | Type Constructor | Lie Algebra Component |
+| Primitive | Type Constructor | [Lie Algebra](https://ncatlab.org/nlab/show/Lie+algebra) Component |
 |-----------|-----------------|----------------------|
-| **Boundary** | Sum type (`τ₁ + τ₂`) | Topology (compact vs non-compact) |
-| **Link** | Function type (`τ₁ → τ₂`) | Structure constants (how generators interact) |
-| **Dimension** | Product type (`Πₙτ`) | Generators (directions of transformation) |
+| **Boundary** | [Sum type](https://ncatlab.org/nlab/show/sum+type) (`τ₁ + τ₂`) | Topology (compact vs non-compact) |
+| **Link** | [Function type](https://ncatlab.org/nlab/show/function+type) (`τ₁ → τ₂`) | [Structure constants](https://en.wikipedia.org/wiki/Structure_constants) (how generators interact) |
+| **Dimension** | [Product type](https://ncatlab.org/nlab/show/product+type) (`Πₙτ`) | Generators (directions of transformation) |
 
-Lie algebras describe continuous symmetry, and every Lie algebra has exactly these three components:
+[Lie algebras](https://ncatlab.org/nlab/show/Lie+algebra) describe continuous symmetry, and every Lie algebra has exactly these three components:
 - **Generators**: The independent directions of transformation (D)
-- **Structure constants**: How generators combine: [Xᵢ, Xⱼ] = fᵢⱼᵏXₖ (L)
+- **[Structure constants](https://en.wikipedia.org/wiki/Structure_constants)**: How generators combine: [Xᵢ, Xⱼ] = fᵢⱼᵏXₖ (L)
 - **Topology**: Whether the group is bounded/closed (B)
 
 The irreducibility of B/L/D is thus a reflection of the mathematical structure of symmetry itself. See [Lie Correspondence](../lie-theory/lie-correspondence.md) for the full mapping.

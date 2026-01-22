@@ -11,6 +11,7 @@ used_by:
   - lepton-masses.md
   - quark-masses.md
   - fine-structure-consistency.md
+  - higgs-self-coupling.md
   - ../../meta/proof-status.md
 ---
 
@@ -30,11 +31,11 @@ used_by:
 2. **B = 56** — boundary modes (2 × dim(Spin(8)) from triality)
 3. **+1** — observer self-reference (minimum BLD existence)
 4. **+K/B, ±spatial** — two-reference corrections (outbound/return traversal)
-5. **−e²×120/119** — accumulated discrete→continuous correction
+5. **−e²×120/(119×(n×L×B)²)** — accumulated discrete→continuous correction
 6. **Total: 137.035999177** (0.0 ppt accuracy)
 7. **Everything else derived** — n=4, 3 generations, B=56, K=2, α⁻¹
 
-**One sentence**: The fine structure constant encodes how structure connects (80), partitions (56), observes itself (+1), how the machine traverses it (±spatial), and the discrete→continuous cost (−e²×120/119).
+**One sentence**: The fine structure constant encodes how structure connects (80), partitions (56), observes itself (+1), how the machine traverses it (±spatial), and the discrete→continuous cost (−e²×120/(119×(n×L×B)²)).
 
 ---
 
@@ -70,7 +71,7 @@ This is analogous to geometry: Euclidean geometry cannot derive that space exist
 | Spacetime dimensions | n = 4 | sl(2,ℂ) ⊂ sl(2,𝕆) |
 | Generations | 3 | Spin(8) triality |
 | Boundary modes | B = 56 | 2 × dim(Spin(8)) |
-| Fine structure | α⁻¹ = 137.035999177 | n×L + B + 1 + K/B + spatial − e²×120/119 |
+| Fine structure | α⁻¹ = 137.035999177 | n×L + B + 1 + K/B + spatial − e²×120/(119×(n×L×B)²) |
 | Planck constant | ℏ | M_P derivation |
 | All particle masses | See lepton/quark files | Structural corrections |
 
@@ -506,7 +507,7 @@ The formula now reads:
 1. **n×L + B + 1 = 137**: Structure (geometry + boundary + observer)
 2. **+K/B**: Boundary quantum (Killing form over boundary)
 3. **±spatial**: Two-reference outbound/return corrections
-4. **−e²×120/119**: Accumulated discrete→continuous correction
+4. **−e²×120/(119×(n×L×B)²)**: Accumulated discrete→continuous correction
 
 See [Observer Corrections](../cosmology/observer-correction.md) for full two-reference derivation.
 
@@ -530,7 +531,7 @@ The complete derivation chain:
 11. n×L = 4 × 20 = 80 (n=4 derived, L from geometry)
 12. +1 = observer self-reference (derived from BLD irreducibility)
 13. +K/B, ±spatial = two-reference corrections (outbound/return traversal)
-14. −e²×120/119 = accumulated discrete→continuous correction
+14. −e²×120/(119×(n×L×B)²) = accumulated discrete→continuous correction
 15. **α⁻¹ = 137.035999177** (exact prediction, **0.0 ppt error**)
 
 **See [Octonion Derivation](../foundations/octonion-derivation.md) for steps 1-5.**
@@ -555,6 +556,14 @@ After:  SU(3) exists (empirical) → 𝕆 required → triality → 56 + 80 + 1 
 
 ## References
 
+### External Sources (Mathematical)
+- [Triality (Wikipedia)](https://en.wikipedia.org/wiki/Triality) — Unique to Spin(8) / D₄
+- [E₇ (nLab)](https://ncatlab.org/nlab/show/E7) — E₇ branching rules and 56-rep
+- [E₇ (Wikipedia)](https://en.wikipedia.org/wiki/E7_(mathematics)) — Exceptional Lie group properties
+- [Spin(8) (Wikipedia)](https://en.wikipedia.org/wiki/Spin_group#Spin(8)) — Unique triality automorphism
+- [Fine structure constant (CODATA 2022)](https://physics.nist.gov/cgi-bin/cuu/Value?alphinv) — α⁻¹ = 137.035999177(21)
+
+### Internal BLD References
 - [Structural-Observer Framework](../quantum/structural-observer-framework.md) — Unified theory: B=56 is structural, observer corrections transform to observed
 - [Observer Corrections](../cosmology/observer-correction.md) — Two-reference framework: observer corrections ARE traversal costs; +1 IS the traverser
 - [Planck Derivation](../quantum/planck-derivation.md) — ℏ derivation using B=56 (0.00003% accuracy)
@@ -563,5 +572,3 @@ After:  SU(3) exists (empirical) → 𝕆 required → triality → 56 + 80 + 1 
 - [Physics Traverser](../../examples/physics-traverser.md) — P9 triality axiom
 - [Fine Structure Consistency](fine-structure-consistency.md) — Updated status
 - [E7 Connection](e7-connection.md) — E7 confirmation
-- [Triality - Wikipedia](https://en.wikipedia.org/wiki/Triality) — Mathematical source
-- [E7 - nLab](https://ncatlab.org/nlab/show/E7) — E7 branching rules

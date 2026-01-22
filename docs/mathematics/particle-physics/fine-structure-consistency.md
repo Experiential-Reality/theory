@@ -51,8 +51,8 @@ All terms are now derived, including the accumulated correction:
     = 137.035999177006
 ```
 
-**Observed**: α⁻¹ = 137.035999177000
-**Error**: 0.0 ppt (exact)
+**Observed**: α⁻¹ = [137.035999177(21)](https://physics.nist.gov/cgi-bin/cuu/Value?alphinv) (CODATA 2022)
+**Error**: 0.0 ppt (exact within measurement uncertainty)
 
 ---
 
@@ -181,6 +181,75 @@ BLD COMPONENT MAPPING:
               Structure constants
               determine coupling
 ```
+
+---
+
+## Measurement Methods and K/B `[EXPERIMENTAL BASIS]`
+
+Understanding **why** K/B is the first-order correction requires understanding **how** α is measured.
+
+### How α Is Measured
+
+| Method | Observable | Precision | Dominant Structure |
+|--------|-----------|-----------|-------------------|
+| **Electron g-2** | Anomalous magnetic moment | 0.26 ppb | Electron self-energy loops |
+| **Lamb shift** | 2S-2P hydrogen splitting | ~1 ppm | Vacuum polarization |
+| **Quantum Hall** | Hall conductance quantization | ~10 ppb | Edge state transport |
+| **Photon recoil** | Atom recoil in optical lattice | ~0.2 ppb | Photon absorption/emission |
+
+### Why K/B Appears in α⁻¹
+
+**The key insight**: All methods measure **photon coupling to charged matter**, which traverses the boundary structure B.
+
+```
+EXPERIMENT: Electron g-2 (most precise)
+
+OBSERVABLE: Magnetic moment anomaly a_e = (g-2)/2
+
+WHAT'S TRAVERSED:
+- Electron emits/absorbs virtual photon
+- Photon crosses from electron to EM field and back
+- This crossing IS the boundary B = 56 (topology of EM/matter interface)
+
+WHY K/B:
+- The measurement is BIDIRECTIONAL: electron → photon → electron
+- Bidirectional observation costs K = 2 (Killing form)
+- The photon crosses B (the EM/matter boundary)
+- Correction = K/B = 2/56 = +0.0357
+```
+
+### Why Photon Exchange Involves B (Not L or n)
+
+| Structure | What It Measures | Appears In |
+|-----------|-----------------|------------|
+| **n** (dimensions) | Spacetime extent | Base structure (n×L) |
+| **L** (links) | Continuous connections | Geometric coupling |
+| **B** (boundary) | Discrete partitions | **Photon crossing** |
+
+**Physical picture**:
+- The photon is a **gauge boson** — it mediates transitions between states
+- Transitions ARE boundary crossings (partitions between configurations)
+- The electron "before" and "after" photon exchange are **distinguished states**
+- This distinction IS the boundary topology
+
+**Different forces, different X:**
+- **EM (α)**: Photon crosses B → K/B correction
+- **Strong (α_s)**: Gluons confined to geometry → K/(n+L) correction
+- **Weak (sin²θ_W)**: Z traverses ALL structure → K/(n×L×B) correction
+
+### The Two-Reference Principle in Action
+
+```
+Reference 1 (Structure): n×L + B + 1 = 137 (what exists)
+Reference 2 (Machine):   +K/B + ±spatial − accumulated (traversal costs)
+
+The measurement apparatus (machine) traverses the structure:
+- First-order: K/B = 2/56 (photon crosses boundary once)
+- Spatial terms: ±n/(...) (outbound vs return path)
+- Accumulated: −e²×120/(119×(n×L×B)²) (discrete→continuous embedding)
+```
+
+The experiment doesn't "see" 137 — it measures 137.036. The difference is the cost of the measurement traversing the structure.
 
 ---
 
@@ -321,7 +390,7 @@ The entire particle physics chain is now genuinely predictive!
 | +1 | **DERIVED** | Observer self-reference (BLD irreducibility) |
 | K/B | **DERIVED** | Boundary quantum (Killing/boundary) |
 | ±spatial | **DERIVED** | Two-reference outbound/return corrections |
-| −e²×120/119 | **DERIVED** | Accumulated discrete→continuous correction |
+| −e²×120/(119×(n×L×B)²) | **DERIVED** | Accumulated discrete→continuous correction |
 
 **Predictive power**: α⁻¹ = 137.035999177 is now a **FULLY DERIVED PREDICTION** with **0.0 ppt error**.
 
@@ -339,6 +408,12 @@ The entire particle physics chain is now genuinely predictive!
 
 ## References
 
+### External Sources
+- [Fine structure constant α⁻¹ (CODATA 2022)](https://physics.nist.gov/cgi-bin/cuu/Value?alphinv) — Observed value: 137.035999177(21)
+- [Fine-structure constant (Wikipedia)](https://en.wikipedia.org/wiki/Fine-structure_constant) — Overview and measurement methods
+- [CODATA 2022 Fundamental Constants](https://physics.nist.gov/cuu/Constants/) — Full database
+
+### Internal BLD References
 - [Octonion Derivation](../foundations/octonion-derivation.md) — Complete BLD → octonions → (n=4, SU(3), 3 gen) derivation
 - [E7 Derivation](e7-derivation.md) — Complete derivation of B=56 from triality + Killing form
 - [E₇ Connection](e7-connection.md) — E7 confirmation of the derivation

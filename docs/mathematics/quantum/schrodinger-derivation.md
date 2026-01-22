@@ -453,6 +453,13 @@ The Schrödinger equation is **FULLY DERIVED** from BLD principles:
 
 ## References
 
+### External Sources
+- [Schrödinger equation (Wikipedia)](https://en.wikipedia.org/wiki/Schr%C3%B6dinger_equation) — The fundamental equation of QM
+- [Stone–von Neumann theorem (Wikipedia)](https://en.wikipedia.org/wiki/Stone–von_Neumann_theorem) — Uniqueness of Schrödinger representation
+- [Unitary operator](https://en.wikipedia.org/wiki/Unitary_operator) — Norm-preserving evolution
+- [Hamiltonian (quantum mechanics)](https://en.wikipedia.org/wiki/Hamiltonian_(quantum_mechanics)) — Energy operator
+
+### Internal BLD References
 - [Planck Derivation](planck-derivation.md) — ℏ magnitude derivation (**0.00003% accuracy**)
 - [Structural-Observer Framework](structural-observer-framework.md) — Unified theory of structural vs observed values
 - [Octonion Derivation](../foundations/octonion-derivation.md) — ℂ ⊂ 𝕆 isolation (derives complex numbers)

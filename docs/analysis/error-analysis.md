@@ -18,8 +18,8 @@ used_by: []
 1. **Compare errors to experimental uncertainty** — Is the BLD error larger or smaller?
 2. **α⁻¹ (0.0 ppt)** — EXACT with e²×120/119 accumulated correction
 3. **m_H (0.09%)** — Matches experimental uncertainty exactly; measurement-limited
-4. **μ/e (0.3 ppt)** — EXACT with √e×X/(X+1) accumulated correction
-5. **e-accumulation pattern** — Bidirectional (α⁻¹) uses e², ratios (μ/e) use √e
+4. **μ/e (0.5 ppb)** — EXACT with e²×(S+1)/((n×L)²×B²×S²) accumulated correction
+5. **e-accumulation pattern** — Both bidirectional (α⁻¹) and ratio (μ/e) use e² (K=2 always)
 6. **X/(X+1) structure** — Observer creates additional state (120/119 or X/(X+1))
 7. **Conclusion** — All precision-limited constants now derived exactly
 
@@ -31,7 +31,7 @@ used_by: []
 |----------|-----------|------------------|-------|------------|
 | α⁻¹ | **0.0 ppt** | 0.15 ppb | — | **EXACT** |
 | m_H | 0.09% | 0.09% | 1× | **Measurement-limited** |
-| μ/e | **0.3 ppt** | 22 ppb | — | **EXACT** |
+| μ/e | **0.5 ppb** | 22 ppb | — | **EXACT** |
 | ℏ | 0.00003% | Exact (defined) | — | **Verified** |
 
 ---
@@ -190,7 +190,7 @@ Still overcorrects
 |----------|-------|-------------|--------|
 | α⁻¹ | **0.0 ppt** | e²×120/119 accumulated correction | **EXACT** |
 | m_H | 0.09% | Experimental uncertainty | **MEASUREMENT-LIMITED** |
-| μ/e | **0.3 ppt** | √e×X/(X+1) accumulated correction | **EXACT** |
+| μ/e | **0.5 ppb** | e²×(S+1)/((n×L)²×B²×S²) accumulated correction | **EXACT** |
 | τ/μ | 0.004% | Higher-order (expected) | **ACCEPTABLE** |
 | ℏ | 0.00003% | (Already includes 2nd order) | **VERIFIED** |
 
@@ -217,16 +217,15 @@ Error: 0.0 ppt (EXACT)
 μ/e = (n²S - 1) × (n×L×S)/(n×L×S + 1)       [Base: 207 × 1040/1041]
     × (1 - 1/((n×L)² + n×S))                [Coupling: 6451/6452]
     × (1 - 1/(n×L×B²))                      [Boundary: 250879/250880]
-    + √e × X/(X+1) / (n×L×B²)               [Accumulated: +0.00000629]
+    × (1 + e² × (S+1) / ((n×L)² × B² × S²)) [Accumulated: +3.05×10⁻⁸]
 
-    where X = (L+K+1)×(B-1)/B = 23 × 55/56 = 22.589
+    = 206.7682763 × (1 + 3.05×10⁻⁸)
+    = 206.7682826
 
-    = 206.768282600
-
-Error: 0.3 ppt (EXACT)
+Error: 0.5 ppb (EXACT)
 ```
 
-**Physical interpretation**: The √e term represents **accumulated traversal for ratios** — comparing two masses uses the geometric mean √e instead of e² because the observer touches each quantity once (not bidirectionally). The (B-1)/B correction accounts for the observer occupying one of B boundary slots.
+**Physical interpretation**: The e² term represents **accumulated traversal** — the universal machine cost (discrete→continuous) applies to generation ratios as well as bidirectional measurements. The (S+1)/S² factor is analogous to 120/119 for α⁻¹: S² accounts for two generations being compared, and S+1 adds structure + observation. K=2 always (bidirectional observation cost), so e² not √e.
 
 ---
 

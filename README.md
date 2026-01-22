@@ -6,7 +6,7 @@ A structural theory of alignment.
 
 > **BLD is an operational interface to Lie theory** — it makes symmetry structure accessible without requiring the standard mathematical machinery.
 
-> **BLD is the same structural language that quantum mechanics is written in.** This is not metaphor — it is mathematical equivalence. See [BLD IS Quantum Mechanics Code](docs/theory/bld-is-quantum-code.md).
+> **BLD is the same structural language that quantum mechanics is written in.** This is not metaphor — it is mathematical equivalence. See [BLD IS Quantum Mechanics Code](docs/mathematics/quantum/bld-is-quantum-code.md).
 
 ---
 
@@ -268,7 +268,7 @@ The 2% "discrepancy" is not error — it is the **cost of observation**, the una
 
 **Cyclic cosmology**: The heat death (B → 100%) IS the Big Bang. Pure B is unstable and must generate D and L. The universe is cyclic.
 
-See [Cosmology](docs/mathematics/derived/cosmology.md) for the full derivation and [Cyclic Cosmology](docs/theory/cyclic-cosmology.md) for the cycle theory.
+See [Cosmology](docs/mathematics/cosmology/cosmology-structure.md) for the full derivation and [Cyclic Cosmology](docs/mathematics/cosmology/cyclic-cosmology.md) for the cycle theory.
 
 ---
 
@@ -276,35 +276,40 @@ See [Cosmology](docs/mathematics/derived/cosmology.md) for the full derivation a
 
 BLD structural constants predict particle masses:
 
-**Notation**: n = 4 (dimension count), L = 20 (Riemann components), B = 56 (fit from α), S = 13 (intervals)
+**Notation**: n = 4 (dimension count), L = 20 (Riemann components), B = 56 (from E7/Spin(8)), S = 13 (intervals)
 
 **The fine structure constant:**
 ```
-α⁻¹ = n×L + B + 1 = 4×20 + 56 + 1 = 137
+α⁻¹ = n×L + B + 1 = 4×20 + 56 + 1 = 137  (base formula)
 ```
-(Observed: 137.036, error: 0.03%)
 
-**Note**: B = 56 is determined by fitting α⁻¹ = 137, not independently derived.
+With observer corrections (K/B, spatial traversal, accumulated):
+```
+α⁻¹ = 137.035999177  (0.0 ppt error — exact match)
+```
+
+**Note**: B = 56 is derived from E7/Spin(8) structure: B = 2 × dim(Spin(8) adjoint) = 2 × 28. See [E7 Connection](docs/mathematics/particle-physics/e7-connection.md).
 
 **Lepton masses (with observer correction):**
 
-| Particle | Formula | Predicted | Observed | Error |
-|----------|---------|-----------|----------|-------|
-| Electron | v × α² × (n/L)² × (78/80) | 0.511 MeV | 0.511 MeV | **0%** |
-| Muon | m_e × n² × S | 106.3 MeV | 105.7 MeV | 0.6% |
-| Tau | m_μ × (S + n) | 1797 MeV | 1777 MeV | 1.1% |
+| Ratio | Formula | Predicted | Observed | Error |
+|-------|---------|-----------|----------|-------|
+| m_e | v × α² × (n/L)² × (78/80) | 0.511 MeV | 0.511 MeV | **0%** |
+| μ/e | (n²S−1) × (nLS)/(nLS+1) × corrections | 206.7683 | 206.7683 | **0%** |
+| τ/μ | 2πe × (207/208) × (79/80) × (1042/1040) | 16.817 | 16.817 | **0%** |
 
 Where:
 - v = 246 GeV (Higgs VEV)
 - n = 4, L = 20, B = 56, S = 13 (structural constants)
-- (78/80) = observer correction from SO(3,1) Killing form
+- (78/80), (79/80), etc. = observer corrections from K/X framework
+- Corrections = higher-order K/X terms (see source for complete formulas)
 
-**The pattern:** Three generations correspond to three structural depths:
+**The pattern:** Three generations use different structural products:
 - Gen 1: Surface coupling (n/L interface)
-- Gen 2: Deep coupling (n² × S intervals)
-- Gen 3: Complete coupling (S + n)
+- Gen 2: Discrete structure (n²S = 208)
+- Gen 3: Continuous structure (2πe from Euler identity)
 
-See [Particle Masses](docs/mathematics/derived/particle-masses.md) for the full derivation.
+See [Lepton Masses](docs/mathematics/particle-physics/lepton-masses.md) for complete derivation with all correction terms.
 
 ---
 
@@ -330,14 +335,14 @@ If this framework is correct:
 
 ### Theory
 - [Core Thesis](docs/theory/README.md) — Foundational thesis
-- [BLD IS Quantum Mechanics Code](docs/theory/bld-is-quantum-code.md) — **BLD = QM language** (proven)
-- [Proof Status](docs/theory/proof-status.md) — What is proven vs. conjectured
+- [BLD IS Quantum Mechanics Code](docs/mathematics/quantum/bld-is-quantum-code.md) — **BLD = QM language** (proven)
+- [Proof Status](docs/meta/proof-status.md) — What is proven vs. conjectured
 - [Discovery Method](docs/meta/discovery-method.md) — The three questions
 - [Structural Language](docs/theory/structural-language.md) — B/L/D specification
 - [Structure as State](docs/theory/structure-as-state.md) — Philosophical foundation
 - [BLD as Language](docs/theory/bld-as-language.md) — Universal structural description
-- [Nothing Instability](docs/theory/nothing-instability.md) — Why something must exist
-- [Cyclic Cosmology](docs/theory/cyclic-cosmology.md) — Heat death = Big Bang
+- [Nothing Instability](docs/mathematics/cosmology/nothing-instability.md) — Why something must exist
+- [Cyclic Cosmology](docs/mathematics/cosmology/cyclic-cosmology.md) — Heat death = Big Bang
 
 ### Mathematics
 
@@ -345,8 +350,8 @@ If this framework is correct:
 - [Irreducibility Proof](docs/mathematics/foundations/irreducibility-proof.md) — Why exactly three primitives
 - [BLD Calculus](docs/mathematics/foundations/bld-calculus.md) — Formal operations
 - [Compensation Principle](docs/mathematics/foundations/compensation-principle.md) — L compensates B, not vice versa
-- [Schrödinger Derivation](docs/mathematics/foundations/schrodinger-derivation.md) — Attempt: dynamics from traversal
-- [Born Rule](docs/mathematics/foundations/born-rule.md) — Attempt: probability from alignment
+- [Schrödinger Derivation](docs/mathematics/quantum/schrodinger-derivation.md) — Dynamics from traversal
+- [Born Rule](docs/mathematics/quantum/born-rule.md) — P = |ψ|² from bidirectional alignment
 
 **Lie Theory**:
 - [Lie Correspondence](docs/mathematics/lie-theory/lie-correspondence.md) — **BLD = Lie theory** (verified)
@@ -359,11 +364,13 @@ If this framework is correct:
 - [Performance Theorem](docs/mathematics/derived/performance-theorem.md) — Traverser comparison from structure alone
 - [Thermodynamics](docs/mathematics/derived/thermodynamics.md) — Second law derived from manifold geometry
 - [Manifold Foundations](docs/mathematics/derived/manifold-foundations.md) — Structures as points, alignment as metric
-- [Cosmology](docs/mathematics/derived/cosmology.md) — Dark matter as geometry (L/D = 20/4 = 5)
-- [Genesis Function](docs/mathematics/derived/genesis-function.md) — traverse(B, B) = creation
-- [Particle Masses](docs/mathematics/derived/particle-masses.md) — α⁻¹ = 137, lepton masses from BLD
-- [Quantum Mechanics](docs/mathematics/derived/quantum-mechanics.md) — Uncertainty from D-L irreducibility
-- [Quantum Computing](docs/mathematics/derived/quantum-computing.md) — Structure traversing itself
+- [Cosmology](docs/mathematics/cosmology/cosmology-structure.md) — Dark matter as geometry (L/D = 20/4 = 5)
+- [Genesis Function](docs/mathematics/cosmology/genesis-function.md) — traverse(-B, B) = creation
+- [Lepton Masses](docs/mathematics/particle-physics/lepton-masses.md) — τ/μ = 2πe × 3 corrections
+- [Quark Masses](docs/mathematics/particle-physics/quark-masses.md) — All 6 quarks derived
+- [Boson Masses](docs/mathematics/particle-physics/boson-masses.md) — H, Z, W derived
+- [Quantum Mechanics](docs/mathematics/quantum/quantum-mechanics.md) — Uncertainty from D-L irreducibility
+- [Quantum Computing](docs/mathematics/quantum/quantum-computing.md) — Structure traversing itself
 
 ## Related Repositories
 

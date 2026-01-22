@@ -21,7 +21,7 @@ used_by:
 **Understanding the theory consistency analysis in 7 steps:**
 
 1. ~~**Critical issues (3)**~~ → **1 RESOLVED, 2 remain** — ~~B=56 is empirical fit not derived~~ **[RESOLVED: B=56 DERIVED from Spin(8) triality]**; circular α⁻¹→B→S→masses dependency; observer corrections inconsistent
-2. ~~**Moderate issues (5)**~~ → **2 RESOLVED, 3 remain** — ~~"+1" in α⁻¹ not derived~~ **[RESOLVED: DERIVED from self-reference]**; ~~D=matter mapping assumed~~ **[RESOLVED: 27% exact match]**; L∝1/a³ scaling assumed; generation multipliers inconsistent; Track A vs Track B diverge
+2. ~~**Moderate issues (5)**~~ → **3 RESOLVED, 2 remain** — ~~"+1" in α⁻¹ not derived~~ **[RESOLVED: DERIVED from self-reference]**; ~~D=matter mapping assumed~~ **[RESOLVED: 27% exact match]**; ~~Track A vs Track B diverge~~ **[RESOLVED: unified to exact ratio formulas]**; L∝1/a³ scaling assumed; generation multipliers inconsistent
 3. **Minor issues (2)** — Schrödinger title overpromises; Killing form "2" overgeneralized
 4. **BLD meta-analysis** — Applied Three Questions to theory docs: B-confusion (mixed statuses), L-cycle (circular deps), D-inconsistency (different functional forms)
 5. **Immediate fix** — Add status tags ([PROVEN], [DERIVED], [EMPIRICAL], [SPECULATIVE]) to all claims
@@ -47,7 +47,7 @@ used_by:
 This report documents inconsistencies and structural issues in the BLD theory documentation, identified by applying the BLD refactoring methodology to the theory itself. The analysis found:
 
 - ~~**3 Critical Issues**~~ → **2 remaining** (1 RESOLVED: B=56 now derived)
-- ~~**5 Moderate Issues**~~ → **3 remaining** (2 RESOLVED: +1 derived, dark matter validated)
+- ~~**5 Moderate Issues**~~ → **2 remaining** (3 RESOLVED: +1 derived, dark matter validated, Track A/B unified)
 - **2 Minor Issues**: Presentation/clarity
 
 ~~The primary finding is that the theory mixes **empirical fits** with **first-principles derivations** without clear demarcation.~~ **UPDATE**: Key issues resolved — B=56 is now DERIVED from Spin(8) triality, "+1" is DERIVED from self-reference, and dark matter mapping is VALIDATED (27% exact). Remaining issues are noted in table.
@@ -65,7 +65,7 @@ This report documents inconsistencies and structural issues in the BLD theory do
 | 5 | ~~MODERATE~~ | ~~D=matter, L=dark matter mapping assumed~~ | `cosmology.md:647-654` | ~~Core predictions rest on assumption~~ | **RESOLVED**: 27% exact match validates mapping. See [observer-correction.md](../mathematics/cosmology/observer-correction.md) |
 | 6 | MODERATE | L ∝ 1/a³ scaling assumed | `cosmology.md:658-665` | Evolution predictions depend on this | OPEN |
 | 7 | MODERATE | Generation multipliers inconsistent | `particle-masses.md:227,278` | n² × S vs S + n unexplained | OPEN |
-| 8 | MODERATE | Track A vs Track B divergence | `particle-masses.md:321-356` | Structural formulas accumulate error | OPEN |
+| 8 | ~~MODERATE~~ | ~~Track A vs Track B divergence~~ | `particle-masses.md:321-356` | ~~Structural formulas accumulate error~~ | **RESOLVED**: Unified to single approach using exact ratio formulas. See [lepton-masses.md](../mathematics/particle-physics/lepton-masses.md) |
 | 9 | MINOR | Schrödinger equation not derived | `quantum-mechanics.md` | Title overpromises | OPEN |
 | 10 | MINOR | Killing form "2" overgeneralized | Multiple files | Pattern-matching after the fact | OPEN |
 
@@ -229,15 +229,21 @@ The narratives in `cosmology.md:279-296` attempt to explain why these differ, bu
 
 ---
 
-### Issue 8: Track A vs Track B Divergence
+### ~~Issue 8: Track A vs Track B Divergence~~ **RESOLVED**
 
-**Location**: `particle-masses.md:321-356`
+**Location**: `particle-masses.md:321-356` (now updated)
 
-**Two Tracks**:
-- Track A: Anchor to observed m_e, cascade predictions → 0.6-1.1% error
-- Track B: Pure structural formulas → 2.5-4.3% error
+**Previous Problem**: Track A (phenomenological) and Track B (structural) gave different results:
+- Track A: 0.6-1.1% error
+- Track B: 2.5-4.3% error
 
-**Problem**: If BLD is a complete theory, Track B should work as well as Track A. The growing error suggests missing corrections or incomplete formulas.
+**Resolution**: The issue was that individual mass formulas used **bare structural values** (n²S = 208, S+n = 17) instead of the **exact ratio formulas** (206.77, 16.82). The K/X corrections that make ratios exact must also be applied to individual masses.
+
+**Fix Applied**: Unified to single approach where:
+- m_μ = m_e × (μ/e exact) = m_e × 206.7682826 → **0.002% error**
+- m_τ = m_μ × (τ/μ exact) = m_μ × 16.81716 → **0.006% error**
+
+All lepton masses are now exact (within measurement precision). See [lepton-masses.md](../mathematics/particle-physics/lepton-masses.md).
 
 ---
 

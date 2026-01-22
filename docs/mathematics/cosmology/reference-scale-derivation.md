@@ -105,7 +105,7 @@ THE SELF-REFERENTIAL CASCADE:
   │   B = 56    total modes (forward + backward)                            │
   │   B/2 = 28  forward modes (positive time)                               │
   │   K = 2     observation cost (Killing form)                             │
-  │   n = B/2 - K = 28 - 2 = 26 ✓                                           │
+  │   n_c = B/2 - K = 28 - 2 = 26 ✓  (cascade exponent, distinct from n=4)  │
   │                                                                         │
   │   The cascade uses forward modes minus observation overhead             │
   │                                                                         │
@@ -144,9 +144,9 @@ WHY THIS IS A DERIVATION (NOT A FIT):
   │  All factors are DERIVED from BLD structure:                            │
   │                                                                         │
   │    λ² = K²/(n×L) = 4/80 = 1/20      ← observation/geometry ratio        │
-  │    B = K(n + K) = 2(26+2) = 56      ← triality + Killing form           │
-  │    n = B/K - K = 56/2 - 2 = 26      ← from B                            │
-  │    √(5/14) = √((B/2-K)/B)           ← forward capacity fraction         │
+  │    B = K(n_c + K) = 2(26+2) = 56    ← triality + Killing form           │
+  │    n_c = B/K - K = 56/2 - 2 = 26    ← cascade exponent from B           │
+  │    √(5/14) = √(L/B) = √(20/56)      ← link/boundary capacity ratio      │
   │    79/78 = (n×L-1)/(n×L-K)          ← observer correction               │
   │                                                                         │
   │  ZERO free parameters. All from BLD.                                    │
@@ -246,7 +246,7 @@ At scale v:
 
 ### 3.1 Why 26 Steps?
 
-The cascade from v to M_P requires n = 26 steps:
+The cascade from v to M_P requires n_c = 26 steps:
 
 ```
 M_P = v × λ⁻²⁶
@@ -258,7 +258,7 @@ Why 26?
 B = 56         total boundary modes
 B/2 = 28       forward modes (for positive-time traversal)
 K = 2          observation cost (Killing form)
-n = B/2 - K    forward modes minus observation overhead
+n_c = B/2 - K  forward modes minus observation overhead
   = 28 - 2
   = 26 ✓
 ```
@@ -324,7 +324,7 @@ The equation is self-consistent.
 The fixed point is unique because:
 
 1. All structure constants (B, K, n, L, λ) are derived
-2. The cascade exponent n = B/2 - K is fixed
+2. The cascade exponent n_c = B/2 - K is fixed
 3. The observer corrections are fixed by the two-reference framework
 4. No free parameters remain
 
@@ -352,19 +352,19 @@ The cascade parameter satisfies:
 
 The cascade is tuned so that observation cost squared equals suppression times geometry.
 
-### 5.2 This Explains B = K(n + K)
+### 5.2 This Explains B = K(n_c + K)
 
 The boundary structure satisfies:
 
 ```
-B = K × (n + K) = 2 × (26 + 2) = 56
+B = K × (n_c + K) = 2 × (26 + 2) = 56
 ```
 
 **Interpretation**:
 
 ```
 Total modes = observation × (cascade + observation)
-B = K × n + K²
+B = K × n_c + K²
 56 = 52 + 4
 ```
 
@@ -376,8 +376,8 @@ The boundary encodes cascade structure (52 modes) plus observation overhead (4 m
 K = 2             (Killing form, bidirectional observation)
 n×L = 80          (geometric structure: 4D × 20 Riemann)
 λ² = K²/(n×L)     (cascade from observation/geometry)
-B = K(n + K)      (boundary from cascade + observation)
-n = B/K - K       (cascade exponent from boundary)
+B = K(n_c + K)    (boundary from cascade + observation)
+n_c = B/K - K     (cascade exponent from boundary)
 v = fixed point   (where observer capacity = modes - K)
 ```
 
@@ -391,7 +391,7 @@ v = fixed point   (where observer capacity = modes - K)
 
 Using derived values:
 - λ = 1/√20 = 0.2236
-- n = 26
+- n_c = 26 (cascade exponent)
 - λ⁻²⁶ = 20¹³ = 8.192 × 10¹⁶
 
 The ratio v/M_P:

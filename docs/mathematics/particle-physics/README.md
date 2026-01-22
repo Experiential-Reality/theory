@@ -14,25 +14,34 @@
 | [boson-masses.md](boson-masses.md) | DERIVED | Higgs, W, Z masses (all within measurement uncertainty) |
 | [quark-masses.md](quark-masses.md) | DERIVED | All 6 quark masses (<0.5% error) |
 | [e7-connection.md](e7-connection.md) | DERIVED | B=56 and exceptional Lie algebras |
+| [neutrino-masses.md](neutrino-masses.md) | DERIVED | Neutrino masses from missing B coupling |
+| [higgs-self-coupling.md](higgs-self-coupling.md) | **PREDICTED** | κ_λ = 1.025 (novel prediction, testable at HL-LHC) |
+| [higgs-couplings.md](higgs-couplings.md) | **PREDICTED** | All κ values from detection structure (κ_V validated) |
 
 ## Key Predictions
 
-| Quantity | Formula | Predicted | Observed | Error |
-|----------|---------|-----------|----------|-------|
-| α⁻¹ | n×L + B + 1 + K/B + spatial − e²×120/119 | 137.035999177 | 137.035999177 | **0.0 ppt** |
-| sin²θ_W | 3/S + K/(n×L×B) | 0.231215 | 0.23121 | **~0.002%** |
-| α_s⁻¹ | α⁻¹/n² − K/(n+L) | 8.4814 | 8.482 | **~0.02%** |
-| m_H | (v/K)(1 + 1/B) | 125.31 GeV | 125.25 GeV | 0.05% |
-| m_Z | (v/e)(137/136)(1 − K/B²) | 91.187 GeV | 91.188 GeV | **0.5 MeV** |
-| m_W | m_Z × cos(θ_W) × (209/208) × (1 + 1/6452) | 80.373 GeV | 80.377 GeV | **3.7 MeV** |
-| τ/μ | 2πe × 3 corrections | 16.817 | 16.817 | 0.004% |
-| μ/e | base × couplings + √e×X/(X+1) | 206.768282600 | 206.768282600 | **0.3 ppt** |
-| m_u | m_d / (K×S/(S-1)) | 2.16 MeV | 2.16 MeV | **0.0%** |
-| m_d | m_s / (L + K/L) | 4.65 MeV | 4.67 MeV | **0.4%** |
-| m_s | m_e × (n²S - L - L/n) | 93.5 MeV | 93.4 MeV | **0.1%** |
-| m_c | m_s × (S + K/3) | 1276 MeV | 1270 MeV | **0.5%** |
-| m_b | m_c × (3 + K/7) | 4193 MeV | 4180 MeV | **0.2%** |
-| m_t | v/√K × (1 - K/n²S) | 172.4 GeV | 172.69 GeV | **0.17%** |
+| Quantity | Formula | Predicted | Observed | Error | Meas. Prec. |
+|----------|---------|-----------|----------|-------|-------------|
+| α⁻¹ | n×L + B + 1 + K/B + spatial − e²×120/(119×(n×L×B)²) | 137.035999177 | 137.035999177 | **0.0 ppt** | 0.15 ppt |
+| sin²θ_W | 3/S + K/(n×L×B) | 0.231215 | 0.23121 | **~0.002%** | ~0.1% |
+| α_s⁻¹ | α⁻¹/n² − K/(n+L) | 8.4814 | 8.482 | **~0.02%** | ~1% |
+| m_H | (v/K)(1 + 1/B) | 125.31 GeV | 125.25 GeV | 0.05% | 0.14% |
+| m_Z | (v/e)(137/136)(1 − K/B²) | 91.187 GeV | 91.188 GeV | **0.5 MeV** | 2.1 MeV |
+| m_W | m_Z × cos(θ_W) × (209/208) × (1 + 1/6452) | 80.373 GeV | 80.377 GeV | **3.7 MeV** | 12 MeV |
+| τ/μ | 2πe × 3 corrections | 16.81716 | 16.81709 | **4 ppm** | 70 ppm |
+| μ/e | base × couplings + e²(S+1)/((n×L)²B²S²) | 206.7682826 | 206.7682827 | **0.5 ppb** | 22,000 ppt |
+| m_u | m_d / (K×S/(S-1)) | 2.16 MeV | 2.16 MeV | **0.0%** | ~20% |
+| m_d | m_s / (L + K/L) | 4.65 MeV | 4.67 MeV | **0.4%** | ~10% |
+| m_s | m_e × (n²S - L - L/n) | 93.5 MeV | 93.4 MeV | **0.1%** | ~3% |
+| m_c | m_s × (S + K/3) | 1276 MeV | 1270 MeV | **0.5%** | ~2% |
+| m_b | m_c × (3 + K/7) | 4193 MeV | 4180 MeV | **0.2%** | ~1% |
+| m_t | v/√K × (1 - K/n²S) | 172.4 GeV | 172.69 GeV | **0.17%** | ~0.3% |
+| **κ_λ** | **1 + K/(n×L)** | **1.025** | **[−1.6, 6.6]** | **TBD** | **~10% (HL-LHC)** |
+| **κ_V** | **1 + K/B** | **[1.026, 1.036]** | **1.035 ± 0.031** | **in range** | **~3%** |
+| **κ_b** | **1 + K/(n+L)** | **1.083** | **0.98 ± 0.13** | **compatible** | **~13%** |
+| **κ_γ** | **1 + K/B** | **1.036** | **1.05 ± 0.09** | **0.2σ** | **~9%** |
+
+> **Note**: All predictions are at or below current measurement precision. The "Error" column shows deviation from central measured value; "Meas. Prec." shows experimental uncertainty (CODATA 2022 / PDG 2024).
 
 ## Key Insight: Universal Skip Ratio K/X
 

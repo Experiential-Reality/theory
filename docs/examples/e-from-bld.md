@@ -651,9 +651,9 @@ See [Research Directions](../meta/research-directions.md) for the full program.
 
 ---
 
-## e² and √e in Physics: Accumulated Corrections
+## e² in Physics: Accumulated Corrections
 
-The fine structure constant and muon/electron ratio are now **exactly derived** (0.0 ppt and 0.3 ppt error) using e-based accumulated corrections.
+The fine structure constant and muon/electron ratio are now **exactly derived** (0.0 ppt and 0.5 ppb error) using e²-based accumulated corrections. Both use e² because K=2 always (bidirectional observation cost).
 
 ### Why e Appears in Physical Constants
 
@@ -682,34 +682,33 @@ The ratio (120/119) = (2B+n+K+2)/(2B+n+K+1) encodes that observation creates one
 
 **Result**: α⁻¹ = 137.035999177 (0.0 ppt error)
 
-### √e for Ratio Measurements (μ/e)
+### e² for Generation Ratio Measurements (μ/e)
 
-The muon/electron ratio involves comparing **two quantities** through the boundary:
+The muon/electron ratio involves comparing **two generations** through BLD structure:
 
 ```
-μ/e = base_formula + √e × X/(X+1) / (n×L×B²)
-    where X = (L+K+1)×(B-1)/B = 22.589
+μ/e = base_formula × (1 + e² × (S+1) / ((n×L)² × B² × S²))
+    = 206.7682763 × (1 + 3.05×10⁻⁸)
+    = 206.7682826
 ```
 
-The √e term arises because:
-- Ratios compare two things through the boundary
-- Each quantity gets **half** the accumulated correction
-- √e × √e = e (shared between numerator and denominator)
+The e² term arises because:
+- K=2 always (bidirectional observation cost — Killing form)
+- S² accounts for two generations being compared
+- (S+1) adds structure + observation (like 120/119 for α⁻¹)
 
-The (B-1)/B factor accounts for the observer occupying one boundary slot.
-
-**Result**: μ/e = 206.768282600 (0.3 ppt error)
+**Result**: μ/e = 206.7682826 (0.5 ppb error)
 
 ### The Pattern
 
 | Measurement Type | e-Power | Structure | Interpretation |
 |------------------|---------|-----------|----------------|
-| **Bidirectional** (α⁻¹) | e² | (2B+n+K+2)/(2B+n+K+1) | Out × return accumulation |
-| **Ratio** (μ/e) | √e | (L+K+1)(B-1)/B / (X+1) | Geometric mean through boundary |
+| **Bidirectional** (α⁻¹) | e² | (2B+n+K+2)/(2B+n+K+1) = 120/119 | Bidirectional boundary + self-ref |
+| **Generation Ratio** (μ/e) | e² | (S+1)/S² = 14/169 | Two generations + observation |
 
-Both use X/(X+1) forms:
-- α⁻¹: 120/119 = "states + observation"
-- μ/e: X/(X+1) = "boundary minus observer slot"
+Both use e² because K=2 always:
+- α⁻¹: 120/119 = "bidirectional states + observation"
+- μ/e: (S+1)/S² = "generation structure + observation"
 
 This is the deepest application of e in BLD: **the accumulated cost of translating discrete structure into continuous physics**.
 

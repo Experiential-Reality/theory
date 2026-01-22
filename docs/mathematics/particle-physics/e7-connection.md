@@ -20,11 +20,11 @@ depends_on:
 6. **56 = dim(E₇ fundamental)** — The exceptional Lie algebra connection
 7. **α⁻¹ = 80 + 56 + 1 = 137** — Now a prediction, not input
 
-| Before | After |
-|--------|-------|
-| B = 56 [EMPIRICAL] | B = 56 [**DERIVED**] |
-| S = 13 [EMPIRICAL] | S = 13 [**DERIVED**] |
-| α⁻¹ = 137 [INPUT] | α⁻¹ = 137 [**PREDICTION**] |
+| Constant | Status |
+|----------|--------|
+| B = 56 | **DERIVED** |
+| S = 13 | **DERIVED** |
+| α⁻¹ = 137 | **PREDICTION** |
 
 **Now DERIVED** — See [E7 Derivation](e7-derivation.md) for the complete proof.
 
@@ -219,12 +219,12 @@ B = 2 × 28 = 56 [DERIVED]
 
 ### What This Achieves
 
-| Before | After |
-|--------|-------|
-| B = 56 [EMPIRICAL] | B = 56 [**DERIVED**] |
-| S = 13 [EMPIRICAL] | S = 13 [**DERIVED**] |
-| Lepton masses [fits] | Lepton masses [**PREDICTIONS**] |
-| α⁻¹ = 137 [INPUT] | α⁻¹ = 137 [**PREDICTION**] |
+| Constant | Status |
+|----------|--------|
+| B = 56 | **DERIVED** |
+| S = 13 | **DERIVED** |
+| Lepton masses | **PREDICTIONS** |
+| α⁻¹ = 137 | **PREDICTION** |
 
 ---
 

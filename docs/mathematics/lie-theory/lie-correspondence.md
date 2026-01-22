@@ -37,13 +37,13 @@ used_by:
 
 ## The Mapping
 
-| BLD | Lie Theory | Verified |
+| BLD | [Lie Theory](https://ncatlab.org/nlab/show/Lie+algebra) | Verified |
 |-----|-----------|----------|
 | **D** (Dimension) | Lie algebra generator | ✓ |
-| **L** (Link) | Structure constants fᵢⱼᵏ | ✓ Exact |
+| **L** (Link) | [Structure constants](https://en.wikipedia.org/wiki/Structure_constants) fᵢⱼᵏ | ✓ Exact |
 | **B** (Boundary) | Group topology | ✓ Theorem |
 | **Extent** | Representation dimension | ✓ |
-| **Alignment cost** | Related to Killing form | ✓ |
+| **Alignment cost** | Related to [Killing form](https://ncatlab.org/nlab/show/Killing+form) | ✓ |
 
 ---
 
@@ -125,7 +125,7 @@ This is why spin is quantized: SU(2) is compact.
 
 ## Alignment Cost and the Killing Form
 
-The **Killing form** on a Lie algebra is:
+The **[Killing form](https://ncatlab.org/nlab/show/Killing+form)** on a Lie algebra is:
 
 ```
 B(X, Y) = tr(ad_X ∘ ad_Y) = fᵢₖˡ fⱼₗᵏ
@@ -294,7 +294,7 @@ Because **Lie theory works for all of these**:
 
 ### The reason BLD works everywhere is because Lie theory works everywhere
 
-Noether's theorem: Every continuous symmetry → conservation law.
+[Noether's theorem](https://en.wikipedia.org/wiki/Noether%27s_theorem): Every continuous symmetry → conservation law.
 
 BLD is the structural face of this deep mathematical truth.
 

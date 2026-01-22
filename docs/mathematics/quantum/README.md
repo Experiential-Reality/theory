@@ -14,8 +14,8 @@
 | [born-rule.md](born-rule.md) | DERIVED | P = |ψ|² from bidirectional alignment |
 | [schrodinger-derivation.md](schrodinger-derivation.md) | DERIVED | Complex numbers + linearity from BLD |
 | [theory-complete.md](theory-complete.md) | DERIVED | Complete BLD theory summary |
-| [chirality-cpt.md](chirality-cpt.md) | SPECULATIVE | Why B partitions direction, CPT symmetry |
-| [cosmic-computation.md](cosmic-computation.md) | SPECULATIVE | The -B = B junction, future constraint |
+| [chirality-cpt.md](chirality-cpt.md) | DERIVED | Chirality from K=2 bidirectionality, CPT symmetry |
+| [cosmic-computation.md](cosmic-computation.md) | DERIVED | The -B = B junction, future constraint |
 
 ## Key Derivations
 

@@ -158,12 +158,61 @@ L_cost(EM) = +K/B + spatial − e²×(2B+n+K+2)/((2B+n+K+1)×(n×L)²×B²)
 
 **Error**: 0.0 ppt
 
-### 4.4 Why This Form
+### 4.4 Why K/B (Experimental Basis)
 
-The measurement structure for α:
-- **K/B**: You measure EM through boundaries (photon = boundary crossing)
-- **+sign**: Photon escapes (incomplete traversal — you see the effect, not the photon itself in atomic measurements)
-- **e² correction**: Continuous limit effect (e = lim(1+1/n)^n)
+**The key question**: Why does α measurement traverse B (boundary) specifically?
+
+#### How α Is Measured
+
+| Method | Observable | What's Exchanged |
+|--------|-----------|-----------------|
+| **Electron g-2** | Anomalous magnetic moment | Virtual photon loops |
+| **Lamb shift** | 2S-2P hydrogen splitting | Vacuum polarization |
+| **Quantum Hall** | Conductance quantization | Edge state photons |
+| **Photon recoil** | Atom recoil momentum | Real photon absorption |
+
+#### Why Photon Exchange Involves B
+
+**Physical picture**: The photon is a gauge boson — it mediates transitions between states.
+
+```
+BEFORE: Electron in state |A⟩
+        ↓
+   (photon exchanged)  ← This is a BOUNDARY CROSSING
+        ↓
+AFTER:  Electron in state |B⟩
+```
+
+- States |A⟩ and |B⟩ are **distinguished** (different configurations)
+- Distinction IS the boundary operation (B)
+- The photon crosses FROM one partition TO another
+- Boundary topology B = 56 determines how many distinct crossings exist
+
+**Why B and not L or n:**
+
+| Structure | What It Encodes | Why NOT the EM correction |
+|-----------|-----------------|---------------------------|
+| **n** | Spacetime dimensions | Already in base (n×L) |
+| **L** | Continuous connections | Photon creates/destroys — not continuous |
+| **B** | Discrete partitions | **Photon crosses partitions** ✓ |
+
+The photon **creates a boundary** between configurations. That's its job as a gauge boson. So the measurement correction IS K/B — bidirectional observation (K) over boundary crossings (B).
+
+#### Why +K/B (Not −K/B)
+
+The sign indicates traversal completeness:
+- **+**: Incomplete traversal (something escapes observation)
+- **−**: Complete traversal (everything observed)
+
+For most α measurements (atomic physics):
+- The photon itself isn't directly observed
+- We see its **effect** on matter (energy levels, magnetic moments)
+- Traversal is incomplete → **+K/B**
+
+**Compare**:
+- EM (α): +K/B — photon effect observed, not photon itself
+- Strong (α_s): −K/(n+L) — jets fully observed, nothing escapes
+- Weak (sin²θ_W): +K/(n×L×B) — neutrinos escape detection
 
 ---
 

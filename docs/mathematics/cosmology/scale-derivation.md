@@ -46,7 +46,7 @@ v = M_P × λ²⁶ × √(14/5) × (78/79) × (1 - 6/(n×L×B²) + ...)
 Where:
 - λ = 1/√20 — DERIVED (S₃ cascade, Catalan C₃=5)
 - B = 56 — DERIVED (triality + Killing form)
-- n = B/2 - 2 = 26 — DERIVED (from B)
+- n_c = B/2 - K = 26 — DERIVED cascade exponent (from B, distinct from n=4 spacetime)
 - n×L = 80 — DERIVED (4 dimensions × 20 Riemann components)
 
 **v/M_P is a derived dimensionless ratio.**
@@ -142,7 +142,7 @@ This suggests v is where relative uncertainty = 1/√56 ≈ 13%.
 
 ### Derivation Attempt 3: Cascade Exponent from Observer Count
 
-**Observation**: The exponent n = 26 = B/2 - 2.
+**Observation**: The cascade exponent n_c = 26 = B/2 - K.
 
 Why B/2?
 - B = 56 total boundary modes
@@ -189,7 +189,7 @@ M_P = v × λ⁻²⁶ × corrections
 ```
 BLD structure
     ↓
-B = 56, λ = 1/√20, n = 26
+B = 56, λ = 1/√20, n_c = 26
     ↓
 v = scale where B observers can resolve B modes
     ↓
@@ -222,26 +222,26 @@ Where:
 (cascade factor)² × (geometry) = (observation cost)²
 ```
 
-### B = K(n + K)
+### B = K(n_c + K)
 
 **The boundary structure relates to cascade exponent via Killing form:**
 
 ```
-B = K × (n + K)
+B = K × (n_c + K)
   = 2 × (26 + 2)
   = 2 × 28
   = 56 ✓
 ```
 
-Solving for n:
+Solving for n_c:
 ```
-n = B/K - K = B/2 - 2 = 56/2 - 2 = 26 ✓
+n_c = B/K - K = B/2 - 2 = 56/2 - 2 = 26 ✓
 ```
 
-**Interpretation**: The cascade exponent n is:
+**Interpretation**: The cascade exponent n_c is:
 - Total boundary modes divided by observation cost: B/K = 28
 - Minus the observation cost itself: -K = -2
-- Result: n = 26
+- Result: n_c = 26
 
 ### The Complete Structure
 
@@ -249,8 +249,8 @@ n = B/K - K = B/2 - 2 = 56/2 - 2 = 26 ✓
 K = 2            (bidirectional observation, Killing form)
 n×L = 80         (4D × 20 Riemann = geometric structure)
 λ² = K²/(n×L)    (cascade from observation/geometry ratio)
-B = K(n + K)     (boundary from cascade + observation)
-n = B/K - K      (cascade exponent from boundary)
+B = K(n_c + K)   (boundary from cascade + observation)
+n_c = B/K - K    (cascade exponent from boundary)
 ```
 
 All constants are **mutually determined** by BLD structure!
@@ -363,13 +363,13 @@ BLD gives dimensionless ratios. To get GeV, we need one scale.
 
 ### The Observer-Cascade Connection
 
-**Key insight**: The cascade exponent n = B/2 - K has a physical interpretation:
+**Key insight**: The cascade exponent n_c = B/2 - K has a physical interpretation:
 
 ```
 B = 56 total boundary modes (forward + backward)
 B/2 = 28 forward modes (for positive time traversal)
 K = 2 observation cost (bidirectional link)
-n = B/2 - K = 26 = available cascade steps
+n_c = B/2 - K = 26 = available cascade steps
 ```
 
 **Interpretation**:
@@ -399,16 +399,16 @@ What's the cost per step?
 - If cost = λ² = 1/20 per step: total = 26/20 = 1.3
 - If cost = 1 per step: total = 26
 
-The relationship B = K(n + K) = 2(26 + 2) = 56 suggests:
+The relationship B = K(n_c + K) = 2(26 + 2) = 56 suggests:
 ```
-B = K × n + K² = observer_cost × steps + observation²
+B = K × n_c + K² = observer_cost × steps + observation²
 56 = 2 × 26 + 4
 ```
 
 So the boundary structure = (observation cost) × (cascade steps) + (observation squared)
 
 **Physical meaning**: The boundary modes B encode:
-- The cascade structure (K × n = 52 modes)
+- The cascade structure (K × n_c = 52 modes)
 - Plus the observation overhead (K² = 4 modes)
 - Total: 56 modes
 
@@ -443,7 +443,7 @@ The NUMBER 246 is a unit convention. The PHYSICS is in the ratios.
 
 **From BLD, we derive:**
 1. λ² = K²/(n×L) = 1/20 ✓
-2. B = K(n + K) = 56 ✓
+2. B = K(n_c + K) = 56 ✓
 3. n = B/K - K = 26 ✓
 4. v/M_P = λ²⁶ × √(14/5) × (78/79) × ... ✓
 5. m_H/v = (1/2)(1 + 1/B) ✓

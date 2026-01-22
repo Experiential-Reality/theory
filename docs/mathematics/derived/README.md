@@ -12,6 +12,8 @@
 | [discovery-algorithm.md](discovery-algorithm.md) | FOUNDATIONAL | Formal algorithm for finding BLD in any system |
 | [performance-theorem.md](performance-theorem.md) | VALIDATED | Cost = alignment penalty, hardware comparison |
 | [thermodynamics.md](thermodynamics.md) | DERIVED | Second law as geometric theorem on manifold |
+| [special-relativity.md](special-relativity.md) | DERIVED | c, gamma, E=mc² from K/X |
+| [general-relativity.md](general-relativity.md) | DERIVED | Gravity as stack depth, r_s = 2GM/c² |
 
 ## Key Results
 

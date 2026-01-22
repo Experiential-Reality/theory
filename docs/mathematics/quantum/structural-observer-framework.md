@@ -24,12 +24,12 @@ used_by:
 
 **Structural reality in 7 steps:**
 
-1. **Structural constants exist**: λ = 1/√20, B = 56, n = 26 are mathematically unique
+1. **Structural constants exist**: λ = 1/√20, B = 56, n_c = 26 are mathematically unique
 2. **Observers are unavoidable**: BLD irreducibility → observer must participate in measurement
 3. **Observer corrections have structure**: All involve K=2 (Killing form) and/or B
 4. **v is the reference**: One scale must be uncorrected; v is distinguished by symmetry breaking
 5. **Corrections transform structural→observed**: Observed = Structural × (observer factor)
-6. **Numerical validation**: ℏ (0.00003%), m_H (0.05%), α⁻¹ (**0.0 ppt**), μ/e (**0.3 ppt**), λ_Cabibbo (0.01%)
+6. **Numerical validation**: ℏ (0.00003%), m_H (0.05%), α⁻¹ (**0.0 ppt**), μ/e (**0.5 ppb**), λ_Cabibbo (0.01%)
 7. **Physical interpretation**: We measure the structure + the cost of measuring it
 8. **Key insight**: Observer corrections ARE traversal costs — the "+1" IS the traverser, the "±" indicates direction
 
@@ -218,7 +218,7 @@ This is why "+1" appears in α⁻¹ — the observer's irreducible contribution.
 | M_P | v × λ⁻²⁶ × √(5/14) | ×(79/78)×(1+6/(n×L×B²)) | 1.2209 × 10¹⁹ GeV | 1.2209 × 10¹⁹ GeV | **0.002%** |
 | ℏ | M_P² × G/c | (via M_P) | 1.0545 × 10⁻³⁴ J·s | 1.0546 × 10⁻³⁴ J·s | **0.00003%** |
 | m_H | v/2 | ×(1 + 1/B) | 125.31 GeV | 125.25 GeV | **0.05%** |
-| α⁻¹ | n×L + B + 1 | +K/B + spatial − e²×120/119 | 137.035999177 | 137.035999177 | **0.0 ppt** |
+| α⁻¹ | n×L + B + 1 | +K/B + spatial − e²×120/(119×(n×L×B)²) | 137.035999177 | 137.035999177 | **0.0 ppt** |
 | λ_Cabibbo | 1/√20 | ×(1 + 1/v) | 0.22452 | 0.22453 | **0.01%** |
 
 ### 6.2 Cross-Validation

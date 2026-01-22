@@ -158,7 +158,7 @@ BLD also requires **measurable extent** (D has magnitude):
 
 ### Statement (1898)
 
-**Theorem (Hurwitz)**: The only normed division algebras over ℝ are:
+**Theorem ([Hurwitz](https://en.wikipedia.org/wiki/Hurwitz%27s_theorem_(composition_algebras)))**: The only normed division algebras over ℝ are:
 
 | Algebra | Dimension | Properties |
 |---------|-----------|------------|
@@ -169,7 +169,7 @@ BLD also requires **measurable extent** (D has magnitude):
 
 **There are no others.** This is a theorem, not a conjecture.
 
-### The Cayley-Dickson Tower
+### The [Cayley-Dickson](https://en.wikipedia.org/wiki/Cayley%E2%80%93Dickson_construction) Tower
 
 Each step doubles dimension and loses a property:
 
@@ -246,7 +246,7 @@ If matter had only U(1) electromagnetic symmetry (no color):
 
 ### The G₂/SU(3) Relationship
 
-**Mathematical fact** (Cartan 1914): G₂ = Aut(𝕆), and SU(3) is the stabilizer of a unit imaginary octonion.
+**Mathematical fact** ([Cartan 1914](https://en.wikipedia.org/wiki/G2_(mathematics))): [G₂](https://ncatlab.org/nlab/show/G2) = Aut(𝕆), and SU(3) is the stabilizer of a unit imaginary octonion.
 
 The coset space G₂/SU(3) = S⁶ (6-sphere of possible reference directions).
 
@@ -303,7 +303,7 @@ STEP 5: SU(3) is the RESIDUAL symmetry after observation
 
 ### Division Algebras and Spacetime
 
-**Mathematical fact** (Baez): Division algebras determine spacetime dimension via sl(2,A) isomorphisms:
+**Mathematical fact** ([Baez](https://arxiv.org/abs/math/0105155)): Division algebras determine spacetime dimension via sl(2,A) isomorphisms:
 
 | Division Algebra | sl(2,A) isomorphism | Spacetime Signature |
 |------------------|---------------------|---------------------|
@@ -375,9 +375,9 @@ STEP 5: Simultaneously (same symmetry breaking):
 
 ## Part 6: Deriving 3 Generations from Triality
 
-### Triality is Unique to Spin(8)
+### [Triality](https://en.wikipedia.org/wiki/Triality) is Unique to Spin(8)
 
-**Mathematical fact**: Among all simple Lie groups, only Spin(8) has the triality automorphism.
+**Mathematical fact**: Among all simple Lie groups, only [Spin(8)](https://en.wikipedia.org/wiki/Spin_group#Spin(8)) has the triality automorphism.
 
 The Dynkin diagram D₄ (for Spin(8)) has a unique three-fold symmetry. This gives rise to the outer automorphism group S₃, which permutes three 8-dimensional representations:
 - 8_v (vector)
@@ -488,7 +488,7 @@ BLD observation requires reference point
 B = 2 × dim(so(8)) = 2 × 28 = 56  [From triality + Killing form]
     │
     ▼
-α⁻¹ = n×L + B + 1 + K/B + spatial − e²×120/119 = 137.035999177  [0.0 ppt]
+α⁻¹ = n×L + B + 1 + K/B + spatial − e²×120/(119×(n×L×B)²) = 137.035999177  [0.0 ppt]
 ```
 
 ### What the Derivation Uses
@@ -556,7 +556,7 @@ Quaternions fail criterion 2. Sedenions fail criterion 1. Only octonions satisfy
 | SU(3) color | OBSERVED | **DERIVED** | G₂ stabilizer of reference point |
 | 3 generations | DERIVED (weak) | **DERIVED** (strong) | Spin(8) triality uniqueness |
 | B = 56 | DERIVED | **DERIVED** | 2 × dim(so(8)) = 2 × 28 |
-| α⁻¹ = 137.035999177 | DERIVED | **DERIVED** | n×L + B + 1 + K/B + spatial − e²×120/119 (0.0 ppt) |
+| α⁻¹ = 137.035999177 | DERIVED | **DERIVED** | n×L + B + 1 + K/B + spatial − e²×120/(119×(n×L×B)²) (0.0 ppt) |
 
 **The complete Standard Model structure in 4D spacetime is derived from BLD first principles.**
 
@@ -564,11 +564,18 @@ Quaternions fail criterion 2. Sedenions fail criterion 1. Only octonions satisfy
 
 ## References
 
+### External Sources
+- [Hurwitz's theorem (composition algebras)](https://en.wikipedia.org/wiki/Hurwitz%27s_theorem_(composition_algebras)) — Only 4 normed division algebras exist
+- [Cayley-Dickson construction](https://en.wikipedia.org/wiki/Cayley%E2%80%93Dickson_construction) — How to build each algebra
+- [Baez, J.C. "The Octonions" (arXiv:math/0105155)](https://arxiv.org/abs/math/0105155) — Comprehensive treatment
+- [G₂ (mathematics)](https://en.wikipedia.org/wiki/G2_(mathematics)) — G₂ as automorphism group of octonions
+- [G₂ - nLab](https://ncatlab.org/nlab/show/G2) — Category-theoretic perspective
+- [Triality](https://en.wikipedia.org/wiki/Triality) — Unique to Spin(8)
+- [Spin(8)](https://en.wikipedia.org/wiki/Spin_group#Spin(8)) — The spin group with triality
+- [John Baez - Week 104](https://math.ucr.edu/home/baez/week104.html) — Division algebras and Lorentz groups
+
+### Internal BLD References
 - [Killing Form](../lie-theory/killing-form.md) — The L=2 bidirectional observation
 - [E7 Derivation](../particle-physics/e7-derivation.md) — B=56 derivation details
 - [Irreducibility Proof](irreducibility-proof.md) — Why B, L, D are minimal
 - [Lie Correspondence](../lie-theory/lie-correspondence.md) — BLD = Lie theory
-- [Hurwitz Theorem - Wikipedia](https://en.wikipedia.org/wiki/Hurwitz%27s_theorem_(composition_algebras))
-- [Triality - Wikipedia](https://en.wikipedia.org/wiki/Triality)
-- [G₂ - nLab](https://ncatlab.org/nlab/show/G2)
-- [John Baez - Week 104](https://math.ucr.edu/home/baez/week104.html) — Division algebras and Lorentz groups

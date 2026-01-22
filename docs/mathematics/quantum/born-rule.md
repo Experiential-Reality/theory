@@ -603,6 +603,8 @@ None of these have been observed. The K/X framework successfully predicts all me
 
 ### External References
 
-- Gleason, A. M. (1957). "Measures on the Closed Subspaces of a Hilbert Space"
-- Zurek, W. H. (2005). "Probabilities from Entanglement, Born's Rule from Envariance"
-- Saunders, S. et al. (2010). "Many Worlds? Everett, Quantum Theory, and Reality"
+- [Born rule (Wikipedia)](https://en.wikipedia.org/wiki/Born_rule) — The probability postulate P = |ψ|²
+- [Gleason's theorem (Wikipedia)](https://en.wikipedia.org/wiki/Gleason%27s_theorem) — Probability measures on Hilbert spaces
+- [Gleason, A. M. (1957). "Measures on the Closed Subspaces of a Hilbert Space"](https://doi.org/10.1512/iumj.1957.6.56050) — Original theorem paper
+- [Zurek, W. H. (2005). "Probabilities from Entanglement, Born's Rule from Envariance" (arXiv:quant-ph/0405161)](https://arxiv.org/abs/quant-ph/0405161) — Derivation from envariance
+- [Quantum measurement problem (Stanford Encyclopedia)](https://plato.stanford.edu/entries/qt-measurement/) — Philosophical overview

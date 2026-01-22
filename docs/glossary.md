@@ -81,6 +81,22 @@ used_by:
 
 ---
 
+## Notation Convention
+
+| Symbol | Meaning | Value | Context |
+|--------|---------|-------|---------|
+| **n** | Spacetime dimensions (D primitive) | 4 | Core BLD; appears in n×L = 80 |
+| **n_c** | Cascade exponent | 26 = B/2 - K | Scale derivations; M_P = v × λ⁻ⁿᶜ |
+| **λ** | BLD cascade parameter | 1/√20 | Scale hierarchy; S₃ cascade |
+| **λ_C** | Cabibbo mixing angle | ≈0.2245 | Quark mixing; CKM matrix |
+
+**Why the distinction matters**: The cascade exponent n_c = 26 is derived from the boundary B (as B/2 - K = 28 - 2), while the spacetime dimension n = 4 is the D primitive. Both appear in formulas, so subscripts prevent confusion:
+- **n×L = 80** uses n = 4 (spacetime)
+- **M_P = v × λ⁻²⁶** uses n_c = 26 (cascade)
+- **B = K(n_c + K) = 56** uses n_c = 26 (cascade)
+
+---
+
 > **Status**: Foundational
 
 Single source of truth for core BLD concepts.

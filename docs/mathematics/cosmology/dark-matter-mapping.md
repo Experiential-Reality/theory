@@ -73,9 +73,9 @@ Then:
 
 | Component | Formula | **Predicted** | **Observed** | Error |
 |-----------|---------|---------------|--------------|-------|
-| Ordinary matter | x | 5% | 5% | **0%** |
-| Dark matter | 5x + 8x² | 25% + 2% = **27%** | 27% | **0%** |
-| Dark energy | 1-6x-8x² | 70% - 2% = **68%** | 68% | **0%** |
+| Ordinary matter | x | 5% | [5%](https://arxiv.org/abs/1807.06209) | **0%** |
+| Dark matter | 5x + 8x² | 25% + 2% = **27%** | [27%](https://arxiv.org/abs/1807.06209) | **0%** |
+| Dark energy | 1-6x-8x² | 70% - 2% = **68%** | [68%](https://arxiv.org/abs/1807.06209) | **0%** |
 
 ### The Observer Correction
 
@@ -278,6 +278,12 @@ This occurs about **17 billion years from now** (universe age ~30 Gyr).
 
 ## References
 
+### External Sources (Cosmological Data)
+- [Planck 2018 Cosmological Parameters (arXiv:1807.06209)](https://arxiv.org/abs/1807.06209) — Ω_b = 0.049, Ω_cdm = 0.265, Ω_Λ = 0.685
+- [Planck Legacy Archive](https://pla.esac.esa.int/) — Full Planck collaboration data products
+- [Dark matter (Wikipedia)](https://en.wikipedia.org/wiki/Dark_matter) — Overview and detection methods
+
+### Internal BLD References
 - [Cosmology Structure](cosmology-structure.md) — The L/D=5 derivation
 - [Observer Corrections](observer-correction.md) — The 2% correction
 - [E₇ Connection](../particle-physics/e7-connection.md) — B=56 speculation

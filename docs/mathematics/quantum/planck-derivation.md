@@ -26,7 +26,7 @@ used_by:
 
 1. **λ = 1/√20** — DERIVED from S₃ cascade (Catalan number C₃ = 5)
 2. **B = 56** — DERIVED from triality + Killing form
-3. **n = B/2 - 2 = 26** — DERIVED from B (dim(Spin(8)) - Killing form)
+3. **n_c = B/2 - K = 26** — Cascade exponent, DERIVED from B (distinct from n=4 spacetime)
 4. **Base formula**: M_P = v × λ⁻²⁶ × √(5/14)
 5. **First-order observer**: ×(79/78) — observer measuring M_P from v
 6. **Second-order observer**: ×(1 + K×3/(n×L×B²)) — meta-observer deriving the formula
@@ -64,7 +64,7 @@ Where:
 │      D        │           │      L        │           │      B        │
 │  (dimension)  │           │    (link)     │           │  (boundary)   │
 │               │           │               │           │               │
-│   n = 26      │           │  λ = 1/√20    │           │   B = 56      │
+│   n_c = 26    │           │  λ = 1/√20    │           │   B = 56      │
 │ cascade steps │           │ scale param   │           │  topology     │
 │ = B/2 - K     │           │ = 1/(2√C₃×2)  │           │ = K×Spin(8)   │
 └───────────────┘           └───────────────┘           └───────────────┘
@@ -80,7 +80,7 @@ Where:
 │         M_P = v × λ⁻²⁶ × √(5/14)                                          │
 │                   │         │                                             │
 │                   │         └── √(20/B) = √(λ⁻²/B)                        │
-│                   └──────────── n = B/2 - K = 28 - 2 = 26                 │
+│                   └──────────── n_c = B/2 - K = 28 - 2 = 26               │
 └───────────────────────────────────────────────────────────────────────────┘
                                       │
                                       ▼
@@ -211,8 +211,8 @@ The Killing form K = 2 appears in BOTH observer corrections:
 
 | Quantity | Predicted | Observed | Error |
 |----------|-----------|----------|-------|
-| M_P | 1.220890 × 10¹⁹ GeV | 1.220910 × 10¹⁹ GeV | **0.002%** |
-| ℏ | 1.0545717 × 10⁻³⁴ J·s | 1.0545718 × 10⁻³⁴ J·s | **0.00003%** |
+| M_P | 1.220890 × 10¹⁹ GeV | [1.220910 × 10¹⁹ GeV](https://physics.nist.gov/cgi-bin/cuu/Value?plkmc2gev) | **0.002%** |
+| ℏ | 1.0545717 × 10⁻³⁴ J·s | [1.0545718 × 10⁻³⁴ J·s](https://physics.nist.gov/cgi-bin/cuu/Value?hbar) | **0.00003%** |
 
 Since ℏ = M_P² × G/c with G, c as exact empirical inputs, the ℏ prediction depends only on M_P. The 0.00003% error is achieved at full precision; rounding obscures this accuracy.
 
@@ -220,7 +220,7 @@ Since ℏ = M_P² × G/c with G, c as exact empirical inputs, the ℏ prediction
 
 | Formula | Observer Term | Form | Error |
 |---------|--------------|------|-------|
-| α⁻¹ = n×L + B + 1 + K/B + spatial − e²×120/119 | +1 + corrections | Additive | **0.0 ppt** |
+| α⁻¹ = n×L + B + 1 + K/B + spatial − e²×120/(119×(n×L×B)²) | +1 + corrections | Additive | **0.0 ppt** |
 | m_H = (v/2) × **(1 + 1/B)** | ×(1 + 1/56) | Multiplicative | 0.05% |
 | M_P = v × λ⁻²⁶ × √(5/14) × **(79/78)** | ×(1 + 1/78) | Multiplicative | 0.002% |
 
@@ -321,20 +321,20 @@ The λ⁻⁸ relationship is approximate, not exact. The actual n needs refineme
 ```
 M_P/v = (1.22 × 10¹⁹) / (2.46 × 10²) = 4.96 × 10¹⁶
 
-If M_P = v × λ⁻ⁿ:
-  4.96 × 10¹⁶ = λ⁻ⁿ
-  log(4.96 × 10¹⁶) = -n × log(λ)
-  16.7 = -n × (-0.65)
-  n ≈ 25.7
+If M_P = v × λ^(-n_c):
+  4.96 × 10¹⁶ = λ^(-n_c)
+  log(4.96 × 10¹⁶) = -n_c × log(λ)
+  16.7 = -n_c × (-0.65)
+  n_c ≈ 25.7
 ```
 
-So M_P ≈ v × λ⁻²⁵·⁷ — not an integer, but close to 26.
+So M_P ≈ v × λ⁻²⁵·⁷ — not an integer, but close to n_c = 26.
 
 ---
 
 ## The Derivation Hypothesis
 
-### If M_P = v × λ⁻ⁿ with n derived from BLD:
+### If M_P = v × λ^(-n_c) with n_c derived from BLD:
 
 From M_P = √(ℏc/G):
 ```
@@ -342,10 +342,10 @@ M_P² = ℏc/G
 ℏ = M_P² × G/c
 ```
 
-If M_P = v × λ⁻ⁿ:
+If M_P = v × λ^(-n_c):
 ```
-ℏ = (v × λ⁻ⁿ)² × G/c
-  = v² × λ⁻²ⁿ × G/c
+ℏ = (v × λ^(-n_c))² × G/c
+  = v² × λ^(-2×n_c) × G/c
 ```
 
 ### What This Would Mean
@@ -434,7 +434,7 @@ Where:
 - v = 246.22 GeV (Higgs VEV) — empirical
 - λ = 1/√20 — **DERIVED** from S₃ cascade
 - B = 56 — **DERIVED** from triality + Killing form
-- n = B/2 - 2 = 26 — **DERIVED** from B!
+- n_c = B/2 - K = 26 — **DERIVED** cascade exponent (distinct from n=4 spacetime)
 - √(20/B) = √(5/14) ≈ 0.598 — **DERIVED** from λ² and B
 
 ### Numerical Verification (Base Formula Only)
@@ -446,16 +446,16 @@ Where:
 
 **Note**: These are base formula errors WITHOUT observer corrections. See the complete formula at the top of this document for the full derivation with 0.00003% accuracy.
 
-### Structural Origin of n = 26
+### Structural Origin of n_c = 26
 
-The power n = 26 has multiple BLD interpretations:
+The cascade exponent n_c = 26 has multiple BLD interpretations:
 
-1. **n = B/2 - 2 = 28 - 2 = 26** — derived from B!
+1. **n_c = B/2 - K = 28 - 2 = 26** — derived from B!
    - B/2 = 28 = dim(Spin(8))
-   - The "-2" is the Killing form coefficient
+   - The "-2" is the Killing form coefficient K
 
-2. **n = (n×L - B)/2 + 14 = (80-56)/2 + 14 = 26** — also works
-   - Combines n×L and B
+2. **n_c = (n×L - B)/2 + 14 = (80-56)/2 + 14 = 26** — also works
+   - Combines n×L (where n=4 spacetime) and B
 
 3. **Equivalent forms**:
    - M_P = v × λ⁻²⁶ × √(20/B)
@@ -519,9 +519,9 @@ The Planck mass is the electroweak scale times 26 cascade steps, with a BLD corr
 
 ## Research Directions (Updated)
 
-### RESOLVED: The scale relationship
+### The Scale Relationship
 
-~~The simple M_P = v × λ⁻ⁿ is ~60% off.~~ **RESOLVED**: The complete formula with observer corrections achieves 0.00003% accuracy:
+The complete formula with observer corrections achieves 0.00003% accuracy:
 
 ```
 M_P = v × λ⁻²⁶ × √(5/14) × (79/78) × (1 + 6/(n×L×B²))
@@ -598,7 +598,7 @@ The relationship λ² × (n×L) = 4 = K² is exact:
 **What's established**:
 - λ = 1/√20 is DERIVED from S₃ cascade
 - B = 56 is DERIVED from triality + Killing form
-- n = B/2 - 2 = 26 is DERIVED from B
+- n_c = B/2 - K = 26 is DERIVED from B (cascade exponent)
 - The relationship λ² × (n×L) = 4 is exact
 - **Base formula** M_P = v × λ⁻²⁶ × √(5/14) gives 1.28% error
 - **With first-order observer correction** (79/78) gives 0.002% error
@@ -615,16 +615,13 @@ Uses:
 - Derived constants: λ, B, n, K (all from BLD)
 - Empirical inputs: v (reference scale), c, G
 
-**Resolved questions**:
-1. ~~Can the 2.5% error be reduced?~~ **YES** — observer corrections reduce it to 0.00003%
-2. ~~Is "-2" in n = B/2 - 2 related to Killing form?~~ **YES** — it's the Killing form K = 2 (bidirectional observation cost)
-3. Can v (Higgs VEV) be derived? **OPEN** — v is currently the uncorrected reference scale
+**Note**: v (Higgs VEV) is derived as the fixed point of self-observation. See [Reference Scale Derivation](../cosmology/reference-scale-derivation.md).
 
 ### Comparison to Other Derivations
 
 | Quantity | Formula | Error |
 |----------|---------|-------|
-| α⁻¹ | n×L + B + 1 + K/B + spatial − e²×120/119 | **0.0 ppt** |
+| α⁻¹ | n×L + B + 1 + K/B + spatial − e²×120/(119×(n×L×B)²) | **0.0 ppt** |
 | m_H | (v/2)(1 + 1/B) | **0.05%** |
 | M_P | v × λ⁻²⁶ × √(5/14) × (79/78) × (1 + 6/(n×L×B²)) | **0.002%** |
 | ℏ | M_P² × G/c | **0.00003%** |
@@ -640,7 +637,7 @@ The derivation reveals a fundamental distinction:
 
 | Type | Value | Nature |
 |------|-------|--------|
-| **Structural** | λ = 1/√20, B = 56, n = 26 | Exact, mathematically necessary |
+| **Structural** | λ = 1/√20, B = 56, n_c = 26 | Exact, mathematically necessary |
 | **Observed** | ℏ_measured | Structural × observer corrections |
 
 **v (Higgs VEV) is the uncorrected reference scale**. All corrections are measured relative to v because:
@@ -654,6 +651,14 @@ For the complete framework, see [Structural-Observer Framework](structural-obser
 
 ## References
 
+### External Sources (Experimental Data)
+- [Planck mass in GeV (CODATA 2022)](https://physics.nist.gov/cgi-bin/cuu/Value?plkmc2gev) — M_P c² = 1.22091 × 10¹⁹ GeV
+- [Reduced Planck constant (CODATA 2022)](https://physics.nist.gov/cgi-bin/cuu/Value?hbar) — ℏ = 1.054571817 × 10⁻³⁴ J·s
+- [Newtonian gravitational constant (CODATA 2022)](https://physics.nist.gov/cgi-bin/cuu/Value?bg) — G = 6.67430 × 10⁻¹¹ m³/(kg·s²)
+- [Planck units](https://en.wikipedia.org/wiki/Planck_units) — Natural unit system definition
+- [Catalan numbers](https://en.wikipedia.org/wiki/Catalan_number) — C₃ = 5 in cascade structure
+
+### Internal BLD References
 - [Structural-Observer Framework](structural-observer-framework.md) — Unified theory of structural vs observed values
 - [Schrödinger Derivation](schrodinger-derivation.md) — ℏ form derivation, hypothesis section
 - [Killing Form](../lie-theory/killing-form.md) — The factor of 2, K = 2 derivation

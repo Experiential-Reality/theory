@@ -4,6 +4,8 @@
 
 Formal proofs and the manifold structure.
 
+**Navigation**: See [STRUCTURE.md](./STRUCTURE.md) for the dependency DAG and reading orders.
+
 ---
 
 ## Foundations
@@ -23,6 +25,8 @@ Core mathematical definitions and proofs.
 - [Energy Derivation](./foundations/energy-derivation.md) — **Energy = accumulated K/X = observation scope**
 - [Force Structure](./foundations/force-structure.md) — **All four forces from K/X at different scales**
 - [Canonical Hardness](./foundations/canonical-hardness.md) — Finding minimal BLD is NP-complete
+- [Discovery Method](./foundations/discovery-method.md) — How to derive using BLD
+- [Universal Machine](./foundations/universal-machine.md) — Universe as self-computing structure
 
 ---
 
@@ -66,11 +70,15 @@ The BLD = Lie theory correspondence.
 
 ### Particle Physics
 
+- [Particle Classification](./particle-physics/particle-classification.md) — Particle taxonomy from BLD
 - [Lepton Masses](./particle-physics/lepton-masses.md) — **τ/μ = 2πe × 3 corrections = 16.817** (exact match)
 - [Fine Structure](./particle-physics/fine-structure-consistency.md) — α⁻¹ formula and consistency
 - [Quark Masses](./particle-physics/quark-masses.md) — **All 6 quarks derived (<0.5% error)**
 - [Boson Masses](./particle-physics/boson-masses.md) — **H, Z, W derived (0.05%, 0.001%, 0.005% errors)**
-- [E7 Connection](./particle-physics/e7-connection.md) — B=56 and exceptional Lie algebras `[SPECULATIVE]`
+- [Higgs Self-Coupling](./particle-physics/higgs-self-coupling.md) — **κ_λ = 1.025 predicted (novel, testable at HL-LHC)** `[PREDICTED]`
+- [Higgs Couplings](./particle-physics/higgs-couplings.md) — **All κ values from detection structure (κ_V validated)** `[PREDICTED]`
+- [E7 Connection](./particle-physics/e7-connection.md) — B=56 and exceptional Lie algebras `[DERIVED]`
+- [Neutrino Masses](./particle-physics/neutrino-masses.md) — Neutrino mass derivation
 
 ---
 
@@ -84,6 +92,8 @@ Mathematical frameworks built on the foundations.
 - [Thermodynamics](./derived/thermodynamics.md) — Second law as geometric theorem
 - [Discovery Algorithm](./derived/discovery-algorithm.md) — Formal algorithm for finding BLD
 - [Performance Theorem](./derived/performance-theorem.md) — Traverser ordering from structure
+- [Special Relativity](./derived/special-relativity.md) — SR from BLD
+- [General Relativity](./derived/general-relativity.md) — GR from BLD
 
 ---
 
@@ -92,6 +102,50 @@ Mathematical frameworks built on the foundations.
 - [BLD Conservation](./bld-conservation.md) — Noether's theorem in BLD
 - [Comparisons](./comparisons.md) — Relation to Roofline, Fisher-Rao, circuit complexity
 - [Cross-Domain Prediction](./cross-domain-prediction.md) — Cross-domain generalization
+
+---
+
+## Standard Mathematical Results
+
+BLD theory uses the following well-known mathematical results. These are cited here once rather than inline throughout the documentation.
+
+### Differential Geometry
+
+| Formula | Result | Reference |
+|---------|--------|-----------|
+| Riemann tensor components | n²(n²-1)/12 = 20 for n=4 | [Riemann curvature tensor](https://en.wikipedia.org/wiki/Riemann_curvature_tensor) |
+| Weyl tensor components | n²(n²-1)/12 - n(n+1)/2 = 10 for n=4 | [Weyl tensor](https://en.wikipedia.org/wiki/Weyl_tensor) |
+| Metric tensor components | n(n+1)/2 = 10 for n=4 | [Metric tensor](https://en.wikipedia.org/wiki/Metric_tensor) |
+
+### Lie Algebras
+
+| Formula | Result | Reference |
+|---------|--------|-----------|
+| dim(so(n)) | n(n-1)/2 = 28 for n=8 | [Orthogonal group](https://en.wikipedia.org/wiki/Orthogonal_group#Lie_algebra) |
+| dim(su(n)) | n²-1 = 8 for n=3 | [Special unitary group](https://en.wikipedia.org/wiki/Special_unitary_group#Lie_algebra) |
+| dim(g₂) | 14 | [G₂ (mathematics)](https://en.wikipedia.org/wiki/G2_(mathematics)) |
+| dim(e₇) fundamental | 56 | [E₇ (nLab)](https://ncatlab.org/nlab/show/E7) |
+
+### Analysis
+
+| Formula | Result | Reference |
+|---------|--------|-----------|
+| Euler's number | e = lim(1+1/n)^n = 2.71828... | [e (mathematical constant)](https://en.wikipedia.org/wiki/E_(mathematical_constant)) |
+| Euler's identity | e^(iπ) + 1 = 0 | [Euler's identity](https://en.wikipedia.org/wiki/Euler%27s_identity) |
+
+### Division Algebras
+
+| Theorem | Statement | Reference |
+|---------|-----------|-----------|
+| Hurwitz (1898) | Only ℝ, ℂ, ℍ, 𝕆 are normed division algebras | [Hurwitz's theorem](https://en.wikipedia.org/wiki/Hurwitz%27s_theorem_(composition_algebras)) |
+| Frobenius (1878) | Only ℝ, ℂ, ℍ are associative division algebras | [Frobenius theorem](https://en.wikipedia.org/wiki/Frobenius_theorem_(real_division_algebras)) |
+
+### Quantum Mechanics
+
+| Formula | Result | Reference |
+|---------|--------|-----------|
+| Robertson uncertainty | ΔxΔp ≥ ℏ/2 | [Uncertainty principle](https://en.wikipedia.org/wiki/Uncertainty_principle) |
+| CHSH bound (quantum) | S ≤ 2√2 | [CHSH inequality](https://en.wikipedia.org/wiki/CHSH_inequality) |
 
 ---
 

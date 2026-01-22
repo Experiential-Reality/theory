@@ -136,7 +136,7 @@ n + L     = 24    (geometry — strong coupling X)
 
 ## 1. The Strange Quark (Anchor) `[DERIVED]`
 
-**Observed**: m_s = 93.4 +8.6/−3.4 MeV (MS-bar at 2 GeV)
+**Observed**: m_s = [93.4 +8.6/−3.4 MeV](https://pdg.lbl.gov/2024/reviews/rpp2024-rev-quark-masses.pdf) (MS̄ at 2 GeV, PDG 2024)
 
 ### Discovery Method Applied
 
@@ -190,7 +190,7 @@ m_s = 0.511 MeV × 183 = 93.5 MeV
 
 ## 2. The Down Quark `[DERIVED]`
 
-**Observed**: m_d = 4.67 +0.48/−0.17 MeV (MS-bar at 2 GeV)
+**Observed**: m_d = [4.67 +0.48/−0.17 MeV](https://pdg.lbl.gov/2024/reviews/rpp2024-rev-quark-masses.pdf) (MS̄ at 2 GeV, PDG 2024)
 
 ### Discovery Method Applied
 
@@ -234,7 +234,7 @@ m_d = m_s / 20.1 = 93.5 MeV / 20.1 = 4.65 MeV
 
 ## 3. The Up Quark `[DERIVED]`
 
-**Observed**: m_u = 2.16 +0.49/−0.26 MeV (MS-bar at 2 GeV)
+**Observed**: m_u = [2.16 +0.49/−0.26 MeV](https://pdg.lbl.gov/2024/reviews/rpp2024-rev-quark-masses.pdf) (MS̄ at 2 GeV, PDG 2024)
 
 ### Discovery Method Applied
 
@@ -274,7 +274,7 @@ m_u = m_d / 2.167 = 4.65 MeV / 2.167 = 2.16 MeV
 
 ## 4. The Charm Quark `[DERIVED]`
 
-**Observed**: m_c = 1270 ± 20 MeV (MS-bar at m_c)
+**Observed**: m_c = [1270 ± 20 MeV](https://pdg.lbl.gov/2024/reviews/rpp2024-rev-quark-masses.pdf) (MS̄ at m_c, PDG 2024)
 
 ### Discovery Method Applied
 
@@ -317,7 +317,7 @@ m_c = m_s × 13.667 = 93.5 MeV × 13.667 = 1276 MeV
 
 ## 5. The Bottom Quark `[DERIVED]`
 
-**Observed**: m_b = 4180 +30/−20 MeV (MS-bar at m_b)
+**Observed**: m_b = [4180 +30/−20 MeV](https://pdg.lbl.gov/2024/reviews/rpp2024-rev-quark-masses.pdf) (MS̄ at m_b, PDG 2024)
 
 ### Discovery Method Applied
 
@@ -357,7 +357,7 @@ m_b = m_c × 3.286 = 1276 MeV × 3.286 = 4193 MeV
 
 ## 6. The Top Quark (Special Case) `[DERIVED]`
 
-**Observed**: m_t = 172.69 ± 0.30 GeV
+**Observed**: m_t = [172.69 ± 0.30 GeV](https://pdg.lbl.gov/2024/listings/rpp2024-list-t-quark.pdf) (PDG 2024)
 
 ### Why Top Is Different
 
@@ -511,7 +511,7 @@ Observed = Structure + K/X(experiment) + K/X(universe)
 
 | Particle | Best Error | Status |
 |----------|------------|--------|
-| Leptons (μ/e, τ/μ) | 0.3 ppt | DERIVED |
+| Leptons (μ/e, τ/μ) | 0.5 ppb | DERIVED |
 | Quarks (all 6) | 0.0% - 0.5% | **DERIVED** |
 
 **Key insight**: Quark formulas ARE the same structure as leptons:
@@ -554,7 +554,7 @@ m_u/m_e = (n²S - L - L/n)/(L + K/L)/(K×S/(S-1)) = 4.2   (first gen up-type)
 
 If this framework is correct:
 
-1. **Precision will improve**: As quark mass measurements improve, errors should approach the lepton precision (~0.3 ppt)
+1. **Precision will improve**: As quark mass measurements improve, errors should approach the lepton precision (~0.5 ppb)
 
 2. **CKM matrix derivable**: The quark mixing matrix should follow from the same K/X structure
 
@@ -592,6 +592,13 @@ If this framework is correct:
 
 ## References
 
+### External Sources (Experimental Data)
+- [PDG 2024 Quark Masses Review](https://pdg.lbl.gov/2024/reviews/rpp2024-rev-quark-masses.pdf) — Authoritative summary of light and heavy quark masses
+- [PDG 2024 Top Quark Listings](https://pdg.lbl.gov/2024/listings/rpp2024-list-t-quark.pdf) — Top quark mass measurements
+- [PDG 2024 Particle Listings](https://pdg.lbl.gov/2024/listings/particle_properties.html) — Full database of particle properties
+- [MS̄ Renormalization Scheme](https://en.wikipedia.org/wiki/Minimal_subtraction_scheme) — Running mass definition
+
+### Internal BLD References
 - [Lepton Masses](lepton-masses.md) — Same K/X framework for charged leptons
 - [Boson Masses](boson-masses.md) — Same K/X framework for W, Z, H
 - [Strong Coupling](strong-coupling.md) — Color structure derivation

@@ -159,7 +159,7 @@ Substituting values:
 
 **Predicted**: α_s⁻¹ = 8.4814 → α_s = 0.11791
 
-**Observed**: α_s(M_Z) = 0.1179 ± 0.0010
+**Observed**: α_s(M_Z) = [0.1179 ± 0.0010](https://pdg.lbl.gov/2024/reviews/rpp2024-rev-qcd.pdf) (PDG 2024)
 
 **Residual**: ~0.02% — this is K/X(universe), not error.
 
@@ -328,6 +328,12 @@ The earlier formula (B/n)/S² = 14/169 was numerically close but not derived fro
 
 ## References
 
+### External Sources (Experimental Data)
+- [PDG 2024 QCD Review](https://pdg.lbl.gov/2024/reviews/rpp2024-rev-qcd.pdf) — Comprehensive α_s summary with world average
+- [PDG 2024 α_s from τ decays](https://pdg.lbl.gov/2024/reviews/rpp2024-rev-tau-physics.pdf) — Alternative measurement method
+- [Asymptotic freedom](https://en.wikipedia.org/wiki/Asymptotic_freedom) — Gross-Wilczek-Politzer discovery (Nobel 2004)
+
+### Internal BLD References
 - [Discovery Method](../foundations/discovery-method.md) — How K/X was found
 - [Universal Machine](../foundations/universal-machine.md) — K/X(universe) and residuals
 - [Force Structure](../foundations/force-structure.md) — Unified force derivation

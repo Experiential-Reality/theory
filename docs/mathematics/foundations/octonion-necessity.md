@@ -32,7 +32,9 @@ used_by:
 | ℝ | ✗ (no imaginary) | ✗ | Too simple |
 | ℂ | ✓ | ✗ (abelian only) | Insufficient |
 | ℍ | ✓ | ✗ (Aut = SO(3)) | Cannot support B = 56 |
-| 𝕆 | ✓ | ✓ (Aut = G₂) | **Required** |
+| 𝕆 | ✓ | ✓ ([Aut = G₂](https://en.wikipedia.org/wiki/G2_(mathematics))) | **Required** |
+
+(See [Hurwitz's theorem](https://en.wikipedia.org/wiki/Hurwitz%27s_theorem_(composition_algebras)) for why only these four algebras exist)
 
 **Key insight**: The previous derivation treated "SU(3) exists" as empirical. This document shows it's a consequence of genesis function closure — the universe must be complex enough to observe itself.
 
@@ -176,6 +178,8 @@ BLD requires division property → Hurwitz → ℝ, ℂ, ℍ, 𝕆
 Octonions selected (only one with Aut ⊃ SU(3))
 ```
 
+([Hurwitz's theorem](https://en.wikipedia.org/wiki/Hurwitz%27s_theorem_(composition_algebras)): the only normed division algebras over ℝ are ℝ, ℂ, ℍ, 𝕆)
+
 The claim "SU(3)-charged matter exists" was listed as the one empirical input that selects octonions over quaternions.
 
 ### 1.2 The Gap
@@ -205,7 +209,7 @@ For self-observation to close, the algebra must support:
 From BLD, the boundary structure satisfies:
 
 ```
-B = K × (n + K) = 2 × (26 + 2) = 56
+B = K × (n_c + K) = 2 × (26 + 2) = 56
 ```
 
 This is derived from triality + Killing form, not assumed.
@@ -239,13 +243,15 @@ But BLD requires B = 56. Therefore:
 
 ### 2.4 Octonion Success
 
-Octonions have:
+Octonions have ([Baez, "The Octonions"](https://arxiv.org/abs/math/0105155)):
 
 ```
 Aut(𝕆) = G₂
 dim(G₂) = 14
 G₂ ⊂ SO(7) ⊂ SO(8)
 ```
+
+([G₂](https://en.wikipedia.org/wiki/G2_(mathematics)) is the automorphism group of the octonions, proven by Élie Cartan in 1914)
 
 The Spin(8) structure (double cover of SO(8)) has:
 
@@ -468,6 +474,13 @@ ZERO EMPIRICAL INPUTS.
 
 ## References
 
+### External Sources
+- [Hurwitz's theorem (composition algebras)](https://en.wikipedia.org/wiki/Hurwitz%27s_theorem_(composition_algebras)) — Only 4 normed division algebras exist
+- [Baez, J.C. "The Octonions" (arXiv:math/0105155)](https://arxiv.org/abs/math/0105155) — Comprehensive treatment of octonions and their applications
+- [G₂ (mathematics)](https://en.wikipedia.org/wiki/G2_(mathematics)) — G₂ as automorphism group of octonions
+- [Spin(8) and triality](https://en.wikipedia.org/wiki/Spin_group#Spin(8)) — Unique triality property of D₄
+
+### Internal BLD References
 - [Octonion Derivation](octonion-derivation.md) — Original derivation (now superseded)
 - [Genesis Function](../cosmology/genesis-function.md) — traverse(-B, B) = existence
 - [Killing Form](../lie-theory/killing-form.md) — K = 2 derivation

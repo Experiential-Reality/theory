@@ -85,7 +85,7 @@ Answer: **2 links** (forward query + backward response).
 
 ## The Definition
 
-For a Lie algebra, the Killing form is:
+For a [Lie algebra](https://ncatlab.org/nlab/show/Lie+algebra), the [Killing form](https://ncatlab.org/nlab/show/Killing+form) is:
 
 ```
 B(X, Y) = tr(ad_X ∘ ad_Y)
@@ -335,7 +335,7 @@ formula observer_correction
 
 The Killing form coefficient (2) appears throughout quantum mechanics:
 
-### Uncertainty Principle
+### [Uncertainty Principle](https://en.wikipedia.org/wiki/Uncertainty_principle)
 
 ```
 Δx · Δp ≥ ℏ/2
@@ -343,11 +343,11 @@ The Killing form coefficient (2) appears throughout quantum mechanics:
 The "2" in the denominator = Killing form coefficient
 ```
 
-The Robertson-Schrödinger relation derives: Δx·Δp ≥ |⟨[x̂, p̂]⟩|/2 = ℏ/2
+The [Robertson-Schrödinger relation](https://en.wikipedia.org/wiki/Uncertainty_principle#Robertson–Schrödinger_uncertainty_relations) derives: Δx·Δp ≥ |⟨[x̂, p̂]⟩|/2 = ℏ/2
 
 This "2" is the same Killing form coefficient that appears in observer corrections.
 
-### Bell Inequality Violation
+### [Bell Inequality](https://en.wikipedia.org/wiki/Bell%27s_theorem) Violation
 
 ```
 S_max(quantum) = 2√2 ≈ 2.828
@@ -358,7 +358,7 @@ Where:
   √2 = SU(2) rotation factor between measurement bases
 ```
 
-The maximum quantum violation of the CHSH inequality is the Killing form times the geometric rotation factor.
+The maximum quantum violation of the [CHSH inequality](https://en.wikipedia.org/wiki/CHSH_inequality) is the Killing form times the geometric rotation factor.
 
 ### Decoherence Time Bound
 
@@ -388,6 +388,65 @@ See [Quantum Mechanics](../quantum/quantum-mechanics.md) for the full BLD treatm
 
 ---
 
+## Uncertainty as Self-Observation
+
+**The Killing form, uncertainty principle, and observer self-reference are the same phenomenon.**
+
+### The Structural Identity
+
+The uncertainty principle Δx·Δp ≥ ℏ/2 and the Killing form K=2 share the same origin: an observer made of D and L cannot observe D and L without cost.
+
+```
+Observer structure:  D-type (spatial extent) + L-type (temporal rate)
+Target structure:    D (position) + L (momentum)
+
+Measurement of D requires L (probe emission/reception)
+Measurement of L requires D (spatial localization)
+
+When observer structure = target structure:
+  K/X = K/K = 1
+```
+
+### The K/K Limit
+
+When observer and observed share the same structural basis:
+
+| Configuration | Cost | Interpretation |
+|---------------|------|----------------|
+| External observation | K/X where X >> K | Cost negligible relative to target |
+| Self-observation | K/X where X = K | K/K = 1 — cost equals capacity |
+
+The self-observation case exhausts observation capacity. This is the structural origin of complementarity.
+
+### Equivalence of Formulations
+
+| Formulation | Expression | The "1" |
+|-------------|------------|---------|
+| Uncertainty | ΔD·ΔL ≥ ℏ/2 = K/2 | Product bounded by K/2 |
+| Fine structure | α⁻¹ = n×L + B + **1** | Observer self-reference |
+| Killing form | K/K = **1** | Self-observation cost |
+| Born rule | \|ψ\|² = forward × backward | Two factors (K=2) |
+
+These are not analogies. They are the same structural constraint expressed in different domains.
+
+### The Two-Reference Resolution
+
+The [two-reference principle](../cosmology/observer-correction.md) addresses self-observation:
+
+```
+Single observer:     K/K = 1     (capacity exhausted)
+Two references:      K/2K = 1/2  (cost distributed)
+```
+
+External reference (apparatus, second observer, measurement record) provides additional structure over which the observation cost distributes. This is why:
+- Measurement requires apparatus distinct from the system
+- The +1 in α⁻¹ is irreducible for single observation
+- Scientific verification requires independent confirmation
+
+**Uncertainty and the Killing form are two expressions of one fact: observation requires structure, and observing one's own structure has irreducible cost K/K = 1.**
+
+---
+
 ## Summary
 
 > **The Killing form is the L-cost of D observing D through the algebra's link structure—and that cost is always at least 2 because observation is bidirectional.**
@@ -406,6 +465,14 @@ The Killing form grounds the observer corrections in Lie theory. The "2" is not 
 
 ## References
 
+### External Sources
+- [Killing form (nLab)](https://ncatlab.org/nlab/show/Killing+form) — Formal definition and properties
+- [Killing form (Wikipedia)](https://en.wikipedia.org/wiki/Killing_form) — Overview with examples
+- [Lie algebra (nLab)](https://ncatlab.org/nlab/show/Lie+algebra) — Foundation for Killing form
+- [Uncertainty principle](https://en.wikipedia.org/wiki/Uncertainty_principle) — Robertson-Schrödinger relation
+- [CHSH inequality](https://en.wikipedia.org/wiki/CHSH_inequality) — Bell violation bound 2√2
+
+### Internal BLD References
 - [Structural-Observer Framework](../quantum/structural-observer-framework.md) — K=2 appears in all observer corrections
 - [Planck Derivation](../quantum/planck-derivation.md) — K=2 in first-order (79/78) and second-order corrections
 - [Observer Corrections](../cosmology/observer-correction.md) — Unified correction algebra (all involve K=2)

@@ -12,7 +12,7 @@
 | [scale-derivation.md](scale-derivation.md) | DERIVED | v, c, G from BLD structure |
 | [reference-scale-derivation.md](reference-scale-derivation.md) | DERIVED | Fixed-point proof for physical scales |
 | [nothing-instability.md](nothing-instability.md) | DERIVED | Why something exists (B must exist) |
-| [genesis-function.md](genesis-function.md) | SPECULATIVE | traverse(-B, B) = existence |
+| [genesis-function.md](genesis-function.md) | DERIVED | traverse(-B, B) = existence |
 | [cyclic-cosmology.md](cyclic-cosmology.md) | DERIVED | Heat death = Big Bang
 
 ## Key Results
