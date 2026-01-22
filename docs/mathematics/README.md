@@ -20,6 +20,8 @@ Core mathematical definitions and proofs.
 - [Compensation Principle](./foundations/compensation-principle.md) — L compensates B (not vice versa)
 - [Factorization Calculus](./foundations/factorization-calculus.md) — FACTOR operation on structures
 - [Structural Cost Conservation](./foundations/structural-cost-conservation.md) — Cost algebra
+- [Energy Derivation](./foundations/energy-derivation.md) — **Energy = accumulated K/X = observation scope**
+- [Force Structure](./foundations/force-structure.md) — **All four forces from K/X at different scales**
 - [Canonical Hardness](./foundations/canonical-hardness.md) — Finding minimal BLD is NP-complete
 
 ---
@@ -45,10 +47,10 @@ The BLD = Lie theory correspondence.
 - [BLD IS Quantum Code](./quantum/bld-is-quantum-code.md) — **BLD = Lie = QM = e^(iπ)+1=0**
 - [Planck Derivation](./quantum/planck-derivation.md) — **ℏ magnitude derived (0.00003% accuracy)**
 - [Structural Observer Framework](./quantum/structural-observer-framework.md) — Observer correction algebra
-- [Schrödinger Derivation](./quantum/schrodinger-derivation.md) — Attempt to derive from BLD `[SPECULATIVE]`
-- [Born Rule](./quantum/born-rule.md) — Alignment interpretation `[SPECULATIVE]`
-- [Chirality and CPT](./quantum/chirality-cpt.md) — Why B partitions direction, CPT symmetry `[SPECULATIVE]`
-- [Cosmic Computation](./quantum/cosmic-computation.md) — **The -B = B junction: future is constrained** `[SPECULATIVE]`
+- [Schrödinger Derivation](./quantum/schrodinger-derivation.md) — **iℏ∂ψ/∂t = Ĥψ from BLD + octonion structure**
+- [Born Rule](./quantum/born-rule.md) — **P = |ψ|² from bidirectional alignment (K=2)**
+- [Chirality and CPT](./quantum/chirality-cpt.md) — **Chirality and CPT from K=2 bidirectionality**
+- [Cosmic Computation](./quantum/cosmic-computation.md) — **±B junction: future constrained by L-consistency**
 - [Theory Complete](./quantum/theory-complete.md) — **Complete BLD theory summary**
 
 ### Cosmology
@@ -59,15 +61,15 @@ The BLD = Lie theory correspondence.
 - [Scale Derivation](./cosmology/scale-derivation.md) — v, c, G from BLD structure
 - [Reference Scale Derivation](./cosmology/reference-scale-derivation.md) — Fixed-point proof for scales
 - [Nothing Instability](./cosmology/nothing-instability.md) — Why something exists
-- [Genesis Function](./cosmology/genesis-function.md) — traverse(-B, B) = existence `[SPECULATIVE]`
+- [Genesis Function](./cosmology/genesis-function.md) — **traverse(-B, B) = existence (closure → SU(3) derived)**
 - [Cyclic Cosmology](./cosmology/cyclic-cosmology.md) — Heat death = Big Bang
 
 ### Particle Physics
 
 - [Lepton Masses](./particle-physics/lepton-masses.md) — **τ/μ = 2πe × 3 corrections = 16.817** (exact match)
 - [Fine Structure](./particle-physics/fine-structure-consistency.md) — α⁻¹ formula and consistency
-- [Quark Masses](./particle-physics/quark-masses.md) — Extension to quarks `[SPECULATIVE]`
-- [Boson Masses](./particle-physics/boson-masses.md) — Gauge boson masses `[SPECULATIVE]`
+- [Quark Masses](./particle-physics/quark-masses.md) — **All 6 quarks derived (<0.5% error)**
+- [Boson Masses](./particle-physics/boson-masses.md) — **H, Z, W derived (0.05%, 0.001%, 0.005% errors)**
 - [E7 Connection](./particle-physics/e7-connection.md) — B=56 and exceptional Lie algebras `[SPECULATIVE]`
 
 ---

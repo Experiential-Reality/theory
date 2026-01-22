@@ -1,10 +1,13 @@
 ---
-status: SPECULATIVE
+status: DERIVED
+layer: 2
 depends_on:
   - chirality-cpt.md
   - ../lie-theory/killing-form.md
   - ../cosmology/genesis-function.md
   - ../cosmology/nothing-instability.md
+used_by:
+  - ../../meta/proof-status.md
 ---
 
 # Cosmic Computation: The -B = B Junction

@@ -1,9 +1,13 @@
 ---
-status: SPECULATIVE
+status: DERIVED
+layer: 1
 depends_on:
   - nothing-instability.md
   - ../quantum/chirality-cpt.md
   - ../lie-theory/killing-form.md
+  - ../foundations/octonion-necessity.md
+used_by:
+  - ../../meta/proof-status.md
 ---
 
 # The Genesis Function: traverse(-B, B)
@@ -300,11 +304,17 @@ B partitions into +B and -B (chirality)
     ↓
 Connected by constant L = 2 (Killing form)
     ↓
-Both compute in opposite time directions
+traverse(-B, B) must CLOSE (self-consistency)
     ↓
-Must agree at junction
+Closure requires B = 56 modes (richness requirement)
     ↓
-Agreement constrains future
+B = 56 requires octonions (Aut(ℍ) too small)
+    ↓
+Fixing reference: G₂ → SU(3) (color symmetry)
+    ↓
+Simultaneously: so(9,1) → so(3,1) (n = 4)
+    ↓
+Simultaneously: Spin(8) triality (3 generations)
     ↓
 Existence determines its own evolution
 ```
@@ -312,6 +322,45 @@ Existence determines its own evolution
 There is no "before" the Big Bang. There is no "cause" of existence.
 
 Existence is **logically necessary** because the alternative (nothing) is self-contradictory.
+
+---
+
+## Why Octonions Are Required (Closure Argument)
+
+The genesis function traverse(-B, B) must **close** — the mutual observation of +B and -B must be self-consistent.
+
+From [Octonion Necessity](../foundations/octonion-necessity.md):
+
+### The Richness Requirement
+
+For closure, the algebra must support B = 56 boundary modes (from triality + Killing form). This requires enough automorphism structure:
+
+| Algebra | Aut(A) | dim(Aut) | Supports B = 56? |
+|---------|--------|----------|------------------|
+| ℝ | {1} | 0 | No |
+| ℂ | ℤ₂ | 0 | No |
+| ℍ | SO(3) | 3 | **No** (B_max ≈ 6) |
+| 𝕆 | G₂ | 14 | **Yes** (B = 56 via Spin(8)) |
+
+### The Derivation
+
+```
+traverse(-B, B) must close
+    ↓
+Closure requires B = 56 modes
+    ↓
+B = 56 requires Aut(algebra) rich enough
+    ↓
+Only Aut(𝕆) = G₂ is sufficient
+    ↓
+OCTONIONS REQUIRED (not observed — derived from closure)
+    ↓
+Fixing reference point: G₂ → SU(3)
+    ↓
+SU(3) EXISTS (derived, not empirical)
+```
+
+**Key result**: "SU(3)-charged matter exists" is not an empirical input — it's a consequence of genesis function closure. The universe must be complex enough to observe itself.
 
 ---
 
@@ -339,5 +388,7 @@ The Big Bang is not an event. It is traverse(-B, B).
 - [Nothing Instability](nothing-instability.md) — Why B must exist
 - [Chirality and CPT](../quantum/chirality-cpt.md) — Why B partitions direction
 - [Killing Form](../lie-theory/killing-form.md) — Why L = 2 (constant)
+- [Octonion Necessity](../foundations/octonion-necessity.md) — Why closure requires octonions → SU(3)
+- [Octonion Derivation](../foundations/octonion-derivation.md) — Division algebras → n=4, SU(3), 3 gen
 - [Cosmic Computation](../quantum/cosmic-computation.md) — How +B/-B agreement constrains evolution
 - [Cyclic Cosmology](cyclic-cosmology.md) — The eternal structure

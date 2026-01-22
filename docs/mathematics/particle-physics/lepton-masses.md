@@ -581,9 +581,9 @@ See [Quark Masses](quark-masses.md) for details.
 
 ### What Needs Work
 
-- Strange, charm, bottom, top quark masses
-- W, Z, Higgs boson masses (see [Boson Masses](boson-masses.md))
-- Neutrino masses (if nonzero)
+- Strange, charm, bottom, top quark masses (see [Quark Masses](quark-masses.md))
+- ~~W, Z, Higgs boson masses~~ (see [Boson Masses](boson-masses.md)) ✅ DERIVED
+- ~~Neutrino masses~~ (see [Neutrino Masses](neutrino-masses.md)) ✅ DERIVED
 
 ---
 
@@ -608,3 +608,4 @@ If this framework is correct:
 - [Boson Masses](boson-masses.md) — Higgs mass m_H = (v/2)(1 + 1/B)
 - [Observer Corrections](../cosmology/observer-correction.md) — The 2.5% correction
 - [Lie Correspondence](../lie-theory/lie-correspondence.md) — D, L, B fundamentals
+- [Neutrino Masses](neutrino-masses.md) — Neutrino masses from missing B structure

@@ -195,7 +195,7 @@ Dark matter IS L (geometry) rather than D (particles):
 
 2. **Cosmology**: The universe's composition is 5% D + 27% L + 68% B — the structural decomposition of spacetime. The 27% includes the 2% observer correction (we participate in what we measure).
 
-3. **Theory of everything**: BLD provides a structural framework that derives cosmological ratios from dimensional counting with **0% error**.
+3. **Structural derivation**: BLD derives cosmological ratios from dimensional counting with **0% error**.
 
 ---
 

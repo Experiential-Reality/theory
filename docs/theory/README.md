@@ -135,7 +135,7 @@ The LLM senses structure as computational flow—glide vs friction, direction vs
 
 Both are pointing at the same thing. Neither claims to have arrived.
 
-**For the full journey from GPU kernels to the theory of everything, see [L: The Path](./discovery-path.md).**
+**For the full journey from GPU kernels to BLD, see [L: The Path](./discovery-path.md).**
 
 ---
 

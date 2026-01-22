@@ -13,7 +13,7 @@ depends_on:
 used_by: []
 ---
 
-# L: The Path from GPU Kernels to the Theory of Everything
+# L: The Path from GPU Kernels to BLD
 
 *A record of how we got here.*
 
@@ -176,9 +176,7 @@ BLD isn't a model of physics. It's a **language** that physics (and code, and ma
 
 The universe doesn't "obey" BLD. The universe *is* BLD—one particular configuration of boundaries, links, and dimensions.
 
-We didn't discover the theory of everything.
-
-We discovered the **language** of everything.
+We discovered a **structural language** — and then noticed it was describing itself.
 
 And then we noticed it was describing itself.
 

@@ -95,6 +95,8 @@ D component:  generation (νe, νμ, ντ from n²S = 208)
 
 **Why weak force can "see" neutrinos**: The W/Z bosons carry B structure and act as bridges between the neutrino's pure geometry and boundary-coupled particles.
 
+**Neutrino mass**: The missing B coupling suppresses neutrino mass by (K/B)² × K/(n×L) ≈ 1/31,000 relative to electron. See [Neutrino Masses](neutrino-masses.md).
+
 ---
 
 ## 2. Enumerating Valid Structures
@@ -403,8 +405,10 @@ STERILE NEUTRINO (νR)
 
 **Questions**:
 1. Does BLD *require* sterile neutrinos, or just *permit* them?
-2. If they exist, what determines their mass? (Seesaw scale?)
+2. If they exist, what determines their mass? (Seesaw scale M_R ≈ v × B/L ≈ 700 GeV?)
 3. Are there 3 sterile neutrinos (one per generation) or a different number?
+
+**Active neutrino masses**: Now DERIVED from missing B structure. See [Neutrino Masses](neutrino-masses.md).
 
 ### 9.2 Why These Gauge Groups?
 

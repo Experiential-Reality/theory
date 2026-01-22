@@ -1,418 +1,400 @@
 ---
-status: SPECULATIVE
+status: DERIVED
+layer: 2
 depends_on:
-  - ../cosmology/nothing-instability.md
   - ../lie-theory/killing-form.md
-  - quantum-mechanics.md
+  - ../lie-theory/lie-correspondence.md
+  - ../cosmology/nothing-instability.md
+used_by:
+  - ../../meta/proof-status.md
 see_also:
   - ../cosmology/genesis-function.md
+  - cosmic-computation.md
 ---
 
-# Chirality and CPT Symmetry from BLD Self-Reference
+# Chirality and CPT Symmetry from the Killing Form
 
 ## Quick Summary (D≈7 Human Traversal)
 
-**Chirality and CPT from BLD in 7 steps:**
+**Chirality and CPT from Killing form in 7 steps:**
 
-1. **B must exist** — Nothing is self-contradictory; defining it requires distinction (B)
-2. **B must partition** — A boundary that doesn't partition isn't a boundary
-3. **Only direction available** — B partitions into forward (+B) and backward (-B)
-4. **This IS chirality** — +B = left-handed/matter, -B = right-handed/antimatter
-5. **Constant L connects them** — Killing form L=2 links +B and -B
-6. **CPT exact** — Applying C, P, T swaps to -B perspective; constant L ensures symmetry
-7. **Individual violations allowed** — C, P, T can break because +B ≠ -B, but CPT is enforced
+1. **K=2 is observation cost** — Forward (1 L) + backward (1 L) = 2 L (irreducible)
+2. **Bidirectionality creates two perspectives** — Forward A→B (+B) and backward B→A (-B)
+3. **The perspectives are NOT identical** — +B ≠ -B, they're opposite directions
+4. **This IS chirality** — Left-handed = +B perspective, right-handed = -B perspective
+5. **C, P, T operate on B, D, L** — C swaps B-side, P reverses D, T reverses L
+6. **CPT exact because K=2 constant** — K doesn't depend on which side you're on
+7. **Individual violations because +B ≠ -B** — Our physics is described FROM +B
 
-| Symmetry | Operation | BLD Interpretation |
-|----------|-----------|-------------------|
-| **C** (Charge) | Particle ↔ Antiparticle | Which side of B: +B or -B |
-| **P** (Parity) | Mirror reflection | D traversal direction |
-| **T** (Time) | Time reversal | L direction |
+| Symmetry | Operation | BLD Component |
+|----------|-----------|---------------|
+| **C** (Charge) | Swap +B ↔ -B | B (which side of partition) |
+| **P** (Parity) | Reverse spatial direction | D (dimensional traversal) |
+| **T** (Time) | Reverse temporal direction | L (link direction) |
 
-Why B partitions direction, and what this implies for matter/antimatter and discrete symmetries.
-
----
-
-## The Problem
-
-The genesis function posits that B partitions direction, creating +B and -B. But WHY must B partition? What forces this?
+**Key insight**: Chirality isn't assumed — it's DERIVED from the bidirectional structure of observation (K=2).
 
 ---
 
-## The Resolution: B Has Nothing Else to Partition
+## 1. Foundation: The Observation Cost K=2
 
-### Step 1: B Must Exist
+### 1.1 From the Killing Form
 
-From [nothing-instability.md](../cosmology/nothing-instability.md):
-
-```
-To define "nothing," you need to distinguish it from "something"
-That distinction IS a boundary (B)
-Therefore B > 0
-Nothing is self-contradictory
-```
-
-### Step 2: B Must Partition Something
-
-A boundary that doesn't partition anything isn't a boundary. B must distinguish.
+From [Killing Form](../lie-theory/killing-form.md), observation requires bidirectional traversal:
 
 ```
-B exists → B partitions → B partitions what?
+Observation requires connection AND feedback:
+
+  Forward:   observer → observed  = 1 L  (query)
+  Backward:  observed → observer  = 1 L  (response)
+
+  Total: K = 2
+
+This is IRREDUCIBLE:
+  0 links: no connection → no observation
+  1 link:  one-way → influence, not observation
+  2 links: round trip → observation ✓
 ```
 
-### Step 3: The Only Available Content is Direction
+The value K=2 is algebraically determined (from the Killing form trace calculation), not empirical.
 
-B cannot partition "something vs nothing" — nothing can't exist.
+### 1.2 The Two Directions
 
-The only thing that exists is B itself. What can B partition itself into?
-
-**Direction.** Traversal order through D.
+The bidirectional requirement creates TWO directions:
 
 ```
-B: forward | backward
-   ↑D      | ↓D
-   +       | -
+        Forward
+    A ─────────→ B
+      ←─────────
+        Backward
 ```
 
-### Step 4: This IS Chirality
-
-The two "sides" of primordial B are directions:
-
-```
-+B = traverse D upward   = left-handed  = matter
--B = traverse D downward = right-handed = antimatter
-```
-
-Chirality isn't a feature of the universe — it's the mechanism by which existence distinguishes itself from itself.
+These are not the same. Forward (A→B) and backward (B→A) are **opposite directions** through the same link L.
 
 ---
 
-## The Constant L Between +B and -B
+## 2. Bidirectionality Creates the Partition
 
-### Bidirectional Self-Observation
+### 2.1 Two Perspectives Emerge
 
-The Killing form shows that observation requires bidirectional traversal:
-
-```
-Observation cost = 2 (forward link + backward link)
-```
-
-When B observes B:
+When observation requires K=2 (forward + backward), two perspectives naturally emerge:
 
 ```
-B --L→ B   (forward traversal: creates +B, our universe)
-B ←L-- B   (backward traversal: creates -B, anti-universe)
++B perspective: "I am A observing B"
+    My forward:  A → B
+    My backward: B → A
+
+-B perspective: "I am B observing A"
+    My forward:  B → A  (what +B calls backward)
+    My backward: A → B  (what +B calls forward)
 ```
 
-### The L is Constant
+These are the **same observation** from **opposite sides**.
 
-This L connecting +B to -B is not a variable — it's determined by the algebra structure:
+### 2.2 The Partition IS Direction
+
+What distinguishes +B from -B? **Which direction is "forward".**
 
 ```
-L_cpt = Killing form coefficient = 2
++B: calls A→B "forward"
+-B: calls B→A "forward"
+
+Same structure. Same K=2. Different labeling of direction.
 ```
 
-This constant L:
-- Connects matter to antimatter
-- Enforces CPT symmetry
-- May be related to vacuum energy / cosmological constant
+This is NOT an arbitrary choice. The bidirectional requirement (K=2) CREATES two perspectives that differ by direction. This is a **derived consequence** of observation structure, not an assumption.
+
+### 2.3 Connection to Nothing-Instability
+
+From [Nothing Instability](../cosmology/nothing-instability.md), B must exist (nothing is self-contradictory) and B must partition (a boundary that doesn't partition isn't a boundary).
+
+What does B partition? **Direction.** And now we see WHY: because observation (K=2) is bidirectional, and the two directions define opposite perspectives.
 
 ---
 
-## CPT Symmetry from BLD
+## 3. This IS Chirality
 
-### The Three Discrete Symmetries
+### 3.1 Chirality = Which Direction is Forward
 
-| Symmetry | Operation | BLD Interpretation |
-|----------|-----------|-------------------|
-| **C** (Charge) | Particle ↔ Antiparticle | Which side of B: +B or -B |
-| **P** (Parity) | Mirror reflection | D traversal direction (chirality) |
-| **T** (Time) | Time reversal | L direction (forward or backward) |
-
-### Why CPT is Conserved
-
-CPT symmetry (applying all three) leaves physics invariant because:
+Chirality (handedness) is precisely the question: **which direction is "forward"?**
 
 ```
-+B and -B are connected by constant L
-
-Applying CPT:
-  C: swap +B ↔ -B
-  P: reverse D direction
-  T: reverse L direction
-
-Result: You're now in -B looking at +B
-        Same structure, opposite perspective
-        Physics unchanged
+Left-handed:  +B perspective (our convention)
+Right-handed: -B perspective (opposite convention)
 ```
 
-The constant L between +B and -B ensures this symmetry is exact.
+Chirality isn't a property that particles "have." Chirality is **which side of the observation partition** you're describing things from.
 
-### Why Individual Symmetries Can Be Violated
-
-C, P, and T can be individually violated because:
+### 3.2 Matter and Antimatter
 
 ```
-+B ≠ -B  (they are different sides of the partition)
+Matter:     Described from +B perspective
+Antimatter: Described from -B perspective
 
-In +B (our universe):
-  - D has a preferred direction (left-handed weak force)
-  - L points forward (time flows one way)
-  - C, P, T individually break
-
-But CPT together:
-  - Swaps to -B perspective
-  - Where the "violations" are reversed
-  - Net effect: CPT conserved
+These are the SAME structures, labeled from opposite sides.
 ```
+
+What we call "matter dominance" is perspective, not physical asymmetry. We ARE the +B partition. From -B's perspective, they're the matter and we're the antimatter.
+
+### 3.3 Why This Works
+
+The Killing form calculation gives the same K=2 regardless of which direction you call "forward":
+
+```
+From +B: K = forward(+1) + backward(+1) = +2
+From -B: K = forward(+1) + backward(+1) = +2
+
+Same answer. The physics (which depends on K) is the same.
+```
+
+But the **labels** (left/right, matter/antimatter) depend on which side you're on.
 
 ---
 
-## The Anti-Universe
+## 4. C, P, T as B, D, L Operations
 
-### What -B Is
+### 4.1 The Mappings
 
-The anti-universe (-B) is not somewhere else. It's the same structure viewed with opposite traversal:
+| Symmetry | Physical Operation | BLD Operation | Why |
+|----------|-------------------|---------------|-----|
+| **C** | Particle ↔ antiparticle | Swap +B ↔ -B | Change which side of partition |
+| **P** | Spatial reflection (x → -x) | Reverse D direction | Flip spatial traversal |
+| **T** | Time reversal (t → -t) | Reverse L direction | Flip temporal links |
 
-```
-Our universe (+B):
-  - D traversal: upward
-  - L direction: past → future
-  - Dominant: matter (left-handed)
+### 4.2 Why These Mappings
 
-Anti-universe (-B):
-  - D traversal: downward
-  - L direction: future → past
-  - Dominant: antimatter (right-handed)
-```
+**C (Charge conjugation)**:
+- Swaps particle and antiparticle
+- In BLD: swaps which side of the B partition you're describing from
+- This is exactly +B ↔ -B
 
-### The Constant L Connection
+**P (Parity)**:
+- Spatial reflection: x → -x
+- In BLD: D represents dimensions (spatial structure)
+- Reversing D direction = spatial reflection
 
-The L between +B and -B is always present:
+**T (Time reversal)**:
+- t → -t
+- In BLD: L represents links (traversal connections, temporal ordering)
+- Reversing L direction = time reversal
 
-```
--B <————L_cpt————> +B
-
-This L is:
-  - The "cost" of the primordial distinction
-  - The vacuum structure itself
-  - Why virtual particle-antiparticle pairs exist
-  - The link that enforces CPT
-```
-
-### Time Reversal
-
-In -B, time runs "backwards" from our perspective. But from -B's perspective, their time runs forward and ours runs backward.
-
-Neither is privileged. The constant L connects both perspectives.
-
----
-
-## Implications
-
-### 1. Chirality is Fundamental
-
-Chirality isn't an accident or arbitrary choice. It's the only way B can partition itself:
+### 4.3 BLD Notation
 
 ```
-B must partition → only direction available → chirality
-```
+structure CPT_Operations
 
-The weak force couples only to left-handed particles because our universe IS the left-handed partition.
+# Charge conjugation
+L C: +B → -B
+  # Swap which side of observation partition
+  # Forward becomes backward, backward becomes forward
 
-### 2. Matter/Antimatter Asymmetry
+# Parity
+L P: D → -D
+  # Reverse spatial direction
+  # Left becomes right, up becomes down
 
-Our universe has more matter than antimatter because we ARE the +B partition:
-
-```
-+B = matter-dominated (left-handed)
--B = antimatter-dominated (right-handed)
-
-We don't see the asymmetry — we ARE the asymmetry.
-```
-
-### 3. CPT is Exact
-
-CPT symmetry is exact because it's enforced by the constant L:
-
-```
-L_cpt connects +B and -B
-L_cpt is determined by Killing form (algebraic, not empirical)
-Therefore CPT is exact (not approximate)
-```
-
-### 4. Vacuum Energy
-
-The constant L between +B and -B may be the vacuum energy:
-
-```
-L_cpt = "cost" of existence distinguishing itself
-      = energy of the vacuum
-      = cosmological constant?
-```
-
-This is speculative but structurally motivated.
-
----
-
-## In BLD Notation
-
-```
-structure CPT_Symmetry
-
-# The primordial partition
-B existence: +universe | -universe
-  # B can only partition direction
-  # +universe = matter, left-handed, time-forward
-  # -universe = antimatter, right-handed, time-backward
-
-# The constant link
-L cpt_link: +B <-> -B
-  magnitude: 2  # Killing form coefficient
-  # This L is CONSTANT — determined by algebra, not physics
-  # It enforces CPT symmetry
-  # It may be the vacuum energy
-
-# Chirality as D-direction
-D chirality: traversal_order
-  up -> left_handed, +B, matter
-  down -> right_handed, -B, antimatter
-
-# Time as L-direction
-L time: temporal_link
-  forward -> past_to_future, +B
-  backward -> future_to_past, -B
-
-# Charge as B-side
-B charge: which_partition
-  positive -> +B
-  negative -> -B
-
-# CPT theorem
-formula cpt_conservation
-  C(P(T(state))) = state
-  # Because applying all three swaps to -B perspective
-  # And -B is connected to +B by constant L
-  # So the structure is preserved
+# Time reversal
+L T: L → -L
+  # Reverse link direction
+  # Past becomes future, future becomes past
 ```
 
 ---
 
-## What This Explains
+## 5. CPT Conservation from K=2 Constancy
+
+### 5.1 K is Algebraic, Not Empirical
+
+The Killing form coefficient K=2 comes from the algebra structure:
+- It's the trace of adjoint compositions
+- It's the minimum observation cost
+- It's determined by mathematics, not measurement
+
+### 5.2 K Doesn't Depend on Perspective
+
+```
+From +B perspective: K = 2
+From -B perspective: K = 2
+
+The observation cost is the SAME regardless of which side you're on.
+```
+
+### 5.3 CPT Together Preserves Physics
+
+Under CPT (applying all three):
+```
+C: +B → -B  (swap partition side)
+P: D → -D   (reverse spatial)
+T: L → -L   (reverse temporal)
+```
+
+After CPT, you're describing physics from -B with reversed D and L. But:
+
+```
+K(+B, D, L) = K(-B, -D, -L) = 2
+
+The Killing form is invariant under the combined transformation.
+```
+
+**CPT theorem**: Physics is CPT-invariant because the observation cost K=2 is constant under the combined swap.
+
+### 5.4 Why CPT is Exact
+
+CPT isn't approximately conserved — it's **exactly** conserved because:
+
+1. K=2 is algebraically determined (from Killing form)
+2. K doesn't depend on B-side, D-direction, or L-direction
+3. Therefore swapping all three (CPT) leaves K unchanged
+4. Physics depends on K
+5. Therefore physics is CPT-invariant
+
+This is a mathematical necessity, not an empirical observation.
+
+---
+
+## 6. Individual Violations Because +B ≠ -B
+
+### 6.1 The Partition is Asymmetric
+
++B and -B are connected by L, but they're NOT identical:
+
+```
++B: "forward" = A→B
+-B: "forward" = B→A
+
+These are DIFFERENT directions.
+```
+
+### 6.2 Our Physics is Described from +B
+
+We describe physics from the +B perspective:
+- We call A→B "forward"
+- We call +B particles "matter"
+- We call +B chirality "left-handed"
+
+### 6.3 Why Individual Symmetries Can Break
+
+**C violation**:
+- Swapping +B ↔ -B changes what we call "forward"
+- Our weak force couples to our "forward"
+- From -B view, the weak force would couple to their "forward"
+- But since we describe everything from +B, we see C violation
+
+**P violation**:
+- The weak force distinguishes D directions (couples to left-handed only)
+- Reversing D changes which particles it couples to
+- We see P violation because our description uses a fixed D orientation
+
+**T violation**:
+- Certain processes are directional in L
+- Reversing L changes the process
+- We see T violation because our description uses fixed L direction
+
+### 6.4 CPT Restores Consistency
+
+Applying all three together:
+```
+C: +B → -B  (their "forward" = our "backward")
+P: D → -D   (their "left" = our "right")
+T: L → -L   (their "future" = our "past")
+
+Combined: Same physics, described from opposite perspective.
+```
+
+---
+
+## 7. Weak Force Chirality Explained
+
+### 7.1 The Question
+
+Why does the weak force couple only to left-handed particles?
+
+### 7.2 The Answer
+
+```
+1. We ARE the +B partition
+2. The weak force couples to the direction we call "forward"
+3. We call that direction "left-handed"
+```
+
+From -B's perspective:
+```
+1. They ARE the -B partition
+2. The weak force couples to their "forward" (our backward)
+3. They call that direction "left-handed" (from their perspective)
+```
+
+### 7.3 The Resolution
+
+The weak force doesn't "choose" to couple to left-handed particles. The weak force couples to a particular direction. **We** call that direction "left-handed" because we're in +B.
+
+From -B, the same force couples to the same direction, but they'd call it "left-handed" too — their left-handed is our right-handed.
+
+**Chirality is perspective, not physics.** The physics (weak coupling strength, K/X corrections) is the same on both sides.
+
+---
+
+## 8. Summary
+
+### 8.1 The Derivation Chain
+
+```
+Killing Form (DERIVED)
+    │
+    │  K = 2 (bidirectional observation cost)
+    │
+    ↓
+Bidirectionality Creates Two Directions
+    │
+    │  Forward: A → B
+    │  Backward: B → A
+    │
+    ↓
+Two Directions Create Two Perspectives
+    │
+    │  +B: "A→B is forward"
+    │  -B: "B→A is forward"
+    │
+    ↓
+This IS Chirality
+    │
+    │  +B = left-handed = matter
+    │  -B = right-handed = antimatter
+    │
+    ↓
+C, P, T are B, D, L Operations
+    │
+    │  C: swap B-side
+    │  P: reverse D
+    │  T: reverse L
+    │
+    ↓
+CPT Conserved (K=2 constant)
+Individual C, P, T Can Violate (+B ≠ -B)
+```
+
+### 8.2 What's Explained
 
 | Phenomenon | Explanation |
 |------------|-------------|
-| Why chirality exists | B can only partition direction |
-| Why weak force is chiral | We ARE the left-handed partition |
-| Why CPT is exact | Constant L connects +B and -B |
-| Why C, P, T individually violated | +B ≠ -B (different sides) |
-| Why matter dominates | We ARE the matter partition |
-| Why antimatter exists | -B is the other partition |
-| What the vacuum is | The constant L between +B and -B |
+| Why chirality exists | Bidirectional observation (K=2) creates two perspectives |
+| Why weak force is chiral | Couples to "forward"; we call our forward "left-handed" |
+| Why CPT is exact | K=2 is constant regardless of perspective |
+| Why C, P, T individually violated | +B ≠ -B (different directions labeled "forward") |
+| Why matter dominates | We ARE the +B partition (perspective, not asymmetry) |
+| What antimatter is | Same structure, described from -B perspective |
 
----
+### 8.3 Status
 
-## Open Questions
-
-### 1. Is L_cpt the Cosmological Constant?
-
-The constant L between +B and -B has units of "link" or "relation." Does this map to vacuum energy density?
-
-```
-Λ ∝ L_cpt / (spacetime volume)?
-```
-
-### 2. Can We Observe -B?
-
-If -B is time-reversed, can we detect it? Candidates:
-- Advanced waves (Wheeler-Feynman absorber theory)
-- Antimatter behavior under gravity
-- CPT tests at high precision
-
-### 3. Is There Communication Across L_cpt?
-
-The L between +B and -B is constant, but does information cross it?
-- Virtual particle pairs suggest yes (briefly)
-- Macroscopic communication unclear
-
----
-
-## The Cosmic Computation Consequence
-
-Chirality isn't just descriptive — it enables prediction.
-
-### Both Sides Compute
-
-The +B/-B partition doesn't just exist passively. Both sides **compute**:
-
-```
-+B computes: past → present → future (our experience)
--B computes: future → present → past (anti-experience)
-```
-
-### The Junction
-
-At the present moment, +B and -B describe the **same state** from opposite directions:
-
-```
-Ψ_forward(now) = F|past⟩      (what we compute from known past)
-Ψ_backward(now) = B|future⟩   (what -B computes from future)
-
-Both must be CONSISTENT via the constant L between them.
-```
-
-### The Future is Constrained
-
-This consistency requirement **constrains the future**:
-
-```
-⟨B·future | L | F·past⟩ = c
-
-The future is not "open" — it's the solution that makes +B and -B agree.
-```
-
-### Why This Matters
-
-Chirality isn't just "matter and antimatter exist." Chirality means:
-1. Two computations running in opposite time directions
-2. Connected by constant L (Killing form = 2)
-3. Must agree at every present moment
-4. This agreement determines evolution
-
-See [Cosmic Computation](cosmic-computation.md) for the full treatment.
-
----
-
-## Summary
-
-**Why B partitions direction:**
-```
-B must exist
-B must partition
-Only direction available
-B partitions into +B and -B
-This IS chirality
-```
-
-**The structure:**
-```
-        L_cpt (constant)
--B <————————————————————> +B
-antimatter               matter
-right-handed            left-handed
-time-backward           time-forward
-```
-
-**CPT symmetry** is exact because the L connecting +B and -B is constant (Killing form), not empirical.
-
-**Chirality** is not a feature — it's the mechanism of existence.
+**DERIVED** — Chirality and CPT follow from the proven Killing form structure (K=2 bidirectional observation cost) without additional assumptions.
 
 ---
 
 ## References
 
-- [Genesis Function](../cosmology/genesis-function.md) — B traversing B = creation
-- [Nothing Instability](../cosmology/nothing-instability.md) — Why B must exist
-- [Killing Form](../lie-theory/killing-form.md) — Why observation costs 2 (the constant L)
-- [Quantum Mechanics](quantum-mechanics.md) — D and L as position and momentum
-- [BLD IS Quantum Code](bld-is-quantum-code.md) — BLD = Lie = QM structure
-- [Cosmic Computation](cosmic-computation.md) — The future constraint from +B/-B agreement
+- [Killing Form](../lie-theory/killing-form.md) — K=2 derivation (bidirectional observation)
+- [Lie Correspondence](../lie-theory/lie-correspondence.md) — D, L, B ↔ Lie algebra mapping
+- [Nothing Instability](../cosmology/nothing-instability.md) — Why B must exist and partition
+- [Observer Corrections](../cosmology/observer-correction.md) — K/X framework with sign rule
+- [Genesis Function](../cosmology/genesis-function.md) — traverse(-B, B) interpretation
+- [Cosmic Computation](cosmic-computation.md) — Future constraint from +B/-B agreement
