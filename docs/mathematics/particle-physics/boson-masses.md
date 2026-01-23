@@ -1,6 +1,7 @@
 ---
 status: DERIVED
 depends_on:
+  - ../foundations/integer-machine.md
   - lepton-masses.md
   - fine-structure-consistency.md
   - e7-derivation.md
@@ -35,6 +36,30 @@ used_by:
 | H | (v/K)(1+1/B) | 125.31 GeV | 125.25 GeV | 58 | 170 MeV ✓ |
 | Z | (v/e)(137/136)(1-K/B²) | 91.187 GeV | 91.188 GeV | 0.5 | 2.1 MeV ✓ |
 | W | m_Z×cos(θ)×(209/208)×(1+1/6452) | 80.373 GeV | 80.377 GeV | 3.7 | 12 MeV ✓ |
+
+---
+
+## Primordial Structure
+
+**The octonions aligned first. These ratios are primordial integers.**
+
+| Boson | Primordial | Observed Form | Note |
+|-------|------------|---------------|------|
+| H | v × 1/K = v/2 | v/2 × (1 + 1/B) | Boundary quantum adds |
+| Z | v × B/(B+1) | v/e ≈ v × 0.368 | e is continuous limit |
+| W | m_Z × √(S-3)/S | m_Z × cos(θ_W) × corrections | Weak mixing |
+
+**The e in v/e emerged late — it's the continuous limit of primordial integers:**
+```
+PRIMORDIAL: v × B/(B+1) = v × 56/57    [integers]
+OBSERVED:   v/e ≈ v × 0.368           [continuous limit]
+
+e = lim_{B→∞}(1 + 1/B)^B  [late emergence]
+```
+
+The primordial structure is v × 56/57. We observe v/e through the continuous limit.
+
+See [Integer Machine](../foundations/integer-machine.md) for the complete framework.
 
 ---
 
@@ -463,7 +488,7 @@ All three electroweak boson masses are derived to within experimental measuremen
 
 ## Why Observer Corrections Exist
 
-The BLD values (v/2, v/e, etc.) are the **true structural values**. What we measure differs slightly because **measurement itself has a cost**. This isn't a flaw — it's fundamental to how observation works.
+The BLD values (v/2, v/e, etc.) are the **primordial values** — what the octonions computed first. What we measure differs because **observation has a cost**. This isn't a flaw — it's fundamental to how observation works.
 
 ### The Core Insight: You Can't Observe for Free
 
@@ -512,9 +537,9 @@ The skip ratio K/X appears because:
 
 ### Why BLD Numbers Are "Real"
 
-The BLD structural values are what **exists**:
-- v/2 = 123.11 GeV is the Higgs mass in pure structure
-- v/e = 90.58 GeV is the Z mass in pure structure
+The primordial BLD values are what the octonions computed first:
+- v/2 = 123.11 GeV is the primordial Higgs mass
+- v/e = 90.58 GeV is the primordial Z mass (via continuous limit)
 
 What we **measure** includes observation cost:
 - m_H = (v/2) × (1 + 1/B) = 125.31 GeV
@@ -526,7 +551,7 @@ The difference isn't error — it's the **irreducible cost of measurement**. You
 
 When observer corrections are **fully accounted for**, predictions match observations to within measurement uncertainty:
 
-| Quantity | Structural Value | + Observer Corrections | = Observed | Δ |
+| Quantity | Primordial | + Observer Corrections | = Observed | Δ |
 |----------|------------------|------------------------|------------|---|
 | m_H | v/2 = 123.11 | × (1 + 1/B) | 125.31 GeV | 58 MeV ✓ |
 | m_Z | v/e = 90.58 | × (137/136)(1-K/B²) | 91.19 GeV | 0.5 MeV ✓ |

@@ -2,6 +2,7 @@
 status: DERIVED
 layer: 2
 depends_on:
+  - ../foundations/integer-machine.md
   - lepton-masses.md
   - particle-classification.md
   - ../cosmology/observer-correction.md
@@ -31,6 +32,22 @@ used_by:
 | Σm_ν | 3 × m_νe × (1 + ratios) | ~60 meV | < 0.12 eV (cosmo) | **CONSISTENT** |
 
 **Key insight**: Neutrinos have the SAME underlying structure as electrons, but without B (boundary) coupling. The "missing B" creates the ~10⁵ mass suppression.
+
+---
+
+## Primordial Structure
+
+**The same primordial integers govern neutrinos — but missing B changes everything.**
+
+| Quantity | Primordial | Value | Note |
+|----------|------------|-------|------|
+| Suppression | (K/B)² = (2/56)² | 1/784 | Missing B structure |
+| Geometric | K/(n×L) = 2/80 | 1/40 | Pure link coupling |
+| Δm² ratio | L + S | **33** | Primordial integer ✓ |
+
+The primordial integers K=2, B=56, L=20, S=13, n=4 determine neutrino structure. The "missing B" isn't a perturbation — it's a fundamentally different phase of the same underlying structure.
+
+See [Integer Machine](../foundations/integer-machine.md) for the complete framework.
 
 ---
 

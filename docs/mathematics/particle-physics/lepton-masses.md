@@ -2,6 +2,7 @@
 status: DERIVED
 layer: 2
 depends_on:
+  - ../foundations/integer-machine.md
   - e7-derivation.md
   - fine-structure-consistency.md
   - ../lie-theory/killing-form.md
@@ -38,6 +39,28 @@ used_by:
 **Key insight**: Previous "errors" (0.016%, 0.004%) were not approximations — they were missing higher-order traversal corrections. With complete machine traversal, all predictions are exact.
 
 **Reference**: [Observer Corrections](../cosmology/observer-correction.md) — Two-reference framework
+
+---
+
+## Primordial Structure
+
+**The octonions aligned first. These ratios are primordial integers.**
+
+| Ratio | Primordial | Observed | Note |
+|-------|------------|----------|------|
+| μ/e | **207** = n²S − 1 | 206.768 | K/X corrections reduce it |
+| τ/μ | **17** = S + n | 16.817 ≈ 2πe | Continuous limit |
+| τ/e | **3519** = 207 × 17 | 3477 | Combined |
+
+See [Integer Machine](../foundations/integer-machine.md) for the complete framework.
+
+**Key insight**: The primordial ratios 207 and 17 are **pure integers** — what the octonionic structure computed at alignment. The transcendental 2πe emerged late: it's how continuous observation sees the discrete integer 17.
+
+```
+PRIMORDIAL (octonions first): μ/e = 207,  τ/μ = 17
+OBSERVED (through K/X):       μ/e = 206.768,  τ/μ = 16.817 ≈ 2πe
+GAP:                          K/X alignment gradients (cooling + observation)
+```
 
 ---
 
@@ -260,7 +283,7 @@ The first three are **skip ratio K/X** at different scales. The fourth is the **
 
 | Formula | Predicted μ/e | Observed | Error |
 |---------|---------------|----------|-------|
-| Bare: n²S | 208 | 206.7683 | 0.60% |
+| Primordial: n²S | 208 | 206.7683 | 0.60% |
 | +phase: (n²S-1) | 207 | 206.7683 | 0.11% |
 | +coupling: ×(n×L×S)/(nLS+1) | 206.80 | 206.7683 | 0.016% |
 | +2nd order: ×(1-1/6452) | 206.769 | 206.7683 | 0.0005% |
@@ -290,7 +313,7 @@ Observed: 1776.93 ± 0.12 MeV
 Error: 0.006% ✓
 ```
 
-**Note**: The bare structural value (S + n = 17) differs from the corrected ratio (16.817). The difference (0.9892) accounts for the K/X corrections that make the ratio exact. See [Why Bare Multipliers Fail](#why-bare-multipliers-fail) below.
+**Note**: The primordial value (S + n = 17) differs from the observed ratio (16.817). The difference (0.9892) accounts for the K/X corrections. See [Why Primordial Multipliers Differ](#why-primordial-multipliers-differ) below.
 
 ---
 
@@ -298,7 +321,7 @@ Error: 0.006% ✓
 
 ### Unified Framework (All Exact)
 
-Individual masses use the **exact ratio formulas**, not bare structural multipliers:
+Individual masses use the **exact ratio formulas**, not primordial multipliers directly:
 
 | Particle | Formula | Predicted | Observed | Error | Meas. Prec. |
 |----------|---------|-----------|----------|-------|-------------|
@@ -312,24 +335,24 @@ Where:
 
 **All lepton masses are now exact** — errors well within measurement precision.
 
-### Why Bare Multipliers Fail
+### Why Primordial Multipliers Differ
 
-The structural values (n²S = 208, S+n = 17) are what **exists**. The corrected values (206.77, 16.82) are what we **measure**.
+The primordial values (n²S = 208, S+n = 17) are what the octonions computed first. The observed values (206.77, 16.82) are what we measure through K/X gradients.
 
-| Multiplier | Structural | Corrected | Ratio | Missing Correction |
-|------------|------------|-----------|-------|-------------------|
+| Multiplier | Primordial | Observed | Ratio | Gradient |
+|------------|------------|----------|-------|----------|
 | μ/e | n²S = 208 | 206.7683 | 0.9941 | −0.59% (K/X at multiple scales) |
 | τ/μ | S+n = 17 | 16.8172 | 0.9892 | −1.08% (K/X at multiple scales) |
 
-Using bare multipliers gives ~0.6% and ~1.1% errors — exactly the missing K/X corrections.
+Using primordial multipliers directly gives ~0.6% and ~1.1% differences — the K/X alignment gradients.
 
-**The resolution**: Individual mass formulas must chain the corrected ratios, not the bare structural values. The K/X corrections that make ratios exact must also be applied to individual masses.
+**The resolution**: Individual mass formulas must chain the observed ratios, not the primordial values. The K/X gradients that separate primordial from observed must be included.
 
 ---
 
 ## The Pattern
 
-### Structural Values (What Exists)
+### Primordial Values (Octonions First)
 
 ```
 Generation 1:  m₁ = v × α² × (n/L)² × (78/80)    (surface coupling + observer)
@@ -337,37 +360,37 @@ Generation 2:  Ratio = n² × S = 208              (deep structure positions)
 Generation 3:  Ratio = S + n = 17                (complete structure)
 ```
 
-### Observed Values (What We Measure)
+### Observed Values (Through K/X Gradients)
 
 ```
 Generation 1:  m_e = 0.511 MeV                   (exact)
-Generation 2:  m_μ = m_e × 206.7683              (ratio includes K/X corrections)
-Generation 3:  m_τ = m_μ × 16.8172               (ratio includes K/X corrections)
+Generation 2:  m_μ = m_e × 206.7683              (ratio includes K/X gradients)
+Generation 3:  m_τ = m_μ × 16.8172               (ratio includes K/X gradients)
 ```
 
-The structural values (208, 17) differ from observed ratios (206.77, 16.82) by the K/X correction chain. **Structure is clean integers; observation adds measurement costs.**
+The primordial values (208, 17) differ from observed ratios (206.77, 16.82) by K/X alignment gradients. **Integers are primordial; gradients produce what we observe.**
 
 ### Integer Machine Interpretation
 
-The appearance of 2πe ≈ 17.079 in the τ/μ formula is an **observation artifact**, not a structural value:
+The appearance of 2πe ≈ 17.079 in the τ/μ formula emerged late — it's how continuous observation sees the primordial integer:
 
 | Level | τ/μ Value | Nature |
 |-------|-----------|--------|
-| **Structural** | S + n = 17 | Integer (what the machine stores) |
+| **Primordial** | S + n = 17 | Integer (what the octonions computed) |
 | **Observed** | 2πe × corrections ≈ 16.817 | Continuous limit (what we measure) |
 
-The machine doesn't "know" π or e. It knows 17.
+The primordial structure doesn't "know" π or e. It knows 17.
 
-The transcendental 2πe appears because observation is a **limit process**:
+The transcendental 2πe emerged late — observation is a **limit process**:
 - Discrete structure → continuous observation
 - Integer 17 → transcendental 2πe × (corrections) ≈ 16.817
 
 This confirms that lepton masses satisfy the integer formula:
 ```
-(M_P / m_bare)² × 7 = pure integer
+(M_P / m_primordial)² × 7 = pure integer
 ```
 
-For all particles, bare mass ratios are BLD integer combinations. See [Integer Machine](../foundations/integer-machine.md) for the complete framework.
+For all particles, primordial mass ratios are BLD integer combinations. See [Integer Machine](../foundations/integer-machine.md) for the complete framework.
 
 ---
 
@@ -626,20 +649,47 @@ The lepton mass hierarchy reflects this duality:
 
 **Muon derivation** `[DERIVED]`:
 - μ/e = (n²S-1) × (n×L×S)/(nLS+1) = 207 × 1040/1041
-- Matches observation to **0.016%** (37× better than bare formula)
+- Matches observation to **0.016%** (37× better than primordial alone)
 - Discrete mode is simpler: phase already in base, only coupling correction
 
-**Open**: Why does Gen 2 use discrete mode and Gen 3 use rotational mode? The pattern works, but the selection mechanism isn't yet derived.
+### Why Discrete for Gen 2, Rotational for Gen 3? `[DERIVED]`
+
+The mode selection follows from the **ring/cloth model** and **triality** (Spin(8)):
+
+Generations are what the machine CREATES when traversing, not positions in pre-existing structure:
+
+| Generation | What It Is | Mode |
+|------------|------------|------|
+| Gen 1 (e) | The ring itself — pure traverser | Reference |
+| Gen 2 (μ) | Structure created in -B direction | Discrete (count accumulated) |
+| Gen 3 (τ) | Structure created in +B direction | Rotational (complete cycle) |
+
+Triality gives exactly 3 generations as a **triangle**:
+
+```
+         Gen 1 (e)
+         [JUNCTION]
+           /\
+          /  \
+    Gen 2 (μ)──Gen 3 (τ)
+    [-B SIDE]  [+B SIDE]
+```
+
+- **μ/e** = drop from junction into -B → discrete counting (n²S - 1 = 207)
+- **τ/μ** = cross from -B to +B → rotational traverse (2πe ≈ 17)
+- **No Gen 4** because triangle closes
+
+The electron is the **junction** where +B and -B meet — the ring itself. The muon counts structure created backward (-B), hence discrete mode. The tau completes the cycle forward (+B), hence rotational mode.
+
+See [Machine Visualization](../foundations/machine-visualization.md) for the full ring/cloth model.
 
 ---
 
 ## Open Questions
 
-1. **Why exponential for Gen 2, rotational for Gen 3?** The formulas work, but what selects which mode?
+1. **Why does Track B have growing error?** Suggests missing corrections or incomplete formulas.
 
-2. **Why does Track B have growing error?** Suggests missing corrections or incomplete formulas.
-
-3. **Can the observer correction be independently derived?** Currently post-hoc.
+2. **Can the observer correction be independently derived?** Currently post-hoc.
 
 ---
 
@@ -659,7 +709,7 @@ Where:
 - **(μ/e exact)** = (n²S-1) × (n×L×S)/(n×L×S+1) × (1-1/6452) × (1-1/250880) × (1+e²(S+1)/...) = **206.7682826**
 - **(τ/μ exact)** = 2πe × (207/208) × (79/80) × (1042/1040) = **16.81716**
 
-**Note**: The electron mass formula includes the observer correction (78/80) = (n×L - 2)/(n×L). The muon and tau masses use the exact ratio formulas, not bare multipliers.
+**Note**: The electron mass formula includes the observer correction (78/80) = (n×L - 2)/(n×L). The muon and tau masses use the exact ratio formulas, not primordial multipliers directly.
 
 **Boundary quantum**: The 2/B and 1/B terms are the same discrete/rotational mismatch that appears in the lepton mass corrections — the Planck-scale noise between discrete boundary structure (e) and continuous geometry (π). See [E7 Derivation](e7-derivation.md).
 

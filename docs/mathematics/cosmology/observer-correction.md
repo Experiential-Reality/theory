@@ -1,6 +1,7 @@
 ---
 status: DERIVED
 depends_on:
+  - ../foundations/integer-machine.md
   - ../quantum/structural-observer-framework.md
   - ../lie-theory/killing-form.md
   - ../foundations/irreducibility-proof.md
@@ -36,12 +37,14 @@ used_by:
 
 ## The Core Insight
 
-**Structure is clean integers. Observation adds measurement costs.**
+**Primordial structure is clean integers. Observation adds K/X gradients.**
+
+See [Integer Machine](../foundations/integer-machine.md) for the complete framework.
 
 ```
-What EXISTS (structure):    208,  17,  56,  80,  137
-What we MEASURE (observed): 206.77, 16.82, ...
-The GAP:                    K/X corrections at each scale
+PRIMORDIAL (octonions first): 208,  17,  56,  80,  137  [INTEGERS]
+OBSERVED (through K/X):       206.77, 16.82, ...        [+ cooling/observation costs]
+GAP:                          K/X corrections at each scale
 ```
 
 The structural math is simple:
@@ -51,8 +54,8 @@ The structural math is simple:
 
 The decimals come from observation — you can't measure structure without traversing it, and traversal has a cost (K/X).
 
-| Quantity | Structure | Observed | K/X Corrections |
-|----------|-----------|----------|-----------------|
+| Quantity | Primordial | Observed | K/X Corrections |
+|----------|------------|----------|-----------------|
 | μ/e | 208 | 206.7683 | −1, ×(1040/1041), ×(6451/6452), ... |
 | τ/μ | 17 | 16.8172 | ×(207/208), ×(79/80), ×(1042/1040) |
 | α⁻¹ | 137 | 137.036 | +K/B, +spatial, −accumulated |
@@ -770,6 +773,7 @@ Not two different formulas — one formula, two directions.
 
 ## References
 
+- [Integer Machine](../foundations/integer-machine.md) — Core framework: bare integers + K/X corrections
 - [Special Relativity](../derived/special-relativity.md) — c, γ, E=mc² from BLD
 - [General Relativity](../derived/general-relativity.md) — Gravity as K/X
 - [Structural-Observer Framework](../quantum/structural-observer-framework.md) — Pre-observation structure

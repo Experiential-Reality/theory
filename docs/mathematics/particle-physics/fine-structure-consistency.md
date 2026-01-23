@@ -1,6 +1,7 @@
 ---
 status: DERIVED
 depends_on:
+  - ../foundations/integer-machine.md
   - ../foundations/octonion-derivation.md
   - e7-derivation.md
   - ../lie-theory/killing-form.md
@@ -53,6 +54,27 @@ All terms are now derived, including the accumulated correction:
 
 **Observed**: α⁻¹ = [137.035999177(21)](https://physics.nist.gov/cgi-bin/cuu/Value?alphinv) (CODATA 2022)
 **Error**: 0.0 ppt (exact within measurement uncertainty)
+
+---
+
+## Primordial Structure
+
+**The primordial α⁻¹ is an exact integer. The decimals emerged later through observation.**
+
+| Level | Value | Nature |
+|-------|-------|--------|
+| **Primordial** | α⁻¹ = n×L + B + 1 = 80 + 56 + 1 = **137** | Exact integer |
+| **Observed** | α⁻¹ = 137.035999177... | Integer + K/X gradients |
+
+```
+PRIMORDIAL (octonions first): 137 (exact integer)
+OBSERVED (through K/X):       137.035999177 (adds alignment gradients)
+GAP:                          +0.035999177 = K/B + spatial + accumulated
+```
+
+**The decimals .035999... are NOT primordial.** They are alignment gradients — the cost of observing the structure through cooling and expansion.
+
+See [Integer Machine](../foundations/integer-machine.md) for the complete framework.
 
 ---
 

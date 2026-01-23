@@ -25,15 +25,36 @@ used_by:
 3. **7 = minimum structure** — Im(O) boundaries required for coherent self-observation
 4. **√7 = minimum observable** — Because m² is stored, m is observed
 5. **Integer formula** — (M_P/m_bare)² × 7 = pure integer for all particles
-6. **Transcendentals are artifacts** — Machine stores 17; we observe 2πe ≈ 16.817
+6. **Transcendentals are late** — Primordial τ/μ = 17; we observe 2πe ≈ 16.817
 7. **Algebra tower is physical** — C→K=2, H→n=4, O→minimum structure
 
 | Claim | Evidence |
 |-------|----------|
 | 7 = Im(O) = n + 3 | Derived in [Octonion Derivation](octonion-derivation.md) |
 | (M_P/m_e)² × 7 = integer | 2^51 × 5^31 × 137^4 (pure integer) |
-| Bare τ/μ = 17 | S + n = 13 + 4 (from [Lepton Masses](../particle-physics/lepton-masses.md)) |
+| Primordial τ/μ = 17 | S + n = 13 + 4 (from [Lepton Masses](../particle-physics/lepton-masses.md)) |
 | K = 2 = dim(ℂ) | i is the unit of observation |
+
+---
+
+## Terminology
+
+| Term | Meaning | Example |
+|------|---------|---------|
+| **Primordial** | What the octonions computed first (integer) | τ/μ = 17 |
+| **Observed** | What we measure through K/X gradients | τ/μ = 16.817 |
+| **K/X** | Alignment gradient (cooling + observation cost) | K/B = 2/56 |
+| **Late** | Transcendental emerging from continuous limit | 2πe from discrete 17 |
+
+**The octonions aligned first. Integers are primordial. Transcendentals came later.**
+
+```
+Sequence:
+  7 = Im(O) aligns     →  spacetime + color emerge
+  Structures stabilize →  n=4, L=20, B=56, S=13
+  Cooling separates    →  quarks (confined) vs leptons (free)
+  We observe           →  K/X gradients produce 137.036, 206.768, 16.817...
+```
 
 ---
 
@@ -253,42 +274,64 @@ The 7 survives because:
 
 ---
 
-## 5. Bare vs Observed
+## 5. Primordial vs Observed
 
-### 5.1 Bare Masses Are Integers
+### 5.1 Primordial Masses Are Integers
 
-| Particle | Bare Ratio to m_e | Integer? |
-|----------|-------------------|----------|
+| Particle | Primordial Ratio to m_e | Integer? |
+|----------|-------------------------|----------|
 | μ | 207 = n²S - 1 | ✓ |
 | τ | 207 × 17 = 207 × (S+n) | ✓ |
 | s | 183 = n²S - L - L/n | ✓ |
 | c | 183 × 13 = 183 × S | ✓ |
 | b | 183 × 13 × 3 = 183 × S × 3 | ✓ |
 
-All bare mass ratios are **integer combinations of BLD primitives**.
+All primordial mass ratios are **integer combinations of BLD primitives**.
 
 ### 5.2 Observed Masses Include Transcendentals
 
-| Ratio | Bare | Observed | Gap |
-|-------|------|----------|-----|
+| Ratio | Primordial | Observed | Gap |
+|-------|------------|----------|-----|
 | μ/e | 207 | 206.768 | K/X corrections |
 | τ/μ | 17 | 16.817 ≈ 2πe | continuous limit |
 
-The observed τ/μ ≈ 2πe appears transcendental. But the **bare** τ/μ = S + n = 17 is integer.
+The observed τ/μ ≈ 2πe appears transcendental. But the **primordial** τ/μ = S + n = 17 is integer.
 
-### 5.3 Transcendentals as Limits
+### 5.3 Transcendentals Are Late
 
-The machine doesn't "know" π or e. It knows 17 and 207.
+The primordial structure doesn't "know" π or e. It knows 17 and 207.
 
 We see transcendentals because observation is a **limit process**:
 ```
 e = lim_{n→∞} (1 + 1/n)^n
 
-The machine computes (1 + 1/B)^B = (57/56)^56 ≈ 2.70
-We see the limit: e ≈ 2.718
+The primordial structure computes (1 + 1/B)^B = (57/56)^56 ≈ 2.70
+We observe the limit: e ≈ 2.718
 ```
 
 **Transcendentals are how continuous observation "sees" discrete structure.**
+
+### 5.4 Universal K/X Corrections
+
+Every observed value = primordial integer × K/X corrections. The same pattern applies everywhere:
+
+| Domain | X (Structure Traversed) | K/X Value | Sign | Meaning |
+|--------|-------------------------|-----------|------|---------|
+| α⁻¹ | B = 56 | 2/56 = 0.0357 | + | Boundary quantum |
+| α_s⁻¹ | n+L = 24 | 2/24 = 0.0833 | − | Complete jet traversal |
+| sin²θ_W | n×L×B = 4480 | 2/4480 = 0.00045 | + | Incomplete (ν escape) |
+| μ/e | n×L×S = 1040 | 2/1040 = 0.00192 | − | Complete traversal |
+| τ/μ | n²S = 208 | 2/208 = 0.0096 | − | Phase correction |
+| m_H | B = 56 | 2/56 = 0.0357 | + | Boundary quantum |
+| Dark matter | K×n = 8 | 8x² | + | Observer participation |
+
+**Sign rule**:
+- **+** = incomplete traversal (observer didn't finish; e.g., neutrino escapes)
+- **−** = complete traversal (observer finished; traversal cost subtracted)
+
+**The universal pattern**: `Observed = Primordial × (1 ± K/X₁) × (1 ± K/X₂) × ...`
+
+All physics formulas follow this pattern. The integers are primordial. The decimals are observation costs.
 
 ---
 

@@ -2,6 +2,7 @@
 status: DERIVED
 layer: 2
 depends_on:
+  - ../foundations/integer-machine.md
   - lepton-masses.md
   - fine-structure-consistency.md
   - e7-derivation.md
@@ -42,6 +43,26 @@ used_by:
 | t | v/√K × (1 - K/n²S) | 172.4 GeV | 172.69 GeV | **0.17%** |
 
 **All corrections follow the universal skip ratio K/X.**
+
+---
+
+## Primordial Structure
+
+**The octonions aligned first. These ratios are primordial integers.**
+
+| Ratio | Primordial | Observed | K/X Gradient |
+|-------|------------|----------|--------------|
+| m_s/m_e | **183** = n²S−L−L/n | 182.8 | Phase transition cost |
+| m_s/m_d | **20** = L | 20.1 | +K/L = +0.1 |
+| m_d/m_u | **2** = K | 2.167 | ×S/(S−1) interval |
+| m_c/m_s | **13** = S | 13.6 | +K/3 color |
+| m_b/m_c | **3** = colors | 3.29 | +K/7 spacetime-color |
+
+**Key insight**: Quark mass ratios are **the same primordial integers** as leptons (n²S, L, S), modified by:
+- **−L**: Confinement barrier (quarks cross from free to confined phase)
+- **K/X**: Observation gradients from traversing color and link structure
+
+See [Integer Machine](../foundations/integer-machine.md) for the complete framework.
 
 ---
 

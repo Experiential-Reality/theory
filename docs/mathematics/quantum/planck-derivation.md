@@ -632,14 +632,18 @@ All predictions use the **same** structural constants (λ, B, n×L, K) with corr
 
 ---
 
-## Structural vs Observed: The Key Insight
+## Primordial vs Observed: The Key Insight
 
 The derivation reveals a fundamental distinction:
 
 | Type | Value | Nature |
 |------|-------|--------|
-| **Structural** | λ = 1/√20, B = 56, n_c = 26 | Exact, mathematically necessary |
-| **Observed** | ℏ_measured | Structural × observer corrections |
+| **Primordial** | λ² = 1/20, B = 56, n_c = 26 | What the octonions computed first |
+| **Observed** | ℏ_measured | Primordial × K/X observation gradients |
+
+**Note**: The factor √(5/14) comes from the primordial integer ratio L/B = 20/56 = 5/14. The square root emerges late — when observation accesses the underlying integer structure.
+
+See [Integer Machine](../foundations/integer-machine.md) for the complete framework.
 
 **v (Higgs VEV) is the uncorrected reference scale**. All corrections are measured relative to v because:
 1. One scale must be the reference (cannot correct everything)
@@ -663,10 +667,10 @@ M_P = v × L^13 × √(L/B) × corrections
 m_e = v / (5 × 137)² × corrections
 ```
 
-The bare ratio (ignoring observation corrections):
+The primordial ratio (before K/X observation gradients):
 
 ```
-(M_P / m_e)²_bare = L^26 × (L/B) × (5 × 137)^4
+(M_P / m_e)²_primordial = L^26 × (L/B) × (5 × 137)^4
                   = L^31 × 685^4 / B
                   = 20^31 × 685^4 / 56
 ```

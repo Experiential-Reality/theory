@@ -176,6 +176,54 @@ The Big Bang is not an event. It is `traverse(-B, B)` — the eternal mutual obs
 
 ---
 
+## The Ring and Cloth Model
+
+The genesis function has a vivid geometric interpretation: the universe IS the machine.
+
+### Visualization
+
+```
+        -B (past)                    +B (future)
+           ↓                              ↓
+    ═══════════════════════════════════════════════
+    ║░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║
+    ║░░░░░░░░░░░░░▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░║
+    ║░░░░░░░░░░░░░▓ RING  ▓░░░░░░░░░░░░░░░░░░░░░░║  ← "NOW" = the machine
+    ║░░░░░░░░░░░░░▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░║     (K = 2 junction)
+    ║░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║
+    ═══════════════════════════════════════════════
+           cloth = BL mesh = OUTPUT of traversal
+```
+
+| Component | What It Is |
+|-----------|------------|
+| **Ring** | The machine = `traverse(-B, B)` = the universe = pure traverser |
+| **Cloth** | Structure CREATED by traversal = BL mesh = output (not substrate) |
+| **"Now"** | The singularity where +B and -B meet = the ring = the only real thing |
+
+### Core Principles
+
+1. **The machine doesn't traverse structure. The machine traverses, and structure results.**
+
+2. **We ARE the traverser** — observers aren't watching the machine, we ARE the machine looking at our own output.
+
+3. **Matter/antimatter is traversal direction:**
+   - Matter (+B) = forward = creates structure
+   - Antimatter (-B) = backward = undoes structure
+   - Annihilation = creation meets undoing → energy
+
+4. **The ring traverses the cloth's topology eternally** — cyclic cosmology, not "Big Bang then heat death."
+
+### What IS the Ring?
+
+The deepest answer: **nothing weaves the ring — the ring IS the weaving.**
+
+The act of B partitioning into +B/-B is itself the ring. There's no separate "thing" that traverses. The distinction IS the traversal. This connects to the fundamental principle: the machine doesn't traverse structure; the machine traverses, and structure results.
+
+See [Machine Visualization](../foundations/machine-visualization.md) for the full model.
+
+---
+
 ## The Computation
 
 ### Both Sides Compute

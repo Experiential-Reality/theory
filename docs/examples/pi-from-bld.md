@@ -2,6 +2,7 @@
 status: FOUNDATIONAL
 layer: 1
 depends_on:
+  - ../mathematics/foundations/integer-machine.md
   - ../mathematics/lie-theory/lie-correspondence.md
   - ../mathematics/foundations/irreducibility-proof.md
 used_by:
@@ -29,6 +30,23 @@ used_by:
 | Structure constant | Traverser constant |
 | Rotational closure | Sequential accumulation |
 | D×L = 2πB | dy/dt = y |
+
+---
+
+## Late Emergence
+
+**π emerged late — it's how continuous observation sees discrete primordial structure.**
+
+The primordial structure is integers: B = 56, L = 20, n = 4. The transcendental π appears when continuous geometry accesses this discrete structure:
+
+| Primordial | Observed | Why |
+|------------|----------|-----|
+| 1 closed boundary | 2π radians | Continuous rotation around discrete closure |
+| Integer ratios | Circular areas | πr² from continuous limit |
+
+**π is not primordial.** It emerged when spacetime became continuous enough to rotate through discrete boundaries.
+
+See [Integer Machine](../mathematics/foundations/integer-machine.md) for the complete framework.
 
 ---
 

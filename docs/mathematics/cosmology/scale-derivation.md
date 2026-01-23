@@ -1,6 +1,7 @@
 ---
 status: DERIVED
 depends_on:
+  - ../foundations/integer-machine.md
   - observer-correction.md
   - reference-scale-derivation.md
   - ../quantum/planck-derivation.md
@@ -203,6 +204,10 @@ ALL SCALES DERIVED
 ---
 
 ## Key Relationships Discovered
+
+**All scale relationships derive from primordial integers — what the octonions computed first.**
+
+See [Integer Machine](../foundations/integer-machine.md) for the complete framework.
 
 ### λ² = K²/(n×L)
 

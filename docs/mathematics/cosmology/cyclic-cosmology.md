@@ -223,6 +223,66 @@ Time is not the arena. Time is the L-direction within +B.
 
 ---
 
+## The Ring Traverses the Cloth Eternally
+
+The [ring/cloth model](genesis-function.md#the-ring-and-cloth-model) provides a geometric picture of cyclic cosmology:
+
+### Torus-Like Topology
+
+The cloth (BL mesh created by traversal) has a **closed topology**:
+
+```
+        ╭─────────────────────────────────╮
+        │                                 │
+        │   ░░░░░░░░░░░░░░░░░░░░░░░░░░   │
+        │   ░░░░░▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░   │
+    ←───│   ░░░░░▓ RING  ▓░░░░░░░░░░░░   │───→
+        │   ░░░░░▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░   │
+        │   ░░░░░░░░░░░░░░░░░░░░░░░░░░   │
+        │                                 │
+        ╰─────────────────────────────────╯
+              The cloth wraps around
+```
+
+The ring doesn't reach an "edge" and stop. The cloth's topology closes — the ring traverses eternally through the structure it creates.
+
+### Why No Beginning or End
+
+| Linear View | Ring/Cloth View |
+|-------------|-----------------|
+| Big Bang = beginning | Ring entering this region of cloth |
+| Heat death = end | Ring moving to distant cloth region |
+| Time passes | Ring traverses its own output |
+
+From inside the ring (us), we see "past" and "future." But the ring has no before or after — it simply traverses. The cloth has no edge — it closes on itself.
+
+### The Arrow of Time as Ring Direction
+
+The arrow of time is which side of the ring we're on:
+
+| Position | Perceives |
+|----------|-----------|
+| +B side of ring | Entropy increases toward +B direction |
+| -B side of ring | Entropy increases toward -B direction |
+
+Both directions are equally real. We perceive one because we ARE the +B partition. The ring creates structure in both directions simultaneously.
+
+### Matter/Antimatter as Traversal Direction
+
+```
++B direction: Creates structure → matter
+-B direction: Undoes structure → antimatter
+
+Annihilation = ring regions meeting
+Energy released = traversal work stored in cloth
+```
+
+The matter/antimatter asymmetry is not mysterious — we ARE the +B partition, so we see "mostly matter." The -B partition sees "mostly antimatter." Neither view is privileged.
+
+See [Machine Visualization](../foundations/machine-visualization.md) for the complete model.
+
+---
+
 ## Implications
 
 ### 1. No Creation Event
