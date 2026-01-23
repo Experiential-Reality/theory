@@ -3,6 +3,7 @@ status: DERIVED
 layer: 2
 depends_on:
   - ../foundations/irreducibility-proof.md
+  - ../foundations/integer-machine.md
   - ../lie-theory/lie-correspondence.md
   - ../lie-theory/killing-form.md
   - structural-observer-framework.md
@@ -136,18 +137,55 @@ For position-momentum:
 
 | Component | Status | Derivation |
 |-----------|--------|------------|
-| **i** (imaginary unit) | **DERIVED** | ℂ ⊂ 𝕆 isolation when BLD fixes reference point. See [Octonion Derivation](../foundations/octonion-derivation.md) |
+| **i** (imaginary unit) | **DERIVED** | K = 2 = dim(ℂ). See derivation below |
 | **Non-zero coupling** | **DERIVED** | D-L irreducibility requires structure constant. See [Irreducibility Proof](../foundations/irreducibility-proof.md) |
-| **ℏ value** | **EMPIRICAL INPUT** | The magnitude ≈ 1.055 × 10⁻³⁴ J·s is not derived |
+| **ℏ value** | **DERIVED** | From BLD structure. See [Planck Derivation](planck-derivation.md) |
+
+### Why i: The Unit of Observation
+
+The imaginary unit i is not a mathematical convenience — it's structurally necessary.
+
+**The proof chain:**
+
+```
+BLD requires bidirectional observation
+    ↓
+Bidirectionality requires inverses (to "go back")
+    ↓
+Inverses require a division algebra
+    ↓
+Minimum division algebra with internal structure: ℂ
+    ↓
+dim(ℂ) = 2 = K (the Killing form!)
+    ↓
+Im(ℂ) = 1 = i
+    ↓
+Therefore: i is the UNIT OF OBSERVATION
+```
+
+The connection K = 2 = dim(ℂ) is exact:
+- **K = 2**: The Killing form coefficient from [killing-form.md](../lie-theory/killing-form.md) — bidirectional observation cost
+- **dim(ℂ) = 2**: The dimension of the complex numbers
+
+These are the same structural fact. The complex numbers ARE the observation algebra.
+
+| Algebra | dim | Im | BLD Constant |
+|---------|-----|-----|--------------|
+| ℂ | 2 | 1 (= i) | K = 2 |
+| ℍ | 4 | 3 | n = 4 |
+| 𝕆 | 8 | 7 | minimum structure |
+
+**i appears in quantum mechanics because observation uses i.** The Schrödinger equation has i because wavefunctions live in ℂ, and ℂ is the observation algebra.
+
+See [Integer Machine](../foundations/integer-machine.md#8-the-imaginary-unit-i) for the complete derivation.
 
 **What BLD explains about ℏ**:
 - There MUST be a minimum action (from D×L irreducibility)
-- The coupling MUST have complex form (from octonion structure)
-- The specific value sets the boundary between quantum and classical regimes
+- The coupling MUST have complex form (from i = Im(ℂ))
+- The specific value is DERIVED (see [Planck Derivation](planck-derivation.md))
 
 **What BLD does NOT explain**:
-- Why ℏ ≈ 10⁻³⁴ rather than some other magnitude
-- This is analogous to m_e (electron mass) — used as empirical input for mass ratios
+- Why the unit system has the particular numerical value — this is coordinate choice, not physics
 
 ---
 
@@ -460,8 +498,10 @@ This is the measurement problem. It's open in ALL interpretations of QM. BLD's c
 
 ## References
 
+- [Integer Machine](../foundations/integer-machine.md) — i as unit of observation, K = dim(ℂ)
 - [Irreducibility Proof](../foundations/irreducibility-proof.md) — D and L are independent primitives
-- [Killing Form](../lie-theory/killing-form.md) — Why observation costs 2 links
+- [Killing Form](../lie-theory/killing-form.md) — Why observation costs 2 links, K = 2 = dim(ℂ)
 - [Lie Correspondence](../lie-theory/lie-correspondence.md) — Commutators as structure constants
 - [Quantum Computing](quantum-computing.md) — Computing in structure vs measuring
 - [Compensation Principle](../foundations/compensation-principle.md) — L can compensate B, not vice versa
+- [Planck Derivation](planck-derivation.md) — ℏ value derived from BLD

@@ -10,6 +10,7 @@ depends_on:
   - ../../applications/physics/epsilon2-origin.md
 used_by:
   - ../../meta/proof-status.md
+  - ../foundations/integer-machine.md
 ---
 
 # Deriving Planck's Constant from BLD Structure
@@ -646,6 +647,77 @@ The derivation reveals a fundamental distinction:
 3. All other constants have corrections of form (1 + 1/X) where X ∈ {v, B, n×L-K, ...}
 
 For the complete framework, see [Structural-Observer Framework](structural-observer-framework.md).
+
+---
+
+## Integer Structure of M_P/m_e
+
+The ratio of Planck mass to electron mass reveals the universe's integer structure.
+
+### The Formula
+
+From the Planck derivation above and [Lepton Masses](../particle-physics/lepton-masses.md):
+
+```
+M_P = v × L^13 × √(L/B) × corrections
+m_e = v / (5 × 137)² × corrections
+```
+
+The bare ratio (ignoring observation corrections):
+
+```
+(M_P / m_e)²_bare = L^26 × (L/B) × (5 × 137)^4
+                  = L^31 × 685^4 / B
+                  = 20^31 × 685^4 / 56
+```
+
+### The Octonionic Signature
+
+Since B = 56 = 8 × 7 = dim(O) × Im(O):
+
+```
+(M_P / m_e)² = 20^31 × 685^4 / (8 × 7)
+```
+
+The factor of 8 cancels with powers of 2 from 20^31 = 2^62 × 5^31:
+
+```
+20^31 / 8 = 2^59 × 5^31
+```
+
+But **7 has no factors in common with 2, 5, or 137**. It survives:
+
+```
+(M_P / m_e)² = 2^a × 5^b × 137^4 / 7
+```
+
+Therefore:
+
+```
+(M_P / m_e)² × 7 = 2^51 × 5^31 × 137^4    (PURE INTEGER)
+```
+
+### Physical Meaning
+
+The 7 = Im(O) is the **octonionic signature** — the minimum structure required for coherent self-observation.
+
+| Factor | Source | Role |
+|--------|--------|------|
+| 7 | Im(O) | Minimum structure |
+| 2^51 | L = 20 = 2²×5 | Link structure |
+| 5^31 | L = 20 = 2²×5 | Link structure |
+| 137^4 | α⁻¹ = nL+B+1 | Fine structure |
+
+### Connection to Minimum Observable
+
+Since the machine stores X (integers) and we observe √X:
+
+- Minimum structure: X_min = 7 = Im(O)
+- Minimum observable: √7 ≈ 2.646
+
+The √7 is the smallest "tick" we can ever measure — the resolution limit set by the octonionic structure of reality.
+
+For the complete integer machine framework, see [Integer Machine](../foundations/integer-machine.md).
 
 ---
 

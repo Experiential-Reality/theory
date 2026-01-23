@@ -83,6 +83,27 @@ Answer: **2 links** (forward query + backward response).
 
 ---
 
+## Connection to Division Algebras
+
+K = 2 is also dim(ℂ), the complex numbers.
+
+This is not coincidence:
+- Bidirectional observation requires inverses
+- Minimum algebra with inverses and internal structure: ℂ
+- dim(ℂ) = 2
+
+**The Killing form coefficient IS the dimension of the observation algebra.**
+
+| Algebra | dim | Im | BLD Constant |
+|---------|-----|-----|--------------|
+| ℂ | 2 | 1 (= i) | K = 2 |
+| ℍ | 4 | 3 | n = 4 |
+| 𝕆 | 8 | 7 | minimum structure |
+
+The imaginary unit i = Im(ℂ) is the **unit of observation**. See [Integer Machine](../foundations/integer-machine.md#8-the-imaginary-unit-i) for the full derivation.
+
+---
+
 ## The Definition
 
 For a [Lie algebra](https://ncatlab.org/nlab/show/Lie+algebra), the [Killing form](https://ncatlab.org/nlab/show/Killing+form) is:
@@ -473,6 +494,7 @@ The Killing form grounds the observer corrections in Lie theory. The "2" is not 
 - [CHSH inequality](https://en.wikipedia.org/wiki/CHSH_inequality) — Bell violation bound 2√2
 
 ### Internal BLD References
+- [Integer Machine](../foundations/integer-machine.md) — K = 2 = dim(ℂ) and i as observation unit
 - [Structural-Observer Framework](../quantum/structural-observer-framework.md) — K=2 appears in all observer corrections
 - [Planck Derivation](../quantum/planck-derivation.md) — K=2 in first-order (79/78) and second-order corrections
 - [Observer Corrections](../cosmology/observer-correction.md) — Unified correction algebra (all involve K=2)

@@ -10,6 +10,7 @@ depends_on:
 used_by:
   - ../../meta/proof-status.md
   - ../../analysis/error-analysis.md
+  - ../foundations/integer-machine.md
 ---
 
 # Lepton Masses from BLD Structure
@@ -345,6 +346,28 @@ Generation 3:  m_τ = m_μ × 16.8172               (ratio includes K/X correcti
 ```
 
 The structural values (208, 17) differ from observed ratios (206.77, 16.82) by the K/X correction chain. **Structure is clean integers; observation adds measurement costs.**
+
+### Integer Machine Interpretation
+
+The appearance of 2πe ≈ 17.079 in the τ/μ formula is an **observation artifact**, not a structural value:
+
+| Level | τ/μ Value | Nature |
+|-------|-----------|--------|
+| **Structural** | S + n = 17 | Integer (what the machine stores) |
+| **Observed** | 2πe × corrections ≈ 16.817 | Continuous limit (what we measure) |
+
+The machine doesn't "know" π or e. It knows 17.
+
+The transcendental 2πe appears because observation is a **limit process**:
+- Discrete structure → continuous observation
+- Integer 17 → transcendental 2πe × (corrections) ≈ 16.817
+
+This confirms that lepton masses satisfy the integer formula:
+```
+(M_P / m_bare)² × 7 = pure integer
+```
+
+For all particles, bare mass ratios are BLD integer combinations. See [Integer Machine](../foundations/integer-machine.md) for the complete framework.
 
 ---
 
