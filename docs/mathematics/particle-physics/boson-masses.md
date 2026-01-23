@@ -6,6 +6,7 @@ depends_on:
   - e7-derivation.md
   - ../quantum/structural-observer-framework.md
   - ../lie-theory/killing-form.md
+  - ../foundations/detection-structure.md
 used_by:
   - ../../analysis/error-analysis.md
   - higgs-self-coupling.md
@@ -421,6 +422,8 @@ From [Force Structure](../foundations/force-structure.md), forces are NOT fundam
 - Detectors work via EM force (X = B)
 - B ⊂ n×L×B but they don't match
 - The neutrino's structure doesn't align with the detector's traversal path
+
+Formally, the neutrino's structure S_ν = {L, D} has no B. Detectors couple to T = {B}. Since T ∩ S_ν = {B} ∩ {L,D} = ∅, neutrinos escape undetected. See [Detection Structure](../foundations/detection-structure.md) for the complete T ∩ S rule.
 
 **The ± sign is derivable:**
 - **+** = X(measurement) < X(particle) → incomplete traversal

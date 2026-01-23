@@ -6,6 +6,7 @@ depends_on:
   - boson-masses.md
   - ../cosmology/observer-correction.md
   - ../foundations/force-structure.md
+  - ../foundations/detection-structure.md
 used_by: []
 prediction_date: 2026-01-22
 ---
@@ -102,47 +103,73 @@ Forces ARE K/X at Different Scales
 
 **Neutrinos escape undetected. This affects the detection structure.**
 
-### Why Neutrinos Are "Invisible"
+### The Neutrino's BLD Structure
 
-From [Observer Corrections: Experimental Grounding](../cosmology/observer-correction.md#25-observer-corrections-are-traversal-costs):
-
-```
-- Neutrinos interact via weak force (X = n×L×B)
-- Detectors work via EM force (X = B)
-- B ⊂ n×L×B but they don't match
-- The neutrino's structure doesn't align with detector's traversal path
-```
-
-**Neutrinos carry L (link) that B-detectors can't access.** When a neutrino escapes:
-- The measurement ATTEMPTS to probe the full decay (lepton + neutrino)
-- But only directly SEES the lepton (B)
-- The neutrino information is INFERRED via missing energy reconstruction
-
-### Why X Increases (Not Decreases)
-
-**Key insight**: X measures the TOTAL structure the measurement probes, not just what it directly sees.
+From [Neutrino Masses](neutrino-masses.md), the neutrino is:
 
 ```
-WHAT THE MEASUREMENT "TOUCHES"
+NEUTRINO (ν) — L + D ONLY, NO B
+════════════════════════════════════════════════════
 
-Direct detection:     ℓ → B = 56    (seen)
-Inferred via MET:     ν → L = 20    (reconstructed)
-─────────────────────────────────────────────
-Total probed:         X = B + L = 76
+    BLD Components:
+      B: ✗ (∅)   — NO boundary, invisible to EM detectors
+      L: ✓ (20)  — propagates through spacetime
+      D: ✓ (4)   — 3 generations (νe, νμ, ντ)
 
-The correction K/X = 2/76 is SMALLER than 2/56 because
-the measurement is "spread" over more structure.
+    ○ ─ ─ L ─ ─ ○ ─ ─ L ─ ─ ○
+    │           │           │
+    L           L           L    (links only, no boundaries)
+    │           │           │
+    ○ ─ ─ L ─ ─ ○ ─ ─ L ─ ─ ○
 ```
 
-The correction reflects the total structural footprint of the measurement, including the inferred parts. Missing energy reconstruction means the measurement "touches" the neutrino structure even though it can't directly see it.
+**Detector = B (EM-based).** Neutrino = L+D (no B). They don't share structure.
+
+### What Happens When a Neutrino "Escapes"
+
+When a neutrino is produced (e.g., W → ℓν), it's not created from nothing — it's the L+D structure **breaking its last link** to the larger structure and being ejected.
+
+```
+BEFORE: W boson (connected structure)
+        ┌───────────────┐
+        │   W = B+L+D   │
+        │       ↓       │
+        │   ℓ ─L─ ν     │  (ℓ and ν connected by L)
+        └───────────────┘
+
+AFTER:  Link breaks, ν ejected
+        ┌───────┐
+        │   ℓ   │ ←── detected (has B)
+        │  (B)  │
+        └───────┘
+              ↑
+              L breaks here
+              ↓
+        ┌───────┐
+        │   ν   │ ←── escapes (only L+D, no B)
+        │ (L+D) │
+        └───────┘
+```
+
+The neutrino takes L with it. The detector (B) can't follow.
+
+### Why +L in Detection Structure
+
+The measurement attempts to probe the full decay. The detector sees B (the lepton). The neutrino's L is **part of the structure being probed** but escapes detection.
+
+```
+X_effective = X_detector + X_escaped
+            = B + L
+            = 56 + 20 = 76
+```
+
+The measurement's structural footprint includes the L that escaped. Larger X means smaller correction — the measurement is "diluted" across more structure.
 
 ### Why Add L Once, Not Per Neutrino
 
-**L represents the TYPE of missing information, not the count.**
+B, L, D are structural **types**, not particle counts. Whether one or two neutrinos escape, the structural type that escapes is **L** (the link connecting neutrino structure to the interaction).
 
-Whether one neutrino escapes (τ decay) or two escape (WW→ℓνℓν), the structural type of missing information is the same: **L** (link structure that doesn't couple to boundary-based detection).
-
-The correction depends on structural categories, not particle multiplicity.
+Multiple neutrinos of the same type don't add new structural dimensions — they probe the same L-type structure repeatedly.
 
 ### The Rule
 
@@ -151,10 +178,23 @@ When neutrino escapes: X_effective = X_base + L
 
 Example: H → WW → ℓνℓν
   Base: EM detection of ℓ → X = B = 56
-  Neutrino escapes: +L = 20 (one L for the structural type)
+  Neutrino escapes: +L = 20 (the L-type structure that escapes)
   Effective: X = B + L = 76
   κ_W = 1 + K/76 = 1.026
 ```
+
+---
+
+## Detection Structure Formalism
+
+For the complete T ∩ S detection formalism, see [Detection Structure](../foundations/detection-structure.md).
+
+**Quick reference:**
+- T = traverser (detector's BLD components)
+- S = particle structure
+- Detection: T ∩ S ≠ ∅ → detected; T ∩ S = ∅ → escapes
+- X = X_traverser + X_escaped
+- Sign: "+" if something escapes, "−" if all detected
 
 ---
 

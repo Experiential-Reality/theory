@@ -4,6 +4,7 @@ depends_on:
   - ../quantum/structural-observer-framework.md
   - ../lie-theory/killing-form.md
   - ../foundations/irreducibility-proof.md
+  - ../foundations/detection-structure.md
 used_by:
   - ../../analysis/error-analysis.md
   - ../particle-physics/higgs-self-coupling.md
@@ -313,6 +314,19 @@ For Z measurement:
 - All products couple to B → complete → "−" corrections
 
 See also: [Discovery Method](../foundations/discovery-method.md) — How K/X was discovered
+
+### 2.5.1 Detection Structure Formalism (T ∩ S Rule)
+
+For the complete detection structure formalism, see [Detection Structure](../foundations/detection-structure.md).
+
+**Quick reference:**
+- T = traverser (detector's BLD components)
+- S = particle structure (particle's BLD components)
+- Detection: T ∩ S ≠ ∅ → detected; T ∩ S = ∅ → escapes
+- X = X_traverser + X_escaped
+- Sign: "+" if something escapes, "−" if all detected
+
+This formalism reproduces all the "+" vs "−" assignments in the framework.
 
 ### 2.6 The Skip Ratio Table
 

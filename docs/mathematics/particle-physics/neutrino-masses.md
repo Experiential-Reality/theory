@@ -6,6 +6,7 @@ depends_on:
   - particle-classification.md
   - ../cosmology/observer-correction.md
   - ../foundations/force-structure.md
+  - ../foundations/detection-structure.md
 used_by:
   - ../../meta/proof-status.md
 ---
@@ -328,6 +329,8 @@ NEUTRINO INTERACTION PATH
 ```
 
 This is why neutrino detection requires charged current (W) or neutral current (Z) interactions — they provide the B bridge.
+
+**Formal detection rule**: The neutrino structure S_ν = {L, D} shares no overlap with the EM detector structure T = {B}: since T ∩ S_ν = ∅, neutrinos escape undetected. See [Detection Structure](../foundations/detection-structure.md) for the complete T ∩ S rule and worked examples.
 
 ---
 
