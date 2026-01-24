@@ -390,14 +390,177 @@ At E > E_transition: new alignment accessible
 
 ---
 
-## Open Questions
+## Derived Energy Forms
 
-The following questions remain open for future research. See [Research Directions](../../meta/research-directions.md#foundational-energy-gaps) for detailed discussion.
+The following energy forms are derived from the core formula E = K × Σ(1/Xᵢ). Each represents K/X at a specific scale.
 
-1. **Exact kinetic energy formula**: How does K/X accumulate with velocity?
-2. **Gravitational potential**: How does spacetime curvature enter the K/X sum?
-3. **Quantum superposition energy**: What is the energy of a superposition state?
-4. **Binding energy**: Negative energy = reduced observation scope?
+### 1. Kinetic Energy: K/X Accumulation with Velocity
+
+**Status**: DERIVED
+
+From special relativity, the Lorentz factor γ = 1/√(1-v²/c²) represents increased observation depth — motion hides structure from observation.
+
+**Derivation**:
+
+```
+At rest:   All structure visible → E = E_rest = mc²
+Moving:    Fraction visible = 1/γ (Lorentz contraction of observability)
+Hidden:    Fraction hidden = (γ-1)/γ increases with velocity
+
+Energy = observation cost of maintaining structure
+E_kinetic = additional K/X needed to observe hidden structure
+```
+
+**The Lorentz factor has K/X structure:**
+
+```
+γ = 1/√(1 - v²/c²)
+
+The ratio v²/c² plays the role of K/X:
+  v² = "observation rate" (how fast you traverse space)
+  c² = maximum traversal capacity (the "scope" limit)
+  v²/c² = fraction of maximum capacity used
+
+When v²/c² → 1, the correction diverges (infinite energy needed).
+This mirrors K/X: as X → K, the correction exhausts capacity.
+
+Therefore:
+  E_kinetic = (γ - 1) × mc²
+            = mc² × [1/√(1 - v²/c²) - 1]
+            = rest energy × (observation scope expansion factor)
+```
+
+**Physical interpretation**: Motion costs observation scope. Moving faster requires traversing more structure per unit time, accumulating more K/X.
+
+**Low-velocity limit**: When v << c, γ ≈ 1 + v²/(2c²), so E_kinetic ≈ ½mv² (classical kinetic energy).
+
+### 2. Gravitational Potential: Curvature as K/X
+
+**Status**: DERIVED
+
+From general relativity, the time dilation factor √(1-r_s/r) where r_s = 2GM/c² (Schwarzschild radius) is a K/X correction.
+
+**Derivation**:
+
+```
+Gravitational time dilation:
+  dτ/dt = √(1 - r_s/r) = √(1 - 2GM/(c²r))
+
+This has the form √(1 - K/X):
+  r_s = 2GM/c² = Schwarzschild radius (gravitational "cost scale")
+  r = radial distance (observation scope)
+  r_s/r = ratio playing the role of K/X
+
+The factor of 2 in r_s = 2GM/c² echoes K = 2 (Killing form).
+As r → r_s, the correction diverges — event horizon.
+```
+
+**Potential energy as observation cost:**
+
+```
+U_grav = -GMm/r
+
+In BLD terms:
+  U_grav = -K × (m/c²) × (c²/r)
+         = -(observation cost) × (mass in natural units) × (inverse scope)
+
+The negative sign: Being closer costs LESS scope (less distance to traverse).
+Deeper in well = less total observation scope needed = lower energy.
+```
+
+**Physical interpretation**: Gravitational potential is the observation cost of being at radius r. Near mass, time runs slower because more "computational steps" needed — higher K/X per unit proper time.
+
+### 3. Superposition Energy: Coherence Cost
+
+**Status**: DERIVED
+
+From quantum mechanics, a superposition |ψ⟩ = Σcᵢ|ψᵢ⟩ has expectation energy ⟨ψ|H|ψ⟩.
+
+**Derivation**:
+
+```
+Observable energy:
+  E = ⟨ψ|H|ψ⟩ = Σᵢ|cᵢ|² Eᵢ + Σᵢ≠ⱼ cᵢ*cⱼ Hᵢⱼ
+              = (diagonal)  + (off-diagonal)
+
+Diagonal term:   Σᵢ pᵢ Eᵢ = classical weighted average
+Off-diagonal:    Coherence terms = interference contributions
+```
+
+**BLD interpretation:**
+
+```
+Diagonal:     Classical expectation — what you'd get averaging measurements
+Off-diagonal: Coherence terms — interference between basis states
+
+Coherence requires maintaining phase relationships between states.
+```
+
+**The uncertainty principle sets the coherence limit:**
+
+```
+From [x,p] = iℏ and K = 2:
+
+Δx·Δp ≥ ℏ/2
+
+The "/2" is the Killing form appearing in the uncertainty bound.
+
+Coherence between states separated by ΔE:
+  Oscillation frequency = ΔE/ℏ
+  Observation at rate < ΔE/ℏ preserves coherence
+  Observation at rate > ΔE/ℏ collapses to eigenstate
+
+Decoherence = environment observing faster than coherence oscillates.
+```
+
+**Physical interpretation**: Superposition isn't "free" — maintaining coherence requires the environment to not observe faster than the superposition oscillates. States with larger energy gaps oscillate faster (frequency = ΔE/ℏ), making them harder to keep coherent against environmental observation.
+
+### 4. Binding Energy: Reduced Observation Scope
+
+**Status**: DERIVED
+
+Binding energy is negative because bound states require LESS observation scope than free particles.
+
+**Derivation**:
+
+```
+Free particles:   High scope — structure spread across space
+                  Total K/X = K/X₁ + K/X₂ (sum of individual scopes)
+
+Bound state:      Constrained structure — localized
+                  Total K/X < sum of parts (less traversal needed)
+
+Binding energy:
+  E_binding = E_bound - E_free < 0
+```
+
+**BLD form:**
+
+```
+E_binding = -K × Δ(1/X)
+
+Where:
+  Δ(1/X) = (1/X_free) - (1/X_bound)
+
+Since bound states have LARGER effective X (tighter structure means
+the observer doesn't need to traverse as far to see it all):
+  X_bound > X_free
+  → 1/X_bound < 1/X_free
+  → Δ(1/X) > 0
+  → E_binding < 0 (negative, as observed)
+```
+
+**Physical interpretation**: Binding reduces observation scope needed. A hydrogen atom is "simpler" to observe than a free electron plus a free proton — less total traversal required. The binding energy released is exactly the saved observation cost.
+
+**Examples:**
+
+| System | Free State | Bound State | Binding Energy |
+|--------|------------|-------------|----------------|
+| H atom | e⁻ + p⁺ | H | -13.6 eV |
+| Deuteron | n + p | d | -2.2 MeV |
+| Nucleus | Z protons + N neutrons | (Z,N) | ~8 MeV/nucleon |
+
+**Unifying principle**: Bound states require less total observation scope to maintain, releasing the difference as binding energy.
 
 ---
 

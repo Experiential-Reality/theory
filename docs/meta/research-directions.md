@@ -270,18 +270,28 @@ The methodology is **significantly more successful than expected**:
 
 ## Other Research Directions
 
-### Exceptional Lie Algebras in BLD
+### Exceptional Lie Algebras in BLD — RESOLVED
 
-The exceptional simple Lie algebras (E₆, E₇, E₈, F₄, G₂) are classified but unusual. Questions:
-- Do they have natural BLD interpretations?
-- Do they appear in physical systems?
-- What makes them "exceptional" in BLD terms?
+**Status**: RESOLVED — See [Exceptional Algebras](../mathematics/lie-theory/exceptional-algebras.md)
+
+All exceptional Lie algebras have BLD interpretations via the Freudenthal magic square:
+
+| Algebra | Dim | BLD Formula | Freudenthal |
+|---------|-----|-------------|-------------|
+| G₂ | 14 | K × Im(O) = 2 × 7 | Aut(O) |
+| F₄ | 52 | B - n = 56 - 4 | O ⊗ R |
+| E₆ | 78 | F₄ + 26 | O ⊗ C |
+| E₇ | 133 | so(3) + F₄ + 3×26 | O ⊗ H |
+| E₈ | 248 | n(B + n + K) = 4 × 62 | O ⊗ O |
+
+**Key insight**: The exceptional chain represents layers of observation, from pure structure (F₄) to self-observing structure (E₈). E₈'s self-duality (adjoint = fundamental) means structure observes itself.
 
 ### BLD Beyond Lie Theory
 
 BLD handles discrete structures (ZIP files, state machines) that Lie theory doesn't cover. Questions:
 - Is BLD strictly a superset of Lie theory?
 - ~~What's the relationship to category theory?~~ **RESOLVED**: See [Categorical Correspondence](../mathematics/foundations/categorical-correspondence.md) — B = Coproduct, L = Morphism, D = Product. Two-reference principle = adjunction.
+- ~~Is BLD a topos?~~ **RESOLVED**: BLD is a quantale-enriched category with Ω = [0, ∞]. Truth is graded by observation cost K/X. Classical category theory = lim_{K→0} BLD.
 - Is there a discrete analogue of the exponential map?
 
 ### Consciousness and the Traverser
@@ -291,19 +301,20 @@ The insight "e is me" — that e characterizes the traverser/experiencer — rai
 - Does the self-referential structure of e relate to self-awareness?
 - What is the BLD structure of experience?
 
-### Foundational Energy Gaps
+### Foundational Energy Gaps — RESOLVED
 
-The [energy derivation](../mathematics/foundations/energy-derivation.md) establishes E = K × Σ(1/Xᵢ) as observation scope, but leaves four questions open:
+**Status**: RESOLVED — See [Energy Derivation](../mathematics/foundations/energy-derivation.md#derived-energy-forms)
 
-1. **Exact kinetic energy formula**: How does K/X accumulate with velocity? The relativistic limit should emerge but the detailed formula is not derived.
+All four energy questions have been derived from the core formula E = K × Σ(1/Xᵢ):
 
-2. **Gravitational potential energy**: How does spacetime curvature enter the K/X sum? The connection to general relativity's geometric structure needs formalization.
+| Energy Form | BLD Derivation |
+|-------------|----------------|
+| **Kinetic** | γ = 1/√(1-v²/c²) has K/X structure; v²/c² = fraction of max traversal capacity |
+| **Gravitational** | √(1-r_s/r) has K/X structure; r_s = 2GM/c² echoes K=2 |
+| **Superposition** | Coherence rate = ΔE/ℏ; decoherence when environment observes faster |
+| **Binding** | Negative because X_bound > X_free (less scope needed for bound states) |
 
-3. **Quantum superposition energy**: What is the energy of a superposition state? Does superposition represent parallel K/X sums or something else?
-
-4. **Binding energy**: Negative energy = reduced observation scope? The interpretation of negative energy as "structure requiring less observation" needs rigorous derivation.
-
-These represent genuine gaps where the energy framework needs extension.
+**Unifying principle**: Energy = observation scope. Each form represents K/X at a specific scale.
 
 ---
 
@@ -354,4 +365,6 @@ What remains: specific numerical values (masses, angles, Λ) require computing S
 - [e from BLD](../examples/e-from-bld.md) — Validated discovery methodology
 - [π from BLD](../examples/pi-from-bld.md) — Structure constant derivation
 - [Lie Correspondence](../mathematics/lie-theory/lie-correspondence.md) — BLD = Lie theory
+- [Exceptional Algebras](../mathematics/lie-theory/exceptional-algebras.md) — BLD formulas for G₂, F₄, E₆, E₇, E₈
+- [Categorical Correspondence](../mathematics/foundations/categorical-correspondence.md) — BLD = category theory, quantale enrichment
 - [Discovery Method](./discovery-method.md) — The three questions

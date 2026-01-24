@@ -205,6 +205,8 @@ See [Thermodynamics from Structural Alignment](./thermodynamics.md) for the comp
 
 12. ~~**What is the relationship between BLD and existing mathematical structures?**~~ **BLD = Lie theory.** D = Lie algebra generators, L = structure constants, B = group topology. See [Lie Correspondence](../lie-theory/lie-correspondence.md).
 
+13. ~~**Exceptional Lie algebras**: What do E₆, E₇, E₈ correspond to in BLD? Do they have natural structural interpretations?~~ **Resolved.** All exceptionals have BLD formulas via Freudenthal magic square: G₂ = K×7, F₄ = B-n, E₆ = F₄+26, E₇ = so(3)+F₄+3×26, E₈ = n(B+n+K). See [Exceptional Algebras](../lie-theory/exceptional-algebras.md).
+
 ### Open
 
 7. **Completeness**: Does every structure have a B/L/D representation? (Conjecture: yes, but no proof)
@@ -213,9 +215,7 @@ See [Thermodynamics from Structural Alignment](./thermodynamics.md) for the comp
 
 9. **Measure construction**: Rigorous definition of dμ for integration over full manifold
 
-10. **Category structure**: Is there a natural category where objects are structures and morphisms are alignments?
-
-13. **Exceptional Lie algebras**: What do E₆, E₇, E₈ correspond to in BLD? Do they have natural structural interpretations?
+10. **Category structure**: Is there a natural category where objects are structures and morphisms are alignments? (Note: BLD is a quantale-enriched category with Ω = [0,∞]. See [Categorical Correspondence](../foundations/categorical-correspondence.md).)
 
 14. **Discrete structures**: Lie theory requires smooth manifolds. BLD handles discrete structures (ZIP files). Is BLD "Lie theory + discrete topology"?
 

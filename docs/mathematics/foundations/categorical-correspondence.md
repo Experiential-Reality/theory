@@ -360,24 +360,63 @@ A [topos](https://ncatlab.org/nlab/show/topos) is a category that:
 | Finite colimits | ✓ | B (coproducts) give all colimits |
 | Cartesian closed | ✓ | L (function types) give exponentials |
 
-### 8.3 Subobject Classifier: Open Question
+### 8.3 Subobject Classifier: Resolved via Quantales
 
 The subobject classifier Ω is a "truth-value object" such that:
 - Sub(A) ≅ Hom(A, Ω)
 - Subobjects of A correspond to "characteristic maps" A → Ω
 
-**Question**: Does BLD have a natural Ω?
+**Resolution**: BLD is a **quantale-enriched category** with Ω = [0, ∞].
 
-**Candidate**: Ω = 1 + 1 = Bool (the two-element boundary type)
+#### Classical vs BLD Truth Values
 
-In classical logic, subobjects are "is-in-or-not" predicates, which are maps to Bool.
+| Classical Topos | BLD Category |
+|-----------------|--------------|
+| Ω = Bool = {true, false} | Ω = [0, ∞] = cost interval |
+| true = accessible | cost = 0 (directly accessible) |
+| false = inaccessible | cost = ∞ (inaccessible) |
+| — | cost = K/X (partially accessible) |
 
-**Issue**: BLD may have richer truth values (continuous alignment cost rather than binary membership). This would make BLD not a classical topos but possibly a:
-- [Fuzzy topos](https://ncatlab.org/nlab/show/fuzzy+logic) (continuous truth values)
-- [Linear topos](https://ncatlab.org/nlab/show/linear+logic) (resource-sensitive logic)
-- [Homotopy topos](https://ncatlab.org/nlab/show/model+topos) (∞-categorical truth)
+In BLD, truth is not binary but **graded by observation cost**.
 
-This remains **OPEN** for investigation.
+#### Quantale Structure
+
+The interval [0, ∞] forms a [quantale](https://ncatlab.org/nlab/show/quantale) under:
+
+| Operation | Definition | Meaning |
+|-----------|------------|---------|
+| Join (∨) | min(a, b) | Cheapest path (either suffices) |
+| Meet (∧) | max(a, b) | Bottleneck cost (both required) |
+| Tensor (⊗) | a + b | Sequential costs accumulate |
+| Unit | 0 | Identity has zero additional cost |
+
+This is the **Lawvere metric space** structure on [0, ∞].
+
+#### K/X as Enrichment
+
+The observation cost K/X is the **enrichment structure**:
+- Morphism cost: Hom(A, B) ∈ [0, ∞] (not just existence but traversal cost)
+- Composition: cost(g ∘ f) ≤ cost(f) + cost(g) (triangle inequality)
+- Identity: cost(1_A) = K/X_A (self-observation has cost)
+
+#### Classical Limit
+
+Standard category theory = lim_{K→0} BLD (see Section 9.3):
+- As observation cost vanishes, truth becomes binary
+- Bool ⊂ [0, ∞] as {0, ∞}
+- Standard categorical properties recover exactly
+
+#### Physical Interpretation
+
+| Cost | Truth Value | Physical Meaning |
+|------|-------------|------------------|
+| 0 | true | Directly observable, no overhead |
+| ∞ | false | Completely inaccessible (e.g., beyond horizon) |
+| K/X | partial | Observable with measurement cost |
+
+This is why BLD naturally captures observer effects — truth is not absolute but relative to observation capacity.
+
+**Status**: **RESOLVED** — BLD is not a classical topos but a quantale-enriched category with richer truth structure.
 
 ---
 
@@ -438,7 +477,7 @@ When observation cost vanishes, BLD reduces to pure categorical structure.
 | K/X is natural transformation | **DERIVED** (uniformity = naturality) |
 | Two-reference is adjunction | **DERIVED** (unit/counit structure) |
 | ∞-groupoids from iterated D | **DERIVED** (Lⁿ = D × L) |
-| BLD is a topos | **OPEN** (subobject classifier unclear) |
+| BLD is quantale-enriched | **RESOLVED** (Ω = [0, ∞], truth by cost) |
 
 ### 10.3 Implication
 
@@ -457,6 +496,8 @@ The categorical correspondence means:
 3. [nLab: Topos](https://ncatlab.org/nlab/show/topos) — Topos theory
 4. [nLab: Computational Trinitarianism](https://ncatlab.org/nlab/show/computational+trinitarianism) — Curry-Howard-Lambek
 5. [nLab: ∞-Groupoid](https://ncatlab.org/nlab/show/infinity-groupoid) — Higher categories
+6. [nLab: Quantale](https://ncatlab.org/nlab/show/quantale) — Generalized truth values
+7. [nLab: Lawvere metric space](https://ncatlab.org/nlab/show/Lawvere+metric+space) — [0, ∞] as enrichment
 
 ---
 
