@@ -2,9 +2,8 @@
 status: PARTIAL
 layer: 2
 depends_on:
-  - ../mathematics/derived/particle-masses.md
-  - ../mathematics/derived/cosmology.md
-  - ../mathematics/derived/quantum-mechanics.md
+  - ../mathematics/quantum/quantum-mechanics.md
+  - ../mathematics/cosmology/cosmology-structure.md
   - ../mathematics/lie-theory/lie-correspondence.md
   - ../mathematics/foundations/proofs/irreducibility-proof.md
 used_by:

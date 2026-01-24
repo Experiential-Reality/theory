@@ -7,7 +7,7 @@ depends_on:
   - ../lie-theory/killing-form.md
   - fine-structure-consistency.md
   - lepton-masses.md
-  - detection-structure.md
+  - ../foundations/machine/detection-structure.md
 used_by:
   - ../../meta/proof-status.md
   - ../../analysis/error-analysis.md
@@ -203,7 +203,7 @@ Calculation:
 
 The base calculation gives 256 × 10⁻¹¹. But the g-2 measurement involves detecting muon decay products, and not all products are detected.
 
-From [Detection Structure](detection-structure.md), the T ∩ S formalism:
+From [Detection Structure](../foundations/machine/detection-structure.md), the T ∩ S formalism:
 - Detection occurs iff T ∩ S ≠ ∅ (traverser and structure share elements)
 - Escaped structure contributes to X
 
@@ -246,7 +246,7 @@ Detection correction = X/(X+K) = 76/78 = 0.974
      = 250 × 10⁻¹¹
 ```
 
-**Note**: This uses the same X = B + L = 76 as W → ℓν (see [Detection Structure](detection-structure.md)), but the form X/(X+K) vs (X+K)/X differs because information is lost rather than inferred.
+**Note**: This uses the same X = B + L = 76 as W → ℓν (see [Detection Structure](../foundations/machine/detection-structure.md)), but the form X/(X+K) vs (X+K)/X differs because information is lost rather than inferred.
 
 ### Result
 
@@ -511,4 +511,4 @@ Status:    PROVISIONAL
 - [Lepton Masses](lepton-masses.md) — n²×S generational structure
 - [Fine Structure Consistency](fine-structure-consistency.md) — Accumulated corrections, α² terms
 - [Integer Machine](../foundations/machine/integer-machine.md) — Primordial integers, K/X corrections
-- [Detection Structure](detection-structure.md) — T ∩ S formalism, neutrino escape
+- [Detection Structure](../foundations/machine/detection-structure.md) — T ∩ S formalism, neutrino escape
