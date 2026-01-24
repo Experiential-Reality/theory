@@ -4,7 +4,7 @@ layer: 1
 depends_on:
   - ../lie-theory/lie-correspondence.md
   - ../lie-theory/killing-form.md
-  - ../foundations/irreducibility-proof.md
+  - ../foundations/proofs/irreducibility-proof.md
 ---
 
 # BLD IS Quantum Mechanics Code
@@ -326,7 +326,7 @@ If BLD = QM language, and QM = how reality works, then:
 
 - [Lie Correspondence](../lie-theory/lie-correspondence.md) — BLD = Lie theory verification
 - [Killing Form](../lie-theory/killing-form.md) — The "2" in quantum mechanics
-- [Irreducibility Proof](../foundations/irreducibility-proof.md) — Why exactly three primitives
+- [Irreducibility Proof](../foundations/proofs/irreducibility-proof.md) — Why exactly three primitives
 - [Quantum Mechanics](quantum-mechanics.md) — Position/momentum as D/L
 - [Quantum Computing](quantum-computing.md) — Structure traversing itself
 - [Lepton Masses](../particle-physics/lepton-masses.md) — α⁻¹ = 137, lepton masses

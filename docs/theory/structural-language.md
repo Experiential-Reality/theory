@@ -86,7 +86,7 @@ D multiplies L, not B:
 | **Link** | Function (→) | Connects values | `apply` |
 | **Dimension** | Product (Πₙ) | Repeats structure | `project` |
 
-**Formal Foundation**: See [BLD Calculus](../mathematics/foundations/bld-calculus.md) for the type-theoretic formalization and [Irreducibility Theorem](../mathematics/foundations/irreducibility-categorical.md) for the proof that B/L/D are independent primitives.
+**Formal Foundation**: See [BLD Calculus](../mathematics/foundations/definitions/bld-calculus.md) for the type-theoretic formalization and [Irreducibility Theorem](../mathematics/foundations/proofs/irreducibility-categorical.md) for the proof that B/L/D are independent primitives.
 
 **Mathematical Foundation**: These three primitives map exactly to Lie theory: D = generators, L = structure constants, B = group topology. See [Lie Correspondence](../mathematics/lie-theory/lie-correspondence.md) for the verified mapping.
 
@@ -334,7 +334,7 @@ Each primitive provides a unique capability:
 - **Link**: Reference (cannot be expressed by Boundary or Dimension)
 - **Dimension**: Multiplicity (cannot be expressed by Boundary or Link)
 
-See [Irreducibility Proof](../mathematics/foundations/irreducibility-proof.md).
+See [Irreducibility Proof](../mathematics/foundations/proofs/irreducibility-proof.md).
 
 ### Lie-Theoretic Answer
 
@@ -404,7 +404,7 @@ The α-helix demonstrates angular closure (π mechanism) with linear extension. 
 
 This is an **empirical observation**, not a proven theorem.
 
-See [Euler's Formula in BLD](../glossary.md#euler), [π from BLD](../examples/pi-from-bld.md), and [Compensation Principle](../mathematics/foundations/compensation-principle.md).
+See [Euler's Formula in BLD](../glossary.md#euler), [π from BLD](../examples/pi-from-bld.md), and [Compensation Principle](../mathematics/foundations/structural/compensation-principle.md).
 
 ---
 
@@ -646,7 +646,7 @@ See [Glossary: Traverser as Causal Agent](../glossary.md#traverser-causal) and [
 ## See Also
 
 - [Glossary](../glossary.md) — Central definitions
-- [Irreducibility Proof](../mathematics/foundations/irreducibility-proof.md) — Why exactly three primitives
+- [Irreducibility Proof](../mathematics/foundations/proofs/irreducibility-proof.md) — Why exactly three primitives
 - [Lie Correspondence](../mathematics/lie-theory/lie-correspondence.md) — BLD = Lie theory mapping
 - [Discovery Method](../meta/discovery-method.md) — How to find BLD structure in any system
 - [ZIP Example](../examples/zip.md) — Complete worked example

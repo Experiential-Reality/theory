@@ -2,12 +2,12 @@
 status: DERIVED
 layer: 2
 depends_on:
-  - ../foundations/integer-machine.md
+  - ../foundations/machine/integer-machine.md
   - lepton-masses.md
   - particle-classification.md
   - ../cosmology/observer-correction.md
-  - ../foundations/force-structure.md
-  - ../foundations/detection-structure.md
+  - ../foundations/derivations/force-structure.md
+  - ../foundations/machine/detection-structure.md
 used_by:
   - ../../meta/proof-status.md
 ---
@@ -47,7 +47,7 @@ used_by:
 
 The primordial integers K=2, B=56, L=20, S=13, n=4 determine neutrino structure. The "missing B" isn't a perturbation — it's a fundamentally different phase of the same underlying structure.
 
-See [Integer Machine](../foundations/integer-machine.md) for the complete framework.
+See [Integer Machine](../foundations/machine/integer-machine.md) for the complete framework.
 
 ---
 
@@ -310,7 +310,7 @@ m₃ ≈ √(m₂² + |Δm²₃₂|) ≈ √((17 meV)² + 2500 meV²) ≈ 50 meV
 
 ### 6.1 Force Structure in BLD
 
-From [Force Structure](../foundations/force-structure.md):
+From [Force Structure](../foundations/derivations/force-structure.md):
 
 | Force | X (Structure) | K/X | Neutrino Couples? |
 |-------|---------------|-----|-------------------|
@@ -347,7 +347,7 @@ NEUTRINO INTERACTION PATH
 
 This is why neutrino detection requires charged current (W) or neutral current (Z) interactions — they provide the B bridge.
 
-**Formal detection rule**: The neutrino structure S_ν = {L, D} shares no overlap with the EM detector structure T = {B}: since T ∩ S_ν = ∅, neutrinos escape undetected. See [Detection Structure](../foundations/detection-structure.md) for the complete T ∩ S rule and worked examples.
+**Formal detection rule**: The neutrino structure S_ν = {L, D} shares no overlap with the EM detector structure T = {B}: since T ∩ S_ν = ∅, neutrinos escape undetected. See [Detection Structure](../foundations/machine/detection-structure.md) for the complete T ∩ S rule and worked examples.
 
 ---
 
@@ -488,5 +488,5 @@ No B = weak Higgs coupling = small mass
 - [Lepton Masses](lepton-masses.md) — Electron, muon, tau mass derivations
 - [Particle Classification](particle-classification.md) — Neutrino BLD structure (Row 2)
 - [Observer Corrections](../cosmology/observer-correction.md) — K/X framework, sign rule
-- [Force Structure](../foundations/force-structure.md) — Why weak X = n×L×B
+- [Force Structure](../foundations/derivations/force-structure.md) — Why weak X = n×L×B
 - [Boson Masses](boson-masses.md) — W boson "+" corrections (neutrino escapes)

@@ -1,7 +1,7 @@
 ---
 status: VALIDATED
 depends_on:
-  - ../foundations/irreducibility-proof.md
+  - ../foundations/proofs/irreducibility-proof.md
   - manifold-applications.md
 ---
 

@@ -1,8 +1,8 @@
 ---
 status: DERIVED
 depends_on:
-  - ../foundations/integer-machine.md
-  - ../foundations/octonion-derivation.md
+  - ../foundations/machine/integer-machine.md
+  - ../foundations/derivations/octonion-derivation.md
   - e7-derivation.md
   - ../lie-theory/killing-form.md
   - ../../examples/physics-traverser.md
@@ -74,7 +74,7 @@ GAP:                          +0.035999177 = K/B + spatial + accumulated
 
 **The decimals .035999... are NOT primordial.** They are alignment gradients — the cost of observing the structure through cooling and expansion.
 
-See [Integer Machine](../foundations/integer-machine.md) for the complete framework.
+See [Integer Machine](../foundations/machine/integer-machine.md) for the complete framework.
 
 ---
 
@@ -90,12 +90,12 @@ Where:
 - L = 20 (Riemann tensor components) `[DERIVED: n²(n²-1)/12]`
 - B = 56 (boundary structure) `[DERIVED: 2 × dim(Spin(8) adjoint)]`
 - K = 2 (Killing form) `[DERIVED: bidirectional observation]`
-- +1 (observer self-reference) `[DERIVED: BLD irreducibility]`
+- +1 (traverser's minimum contribution) `[DERIVED: BLD irreducibility]`
 - e = 2.718... (accumulated traversal) `[MATHEMATICAL: lim(1+1/m)^m]`
 - 119 = 2B + n + K + 1 (bidirectional boundary with self-reference) `[DERIVED]`
 - 120 = 119 + 1 (adding the observation itself) `[DERIVED]`
 
-**See [Octonion Derivation](../foundations/octonion-derivation.md)** for the complete derivation of n=4 from BLD first principles.
+**See [Octonion Derivation](../foundations/derivations/octonion-derivation.md)** for the complete derivation of n=4 from BLD first principles.
 **See [Observer Corrections](../cosmology/observer-correction.md)** for the two-reference framework and accumulated corrections.
 
 ---
@@ -371,7 +371,7 @@ Killing form = 2 (bidirectional observation) [PROVEN]
 B = 2 × 28 = 56 [DERIVED]
 ```
 
-**See [Octonion Derivation](../foundations/octonion-derivation.md)** for the complete foundation.
+**See [Octonion Derivation](../foundations/derivations/octonion-derivation.md)** for the complete foundation.
 
 ### What This Achieves
 
@@ -417,7 +417,7 @@ The entire particle physics chain is now genuinely predictive!
 **Predictive power**: α⁻¹ = 137.035999177 is now a **FULLY DERIVED PREDICTION** with **0.0 ppt error**.
 
 **All terms are now derived from BLD first principles.** See:
-- [Octonion Derivation](../foundations/octonion-derivation.md) for the complete chain
+- [Octonion Derivation](../foundations/derivations/octonion-derivation.md) for the complete chain
 - [Observer Corrections](../cosmology/observer-correction.md) for the two-reference framework and e² accumulation
 
 **The fine structure constant encodes:**
@@ -436,7 +436,7 @@ The entire particle physics chain is now genuinely predictive!
 - [CODATA 2022 Fundamental Constants](https://physics.nist.gov/cuu/Constants/) — Full database
 
 ### Internal BLD References
-- [Octonion Derivation](../foundations/octonion-derivation.md) — Complete BLD → octonions → (n=4, SU(3), 3 gen) derivation
+- [Octonion Derivation](../foundations/derivations/octonion-derivation.md) — Complete BLD → octonions → (n=4, SU(3), 3 gen) derivation
 - [E7 Derivation](e7-derivation.md) — Complete derivation of B=56 from triality + Killing form
 - [E₇ Connection](e7-connection.md) — E7 confirmation of the derivation
 - [Killing Form](../lie-theory/killing-form.md) — The L=2 bidirectional observation

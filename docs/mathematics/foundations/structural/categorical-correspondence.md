@@ -2,11 +2,11 @@
 status: DERIVED
 layer: 1
 depends_on:
-  - bld-calculus.md
-  - irreducibility-categorical.md
-  - ../lie-theory/lie-correspondence.md
+  - ../definitions/bld-calculus.md
+  - ../proofs/irreducibility-categorical.md
+  - ../../lie-theory/lie-correspondence.md
 used_by:
-  - irreducibility-proof.md
+  - ../proofs/irreducibility-proof.md
   - ../../../meta/proof-status.md
 ---
 
@@ -507,4 +507,4 @@ The categorical correspondence means:
 - [BLD Calculus](./bld-calculus.md) — The formal type system
 - [Irreducibility (Categorical)](./irreducibility-categorical.md) — Type-theoretic proof
 - [Irreducibility Proof](./irreducibility-proof.md) — Intuitive arguments
-- [Lie Correspondence](../lie-theory/lie-correspondence.md) — BLD = Lie theory
+- [Lie Correspondence](../../lie-theory/lie-correspondence.md) — BLD = Lie theory

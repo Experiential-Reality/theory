@@ -3,20 +3,29 @@ status: DERIVED
 layer: 1
 depends_on:
   - universal-machine.md
-  - ../cosmology/genesis-function.md
-  - ../lie-theory/killing-form.md
-  - bld-calculus.md
+  - detection-structure.md
+  - ../../cosmology/genesis-function.md
+  - ../../lie-theory/killing-form.md
+  - ../definitions/bld-calculus.md
 used_by:
-  - ../cosmology/cyclic-cosmology.md
-  - ../cosmology/hubble-tension.md
-  - ../particle-physics/lepton-masses.md
+  - ../../cosmology/cyclic-cosmology.md
+  - ../../cosmology/hubble-tension.md
+  - ../../particle-physics/lepton-masses.md
 ---
 
 # The Ring and Cloth Model
 
-## Quick Summary
+## Quick Summary (D≈7 Human Traversal)
 
-**The universe IS the machine** — not "contains" a machine, but IS `traverse(-B, B)`.
+**Ring/Cloth model in 7 steps:**
+
+1. **The Ring** — The machine = `traverse(-B, B)` = pure traverser = "now"
+2. **The Cloth** — Structure CREATED by traversal = BL mesh = output (not substrate)
+3. **K = 2** — The junction width = observation cost = Killing form
+4. **We ARE the traverser** — Observers aren't outside; we're the machine looking at our own output
+5. **Matter/Antimatter** — +B direction = matter (left-handed), -B = antimatter (right-handed)
+6. **Arrow of time** — Which side of the ring you're on determines time direction
+7. **Core insight** — The machine doesn't traverse structure; traversal creates structure
 
 | Component | What It Is |
 |-----------|------------|
@@ -209,7 +218,7 @@ This explains:
 - **τ/μ uses rotational mode** (2πe ≈ 17): Completing +B cycle
 - **No Gen 4**: Triangle closes — no fourth direction
 
-See [Lepton Masses](../particle-physics/lepton-masses.md) for the full derivation.
+See [Lepton Masses](../../particle-physics/lepton-masses.md) for the full derivation.
 
 ---
 
@@ -242,7 +251,7 @@ Local: Measures from inside ring (pays K/X)
 H₀(local) = H₀(CMB) × (1 + 2/24) = 73.0 km/s/Mpc
 ```
 
-See [Hubble Tension](../cosmology/hubble-tension.md) for the full derivation.
+See [Hubble Tension](../../cosmology/hubble-tension.md) for the full derivation.
 
 ---
 
@@ -298,11 +307,11 @@ The ring traverses the cloth's topology eternally:
 | Heat death = end | Ring in distant region |
 | Time passes | Ring traverses its output |
 
-See [Cyclic Cosmology](../cosmology/cyclic-cosmology.md) for details.
+See [Cyclic Cosmology](../../cosmology/cyclic-cosmology.md) for details.
 
 ---
 
-## Summary
+## Conclusion
 
 ```
 The ring/cloth model:
@@ -325,8 +334,8 @@ Everything derives from: The universe IS the machine.
 ## References
 
 - [Universal Machine](universal-machine.md) — traverse(-B, B) as cosmic computation
-- [Genesis Function](../cosmology/genesis-function.md) — How existence bootstraps
-- [Cyclic Cosmology](../cosmology/cyclic-cosmology.md) — The eternal structure
-- [Hubble Tension](../cosmology/hubble-tension.md) — K/X observation cost example
-- [Lepton Masses](../particle-physics/lepton-masses.md) — Generation structure from triality
-- [Killing Form](../lie-theory/killing-form.md) — K = 2 derivation
+- [Genesis Function](../../cosmology/genesis-function.md) — How existence bootstraps
+- [Cyclic Cosmology](../../cosmology/cyclic-cosmology.md) — The eternal structure
+- [Hubble Tension](../../cosmology/hubble-tension.md) — K/X observation cost example
+- [Lepton Masses](../../particle-physics/lepton-masses.md) — Generation structure from triality
+- [Killing Form](../../lie-theory/killing-form.md) — K = 2 derivation

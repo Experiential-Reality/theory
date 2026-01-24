@@ -4,8 +4,8 @@ layer: 2
 depends_on:
   - ../lie-theory/killing-form.md
   - ../lie-theory/lie-correspondence.md
-  - ../foundations/irreducibility-proof.md
-  - ../foundations/completeness-proof.md
+  - ../foundations/proofs/irreducibility-proof.md
+  - ../foundations/proofs/completeness-proof.md
   - ../cosmology/observer-correction.md
   - quantum-mechanics.md
   - structural-observer-framework.md
@@ -100,7 +100,7 @@ BLD representation:
 
 #### Why Measurement MUST Create B
 
-From [Irreducibility Proof](../foundations/irreducibility-proof.md):
+From [Irreducibility Proof](../foundations/proofs/irreducibility-proof.md):
 - D and L are irreducible primitives
 - Superposition = multiple D-paths weighted by L
 - Measurement selects ONE D-path from the possibilities
@@ -332,7 +332,7 @@ The observer is NOT external to the measurement. The observer IS a traverser —
 
 ### Energy as Alignment Cost
 
-From [Energy Derivation](../foundations/energy-derivation.md):
+From [Energy Derivation](../foundations/derivations/energy-derivation.md):
 
 ```
 Energy = K × Σ(1/Xᵢ) = alignment cost between structures
@@ -410,7 +410,7 @@ Alignment selection   = min K/X       (traversal follows minimum cost)
 Result               = |ψ|²          (proven, not assumed)
 ```
 
-The Born rule isn't imposed — it emerges necessarily from BLD structures meeting BLD structures. See [Completeness Proof](../foundations/completeness-proof.md) and [Lie Correspondence](../lie-theory/lie-correspondence.md).
+The Born rule isn't imposed — it emerges necessarily from BLD structures meeting BLD structures. See [Completeness Proof](../foundations/proofs/completeness-proof.md) and [Lie Correspondence](../lie-theory/lie-correspondence.md).
 
 ### Empirical Validation
 
@@ -596,7 +596,7 @@ None of these have been observed. The K/X framework successfully predicts all me
 
 - [Killing Form](../lie-theory/killing-form.md) — Bidirectional observation cost (K=2)
 - [Observer Correction](../cosmology/observer-correction.md) — K/X framework for measurement
-- [Energy Derivation](../foundations/energy-derivation.md) — Energy as alignment cost
+- [Energy Derivation](../foundations/derivations/energy-derivation.md) — Energy as alignment cost
 - [Quantum Mechanics](quantum-mechanics.md) — D-L interpretation
 - [Schrödinger Derivation](schrodinger-derivation.md) — Dynamics derivation
 - [Structural-Observer Framework](structural-observer-framework.md) — Structural vs observed values

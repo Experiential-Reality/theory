@@ -290,7 +290,7 @@ All exceptional Lie algebras have BLD interpretations via the Freudenthal magic 
 
 BLD handles discrete structures (ZIP files, state machines) that Lie theory doesn't cover. Questions:
 - Is BLD strictly a superset of Lie theory?
-- ~~What's the relationship to category theory?~~ **RESOLVED**: See [Categorical Correspondence](../mathematics/foundations/categorical-correspondence.md) — B = Coproduct, L = Morphism, D = Product. Two-reference principle = adjunction.
+- ~~What's the relationship to category theory?~~ **RESOLVED**: See [Categorical Correspondence](../mathematics/foundations/structural/categorical-correspondence.md) — B = Coproduct, L = Morphism, D = Product. Two-reference principle = adjunction.
 - ~~Is BLD a topos?~~ **RESOLVED**: BLD is a quantale-enriched category with Ω = [0, ∞]. Truth is graded by observation cost K/X. Classical category theory = lim_{K→0} BLD.
 - Is there a discrete analogue of the exponential map?
 
@@ -303,7 +303,7 @@ The insight "e is me" — that e characterizes the traverser/experiencer — rai
 
 ### Foundational Energy Gaps — RESOLVED
 
-**Status**: RESOLVED — See [Energy Derivation](../mathematics/foundations/energy-derivation.md#derived-energy-forms)
+**Status**: RESOLVED — See [Energy Derivation](../mathematics/foundations/derivations/energy-derivation.md#derived-energy-forms)
 
 All four energy questions have been derived from the core formula E = K × Σ(1/Xᵢ):
 
@@ -366,5 +366,5 @@ What remains: specific numerical values (masses, angles, Λ) require computing S
 - [π from BLD](../examples/pi-from-bld.md) — Structure constant derivation
 - [Lie Correspondence](../mathematics/lie-theory/lie-correspondence.md) — BLD = Lie theory
 - [Exceptional Algebras](../mathematics/lie-theory/exceptional-algebras.md) — BLD formulas for G₂, F₄, E₆, E₇, E₈
-- [Categorical Correspondence](../mathematics/foundations/categorical-correspondence.md) — BLD = category theory, quantale enrichment
+- [Categorical Correspondence](../mathematics/foundations/structural/categorical-correspondence.md) — BLD = category theory, quantale enrichment
 - [Discovery Method](./discovery-method.md) — The three questions

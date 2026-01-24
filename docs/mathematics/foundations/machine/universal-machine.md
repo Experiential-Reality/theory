@@ -2,16 +2,18 @@
 status: DERIVED
 layer: 1
 depends_on:
-  - bld-calculus.md
-  - ../cosmology/genesis-function.md
-  - ../lie-theory/killing-form.md
-  - ../quantum/planck-derivation.md
+  - ../definitions/bld-calculus.md
+  - ../../cosmology/genesis-function.md
+  - ../../lie-theory/killing-form.md
+  - ../../quantum/planck-derivation.md
 used_by:
-  - force-structure.md
-  - discovery-method.md
-  - ../cosmology/observer-correction.md
-  - ../derived/special-relativity.md
-  - ../derived/general-relativity.md
+  - integer-machine.md
+  - machine-visualization.md
+  - ../derivations/force-structure.md
+  - ../discovery-method.md
+  - ../../cosmology/observer-correction.md
+  - ../../derived/special-relativity.md
+  - ../../derived/general-relativity.md
 ---
 
 # The Universal Machine: traverse(-B, B) as Cosmic Computation
@@ -19,6 +21,8 @@ used_by:
 **Status**: DERIVED — The remaining ~0.002-0.02% residuals in force predictions are K/X(universe).
 
 **Core claim**: The traverse(-B, B) genesis function IS a universal computer. The Planck scale defines its computational step. Remaining measurement residuals are the universe's self-traversal cost.
+
+**Constants**: B=56, L=20, n=4, K=2, S=13. See [constants.md](../constants.md) for derivations.
 
 ---
 
@@ -169,7 +173,7 @@ The universal machine hypothesis connects to relativity:
 
 **Time doesn't "slow down" — you need more computational steps to complete the traversal.**
 
-From [Structural Cost Conservation](structural-cost-conservation.md):
+From [Structural Cost Conservation](../structural/structural-cost-conservation.md):
 ```
 C_total = C_visible + C_hidden   (cost decomposition)
 C_total is CONSERVED             (Noether/BLD invariance)
@@ -221,8 +225,8 @@ At event horizon:
 ## 7. Relativity Derivations `[NOW COMPLETE]`
 
 The time dilation hypothesis is now rigorously derived. See:
-- [Special Relativity](../derived/special-relativity.md) — c, γ, E=mc² from K/X
-- [General Relativity](../derived/general-relativity.md) — Gravity as stack depth
+- [Special Relativity](../../derived/special-relativity.md) — c, γ, E=mc² from K/X
+- [General Relativity](../../derived/general-relativity.md) — Gravity as stack depth
 
 ### Key Results (Previously Open, Now Derived)
 
@@ -271,14 +275,20 @@ Layer 3: The universe computing itself
 
 ---
 
+## See Also
+
+- [Integer Machine](integer-machine.md) — Concrete implementation: universe computes in boundary operations, minimum structure = 7.
+- [Machine Visualization](machine-visualization.md) — Ring and Cloth model visualizing this abstract framework.
+- [Constants](../constants.md) — B=56, L=20, n=4, K=2, S=13 with derivation links.
+
 ## References
 
-- [Special Relativity](../derived/special-relativity.md) — c, γ, E=mc² from BLD
-- [General Relativity](../derived/general-relativity.md) — Gravity as stack depth
-- [Genesis Function](../cosmology/genesis-function.md) — traverse(-B, B) creates existence
-- [Discovery Method](discovery-method.md) — How K/X was found
-- [Force Structure](force-structure.md) — Complete force derivations
-- [Planck Derivation](../quantum/planck-derivation.md) — M_P, l_P, t_P from BLD
-- [Structural Cost Conservation](structural-cost-conservation.md) — C_total = C_visible + C_hidden
+- [Special Relativity](../../derived/special-relativity.md) — c, γ, E=mc² from BLD
+- [General Relativity](../../derived/general-relativity.md) — Gravity as stack depth
+- [Genesis Function](../../cosmology/genesis-function.md) — traverse(-B, B) creates existence
+- [Discovery Method](../discovery-method.md) — How K/X was found
+- [Force Structure](../derivations/force-structure.md) — Complete force derivations
+- [Planck Derivation](../../quantum/planck-derivation.md) — M_P, l_P, t_P from BLD
+- [Structural Cost Conservation](../structural/structural-cost-conservation.md) — C_total = C_visible + C_hidden
 - [BLD Conservation](../bld-conservation.md) — BLD conservation = Noether's theorem
-- [Killing Form](../lie-theory/killing-form.md) — K = 2 derivation
+- [Killing Form](../../lie-theory/killing-form.md) — K = 2 derivation

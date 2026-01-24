@@ -4,14 +4,16 @@ layer: 1
 depends_on:
   - irreducibility-proof.md
   - irreducibility-categorical.md
-  - ../lie-theory/lie-correspondence.md
+  - ../../lie-theory/lie-correspondence.md
 used_by:
-  - ../../meta/proof-status.md
+  - ../../../meta/proof-status.md
 ---
 
 # Completeness Proof: B/L/D Are Sufficient
 
 **Status**: PROVEN — B, L, D are not only irreducible but also COMPLETE for describing all observable structure.
+
+**Relationship to [Why Exactly Three](why-exactly-three.md)**: This document proves B, L, D are sufficient (via Lie theory + Turing universality). Why-exactly-three addresses the complementary question: why no fourth primitive exists.
 
 ---
 
@@ -66,7 +68,7 @@ A Lie group is a group that is also a smooth manifold. All continuous symmetry t
 
 **Step 3: Every Lie group has exactly 3 structural components**
 
-From [Lie Correspondence](../lie-theory/lie-correspondence.md):
+From [Lie Correspondence](../../lie-theory/lie-correspondence.md):
 
 | Lie Algebra Component | BLD Primitive | What It Describes |
 |-----------------------|---------------|-------------------|
@@ -122,7 +124,7 @@ A Turing machine requires exactly three operations:
 
 **Step 4: Type theory completeness**
 
-From [BLD Calculus](bld-calculus.md):
+From [BLD Calculus](../definitions/bld-calculus.md):
 
 The type constructors {1, +, →, Πₙ} are complete for all computable types:
 - Unit (1): base case
@@ -239,11 +241,14 @@ Case 3: S is observable but neither symmetric nor computable.
 
 ---
 
-## References
+## See Also
 
+- [Why Exactly Three](why-exactly-three.md) — Why no 4th primitive exists (complements this file)
 - [Irreducibility Proof](irreducibility-proof.md) — B, L, D cannot express each other
-- [BLD Calculus](bld-calculus.md) — Formal type system
-- [Lie Correspondence](../lie-theory/lie-correspondence.md) — BLD = Lie theory
+- [BLD Calculus](../definitions/bld-calculus.md) — Formal type system
+- [Lie Correspondence](../../lie-theory/lie-correspondence.md) — BLD = Lie theory
+
+## References
 - Cartan, É. (1894) — Classification of simple Lie algebras
 - Church, A. (1936) — Lambda calculus and computability
 - Martin-Löf, P. (1984) — Intuitionistic Type Theory

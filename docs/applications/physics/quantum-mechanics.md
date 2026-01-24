@@ -22,7 +22,7 @@ used_by:
   - ../../mathematics/quantum/chirality-cpt.md
   - ../../meta/proof-status.md
   - ../../examples/lie-algebras.md
-  - ../../mathematics/foundations/irreducibility-proof.md
+  - ../../mathematics/foundations/proofs/irreducibility-proof.md
 ---
 
 # BLD for Quantum Mechanics

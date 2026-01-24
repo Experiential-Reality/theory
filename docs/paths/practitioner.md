@@ -142,7 +142,7 @@ When analyzing a new system, determine which compensation mechanism applies:
 - Neural depth: Non-periodic stacking → **e**
 - VI alignment: Phase-dependent → **π**
 
-See [Compensation Principle](../mathematics/foundations/compensation-principle.md) for full theory.
+See [Compensation Principle](../mathematics/foundations/structural/compensation-principle.md) for full theory.
 
 ---
 

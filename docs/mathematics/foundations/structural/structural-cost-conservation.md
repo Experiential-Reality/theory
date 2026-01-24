@@ -1,9 +1,16 @@
 ---
 status: DERIVED
+layer: 1
 depends_on:
   - factorization-calculus.md
-  - ../lie-theory/lie-correspondence.md
-  - ../derived/manifold-foundations.md
+  - ../../lie-theory/lie-correspondence.md
+  - ../../derived/manifold-foundations.md
+used_by:
+  - factorization-calculus.md
+  - ../machine/universal-machine.md
+  - ../../derived/special-relativity.md
+  - ../../derived/general-relativity.md
+  - ../../../applications/code/refactoring.md
 ---
 
 # Structural Cost Conservation
@@ -142,7 +149,7 @@ Cost measures the **information content** of structure — how much a traverser 
 
 ### 1.2 Primitive Costs (Proven)
 
-From the manifold foundations ([manifold-foundations.md](../derived/manifold-foundations.md)), the costs of irreducible primitives are:
+From the manifold foundations ([manifold-foundations.md](../../derived/manifold-foundations.md)), the costs of irreducible primitives are:
 
 **Boundary Cost** (B):
 ```
@@ -384,7 +391,7 @@ But the **experience** of implicit structure is worse than explicit:
 
 ### 5.2 Alignment Cost as Structural Cost
 
-In the manifold ([manifold-applications.md](../derived/manifold-applications.md)), cost is alignment cost:
+In the manifold ([manifold-applications.md](../../derived/manifold-applications.md)), cost is alignment cost:
 
 ```
 φ_T(S) = cost(S, T)    [potential function]
@@ -474,6 +481,6 @@ Track explicitness as a code quality metric.
 
 - [Glossary](../../glossary.md) — Central definitions
 - [Factorization Calculus](./factorization-calculus.md) — The FACTOR operation
-- [Manifold Foundations](../derived/manifold-foundations.md) — Primitive cost formulas
+- [Manifold Foundations](../../derived/manifold-foundations.md) — Primitive cost formulas
 - [BLD Conservation](../bld-conservation.md) — Physical conservation laws
-- [Manifold Applications](../derived/manifold-applications.md) — Alignment cost interpretation
+- [Manifold Applications](../../derived/manifold-applications.md) — Alignment cost interpretation

@@ -2,7 +2,7 @@
 status: VALIDATED
 layer: application
 depends_on:
-  - ../../mathematics/foundations/compensation-principle.md
+  - ../../mathematics/foundations/structural/compensation-principle.md
   - ../../mathematics/lie-theory/lie-correspondence.md
   - ../../mathematics/derived/manifold-foundations.md
 used_by:
@@ -303,7 +303,7 @@ The α-helix uses **both mechanisms** simultaneously (e^(a+iθ)):
 
 This proves the two mechanisms are real and can coexist.
 
-See [Compensation Principle](../../mathematics/foundations/compensation-principle.md) and [π from BLD](../../examples/pi-from-bld.md).
+See [Compensation Principle](../../mathematics/foundations/structural/compensation-principle.md) and [π from BLD](../../examples/pi-from-bld.md).
 
 ---
 

@@ -2,7 +2,7 @@
 status: VALIDATED
 layer: application
 depends_on:
-  - ../../mathematics/foundations/compensation-principle.md
+  - ../../mathematics/foundations/structural/compensation-principle.md
   - ../../mathematics/lie-theory/lie-correspondence.md
   - ../../meta/discovery-method.md
 used_by:
@@ -169,7 +169,7 @@ Use compensation asymmetry to find hidden structure in circuits:
 - If gain is *capped* → one stage saturating (hidden B)
 - If gain *degrades* with frequency → bandwidth limiting (L not propagating)
 
-See [Compensation Principle](../../mathematics/foundations/compensation-principle.md) for the full derivation and more diagnostic examples.
+See [Compensation Principle](../../mathematics/foundations/structural/compensation-principle.md) for the full derivation and more diagnostic examples.
 
 ---
 
@@ -290,7 +290,7 @@ In the Euler unification e^(iπ) + 1 = 0:
 
 Circuit cascades are pure exponential because they lack the closed boundary that would make π appear.
 
-See [Compensation Principle](../../mathematics/foundations/compensation-principle.md) and [Euler's Formula in BLD](../../glossary.md#euler).
+See [Compensation Principle](../../mathematics/foundations/structural/compensation-principle.md) and [Euler's Formula in BLD](../../glossary.md#euler).
 
 ---
 

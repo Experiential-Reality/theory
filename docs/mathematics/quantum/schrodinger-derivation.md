@@ -2,9 +2,9 @@
 status: DERIVED
 depends_on:
   - ../lie-theory/lie-correspondence.md
-  - ../foundations/octonion-derivation.md
+  - ../foundations/derivations/octonion-derivation.md
   - quantum-mechanics.md
-  - ../foundations/irreducibility-proof.md
+  - ../foundations/proofs/irreducibility-proof.md
 ---
 
 # Schrödinger Equation from BLD Traversal
@@ -61,7 +61,7 @@ Before the main derivation, we must establish two key results that were previous
 
 **The BLD Derivation**:
 
-From [Octonion Derivation](../foundations/octonion-derivation.md):
+From [Octonion Derivation](../foundations/derivations/octonion-derivation.md):
 
 ```
 BLD observation → bidirectional (Killing form = 2)
@@ -278,7 +278,7 @@ iℏ ∂ψ/∂t = Ĥψ
 1. **Why complex numbers?** — **RESOLVED (DERIVED)**
    - The i in [x,p] = iℏ is derived from octonion structure
    - BLD observation → octonions → reference fixing → ℂ isolation
-   - See [Octonion Derivation](../foundations/octonion-derivation.md)
+   - See [Octonion Derivation](../foundations/derivations/octonion-derivation.md)
 
 2. **Why linear evolution?** — **RESOLVED (DERIVED)**
    - G is L-type (Lie algebra element)
@@ -407,7 +407,7 @@ BLD observation → octonions required (division property)
               → complex quantum mechanics
 ```
 
-**Status**: **DERIVED** — see Part 0.1 and [Octonion Derivation](../foundations/octonion-derivation.md).
+**Status**: **DERIVED** — see Part 0.1 and [Octonion Derivation](../foundations/derivations/octonion-derivation.md).
 
 ### 3. Derive Specific Hamiltonians
 
@@ -462,7 +462,7 @@ The Schrödinger equation is **FULLY DERIVED** from BLD principles:
 ### Internal BLD References
 - [Planck Derivation](planck-derivation.md) — ℏ magnitude derivation (**0.00003% accuracy**)
 - [Structural-Observer Framework](structural-observer-framework.md) — Unified theory of structural vs observed values
-- [Octonion Derivation](../foundations/octonion-derivation.md) — ℂ ⊂ 𝕆 isolation (derives complex numbers)
+- [Octonion Derivation](../foundations/derivations/octonion-derivation.md) — ℂ ⊂ 𝕆 isolation (derives complex numbers)
 - [Lie Correspondence](../lie-theory/lie-correspondence.md) — BLD = Lie theory (derives linearity)
 - [Quantum Mechanics](quantum-mechanics.md) — Position/momentum as D/L
 - [Killing Form](../lie-theory/killing-form.md) — The "2" in uncertainty, K = 2 in observer corrections

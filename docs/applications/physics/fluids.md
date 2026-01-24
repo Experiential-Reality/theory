@@ -2,7 +2,7 @@
 status: EXPLORATORY
 layer: application
 depends_on:
-  - ../../mathematics/foundations/compensation-principle.md
+  - ../../mathematics/foundations/structural/compensation-principle.md
   - phase-transitions.md
   - thermodynamics-validation.md
 used_by:
@@ -374,4 +374,4 @@ The laminar-turbulent transition is structurally similar to phase transitions:
 - [Phase Transitions](phase-transitions.md) — Similar B change structure
 - [Thermodynamics](thermodynamics-validation.md) — Entropy production
 - [Circuits](circuits.md) — D×L scaling validation
-- [Compensation Principle](../../mathematics/foundations/compensation-principle.md) — B vs L dynamics
+- [Compensation Principle](../../mathematics/foundations/structural/compensation-principle.md) — B vs L dynamics

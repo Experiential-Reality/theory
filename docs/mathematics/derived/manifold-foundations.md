@@ -46,7 +46,7 @@ All structures describable by B/L/D live on a manifold. The metric on this manif
 
 | Component | Status | Evidence |
 |-----------|--------|----------|
-| Primitive irreducibility | **PROVEN** | Type-theoretic proof ([irreducibility-categorical.md](../foundations/irreducibility-categorical.md)) |
+| Primitive irreducibility | **PROVEN** | Type-theoretic proof ([irreducibility-categorical.md](../foundations/proofs/irreducibility-categorical.md)) |
 | **Information Geometry ⊂ BLD** | **PROVEN** | BLD is stratified extension; Info Geo = BLD_{k=1} |
 | Link cost formula | **PROVEN** | L = -½ ln(1 - ρ²) exact theorem from KL divergence |
 | Alignment factor g(ρ,θ) | **PROVEN** | g = (1-ρsin(2θ))/(1-ρ²) from Mahalanobis geometry |

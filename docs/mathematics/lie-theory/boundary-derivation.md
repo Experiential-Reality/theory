@@ -2,7 +2,7 @@
 status: VALIDATED
 depends_on:
   - lie-correspondence.md
-  - ../foundations/irreducibility-proof.md
+  - ../foundations/proofs/irreducibility-proof.md
 ---
 
 # Boundary Cost Derivation

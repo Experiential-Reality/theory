@@ -34,7 +34,7 @@ A language that can compile itself proves it captures something fundamental abou
 | **L** (Link) | Connection/reference | Structure constants | `&/ptr` | Interaction |
 | **D** (Dimension) | Repetition/extent | Generators | `[]/loop` | Spacetime |
 
-These three are **irreducible**: none can be expressed in terms of the others. See [Irreducibility Proof](mathematics/foundations/irreducibility-proof.md).
+These three are **irreducible**: none can be expressed in terms of the others. See [Irreducibility Proof](mathematics/foundations/proofs/irreducibility-proof.md).
 
 ---
 
@@ -54,12 +54,12 @@ These are not curve fits—they emerge from structural constants B=56, L=20, n=4
 ## Proof Architecture
 
 ### Layer 0: Axioms (Definitions)
-- [BLD Calculus](mathematics/foundations/bld-calculus.md) — Type-theoretic foundation
+- [BLD Calculus](mathematics/foundations/definitions/bld-calculus.md) — Type-theoretic foundation
 
 ### Layer 1: Theorems (Proven)
-- [Irreducibility](mathematics/foundations/irreducibility-proof.md) — B, L, D are independent
+- [Irreducibility](mathematics/foundations/proofs/irreducibility-proof.md) — B, L, D are independent
 - [Lie Correspondence](mathematics/lie-theory/lie-correspondence.md) — BLD = Lie theory exactly
-- [Octonion Derivation](mathematics/foundations/octonion-derivation.md) — Why octonions are required
+- [Octonion Derivation](mathematics/foundations/derivations/octonion-derivation.md) — Why octonions are required
 
 ### Layer 2: Derivations (Logical consequences)
 - [E7 Derivation](mathematics/particle-physics/e7-derivation.md) — α⁻¹ = 137.036
@@ -145,8 +145,8 @@ The same structural specification compiles to different targets. This is why BLD
 3. [Planck Derivation](mathematics/quantum/planck-derivation.md) — ℏ from structure
 
 ### For Mathematicians
-1. [BLD Calculus](mathematics/foundations/bld-calculus.md) — Formal type system
-2. [Irreducibility Proof](mathematics/foundations/irreducibility-proof.md) — B, L, D independence
+1. [BLD Calculus](mathematics/foundations/definitions/bld-calculus.md) — Formal type system
+2. [Irreducibility Proof](mathematics/foundations/proofs/irreducibility-proof.md) — B, L, D independence
 3. [Lie Correspondence](mathematics/lie-theory/lie-correspondence.md) — Connection to Lie theory
 
 ### For Software Engineers

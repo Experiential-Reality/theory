@@ -2,9 +2,9 @@
 status: FOUNDATIONAL
 layer: 1
 depends_on:
-  - ../mathematics/foundations/integer-machine.md
+  - ../mathematics/foundations/machine/integer-machine.md
   - ../mathematics/lie-theory/lie-correspondence.md
-  - ../mathematics/foundations/irreducibility-proof.md
+  - ../mathematics/foundations/proofs/irreducibility-proof.md
 used_by:
   - e-from-bld.md
   - physics-traverser.md
@@ -46,7 +46,7 @@ The primordial structure is integers: B = 56, L = 20, n = 4. The transcendental 
 
 **π is not primordial.** It emerged when spacetime became continuous enough to rotate through discrete boundaries.
 
-See [Integer Machine](../mathematics/foundations/integer-machine.md) for the complete framework.
+See [Integer Machine](../mathematics/foundations/machine/integer-machine.md) for the complete framework.
 
 ---
 

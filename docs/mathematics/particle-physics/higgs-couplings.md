@@ -5,8 +5,8 @@ depends_on:
   - higgs-self-coupling.md
   - boson-masses.md
   - ../cosmology/observer-correction.md
-  - ../foundations/force-structure.md
-  - ../foundations/detection-structure.md
+  - ../foundations/derivations/force-structure.md
+  - ../foundations/machine/detection-structure.md
 used_by: []
 prediction_date: 2026-01-22
 ---
@@ -79,7 +79,7 @@ Every particle detector works by making particles interact with matter:
 
 ### Why These X Values?
 
-From [Force Structure](../foundations/force-structure.md):
+From [Force Structure](../foundations/derivations/force-structure.md):
 
 ```
 Forces ARE K/X at Different Scales
@@ -187,7 +187,7 @@ Example: H → WW → ℓνℓν
 
 ## Detection Structure Formalism
 
-For the complete T ∩ S detection formalism, see [Detection Structure](../foundations/detection-structure.md).
+For the complete T ∩ S detection formalism, see [Detection Structure](../foundations/machine/detection-structure.md).
 
 **Quick reference:**
 - T = traverser (detector's BLD components)
@@ -594,5 +594,5 @@ This follows from the same K/X framework that derives α⁻¹, m_H, and all part
 - [Higgs Self-Coupling](higgs-self-coupling.md) — κ_λ = 1.025 detailed derivation
 - [Boson Masses](boson-masses.md) — m_H = (v/2)(1 + 1/B) derivation
 - [Observer Corrections](../cosmology/observer-correction.md) — Two-reference framework
-- [Force Structure](../foundations/force-structure.md) — Why X = B for EM, X = n+L for strong
+- [Force Structure](../foundations/derivations/force-structure.md) — Why X = B for EM, X = n+L for strong
 - [Fine Structure Consistency](fine-structure-consistency.md) — α⁻¹ = 137.036 from same framework

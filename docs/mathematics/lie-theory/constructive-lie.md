@@ -3,7 +3,7 @@ status: PROVEN
 layer: 1
 depends_on:
   - lie-correspondence.md
-  - ../foundations/irreducibility-proof.md
+  - ../foundations/proofs/irreducibility-proof.md
 ---
 
 # Constructive Lie Theory: From BLD to Homomorphisms

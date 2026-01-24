@@ -233,6 +233,21 @@ The D×L scaling principle and compensation principle have been validated across
 
 ---
 
+## Testable Predictions
+
+BLD makes specific predictions that can be falsified by experiment:
+
+| Prediction | Value | Status | Test |
+|------------|-------|--------|------|
+| Higgs self-coupling | κ_λ = 1.025 | **PREDICTED 2026-01-22** | HL-LHC ~2040 (5% precision) |
+| No 4th generation | 3 exactly | **VALIDATED** | Triality requires exactly 3 |
+| Dark matter fraction | 27% | **VALIDATED** | L/D = 5x + 8x² = 0.27 |
+| Fine structure constant | α⁻¹ = 137.035999177 | **VALIDATED** | CODATA 2022 match: 0.0 ppt |
+
+**Higgs self-coupling κ_λ**: The structural prediction is κ_λ = 1.000 (exactly SM). With detection correction K/(n×L) = 2/80, the observed value should be κ_λ = 1.025. Current bounds [−1.6, 6.6] at 95% CL are too loose to test. HL-LHC at ~5% precision will distinguish 1.000 from 1.025. See [Higgs Self-Coupling](docs/mathematics/particle-physics/higgs-self-coupling.md).
+
+---
+
 ## Cosmology: Dark Matter as Geometry
 
 BLD provides a structural explanation of dark matter:
@@ -286,6 +301,16 @@ BLD structural constants predict particle masses:
 With observer corrections (K/B, spatial traversal, accumulated):
 ```
 α⁻¹ = 137.035999177  (0.0 ppt error — exact match)
+```
+
+**The Traverser Contribution (+1)**: The "+1" in the formula is the **traverser's irreducible contribution**. Every measurement requires something to traverse the structure being measured. This traverser IS a BLD structure and contributes exactly 1 unit:
+
+```
+(Structure + Traverser) / Structure appears everywhere:
+  - (B + 1)/B = 57/56 in Higgs mass
+  - (n²S - 1)/n²S = 207/208 in μ/e
+  - (n×L - 1)/n×L = 79/80 in corrections
+  - The +1 or -1 IS the traverser's minimum contribution
 ```
 
 **Note**: B = 56 is derived from E7/Spin(8) structure: B = 2 × dim(Spin(8) adjoint) = 2 × 28. See [E7 Connection](docs/mathematics/particle-physics/e7-connection.md).

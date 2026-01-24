@@ -2,17 +2,24 @@
 status: DERIVED
 layer: 1
 depends_on:
-  - octonion-derivation.md
-  - ../quantum/planck-derivation.md
-  - ../particle-physics/lepton-masses.md
+  - universal-machine.md
+  - ../derivations/octonion-derivation.md
+  - ../../quantum/planck-derivation.md
   - detection-structure.md
+# Note: lepton-masses.md moved to see_also to break circular dependency.
+# Integer-machine provides the framework; lepton-masses applies it.
+# The two form a two-reference closure, not a proof dependency cycle.
+see_also:
+  - ../../particle-physics/lepton-masses.md
 used_by:
-  - ../../meta/proof-status.md
+  - ../../../meta/proof-status.md
 ---
 
 # The Integer Machine
 
 **Status**: DERIVED — The universe computes in boundary operations. Minimum structure is 7 = Im(O). Minimum observable is √7.
+
+**Constants**: B=56, L=20, n=4, K=2, S=13. See [constants.md](../constants.md) for derivations.
 
 ---
 
@@ -30,9 +37,9 @@ used_by:
 
 | Claim | Evidence |
 |-------|----------|
-| 7 = Im(O) = n + 3 | Derived in [Octonion Derivation](octonion-derivation.md) |
+| 7 = Im(O) = n + 3 | Derived in [Octonion Derivation](../derivations/octonion-derivation.md) |
 | (M_P/m_e)² × 7 = integer | 2^51 × 5^31 × 137^4 (pure integer) |
-| Primordial τ/μ = 17 | S + n = 13 + 4 (from [Lepton Masses](../particle-physics/lepton-masses.md)) |
+| Primordial τ/μ = 17 | S + n = 13 + 4 (from [Lepton Masses](../../particle-physics/lepton-masses.md)) |
 | K = 2 = dim(ℂ) | i is the unit of observation |
 
 ---
@@ -77,7 +84,7 @@ In BLD:
 
 ### 1.2 Why Boundary Is Primary
 
-From [Irreducibility Proof](irreducibility-proof.md): B, L, D are the three orthogonal primitives. But B is special — it creates the distinction that allows L and D to operate.
+From [Irreducibility Proof](../proofs/irreducibility-proof.md): B, L, D are the three orthogonal primitives. But B is special — it creates the distinction that allows L and D to operate.
 
 ```
 Without B:  No 0|1 → no distinction → no structure
@@ -92,7 +99,7 @@ With 56 B:  Full BLD → complete physics
 
 ### 2.1 Why 7?
 
-From [Octonion Derivation](octonion-derivation.md):
+From [Octonion Derivation](../derivations/octonion-derivation.md):
 
 ```
 BLD bidirectional observation (K = 2)
@@ -130,7 +137,7 @@ This decomposition is structural, not arbitrary.
 
 ### 2.3 Below 7: Genesis Fails
 
-From [Octonion Necessity](octonion-necessity.md): The genesis function `traverse(-B, B)` must close for existence to work.
+From [Octonion Necessity](../derivations/octonion-necessity.md): The genesis function `traverse(-B, B)` must close for existence to work.
 
 - With < 7 boundaries: structure cannot self-observe consistently
 - With 7 boundaries: minimum closure achieved
@@ -204,7 +211,7 @@ The integer structure is: **M_P/m_e is the fundamental ratio, all else are integ
 
 ### 4.2 Proof for Electron
 
-From [Planck Derivation](../quantum/planck-derivation.md) and [Lepton Masses](../particle-physics/lepton-masses.md):
+From [Planck Derivation](../../quantum/planck-derivation.md) and [Lepton Masses](../../particle-physics/lepton-masses.md):
 
 ```
 M_P = v × L^13 × √(L/B) × corrections
@@ -390,7 +397,7 @@ And 1 + 3 + 7 = 11 (M-theory dimension).
 
 ### 7.3 Why Octonions and No Further
 
-From [Octonion Necessity](octonion-necessity.md):
+From [Octonion Necessity](../derivations/octonion-necessity.md):
 - Sedenions (16D) lose the division property
 - Without division, bidirectional observation fails
 - Octonions are the **last** normed division algebra
@@ -406,7 +413,7 @@ From [Octonion Necessity](octonion-necessity.md):
 The imaginary unit i is not a mathematical convenience — it's structurally necessary.
 
 **The proof:**
-1. BLD requires bidirectional observation (see [Killing Form](../lie-theory/killing-form.md))
+1. BLD requires bidirectional observation (see [Killing Form](../../lie-theory/killing-form.md))
 2. Bidirectionality requires inverses
 3. Inverses require division algebra
 4. Minimum division algebra with structure: ℂ
@@ -459,17 +466,22 @@ The gap is observation.
 
 ---
 
+## See Also
+
+- [Universal Machine](universal-machine.md) — The abstract framework that integer-machine implements. traverse(-B, B) as cosmic computation.
+- [Constants](../constants.md) — B=56, L=20, n=4, K=2, S=13 with derivation links.
+
 ## References
 
 ### Internal BLD
-- [Octonion Derivation](octonion-derivation.md) — Complete proof of 7 = n + 3
-- [Octonion Necessity](octonion-necessity.md) — Why octonions are required
-- [Planck Derivation](../quantum/planck-derivation.md) — M_P formula
-- [Lepton Masses](../particle-physics/lepton-masses.md) — Bare mass ratios
+- [Octonion Derivation](../derivations/octonion-derivation.md) — Complete proof of 7 = n + 3
+- [Octonion Necessity](../derivations/octonion-necessity.md) — Why octonions are required
+- [Planck Derivation](../../quantum/planck-derivation.md) — M_P formula
+- [Lepton Masses](../../particle-physics/lepton-masses.md) — Bare mass ratios
 - [Detection Structure](detection-structure.md) — T ∩ S and observation
-- [Killing Form](../lie-theory/killing-form.md) — K = 2 = dim(ℂ)
-- [Quantum Mechanics](../quantum/quantum-mechanics.md) — Why QM uses i
+- [Killing Form](../../lie-theory/killing-form.md) — K = 2 = dim(ℂ)
+- [Quantum Mechanics](../../quantum/quantum-mechanics.md) — Why QM uses i
 
 ### Applications
-- [Observer Corrections](../cosmology/observer-correction.md) — K/X framework
-- [Fine Structure](../particle-physics/fine-structure-consistency.md) — α⁻¹ = 137
+- [Observer Corrections](../../cosmology/observer-correction.md) — K/X framework
+- [Fine Structure](../../particle-physics/fine-structure-consistency.md) — α⁻¹ = 137

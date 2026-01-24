@@ -3,14 +3,14 @@ status: DERIVED
 layer: 2
 depends_on:
   - structural-observer-framework.md
-  - ../foundations/irreducibility-proof.md
+  - ../foundations/proofs/irreducibility-proof.md
   - ../lie-theory/killing-form.md
   - schrodinger-derivation.md
   - ../../applications/physics/scale-hierarchy.md
   - ../../applications/physics/epsilon2-origin.md
 used_by:
   - ../../meta/proof-status.md
-  - ../foundations/integer-machine.md
+  - ../foundations/machine/integer-machine.md
 ---
 
 # Deriving Planck's Constant from BLD Structure
@@ -643,7 +643,7 @@ The derivation reveals a fundamental distinction:
 
 **Note**: The factor √(5/14) comes from the primordial integer ratio L/B = 20/56 = 5/14. The square root emerges late — when observation accesses the underlying integer structure.
 
-See [Integer Machine](../foundations/integer-machine.md) for the complete framework.
+See [Integer Machine](../foundations/machine/integer-machine.md) for the complete framework.
 
 **v (Higgs VEV) is the uncorrected reference scale**. All corrections are measured relative to v because:
 1. One scale must be the reference (cannot correct everything)
@@ -721,7 +721,7 @@ Since the machine stores X (integers) and we observe √X:
 
 The √7 is the smallest "tick" we can ever measure — the resolution limit set by the octonionic structure of reality.
 
-For the complete integer machine framework, see [Integer Machine](../foundations/integer-machine.md).
+For the complete integer machine framework, see [Integer Machine](../foundations/machine/integer-machine.md).
 
 ---
 
@@ -741,4 +741,4 @@ For the complete integer machine framework, see [Integer Machine](../foundations
 - [E7 Derivation](../particle-physics/e7-derivation.md) — B=56, boundary quantum
 - [Scale Hierarchy](../../applications/physics/scale-hierarchy.md) — λ power relationships
 - [Epsilon2 Origin](../../applications/physics/epsilon2-origin.md) — λ = 1/√20 derivation
-- [Irreducibility Proof](../foundations/irreducibility-proof.md) — D-L coupling requirement, observer unavoidable
+- [Irreducibility Proof](../foundations/proofs/irreducibility-proof.md) — D-L coupling requirement, observer unavoidable

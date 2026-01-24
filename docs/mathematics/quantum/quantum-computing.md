@@ -3,7 +3,7 @@ status: DERIVED
 depends_on:
   - quantum-mechanics.md
   - ../lie-theory/killing-form.md
-  - ../foundations/compensation-principle.md
+  - ../foundations/structural/compensation-principle.md
 ---
 
 # Quantum Computing: Structure Traversing Itself
@@ -360,7 +360,7 @@ L repair: syndrome -> correction_operator
 
 ### Why It Works
 
-From the [Compensation Principle](../foundations/compensation-principle.md):
+From the [Compensation Principle](../foundations/structural/compensation-principle.md):
 - L can compensate for B (fix broken boundaries)
 - Extra D (redundancy) provides room for L-repair
 - Syndrome measurement is a special B that doesn't collapse data L
@@ -459,5 +459,5 @@ L error_correction: syndrome -> repair
 
 - [Quantum Mechanics](quantum-mechanics.md) — Position/momentum as D/L, uncertainty from irreducibility
 - [Killing Form](../lie-theory/killing-form.md) — Why observation costs 2 links
-- [Compensation Principle](../foundations/compensation-principle.md) — L compensates B
+- [Compensation Principle](../foundations/structural/compensation-principle.md) — L compensates B
 - [Lie Correspondence](../lie-theory/lie-correspondence.md) — BLD = Lie theory

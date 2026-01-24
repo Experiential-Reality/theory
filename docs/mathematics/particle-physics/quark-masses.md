@@ -2,7 +2,7 @@
 status: DERIVED
 layer: 2
 depends_on:
-  - ../foundations/integer-machine.md
+  - ../foundations/machine/integer-machine.md
   - lepton-masses.md
   - fine-structure-consistency.md
   - e7-derivation.md
@@ -62,7 +62,7 @@ used_by:
 - **−L**: Confinement barrier (quarks cross from free to confined phase)
 - **K/X**: Observation gradients from traversing color and link structure
 
-See [Integer Machine](../foundations/integer-machine.md) for the complete framework.
+See [Integer Machine](../foundations/machine/integer-machine.md) for the complete framework.
 
 ---
 
@@ -524,7 +524,7 @@ Observed = Structure + K/X(experiment) + K/X(universe)
 | K/X(experiment) | Our apparatus traversing structure | K/L, K/3, K/7 corrections |
 | K/X(universe) | Universal machine computing itself | Remaining 0.0%-0.5% |
 
-**Residuals** (0.0% - 0.5%) are within the K/X(universe) range — the [Universal Machine](../foundations/universal-machine.md)'s self-traversal cost — not experimental errors.
+**Residuals** (0.0% - 0.5%) are within the K/X(universe) range — the [Universal Machine](../foundations/machine/universal-machine.md)'s self-traversal cost — not experimental errors.
 
 ---
 
@@ -626,4 +626,4 @@ If this framework is correct:
 - [Discovery Method](../foundations/discovery-method.md) — How gaps reveal hidden structure
 - [Observer Corrections](../cosmology/observer-correction.md) — Two-reference framework
 - [Killing Form](../lie-theory/killing-form.md) — Why K = 2
-- [Universal Machine](../foundations/universal-machine.md) — K/X(universe) residuals
+- [Universal Machine](../foundations/machine/universal-machine.md) — K/X(universe) residuals

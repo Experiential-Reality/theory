@@ -22,4 +22,4 @@ Different entry points for different audiences.
 
 - **Definitions**: [glossary.md](../glossary.md)
 - **Proof Status**: [proof-status.md](../meta/proof-status.md)
-- **Core Theory**: [bld-calculus.md](../mathematics/foundations/bld-calculus.md)
+- **Core Theory**: [bld-calculus.md](../mathematics/foundations/definitions/bld-calculus.md)

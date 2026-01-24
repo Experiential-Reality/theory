@@ -3,10 +3,10 @@ status: PROVEN
 layer: 1
 depends_on: []
 used_by:
-  - ../foundations/octonion-derivation.md
+  - ../foundations/derivations/octonion-derivation.md
   - ../particle-physics/e7-derivation.md
   - ../quantum/quantum-mechanics.md
-  - ../foundations/why-exactly-three.md
+  - ../foundations/proofs/why-exactly-three.md
 ---
 
 # BLD = Lie Theory: The Correspondence

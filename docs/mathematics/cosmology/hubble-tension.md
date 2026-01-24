@@ -3,7 +3,7 @@ status: DERIVED
 layer: 2
 depends_on:
   - genesis-function.md
-  - ../foundations/universal-machine.md
+  - ../foundations/machine/universal-machine.md
   - ../lie-theory/killing-form.md
 used_by:
   - ../../meta/proof-status.md
@@ -209,6 +209,6 @@ See [σ₈ Tension](sigma8-tension.md) for the full derivation.
 ### Internal BLD References
 - [σ₈ Tension](sigma8-tension.md) — Parallel K/X phenomenon
 - [Genesis Function](genesis-function.md) — Ring/cloth model
-- [Universal Machine](../foundations/universal-machine.md) — K/X(universe) derivations
+- [Universal Machine](../foundations/machine/universal-machine.md) — K/X(universe) derivations
 - [Killing Form](../lie-theory/killing-form.md) — K = 2 derivation
 - [Observer Correction](observer-correction.md) — General K/X framework

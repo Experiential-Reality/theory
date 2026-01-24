@@ -2,12 +2,12 @@
 status: DERIVED
 layer: 0
 depends_on:
-  - bld-calculus.md
-  - irreducibility-proof.md
+  - definitions/bld-calculus.md
+  - proofs/irreducibility-proof.md
   - ../lie-theory/killing-form.md
   - ../../meta/discovery-method.md
 used_by:
-  - force-structure.md
+  - derivations/force-structure.md
   - ../particle-physics/fine-structure-consistency.md
   - ../particle-physics/higgs-self-coupling.md
   - ../cosmology/observer-correction.md
@@ -18,6 +18,8 @@ used_by:
 **Status**: DERIVED — Application of the BLD discovery method to fundamental physics.
 
 **Core claim**: When applied to physics, the discovery method reveals that observation costs follow a universal pattern: K/X (the skip ratio).
+
+**Constants**: B=56, L=20, n=4, K=2, S=13. See [constants.md](constants.md) for derivations.
 
 ---
 
@@ -148,7 +150,7 @@ The gap between prediction and observation IS the cost of observation:
 - Link 2 (experiment) gives structure + cost
 - Difference isolates the cost
 
-The method works because **observation is not free**. From [Irreducibility Proof](irreducibility-proof.md): B, L, D cannot be expressed in terms of each other. Any measurement requires all three — you cannot observe structure without adding link cost.
+The method works because **observation is not free**. From [Irreducibility Proof](proofs/irreducibility-proof.md): B, L, D cannot be expressed in terms of each other. Any measurement requires all three — you cannot observe structure without adding link cost.
 
 ---
 
@@ -419,9 +421,9 @@ All four forces derived to < 0.02% accuracy using this method.
 ## References
 
 - [General BLD Discovery Method](../../meta/discovery-method.md) — The three questions framework
-- [BLD Calculus](bld-calculus.md) — Foundational definitions of B, L, D
-- [Irreducibility Proof](irreducibility-proof.md) — Why observation has cost
+- [BLD Calculus](definitions/bld-calculus.md) — Foundational definitions of B, L, D
+- [Irreducibility Proof](proofs/irreducibility-proof.md) — Why observation has cost
 - [Killing Form](../lie-theory/killing-form.md) — K = 2 derivation
-- [Force Structure](force-structure.md) — Complete force derivations
+- [Force Structure](derivations/force-structure.md) — Complete force derivations
 - [Fine Structure Consistency](../particle-physics/fine-structure-consistency.md) — α⁻¹ exact formula
 - [Observer Correction](../cosmology/observer-correction.md) — Unified correction framework

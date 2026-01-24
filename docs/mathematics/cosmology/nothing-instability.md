@@ -1,7 +1,7 @@
 ---
 status: DERIVED
 depends_on:
-  - ../foundations/irreducibility-proof.md
+  - ../foundations/proofs/irreducibility-proof.md
 ---
 
 # The Instability of Nothing
@@ -271,4 +271,4 @@ See [Chirality and CPT](../quantum/chirality-cpt.md) for the full treatment of w
 - [Chirality and CPT](../quantum/chirality-cpt.md) — Why B partitions into directions (chirality)
 - [Cyclic Cosmology](cyclic-cosmology.md) — The eternal structure
 - [Dark Matter Mapping](dark-matter-mapping.md) — Quantitative predictions
-- [Irreducibility Proof](../foundations/irreducibility-proof.md) — Why B, L, D are the minimal set
+- [Irreducibility Proof](../foundations/proofs/irreducibility-proof.md) — Why B, L, D are the minimal set

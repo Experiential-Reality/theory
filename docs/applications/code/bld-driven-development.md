@@ -2,7 +2,7 @@
 status: VALIDATED
 layer: application
 depends_on:
-  - ../../mathematics/foundations/factorization-calculus.md
+  - ../../mathematics/foundations/structural/factorization-calculus.md
   - ../../meta/discovery-method.md
   - refactoring.md
 used_by:
@@ -79,7 +79,7 @@ Properties:
 
 BLD-driven development applies these rules **proactively** — identify structure before writing code, rather than discovering it through refactoring afterward.
 
-See [Factorization Calculus](../../mathematics/foundations/factorization-calculus.md) for formal definitions.
+See [Factorization Calculus](../../mathematics/foundations/structural/factorization-calculus.md) for formal definitions.
 
 ---
 

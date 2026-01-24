@@ -49,7 +49,7 @@ An experiment to test whether different learning systems perceive structure simi
 - Space to record responses from different LLM architectures
 - Analysis framework for comparing vocabulary and descriptions
 
-### [Irreducibility Proof](../mathematics/foundations/irreducibility-proof.md)
+### [Irreducibility Proof](../mathematics/foundations/proofs/irreducibility-proof.md)
 Formal proof that B/L/D are the minimal structural primitives:
 - Each primitive provides a unique capability (choice, reference, multiplicity)
 - Witness structures that require each primitive
@@ -242,7 +242,7 @@ The funnel IS the alignment cost surface.
 
 ### Newly resolved:
 
-9. ~~Can B/L/D be reduced further, or are they provably irreducible?~~ → **Proved**. See [Irreducibility Proof](../mathematics/foundations/irreducibility-proof.md). Type-theoretic proof shows sum, function, and product types are independent.
+9. ~~Can B/L/D be reduced further, or are they provably irreducible?~~ → **Proved**. See [Irreducibility Proof](../mathematics/foundations/proofs/irreducibility-proof.md). Type-theoretic proof shows sum, function, and product types are independent.
 
 10. ~~Can we derive thermodynamics from structural alignment principles?~~ → **Derived and validated**. See [Thermodynamics](../mathematics/derived/thermodynamics.md). 10/10 empirical tests pass.
 
@@ -262,7 +262,7 @@ The funnel IS the alignment cost surface.
 
 18. ~~What is the formal relationship between BLD and Lie theory?~~ → **BLD = Lie Theory**. D = generators, L = structure constants, B = group topology. See [Lie Correspondence](../mathematics/lie-theory/lie-correspondence.md).
 
-19. ~~Is computing canonical BLD tractable?~~ → **NP-complete**. Proven via reduction from minimum grammar problem. This is the BLD framework predicting its own complexity: canonical form requires global temporal scope, which no local traverser can provide. See [Canonical Hardness](../mathematics/foundations/canonical-hardness.md).
+19. ~~Is computing canonical BLD tractable?~~ → **NP-complete**. Proven via reduction from minimum grammar problem. This is the BLD framework predicting its own complexity: canonical form requires global temporal scope, which no local traverser can provide. See [Canonical Hardness](../mathematics/foundations/structural/canonical-hardness.md).
 
 ### Still open:
 

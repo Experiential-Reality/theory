@@ -1,8 +1,8 @@
 ---
 status: DERIVED
 depends_on:
-  - ../foundations/irreducibility-proof.md
-  - ../foundations/bld-calculus.md
+  - ../foundations/proofs/irreducibility-proof.md
+  - ../foundations/definitions/bld-calculus.md
   - ../lie-theory/lie-correspondence.md
   - ../lie-theory/killing-form.md
   - bld-is-quantum-code.md
@@ -108,8 +108,8 @@ THE THEORY CLOSES
 
 | Result | Document | Summary |
 |--------|----------|---------|
-| B/L/D Irreducibility | [irreducibility-proof.md](../foundations/irreducibility-proof.md) | No primitive can be reduced to others |
-| BLD = Type Theory | [bld-calculus.md](../foundations/bld-calculus.md) | B=sum, L=function, D=product |
+| B/L/D Irreducibility | [irreducibility-proof.md](../foundations/proofs/irreducibility-proof.md) | No primitive can be reduced to others |
+| BLD = Type Theory | [bld-calculus.md](../foundations/definitions/bld-calculus.md) | B=sum, L=function, D=product |
 | BLD = Lie Theory | [lie-correspondence.md](../lie-theory/lie-correspondence.md) | Exact structural mapping |
 | Lie = QM Structure | [bld-is-quantum-code.md](bld-is-quantum-code.md) | Lie algebras = quantum operators |
 | Killing Form = 2 | [killing-form.md](../lie-theory/killing-form.md) | Observation cost is bidirectional |
@@ -331,8 +331,8 @@ But the structural framework is complete.
 ## References
 
 ### Foundation
-- [Irreducibility Proof](../foundations/irreducibility-proof.md)
-- [BLD Calculus](../foundations/bld-calculus.md)
+- [Irreducibility Proof](../foundations/proofs/irreducibility-proof.md)
+- [BLD Calculus](../foundations/definitions/bld-calculus.md)
 - [Lie Correspondence](../lie-theory/lie-correspondence.md)
 
 ### Key Results

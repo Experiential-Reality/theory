@@ -1,9 +1,15 @@
 ---
 status: DERIVED
+layer: 1
 depends_on:
-  - bld-calculus.md
-  - irreducibility-categorical.md
-  - ../lie-theory/lie-correspondence.md
+  - ../definitions/bld-calculus.md
+  - ../proofs/irreducibility-categorical.md
+  - ../../lie-theory/lie-correspondence.md
+used_by:
+  - structural-cost-conservation.md
+  - ../definitions/bld-calculus.md
+  - ../../../applications/code/bld-driven-development.md
+  - ../../../applications/code/refactoring.md
 ---
 
 # Refactoring as Factorization (RF-Calculus)
@@ -447,7 +453,7 @@ The termination of FACTOR depends on the irreducibility theorem ([irreducibility
 
 ### 6.3 Lie Correspondence
 
-FACTOR on structures corresponds to **Levi decomposition** on Lie algebras ([lie-correspondence.md](../lie-theory/lie-correspondence.md)):
+FACTOR on structures corresponds to **Levi decomposition** on Lie algebras ([lie-correspondence.md](../../lie-theory/lie-correspondence.md)):
 
 ```
 Lie algebra:    g = r ⋊ l    (radical ⋊ Levi subalgebra)
@@ -562,5 +568,5 @@ FACTOR(S) = D[User, User, User] × D[Product, Product]
 - [Glossary](../../glossary.md) — Central definitions
 - [BLD Calculus](./bld-calculus.md) — Type system foundation
 - [Irreducibility Theorem](./irreducibility-categorical.md) — Why factorization terminates
-- [Lie Correspondence](../lie-theory/lie-correspondence.md) — FACTOR = Levi decomposition
+- [Lie Correspondence](../../lie-theory/lie-correspondence.md) — FACTOR = Levi decomposition
 - [Structural Cost Conservation](./structural-cost-conservation.md) — Cost algebra

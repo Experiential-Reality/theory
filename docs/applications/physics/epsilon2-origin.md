@@ -2,7 +2,7 @@
 status: DERIVED
 layer: 2
 depends_on:
-  - ../../mathematics/foundations/bld-calculus.md
+  - ../../mathematics/foundations/definitions/bld-calculus.md
   - ../../mathematics/lie-theory/lie-correspondence.md
 used_by:
   - ../../mathematics/quantum/planck-derivation.md

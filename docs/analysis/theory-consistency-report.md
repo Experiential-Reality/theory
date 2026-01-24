@@ -6,7 +6,7 @@ depends_on:
   - ../mathematics/derived/cosmology.md
   - ../mathematics/derived/quantum-mechanics.md
   - ../mathematics/lie-theory/lie-correspondence.md
-  - ../mathematics/foundations/irreducibility-proof.md
+  - ../mathematics/foundations/proofs/irreducibility-proof.md
 used_by:
   - README.md
   - dependency-graph.md
@@ -397,4 +397,4 @@ After refactoring, the theory documentation should satisfy:
   - `docs/mathematics/derived/cosmology.md`
   - `docs/mathematics/derived/quantum-mechanics.md`
   - `docs/mathematics/lie-theory/lie-correspondence.md`
-  - `docs/mathematics/foundations/irreducibility-proof.md`
+  - `docs/mathematics/foundations/proofs/irreducibility-proof.md`

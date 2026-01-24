@@ -3,7 +3,7 @@ status: PARTIAL
 layer: 2
 depends_on:
   - epsilon2-origin.md
-  - ../../mathematics/foundations/bld-calculus.md
+  - ../../mathematics/foundations/definitions/bld-calculus.md
 used_by:
   - ../../mathematics/quantum/planck-derivation.md
 ---

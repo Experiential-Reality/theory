@@ -41,9 +41,9 @@ This path covers the mathematical structure in depth.
 
 ## Step 2: Independence Proof
 
-**Read**: [Irreducibility Proof](../mathematics/foundations/irreducibility-proof.md)
+**Read**: [Irreducibility Proof](../mathematics/foundations/proofs/irreducibility-proof.md)
 
-Then optionally: [Categorical Proof](../mathematics/foundations/irreducibility-categorical.md)
+Then optionally: [Categorical Proof](../mathematics/foundations/proofs/irreducibility-categorical.md)
 
 **Key takeaway**: Type-theoretic proof that B, L, D are independent primitives.
 
@@ -94,7 +94,7 @@ Then optionally: [Categorical Proof](../mathematics/foundations/irreducibility-c
 
 ## Step 8: The Euler Unification
 
-**Read**: [π from BLD](../examples/pi-from-bld.md), [e from BLD](../examples/e-from-bld.md), and [Compensation Principle](../mathematics/foundations/compensation-principle.md)
+**Read**: [π from BLD](../examples/pi-from-bld.md), [e from BLD](../examples/e-from-bld.md), and [Compensation Principle](../mathematics/foundations/structural/compensation-principle.md)
 
 **Key takeaway**: Euler's formula e^(iπ) + 1 = 0 unifies the two compensation mechanisms:
 
@@ -114,7 +114,7 @@ The exponential map exp(tX) IS compensation:
 ## Additional Topics
 
 - [Boundary Derivation](../mathematics/lie-theory/boundary-derivation.md) — B from SPD curvature
-- [Canonical Hardness](../mathematics/foundations/canonical-hardness.md) — Finding minimal BLD is NP-complete
+- [Canonical Hardness](../mathematics/foundations/structural/canonical-hardness.md) — Finding minimal BLD is NP-complete
 
 ---
 

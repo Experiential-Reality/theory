@@ -3,10 +3,10 @@ status: PROVEN
 layer: 0
 depends_on: []
 used_by:
-  - irreducibility-proof.md
-  - irreducibility-categorical.md
-  - why-exactly-three.md
-  - factorization-calculus.md
+  - ../proofs/irreducibility-proof.md
+  - ../proofs/irreducibility-categorical.md
+  - ../proofs/why-exactly-three.md
+  - ../structural/factorization-calculus.md
 ---
 
 # The BLD Calculus
@@ -33,7 +33,7 @@ used_by:
 | L | Function (→) | λ | application |
 | D | Product (Πₙ) | tuple | projection |
 
-**Reference**: [Irreducibility Theorem](./irreducibility-categorical.md) uses these definitions.
+**Reference**: [Irreducibility Theorem](../proofs/irreducibility-categorical.md) uses these definitions.
 
 ---
 
@@ -245,7 +245,7 @@ Small-step call-by-value reduction:
 
 ## 7. Cardinality Lemmas
 
-> **Note**: These lemmas support the irreducibility proofs but are not the core arguments. See [irreducibility-categorical.md](./irreducibility-categorical.md) for the main theorems.
+> **Note**: These lemmas support the irreducibility proofs but are not the core arguments. See [irreducibility-categorical.md](../proofs/irreducibility-categorical.md) for the main theorems.
 
 ### 7.1 Full BLD Calculus
 
@@ -315,7 +315,7 @@ The elimination forms correspond exactly to traverser capabilities:
 
 ## See Also
 
-- [Glossary](../../glossary.md) — Central definitions
-- [Irreducibility Theorem](./irreducibility-categorical.md) — Proof using this calculus
-- [Irreducibility Proof](./irreducibility-proof.md) — Intuitive arguments
-- [Structural Language](../../theory/structural-language.md) — B/L/D specification
+- [Glossary](../../../glossary.md) — Central definitions
+- [Irreducibility Theorem](../proofs/irreducibility-categorical.md) — Proof using this calculus
+- [Irreducibility Proof](../proofs/irreducibility-proof.md) — Intuitive arguments
+- [Structural Language](../../../theory/structural-language.md) — B/L/D specification

@@ -1,7 +1,7 @@
 ---
 status: VALIDATED
 depends_on:
-  - ../foundations/integer-machine.md
+  - ../foundations/machine/integer-machine.md
   - cosmology-structure.md
   - ../lie-theory/killing-form.md
   - observer-correction.md
@@ -90,7 +90,7 @@ The 8x² = 2% correction is the **same phenomenon** as K/B in α⁻¹:
 - The 8 = K×n is **primordial** — what the octonions computed first
 
 See [Observer Corrections](observer-correction.md) for the unified framework.
-See [Integer Machine](../foundations/integer-machine.md) for why all corrections use primordial integers.
+See [Integer Machine](../foundations/machine/integer-machine.md) for why all corrections use primordial integers.
 
 ---
 

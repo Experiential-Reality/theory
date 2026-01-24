@@ -2,9 +2,9 @@
 status: VALIDATED
 layer: 2
 depends_on:
-  - ../mathematics/foundations/integer-machine.md
+  - ../mathematics/foundations/machine/integer-machine.md
   - ../mathematics/lie-theory/lie-correspondence.md
-  - ../mathematics/foundations/irreducibility-proof.md
+  - ../mathematics/foundations/proofs/irreducibility-proof.md
 used_by:
   - physics-traverser.md
   - ../mathematics/particle-physics/lepton-masses.md
@@ -47,7 +47,7 @@ The primordial structure is integers: (1 + 1/n)^n for finite n. The transcendent
 
 The formula e = lim(1+1/n)^n shows this directly: e IS the limit of discrete compounding → continuous.
 
-See [Integer Machine](../mathematics/foundations/integer-machine.md) for the complete framework.
+See [Integer Machine](../mathematics/foundations/machine/integer-machine.md) for the complete framework.
 
 ---
 
@@ -742,7 +742,7 @@ See [Observer Corrections](../mathematics/cosmology/observer-correction.md) for 
 - [Observer Corrections](../mathematics/cosmology/observer-correction.md) — e in the two-reference framework (d/dx(e^x) = e^x means Machine = Structure)
 - [Lepton Masses](../mathematics/particle-physics/lepton-masses.md#euler-connection-derived) — e as discrete accumulation in mass ratios
 - [Lie Correspondence](../mathematics/lie-theory/lie-correspondence.md) — BLD = Lie theory mapping
-- [Compensation Principle](../mathematics/foundations/compensation-principle.md) — The two mechanisms
+- [Compensation Principle](../mathematics/foundations/structural/compensation-principle.md) — The two mechanisms
 - [Traverser as Causal Agent](../glossary.md#traverser-causal) — e as the do() operator
 - [BLD Conservation](../mathematics/bld-conservation.md) — Noether's theorem in BLD
 - [Research Directions](../meta/research-directions.md) — Next steps: physics traverser

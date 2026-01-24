@@ -1,13 +1,13 @@
 ---
 status: DERIVED
 depends_on:
-  - ../foundations/integer-machine.md
+  - ../foundations/machine/integer-machine.md
   - lepton-masses.md
   - fine-structure-consistency.md
   - e7-derivation.md
   - ../quantum/structural-observer-framework.md
   - ../lie-theory/killing-form.md
-  - ../foundations/detection-structure.md
+  - ../foundations/machine/detection-structure.md
 used_by:
   - ../../analysis/error-analysis.md
   - higgs-self-coupling.md
@@ -59,7 +59,7 @@ e = lim_{B→∞}(1 + 1/B)^B  [late emergence]
 
 The primordial structure is v × 56/57. We observe v/e through the continuous limit.
 
-See [Integer Machine](../foundations/integer-machine.md) for the complete framework.
+See [Integer Machine](../foundations/machine/integer-machine.md) for the complete framework.
 
 ---
 
@@ -429,7 +429,7 @@ This is why W has "+" corrections: the measurement apparatus (EM-based) cannot i
 
 **Forces ARE K/X at Different Scales**
 
-From [Force Structure](../foundations/force-structure.md), forces are NOT fundamentally different phenomena — they are observer corrections K/X at different X values:
+From [Force Structure](../foundations/derivations/force-structure.md), forces are NOT fundamentally different phenomena — they are observer corrections K/X at different X values:
 
 | Force | X (Structure) | K/X | What Measurement Traverses |
 |-------|---------------|-----|---------------------------|
@@ -448,7 +448,7 @@ From [Force Structure](../foundations/force-structure.md), forces are NOT fundam
 - B ⊂ n×L×B but they don't match
 - The neutrino's structure doesn't align with the detector's traversal path
 
-Formally, the neutrino's structure S_ν = {L, D} has no B. Detectors couple to T = {B}. Since T ∩ S_ν = {B} ∩ {L,D} = ∅, neutrinos escape undetected. See [Detection Structure](../foundations/detection-structure.md) for the complete T ∩ S rule.
+Formally, the neutrino's structure S_ν = {L, D} has no B. Detectors couple to T = {B}. Since T ∩ S_ν = {B} ∩ {L,D} = ∅, neutrinos escape undetected. See [Detection Structure](../foundations/machine/detection-structure.md) for the complete T ∩ S rule.
 
 **The ± sign is derivable:**
 - **+** = X(measurement) < X(particle) → incomplete traversal
@@ -576,7 +576,7 @@ This universality is what makes the formulas **consistent** — they're all the 
 
 - [Observer Corrections](../cosmology/observer-correction.md) — The two-reference framework in detail
 - [Killing Form](../lie-theory/killing-form.md) — Why K = 2 (bidirectional observation)
-- [Irreducibility Proof](../foundations/irreducibility-proof.md) — Why observers are unavoidable
+- [Irreducibility Proof](../foundations/proofs/irreducibility-proof.md) — Why observers are unavoidable
 - [Lepton Masses](lepton-masses.md) — The same corrections in fermion masses
 
 ---

@@ -2,7 +2,7 @@
 status: DERIVED
 depends_on:
   - lie-theory/lie-correspondence.md
-  - foundations/irreducibility-proof.md
+  - foundations/proofs/irreducibility-proof.md
 ---
 
 # Comparisons to Existing Frameworks

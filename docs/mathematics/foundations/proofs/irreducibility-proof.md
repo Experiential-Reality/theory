@@ -2,12 +2,12 @@
 status: PROVEN
 layer: 1
 depends_on:
-  - bld-calculus.md
+  - ../definitions/bld-calculus.md
   - irreducibility-categorical.md
 used_by:
   - why-exactly-three.md
-  - ../quantum/quantum-mechanics.md
-  - ../quantum/born-rule.md
+  - ../../quantum/quantum-mechanics.md
+  - ../../quantum/born-rule.md
   - completeness-proof.md
 ---
 
@@ -253,9 +253,9 @@ See [Completeness Proof](completeness-proof.md) for the full derivation.
 
 **Previous concerns addressed**:
 
-1. **Lindemann-Weierstrass**: Transcendental constants (e, π) arise from BLD structure — see [Euler's Formula](../../glossary.md#euler)
+1. **Lindemann-Weierstrass**: Transcendental constants (e, π) arise from BLD structure — see [Euler's Formula](../../../glossary.md#euler)
 
-2. **Higher categories**: ∞-groupoids can be expressed as iterated D (product) structures with L (morphism) at each level. See [Categorical Correspondence](./categorical-correspondence.md) for the full derivation showing Lⁿ = D × L (iterated morphisms are dimensional)
+2. **Higher categories**: ∞-groupoids can be expressed as iterated D (product) structures with L (morphism) at each level. See [Categorical Correspondence](../structural/categorical-correspondence.md) for the full derivation showing Lⁿ = D × L (iterated morphisms are dimensional)
 
 3. **Quantum foundations**: The "i" is derived from octonion structure (reference point fixing isolates ℂ ⊂ 𝕆)
 
@@ -288,7 +288,7 @@ This **suggests** completeness but does not **prove** it.
 | BLD is complete (no 4th primitive) | **PROVEN** | See [Completeness Proof](completeness-proof.md) |
 | (e, π, i) exhaust structural transcendentals | **PROVEN** | Derived from BLD/Euler |
 
-See [Euler's Formula in BLD](../../glossary.md#euler) and [Compensation Principle](./compensation-principle.md).
+See [Euler's Formula in BLD](../../../glossary.md#euler) and [Compensation Principle](../structural/compensation-principle.md).
 
 ---
 
@@ -307,7 +307,7 @@ The [type-theoretic proof](./irreducibility-categorical.md) shows these are genu
 - **Theorem 2**: Functions cannot be expressed in BD-calculus (no application)
 - **Theorem 3**: Products cannot be expressed in BL-calculus (no parameterized arity)
 
-See [bld-calculus.md](./bld-calculus.md) for the formal definitions.
+See [bld-calculus.md](../definitions/bld-calculus.md) for the formal definitions.
 
 ---
 
@@ -338,7 +338,7 @@ The fact that there are exactly three irreducible primitives is not arbitrary—
 - **[Structure constants](https://en.wikipedia.org/wiki/Structure_constants)**: How generators combine: [Xᵢ, Xⱼ] = fᵢⱼᵏXₖ (L)
 - **Topology**: Whether the group is bounded/closed (B)
 
-The irreducibility of B/L/D is thus a reflection of the mathematical structure of symmetry itself. See [Lie Correspondence](../lie-theory/lie-correspondence.md) for the full mapping.
+The irreducibility of B/L/D is thus a reflection of the mathematical structure of symmetry itself. See [Lie Correspondence](../../lie-theory/lie-correspondence.md) for the full mapping.
 
 ---
 
@@ -348,7 +348,7 @@ The gaps identified below have been addressed in the [type-theoretic proof](./ir
 
 | Gap | Resolution |
 |-----|------------|
-| No formal language | [BLD Calculus](./bld-calculus.md) with syntax, typing rules, semantics |
+| No formal language | [BLD Calculus](../definitions/bld-calculus.md) with syntax, typing rules, semantics |
 | "Expressible" undefined | Formal encoding/decoding with round-trip property |
 | Arguments intuitive | Proofs by contradiction from cardinality lemmas |
 | Specific examples only | Impossibility theorems for all encodings |
@@ -357,11 +357,11 @@ The gaps identified below have been addressed in the [type-theoretic proof](./ir
 
 ## See Also
 
-- [Glossary](../../glossary.md) — Central definitions
-- [BLD Calculus](./bld-calculus.md) — Formal type system for B/L/D
+- [Glossary](../../../glossary.md) — Central definitions
+- [BLD Calculus](../definitions/bld-calculus.md) — Formal type system for B/L/D
 - [Irreducibility Theorem](./irreducibility-categorical.md) — Rigorous type-theoretic proof
-- [Lie Correspondence](../lie-theory/lie-correspondence.md) — Why exactly three primitives (Lie theory)
-- [Structural Language](../../theory/structural-language.md) — Full primitive specification
+- [Lie Correspondence](../../lie-theory/lie-correspondence.md) — Why exactly three primitives (Lie theory)
+- [Structural Language](../../../theory/structural-language.md) — Full primitive specification
 
 ### What Was Needed → What Was Done
 

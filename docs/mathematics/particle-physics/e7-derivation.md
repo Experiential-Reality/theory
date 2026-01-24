@@ -2,7 +2,7 @@
 status: DERIVED
 layer: 2
 depends_on:
-  - ../foundations/octonion-derivation.md
+  - ../foundations/derivations/octonion-derivation.md
   - ../lie-theory/killing-form.md
   - ../lie-theory/lie-correspondence.md
 see_also:
@@ -19,7 +19,7 @@ used_by:
 
 **Status**: DERIVED — B=56 follows from triality (P9) and the Killing form, without using α⁻¹ as input.
 
-**Foundation**: The triality requirement and octonion structure are now fully derived from BLD first principles. See [Octonion Derivation](../foundations/octonion-derivation.md) for the complete chain from BLD → division property → Hurwitz → octonions → triality.
+**Foundation**: The triality requirement and octonion structure are now fully derived from BLD first principles. See [Octonion Derivation](../foundations/derivations/octonion-derivation.md) for the complete chain from BLD → division property → Hurwitz → octonions → triality.
 
 ---
 
@@ -29,7 +29,7 @@ used_by:
 
 1. **n×L = 80** — geometric structure (4 dimensions × 20 Riemann components)
 2. **B = 56** — boundary modes (2 × dim(Spin(8)) from triality)
-3. **+1** — observer self-reference (minimum BLD existence)
+3. **+1** — traverser's minimum contribution (the thing doing the measuring)
 4. **+K/B, ±spatial** — two-reference corrections (outbound/return traversal)
 5. **−e²×120/(119×(n×L×B)²)** — accumulated discrete→continuous correction
 6. **Total: 137.035999177** (0.0 ppt accuracy)
@@ -39,43 +39,54 @@ used_by:
 
 ---
 
-## The One Empirical Input
+## SU(3) Is Derived from Genesis Closure
 
-> **"SU(3) matter exists"** — This is the single empirical fact that BLD theory cannot derive. Everything else follows.
+> **"SU(3) matter exists"** — This is NOT an empirical input. It is DERIVED from genesis function closure. See [Octonion Necessity](../foundations/derivations/octonion-necessity.md) for the complete proof.
 
-### What This Means (in 7 points)
+### Why SU(3) Is Required (in 7 steps)
 
-1. **The fact**: We observe matter with color charge (quarks, gluons)
-2. **Why it matters**: This selects octonions over quaternions as the division algebra
-3. **The selection**: Hurwitz gives 4 choices (ℝ, ℂ, ℍ, 𝕆) — only 𝕆 supports SU(3)
-4. **Why not ℍ**: Quaternions give Aut(ℍ) = SO(3), which lacks the 8-dimensional structure for color
-5. **Why 𝕆**: Octonions give G₂ → SU(3) when fixing a direction (stabilizer)
-6. **What follows**: n=4, 3 generations, B=56, α⁻¹=137.035999177 — ALL DERIVED
-7. **The boundary**: BLD describes structure, not existence. "Why something?" is outside scope.
+1. **Genesis requires closure**: traverse(-B, B) must close (self-consistency of existence)
+2. **Closure requires division property**: Bidirectional observation needs inverses
+3. **Hurwitz constrains options**: Only ℝ, ℂ, ℍ, 𝕆 have division property
+4. **Closure requires richness**: B = 56 modes must be supported by the algebra's automorphism group
+5. **Quaternions fail richness**: Aut(ℍ) = SO(3) supports only B_max = 6 < 56
+6. **Only octonions succeed**: Aut(𝕆) = G₂ ⊂ Spin(8), giving B = 2 × 28 = 56 ✓
+7. **SU(3) emerges**: Fixing reference in G₂ → SU(3) stabilizer (color symmetry)
 
-### Why This Is Irreducibly Empirical
+### The Derivation Chain
 
-BLD describes the structure of structure. It answers "IF structure exists, what properties must it have?"
+```
+Nothing is self-contradictory (logical necessity)
+    ↓
+B must exist (primordial distinction)
+    ↓
+traverse(-B, B) must CLOSE (self-consistency)
+    ↓
+Closure requires B = 56 modes (from triality + Killing)
+    ↓
+B = 56 requires Aut(algebra) rich enough
+    ↓
+Only Aut(𝕆) = G₂ is sufficient (Aut(ℍ) = SO(3) too small)
+    ↓
+OCTONIONS REQUIRED (not observed — derived from closure)
+    ↓
+Fixing reference: G₂ → SU(3)
+    ↓
+SU(3) EXISTS (derived, not empirical)
+```
 
-It cannot answer "why does structure exist at all?" — that would require deriving something from nothing.
+### What This Derivation Achieves
 
-**The input "SU(3) matter exists" says**: The universe contains matter with color charge.
-**BLD then derives**: Everything about that matter's structure.
-
-This is analogous to geometry: Euclidean geometry cannot derive that space exists, but IF space exists, it proves the Pythagorean theorem.
-
-### What This Single Input Gives Us
-
-| Derived Quantity | Value | How |
-|------------------|-------|-----|
-| Spacetime dimensions | n = 4 | sl(2,ℂ) ⊂ sl(2,𝕆) |
-| Generations | 3 | Spin(8) triality |
-| Boundary modes | B = 56 | 2 × dim(Spin(8)) |
+| Quantity | Status | How Derived |
+|----------|--------|-------------|
+| Spacetime dimensions | n = 4 | sl(2,ℂ) ⊂ sl(2,𝕆) from reference fixing |
+| Generations | 3 | Spin(8) triality (unique to D₄) |
+| Boundary modes | B = 56 | 2 × dim(Spin(8)) from Killing form |
 | Fine structure | α⁻¹ = 137.035999177 | n×L + B + 1 + K/B + spatial − e²×120/(119×(n×L×B)²) |
-| Planck constant | ℏ | M_P derivation |
+| Planck constant | ℏ | Structural derivation |
 | All particle masses | See lepton/quark files | Structural corrections |
 
-**One empirical fact. All of particle physics.**
+**Zero empirical inputs. All of physics derived from genesis closure.**
 
 ---
 
@@ -99,12 +110,12 @@ From [Physics Traverser](../../examples/physics-traverser.md), axiom P9 establis
 > **P9 (Triality)**: The physics traverser has triality structure inherited from the octonion algebra tower.
 
 **Derivation status**:
-- **Given**: SU(3)-charged matter exists (empirical input)
-- **Derived**: Octonions required (only division algebra with Aut ⊃ SU(3))
-- **Derived**: Spin(8) acts on 8D octonions → triality uniquely exists
+- **Derived**: Genesis closure requires B = 56 (richness requirement)
+- **Derived**: Only Aut(𝕆) = G₂ supports B = 56 (quaternions fail)
+- **Derived**: Octonions required → Spin(8) acts on 8D → triality uniquely exists
 - **Derived**: Triality = 3-fold symmetry → 3 generations
 
-The NUMBER of generations (3) is derived from triality. That triality applies requires octonions, which requires SU(3) matter as empirical input.
+The NUMBER of generations (3) is derived from triality. That triality applies requires octonions, which follows from genesis closure (not empirical input).
 
 ### Step 2: Triality is Unique to Spin(8)
 
@@ -283,7 +294,7 @@ The entire particle physics chain is now genuinely predictive!
 
 ---
 
-## The +1 Derivation: Observer Self-Reference
+## The +1 Derivation: Traverser's Contribution
 
 The full formula is:
 
@@ -291,53 +302,55 @@ The full formula is:
 α⁻¹ = n×L + B + 1 = 80 + 56 + 1 = 137
 ```
 
+**Terminology**: The **traverser** is what moves through structure and does the measuring (contributes +1). The **observer** is the external reference point. See [Observer Corrections](../cosmology/observer-correction.md) for the full framework.
+
 ### Applying BLD to the +1
 
 **Q1 (Boundary)**: What does +1 partition?
-- The +1 partitions **observer** from **observed**
+- The +1 partitions **traverser** from **traversed**
 - Structure being measured: n×L + B = 136 modes
-- Observer measuring it: +1 = 1 mode
+- Traverser measuring it: +1 = 1 mode
 
 **Q2 (Link)**: What does +1 connect?
-- The +1 is the **self-link**: observer → observer
-- Every observation creates a link from observer back to itself
+- The +1 is the **self-link**: traverser → traverser
+- Every measurement creates a link from traverser back to itself
 
 **Q3 (Dimension)**: What extent does +1 represent?
-- The +1 is the **minimal existence**: D_observer ≥ 1
-- You cannot observe with zero observers
+- The +1 is the **minimal existence**: D_traverser ≥ 1
+- You cannot measure with zero traversers
 
 ### The Derivation
 
 ```
-1. To measure α⁻¹, there must be an observer [NECESSARY]
-2. The observer is part of the EM structure it measures [STRUCTURAL]
-3. The observer contributes exactly 1 unit [MINIMAL - from BLD irreducibility]
-4. Therefore +1 = observer's self-reference [DERIVED]
+1. To measure α⁻¹, there must be a traverser [NECESSARY]
+2. The traverser is part of the EM structure it measures [STRUCTURAL]
+3. The traverser contributes exactly 1 unit [MINIMAL - from BLD irreducibility]
+4. Therefore +1 = traverser's minimum contribution [DERIVED]
 ```
 
 ### Why Exactly 1? `[DERIVED from Irreducibility]`
 
-From [Irreducibility Proof](../foundations/irreducibility-proof.md):
+From [Irreducibility Proof](../foundations/proofs/irreducibility-proof.md):
 
 **The BLD minimum for existence:**
 | Primitive | Minimum | Why |
 |-----------|---------|-----|
-| B (boundary) | 1 | Need at least 1 distinction (observer ≠ observed) |
-| L (link) | 1 | Need at least 1 connection (observer ↔ structure) |
-| D (dimension) | 1 | Need at least 1 extent (observer exists somewhere) |
+| B (boundary) | 1 | Need at least 1 distinction (traverser ≠ traversed) |
+| L (link) | 1 | Need at least 1 connection (traverser ↔ structure) |
+| D (dimension) | 1 | Need at least 1 extent (traverser exists somewhere) |
 
 **The irreducibility constraint:**
-- You cannot have B=0 (no distinction → no observer)
+- You cannot have B=0 (no distinction → no traverser)
 - You cannot have L=0 (no connection → cannot measure)
-- You cannot have D=0 (no extent → observer doesn't exist)
+- You cannot have D=0 (no extent → traverser doesn't exist)
 
-**Therefore**: min(B,L,D) ≥ 1 for any existing observer.
+**Therefore**: min(B,L,D) ≥ 1 for any existing traverser.
 
 **Why exactly 1, not 3 (B+L+D) or some other function?** `[DERIVED from type theory]`
 
-**Gap closure**: This section derives that the observer contributes exactly 1, not B+L+D=3 or B×L×D=1.
+**Gap closure**: This section derives that the traverser contributes exactly 1, not B+L+D=3 or B×L×D=1.
 
-**From BLD type theory** ([BLD Calculus](../foundations/bld-calculus.md)):
+**From BLD type theory** ([BLD Calculus](../foundations/definitions/bld-calculus.md)):
 
 1. **B, L, D are type constructors, not numbers to add**
    - B = Sum type (choice)
@@ -348,23 +361,23 @@ From [Irreducibility Proof](../foundations/irreducibility-proof.md):
 2. **The minimum type is 1 (unit type)**
    - In type theory, the unit type `1` has exactly one inhabitant: `()`
    - This represents "exists but carries no additional information"
-   - The observer's presence is type `1` — it exists, nothing more
+   - The traverser's presence is type `1` — it exists, nothing more
 
 3. **Why not B+L+D = 3?**
    - B, L, D are dimensions, not additive quantities
    - You don't add "choice + reference + repetition"
-   - The observer has B≥1 AND L≥1 AND D≥1 (conjunction, not sum)
+   - The traverser has B≥1 AND L≥1 AND D≥1 (conjunction, not sum)
    - The conjunction of three ≥1 constraints is satisfied by 1
 
 4. **Why not B×L×D?**
-   - Product would give the observer's total structural extent
-   - But we're measuring α⁻¹, not the observer
-   - The observer contributes its REFERENCE FOOTPRINT, not its full structure
-   - Reference footprint = "that an observer exists" = type 1 = 1 unit
+   - Product would give the traverser's total structural extent
+   - But we're measuring α⁻¹, not the traverser
+   - The traverser contributes its REFERENCE FOOTPRINT, not its full structure
+   - Reference footprint = "that a traverser exists" = type 1 = 1 unit
 
 **Category-theoretic derivation**:
-- Measurement is a morphism: Observer → Measured → Result
-- The observer is the domain of this morphism
+- Measurement is a morphism: Traverser → Measured → Result
+- The traverser is the domain of this morphism
 - In a pointed category, the minimal domain is the terminal object
 - The terminal object contributes exactly 1 to any count
 
@@ -372,7 +385,7 @@ From [Irreducibility Proof](../foundations/irreducibility-proof.md):
 
 ### Formal Statement
 
-> **The +1 is the irreducible self-reference cost: the minimal structural contribution of an observer that is itself part of the structure being observed.**
+> **The +1 is the irreducible traversal cost: the minimal structural contribution of a traverser that is itself part of the structure being measured.**
 
 The +1 is now **DERIVED**, not postulated.
 
@@ -529,22 +542,22 @@ The complete derivation chain:
 9. Observation is bidirectional, Killing form = 2 (proven)
 10. B = 2 × 28 = 56 (derived)
 11. n×L = 4 × 20 = 80 (n=4 derived, L from geometry)
-12. +1 = observer self-reference (derived from BLD irreducibility)
+12. +1 = traverser's minimum contribution (derived from BLD irreducibility)
 13. +K/B, ±spatial = two-reference corrections (outbound/return traversal)
 14. −e²×120/(119×(n×L×B)²) = accumulated discrete→continuous correction
 15. **α⁻¹ = 137.035999177** (exact prediction, **0.0 ppt error**)
 
-**See [Octonion Derivation](../foundations/octonion-derivation.md) for steps 1-5.**
+**See [Octonion Derivation](../foundations/derivations/octonion-derivation.md) for steps 1-5.**
 
 This breaks the circular dependency that previously plagued BLD particle physics:
 
 ```
 Before: α⁻¹ → B → S → masses → "validate α"  [CIRCULAR]
-After:  SU(3) exists (empirical) → 𝕆 required → triality → 56 + 80 + 1 + 2/B → α⁻¹  [LINEAR]
+After:  genesis closure → 𝕆 required → triality → 56 + 80 + 1 + 2/B → α⁻¹  [LINEAR]
 ```
 
-**Empirical input**: SU(3)-charged matter exists (quarks observed)
-**Derived from this**: n=4, 3 generations, B=56, α⁻¹ = 137.035999177
+**Zero empirical inputs**: SU(3) is derived from genesis closure (see [Octonion Necessity](../foundations/derivations/octonion-necessity.md))
+**All derived**: n=4, 3 generations, B=56, α⁻¹ = 137.035999177
 
 **The fine structure constant encodes:**
 1. How structure connects (D×L = 80)
@@ -567,7 +580,7 @@ After:  SU(3) exists (empirical) → 𝕆 required → triality → 56 + 80 + 1 
 - [Structural-Observer Framework](../quantum/structural-observer-framework.md) — Unified theory: B=56 is structural, observer corrections transform to observed
 - [Observer Corrections](../cosmology/observer-correction.md) — Two-reference framework: observer corrections ARE traversal costs; +1 IS the traverser
 - [Planck Derivation](../quantum/planck-derivation.md) — ℏ derivation using B=56 (0.00003% accuracy)
-- [Octonion Derivation](../foundations/octonion-derivation.md) — Complete BLD → octonions → (n=4, SU(3), 3 gen) derivation
+- [Octonion Derivation](../foundations/derivations/octonion-derivation.md) — Complete BLD → octonions → (n=4, SU(3), 3 gen) derivation
 - [Killing Form](../lie-theory/killing-form.md) — The K=2 bidirectional observation, appears in all observer corrections
 - [Physics Traverser](../../examples/physics-traverser.md) — P9 triality axiom
 - [Fine Structure Consistency](fine-structure-consistency.md) — Updated status

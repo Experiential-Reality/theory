@@ -2,8 +2,8 @@
 status: DERIVED
 layer: 2
 depends_on:
-  - ../mathematics/foundations/irreducibility-proof.md
-  - ../mathematics/foundations/octonion-derivation.md
+  - ../mathematics/foundations/proofs/irreducibility-proof.md
+  - ../mathematics/foundations/derivations/octonion-derivation.md
   - ../mathematics/lie-theory/lie-correspondence.md
 used_by:
   - README.md
@@ -76,12 +76,12 @@ EXTERNAL INPUTS (Observations) — NOW MINIMAL
 ┌─────────────────────────────────────────────────────────────┐
 │                    PROVEN (No Dependencies)                  │
 ├─────────────────────────────────────────────────────────────┤
-│  foundations/irreducibility-proof.md                        │
-│  foundations/irreducibility-categorical.md                  │
-│  foundations/bld-calculus.md                                │
-│  foundations/compensation-principle.md                      │
-│  foundations/canonical-hardness.md                          │
-│  foundations/octonion-derivation.md  ← NEW: Complete chain  │
+│  foundations/proofs/irreducibility-proof.md                        │
+│  foundations/proofs/irreducibility-categorical.md                  │
+│  foundations/definitions/bld-calculus.md                                │
+│  foundations/structural/compensation-principle.md                      │
+│  foundations/structural/canonical-hardness.md                          │
+│  foundations/derivations/octonion-derivation.md  ← NEW: Complete chain  │
 │  lie-theory/lie-correspondence.md                           │
 │  lie-theory/boundary-derivation.md                          │
 │  lie-theory/constructive-lie.md                             │
@@ -171,12 +171,12 @@ EXTERNAL INPUTS (Observations) — NOW MINIMAL
 
 | File | Dependencies | Status |
 |------|--------------|--------|
-| `foundations/irreducibility-proof.md` | None (axioms) | PROVEN |
-| `foundations/irreducibility-categorical.md` | irreducibility-proof | PROVEN |
-| `foundations/bld-calculus.md` | Type theory | PROVEN |
-| `foundations/compensation-principle.md` | irreducibility | PROVEN |
-| `foundations/canonical-hardness.md` | bld-calculus | PROVEN |
-| `foundations/octonion-derivation.md` | irreducibility, killing-form | **PROVEN** |
+| `foundations/proofs/irreducibility-proof.md` | None (axioms) | PROVEN |
+| `foundations/proofs/irreducibility-categorical.md` | irreducibility-proof | PROVEN |
+| `foundations/definitions/bld-calculus.md` | Type theory | PROVEN |
+| `foundations/structural/compensation-principle.md` | irreducibility | PROVEN |
+| `foundations/structural/canonical-hardness.md` | bld-calculus | PROVEN |
+| `foundations/derivations/octonion-derivation.md` | irreducibility, killing-form | **PROVEN** |
 | `lie-theory/lie-correspondence.md` | None (mathematical fact) | PROVEN |
 | `lie-theory/boundary-derivation.md` | lie-correspondence | PROVEN |
 | `lie-theory/constructive-lie.md` | lie-correspondence | PROVEN |
@@ -285,7 +285,7 @@ Lepton masses [DERIVED PREDICTIONS: τ/μ = 0.004%, μ/e = 0.016%]
 ```
 
 **References**:
-- [Octonion Derivation](../mathematics/foundations/octonion-derivation.md) — BLD → octonions → (n=4, SU(3), 3 gen)
+- [Octonion Derivation](../mathematics/foundations/derivations/octonion-derivation.md) — BLD → octonions → (n=4, SU(3), 3 gen)
 - [E7 Derivation](../mathematics/particle-physics/e7-derivation.md) — B=56 from triality + Killing form
 
 **The entire Standard Model structure is now derived from BLD first principles.**
@@ -335,9 +335,9 @@ Lepton masses [DERIVED PREDICTIONS: τ/μ = 0.004%, μ/e = 0.016%]
 ## Navigation Guide
 
 **Starting from scratch?** Read in this order:
-1. `foundations/irreducibility-proof.md` — Why B, L, D
+1. `foundations/proofs/irreducibility-proof.md` — Why B, L, D
 2. `lie-theory/lie-correspondence.md` — BLD = Lie theory
-3. `foundations/octonion-derivation.md` — BLD → octonions → (n=4, SU(3), 3 gen)
+3. `foundations/derivations/octonion-derivation.md` — BLD → octonions → (n=4, SU(3), 3 gen)
 4. `cosmology/cosmology-structure.md` — L/D = 5
 5. `cosmology/dark-matter-mapping.md` — Application
 
@@ -352,7 +352,7 @@ Lepton masses [DERIVED PREDICTIONS: τ/μ = 0.004%, μ/e = 0.016%]
 3. `quantum/quantum-computing.md` — Structure traversing itself
 
 **The Complete Theory Chain:**
-1. `foundations/irreducibility-proof.md` — B/L/D are minimal
+1. `foundations/proofs/irreducibility-proof.md` — B/L/D are minimal
 2. `cosmology/nothing-instability.md` — B must exist
 3. `quantum/chirality-cpt.md` — B partitions direction
 4. `quantum/cosmic-computation.md` — Both sides compute and agree

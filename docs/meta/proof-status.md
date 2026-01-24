@@ -2,8 +2,8 @@
 status: FOUNDATIONAL
 layer: meta
 depends_on:
-  - ../mathematics/foundations/irreducibility-proof.md
-  - ../mathematics/foundations/why-exactly-three.md
+  - ../mathematics/foundations/proofs/irreducibility-proof.md
+  - ../mathematics/foundations/proofs/why-exactly-three.md
   - ../mathematics/lie-theory/lie-correspondence.md
   - ../mathematics/quantum/structural-observer-framework.md
   - ../mathematics/quantum/planck-derivation.md
@@ -95,9 +95,9 @@ Status labels exist on two orthogonal axes that can be composed.
 | L cannot express B or D | **PROVEN** | No application construct in BD-calculus | Type-theoretic |
 | D cannot express B or L | **PROVEN** | No parameterized arity in BL-calculus | Type-theoretic |
 | Three is minimal | **PROVEN** | Each provides unique capability | Type-theoretic |
-| Three is maximal | **PROVEN** | Lie theory + Turing completeness | See [Completeness Proof](../mathematics/foundations/completeness-proof.md) |
+| Three is maximal | **PROVEN** | Lie theory + Turing completeness | See [Completeness Proof](../mathematics/foundations/proofs/completeness-proof.md) |
 
-**Reference**: [Irreducibility Proof](../mathematics/foundations/irreducibility-proof.md)
+**Reference**: [Irreducibility Proof](../mathematics/foundations/proofs/irreducibility-proof.md)
 
 ### Two-Reference Principle
 
@@ -137,7 +137,7 @@ Both touch the same problem → solution emerges
 | n = 4 from sl(2,ℂ) ⊂ sl(2,𝕆) | **DERIVED** | Same symmetry breaking gives so(3,1) | Mathematical |
 | 3 generations from Spin(8) triality | **DERIVED** | Triality unique to D₄ Dynkin diagram | Mathematical |
 
-**Reference**: [Octonion Derivation](../mathematics/foundations/octonion-derivation.md)
+**Reference**: [Octonion Derivation](../mathematics/foundations/derivations/octonion-derivation.md)
 
 **Note**: This derivation closes the loop — n=4, SU(3), and 3 generations are now **derived from BLD first principles**, not observed inputs.
 
@@ -318,9 +318,9 @@ Error: 0.0 ppt ✓ (EXACT)
 |-------|--------|-------|
 | B/L/D suffice for all structure | **PROVEN** | Lie theory universality + Turing completeness |
 | No fourth primitive needed | **PROVEN** | Cartan classification complete; no Lie algebra needs 4th component |
-| Category theory complete | **DERIVED** | See [Categorical Correspondence](../mathematics/foundations/categorical-correspondence.md) |
+| Category theory complete | **DERIVED** | See [Categorical Correspondence](../mathematics/foundations/structural/categorical-correspondence.md) |
 
-**Reference**: [Completeness Proof](../mathematics/foundations/completeness-proof.md)
+**Reference**: [Completeness Proof](../mathematics/foundations/proofs/completeness-proof.md)
 
 ---
 
@@ -369,7 +369,7 @@ Error: 0.0 ppt ✓ (EXACT)
 | **m_e** (electron mass) | DERIVED RATIO | **DERIVED** | m_e/v is derived from BLD structure |
 | **c** (speed of light) | c = 1 | **DERIVED** | Lorentz invariance = equal D/L cost (BLD theorem) |
 | **G** (Newton's constant) | G = 1/M_P² | **DERIVED** | M_P derived from v via cascade; G = 1/M_P² |
-| **SU(3) matter exists** | OBSERVED | **DERIVED** | Genesis function closure requires octonions → SU(3). See [Octonion Necessity](../mathematics/foundations/octonion-necessity.md) |
+| **SU(3) matter exists** | OBSERVED | **DERIVED** | Genesis function closure requires octonions → SU(3). See [Octonion Necessity](../mathematics/foundations/derivations/octonion-necessity.md) |
 
 **What's truly empirical**: Nothing. The universe must exist (nothing is self-contradictory), and its structure follows from self-observation closure.
 
@@ -460,16 +460,16 @@ All citations use GitHub-flavored markdown inline links:
 ## References
 
 - [Reference Scale Derivation](../mathematics/cosmology/reference-scale-derivation.md) — **NEW**: v as fixed point of self-observation
-- [Octonion Necessity](../mathematics/foundations/octonion-necessity.md) — **NEW**: Why SU(3) is derived (not observed)
+- [Octonion Necessity](../mathematics/foundations/derivations/octonion-necessity.md) — **NEW**: Why SU(3) is derived (not observed)
 - [Scale Derivation](../mathematics/cosmology/scale-derivation.md) — v, c, G derivation (now complete)
 - [Structural-Observer Framework](../mathematics/quantum/structural-observer-framework.md) — Unified theory of pre-observation structure and observer corrections
 - [Planck Derivation](../mathematics/quantum/planck-derivation.md) — ℏ magnitude derivation (0.00003% accuracy)
 - [Observer Corrections](../mathematics/cosmology/observer-correction.md) — Unified correction algebra
-- [Octonion Derivation](../mathematics/foundations/octonion-derivation.md) — Complete BLD → octonions → (n=4, SU(3), 3 gen) derivation
+- [Octonion Derivation](../mathematics/foundations/derivations/octonion-derivation.md) — Complete BLD → octonions → (n=4, SU(3), 3 gen) derivation
 - [Genesis Function](../mathematics/cosmology/genesis-function.md) — traverse(-B, B) = existence
 - [BLD IS Quantum Mechanics Code](../mathematics/quantum/bld-is-quantum-code.md) — Main proof document
 - [Lie Correspondence](../mathematics/lie-theory/lie-correspondence.md) — BLD = Lie theory
-- [Irreducibility Proof](../mathematics/foundations/irreducibility-proof.md) — Three primitives
+- [Irreducibility Proof](../mathematics/foundations/proofs/irreducibility-proof.md) — Three primitives
 - [Quantum Mechanics](../mathematics/quantum/quantum-mechanics.md) — D/L mapping
 - [Quantum Computing](../mathematics/quantum/quantum-computing.md) — Structure traversal
 - [Killing Form](../mathematics/lie-theory/killing-form.md) — K = 2 derivation

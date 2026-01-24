@@ -2,17 +2,17 @@
 status: PROVEN
 layer: 1
 depends_on:
-  - bld-calculus.md
+  - ../definitions/bld-calculus.md
 used_by:
   - irreducibility-proof.md
   - why-exactly-three.md
 ---
 
-# B/L/D Irreducibility Theorem
+# B/L/D Irreducibility Theorem (Categorical)
 
-> **Status**: Validated
+**Status**: PROVEN — Formal categorical proof of B/L/D irreducibility.
 
-This document provides a rigorous proof that Boundary, Link, and Dimension are irreducible primitives. The proof uses the [BLD Calculus](./bld-calculus.md) to formalize the primitives and show that none can be expressed using the other two.
+**Relationship to [irreducibility-proof.md](irreducibility-proof.md)**: This is the formal/rigorous version. That file provides intuitive arguments; this file provides the type-theoretic proof using the [BLD Calculus](../definitions/bld-calculus.md).
 
 ---
 
@@ -58,7 +58,7 @@ must include all three type constructors (or equivalents).
 
 ### 2.1 The BLD Calculus
 
-See [bld-calculus.md](./bld-calculus.md) for the complete formal definition.
+See [bld-calculus.md](../definitions/bld-calculus.md) for the complete formal definition.
 
 **Types**:
 ```
@@ -384,7 +384,7 @@ The proofs above are rigorous but paper-based. Full machine verification (Coq/Ag
 
 ## See Also
 
-- [Glossary](../../glossary.md) — Central definitions
-- [BLD Calculus](./bld-calculus.md) — The formal type system
+- [Glossary](../../../glossary.md) — Central definitions
+- [BLD Calculus](../definitions/bld-calculus.md) — The formal type system
 - [Irreducibility Proof](./irreducibility-proof.md) — Intuitive arguments
-- [Lie Correspondence](../lie-theory/lie-correspondence.md) — Why exactly three primitives
+- [Lie Correspondence](../../lie-theory/lie-correspondence.md) — Why exactly three primitives

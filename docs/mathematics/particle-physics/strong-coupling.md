@@ -2,9 +2,9 @@
 status: DERIVED
 layer: 2
 depends_on:
-  - ../foundations/force-structure.md
-  - ../foundations/octonion-derivation.md
-  - ../foundations/universal-machine.md
+  - ../foundations/derivations/force-structure.md
+  - ../foundations/derivations/octonion-derivation.md
+  - ../foundations/machine/universal-machine.md
   - e7-derivation.md
   - fine-structure-consistency.md
 used_by:
@@ -38,7 +38,7 @@ used_by:
 
 ## 2. Why SU(3)?
 
-From [Octonion Derivation](../foundations/octonion-derivation.md):
+From [Octonion Derivation](../foundations/derivations/octonion-derivation.md):
 
 ```
 BLD requires division
@@ -163,7 +163,7 @@ Substituting values:
 
 **Residual**: ~0.02% — this is K/X(universe), not error.
 
-The remaining ~0.02% is the [Universal Machine](../foundations/universal-machine.md)'s self-traversal cost — the universe computing this observable.
+The remaining ~0.02% is the [Universal Machine](../foundations/machine/universal-machine.md)'s self-traversal cost — the universe computing this observable.
 
 ### 5.3 Three-Layer Structure
 
@@ -335,9 +335,9 @@ The earlier formula (B/n)/S² = 14/169 was numerically close but not derived fro
 
 ### Internal BLD References
 - [Discovery Method](../foundations/discovery-method.md) — How K/X was found
-- [Universal Machine](../foundations/universal-machine.md) — K/X(universe) and residuals
-- [Force Structure](../foundations/force-structure.md) — Unified force derivation
-- [Octonion Derivation](../foundations/octonion-derivation.md) — G₂ → SU(3)
+- [Universal Machine](../foundations/machine/universal-machine.md) — K/X(universe) and residuals
+- [Force Structure](../foundations/derivations/force-structure.md) — Unified force derivation
+- [Octonion Derivation](../foundations/derivations/octonion-derivation.md) — G₂ → SU(3)
 - [Killing Form](../lie-theory/killing-form.md) — K = 2 derivation
 - [E7 Derivation](e7-derivation.md) — B = 56 and fine structure
 - [Fine Structure Consistency](fine-structure-consistency.md) — α⁻¹ = 137.036

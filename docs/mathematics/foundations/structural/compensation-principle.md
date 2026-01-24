@@ -2,12 +2,23 @@
 status: PROVEN
 layer: 1
 depends_on:
-  - irreducibility-proof.md
+  - ../proofs/irreducibility-proof.md
+used_by:
+  - ../proofs/irreducibility-proof.md
+  - ../../quantum/quantum-computing.md
+  - ../../quantum/quantum-mechanics.md
+  - ../../derived/music-theory.md
+  - ../../../applications/ml/neural-network-alignment.md
+  - ../../../applications/ml/variational-inference.md
+  - ../../../applications/physics/circuits.md
+  - ../../../applications/physics/phase-transitions.md
+  - ../../../applications/physics/fluids.md
+  - ../../../examples/e-from-bld.md
 ---
 
 # The Compensation Principle
 
-> **Status**: Validated
+> **Status**: PROVEN
 
 L can compensate for B deficiency, but B cannot compensate for L deficiency.
 
@@ -408,7 +419,7 @@ Both mechanisms appear because BLD structures can be either:
 - **Closed** (periodic return) → angular compensation (π-domain)
 - **Mixed** (elements of both) → but not necessarily as complex exponential e^(a+iθ)
 
-See [π from BLD](../../examples/pi-from-bld.md), [e from BLD](../../examples/e-from-bld.md), and [Lie Correspondence](../lie-theory/lie-correspondence.md#the-exponential-map-is-compensation).
+See [π from BLD](../../examples/pi-from-bld.md), [e from BLD](../../examples/e-from-bld.md), and [Lie Correspondence](../../lie-theory/lie-correspondence.md#the-exponential-map-is-compensation).
 
 ### Identifying Which Mechanism Applies
 
@@ -461,4 +472,4 @@ But π is structurally present whenever phase space has periodic dimensions (mom
 - [D×L Scaling Principle](../../glossary.md#dxl-scaling) — Why D multiplies L, not B
 - [Circuits Validation](../../applications/physics/circuits.md) — 87.8% compensation via cascading
 - [Neural Network Alignment](../../applications/ml/neural-network-alignment.md) — 6.2% diagonal advantage
-- [Lie Correspondence](../lie-theory/lie-correspondence.md) — BLD = Lie theory mapping
+- [Lie Correspondence](../../lie-theory/lie-correspondence.md) — BLD = Lie theory mapping

@@ -1,7 +1,7 @@
 ---
 status: FOUNDATIONAL
 depends_on:
-  - ../foundations/irreducibility-proof.md
+  - ../foundations/proofs/irreducibility-proof.md
 ---
 
 # The BLD Discovery Algorithm
@@ -468,4 +468,4 @@ See [Constructive Lie](../lie-theory/constructive-lie.md) for the mathematical c
 - [Discovery Method](../../meta/discovery-method.md) — The three questions (informal)
 - [Structural Language](../../theory/structural-language.md) — B/L/D definitions
 - [Constructive Lie](../lie-theory/constructive-lie.md) — Why this produces Lie structures
-- [Canonical Hardness](../foundations/canonical-hardness.md) — Complexity of minimal BLD
+- [Canonical Hardness](../foundations/structural/canonical-hardness.md) — Complexity of minimal BLD

@@ -1,11 +1,11 @@
 ---
 status: DERIVED
 depends_on:
-  - ../foundations/integer-machine.md
+  - ../foundations/machine/integer-machine.md
   - observer-correction.md
   - reference-scale-derivation.md
   - ../quantum/planck-derivation.md
-  - ../foundations/completeness-proof.md
+  - ../foundations/proofs/completeness-proof.md
   - nothing-instability.md
   - genesis-function.md
 ---
@@ -207,7 +207,7 @@ ALL SCALES DERIVED
 
 **All scale relationships derive from primordial integers — what the octonions computed first.**
 
-See [Integer Machine](../foundations/integer-machine.md) for the complete framework.
+See [Integer Machine](../foundations/machine/integer-machine.md) for the complete framework.
 
 ### λ² = K²/(n×L)
 
@@ -321,7 +321,7 @@ ALL SCALES DERIVED
 | G | G = 1/M_P² | **DERIVED** (from M_P) |
 | SU(3) | EMPIRICAL | **DERIVED** (genesis closure) |
 
-**Zero empirical inputs remain.** See [Octonion Necessity](../foundations/octonion-necessity.md) for why SU(3) is also derived.
+**Zero empirical inputs remain.** See [Octonion Necessity](../foundations/derivations/octonion-necessity.md) for why SU(3) is also derived.
 
 ---
 

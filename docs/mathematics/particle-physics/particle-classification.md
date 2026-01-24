@@ -2,8 +2,8 @@
 status: DERIVED
 layer: 2
 depends_on:
-  - ../foundations/octonion-derivation.md
-  - ../foundations/force-structure.md
+  - ../foundations/derivations/octonion-derivation.md
+  - ../foundations/derivations/force-structure.md
   - ../lie-theory/boundary-derivation.md
   - e7-derivation.md
 used_by:
@@ -55,7 +55,7 @@ Each particle is defined by a binary choice at each level: **couple or not**.
 
 ### 1.2 The Neutrino as Example
 
-From [Force Structure](../foundations/force-structure.md), forces are K/X at different scales:
+From [Force Structure](../foundations/derivations/force-structure.md), forces are K/X at different scales:
 
 | Force | X (Structure) | K/X |
 |-------|---------------|-----|
@@ -149,7 +149,7 @@ EXCEPTION: You can "skip" to pure geometry (ℝ only) — the sterile neutrino
 
 ### 3.1 Triality Gives Exactly 3 Generations
 
-From [Octonion Derivation](../foundations/octonion-derivation.md), Spin(8) has triality:
+From [Octonion Derivation](../foundations/derivations/octonion-derivation.md), Spin(8) has triality:
 
 ```
 TRIALITY: Spin(8) has three 8-dimensional representations
@@ -495,8 +495,8 @@ From BLD axioms alone:
 
 ## References
 
-- [Octonion Derivation](../foundations/octonion-derivation.md) — Division algebra tower, triality, G₂ → SU(3)
-- [Force Structure](../foundations/force-structure.md) — Forces as K/X at different scales
+- [Octonion Derivation](../foundations/derivations/octonion-derivation.md) — Division algebra tower, triality, G₂ → SU(3)
+- [Force Structure](../foundations/derivations/force-structure.md) — Forces as K/X at different scales
 - [E7 Derivation](e7-derivation.md) — B = 56 from triality and Spin(8)
 - [Lepton Masses](lepton-masses.md) — Generation structure n²S = 208
 - [Boson Masses](boson-masses.md) — Electroweak bosons from BLD

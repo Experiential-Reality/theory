@@ -203,11 +203,11 @@ These files are referenced by many others — understand them first:
 
 | File | What It Provides | Why Central |
 |------|------------------|-------------|
-| `foundations/integer-machine.md` | Primordial = integers, observed = K/X | Core framework |
+| `foundations/machine/integer-machine.md` | Primordial = integers, observed = K/X | Core framework |
 | `lie-theory/killing-form.md` | K=2 (observer cost) | ALL corrections use this |
 | `cosmology/observer-correction.md` | Two-reference framework | ALL predictions use this |
 | `lie-theory/lie-correspondence.md` | BLD = Lie equivalence | Physics connection |
-| `foundations/octonion-necessity.md` | Why 𝕆, n=4, B=56, 3 gen | Everything follows |
+| `foundations/derivations/octonion-necessity.md` | Why 𝕆, n=4, B=56, 3 gen | Everything follows |
 | `cosmology/genesis-function.md` | traverse(-B,B) = existence | Why anything |
 
 ---
@@ -266,9 +266,32 @@ lie-correspondence → quantum-mechanics → schrodinger-derivation (iℏ∂/∂
 
 ## Reading Orders
 
+### Understanding Path (5 Critical Files)
+
+**Start here** — these 5 files form the minimal path to understanding BLD:
+
+```
+1. cosmology/genesis-function.md       → WHY anything exists
+                                          (nothing is self-contradictory)
+
+2. foundations/derivations/octonion-necessity.md   → WHY B=56, why octonions
+                                          (genesis closure requires richness)
+
+3. foundations/machine/universal-machine.md    → K/X framework (3 layers)
+                                          (primordial + experiment + universe)
+
+4. cosmology/observer-correction.md    → The +1 and ALL corrections
+                                          (traverser contributes to every measurement)
+
+5. particle-physics/fine-structure-consistency.md → SEE IT WORK
+                                          (α⁻¹ = 137.035999177 exact)
+```
+
+After reading these 5, the rest follows naturally.
+
 ### Essential Path (Understand the Core)
 1. `cosmology/genesis-function.md` — Why anything exists
-2. `foundations/octonion-necessity.md` — Why octonions → n=4, B=56, 3 gen
+2. `foundations/derivations/octonion-necessity.md` — Why octonions → n=4, B=56, 3 gen
 3. `lie-theory/killing-form.md` — K=2 grounds ALL corrections
 4. `cosmology/observer-correction.md` — Two-reference principle
 5. `particle-physics/fine-structure-consistency.md` — See it work
@@ -281,13 +304,13 @@ lie-correspondence → quantum-mechanics → schrodinger-derivation (iℏ∂/∂
 5. `quantum/planck-derivation.md` — ℏ from structure
 
 ### For Mathematicians
-1. `foundations/irreducibility-proof.md` — B, L, D are minimal
-2. `foundations/completeness-proof.md` — B, L, D are sufficient
+1. `foundations/proofs/irreducibility-proof.md` — B, L, D are minimal
+2. `foundations/proofs/completeness-proof.md` — B, L, D are sufficient
 3. `lie-theory/lie-correspondence.md` — BLD = Lie
-4. `foundations/categorical-correspondence.md` — Type theory
+4. `foundations/structural/categorical-correspondence.md` — Type theory
 
 ### For Understanding Predictions
-1. `foundations/integer-machine.md` — Primordial = integers
+1. `foundations/machine/integer-machine.md` — Primordial = integers
 2. `cosmology/observer-correction.md` — K/X corrections
 3. Any leaf file (fine-structure, lepton-masses, etc.)
 
@@ -345,5 +368,5 @@ lie-correspondence ◄──── killing-form ──────────�
 | Dark matter = 27% | **EXACT** | Matches observation |
 | All particle masses | **DERIVED** | Within measurement |
 
-**One empirical input**: SU(3)-charged matter exists (quarks observed).
-**Everything else derived**: n=4, 3 generations, B=56, α⁻¹, all masses, all forces.
+**Zero empirical inputs**: SU(3) is derived from genesis closure (see [Octonion Necessity](foundations/derivations/octonion-necessity.md)).
+**All derived from logical necessity**: n=4, 3 generations, B=56, α⁻¹, all masses, all forces.

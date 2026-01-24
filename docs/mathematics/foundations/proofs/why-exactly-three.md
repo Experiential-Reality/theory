@@ -4,16 +4,18 @@ layer: 1
 depends_on:
   - irreducibility-proof.md
   - irreducibility-categorical.md
-  - ../lie-theory/lie-correspondence.md
+  - ../../lie-theory/lie-correspondence.md
 used_by:
-  - ../../meta/proof-status.md
-  - bld-calculus.md
+  - ../../../meta/proof-status.md
+  - ../definitions/bld-calculus.md
 ---
 
 # Why Exactly Three Primitives?
 
 > **Layer 1**: DERIVED from irreducibility proofs
 > **Human traversal**: 7 steps below
+
+**Relationship to [Completeness Proof](completeness-proof.md)**: This document addresses "why not a fourth?" while completeness-proof addresses "why these three are sufficient." This file tests candidate fourth primitives and shows they reduce to B+L+D.
 
 ---
 
@@ -92,7 +94,7 @@ For each candidate, we ask: Does it reduce to B+L+D, or is it genuinely new?
 
 ## Step 4: Lie Theory Confirmation
 
-From [lie-correspondence.md](../lie-theory/lie-correspondence.md):
+From [lie-correspondence.md](../../lie-theory/lie-correspondence.md):
 
 Lie algebras — the mathematical structure of continuous symmetry — have exactly three components:
 
@@ -110,7 +112,7 @@ Lie theory was developed independently of BLD. The fact that it has exactly thre
 
 ## Step 5: Type Theory Confirmation
 
-From [bld-calculus.md](bld-calculus.md):
+From [bld-calculus.md](../definitions/bld-calculus.md):
 
 Complete type systems require exactly three type constructors:
 
@@ -192,7 +194,8 @@ There is no 4th structural operation used in this explanation. The medium demons
 
 ## See Also
 
+- [Completeness Proof](completeness-proof.md) — B, L, D are sufficient (complements this file)
 - [Irreducibility Proof](irreducibility-proof.md) — The formal independence proof
 - [Irreducibility Categorical](irreducibility-categorical.md) — Type-theoretic proof
-- [Lie Correspondence](../lie-theory/lie-correspondence.md) — BLD = Lie theory
-- [BLD Calculus](bld-calculus.md) — The formal type system
+- [Lie Correspondence](../../lie-theory/lie-correspondence.md) — BLD = Lie theory
+- [BLD Calculus](../definitions/bld-calculus.md) — The formal type system

@@ -4,7 +4,7 @@ layer: meta
 depends_on:
   - ../mathematics/particle-physics/e7-derivation.md
   - ../mathematics/quantum/planck-derivation.md
-  - ../mathematics/foundations/octonion-derivation.md
+  - ../mathematics/foundations/derivations/octonion-derivation.md
 used_by: []
 ---
 
@@ -135,7 +135,7 @@ PDG 2024:         125.20 GeV → error = 0.088% ≈ 0.09%
 ### Hurwitz Theorem (1898/1923)
 
 **BLD Claim**: Only ℝ, ℂ, ℍ, 𝕆 are normed division algebras
-**File**: `mathematics/foundations/octonion-derivation.md`
+**File**: `mathematics/foundations/derivations/octonion-derivation.md`
 **External Source**: [Wikipedia: Hurwitz's theorem](https://en.wikipedia.org/wiki/Hurwitz's_theorem_(composition_algebras)), [ProofWiki](https://proofwiki.org/wiki/Hurwitz's_Theorem_(Normed_Division_Algebras))
 **Verification**: This is a standard theorem in algebra, published posthumously in 1923. The only normed division algebras over ℝ are:
 - ℝ (1-dimensional)
@@ -164,7 +164,7 @@ PDG 2024:         125.20 GeV → error = 0.088% ≈ 0.09%
 ### G₂ Contains SU(3)
 
 **BLD Claim**: G₂ ⊃ SU(3), which is why color symmetry emerges from octonions
-**File**: `mathematics/foundations/octonion-derivation.md`
+**File**: `mathematics/foundations/derivations/octonion-derivation.md`
 **External Source**: [nLab: G2](https://ncatlab.org/nlab/show/G2), [Wikipedia: G2](https://en.wikipedia.org/wiki/G2_(mathematics))
 **Verification**: SU(3) arises as the stabilizer of a unit imaginary octonion within G₂. The coset space G₂/SU(3) is the 6-sphere S⁶.
 **Verdict**: ✅ **VERIFIED** — SU(3) is a maximal subgroup of G₂
@@ -226,7 +226,7 @@ PDG 2024:         125.20 GeV → error = 0.088% ≈ 0.09%
 ### sl(2,ℂ) = so(3,1)_ℂ
 
 **BLD Claim**: The complexified Lorentz algebra is sl(2,ℂ)
-**File**: `mathematics/foundations/octonion-derivation.md`
+**File**: `mathematics/foundations/derivations/octonion-derivation.md`
 **External Source**: Weinberg, *The Quantum Theory of Fields*, Vol. 1, Ch. 2
 **Verification**: This is a standard result in physics. The Lorentz group SO(3,1) has Lie algebra so(3,1), and its complexification is isomorphic to sl(2,ℂ) ⊕ sl(2,ℂ).
 **Verdict**: ✅ **VERIFIED** — Standard physics result
@@ -250,7 +250,7 @@ PDG 2024:         125.20 GeV → error = 0.088% ≈ 0.09%
 ### n = 4
 
 **BLD Derivation**: n = 4 from sl(2,ℂ) ⊂ sl(2,𝕆) symmetry breaking
-**File**: `mathematics/foundations/octonion-derivation.md`
+**File**: `mathematics/foundations/derivations/octonion-derivation.md`
 **Note**: This derivation depends on the claim that observation requires fixing a direction in octonionic space, breaking so(9,1) → so(3,1).
 **Verdict**: ⚠️ **DERIVATION DEPENDS ON INTERPRETATION** — The mathematical chain is valid if the premises are accepted
 

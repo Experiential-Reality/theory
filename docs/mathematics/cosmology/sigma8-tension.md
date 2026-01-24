@@ -3,7 +3,7 @@ status: DERIVED
 layer: 2
 depends_on:
   - genesis-function.md
-  - ../foundations/universal-machine.md
+  - ../foundations/machine/universal-machine.md
   - ../lie-theory/killing-form.md
 used_by:
   - ../../meta/proof-status.md
@@ -194,5 +194,5 @@ This is the same physics as Hubble tension, with opposite sign.
 ### Internal BLD References
 - [Hubble Tension](hubble-tension.md) — Parallel K/X phenomenon
 - [Genesis Function](genesis-function.md) — Ring/cloth model
-- [Universal Machine](../foundations/universal-machine.md) — K/X framework
+- [Universal Machine](../foundations/machine/universal-machine.md) — K/X framework
 - [Killing Form](../lie-theory/killing-form.md) — K = 2 derivation

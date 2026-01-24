@@ -2,7 +2,7 @@
 status: VALIDATED
 depends_on:
   - ../../mathematics/lie-theory/lie-correspondence.md
-  - ../../mathematics/foundations/irreducibility-proof.md
+  - ../../mathematics/foundations/proofs/irreducibility-proof.md
 ---
 
 # Neural Network Architectures: BLD Analysis

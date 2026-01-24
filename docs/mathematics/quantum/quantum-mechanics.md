@@ -2,8 +2,8 @@
 status: DERIVED
 layer: 2
 depends_on:
-  - ../foundations/irreducibility-proof.md
-  - ../foundations/integer-machine.md
+  - ../foundations/proofs/irreducibility-proof.md
+  - ../foundations/machine/integer-machine.md
   - ../lie-theory/lie-correspondence.md
   - ../lie-theory/killing-form.md
   - structural-observer-framework.md
@@ -138,7 +138,7 @@ For position-momentum:
 | Component | Status | Derivation |
 |-----------|--------|------------|
 | **i** (imaginary unit) | **DERIVED** | K = 2 = dim(ℂ). See derivation below |
-| **Non-zero coupling** | **DERIVED** | D-L irreducibility requires structure constant. See [Irreducibility Proof](../foundations/irreducibility-proof.md) |
+| **Non-zero coupling** | **DERIVED** | D-L irreducibility requires structure constant. See [Irreducibility Proof](../foundations/proofs/irreducibility-proof.md) |
 | **ℏ value** | **DERIVED** | From BLD structure. See [Planck Derivation](planck-derivation.md) |
 
 ### Why i: The Unit of Observation
@@ -177,7 +177,7 @@ These are the same structural fact. The complex numbers ARE the observation alge
 
 **i appears in quantum mechanics because observation uses i.** The Schrödinger equation has i because wavefunctions live in ℂ, and ℂ is the observation algebra.
 
-See [Integer Machine](../foundations/integer-machine.md#8-the-imaginary-unit-i) for the complete derivation.
+See [Integer Machine](../foundations/machine/integer-machine.md#8-the-imaginary-unit-i) for the complete derivation.
 
 **What BLD explains about ℏ**:
 - There MUST be a minimum action (from D×L irreducibility)
@@ -498,10 +498,10 @@ This is the measurement problem. It's open in ALL interpretations of QM. BLD's c
 
 ## References
 
-- [Integer Machine](../foundations/integer-machine.md) — i as unit of observation, K = dim(ℂ)
-- [Irreducibility Proof](../foundations/irreducibility-proof.md) — D and L are independent primitives
+- [Integer Machine](../foundations/machine/integer-machine.md) — i as unit of observation, K = dim(ℂ)
+- [Irreducibility Proof](../foundations/proofs/irreducibility-proof.md) — D and L are independent primitives
 - [Killing Form](../lie-theory/killing-form.md) — Why observation costs 2 links, K = 2 = dim(ℂ)
 - [Lie Correspondence](../lie-theory/lie-correspondence.md) — Commutators as structure constants
 - [Quantum Computing](quantum-computing.md) — Computing in structure vs measuring
-- [Compensation Principle](../foundations/compensation-principle.md) — L can compensate B, not vice versa
+- [Compensation Principle](../foundations/structural/compensation-principle.md) — L can compensate B, not vice versa
 - [Planck Derivation](planck-derivation.md) — ℏ value derived from BLD

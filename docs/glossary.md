@@ -32,17 +32,17 @@ used_by:
   - examples/docs-structure.md
   - examples/spacetime.md
   - examples/pi-from-bld.md
-  - mathematics/foundations/compensation-principle.md
+  - mathematics/foundations/structural/compensation-principle.md
   - examples/wgpu-jpeg-process.md
-  - mathematics/foundations/structural-cost-conservation.md
+  - mathematics/foundations/structural/structural-cost-conservation.md
   - examples/e-from-bld.md
-  - mathematics/foundations/canonical-hardness.md
+  - mathematics/foundations/structural/canonical-hardness.md
   - examples/zip.md
-  - mathematics/foundations/irreducibility-categorical.md
+  - mathematics/foundations/proofs/irreducibility-categorical.md
   - examples/lie-algebras.md
-  - mathematics/foundations/bld-calculus.md
+  - mathematics/foundations/definitions/bld-calculus.md
   - mathematics/cross-domain-prediction.md
-  - mathematics/foundations/irreducibility-proof.md
+  - mathematics/foundations/proofs/irreducibility-proof.md
   - mathematics/lie-theory/lie-correspondence.md
   - mathematics/README.md
   - mathematics/comparisons.md
@@ -56,7 +56,7 @@ used_by:
   - mathematics/lie-theory/constructive-lie.md
   - mathematics/lie-theory/boundary-derivation.md
   - mathematics/lie-theory/why-lie-theory.md
-  - mathematics/foundations/factorization-calculus.md
+  - mathematics/foundations/structural/factorization-calculus.md
 ---
 
 # Glossary
@@ -318,7 +318,7 @@ Therefore:
 - Worse despite adequate L → hidden B is blocking
 - Compensation not happening → look for what prevents L accumulation
 
-See [Compensation Principle](mathematics/foundations/compensation-principle.md) for the full derivation, two-mechanism theory, and diagnostic method.
+See [Compensation Principle](mathematics/foundations/structural/compensation-principle.md) for the full derivation, two-mechanism theory, and diagnostic method.
 
 See also [Neural Network Alignment](applications/ml/neural-network-alignment.md) and [Circuits](applications/physics/circuits.md) for validation.
 
@@ -349,7 +349,7 @@ Properties:
 
 **Termination**: Factorization stops at **irreducible primitives** (B, L, D). By the irreducibility theorem, no further decomposition is possible.
 
-See [Factorization Calculus](mathematics/foundations/factorization-calculus.md).
+See [Factorization Calculus](mathematics/foundations/structural/factorization-calculus.md).
 
 ---
 
@@ -378,7 +378,7 @@ C(S) = C(FACTOR(S))
 - L: C(l) = -½ ln(1 - ρ²) [EXACT]
 - D: C(d) = n × C(element) [multiplicative]
 
-See [Structural Cost Conservation](mathematics/foundations/structural-cost-conservation.md).
+See [Structural Cost Conservation](mathematics/foundations/structural/structural-cost-conservation.md).
 
 ---
 
@@ -402,7 +402,7 @@ S →_FACTOR S'  implies  Explicitness(S') > Explicitness(S)
 
 **Fixed point**: FACTOR terminates when Explicitness = 1, at which point all structure is expressed as irreducible B × L × D.
 
-See [Structural Cost Conservation](mathematics/foundations/structural-cost-conservation.md#the-explicitness-metric).
+See [Structural Cost Conservation](mathematics/foundations/structural/structural-cost-conservation.md#the-explicitness-metric).
 
 ---
 
@@ -428,7 +428,7 @@ Properties:
 
 **Connection to Lie theory**: The fixed point is analogous to Levi decomposition — decomposition into simple Lie algebras.
 
-See [Factorization Calculus](mathematics/foundations/factorization-calculus.md#4-termination).
+See [Factorization Calculus](mathematics/foundations/structural/factorization-calculus.md#4-termination).
 
 ---
 
@@ -650,7 +650,7 @@ The α-helix is a cylindrical helix with angular closure, not a logarithmic spir
 
 The exponential map in Lie theory IS compensation: exp(tX) maps algebra generators to group elements, with compact groups (closed B) returning at 2π and non-compact groups (open B) extending to infinity.
 
-See [π from BLD](examples/pi-from-bld.md), [e from BLD](examples/e-from-bld.md), and [Compensation Principle](mathematics/foundations/compensation-principle.md) for details.
+See [π from BLD](examples/pi-from-bld.md), [e from BLD](examples/e-from-bld.md), and [Compensation Principle](mathematics/foundations/structural/compensation-principle.md) for details.
 
 ---
 
@@ -1211,7 +1211,7 @@ Documents in this project use three status levels:
 ## See Also
 
 - [Structural Language](theory/structural-language.md) — Full primitive specification
-- [Irreducibility Proof](mathematics/foundations/irreducibility-proof.md) — Why exactly three primitives
+- [Irreducibility Proof](mathematics/foundations/proofs/irreducibility-proof.md) — Why exactly three primitives
 - [Lie Correspondence](mathematics/lie-theory/lie-correspondence.md) — BLD = Lie theory mapping
 - [Discovery Method](meta/discovery-method.md) — How to find structure in any system
 - [Structural Interest](theory/structural-interest.md) — Why rich structures produce rich behavior

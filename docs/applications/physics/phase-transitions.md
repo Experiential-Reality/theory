@@ -4,7 +4,7 @@ layer: application
 depends_on:
   - thermodynamics-validation.md
   - ../../mathematics/derived/thermodynamics.md
-  - ../../mathematics/foundations/compensation-principle.md
+  - ../../mathematics/foundations/structural/compensation-principle.md
 used_by:
   - fluids.md
 ---
@@ -452,4 +452,4 @@ Compare systems with same (d, n) but different microscopic details:
 - [Thermodynamics](thermodynamics-validation.md) — Entropy dynamics
 - [Thermodynamics (Math)](../../mathematics/derived/thermodynamics.md) — Energy landscape
 - [Physics Traverser](../../examples/physics-traverser.md) — Symmetry breaking (P11, P16)
-- [Compensation Principle](../../mathematics/foundations/compensation-principle.md) — L→B compensation
+- [Compensation Principle](../../mathematics/foundations/structural/compensation-principle.md) — L→B compensation

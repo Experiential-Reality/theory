@@ -2,7 +2,7 @@
 status: DERIVED
 layer: 2
 depends_on:
-  - ../mathematics/foundations/octonion-derivation.md
+  - ../mathematics/foundations/derivations/octonion-derivation.md
   - ../mathematics/particle-physics/e7-derivation.md
   - ../mathematics/lie-theory/killing-form.md
 used_by:
@@ -701,7 +701,7 @@ The number 3 comes from:
 3. SU(3) requires Aut ⊃ SU(3) → only octonions work
 4. Octonions have Spin(8) structure with triality
 
-**See [Octonion Derivation](../mathematics/foundations/octonion-derivation.md)** for the complete derivation.
+**See [Octonion Derivation](../mathematics/foundations/derivations/octonion-derivation.md)** for the complete derivation.
 
 ```
 P9: Triality Axiom [NOW FULLY DERIVED]
@@ -2252,7 +2252,7 @@ P20:     ██████░░░░░░░░░░░░░░ (30% - Fra
 
 ## See Also
 
-- [Octonion Derivation](../mathematics/foundations/octonion-derivation.md) — BLD → octonions → (n=4, SU(3), 3 gen)
+- [Octonion Derivation](../mathematics/foundations/derivations/octonion-derivation.md) — BLD → octonions → (n=4, SU(3), 3 gen)
 - [e from BLD](./e-from-bld.md) — Validated discovery methodology
 - [π from BLD](./pi-from-bld.md) — Closure constant derivation
 - [Spacetime](./spacetime.md) — BLD analysis of spacetime structure

@@ -2,8 +2,8 @@
 status: VALIDATED
 layer: application
 depends_on:
-  - ../../mathematics/foundations/factorization-calculus.md
-  - ../../mathematics/foundations/structural-cost-conservation.md
+  - ../../mathematics/foundations/structural/factorization-calculus.md
+  - ../../mathematics/foundations/structural/structural-cost-conservation.md
   - ../../meta/discovery-method.md
 used_by:
   - ../../paths/practitioner.md
@@ -74,7 +74,7 @@ C_total = C_visible + C_hidden    (conserved)
 FACTOR: C_hidden → C_visible      (reveals hidden cost)
 ```
 
-See [Factorization Calculus](../../mathematics/foundations/factorization-calculus.md) and [Cost Conservation](../../mathematics/foundations/structural-cost-conservation.md) for the mathematical details.
+See [Factorization Calculus](../../mathematics/foundations/structural/factorization-calculus.md) and [Cost Conservation](../../mathematics/foundations/structural/structural-cost-conservation.md) for the mathematical details.
 
 ---
 

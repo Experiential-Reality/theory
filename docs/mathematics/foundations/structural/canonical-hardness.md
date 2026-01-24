@@ -1,7 +1,11 @@
 ---
 status: VALIDATED
+layer: 1
 depends_on:
-  - ../foundations/bld-calculus.md
+  - ../definitions/bld-calculus.md
+used_by:
+  - ../../derived/discovery-algorithm.md
+  - ../../../paths/mathematician.md
 ---
 
 # Hardness of Canonical BLD: Formal Proof
@@ -379,6 +383,6 @@ In BLD terms:
 ## See Also
 
 - [Glossary](../../glossary.md) — Central definitions
-- [Discovery Algorithm](../derived/discovery-algorithm.md) — The algorithm being analyzed
+- [Discovery Algorithm](../../derived/discovery-algorithm.md) — The algorithm being analyzed
 - [Discovery Method](../../meta/discovery-method.md) — Informal method description
-- [Constructive Lie](../lie-theory/constructive-lie.md) — Why BLD produces Lie structures
+- [Constructive Lie](../../lie-theory/constructive-lie.md) — Why BLD produces Lie structures

@@ -62,7 +62,7 @@ All corrections follow the universal skip ratio K/X where:
 - **"+"** = traversal incomplete (something unobserved, e.g., neutrino escapes)
 - **"−"** = traversal complete (everything observed, e.g., jets fully detected)
 
-See [Force Structure](../foundations/force-structure.md) for complete derivations.
+See [Force Structure](../foundations/derivations/force-structure.md) for complete derivations.
 
 ## The One Empirical Input
 

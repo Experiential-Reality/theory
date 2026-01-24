@@ -2,19 +2,19 @@
 status: DERIVED
 layer: 1
 depends_on:
-  - bld-calculus.md
-  - irreducibility-proof.md
+  - ../definitions/bld-calculus.md
+  - ../proofs/irreducibility-proof.md
   - octonion-derivation.md
-  - ../lie-theory/killing-form.md
-  - discovery-method.md
-  - universal-machine.md
+  - ../../lie-theory/killing-form.md
+  - ../discovery-method.md
+  - ../machine/universal-machine.md
 used_by:
-  - ../particle-physics/e7-derivation.md
-  - ../particle-physics/fine-structure-consistency.md
-  - ../cosmology/observer-correction.md
-  - ../derived/special-relativity.md
-  - ../derived/general-relativity.md
-  - ../../meta/proof-status.md
+  - ../../particle-physics/e7-derivation.md
+  - ../../particle-physics/fine-structure-consistency.md
+  - ../../cosmology/observer-correction.md
+  - ../../derived/special-relativity.md
+  - ../../derived/general-relativity.md
+  - ../../../meta/proof-status.md
 ---
 
 # Force Structure: Deriving All Four Forces from BLD
@@ -25,8 +25,10 @@ used_by:
 
 **Key discoveries**:
 1. Every measurement correction = K/X, where K=2 (Killing form) and X = structure traversed
-2. Remaining ~0.002-0.02% residuals are NOT errors — they are K/X(universe), the [Universal Machine](universal-machine.md)'s self-traversal cost
-3. See [Discovery Method](discovery-method.md) for how this was found
+2. Remaining ~0.002-0.02% residuals are NOT errors — they are K/X(universe), the [Universal Machine](../machine/universal-machine.md)'s self-traversal cost
+3. See [Discovery Method](../discovery-method.md) for how this was found
+
+**Constants**: B=56, L=20, n=4, K=2, S=13. See [constants.md](../constants.md) for derivations.
 
 ---
 
@@ -46,7 +48,7 @@ Observed = Structural + L_cost(experiment)
 
 ### 1.2 Why L Costs Exist
 
-From [Irreducibility Proof](irreducibility-proof.md): B, L, D cannot be expressed in terms of each other. Any measurement requires all three:
+From [Irreducibility Proof](../proofs/irreducibility-proof.md): B, L, D cannot be expressed in terms of each other. Any measurement requires all three:
 - B: Distinguishing measured from unmeasured
 - L: Connecting observer to observed
 - D: Locating measurement in structure
@@ -90,11 +92,11 @@ All forces use the same structural constants:
 
 | Constant | Value | Derivation | Source |
 |----------|-------|------------|--------|
-| B | 56 | 2 × dim(Spin(8)) via triality | [E7 Derivation](../particle-physics/e7-derivation.md) |
+| B | 56 | 2 × dim(Spin(8)) via triality | [E7 Derivation](../../particle-physics/e7-derivation.md) |
 | n | 4 | Octonion reference fixing → sl(2,ℂ) | [Octonion Derivation](octonion-derivation.md) |
-| L | 20 | Riemann components: n²(n²-1)/12 | [Lie Correspondence](../lie-theory/lie-correspondence.md) |
+| L | 20 | Riemann components: n²(n²-1)/12 | [Lie Correspondence](../../lie-theory/lie-correspondence.md) |
 | S | 13 | Structural intervals: (B-n)/n | Algebraic |
-| K | 2 | Killing form (bidirectional) | [Killing Form](../lie-theory/killing-form.md) |
+| K | 2 | Killing form (bidirectional) | [Killing Form](../../lie-theory/killing-form.md) |
 
 ### 3.1 Derived Combinations
 
@@ -267,7 +269,7 @@ sin²θ_W = 3/S + K/(n×L×B)
 
 **Observed** (MS-bar at M_Z): 0.23121 ± 0.00004
 
-**Residual**: ~0.002% — this is K/X(universe), not error. See [Universal Machine](universal-machine.md).
+**Residual**: ~0.002% — this is K/X(universe), not error. See [Universal Machine](../machine/universal-machine.md).
 
 ### 5.4 Why This Form (K/X Principle)
 
@@ -336,7 +338,7 @@ This is the principled K/X form. The earlier formula (B/n)/S² = 14/169 ≈ 0.08
 
 **Observed**: α_s(M_Z) = 0.1179 → α_s⁻¹ = 8.482
 
-**Residual**: ~0.02% — this is K/X(universe), not error. See [Universal Machine](universal-machine.md).
+**Residual**: ~0.02% — this is K/X(universe), not error. See [Universal Machine](../machine/universal-machine.md).
 
 ### 6.4 Why This Form (K/X Principle)
 
@@ -425,7 +427,7 @@ This is fully derived since M_P and ℏ are both derived from BLD.
 
 ### 7.5 Gravity as K/X (Schwarzschild Connection)
 
-The gravitational K/X pattern extends to general relativity. See [General Relativity](../derived/general-relativity.md) for full derivation.
+The gravitational K/X pattern extends to general relativity. See [General Relativity](../../derived/general-relativity.md) for full derivation.
 
 **Key discovery**: The factor 2 in the Schwarzschild radius r_s = **2**GM/c² IS the Killing form K=2!
 
@@ -458,56 +460,66 @@ All four forces follow the SAME K/X principle — just at different scales.
 
 ## 8. The Universal K/X Principle
 
-### 8.1 All Corrections Follow K/X
+### 8.1 The Master Table
 
-Every experimental L cost follows the universal skip ratio:
+Every experimental L cost follows the universal skip ratio: **correction = K/X**
 
 ```
-correction = K/X
-
-Where:
-- K = 2 (Killing form, bidirectional observation)
-- X = structure being traversed
-- Sign = traversal completeness
+K/X DERIVATION TOWER
+────────────────────
+K = 2 (always)
+    ↓ Killing form: bidirectional observation
+X = structure traversed
+    ↓ What couples to detector?
+Sign = traversal completeness
+    ↓ + incomplete (escapes), − complete (all detected)
 ```
 
-| Force | X (Structure Traversed) | Correction | Why This X? |
-|-------|------------------------|------------|-------------|
-| EM | B = 56 | +K/B = +0.036 | Photon crosses boundary |
-| Weak | n×L×B = 4480 | +K/(n×L×B) = +0.00045 | Full geometric-boundary structure |
-| Strong | n+L = 24 | −K/(n+L) = −0.083 | Geometry only (spacetime + Riemann) |
-| Gravity | n×L−K = 78 | 79/78 | Observer embedded in geometry |
+| Force | Structural | X | K/X | Sign | Detection Mode |
+|-------|------------|---|-----|------|----------------|
+| **EM** | n×L+B+1=137 | B=56 | 0.036 | + | Photon crosses B (boundary) |
+| **Weak** | 3/S=0.231 | n×L×B=4480 | 0.00045 | + | Z pole: full structure |
+| **Strong** | α⁻¹/n²=8.56 | n+L=24 | 0.083 | − | Jets: geometry only |
+| **Gravity** | v×λ⁻²⁶×√(5/14) | n×L−K=78 | 79/78 | × | Embedded observer |
 
-### 8.2 Higher-Order Corrections
+### 8.2 Why Each X?
 
-For precision beyond first-order K/X:
+```
+FORCE → WHAT COUPLES → X
+────────────────────────
+EM      → photon creates/destroys partitions    → B (boundary)
+Weak    → Z couples to everything               → n×L×B (full structure)
+Strong  → gluon confined to geometry            → n+L (spacetime+Riemann)
+Gravity → observer IS the geometry              → n×L−K (self-reference)
+```
 
-| Order | Form | When It Appears |
-|-------|------|-----------------|
-| First | K/X | Direct measurement |
-| Second | K/X² or K/(X₁×X₂) | Two structures traversed |
-| Accumulated | e²×... | Continuous limit effects |
-| Spatial | n/(...) | 3D measurement corrections |
+### 8.3 Sign Rule
 
-### 8.2 Sign Rule
+```
++ (INCOMPLETE)              − (COMPLETE)
+──────────────              ────────────
+Something escapes           Everything detected
+• neutrino leaves           • jets captured
+• virtual photon            • decay products seen
+• effect observed           • carrier observed
+```
 
-**+ (plus)**: Incomplete traversal
-- Something escapes unobserved (neutrino, virtual photon)
-- You measure the effect, not the carrier
+| Measurement | Sign | What Escapes? |
+|-------------|------|---------------|
+| α (atomic) | + | Virtual photon |
+| sin²θ_W | + | Neutrino contamination |
+| m_Z | − | Nothing |
+| m_W | + | Neutrino |
+| α_s (jets) | − | Nothing |
 
-**− (minus)**: Complete traversal
-- Everything is observed (jets, decay products)
-- Full coupling to detector
+### 8.4 Higher-Order Corrections
 
-### 8.3 Examples
-
-| Measurement | Sign | Reason |
-|-------------|------|--------|
-| Fine structure (atomic) | + | Photon not directly observed |
-| Z boson mass | − | All decay products detected |
-| W boson mass | + | Neutrino escapes |
-| Strong coupling (jets) | − | Jets fully observed |
-| Weak mixing | + | Neutrino contamination |
+| Order | Form | When |
+|-------|------|------|
+| 1st | K/X | Direct measurement |
+| 2nd | K/X² | Two structures |
+| Accumulated | e²×... | Continuous limit |
+| Spatial | n/(...) | 3D correction |
 
 ---
 
@@ -555,7 +567,7 @@ The couplings differ because the EXPERIMENTS differ.
 | Strong | α_s⁻¹ = α⁻¹/n²−K/(n+L) | 8.4814 | 8.482 | **~0.02%** |
 | Gravity | M_P = v×λ⁻²⁶×√(5/14)×(79/78)×... | 1.2209×10¹⁹ | 1.2209×10¹⁹ | **~0.002%** |
 
-**Note**: Residuals are K/X(universe) — the [Universal Machine](universal-machine.md)'s self-traversal cost — not errors.
+**Note**: Residuals are K/X(universe) — the [Universal Machine](../machine/universal-machine.md)'s self-traversal cost — not errors.
 
 ### 10.2 The Three-Layer Principle
 
@@ -591,15 +603,15 @@ The coupling constants are not free parameters — they are determined by:
 
 ## References
 
-- [Special Relativity](../derived/special-relativity.md) — c, γ, E=mc² from K/X
-- [General Relativity](../derived/general-relativity.md) — Gravity as K/X, Schwarzschild radius = K×GM/c²
-- [Discovery Method](discovery-method.md) — How K/X was found
-- [Universal Machine](universal-machine.md) — K/X(universe) and remaining residuals
-- [BLD Calculus](bld-calculus.md) — Foundational definitions
-- [Irreducibility Proof](irreducibility-proof.md) — Why L costs are unavoidable
+- [Special Relativity](../../derived/special-relativity.md) — c, γ, E=mc² from K/X
+- [General Relativity](../../derived/general-relativity.md) — Gravity as K/X, Schwarzschild radius = K×GM/c²
+- [Discovery Method](../discovery-method.md) — How K/X was found
+- [Universal Machine](../machine/universal-machine.md) — K/X(universe) and remaining residuals
+- [BLD Calculus](../definitions/bld-calculus.md) — Foundational definitions
+- [Irreducibility Proof](../proofs/irreducibility-proof.md) — Why L costs are unavoidable
 - [Octonion Derivation](octonion-derivation.md) — Division algebra tower
-- [Killing Form](../lie-theory/killing-form.md) — K = 2 derivation
-- [E7 Derivation](../particle-physics/e7-derivation.md) — B = 56, α⁻¹ derivation
-- [Fine Structure Consistency](../particle-physics/fine-structure-consistency.md) — α⁻¹ exact formula
-- [Planck Derivation](../quantum/planck-derivation.md) — M_P derivation
-- [Observer Correction](../cosmology/observer-correction.md) — Unified correction framework
+- [Killing Form](../../lie-theory/killing-form.md) — K = 2 derivation
+- [E7 Derivation](../../particle-physics/e7-derivation.md) — B = 56, α⁻¹ derivation
+- [Fine Structure Consistency](../../particle-physics/fine-structure-consistency.md) — α⁻¹ exact formula
+- [Planck Derivation](../../quantum/planck-derivation.md) — M_P derivation
+- [Observer Correction](../../cosmology/observer-correction.md) — Unified correction framework

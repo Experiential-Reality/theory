@@ -2,8 +2,8 @@
 status: DERIVED
 layer: 1
 depends_on:
-  - ../foundations/bld-calculus.md
-  - ../foundations/irreducibility-proof.md
+  - ../foundations/definitions/bld-calculus.md
+  - ../foundations/proofs/irreducibility-proof.md
   - ../lie-theory/killing-form.md
 used_by:
   - planck-derivation.md
@@ -194,7 +194,7 @@ The 4 dimensions are required for Lorentz structure. The 20 independent Riemann 
 
 ## 5. Why Observers Are Unavoidable
 
-From [Irreducibility Proof](../foundations/irreducibility-proof.md):
+From [Irreducibility Proof](../foundations/proofs/irreducibility-proof.md):
 
 **Theorem (BLD Irreducibility)**: B, L, and D cannot be expressed in terms of each other.
 
@@ -277,7 +277,7 @@ The fine structure constant α⁻¹ = 137 is literally the **cost of electromagn
 
 ### 8.2 Observer as +1
 
-From [Irreducibility](../foundations/irreducibility-proof.md):
+From [Irreducibility](../foundations/proofs/irreducibility-proof.md):
 
 The minimum non-trivial BLD structure is Cost = 1 (one boundary, link, or dimension).
 
@@ -350,8 +350,8 @@ Each prediction would test the framework: same structural values, correction det
 
 ## References
 
-- [BLD Calculus](../foundations/bld-calculus.md) — Foundational definitions
-- [Irreducibility Proof](../foundations/irreducibility-proof.md) — Why observer is unavoidable
+- [BLD Calculus](../foundations/definitions/bld-calculus.md) — Foundational definitions
+- [Irreducibility Proof](../foundations/proofs/irreducibility-proof.md) — Why observer is unavoidable
 - [Killing Form](../lie-theory/killing-form.md) — K = 2 derivation
 - [Planck Derivation](planck-derivation.md) — ℏ derivation with observer corrections
 - [E7 Derivation](../particle-physics/e7-derivation.md) — B = 56, α⁻¹ derivation

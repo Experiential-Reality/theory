@@ -2,18 +2,20 @@
 status: PROVEN
 layer: 1
 depends_on:
-  - irreducibility-proof.md
-  - ../lie-theory/killing-form.md
-  - ../lie-theory/lie-correspondence.md
+  - ../proofs/irreducibility-proof.md
+  - ../../lie-theory/killing-form.md
+  - ../../lie-theory/lie-correspondence.md
 used_by:
-  - ../particle-physics/e7-derivation.md
-  - ../quantum/schrodinger-derivation.md
+  - ../../particle-physics/e7-derivation.md
+  - ../../quantum/schrodinger-derivation.md
   - octonion-necessity.md
 ---
 
 # Deriving Octonions, n=4, and SU(3) from BLD First Principles
 
 **Status**: PROVEN — The octonion structure, spacetime dimension n=4, and color symmetry SU(3) are all derived from BLD axioms, not assumed as inputs.
+
+**Constants**: B=56, L=20, n=4, K=2, S=13. See [constants.md](../constants.md) for derivations.
 
 ---
 
@@ -88,7 +90,7 @@ UNIFIED SYMMETRY BREAKING:
 
 **Step 2: Bidirectionality requires invertibility**
 
-From [Killing Form](../lie-theory/killing-form.md), observation in BLD is **bidirectional**:
+From [Killing Form](../../lie-theory/killing-form.md), observation in BLD is **bidirectional**:
 
 > The Killing form coefficient is 2, representing the minimum L (links) required for observation.
 
@@ -193,60 +195,60 @@ Each step doubles dimension and loses a property:
 
 ## Part 3: Why Octonions Specifically (Not Smaller)
 
-### The Question
+**Status**: DERIVED — SU(3) is not empirical input but consequence of genesis closure.
 
-BLD requires a normed division algebra. Hurwitz says only ℝ, ℂ, ℍ, 𝕆 qualify.
+**Key constraint**: dim(SU(3)) = n² − 1 = 8. For color to be "internal structure," Aut(algebra) must contain SU(3).
 
-**But why octonions? Why not stop at quaternions or complex numbers?**
+### The Selection Tower
 
-### The Automorphism Dimension Argument
+```
+WHY OCTONIONS?
+──────────────
+BLD needs normed division algebra
+    ↓ Hurwitz: only ℝ, ℂ, ℍ, 𝕆
 
-Each algebra has an automorphism group Aut(A) — the symmetries that preserve multiplication.
+Test each for BLD requirements:
 
-| Algebra | Aut(A) | dim(Aut) | Contains SU(3)? |
-|---------|--------|----------|-----------------|
-| ℝ | {1} | 0 | No |
-| ℂ | ℤ₂ | 0 | No |
-| ℍ | SO(3) | 3 | **No** |
-| 𝕆 | G₂ | 14 | **Yes** |
+    ALGEBRA    Aut(A)     dim    B_max    SU(3)?    VERDICT
+    ───────    ──────     ───    ─────    ──────    ───────
+    ℝ          {1}        0      0        ✗         TOO SMALL
+    ℂ          ℤ₂         0      0        ✗         TOO SMALL
+    ℍ          SO(3)      3      6        ✗         TOO SMALL (3 < 8)
+    𝕆          G₂         14     56       ✓         WORKS
 
-### Status of the SU(3) Requirement
+    ↓
+Only 𝕆 supports B=56 AND contains SU(3)
+```
 
-**Status**: DERIVED — SU(3) is not an empirical input but a consequence of genesis function closure.
+### The Two Requirements
 
-| Structure | Status |
-|-----------|--------|
-| Electromagnetic interaction (U(1)) | Could use ℍ or 𝕆 |
-| Strong interaction (SU(3) color) | **Requires 𝕆** — and 𝕆 is required for closure |
+```
+REQUIREMENT 1: RICHNESS          REQUIREMENT 2: COLOR
+─────────────────────           ──────────────────────
+Genesis closure needs B=56      Color needs SU(3) ⊂ Aut(A)
+    ↓                               ↓
+B = 2 × dim(so(8)) = 56         dim(SU(3)) = 8
+    ↓                               ↓
+Needs Spin(8) structure         Needs dim(Aut) ≥ 8
+    ↓                               ↓
+Only G₂ ⊂ Spin(8) works         Only G₂ (dim 14) works
+    ↓                               ↓
+    └───────── BOTH REQUIRE 𝕆 ─────┘
+```
 
-**The Closure Argument** (see [Octonion Necessity](octonion-necessity.md) for full proof):
+### Quaternions Fail
 
-The genesis function traverse(-B, B) must close for self-observation to be consistent. This requires:
-1. **Division property** — bidirectional observation needs inverses
-2. **Richness** — the algebra must support B = 56 boundary modes
+| Test | ℍ (quaternions) | 𝕆 (octonions) |
+|------|-----------------|---------------|
+| Division? | ✓ | ✓ |
+| Aut dimension | 3 (SO(3)) | 14 (G₂) |
+| Contains SU(3)? | ✗ (3 < 8) | ✓ |
+| Supports B=56? | ✗ (max 6) | ✓ |
+| **Verdict** | **FAILS** | **WORKS** |
 
-Quaternions fail the richness test:
-- Aut(ℍ) = SO(3), dim = 3
-- Maximum supportable B ≈ 2 × dim(Aut) = 6 < 56 → **FAILS**
+**Result**: Octonions are REQUIRED by genesis closure. SU(3) follows as stabilizer of fixed reference.
 
-Octonions succeed:
-- Aut(𝕆) = G₂, dim = 14
-- G₂ ⊂ Spin(8), dim(so(8)) = 28, B = 2 × 28 = 56 → **WORKS**
-
-**Result**: Octonions are REQUIRED by genesis closure, and SU(3) follows as the stabilizer of a fixed reference direction.
-
-**Mathematical constraint** (unchanged):
-- dim(SU(3)) = n² - 1 = 8 for n = 3
-- For color to be "internal structure," the algebra's automorphism group must contain SU(3)
-- A group cannot contain a subgroup of higher dimension
-
-**Dimensional elimination**:
-- Aut(ℝ) = {1}, dim 0 → Cannot contain SU(3)
-- Aut(ℂ) = ℤ₂, discrete → Cannot contain SU(3)
-- Aut(ℍ) = SO(3), dim 3 < 8 → **Cannot contain SU(3)**
-- Aut(𝕆) = G₂, dim 14 ≥ 8 → Can and does contain SU(3)
-
-**Result**: Among normed division algebras, **only octonions** can support color symmetry — and only octonions can close the genesis function.
+See [Octonion Necessity](octonion-necessity.md) for complete proof.
 
 ### Hypothetical Alternative: Quaternionic Universe
 
@@ -357,21 +359,16 @@ STEP 5: Simultaneously (same symmetry breaking):
 
 ### Why 4D, Not 3D or 6D?
 
-**Why not ℝ (giving 3D)?**
-- ℝ has no imaginary units
-- Cannot support complex quantum mechanics
-- No phase, no interference, no superposition
+```
+ALGEBRA → SPACETIME → WHY REJECTED
+────────────────────────────────────
+ℝ  → 3D   → No imaginary units → no QM phases      ✗
+ℍ  → 6D   → Aut(ℍ)=SO(3), dim 3 < 8 → no SU(3)    ✗
+𝕆  → 10D  → Must fix reference → breaks to 4D      ✗ (pre-observation)
+ℂ  → 4D   → Isolated by fixing e₁ ⊂ 𝕆             ✓
 
-**Why not ℍ (giving 6D)?**
-- Aut(ℍ) = SO(3), dimension 3
-- Cannot contain SU(3) (dimension 8)
-- No color symmetry possible
-
-**Why not stay in 10D?**
-- BLD requires observation reference point
-- Reference = fixing imaginary octonion
-- This NECESSARILY breaks so(9,1) → so(3,1)
-- **You cannot observe in 10D without reducing to 4D**
+You cannot observe in 10D without reducing to 4D.
+```
 
 ### The Unified Symmetry Breaking
 
@@ -432,33 +429,39 @@ The triality automorphism permutes the three 8-dim representations cyclically.
 
 **The derivation**:
 
-1. **Triality permutes 8_s and 8_c (spinor representations)**
-2. **Matter (fermions) transforms as spinors** — this is required for Lorentz invariance of massive particles
-3. **Triality permutes matter representations** — by (1) and (2)
-4. **Outer automorphism preserves internal structure** — same charges, same couplings
-5. **Different representations = different masses** — the S₃ cascade structure (λ = 1/√20)
-6. **Therefore**: Triality permutes matter types with same charges but different masses = **generations**
+```
+TRIALITY → GENERATIONS
+──────────────────────
+Triality permutes 8_s, 8_c (spinor reps)
+    ↓
+Matter = spinors (Lorentz invariance)
+    ↓
+Triality permutes MATTER representations
+    ↓
+Outer automorphism → same charges, different masses
+    ↓
+= GENERATIONS (by definition)
+```
 
-**Why not colors?**
-- Colors are SU(3) indices — they label states WITHIN a single triality representation
-- Triality is an automorphism of Spin(8), not SU(3)
-- Colors transform under SU(3); generations are permuted by S₃
-- These are different operations on different structures
+**Why not colors or dimensions?**
 
-**Why not dimensions?**
-- Spatial dimensions are D-type: repetition of the same structure
-- Dimensions are rotated continuously by SO(3)
-- Triality is a discrete S₃ permutation
-- Different algebraic structure
+| | Colors | Dimensions | Generations |
+|---|--------|------------|-------------|
+| **Where** | Within ONE rep | D-type repetition | Across reps |
+| **Symmetry** | SU(3) (continuous) | SO(3) (continuous) | S₃ (discrete) |
+| **Structure** | Internal indices | Spatial repetition | Outer automorphism |
 
-**Physical consequence**: Each representation class corresponds to a **generation** of fermions:
-- 1st generation: electron, up quark, down quark
-- 2nd generation: muon, charm quark, strange quark
-- 3rd generation: tau, top quark, bottom quark
+**Physical result**:
 
-**Why exactly 3?** Because triality is an S₃ symmetry — three-fold, no more, no less. This is a mathematical fact about Spin(8), not an input.
+| Generation | Leptons | Quarks | Mass ratio |
+|------------|---------|--------|------------|
+| 1st | e | u, d | 1 |
+| 2nd | μ | c, s | λ = 1/√20 |
+| 3rd | τ | t, b | λ² |
 
-**Mass hierarchy**: The S₃ cascade structure gives each generation a different mass scale, with ratio λ = 1/√20 between adjacent generations. See [Lepton Masses](../particle-physics/lepton-masses.md).
+**Why exactly 3?** Triality is S₃ — three-fold by mathematical fact about Spin(8).
+
+See [Lepton Masses](../../particle-physics/lepton-masses.md) for mass hierarchy derivation.
 
 ---
 
@@ -591,7 +594,7 @@ Quaternions fail criterion 2. Sedenions fail criterion 1. Only octonions satisfy
 - [John Baez - Week 104](https://math.ucr.edu/home/baez/week104.html) — Division algebras and Lorentz groups
 
 ### Internal BLD References
-- [Killing Form](../lie-theory/killing-form.md) — The L=2 bidirectional observation
-- [E7 Derivation](../particle-physics/e7-derivation.md) — B=56 derivation details
-- [Irreducibility Proof](irreducibility-proof.md) — Why B, L, D are minimal
-- [Lie Correspondence](../lie-theory/lie-correspondence.md) — BLD = Lie theory
+- [Killing Form](../../lie-theory/killing-form.md) — The L=2 bidirectional observation
+- [E7 Derivation](../../particle-physics/e7-derivation.md) — B=56 derivation details
+- [Irreducibility Proof](../proofs/irreducibility-proof.md) — Why B, L, D are minimal
+- [Lie Correspondence](../../lie-theory/lie-correspondence.md) — BLD = Lie theory

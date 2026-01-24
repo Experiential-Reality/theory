@@ -51,7 +51,7 @@ This path introduces the core concepts in ~30 minutes of reading.
 
 ## Step 3: Why Exactly Three?
 
-**Read**: [Irreducibility Proof](../mathematics/foundations/irreducibility-proof.md)
+**Read**: [Irreducibility Proof](../mathematics/foundations/proofs/irreducibility-proof.md)
 
 **Key takeaway**: B, L, D are independent primitives—you can't derive one from the others. Three is the minimum.
 

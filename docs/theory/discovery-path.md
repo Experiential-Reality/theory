@@ -5,8 +5,8 @@ depends_on:
   - llm-experiment.md
   - self-reference.md
   - ../meta/discovery-method.md
-  - ../mathematics/foundations/irreducibility-proof.md
-  - ../mathematics/foundations/octonion-derivation.md
+  - ../mathematics/foundations/proofs/irreducibility-proof.md
+  - ../mathematics/foundations/derivations/octonion-derivation.md
   - ../mathematics/lie-theory/lie-correspondence.md
   - ../mathematics/particle-physics/e7-derivation.md
   - ../mathematics/cosmology/observer-correction.md
@@ -64,7 +64,7 @@ The three operations needed names:
 
 These became the **three questions** of the [discovery method](../meta/discovery-method.md). Ask them of any system—code, data, physics, language—and you find its structure.
 
-The claim crystallized: **B, L, D are irreducible.** None can be expressed in terms of the others. The [irreducibility proof](../mathematics/foundations/irreducibility-proof.md) made this rigorous.
+The claim crystallized: **B, L, D are irreducible.** None can be expressed in terms of the others. The [irreducibility proof](../mathematics/foundations/proofs/irreducibility-proof.md) made this rigorous.
 
 ---
 
@@ -96,7 +96,7 @@ Which one? The Standard Model has SU(3) color symmetry. Only octonions have an a
 
 **BLD + "matter exists" → octonions are required.**
 
-The [octonion derivation](../mathematics/foundations/octonion-derivation.md) made this precise.
+The [octonion derivation](../mathematics/foundations/derivations/octonion-derivation.md) made this precise.
 
 ---
 

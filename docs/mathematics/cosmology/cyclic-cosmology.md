@@ -279,7 +279,7 @@ Energy released = traversal work stored in cloth
 
 The matter/antimatter asymmetry is not mysterious — we ARE the +B partition, so we see "mostly matter." The -B partition sees "mostly antimatter." Neither view is privileged.
 
-See [Machine Visualization](../foundations/machine-visualization.md) for the complete model.
+See [Machine Visualization](../foundations/machine/machine-visualization.md) for the complete model.
 
 ---
 

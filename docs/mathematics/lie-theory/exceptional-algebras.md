@@ -4,7 +4,7 @@ layer: 2
 depends_on:
   - killing-form.md
   - lie-correspondence.md
-  - ../foundations/octonion-derivation.md
+  - ../foundations/derivations/octonion-derivation.md
   - ../particle-physics/e7-derivation.md
 used_by:
   - ../particle-physics/e7-derivation.md
@@ -151,7 +151,7 @@ G₂ breaks to SU(3) when fixing a reference octonion direction:
 - G₂/SU(3) = S⁶ (6-sphere of choices)
 - This gives color symmetry
 
-See [Octonion Derivation](../foundations/octonion-derivation.md) for details.
+See [Octonion Derivation](../foundations/derivations/octonion-derivation.md) for details.
 
 ---
 
@@ -439,6 +439,6 @@ E₈ = n(B + n + K)     : Complete self-observation (248 = 248, self-dual)
 
 - [Killing Form](killing-form.md) — K = 2 derivation
 - [Lie Correspondence](lie-correspondence.md) — BLD = Lie theory
-- [Octonion Derivation](../foundations/octonion-derivation.md) — Why octonions are required
+- [Octonion Derivation](../foundations/derivations/octonion-derivation.md) — Why octonions are required
 - [E₇ Derivation](../particle-physics/e7-derivation.md) — B = 56 derivation
-- [Categorical Correspondence](../foundations/categorical-correspondence.md) — BLD = category theory
+- [Categorical Correspondence](../foundations/structural/categorical-correspondence.md) — BLD = category theory

@@ -3,7 +3,7 @@ status: DERIVED
 layer: 2
 depends_on:
   - ../foundations/discovery-method.md
-  - ../foundations/energy-derivation.md
+  - ../foundations/derivations/energy-derivation.md
   - ../lie-theory/lie-correspondence.md
   - ../../examples/pi-from-bld.md
 used_by:
@@ -141,7 +141,7 @@ This is a single cycle visiting all 12 tones before returning — the defining p
 
 ### 2.1 The Consonance Formula
 
-From [Energy Derivation](../foundations/energy-derivation.md), the universal skip ratio is K/X where K = observation cost and X = structure size.
+From [Energy Derivation](../foundations/derivations/energy-derivation.md), the universal skip ratio is K/X where K = observation cost and X = structure size.
 
 For musical intervals, the "structure size" is the complexity of the frequency ratio:
 
@@ -428,7 +428,7 @@ All keys have identical interval structure
 
 ### 5.3 The Trade-off (Compensation Principle)
 
-From [Compensation Principle](../foundations/compensation-principle.md):
+From [Compensation Principle](../foundations/structural/compensation-principle.md):
 
 ```
 L compensates for B deficiency (not vice versa)
@@ -573,9 +573,9 @@ Music theory emerges from BLD structure:
 
 - [π from BLD](../../examples/pi-from-bld.md) — Closure principle, Z₁₂ as discrete SO(2)
 - [Discovery Method](../foundations/discovery-method.md) — The three questions
-- [Energy Derivation](../foundations/energy-derivation.md) — K/X framework
+- [Energy Derivation](../foundations/derivations/energy-derivation.md) — K/X framework
 - [Lie Correspondence](../lie-theory/lie-correspondence.md) — BLD = Lie theory
-- [Compensation Principle](../foundations/compensation-principle.md) — L compensates for B
+- [Compensation Principle](../foundations/structural/compensation-principle.md) — L compensates for B
 
 ### External Music Theory Sources
 

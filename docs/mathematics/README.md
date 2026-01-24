@@ -12,22 +12,22 @@ Formal proofs and the manifold structure.
 
 Core mathematical definitions and proofs.
 
-- [BLD Calculus](./foundations/bld-calculus.md) — Formal type system for B/L/D
-- [Irreducibility Proof](./foundations/irreducibility-proof.md) — B/L/D are minimal primitives
-- [Irreducibility (Categorical)](./foundations/irreducibility-categorical.md) — Type-theoretic proof
-- [Categorical Correspondence](./foundations/categorical-correspondence.md) — **BLD = Category Theory** (B=coproduct, L=morphism, D=product)
-- [Completeness Proof](./foundations/completeness-proof.md) — B/L/D are sufficient (Lie + Turing routes)
-- [Why Exactly Three](./foundations/why-exactly-three.md) — No 4th primitive exists
-- [Octonion Derivation](./foundations/octonion-derivation.md) — **n=4, SU(3), 3 generations from octonions**
-- [Octonion Necessity](./foundations/octonion-necessity.md) — Why octonions are required
-- [Compensation Principle](./foundations/compensation-principle.md) — L compensates B (not vice versa)
-- [Factorization Calculus](./foundations/factorization-calculus.md) — FACTOR operation on structures
-- [Structural Cost Conservation](./foundations/structural-cost-conservation.md) — Cost algebra
-- [Energy Derivation](./foundations/energy-derivation.md) — **Energy = accumulated K/X = observation scope**
-- [Force Structure](./foundations/force-structure.md) — **All four forces from K/X at different scales**
-- [Canonical Hardness](./foundations/canonical-hardness.md) — Finding minimal BLD is NP-complete
+- [BLD Calculus](./foundations/definitions/bld-calculus.md) — Formal type system for B/L/D
+- [Irreducibility Proof](./foundations/proofs/irreducibility-proof.md) — B/L/D are minimal primitives
+- [Irreducibility (Categorical)](./foundations/proofs/irreducibility-categorical.md) — Type-theoretic proof
+- [Categorical Correspondence](./foundations/structural/categorical-correspondence.md) — **BLD = Category Theory** (B=coproduct, L=morphism, D=product)
+- [Completeness Proof](./foundations/proofs/completeness-proof.md) — B/L/D are sufficient (Lie + Turing routes)
+- [Why Exactly Three](./foundations/proofs/why-exactly-three.md) — No 4th primitive exists
+- [Octonion Derivation](./foundations/derivations/octonion-derivation.md) — **n=4, SU(3), 3 generations from octonions**
+- [Octonion Necessity](./foundations/derivations/octonion-necessity.md) — Why octonions are required
+- [Compensation Principle](./foundations/structural/compensation-principle.md) — L compensates B (not vice versa)
+- [Factorization Calculus](./foundations/structural/factorization-calculus.md) — FACTOR operation on structures
+- [Structural Cost Conservation](./foundations/structural/structural-cost-conservation.md) — Cost algebra
+- [Energy Derivation](./foundations/derivations/energy-derivation.md) — **Energy = accumulated K/X = observation scope**
+- [Force Structure](./foundations/derivations/force-structure.md) — **All four forces from K/X at different scales**
+- [Canonical Hardness](./foundations/structural/canonical-hardness.md) — Finding minimal BLD is NP-complete
 - [Discovery Method](./foundations/discovery-method.md) — How to derive using BLD
-- [Universal Machine](./foundations/universal-machine.md) — Universe as self-computing structure
+- [Universal Machine](./foundations/machine/universal-machine.md) — Universe as self-computing structure
 
 ---
 

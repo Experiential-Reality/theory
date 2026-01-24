@@ -3,7 +3,7 @@ status: VALIDATED
 layer: 2
 depends_on:
   - ../mathematics/lie-theory/lie-correspondence.md
-  - ../mathematics/foundations/octonion-derivation.md
+  - ../mathematics/foundations/derivations/octonion-derivation.md
   - ../meta/epistemic-honesty.md
 used_by:
   - ../applications/physics/electromagnetism.md
@@ -147,7 +147,7 @@ SPACETIME
 
 ## Why n = 4? (Now Derived)
 
-From the [Octonion Derivation](../mathematics/foundations/octonion-derivation.md), **n = 4 is now derived from BLD first principles**:
+From the [Octonion Derivation](../mathematics/foundations/derivations/octonion-derivation.md), **n = 4 is now derived from BLD first principles**:
 
 1. BLD observation requires bidirectional links → division property required
 2. Hurwitz theorem: only ℝ, ℂ, ℍ, 𝕆 have division with norm
@@ -293,7 +293,7 @@ The metric tensor is the fundamental link:
 
 ### 3. Why 4D? (DERIVED)
 
-From [Octonion Derivation](../mathematics/foundations/octonion-derivation.md):
+From [Octonion Derivation](../mathematics/foundations/derivations/octonion-derivation.md):
 - n = 4 follows from BLD observation requiring octonions
 - Symmetry breaking: so(9,1) → so(3,1)
 - **This is no longer speculative — it's derived from first principles**
@@ -348,7 +348,7 @@ Spacetime curves until geometry aligns with matter distribution.
 
 **References**:
 1. Weinberg, S. *The Quantum Theory of Fields*, Vol. 1, Ch. 2 — Lorentz group structure
-2. [Octonion Derivation](../mathematics/foundations/octonion-derivation.md) — BLD → n=4
+2. [Octonion Derivation](../mathematics/foundations/derivations/octonion-derivation.md) — BLD → n=4
 3. Morris, M. & Thorne, K. (1988) "Wormholes in spacetime" — Exotic matter requirements
 
 ---
@@ -356,6 +356,6 @@ Spacetime curves until geometry aligns with matter distribution.
 ## See Also
 
 - [Glossary](../glossary.md) — Central definitions
-- [Octonion Derivation](../mathematics/foundations/octonion-derivation.md) — Why n = 4 (derived)
+- [Octonion Derivation](../mathematics/foundations/derivations/octonion-derivation.md) — Why n = 4 (derived)
 - [Lie Correspondence](../mathematics/lie-theory/lie-correspondence.md) — BLD = Lie theory
 - [Thermodynamics](../mathematics/derived/thermodynamics.md) — Another physics domain

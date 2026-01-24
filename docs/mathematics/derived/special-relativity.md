@@ -1,8 +1,8 @@
 ---
 status: DERIVED
 depends_on:
-  - ../foundations/universal-machine.md
-  - ../foundations/structural-cost-conservation.md
+  - ../foundations/machine/universal-machine.md
+  - ../foundations/structural/structural-cost-conservation.md
   - ../lie-theory/killing-form.md
   - ../quantum/planck-derivation.md
 used_by:
@@ -56,7 +56,7 @@ used_by:
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-From [Universal Machine](../foundations/universal-machine.md):
+From [Universal Machine](../foundations/machine/universal-machine.md):
 - t_P (Planck time) = one computational step
 - l_P (Planck length) = minimum traversable structure
 - c = l_P/t_P = traversal rate at depth=1 (minimum overhead)
@@ -129,7 +129,7 @@ When v → c:  All budget for motion → γ → ∞ (no budget left for observat
 
 ### Connection to C_hidden
 
-From [Structural Cost Conservation](../foundations/structural-cost-conservation.md):
+From [Structural Cost Conservation](../foundations/structural/structural-cost-conservation.md):
 
 ```
 C_total = C_visible + C_hidden   (conserved)
@@ -457,8 +457,8 @@ RELATIVITY = CONSEQUENCES OF K=2 OBSERVATION COST
 
 ## References
 
-- [Universal Machine](../foundations/universal-machine.md) — Planck scale as computational step
-- [Structural Cost Conservation](../foundations/structural-cost-conservation.md) — C_total = C_visible + C_hidden
+- [Universal Machine](../foundations/machine/universal-machine.md) — Planck scale as computational step
+- [Structural Cost Conservation](../foundations/structural/structural-cost-conservation.md) — C_total = C_visible + C_hidden
 - [Killing Form](../lie-theory/killing-form.md) — K=2 derivation
 - [Planck Derivation](../quantum/planck-derivation.md) — l_P, t_P, M_P from BLD
 - [Observer Corrections](../cosmology/observer-correction.md) — K/X framework

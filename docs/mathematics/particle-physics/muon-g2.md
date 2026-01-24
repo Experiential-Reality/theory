@@ -2,7 +2,7 @@
 status: PROVISIONAL
 layer: 2
 depends_on:
-  - ../foundations/integer-machine.md
+  - ../foundations/machine/integer-machine.md
   - ../cosmology/observer-correction.md
   - ../lie-theory/killing-form.md
   - fine-structure-consistency.md
@@ -381,7 +381,7 @@ The muon's position in generational space is **already discrete** (n²×S = 208 
 
 ### Connecting to Integer Machine
 
-From [Integer Machine](../foundations/integer-machine.md):
+From [Integer Machine](../foundations/machine/integer-machine.md):
 
 ```
 Primordial: μ/e = n²S = 208 (exact integer)
@@ -510,5 +510,5 @@ Status:    PROVISIONAL
 - [Killing Form](../lie-theory/killing-form.md) — K = 2 derivation
 - [Lepton Masses](lepton-masses.md) — n²×S generational structure
 - [Fine Structure Consistency](fine-structure-consistency.md) — Accumulated corrections, α² terms
-- [Integer Machine](../foundations/integer-machine.md) — Primordial integers, K/X corrections
+- [Integer Machine](../foundations/machine/integer-machine.md) — Primordial integers, K/X corrections
 - [Detection Structure](detection-structure.md) — T ∩ S formalism, neutrino escape

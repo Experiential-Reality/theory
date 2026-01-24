@@ -203,7 +203,7 @@ The interaction term 0.20×B×L captures synergy. When both B and L are high, th
 
 ### Compensation Principle
 
-From the [compensation principle](../mathematics/foundations/compensation-principle.md):
+From the [compensation principle](../mathematics/foundations/structural/compensation-principle.md):
 - L can compensate for B deficiency
 - B cannot compensate for L deficiency
 
@@ -233,6 +233,6 @@ The interesting region is where alignment requires work—where the traverser mu
 - [Glossary](../glossary.md) — Central definitions
 - [Thermodynamics](../mathematics/derived/thermodynamics.md) — Entropy, heat capacity, phase transitions
 - [Variational Inference](../applications/ml/variational-inference.md) — B×L synergy validation
-- [Compensation Principle](../mathematics/foundations/compensation-principle.md) — L compensating for B
+- [Compensation Principle](../mathematics/foundations/structural/compensation-principle.md) — L compensating for B
 - [Manifold Geometry](../mathematics/derived/manifold-geometry.md) — Curvature on the structural manifold
 - [Documentation Structure](../examples/docs-structure.md) — Human traverser model

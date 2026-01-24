@@ -1,7 +1,7 @@
 ---
 status: DERIVED
 depends_on:
-  - ../foundations/irreducibility-proof.md
+  - ../foundations/proofs/irreducibility-proof.md
   - ../lie-theory/lie-correspondence.md
 ---
 
@@ -53,7 +53,7 @@ These are defined by the bracket relation:
 
 ### Step 2: BLD Irreducibility `[PROVEN]`
 
-From the [Irreducibility Proof](../foundations/irreducibility-proof.md):
+From the [Irreducibility Proof](../foundations/proofs/irreducibility-proof.md):
 
 - B, L, D provide distinct capabilities
 - None is expressible in terms of the others
@@ -149,6 +149,6 @@ We're not changing physics. We're correcting how we classify gravitational effec
 - [Weyl tensor](https://en.wikipedia.org/wiki/Weyl_tensor) — 10 unconstrained components
 
 ### Internal BLD References
-- [Irreducibility Proof](../foundations/irreducibility-proof.md) — L and D independence
+- [Irreducibility Proof](../foundations/proofs/irreducibility-proof.md) — L and D independence
 - [Lie Correspondence](../lie-theory/lie-correspondence.md) — BLD = Lie theory
 - [Dark Matter Mapping](dark-matter-mapping.md) — Conjectured application

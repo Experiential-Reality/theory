@@ -1,7 +1,7 @@
 ---
 status: DERIVED
 depends_on:
-  - ../foundations/irreducibility-proof.md
+  - ../foundations/proofs/irreducibility-proof.md
   - lie-correspondence.md
 ---
 
@@ -100,7 +100,7 @@ This is not coincidence:
 | ℍ | 4 | 3 | n = 4 |
 | 𝕆 | 8 | 7 | minimum structure |
 
-The imaginary unit i = Im(ℂ) is the **unit of observation**. See [Integer Machine](../foundations/integer-machine.md#8-the-imaginary-unit-i) for the full derivation.
+The imaginary unit i = Im(ℂ) is the **unit of observation**. See [Integer Machine](../foundations/machine/integer-machine.md#8-the-imaginary-unit-i) for the full derivation.
 
 ---
 
@@ -494,7 +494,7 @@ The Killing form grounds the observer corrections in Lie theory. The "2" is not 
 - [CHSH inequality](https://en.wikipedia.org/wiki/CHSH_inequality) — Bell violation bound 2√2
 
 ### Internal BLD References
-- [Integer Machine](../foundations/integer-machine.md) — K = 2 = dim(ℂ) and i as observation unit
+- [Integer Machine](../foundations/machine/integer-machine.md) — K = 2 = dim(ℂ) and i as observation unit
 - [Structural-Observer Framework](../quantum/structural-observer-framework.md) — K=2 appears in all observer corrections
 - [Planck Derivation](../quantum/planck-derivation.md) — K=2 in first-order (79/78) and second-order corrections
 - [Observer Corrections](../cosmology/observer-correction.md) — Unified correction algebra (all involve K=2)

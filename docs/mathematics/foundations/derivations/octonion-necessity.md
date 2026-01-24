@@ -1,17 +1,24 @@
 ---
 status: DERIVED
+layer: 1
 depends_on:
   - octonion-derivation.md
-  - ../cosmology/genesis-function.md
-  - ../lie-theory/killing-form.md
-  - irreducibility-proof.md
+  - ../../lie-theory/killing-form.md
+  - ../proofs/irreducibility-proof.md
+# Note: genesis-function.md and octonion-necessity.md form a two-reference closure.
+# Octonions are necessary for genesis to close; genesis requires octonion structure.
+# Neither is "first" — they mutually determine each other.
+see_also:
+  - ../../cosmology/genesis-function.md
 used_by:
-  - ../../meta/proof-status.md
+  - ../../../meta/proof-status.md
 ---
 
 # Octonion Necessity: Why SU(3) is Derived, Not Observed
 
 **Status**: DERIVED — "SU(3)-charged matter exists" is not an empirical input but a consequence of genesis function closure.
+
+**Constants**: B=56, L=20, n=4, K=2, S=13. See [constants.md](../constants.md) for derivations.
 
 ---
 
@@ -37,6 +44,8 @@ used_by:
 (See [Hurwitz's theorem](https://en.wikipedia.org/wiki/Hurwitz%27s_theorem_(composition_algebras)) for why only these four algebras exist)
 
 **Key insight**: The previous derivation treated "SU(3) exists" as empirical. This document shows it's a consequence of genesis function closure — the universe must be complex enough to observe itself.
+
+**Constants**: B=56, L=20, n=4, K=2, S=13. See [constants.md](../constants.md) for derivations.
 
 ---
 
@@ -317,6 +326,57 @@ G₂ is the automorphism group of octonions with:
 
 No smaller algebra's automorphism group can support this structure.
 
+### 3.5 Why Triality (3-Fold Symmetry) Is Required for Closure
+
+**The stability argument**: Closure requires stable self-reference. The minimum stable self-reference requires 3 vertices.
+
+```
+2-FOLD SYMMETRY: UNSTABLE OSCILLATION
+
+    A ←───────→ B
+      (back and forth)
+
+    A observes B, B observes A, repeat.
+    This is oscillation, not closure.
+    The system bounces between states.
+    No fixed point — no stable solution.
+
+
+3-FOLD SYMMETRY: STABLE SELF-SUSTAINING CYCLE
+
+         A
+        ╱ ╲
+       ↓   ↑
+      ╱     ╲
+     B ────→ C
+
+    A → B → C → A (directed cycle)
+    Each vertex observes ONE and is observed by ONE.
+    The cycle is self-sustaining.
+    Fixed point exists: the cycle itself.
+```
+
+**Why 2 fails:**
+- Two-fold symmetry (A ↔ B) is the pendulum problem
+- Observation A→B triggers response B→A triggers response A→B...
+- Infinite regress, no stable solution
+- Like two mirrors facing each other: infinite recursion, no fixed point
+
+**Why 3 succeeds:**
+- Three-fold symmetry (A→B→C→A) is a closed loop
+- Each element has exactly one predecessor and one successor
+- No element observes itself directly (no immediate self-reference)
+- The triangle IS the fixed point: the structure sustains itself
+- This is why we have 3 generations, 3 colors, 3 spatial dimensions
+
+**Mathematical grounding:**
+- Only the D₄ Dynkin diagram (Spin(8)) has S₃ (triality) automorphism
+- This is a theorem of Lie algebra classification, not a choice
+- S₃ = 3-fold permutation symmetry = minimum stable self-reference
+- Any simpler structure (D₃ or below) lacks the automorphism for closure
+
+**The triality requirement is not arbitrary** — it's the minimum structure for stable self-observation. Two isn't enough (oscillation). Four would work but isn't forced (Occam). Three is exactly what closure requires.
+
 ---
 
 ## 4. Deriving "SU(3) Exists"
@@ -482,7 +542,7 @@ ZERO EMPIRICAL INPUTS.
 
 ### Internal BLD References
 - [Octonion Derivation](octonion-derivation.md) — Original derivation (now superseded)
-- [Genesis Function](../cosmology/genesis-function.md) — traverse(-B, B) = existence
-- [Killing Form](../lie-theory/killing-form.md) — K = 2 derivation
-- [E7 Derivation](../particle-physics/e7-derivation.md) — B = 56 from triality
-- [Irreducibility Proof](irreducibility-proof.md) — Why B, L, D are minimal
+- [Genesis Function](../../cosmology/genesis-function.md) — traverse(-B, B) = existence
+- [Killing Form](../../lie-theory/killing-form.md) — K = 2 derivation
+- [E7 Derivation](../../particle-physics/e7-derivation.md) — B = 56 from triality
+- [Irreducibility Proof](../proofs/irreducibility-proof.md) — Why B, L, D are minimal

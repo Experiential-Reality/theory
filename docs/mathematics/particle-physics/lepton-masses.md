@@ -2,7 +2,7 @@
 status: DERIVED
 layer: 2
 depends_on:
-  - ../foundations/integer-machine.md
+  - ../foundations/machine/integer-machine.md
   - e7-derivation.md
   - fine-structure-consistency.md
   - ../lie-theory/killing-form.md
@@ -11,7 +11,7 @@ depends_on:
 used_by:
   - ../../meta/proof-status.md
   - ../../analysis/error-analysis.md
-  - ../foundations/integer-machine.md
+  - ../foundations/machine/integer-machine.md
 ---
 
 # Lepton Masses from BLD Structure
@@ -52,7 +52,7 @@ used_by:
 | τ/μ | **17** = S + n | 16.817 ≈ 2πe | Continuous limit |
 | τ/e | **3519** = 207 × 17 | 3477 | Combined |
 
-See [Integer Machine](../foundations/integer-machine.md) for the complete framework.
+See [Integer Machine](../foundations/machine/integer-machine.md) for the complete framework.
 
 **Key insight**: The primordial ratios 207 and 17 are **pure integers** — what the octonionic structure computed at alignment. The transcendental 2πe emerged late: it's how continuous observation sees the discrete integer 17.
 
@@ -390,7 +390,7 @@ This confirms that lepton masses satisfy the integer formula:
 (M_P / m_primordial)² × 7 = pure integer
 ```
 
-For all particles, primordial mass ratios are BLD integer combinations. See [Integer Machine](../foundations/integer-machine.md) for the complete framework.
+For all particles, primordial mass ratios are BLD integer combinations. See [Integer Machine](../foundations/machine/integer-machine.md) for the complete framework.
 
 ---
 
@@ -681,7 +681,7 @@ Triality gives exactly 3 generations as a **triangle**:
 
 The electron is the **junction** where +B and -B meet — the ring itself. The muon counts structure created backward (-B), hence discrete mode. The tau completes the cycle forward (+B), hence rotational mode.
 
-See [Machine Visualization](../foundations/machine-visualization.md) for the full ring/cloth model.
+See [Machine Visualization](../foundations/machine/machine-visualization.md) for the full ring/cloth model.
 
 ---
 

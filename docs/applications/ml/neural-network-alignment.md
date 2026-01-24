@@ -2,7 +2,7 @@
 status: VALIDATED
 layer: application
 depends_on:
-  - ../../mathematics/foundations/compensation-principle.md
+  - ../../mathematics/foundations/structural/compensation-principle.md
   - ../../meta/discovery-method.md
 used_by:
   - neural-network-experiments.md
@@ -209,7 +209,7 @@ In the Euler unification e^(iπ) + 1 = 0:
 - VI uses the **imaginary part**: e^(iθ) (phase alignment, compact)
 - Both are aspects of the same underlying structure
 
-See [Compensation Principle](../../mathematics/foundations/compensation-principle.md) for the full theory.
+See [Compensation Principle](../../mathematics/foundations/structural/compensation-principle.md) for the full theory.
 
 ---
 
@@ -283,7 +283,7 @@ Use compensation asymmetry to find hidden structure in networks:
 - Check for hidden L: Does the data have structure that makes it "easier"? Are there correlations that provide implicit connections?
 - If no hidden L → the task genuinely has simpler structure than assumed.
 
-See [Compensation Principle](../../mathematics/foundations/compensation-principle.md) for the full derivation and more diagnostic examples.
+See [Compensation Principle](../../mathematics/foundations/structural/compensation-principle.md) for the full derivation and more diagnostic examples.
 
 ---
 

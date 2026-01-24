@@ -5,7 +5,12 @@ depends_on:
   - nothing-instability.md
   - ../quantum/chirality-cpt.md
   - ../lie-theory/killing-form.md
-  - ../foundations/octonion-necessity.md
+# Note: octonion-necessity.md references genesis-function.md, creating two-reference closure.
+# This is intentional: genesis requires octonion structure for closure, and octonion
+# structure is necessary for genesis to be self-consistent. Neither is "first" —
+# they mutually determine each other (the two-reference principle in action).
+see_also:
+  - ../foundations/derivations/octonion-necessity.md
 used_by:
   - ../../meta/proof-status.md
 ---
@@ -220,7 +225,7 @@ The deepest answer: **nothing weaves the ring — the ring IS the weaving.**
 
 The act of B partitioning into +B/-B is itself the ring. There's no separate "thing" that traverses. The distinction IS the traversal. This connects to the fundamental principle: the machine doesn't traverse structure; the machine traverses, and structure results.
 
-See [Machine Visualization](../foundations/machine-visualization.md) for the full model.
+See [Machine Visualization](../foundations/machine/machine-visualization.md) for the full model.
 
 ---
 
@@ -377,7 +382,7 @@ Existence is **logically necessary** because the alternative (nothing) is self-c
 
 The genesis function traverse(-B, B) must **close** — the mutual observation of +B and -B must be self-consistent.
 
-From [Octonion Necessity](../foundations/octonion-necessity.md):
+From [Octonion Necessity](../foundations/derivations/octonion-necessity.md):
 
 ### The Richness Requirement
 
@@ -436,7 +441,7 @@ The Big Bang is not an event. It is traverse(-B, B).
 - [Nothing Instability](nothing-instability.md) — Why B must exist
 - [Chirality and CPT](../quantum/chirality-cpt.md) — Why B partitions direction
 - [Killing Form](../lie-theory/killing-form.md) — Why L = 2 (constant)
-- [Octonion Necessity](../foundations/octonion-necessity.md) — Why closure requires octonions → SU(3)
-- [Octonion Derivation](../foundations/octonion-derivation.md) — Division algebras → n=4, SU(3), 3 gen
+- [Octonion Necessity](../foundations/derivations/octonion-necessity.md) — Why closure requires octonions → SU(3)
+- [Octonion Derivation](../foundations/derivations/octonion-derivation.md) — Division algebras → n=4, SU(3), 3 gen
 - [Cosmic Computation](../quantum/cosmic-computation.md) — How +B/-B agreement constrains evolution
 - [Cyclic Cosmology](cyclic-cosmology.md) — The eternal structure

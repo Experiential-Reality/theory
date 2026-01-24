@@ -2,16 +2,17 @@
 status: DERIVED
 layer: 1
 depends_on:
-  - bld-calculus.md
-  - irreducibility-proof.md
-  - ../lie-theory/killing-form.md
-  - force-structure.md
-  - ../particle-physics/particle-classification.md
+  - ../definitions/bld-calculus.md
+  - ../proofs/irreducibility-proof.md
+  - ../../lie-theory/killing-form.md
+  - ../derivations/force-structure.md
+  - ../../particle-physics/particle-classification.md
 used_by:
-  - ../particle-physics/higgs-couplings.md
-  - ../particle-physics/boson-masses.md
-  - ../particle-physics/neutrino-masses.md
-  - ../cosmology/observer-correction.md
+  - machine-visualization.md
+  - ../../particle-physics/higgs-couplings.md
+  - ../../particle-physics/boson-masses.md
+  - ../../particle-physics/neutrino-masses.md
+  - ../../cosmology/observer-correction.md
 ---
 
 # Detection Structure: The T ∩ S Formalism
@@ -19,6 +20,8 @@ used_by:
 **Status**: DERIVED — The structural basis for all "+" vs "−" observer corrections.
 
 **Core claim**: Whether a measurement has "+" (incomplete) or "−" (complete) corrections is determined by set intersection between traverser structure T and particle structure S.
+
+**Constants**: B=56, L=20, n=4, K=2, S=13. See [constants.md](../constants.md) for derivations.
 
 ---
 
@@ -48,11 +51,11 @@ S = particle structure (what the particle is made of)
 {D} = universal spacetime (everything propagates through D)
 ```
 
-**The traverser is BLD structure too.** From [Force Structure](force-structure.md): the detector isn't special — it's another structure that happens to be measuring.
+**The traverser is BLD structure too.** From [Force Structure](../derivations/force-structure.md): the detector isn't special — it's another structure that happens to be measuring.
 
 ### 1.2 Particle Structures
 
-From [Particle Classification](../particle-physics/particle-classification.md):
+From [Particle Classification](../../particle-physics/particle-classification.md):
 
 | Particle | Structure | Components | Key Property |
 |----------|-----------|------------|--------------|
@@ -72,7 +75,7 @@ From [Particle Classification](../particle-physics/particle-classification.md):
 | Hadronic detector | T = {L} | X = n+L = 24 | Nuclear cascades |
 | Combined | T = {B, L} | X = B+(n+L) = 80 | Full calorimetry |
 
-**Note**: The traverser T defines which BLD components the detector couples to. The X value (detection structure) comes from [Force Structure](force-structure.md):
+**Note**: The traverser T defines which BLD components the detector couples to. The X value (detection structure) comes from [Force Structure](../derivations/force-structure.md):
 - EM couples to B (boundary) → X = B = 56
 - Strong couples to geometry → X = n+L = 24 (dimensional × link)
 - Combined uses both → X = 80 = n×L (the full observer structure)
@@ -187,7 +190,7 @@ gives X = 80, the full observer geometry.
 
 ### 4.3 Why Detection Types Add
 
-From [Irreducibility Proof](irreducibility-proof.md): B, L, D are **orthogonal primitives**.
+From [Irreducibility Proof](../proofs/irreducibility-proof.md): B, L, D are **orthogonal primitives**.
 
 When multiple detection types contribute to ONE measurement:
 - EM detection covers B (boundary)
@@ -296,7 +299,7 @@ The T ∩ S rule applies to **any** measurement:
 
 ### 7.2 Connection to Observer Corrections
 
-From [Observer Corrections](../cosmology/observer-correction.md):
+From [Observer Corrections](../../cosmology/observer-correction.md):
 
 > "Observer corrections are not arbitrary — they ARE the traverser's BLD interacting with the structure's BLD."
 
@@ -342,13 +345,13 @@ There is no "view from nowhere." Every observation is T-relative.
 ## References
 
 ### Internal BLD
-- [Force Structure](force-structure.md) — Forces as K/X at different scales
-- [Killing Form](../lie-theory/killing-form.md) — Why K = 2
-- [Irreducibility Proof](irreducibility-proof.md) — Why B, L, D are orthogonal
-- [Particle Classification](../particle-physics/particle-classification.md) — Particle BLD structures
-- [Observer Corrections](../cosmology/observer-correction.md) — Two-reference framework
+- [Force Structure](../derivations/force-structure.md) — Forces as K/X at different scales
+- [Killing Form](../../lie-theory/killing-form.md) — Why K = 2
+- [Irreducibility Proof](../proofs/irreducibility-proof.md) — Why B, L, D are orthogonal
+- [Particle Classification](../../particle-physics/particle-classification.md) — Particle BLD structures
+- [Observer Corrections](../../cosmology/observer-correction.md) — Two-reference framework
 
 ### Applications
-- [Higgs Couplings](../particle-physics/higgs-couplings.md) — All κ values from T ∩ S
-- [Boson Masses](../particle-physics/boson-masses.md) — W/Z sign differences
-- [Neutrino Masses](../particle-physics/neutrino-masses.md) — Why always "+"
+- [Higgs Couplings](../../particle-physics/higgs-couplings.md) — All κ values from T ∩ S
+- [Boson Masses](../../particle-physics/boson-masses.md) — W/Z sign differences
+- [Neutrino Masses](../../particle-physics/neutrino-masses.md) — Why always "+"

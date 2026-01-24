@@ -1,11 +1,11 @@
 ---
 status: DERIVED
 depends_on:
-  - ../foundations/integer-machine.md
+  - ../foundations/machine/integer-machine.md
   - ../quantum/structural-observer-framework.md
   - ../lie-theory/killing-form.md
-  - ../foundations/irreducibility-proof.md
-  - ../foundations/detection-structure.md
+  - ../foundations/proofs/irreducibility-proof.md
+  - ../foundations/machine/detection-structure.md
 used_by:
   - ../../analysis/error-analysis.md
   - ../particle-physics/higgs-self-coupling.md
@@ -39,7 +39,7 @@ used_by:
 
 **Primordial structure is clean integers. Observation adds K/X gradients.**
 
-See [Integer Machine](../foundations/integer-machine.md) for the complete framework.
+See [Integer Machine](../foundations/machine/integer-machine.md) for the complete framework.
 
 ```
 PRIMORDIAL (octonions first): 208,  17,  56,  80,  137  [INTEGERS]
@@ -283,7 +283,7 @@ The second reference point (after B) is the **traversal itself**. Time is not a 
 
 **Forces ARE K/X at Different Scales**
 
-From [Force Structure](../foundations/force-structure.md), forces are NOT fundamentally different phenomena — they are observer corrections K/X at different X values:
+From [Force Structure](../foundations/derivations/force-structure.md), forces are NOT fundamentally different phenomena — they are observer corrections K/X at different X values:
 
 | Force | X (Structure) | K/X | What Measurement Traverses |
 |-------|---------------|-----|---------------------------|
@@ -320,7 +320,7 @@ See also: [Discovery Method](../foundations/discovery-method.md) — How K/X was
 
 ### 2.5.1 Detection Structure Formalism (T ∩ S Rule)
 
-For the complete detection structure formalism, see [Detection Structure](../foundations/detection-structure.md).
+For the complete detection structure formalism, see [Detection Structure](../foundations/machine/detection-structure.md).
 
 **Quick reference:**
 - T = traverser (detector's BLD components)
@@ -773,12 +773,12 @@ Not two different formulas — one formula, two directions.
 
 ## References
 
-- [Integer Machine](../foundations/integer-machine.md) — Core framework: bare integers + K/X corrections
+- [Integer Machine](../foundations/machine/integer-machine.md) — Core framework: bare integers + K/X corrections
 - [Special Relativity](../derived/special-relativity.md) — c, γ, E=mc² from BLD
 - [General Relativity](../derived/general-relativity.md) — Gravity as K/X
 - [Structural-Observer Framework](../quantum/structural-observer-framework.md) — Pre-observation structure
 - [Planck Derivation](../quantum/planck-derivation.md) — ℏ with observer corrections
 - [Killing Form](../lie-theory/killing-form.md) — K = 2 derivation
-- [Irreducibility Proof](../foundations/irreducibility-proof.md) — Why observers are unavoidable
+- [Irreducibility Proof](../foundations/proofs/irreducibility-proof.md) — Why observers are unavoidable
 - [Scale Derivation](scale-derivation.md) — v, c, G as unit choices
 - [E7 Derivation](../particle-physics/e7-derivation.md) — B = 56, α⁻¹ components

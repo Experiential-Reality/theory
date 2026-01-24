@@ -3,17 +3,27 @@ status: DERIVED
 layer: 1
 depends_on:
   - bld-calculus.md
-  - octonion-derivation.md
-  - ../lie-theory/killing-form.md
+  - ../derivations/octonion-derivation.md
+  - ../../lie-theory/killing-form.md
 used_by:
-  - ../cosmology/cyclic-cosmology.md
+  - ../../cosmology/cyclic-cosmology.md
 ---
 
 # The Ubit: Universal Bit of Structure
 
-## Quick Summary
+**Constants**: B=56, L=20, n=4, K=2, S=13. See [constants.md](../constants.md) for derivations.
 
-**1 ubit = 1 BL pair = minimum structure = minimum information**
+## Quick Summary (D≈7 Human Traversal)
+
+**The ubit in 7 steps:**
+
+1. **Definition** — 1 ubit = 1 BL pair = minimum structure
+2. **Components** — B (boundary) partitions, L (link) relates
+3. **Why n=4** — Spacetime dimension derived from sl(2,ℂ) ⊂ sl(2,𝕆)
+4. **Bekenstein's 4 = n** — The factor 4 in S = A/(4 l_P²) is the same derived constant
+5. **1 ubit = n Planck areas** — Creating structure requires traversing all n dimensions
+6. **Holographic principle** — Information ∝ area because structure IS surface (BL mesh)
+7. **Total ubits** — Observable universe ≈ 10¹²¹ ubits
 
 | Concept | Value | Source |
 |---------|-------|--------|
@@ -22,6 +32,8 @@ used_by:
 | Total ubits (universe) | ~10¹²¹ | Holographic bound |
 
 **Key derivation**: Bekenstein's factor of 4 in S = A/(4 l_P²) is exactly n = 4 from BLD.
+
+**Constants**: B=56, L=20, n=4, K=2, S=13. See [constants.md](../constants.md) for derivations.
 
 ---
 
@@ -61,7 +73,7 @@ Where A is horizon area and l_P is Planck length.
 
 ### The Derivation
 
-From [Octonion Derivation](octonion-derivation.md):
+From [Octonion Derivation](../derivations/octonion-derivation.md):
 
 | Claim | Status |
 |-------|--------|
@@ -248,10 +260,10 @@ Observable universe:
 
 ## References
 
-- [Octonion Derivation](octonion-derivation.md) — n = 4 derived from sl(2,ℂ) ⊂ sl(2,𝕆)
+- [Octonion Derivation](../derivations/octonion-derivation.md) — n = 4 derived from sl(2,ℂ) ⊂ sl(2,𝕆)
 - [BLD Calculus](bld-calculus.md) — B, L, D primitives
-- [Killing Form](../lie-theory/killing-form.md) — K = 2 derivation
-- [Planck Derivation](../quantum/planck-derivation.md) — Planck units from BLD
+- [Killing Form](../../lie-theory/killing-form.md) — K = 2 derivation
+- [Planck Derivation](../../quantum/planck-derivation.md) — Planck units from BLD
 
 ### External References
 

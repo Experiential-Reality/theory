@@ -1,7 +1,7 @@
 ---
 status: VALIDATED
 depends_on:
-  - ../foundations/irreducibility-proof.md
+  - ../foundations/proofs/irreducibility-proof.md
   - ../lie-theory/lie-correspondence.md
 ---
 
@@ -187,7 +187,7 @@ See [Thermodynamics from Structural Alignment](./thermodynamics.md) for the comp
 
 ### Resolved
 
-1. ~~**Irreducibility**: Can we prove B/L/D are the minimal generating set for structure description?~~ **Proved.** See [Irreducibility Proof](../foundations/irreducibility-proof.md). Type-theoretic proof shows sum, function, and product types are independent.
+1. ~~**Irreducibility**: Can we prove B/L/D are the minimal generating set for structure description?~~ **Proved.** See [Irreducibility Proof](../foundations/proofs/irreducibility-proof.md). Type-theoretic proof shows sum, function, and product types are independent.
 
 2. ~~**Thermodynamics**: Can thermodynamics be derived from structural alignment?~~ **Derived and validated.** See [Thermodynamics](./thermodynamics.md). Energy = alignment cost, entropy = log manifold volume, second law from Fokker-Planck. 10/10 empirical tests pass.
 
@@ -215,7 +215,7 @@ See [Thermodynamics from Structural Alignment](./thermodynamics.md) for the comp
 
 9. **Measure construction**: Rigorous definition of dμ for integration over full manifold
 
-10. **Category structure**: Is there a natural category where objects are structures and morphisms are alignments? (Note: BLD is a quantale-enriched category with Ω = [0,∞]. See [Categorical Correspondence](../foundations/categorical-correspondence.md).)
+10. **Category structure**: Is there a natural category where objects are structures and morphisms are alignments? (Note: BLD is a quantale-enriched category with Ω = [0,∞]. See [Categorical Correspondence](../foundations/structural/categorical-correspondence.md).)
 
 14. **Discrete structures**: Lie theory requires smooth manifolds. BLD handles discrete structures (ZIP files). Is BLD "Lie theory + discrete topology"?
 

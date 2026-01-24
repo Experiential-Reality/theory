@@ -2,20 +2,22 @@
 status: DERIVED
 layer: 1
 depends_on:
-  - bld-calculus.md
-  - irreducibility-proof.md
-  - ../lie-theory/killing-form.md
-  - ../cosmology/observer-correction.md
-  - discovery-method.md
+  - ../definitions/bld-calculus.md
+  - ../proofs/irreducibility-proof.md
+  - ../../lie-theory/killing-form.md
+  - ../../cosmology/observer-correction.md
+  - ../discovery-method.md
 used_by:
-  - ../particle-physics/quark-masses.md
-  - ../particle-physics/boson-masses.md
-  - ../derived/thermodynamics.md
+  - ../../particle-physics/quark-masses.md
+  - ../../particle-physics/boson-masses.md
+  - ../../derived/thermodynamics.md
 ---
 
 # Energy from BLD Structure
 
 **Status**: DERIVED — Energy is accumulated K/X (accumulated inverse structure), which equals observation scope.
+
+**Constants**: B=56, L=20, n=4, K=2, S=13. See [constants.md](../constants.md) for derivations.
 
 ---
 
@@ -137,7 +139,7 @@ When you accumulate enough K/X, you can **see past barriers** to new alignments:
 
 ### Step 1: Observation Has Cost
 
-From [Killing Form](../lie-theory/killing-form.md):
+From [Killing Form](../../lie-theory/killing-form.md):
 
 ```
 To observe anything:
@@ -148,7 +150,7 @@ To observe anything:
 
 ### Step 2: Cost Depends on Structure Size
 
-From [Observer Corrections](../cosmology/observer-correction.md):
+From [Observer Corrections](../../cosmology/observer-correction.md):
 
 ```
 correction = K/X
@@ -592,8 +594,8 @@ the observer doesn't need to traverse as far to see it all):
 
 ## References
 
-- [Killing Form](../lie-theory/killing-form.md) — Why K = 2
-- [Observer Corrections](../cosmology/observer-correction.md) — K/X framework
-- [Discovery Method](discovery-method.md) — How this was derived
-- [Quark Masses](../particle-physics/quark-masses.md) — Energy/scope explains top quark
-- [Thermodynamics](../derived/thermodynamics.md) — Free energy and phase transitions
+- [Killing Form](../../lie-theory/killing-form.md) — Why K = 2
+- [Observer Corrections](../../cosmology/observer-correction.md) — K/X framework
+- [Discovery Method](../discovery-method.md) — How this was derived
+- [Quark Masses](../../particle-physics/quark-masses.md) — Energy/scope explains top quark
+- [Thermodynamics](../../derived/thermodynamics.md) — Free energy and phase transitions

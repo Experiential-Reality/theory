@@ -2,13 +2,13 @@
 status: DERIVED
 depends_on:
   - special-relativity.md
-  - ../foundations/universal-machine.md
-  - ../foundations/structural-cost-conservation.md
+  - ../foundations/machine/universal-machine.md
+  - ../foundations/structural/structural-cost-conservation.md
   - ../lie-theory/killing-form.md
   - manifold-geometry.md
 used_by:
   - ../cosmology/observer-correction.md
-  - ../foundations/force-structure.md
+  - ../foundations/derivations/force-structure.md
 ---
 
 # General Relativity from BLD
@@ -57,7 +57,7 @@ used_by:
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-From [Structural Cost Conservation](../foundations/structural-cost-conservation.md):
+From [Structural Cost Conservation](../foundations/structural/structural-cost-conservation.md):
 ```
 C_total = C_visible + C_hidden   (conserved)
 
@@ -129,7 +129,7 @@ Time dilation factor = √(1 - K/X)
 
 ### Connection to Stack Depth
 
-From [Universal Machine](../foundations/universal-machine.md):
+From [Universal Machine](../foundations/machine/universal-machine.md):
 
 ```
 Near mass:
@@ -375,7 +375,7 @@ Hawking radiation (speculative):
 
 ### Gravity as K/X
 
-From [Force Structure](../foundations/force-structure.md), all forces follow K/X:
+From [Force Structure](../foundations/derivations/force-structure.md), all forces follow K/X:
 
 | Force | X | K/X | Scale |
 |-------|---|-----|-------|
@@ -507,9 +507,9 @@ GRAVITY = TRAVERSAL COST FROM MASS-INDUCED STACK DEPTH
 ## References
 
 - [Special Relativity](special-relativity.md) — SR foundations (c, γ, E=mc²)
-- [Universal Machine](../foundations/universal-machine.md) — Stack depth hypothesis
-- [Structural Cost Conservation](../foundations/structural-cost-conservation.md) — C_total = C_visible + C_hidden
+- [Universal Machine](../foundations/machine/universal-machine.md) — Stack depth hypothesis
+- [Structural Cost Conservation](../foundations/structural/structural-cost-conservation.md) — C_total = C_visible + C_hidden
 - [Killing Form](../lie-theory/killing-form.md) — K=2 derivation
 - [Manifold Geometry](manifold-geometry.md) — Metric structure, geodesics
-- [Force Structure](../foundations/force-structure.md) — K/X for all forces
+- [Force Structure](../foundations/derivations/force-structure.md) — K/X for all forces
 - [BLD Conservation](../bld-conservation.md) — Conservation laws
