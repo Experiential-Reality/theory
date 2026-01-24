@@ -401,7 +401,7 @@ The cost algebra here is compatible: C(S) = φ_T(S) for appropriate traverser T.
 
 ### 5.3 Conservation as Noether
 
-From BLD conservation ([bld-conservation.md](../bld-conservation.md)):
+From BLD conservation ([bld-conservation.md](../../bld-conservation.md)):
 
 ```
 BLD conservation ←→ Noether's theorem
@@ -479,8 +479,8 @@ Track explicitness as a code quality metric.
 
 ## See Also
 
-- [Glossary](../../glossary.md) — Central definitions
+- [Glossary](../../../glossary.md) — Central definitions
 - [Factorization Calculus](./factorization-calculus.md) — The FACTOR operation
 - [Manifold Foundations](../../derived/manifold-foundations.md) — Primitive cost formulas
-- [BLD Conservation](../bld-conservation.md) — Physical conservation laws
+- [BLD Conservation](../../bld-conservation.md) — Physical conservation laws
 - [Manifold Applications](../../derived/manifold-applications.md) — Alignment cost interpretation

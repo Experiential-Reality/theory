@@ -382,7 +382,7 @@ In BLD terms:
 
 ## See Also
 
-- [Glossary](../../glossary.md) — Central definitions
+- [Glossary](../../../glossary.md) — Central definitions
 - [Discovery Algorithm](../../derived/discovery-algorithm.md) — The algorithm being analyzed
-- [Discovery Method](../../meta/discovery-method.md) — Informal method description
+- [Discovery Method](../../../meta/discovery-method.md) — Informal method description
 - [Constructive Lie](../../lie-theory/constructive-lie.md) — Why BLD produces Lie structures

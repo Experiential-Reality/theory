@@ -419,7 +419,7 @@ Both mechanisms appear because BLD structures can be either:
 - **Closed** (periodic return) → angular compensation (π-domain)
 - **Mixed** (elements of both) → but not necessarily as complex exponential e^(a+iθ)
 
-See [π from BLD](../../examples/pi-from-bld.md), [e from BLD](../../examples/e-from-bld.md), and [Lie Correspondence](../../lie-theory/lie-correspondence.md#the-exponential-map-is-compensation).
+See [π from BLD](../../../examples/pi-from-bld.md), [e from BLD](../../../examples/e-from-bld.md), and [Lie Correspondence](../../lie-theory/lie-correspondence.md#the-exponential-map-is-compensation).
 
 ### Identifying Which Mechanism Applies
 
@@ -469,7 +469,7 @@ But π is structurally present whenever phase space has periodic dimensions (mom
 
 ## See Also
 
-- [D×L Scaling Principle](../../glossary.md#dxl-scaling) — Why D multiplies L, not B
-- [Circuits Validation](../../applications/physics/circuits.md) — 87.8% compensation via cascading
-- [Neural Network Alignment](../../applications/ml/neural-network-alignment.md) — 6.2% diagonal advantage
+- [D×L Scaling Principle](../../../glossary.md#dxl-scaling) — Why D multiplies L, not B
+- [Circuits Validation](../../../applications/physics/circuits.md) — 87.8% compensation via cascading
+- [Neural Network Alignment](../../../applications/ml/neural-network-alignment.md) — 6.2% diagonal advantage
 - [Lie Correspondence](../../lie-theory/lie-correspondence.md) — BLD = Lie theory mapping

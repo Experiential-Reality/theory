@@ -160,7 +160,7 @@ All follow the same pattern: composite → product of irreducibles.
 
 ### 2.1 Syntax
 
-Building on the BLD Calculus ([bld-calculus.md](./bld-calculus.md)), structural terms are:
+Building on the BLD Calculus ([bld-calculus.md](../definitions/bld-calculus.md)), structural terms are:
 
 ```
 s ::= b                   -- Boundary primitive (irreducible)
@@ -359,7 +359,7 @@ def process_all(users: list[User], products: list[Product]):
 3. Size is bounded below by primitive count (≥ 0)
 4. Therefore, any sequence of factorizations must terminate
 5. Terminal forms are products of irreducibles (B, L, D)
-6. By the irreducibility theorem ([irreducibility-categorical.md](./irreducibility-categorical.md)), B, L, D cannot be further decomposed
+6. By the irreducibility theorem ([irreducibility-categorical.md](../proofs/irreducibility-categorical.md)), B, L, D cannot be further decomposed
 
 ∎
 
@@ -424,7 +424,7 @@ as computational objects (same behavior), though not identical as terms.
 
 ### 6.1 BLD Calculus
 
-The RF-Calculus structural terms correspond to BLD Calculus types ([bld-calculus.md](./bld-calculus.md)):
+The RF-Calculus structural terms correspond to BLD Calculus types ([bld-calculus.md](../definitions/bld-calculus.md)):
 
 ```
 BLD Calculus types:    τ ::= 1 | τ₁+τ₂ | τ₁→τ₂ | Πₙτ
@@ -441,7 +441,7 @@ FACTOR is the **inverse of type composition** in BLD Calculus.
 
 ### 6.2 Irreducibility
 
-The termination of FACTOR depends on the irreducibility theorem ([irreducibility-categorical.md](./irreducibility-categorical.md)):
+The termination of FACTOR depends on the irreducibility theorem ([irreducibility-categorical.md](../proofs/irreducibility-categorical.md)):
 
 **Theorem**: B, L, D are mutually irreducible.
 
@@ -565,8 +565,8 @@ FACTOR(S) = D[User, User, User] × D[Product, Product]
 
 ## See Also
 
-- [Glossary](../../glossary.md) — Central definitions
-- [BLD Calculus](./bld-calculus.md) — Type system foundation
-- [Irreducibility Theorem](./irreducibility-categorical.md) — Why factorization terminates
+- [Glossary](../../../glossary.md) — Central definitions
+- [BLD Calculus](../definitions/bld-calculus.md) — Type system foundation
+- [Irreducibility Theorem](../proofs/irreducibility-categorical.md) — Why factorization terminates
 - [Lie Correspondence](../../lie-theory/lie-correspondence.md) — FACTOR = Levi decomposition
 - [Structural Cost Conservation](./structural-cost-conservation.md) — Cost algebra

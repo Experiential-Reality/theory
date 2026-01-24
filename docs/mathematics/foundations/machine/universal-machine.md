@@ -290,5 +290,5 @@ Layer 3: The universe computing itself
 - [Force Structure](../derivations/force-structure.md) — Complete force derivations
 - [Planck Derivation](../../quantum/planck-derivation.md) — M_P, l_P, t_P from BLD
 - [Structural Cost Conservation](../structural/structural-cost-conservation.md) — C_total = C_visible + C_hidden
-- [BLD Conservation](../bld-conservation.md) — BLD conservation = Noether's theorem
+- [BLD Conservation](../../bld-conservation.md) — BLD conservation = Noether's theorem
 - [Killing Form](../../lie-theory/killing-form.md) — K = 2 derivation

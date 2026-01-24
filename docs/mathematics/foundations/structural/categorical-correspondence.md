@@ -42,7 +42,7 @@ used_by:
 
 ### 1.1 Primitives
 
-The [BLD Calculus](./bld-calculus.md) defines three type constructors. These correspond exactly to categorical constructions:
+The [BLD Calculus](../definitions/bld-calculus.md) defines three type constructors. These correspond exactly to categorical constructions:
 
 | BLD Primitive | Type Constructor | Category Theory | Universal Property |
 |---------------|-----------------|-----------------|-------------------|
@@ -301,7 +301,7 @@ The function type τ₁ → τ₂ connects the colimit structure of τ₁ to the
 
 ### 7.1 The Claim
 
-From [irreducibility-proof.md](./irreducibility-proof.md):
+From [irreducibility-proof.md](../proofs/irreducibility-proof.md):
 > ∞-groupoids can be expressed as iterated D (product) structures with L (morphism) at each level
 
 ### 7.2 The Derivation
@@ -503,8 +503,8 @@ The categorical correspondence means:
 
 ## See Also
 
-- [Glossary](../../glossary.md) — Central definitions
-- [BLD Calculus](./bld-calculus.md) — The formal type system
-- [Irreducibility (Categorical)](./irreducibility-categorical.md) — Type-theoretic proof
-- [Irreducibility Proof](./irreducibility-proof.md) — Intuitive arguments
+- [Glossary](../../../glossary.md) — Central definitions
+- [BLD Calculus](../definitions/bld-calculus.md) — The formal type system
+- [Irreducibility (Categorical)](../proofs/irreducibility-categorical.md) — Type-theoretic proof
+- [Irreducibility Proof](../proofs/irreducibility-proof.md) — Intuitive arguments
 - [Lie Correspondence](../../lie-theory/lie-correspondence.md) — BLD = Lie theory
