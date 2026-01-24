@@ -1,5 +1,5 @@
 ---
-status: DERIVED
+status: PROVISIONAL
 layer: 2
 depends_on:
   - ../foundations/integer-machine.md
@@ -31,7 +31,7 @@ used_by:
 |----------|---------------|----------|-------|
 | Δa_μ | 250 × 10⁻¹¹ | 251 × 10⁻¹¹ | **0.4%** |
 
-**Status**: DERIVED — The muon g-2 anomaly is a second-order K/X traversal through (n×L)²×S, with detection correction from escaping neutrinos (T ∩ S formalism).
+**Status**: PROVISIONAL — Base formula (α² × K²/((n×L)²×S) = 256) is derived. Detection correction (76/78) gives correct result but form awaits second reference point (J-PARC).
 
 ---
 
@@ -223,8 +223,21 @@ Neutrinos have no boundary (B) — they don't couple electromagnetically. The de
 ```
 X_escaped = {L}               (neutrinos carry Link structure away)
 X = B + L = 56 + 20 = 76     (what the detector must traverse)
+```
 
-Detection correction = X/(X+K) = 76/78
+**Why X/(X+K), not (X+K)/X?**
+
+The sign rule says "+" (incomplete traversal) when something escapes. But the FORM of the correction depends on how missing information affects the measurement:
+
+| Measurement Type | Missing Info | Effect | Correction Form |
+|-----------------|--------------|--------|-----------------|
+| Mass reconstruction (W) | INFERRED from conservation | Can increase value | × (X+K)/X > 1 |
+| Precision anomaly (g-2) | LOST (carries away signal) | Reduces observable | × X/(X+K) < 1 |
+
+For g-2, the neutrinos carry away spin-correlated information. This isn't reconstructed — it's lost. The measured anomaly is therefore **smaller** than the base prediction.
+
+```
+Detection correction = X/(X+K) = 76/78 = 0.974
 ```
 
 **With detection correction:**
@@ -233,7 +246,7 @@ Detection correction = X/(X+K) = 76/78
      = 250 × 10⁻¹¹
 ```
 
-This matches the neutrino detection structure in W → ℓν decays (see [Detection Structure](detection-structure.md)).
+**Note**: This uses the same X = B + L = 76 as W → ℓν (see [Detection Structure](detection-structure.md)), but the form X/(X+K) vs (X+K)/X differs because information is lost rather than inferred.
 
 ### Result
 
@@ -388,7 +401,7 @@ The g-2 anomaly is **another manifestation** of this same gap. When measuring th
 | BNL E821 (2006) | Complete | 279 ± 76 |
 | Fermilab Run 1-3 (2023) | Complete | 249 ± 48 |
 | Combined | — | 251 ± 41 |
-| J-PARC E34 | Planned | — |
+| J-PARC E34 | Planned | — | **Key: different detection structure** |
 
 ### What Would Falsify This?
 
@@ -402,9 +415,10 @@ If the discrepancy **persists** and equals our prediction:
 
 ### Testable Predictions
 
-1. **Δa_μ = α² × K²/((n×L)² × S) × (76/78) = 250 × 10⁻¹¹** should remain valid as experimental precision improves
-2. **Electron g-2** should show no corresponding anomaly (no generational cost)
+1. **Base: α² × K²/((n×L)² × S) = 256 × 10⁻¹¹** — This is DERIVED and should hold
+2. **Electron g-2** should show no corresponding anomaly (no generational cost) — DERIVED
 3. **Tau g-2** should show a smaller anomaly (if measurable) due to its different generational mode
+4. **J-PARC** — Different experimental method will constrain the detection correction form. If J-PARC confirms ~250 with different systematics, the 76/78 form gains support. If it differs, the detection model needs refinement.
 
 ---
 
@@ -473,6 +487,12 @@ Interpretation: The anomaly is NOT new physics.
                 It's the muon's second-order geometric
                 traversal cost, with detection correction
                 for escaping neutrino structure.
+
+Status:    PROVISIONAL
+           - Base formula (256) is DERIVED
+           - Detection X = B + L = 76 is DERIVED (T ∩ S)
+           - Correction form (76/78) fits but not constrained
+           - Awaits J-PARC for second reference point
 ```
 
 ---
