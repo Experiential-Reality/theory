@@ -392,12 +392,11 @@ At E > E_transition: new alignment accessible
 
 ## Open Questions
 
+The following questions remain open for future research. See [Research Directions](../../meta/research-directions.md#foundational-energy-gaps) for detailed discussion.
+
 1. **Exact kinetic energy formula**: How does K/X accumulate with velocity?
-
 2. **Gravitational potential**: How does spacetime curvature enter the K/X sum?
-
 3. **Quantum superposition energy**: What is the energy of a superposition state?
-
 4. **Binding energy**: Negative energy = reduced observation scope?
 
 ---

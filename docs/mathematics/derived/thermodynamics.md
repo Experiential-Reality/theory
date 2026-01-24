@@ -2,6 +2,7 @@
 status: VALIDATED
 depends_on:
   - manifold-foundations.md
+  - ../foundations/energy-derivation.md
 ---
 
 # Thermodynamics from Structural Alignment

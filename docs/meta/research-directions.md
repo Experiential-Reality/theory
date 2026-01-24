@@ -281,7 +281,7 @@ The exceptional simple Lie algebras (E₆, E₇, E₈, F₄, G₂) are classifie
 
 BLD handles discrete structures (ZIP files, state machines) that Lie theory doesn't cover. Questions:
 - Is BLD strictly a superset of Lie theory?
-- What's the relationship to category theory?
+- ~~What's the relationship to category theory?~~ **RESOLVED**: See [Categorical Correspondence](../mathematics/foundations/categorical-correspondence.md) — B = Coproduct, L = Morphism, D = Product. Two-reference principle = adjunction.
 - Is there a discrete analogue of the exponential map?
 
 ### Consciousness and the Traverser
@@ -290,6 +290,20 @@ The insight "e is me" — that e characterizes the traverser/experiencer — rai
 - Is consciousness a traverser phenomenon?
 - Does the self-referential structure of e relate to self-awareness?
 - What is the BLD structure of experience?
+
+### Foundational Energy Gaps
+
+The [energy derivation](../mathematics/foundations/energy-derivation.md) establishes E = K × Σ(1/Xᵢ) as observation scope, but leaves four questions open:
+
+1. **Exact kinetic energy formula**: How does K/X accumulate with velocity? The relativistic limit should emerge but the detailed formula is not derived.
+
+2. **Gravitational potential energy**: How does spacetime curvature enter the K/X sum? The connection to general relativity's geometric structure needs formalization.
+
+3. **Quantum superposition energy**: What is the energy of a superposition state? Does superposition represent parallel K/X sums or something else?
+
+4. **Binding energy**: Negative energy = reduced observation scope? The interpretation of negative energy as "structure requiring less observation" needs rigorous derivation.
+
+These represent genuine gaps where the energy framework needs extension.
 
 ---
 

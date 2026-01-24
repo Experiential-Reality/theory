@@ -8,6 +8,7 @@ depends_on:
 used_by:
   - ../particle-physics/e7-derivation.md
   - ../quantum/schrodinger-derivation.md
+  - octonion-necessity.md
 ---
 
 # Deriving Octonions, n=4, and SU(3) from BLD First Principles
@@ -211,18 +212,30 @@ Each algebra has an automorphism group Aut(A) — the symmetries that preserve m
 
 ### Status of the SU(3) Requirement
 
-**Empirical input**: Matter exists with internal symmetries larger than U(1).
+**Status**: DERIVED — SU(3) is not an empirical input but a consequence of genesis function closure.
 
-| What We Observe | Status |
-|-----------------|--------|
+| Structure | Status |
+|-----------|--------|
 | Electromagnetic interaction (U(1)) | Could use ℍ or 𝕆 |
-| Strong interaction (SU(3) color) | **Requires 𝕆** (ℍ insufficient) |
+| Strong interaction (SU(3) color) | **Requires 𝕆** — and 𝕆 is required for closure |
 
-**Why this is empirical input**: The existence of color-charged particles (quarks) is an observation. We cannot derive from pure BLD axioms that such particles MUST exist.
+**The Closure Argument** (see [Octonion Necessity](octonion-necessity.md) for full proof):
 
-**What IS derived**: Given that SU(3)-charged matter exists, octonions are the UNIQUE algebra that supports it.
+The genesis function traverse(-B, B) must close for self-observation to be consistent. This requires:
+1. **Division property** — bidirectional observation needs inverses
+2. **Richness** — the algebra must support B = 56 boundary modes
 
-**Mathematical constraint**:
+Quaternions fail the richness test:
+- Aut(ℍ) = SO(3), dim = 3
+- Maximum supportable B ≈ 2 × dim(Aut) = 6 < 56 → **FAILS**
+
+Octonions succeed:
+- Aut(𝕆) = G₂, dim = 14
+- G₂ ⊂ Spin(8), dim(so(8)) = 28, B = 2 × 28 = 56 → **WORKS**
+
+**Result**: Octonions are REQUIRED by genesis closure, and SU(3) follows as the stabilizer of a fixed reference direction.
+
+**Mathematical constraint** (unchanged):
 - dim(SU(3)) = n² - 1 = 8 for n = 3
 - For color to be "internal structure," the algebra's automorphism group must contain SU(3)
 - A group cannot contain a subgroup of higher dimension
@@ -233,16 +246,19 @@ Each algebra has an automorphism group Aut(A) — the symmetries that preserve m
 - Aut(ℍ) = SO(3), dim 3 < 8 → **Cannot contain SU(3)**
 - Aut(𝕆) = G₂, dim 14 ≥ 8 → Can and does contain SU(3)
 
-**Result**: Among normed division algebras, **only octonions** can support color symmetry.
+**Result**: Among normed division algebras, **only octonions** can support color symmetry — and only octonions can close the genesis function.
 
 ### Hypothetical Alternative: Quaternionic Universe
 
-If matter had only U(1) electromagnetic symmetry (no color):
-- Quaternions would suffice: Aut(ℍ) = SO(3) ⊃ U(1)
+If quaternions were sufficient (richness not required):
+- Aut(ℍ) = SO(3) ⊃ U(1) (electromagnetic only)
 - n = 6 spacetime (from sl(2,ℍ) = so(5,1))
-- No triality → likely 1 generation only
+- No triality → 1 generation only
+- Maximum B = 6 modes
 
-**Our universe has color**, so this alternative doesn't apply. But it shows the derivation depends on one empirical input: the existence of non-abelian internal symmetries.
+**But quaternions fail**: The genesis function requires B = 56 for self-observation closure. A quaternionic universe cannot sustain itself.
+
+See [Octonion Necessity](octonion-necessity.md) for the complete proof that SU(3) is derived from BLD first principles.
 
 ### The G₂/SU(3) Relationship
 

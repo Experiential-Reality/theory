@@ -15,6 +15,7 @@ Core mathematical definitions and proofs.
 - [BLD Calculus](./foundations/bld-calculus.md) — Formal type system for B/L/D
 - [Irreducibility Proof](./foundations/irreducibility-proof.md) — B/L/D are minimal primitives
 - [Irreducibility (Categorical)](./foundations/irreducibility-categorical.md) — Type-theoretic proof
+- [Categorical Correspondence](./foundations/categorical-correspondence.md) — **BLD = Category Theory** (B=coproduct, L=morphism, D=product)
 - [Completeness Proof](./foundations/completeness-proof.md) — B/L/D are sufficient (Lie + Turing routes)
 - [Why Exactly Three](./foundations/why-exactly-three.md) — No 4th primitive exists
 - [Octonion Derivation](./foundations/octonion-derivation.md) — **n=4, SU(3), 3 generations from octonions**

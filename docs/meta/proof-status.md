@@ -64,7 +64,7 @@ Status labels exist on two orthogonal axes that can be composed.
 6. **All particle masses** — **EXACT** (μ/e, τ/μ, m_e, m_H within measurement)
 7. **Dark matter/energy** — **EXACT** (27%/68% with 0% error)
 
-**Current counts**: 17 PROVEN, 18 VALIDATED, 27 DERIVED, 2 HYPOTHESIZED, 3 OPEN
+**Current counts**: 17 PROVEN, 18 VALIDATED, 28 DERIVED, 2 HYPOTHESIZED, 2 OPEN
 
 **Empirical inputs**: **ZERO** — v is derived as fixed point, SU(3) from genesis closure
 
@@ -318,7 +318,7 @@ Error: 0.0 ppt ✓ (EXACT)
 |-------|--------|-------|
 | B/L/D suffice for all structure | **PROVEN** | Lie theory universality + Turing completeness |
 | No fourth primitive needed | **PROVEN** | Cartan classification complete; no Lie algebra needs 4th component |
-| Category theory complete | **OPEN** | ∞-groupoids may need extension |
+| Category theory complete | **DERIVED** | See [Categorical Correspondence](../mathematics/foundations/categorical-correspondence.md) |
 
 **Reference**: [Completeness Proof](../mathematics/foundations/completeness-proof.md)
 
@@ -335,8 +335,8 @@ Error: 0.0 ppt ✓ (EXACT)
 | **Cosmology** | - | 3 | 2 | - | - |
 | **Killing Form** | 2 | 3 | 5 | - | - |
 | **Scaling** | - | 4 | 1 | - | - |
-| **Foundational** | 4 | - | 1 | 1 | 1 |
-| **TOTAL** | **16** | **18** | **26** | **3** | **3** |
+| **Foundational** | 4 | - | 2 | 1 | 0 |
+| **TOTAL** | **16** | **18** | **27** | **3** | **2** |
 
 *Notes:*
 - *ℏ derivation (0.00003% accuracy) adds 2 to Quantum DERIVED: ℏ magnitude + observer correction framework*

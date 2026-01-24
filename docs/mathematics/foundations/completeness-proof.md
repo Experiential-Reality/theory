@@ -130,7 +130,7 @@ The type constructors {1, +, →, Πₙ} are complete for all computable types:
 - Function (→): computation/reference
 - Product (Πₙ): repetition/data structures
 
-This is a standard result in type theory (see Martin-Löf type theory, System F).
+This is a standard result in type theory (see [Martin-Löf type theory](https://en.wikipedia.org/wiki/Intuitionistic_type_theory), System F).
 
 **Step 5: Therefore**
 

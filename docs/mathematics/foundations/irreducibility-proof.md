@@ -255,7 +255,7 @@ See [Completeness Proof](completeness-proof.md) for the full derivation.
 
 1. **Lindemann-Weierstrass**: Transcendental constants (e, π) arise from BLD structure — see [Euler's Formula](../../glossary.md#euler)
 
-2. **Higher categories**: ∞-groupoids can be expressed as iterated D (product) structures with L (morphism) at each level
+2. **Higher categories**: ∞-groupoids can be expressed as iterated D (product) structures with L (morphism) at each level. See [Categorical Correspondence](./categorical-correspondence.md) for the full derivation showing Lⁿ = D × L (iterated morphisms are dimensional)
 
 3. **Quantum foundations**: The "i" is derived from octonion structure (reference point fixing isolates ℂ ⊂ 𝕆)
 

@@ -7,6 +7,7 @@ depends_on:
   - octonion-derivation.md
   - ../lie-theory/killing-form.md
   - discovery-method.md
+  - universal-machine.md
 used_by:
   - ../particle-physics/e7-derivation.md
   - ../particle-physics/fine-structure-consistency.md
