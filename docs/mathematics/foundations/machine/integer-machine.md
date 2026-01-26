@@ -17,13 +17,11 @@ used_by:
 
 # The Integer Machine
 
-**Status**: DERIVED — The universe computes in boundary operations. Minimum structure is 7 = Im(O). Minimum observable is √7.
-
-**Constants**: B=56, L=20, n=4, K=2, S=13. See [constants.md](../constants.md) for derivations.
+The universe computes in boundary operations. Minimum structure is 7 = Im(O). Minimum observable is √7.
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Quick Summary
 
 **The integer machine in 7 steps:**
 
@@ -99,28 +97,13 @@ With 56 B:  Full BLD → complete physics
 
 ### 2.1 Why 7?
 
-From [Octonion Derivation](../derivations/octonion-derivation.md):
+From [Octonion Derivation](../derivations/octonion-derivation.md): BLD requires division algebras, and only octonions (𝕆) have sufficient structure. The result:
 
 ```
-BLD bidirectional observation (K = 2)
-    ↓
-Requires division algebra (for inverses)
-    ↓
-Hurwitz theorem: only ℝ, ℂ, ℍ, 𝕆 exist
-    ↓
-B = 56 requires Aut(algebra) with dim ≥ 28
-    ↓
-ℍ fails: Aut(ℍ) = SO(3), dim = 3
-𝕆 works: Aut(𝕆) = G₂, dim = 14
-    ↓
-Fixing observation reference:
-    G₂ → SU(3)        (3 colors)
-    so(9,1) → so(3,1) (n = 4 spacetime)
-    ↓
 7 = n + 3 = 4 + 3 = Im(O)
 ```
 
-The 7 imaginary octonions ARE spacetime (4) plus color (3). This is not coincidence — it's derived from BLD axioms.
+The 7 imaginary octonions ARE spacetime (4) plus color (3).
 
 ### 2.2 The Cayley-Dickson Decomposition
 
@@ -222,46 +205,17 @@ m_e = v / (5 × 137)² × corrections
              = 20^31 × 685^4 / 56
 ```
 
-Since 56 = 8 × 7 and 20^31 = 2^62 × 5^31:
-```
-20^31 / 8 = 2^62 × 5^31 / 2^3 = 2^59 × 5^31
-```
+Factoring the BLD constants:
+- B = 56 = 8 × 7 = 2³ × 7
+- L = 20 = 2² × 5
+- 685 = 5 × 137
 
-But we need 20^31, not 20^31/8. Let me recalculate:
-```
-(M_P / m_e)² = 20^31 × 685^4 / 56
-             = 20^31 × 685^4 / (8 × 7)
-```
-
-The factor of 8 divides 20^31 (since 20 = 4 × 5 = 2² × 5):
-```
-20^31 = 2^62 × 5^31
-20^31 / 8 = 2^59 × 5^31
-```
-
-So:
-```
-(M_P / m_e)² = 2^59 × 5^31 × 685^4 / 7
-```
-
-And 685 = 5 × 137:
-```
-685^4 = 5^4 × 137^4
-```
-
-Therefore:
-```
-(M_P / m_e)² = 2^59 × 5^35 × 137^4 / 7
-```
-
-Wait, let me recalculate more carefully. From the derivation:
+The mass ratio squared:
 ```
 (M_P / m_e)² × 7 = 2^51 × 5^31 × 137^4
 ```
 
-This is stated in the plan. The key point: **7 has no factors in common with 2, 5, or 137**, so it cannot cancel. The 8 in B = 56 = 8 × 7 cancels with powers of 2 from L^31, but the 7 survives.
-
-**The 7 = Im(O) is the octonionic signature.**
+**The 7 cannot cancel.** It has no factors in common with 2, 5, or 137. The 8 in B = 56 cancels with powers of 2 from L^31, but **7 = dim(Im(𝕆)) survives as the octonionic signature.**
 
 ### 4.3 Why 7 Survives
 

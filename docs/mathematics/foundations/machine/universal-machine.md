@@ -18,11 +18,7 @@ used_by:
 
 # The Universal Machine: traverse(-B, B) as Cosmic Computation
 
-**Status**: DERIVED — The remaining ~0.002-0.02% residuals in force predictions are K/X(universe).
-
-**Core claim**: The traverse(-B, B) genesis function IS a universal computer. The Planck scale defines its computational step. Remaining measurement residuals are the universe's self-traversal cost.
-
-**Constants**: B=56, L=20, n=4, K=2, S=13. See [constants.md](../constants.md) for derivations.
+The traverse(-B, B) genesis function IS a universal computer. The Planck scale defines its computational step. The remaining ~0.002-0.02% residuals in force predictions are K/X(universe) — the universe's self-traversal cost.
 
 ---
 
@@ -228,7 +224,7 @@ The time dilation hypothesis is now rigorously derived. See:
 - [Special Relativity](../../derived/special-relativity.md) — c, γ, E=mc² from K/X
 - [General Relativity](../../derived/general-relativity.md) — Gravity as stack depth
 
-### Key Results (Previously Open, Now Derived)
+### Key Results
 
 | Question | Answer | Reference |
 |----------|--------|-----------|

@@ -19,16 +19,11 @@ used_by:
 
 # Force Structure: Deriving All Four Forces from BLD
 
-**Status**: DERIVED — All four fundamental forces derived from BLD. Residuals (< 0.02%) are K/X(universe).
+All four fundamental forces derived from BLD. Residuals (< 0.02%) are K/X(universe).
 
-**Core claim**: Forces are observer corrections at different levels of the division algebra tower. All corrections follow the universal skip ratio K/X.
-
-**Key discoveries**:
-1. Every measurement correction = K/X, where K=2 (Killing form) and X = structure traversed
-2. Remaining ~0.002-0.02% residuals are NOT errors — they are K/X(universe), the [Universal Machine](../machine/universal-machine.md)'s self-traversal cost
-3. See [Discovery Method](../discovery-method.md) for how this was found
-
-**Constants**: B=56, L=20, n=4, K=2, S=13. See [constants.md](../constants.md) for derivations.
+Forces are observer corrections at different levels of the division algebra tower. All corrections follow the universal skip ratio K/X:
+- Every measurement correction = K/X, where K=2 (Killing form) and X = structure traversed
+- Remaining ~0.002-0.02% residuals are K/X(universe), the [Universal Machine](../machine/universal-machine.md)'s self-traversal cost
 
 ---
 
@@ -590,7 +585,7 @@ correction = K/X where K = 2 (always), X = structure traversed
 
 This comes from discrete/continuous mismatch — "gears skipping teeth" between finite BLD structure and continuous observation.
 
-### 10.4 What This Means
+### 10.4 Interpretation
 
 Forces are not fundamental — they are OBSERVER CORRECTIONS at different scales. The universe has one structure (BLD), and we see different "forces" depending on how we measure.
 

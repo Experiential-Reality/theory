@@ -14,13 +14,11 @@ used_by:
 
 # Refactoring as Factorization (RF-Calculus)
 
-> **Status**: Derived — Formal definition of the FACTOR operation.
-
-This document formalizes **refactoring as factorization**: the decomposition of composite structures into smaller structures, terminating at irreducible BLD primitives.
+Refactoring is factorization: decomposition of composite structures into smaller structures, terminating at irreducible BLD primitives.
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Quick Summary
 
 **RF-Calculus in 7 steps:**
 
@@ -42,62 +40,9 @@ This document formalizes **refactoring as factorization**: the decomposition of 
 
 ---
 
-## BLD Structure Diagram
+## The Three Factorization Rules
 
 ```
-┌───────────────────────────────────────────────────────────────────────────┐
-│                        FACTOR OPERATION                                   │
-│                   S → S₁ × S₂ × ... × Sₙ                                  │
-│               (Decomposition to BLD primitives)                           │
-└───────────────────────────────────────────────────────────────────────────┘
-                                │
-                                ▼
-┌───────────────────────────────────────────────────────────────────────────┐
-│                      COMPOSITE STRUCTURE S                                │
-│                                                                           │
-│   ┌─────────────────────────────────────────────────────────────────┐     │
-│   │  S = implicit B + implicit L + implicit D                       │     │
-│   │      (scattered)   (cyclic)     (heterogeneous)                 │     │
-│   └─────────────────────────────────────────────────────────────────┘     │
-│                                │                                          │
-│            ┌───────────────────┼───────────────────┐                      │
-│            ▼                   ▼                   ▼                      │
-│     ┌───────────┐       ┌───────────┐       ┌───────────┐                 │
-│     │ B-FACTOR  │       │ L-FACTOR  │       │ D-FACTOR  │                 │
-│     │           │       │           │       │           │                 │
-│     │ Scattered │       │ Cyclic    │       │ Heterogen │                 │
-│     │ conditons │       │ A→B→C→A   │       │ mixed loop│                 │
-│     │    ↓      │       │    ↓      │       │    ↓      │                 │
-│     │ Sum type  │       │ Shared +  │       │ Separate  │                 │
-│     │ (explicit │       │ DAG (no   │       │ homogeneous                 │
-│     │ boundary) │       │ cycles)   │       │ dimensions│                 │
-│     └───────────┘       └───────────┘       └───────────┘                 │
-│            │                   │                   │                      │
-│            └───────────────────┼───────────────────┘                      │
-│                                ▼                                          │
-└───────────────────────────────────────────────────────────────────────────┘
-                                │
-                                ▼
-┌───────────────────────────────────────────────────────────────────────────┐
-│                        NORMAL FORM S*                                     │
-│                                                                           │
-│        S* = B₁ × B₂ × ... × L₁ × L₂ × ... × D₁ × D₂ × ...               │
-│                                                                           │
-│        ┌─────────┐  ┌─────────┐  ┌─────────┐                              │
-│        │    B    │  │    L    │  │    D    │                              │
-│        │ boundary│  │  links  │  │dimension│                              │
-│        │ (sum    │  │ (func-  │  │(product │                              │
-│        │ types)  │  │  tions) │  │ types)  │                              │
-│        └─────────┘  └─────────┘  └─────────┘                              │
-│             │            │            │                                   │
-│             └──────┬─────┴────────────┘                                   │
-│                    │                                                      │
-│                    ▼                                                      │
-│           eval(S) = eval(S*)  (ISOMORPHISM)                               │
-└───────────────────────────────────────────────────────────────────────────┘
-
-THREE FACTORIZATION RULES:
-
 ┌─────────────────────┐  ┌─────────────────────┐  ┌─────────────────────┐
 │      B-FACTOR       │  │      L-FACTOR       │  │      D-FACTOR       │
 │                     │  │                     │  │                     │
@@ -110,9 +55,6 @@ THREE FACTORIZATION RULES:
 │                     │  │  B → S   (DAG)      │  │   dimensions)       │
 │                     │  │  C → S              │  │                     │
 └─────────────────────┘  └─────────────────────┘  └─────────────────────┘
-     Reveals:                 Reveals:                 Reveals:
-     Hidden B                 Hidden L                 Hidden D
-     (partition)              (connectivity)           (extent)
 ```
 
 ---
@@ -255,7 +197,7 @@ def process(event):
     handlers[event.type](event)     # B × L: boundary + dispatch
 ```
 
-**What happened**: The scattered conditionals WERE a boundary. FACTOR extracted it as explicit structure (the sum type `EventType`).
+The scattered conditionals are an implicit boundary. FACTOR extracts it as an explicit sum type.
 
 ### 3.2 L-Factor (Link Decomposition)
 
@@ -303,7 +245,7 @@ class C:
     def __init__(self, shared): self.shared = shared
 ```
 
-**What happened**: The cycle WAS hiding shared state. FACTOR extracted it, leaving a DAG (all arrows point to `SharedState`).
+The cycle encodes shared state. FACTOR extracts it, leaving a DAG.
 
 ### 3.3 D-Factor (Dimension Decomposition)
 
@@ -342,7 +284,7 @@ def process_all(users: list[User], products: list[Product]):
         process_product(product)
 ```
 
-**What happened**: The mixed loop WAS two dimensions. FACTOR separated them into explicit homogeneous dimensions.
+The mixed loop contains two implicit dimensions. FACTOR separates them into explicit homogeneous products.
 
 ---
 

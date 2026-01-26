@@ -11,13 +11,13 @@ used_by:
 
 # Completeness Proof: B/L/D Are Sufficient
 
-**Status**: PROVEN — B, L, D are not only irreducible but also COMPLETE for describing all observable structure.
+B, L, D are not only irreducible but also COMPLETE for describing all observable structure.
 
-**Relationship to [Why Exactly Three](why-exactly-three.md)**: This document proves B, L, D are sufficient (via Lie theory + Turing universality). Why-exactly-three addresses the complementary question: why no fourth primitive exists.
+See [Why Exactly Three](why-exactly-three.md) for why no fourth primitive exists.
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Quick Summary
 
 **Completeness in 7 steps:**
 
@@ -37,7 +37,7 @@ used_by:
 
 **Theorem**: For all observable physical and information systems, the three primitives B (Boundary), L (Link), D (Dimension) are sufficient.
 
-**Previously**: This was conjectured. Now it is proven via two independent routes.
+**Status**: PROVEN via two independent routes.
 
 ---
 
@@ -228,16 +228,6 @@ Case 3: S is observable but neither symmetric nor computable.
 3. **BLD is universal**: The same three primitives apply across all domains.
 
 **Together**: BLD is the unique minimal complete basis for structural description.
-
----
-
-## Status Update
-
-| Claim | Previous Status | New Status |
-|-------|-----------------|------------|
-| B, L, D are irreducible | PROVEN | PROVEN |
-| B, L, D are complete | CONJECTURED | **PROVEN** |
-| No fourth primitive exists | CONJECTURED | **PROVEN** |
 
 ---
 

@@ -16,13 +16,11 @@ used_by:
 
 # Octonion Necessity: Why SU(3) is Derived, Not Observed
 
-**Status**: DERIVED — "SU(3)-charged matter exists" is not an empirical input but a consequence of genesis function closure.
-
-**Constants**: B=56, L=20, n=4, K=2, S=13. See [constants.md](../constants.md) for derivations.
+"SU(3)-charged matter exists" is not an empirical input but a consequence of genesis function closure.
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Quick Summary
 
 **Why octonions (and hence SU(3)) are necessary in 7 steps:**
 
@@ -44,8 +42,6 @@ used_by:
 (See [Hurwitz's theorem](https://en.wikipedia.org/wiki/Hurwitz%27s_theorem_(composition_algebras)) for why only these four algebras exist)
 
 **Key insight**: The previous derivation treated "SU(3) exists" as empirical. This document shows it's a consequence of genesis function closure — the universe must be complex enough to observe itself.
-
-**Constants**: B=56, L=20, n=4, K=2, S=13. See [constants.md](../constants.md) for derivations.
 
 ---
 
@@ -173,37 +169,7 @@ THE ELIMINATION CASCADE:
 
 ---
 
-## 1. The Previous Gap
-
-### 1.1 What Was Assumed
-
-From [octonion-derivation.md](octonion-derivation.md), the derivation chain was:
-
-```
-BLD requires division property → Hurwitz → ℝ, ℂ, ℍ, 𝕆
-    ↓
-"SU(3)-charged matter exists" [EMPIRICAL INPUT]
-    ↓
-Octonions selected (only one with Aut ⊃ SU(3))
-```
-
-([Hurwitz's theorem](https://en.wikipedia.org/wiki/Hurwitz%27s_theorem_(composition_algebras)): the only normed division algebras over ℝ are ℝ, ℂ, ℍ, 𝕆)
-
-The claim "SU(3)-charged matter exists" was listed as the one empirical input that selects octonions over quaternions.
-
-### 1.2 The Gap
-
-This left a logical hole: Why must SU(3) structure exist at all? Could a simpler universe (quaternionic, with only U(1) electromagnetic force) be self-consistent?
-
-### 1.3 What This Document Proves
-
-The genesis function traverse(-B, B) requires **enough richness** to close self-consistently. Quaternions lack this richness. Octonions are the minimal algebra that works.
-
-**SU(3) is not an observation — it's a closure requirement.**
-
----
-
-## 2. The Richness Argument
+## 1. The Richness Argument
 
 ### 2.1 What "Richness" Means
 
@@ -273,7 +239,7 @@ B = 2 × 28 = 56 ✓
 
 ---
 
-## 3. The Self-Observation Closure Proof
+## 2. The Self-Observation Closure Proof
 
 ### 3.1 The Setup
 
@@ -379,7 +345,7 @@ No smaller algebra's automorphism group can support this structure.
 
 ---
 
-## 4. Deriving "SU(3) Exists"
+## 3. Deriving "SU(3) Exists"
 
 ### 4.1 The Derivation Chain
 
@@ -401,26 +367,11 @@ Fixing imaginary unit: G₂ → SU(3) (stabilizer)
 SU(3) EXISTS (derived, not observed)
 ```
 
-### 4.2 What Changed
-
-| Claim | Old Status | New Status |
-|-------|------------|------------|
-| "SU(3) matter exists" | EMPIRICAL INPUT | **DERIVED** from closure |
-| Octonions required | Derived (given SU(3)) | **DERIVED** from closure |
-| n = 4 | DERIVED | DERIVED (unchanged) |
-| 3 generations | DERIVED | DERIVED (unchanged) |
-
-### 4.3 The Empirical Input Is Now Zero
-
-**Old**: One empirical input (SU(3) exists) + BLD axioms → physics
-
-**New**: Zero empirical inputs + BLD axioms → physics (including SU(3))
-
-The universe must have SU(3) color symmetry because simpler structures cannot close the genesis function.
+SU(3) color symmetry is required because simpler structures cannot close the genesis function.
 
 ---
 
-## 5. The Hypothetical Quaternionic Universe
+## 4. The Hypothetical Quaternionic Universe
 
 ### 5.1 What It Would Look Like
 
@@ -460,7 +411,7 @@ But such a universe **cannot observe itself** because it lacks the richness to c
 
 ---
 
-## 6. Connection to Other Results
+## 5. Connection to Other Results
 
 ### 6.1 This Explains Why n = 4
 
@@ -496,7 +447,7 @@ B = 56 is not a fit parameter — it's forced by genesis closure.
 
 ---
 
-## 7. Summary
+## 6. Summary
 
 ```
 THE COMPLETE DERIVATION:
@@ -526,8 +477,6 @@ Simultaneously: so(9,1) → so(3,1), n = 4
 Simultaneously: Spin(8) triality → 3 generations
     ↓
 ALL PHYSICS DERIVED FROM GENESIS CLOSURE
-
-ZERO EMPIRICAL INPUTS.
 ```
 
 ---

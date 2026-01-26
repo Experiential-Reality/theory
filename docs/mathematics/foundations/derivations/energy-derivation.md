@@ -15,13 +15,11 @@ used_by:
 
 # Energy from BLD Structure
 
-**Status**: DERIVED — Energy is accumulated K/X (accumulated inverse structure), which equals observation scope.
-
-**Constants**: B=56, L=20, n=4, K=2, S=13. See [constants.md](../constants.md) for derivations.
+Energy is accumulated K/X (accumulated inverse structure), which equals observation scope.
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Quick Summary
 
 **Energy from BLD in 7 steps:**
 

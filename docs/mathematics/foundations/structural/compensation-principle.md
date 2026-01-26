@@ -18,13 +18,11 @@ used_by:
 
 # The Compensation Principle
 
-> **Status**: PROVEN
-
 L can compensate for B deficiency, but B cannot compensate for L deficiency.
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Quick Summary
 
 **Compensation principle in 7 steps:**
 
@@ -42,8 +40,6 @@ L can compensate for B deficiency, but B cannot compensate for L deficiency.
 | B → L | No | D×B stays local, can't reach distant info |
 
 **Validated**: 87.8% error reduction via 5-stage cascade in circuits.
-
-This asymmetry is not empirical accident. **BLD predicts itself.**
 
 ---
 

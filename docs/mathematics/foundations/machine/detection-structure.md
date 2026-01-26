@@ -17,15 +17,11 @@ used_by:
 
 # Detection Structure: The T ∩ S Formalism
 
-**Status**: DERIVED — The structural basis for all "+" vs "−" observer corrections.
-
-**Core claim**: Whether a measurement has "+" (incomplete) or "−" (complete) corrections is determined by set intersection between traverser structure T and particle structure S.
-
-**Constants**: B=56, L=20, n=4, K=2, S=13. See [constants.md](../constants.md) for derivations.
+Whether a measurement has "+" (incomplete) or "−" (complete) corrections is determined by set intersection between traverser structure T and particle structure S.
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Quick Summary
 
 **Detection structure in 7 steps:**
 

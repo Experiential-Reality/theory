@@ -15,11 +15,7 @@ used_by:
 
 # The Discovery Method in Mathematical Physics
 
-**Status**: DERIVED — Application of the BLD discovery method to fundamental physics.
-
-**Core claim**: When applied to physics, the discovery method reveals that observation costs follow a universal pattern: K/X (the skip ratio).
-
-**Constants**: B=56, L=20, n=4, K=2, S=13. See [constants.md](constants.md) for derivations.
+When applied to physics, the discovery method reveals that observation costs follow a universal pattern: K/X (the skip ratio).
 
 ---
 

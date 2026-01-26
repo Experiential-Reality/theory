@@ -27,7 +27,7 @@ This is a fair question. The irreducibility proof shows that B, L, D are **indep
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Quick Summary
 
 **Why exactly three in 7 steps:**
 

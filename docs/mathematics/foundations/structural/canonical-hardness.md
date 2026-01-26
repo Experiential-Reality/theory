@@ -10,13 +10,11 @@ used_by:
 
 # Hardness of Canonical BLD: Formal Proof
 
-> **Status**: Validated
-
-This document proves that computing the canonical (minimal) BLD representation is NP-complete via reduction from the Minimum Grammar Problem.
+Computing the canonical (minimal) BLD representation is NP-complete via reduction from the Minimum Grammar Problem.
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Quick Summary
 
 **NP-completeness proof in 7 steps:**
 

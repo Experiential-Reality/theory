@@ -18,13 +18,11 @@ used_by:
 
 # BLD Constants
 
-**Status**: DERIVED — All constants derived from BLD axioms and genesis closure.
-
-This file is the **authoritative source** for BLD numerical constants. Other files reference this rather than redefining.
+All constants derived from BLD axioms and genesis closure. This file is the authoritative source — other files reference this rather than redefining.
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Quick Summary
 
 **The 5 core constants:**
 
@@ -87,19 +85,6 @@ L = n²(n²-1)/12 = 20 (Riemann tensor)
     ↓
 S = (B - n)/n = 13
 ```
-
----
-
-## Usage in Other Files
-
-When using these constants, include:
-
-```markdown
-## Constants
-B=56, L=20, n=4, K=2, S=13. See [constants.md](constants.md) for derivations.
-```
-
-This preserves local context while avoiding redundant full definitions.
 
 ---
 

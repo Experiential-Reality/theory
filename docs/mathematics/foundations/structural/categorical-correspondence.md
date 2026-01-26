@@ -12,11 +12,11 @@ used_by:
 
 # BLD = Category Theory: The Categorical Correspondence
 
-**Status**: DERIVED — The type-theoretic proof already establishes the categorical structure.
+The type-theoretic proof already establishes the categorical structure.
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Quick Summary
 
 **BLD = Category Theory in 7 steps:**
 
@@ -431,7 +431,7 @@ This is why BLD naturally captures observer effects — truth is not absolute bu
 | Identity is free | Identity has cost (self-observation) |
 | Adjunctions exact | Adjunctions have residue |
 
-### 9.2 What This Means
+### 9.2 Physical Interpretation
 
 BLD is not just category theory — it's **category theory with observation cost**.
 

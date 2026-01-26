@@ -15,7 +15,7 @@ used_by:
 
 # The Ring and Cloth Model
 
-## Quick Summary (D≈7 Human Traversal)
+## Quick Summary
 
 **Ring/Cloth model in 7 steps:**
 

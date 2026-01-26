@@ -8,7 +8,7 @@
 
 ---
 
-## Core Terms (D≈7)
+## Core Terms
 
 | Term | Meaning | Value |
 |------|---------|-------|

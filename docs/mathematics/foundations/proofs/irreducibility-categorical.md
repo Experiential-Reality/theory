@@ -10,13 +10,11 @@ used_by:
 
 # B/L/D Irreducibility Theorem (Categorical)
 
-**Status**: PROVEN — Formal categorical proof of B/L/D irreducibility.
-
-**Relationship to [irreducibility-proof.md](irreducibility-proof.md)**: This is the formal/rigorous version. That file provides intuitive arguments; this file provides the type-theoretic proof using the [BLD Calculus](../definitions/bld-calculus.md).
+Formal categorical proof of B/L/D irreducibility using the [BLD Calculus](../definitions/bld-calculus.md). See [irreducibility-proof.md](irreducibility-proof.md) for intuitive arguments.
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Quick Summary
 
 **Irreducibility theorem in 7 steps:**
 
@@ -348,23 +346,14 @@ The type-theoretic proof validates the operational intuition: these three capabi
 
 ## 8. What This Proof Achieves
 
-### 8.1 Compared to Previous Attempts
-
-| Aspect | Previous (Categorical) | Current (Type-Theoretic) |
-|--------|----------------------|--------------------------|
-| "Expressible" | Undefined | Formal encoding/decoding |
-| Impossibility | By example | By contradiction from lemmas |
-| Foundation | Category theory (misapplied) | Type theory (standard techniques) |
-| Rigor | Intuitive | Formal |
-
-### 8.2 What's Proven
+### 8.1 What's Proven
 
 1. **Irreducibility**: Each primitive captures a unique capability
 2. **Minimality**: Removing any primitive loses expressiveness
 3. **Independence**: No primitive can simulate another
 4. **Universality**: Any system with these capabilities uses these primitives
 
-### 8.3 Remaining Gap
+### 8.2 Remaining Gap
 
 The proofs above are rigorous but paper-based. Full machine verification (Coq/Agda/Lean) would provide the strongest guarantee.
 

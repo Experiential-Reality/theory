@@ -13,11 +13,11 @@ used_by:
 
 # Proof of B/L/D Irreducibility
 
-**Status**: PROVEN — Type-theoretic proof that B, L, D cannot express each other.
+Type-theoretic proof that B, L, D cannot express each other.
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Quick Summary
 
 **B/L/D irreducibility in 7 steps:**
 
@@ -234,8 +234,6 @@ The following domains are **provably within BLD scope**:
 
 ### Completeness: PROVEN
 
-**Status update**: Completeness is now **PROVEN**, not conjectured.
-
 See [Completeness Proof](completeness-proof.md) for the full derivation.
 
 **Summary of proof**:
@@ -250,14 +248,6 @@ See [Completeness Proof](completeness-proof.md) for the full derivation.
 **What would falsify this**:
 - A structural phenomenon requiring a "fourth primitive" not expressible in B, L, D
 - No such phenomenon has been found
-
-**Previous concerns addressed**:
-
-1. **Lindemann-Weierstrass**: Transcendental constants (e, π) arise from BLD structure — see [Euler's Formula](../../../glossary.md#euler)
-
-2. **Higher categories**: ∞-groupoids can be expressed as iterated D (product) structures with L (morphism) at each level. See [Categorical Correspondence](../structural/categorical-correspondence.md) for the full derivation showing Lⁿ = D × L (iterated morphisms are dimensional)
-
-3. **Quantum foundations**: The "i" is derived from octonion structure (reference point fixing isolates ℂ ⊂ 𝕆)
 
 ### The Euler Connection (Heuristic)
 
@@ -342,34 +332,10 @@ The irreducibility of B/L/D is thus a reflection of the mathematical structure o
 
 ---
 
-## Rigor Gaps (Addressed)
-
-The gaps identified below have been addressed in the [type-theoretic proof](./irreducibility-categorical.md).
-
-| Gap | Resolution |
-|-----|------------|
-| No formal language | [BLD Calculus](../definitions/bld-calculus.md) with syntax, typing rules, semantics |
-| "Expressible" undefined | Formal encoding/decoding with round-trip property |
-| Arguments intuitive | Proofs by contradiction from cardinality lemmas |
-| Specific examples only | Impossibility theorems for all encodings |
-
----
-
 ## See Also
 
 - [Glossary](../../../glossary.md) — Central definitions
 - [BLD Calculus](../definitions/bld-calculus.md) — Formal type system for B/L/D
-- [Irreducibility Theorem](./irreducibility-categorical.md) — Rigorous type-theoretic proof
+- [Irreducibility Theorem (Categorical)](./irreducibility-categorical.md) — Formal type-theoretic proof
 - [Lie Correspondence](../../lie-theory/lie-correspondence.md) — Why exactly three primitives (Lie theory)
 - [Structural Language](../../../theory/structural-language.md) — Full primitive specification
-
-### What Was Needed → What Was Done
-
-| Requirement | Implementation |
-|-------------|----------------|
-| Formal language | BLD Calculus: types `1 \| τ+τ \| τ→τ \| Πₙτ` |
-| Define sublanguages | LD (no sums), BD (no functions), BL (no products) |
-| Cardinality analysis | LD-types have cardinality 1; BD has no application |
-| Impossibility proofs | Each theorem proves no encoding can exist |
-
-See [irreducibility-categorical.md](./irreducibility-categorical.md) for the complete type-theoretic proof.

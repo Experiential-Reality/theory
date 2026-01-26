@@ -15,13 +15,11 @@ used_by:
 
 # Structural Cost Conservation
 
-> **Status**: Derived — Cost is conserved under factorization.
-
-This document proves that **structural cost is conserved** during refactoring (factorization). Factorization reveals hidden cost — it doesn't reduce total cost.
+Structural cost is conserved during refactoring (factorization). Factorization reveals hidden cost — it doesn't reduce total cost.
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Quick Summary
 
 **Cost conservation in 7 steps:**
 
@@ -44,94 +42,15 @@ This document proves that **structural cost is conserved** during refactoring (f
 
 ---
 
-## BLD Cost Flow Diagram
+## Primitive Cost Formulas
 
-```
-┌───────────────────────────────────────────────────────────────────────────┐
-│                    COST CONSERVATION UNDER FACTORIZATION                  │
-│                                                                           │
-│                      C_total(S) = C_total(FACTOR(S))                      │
-└───────────────────────────────────────────────────────────────────────────┘
+| Primitive | Formula | Meaning |
+|-----------|---------|---------|
+| C(B) | ½log(1+d²_Mahal) | Partition cost: how different are cases? |
+| C(L) | -½ln(1-ρ²) | Connection cost: how correlated are components? |
+| C(D) | n × C(element) | Repetition cost: how many instances? |
 
-                         BEFORE FACTORIZATION
-┌───────────────────────────────────────────────────────────────────────────┐
-│                           STRUCTURE S                                     │
-│                                                                           │
-│     ┌─────────────────────────┐  ┌─────────────────────────┐              │
-│     │      C_visible          │  │       C_hidden          │              │
-│     │    (explicit BLD)       │  │    (implicit BLD)       │              │
-│     │                         │  │                         │              │
-│     │  ████████               │  │  ████████████████████   │              │
-│     │  (small)                │  │  (large)                │              │
-│     └─────────────────────────┘  └─────────────────────────┘              │
-│                                                                           │
-│     Explicitness = C_visible/C_total ≈ 0.25                               │
-│                                                                           │
-│     C_total = ██████████████████████████████████ (CONSERVED)              │
-└───────────────────────────────────────────────────────────────────────────┘
-                                    │
-                              FACTOR │
-                                    ▼
-                          AFTER FACTORIZATION
-┌───────────────────────────────────────────────────────────────────────────┐
-│                           STRUCTURE S*                                    │
-│                                                                           │
-│     ┌─────────────────────────┐  ┌─────────────────────────┐              │
-│     │      C_visible          │  │       C_hidden          │              │
-│     │    (explicit BLD)       │  │    (implicit BLD)       │              │
-│     │                         │  │                         │              │
-│     │  ████████████████████   │  │  ████                   │              │
-│     │  (large)                │  │  (small)                │              │
-│     └─────────────────────────┘  └─────────────────────────┘              │
-│                                                                           │
-│     Explicitness = C_visible/C_total ≈ 0.85                               │
-│                                                                           │
-│     C_total = ██████████████████████████████████ (SAME!)                  │
-└───────────────────────────────────────────────────────────────────────────┘
-
-COST PRIMITIVE BREAKDOWN:
-
-┌───────────────────┐  ┌───────────────────┐  ┌───────────────────┐
-│    C(B)           │  │    C(L)           │  │    C(D)           │
-│    Boundary       │  │    Link           │  │    Dimension      │
-│                   │  │                   │  │                   │
-│ ½log(1+d²_Mahal)  │  │ -½ln(1-ρ²)        │  │ n × C(element)    │
-│                   │  │                   │  │                   │
-│ Partition cost:   │  │ Connection cost:  │  │ Repetition cost:  │
-│ How different     │  │ How correlated    │  │ How many          │
-│ are cases?        │  │ are components?   │  │ instances?        │
-└───────────────────┘  └───────────────────┘  └───────────────────┘
-         │                     │                     │
-         └─────────────────────┼─────────────────────┘
-                               │
-                               ▼
-                    C_total = C(B) + C(L) + C(D)
-                    (for fully factored structure)
-
-FACTORIZATION REVEALS HIDDEN COST:
-
-  Implicit                    Explicit
-  ┌─────────────────┐        ┌─────────────────┐
-  │ scattered if    │   B    │ Sum type        │
-  │ statements      │ ────→  │ (EventType)     │
-  │                 │        │                 │
-  │ C_hidden: high  │        │ C_visible: same │
-  └─────────────────┘        └─────────────────┘
-
-  ┌─────────────────┐        ┌─────────────────┐
-  │ cyclic deps     │   L    │ Shared state +  │
-  │ A→B→C→A         │ ────→  │ DAG             │
-  │                 │        │                 │
-  │ C_hidden: high  │        │ C_visible: same │
-  └─────────────────┘        └─────────────────┘
-
-  ┌─────────────────┐        ┌─────────────────┐
-  │ mixed loop      │   D    │ Separate        │
-  │ (types tangled) │ ────→  │ homogeneous     │
-  │                 │        │ loops           │
-  │ C_hidden: high  │        │ C_visible: same │
-  └─────────────────┘        └─────────────────┘
-```
+**Conservation**: C_total = C(B) + C(L) + C(D) is conserved under FACTOR.
 
 ---
 

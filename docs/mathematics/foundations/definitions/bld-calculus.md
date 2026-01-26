@@ -11,11 +11,11 @@ used_by:
 
 # The BLD Calculus
 
-**Status**: PROVEN — Foundational type system with exactly three constructors.
+Foundational type system with exactly three constructors.
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Quick Summary
 
 **BLD Calculus in 7 steps:**
 

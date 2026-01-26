@@ -13,9 +13,7 @@ used_by:
 
 # Deriving Octonions, n=4, and SU(3) from BLD First Principles
 
-**Status**: PROVEN — The octonion structure, spacetime dimension n=4, and color symmetry SU(3) are all derived from BLD axioms, not assumed as inputs.
-
-**Constants**: B=56, L=20, n=4, K=2, S=13. See [constants.md](../constants.md) for derivations.
+The octonion structure, spacetime dimension n=4, and color symmetry SU(3) are all derived from BLD axioms, not assumed as inputs.
 
 ---
 
@@ -48,18 +46,15 @@ UNIFIED SYMMETRY BREAKING:
     └── ℂ ⊂ 𝕆 isolated → complex quantum mechanics
 ```
 
-**What this achieves:**
-
-| Claim | Previous Status | New Status |
-|-------|-----------------|------------|
-| Octonions required | Assumed | **PROVEN** |
-| n = 4 | **OBSERVED** | **DERIVED** |
-| SU(3) color | **OBSERVED** | **DERIVED** |
-| 3 generations | DERIVED | **DERIVED** (complete foundation) |
+**What this derives:**
+- Octonions required (proven from division + SU(3) containment)
+- n = 4 (from sl(2,ℂ) ⊂ sl(2,𝕆) reference fixing)
+- SU(3) color (from G₂ stabilizer)
+- 3 generations (from Spin(8) triality uniqueness)
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Quick Summary
 
 **The derivation in 7 steps:**
 
@@ -79,7 +74,7 @@ UNIFIED SYMMETRY BREAKING:
 
 ### Why Observation Has Multiplicative Structure `[DERIVED]`
 
-**Gap closure**: This section derives that observation must have the algebraic structure of multiplication. Previously this was asserted; now it is derived from BLD axioms.
+Observation has the algebraic structure of multiplication, derived from BLD axioms.
 
 **Starting point**: L (Link) connects two structures A and B.
 
@@ -407,7 +402,7 @@ Octonions are 8-dimensional. The rotation group on 8D is SO(8), with double cove
 
 The triality automorphism permutes the three 8-dim representations cyclically.
 
-**Gap closure**: This section derives that triality MUST correspond to particle generations, not just CAN correspond.
+Triality MUST correspond to particle generations, not just CAN correspond.
 
 #### Why triality = generations (not something else)
 
@@ -568,14 +563,14 @@ Quaternions fail criterion 2. Sedenions fail criterion 1. Only octonions satisfy
 
 ## Summary Table
 
-| Derived Quantity | Previous Status | New Status | Derivation |
-|------------------|-----------------|------------|------------|
-| Octonions required | Assumed | **PROVEN** | Division + SU(3) containment |
-| n = 4 | OBSERVED | **DERIVED** | sl(2,ℂ) ⊂ sl(2,𝕆) from reference fixing |
-| SU(3) color | OBSERVED | **DERIVED** | G₂ stabilizer of reference point |
-| 3 generations | DERIVED (weak) | **DERIVED** (strong) | Spin(8) triality uniqueness |
-| B = 56 | DERIVED | **DERIVED** | 2 × dim(so(8)) = 2 × 28 |
-| α⁻¹ = 137.035999177 | DERIVED | **DERIVED** | n×L + B + 1 + K/B + spatial − e²×120/(119×(n×L×B)²) (0.0 ppt) |
+| Derived Quantity | Derivation |
+|------------------|------------|
+| Octonions required | Division property + SU(3) containment |
+| n = 4 | sl(2,ℂ) ⊂ sl(2,𝕆) from reference fixing |
+| SU(3) color | G₂ stabilizer of reference point |
+| 3 generations | Spin(8) triality uniqueness |
+| B = 56 | 2 × dim(so(8)) = 2 × 28 |
+| α⁻¹ = 137.035999177 | n×L + B + 1 + K/B + spatial − e²×120/(119×(n×L×B)²) (0.0 ppt) |
 
 **The complete Standard Model structure in 4D spacetime is derived from BLD first principles.**
 

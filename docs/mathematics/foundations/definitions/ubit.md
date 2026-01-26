@@ -11,9 +11,7 @@ used_by:
 
 # The Ubit: Universal Bit of Structure
 
-**Constants**: B=56, L=20, n=4, K=2, S=13. See [constants.md](../constants.md) for derivations.
-
-## Quick Summary (D≈7 Human Traversal)
+## Quick Summary
 
 **The ubit in 7 steps:**
 
@@ -32,8 +30,6 @@ used_by:
 | Total ubits (universe) | ~10¹²¹ | Holographic bound |
 
 **Key derivation**: Bekenstein's factor of 4 in S = A/(4 l_P²) is exactly n = 4 from BLD.
-
-**Constants**: B=56, L=20, n=4, K=2, S=13. See [constants.md](../constants.md) for derivations.
 
 ---
 
@@ -73,25 +69,7 @@ Where A is horizon area and l_P is Planck length.
 
 ### The Derivation
 
-From [Octonion Derivation](../derivations/octonion-derivation.md):
-
-| Claim | Status |
-|-------|--------|
-| n = 4 | **DERIVED** from sl(2,ℂ) ⊂ sl(2,𝕆) |
-
-The spacetime dimension n = 4 is not observed — it is derived from the octonion necessity:
-
-```
-traverse(-B, B) must close
-    ↓
-Closure requires B = 56 modes
-    ↓
-B = 56 requires Aut(𝕆) = G₂
-    ↓
-Reference fixing: G₂ → SU(3)
-    ↓
-Simultaneously: so(9,1) → so(3,1) gives n = 4
-```
+From [Octonion Derivation](../derivations/octonion-derivation.md): n = 4 is derived from sl(2,ℂ) ⊂ sl(2,𝕆) reference fixing. The spacetime dimension is not observed — it follows from BLD closure requirements.
 
 **Therefore**: Bekenstein's 4 and BLD's n are the same derived constant.
 
@@ -167,7 +145,7 @@ ubits = A / (n l_P²)
 
 This matches the holographic bound: the observable universe contains ~10¹²¹ bits of information.
 
-### What This Means
+### Interpretation
 
 ```
 10¹²¹ ubits = 10¹²¹ BL pairs = total structure of observable universe

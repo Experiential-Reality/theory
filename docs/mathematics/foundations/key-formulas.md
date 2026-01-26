@@ -15,11 +15,11 @@ used_by:
 
 # Key BLD Formulas
 
-**Status**: DERIVED — Central reference for all major formulas. Sources linked for each.
+Central reference for all major formulas.
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Quick Summary
 
 **The 7 core formulas:**
 
