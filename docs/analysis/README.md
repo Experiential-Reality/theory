@@ -15,8 +15,6 @@ Documentation analysis and consistency checking.
 |------|-------------|
 | [math-verification-report.md](math-verification-report.md) | External source verification of all math claims |
 | [error-analysis.md](error-analysis.md) | Analysis of BLD errors vs experimental uncertainty |
-| [theory-consistency-report.md](theory-consistency-report.md) | Consistency analysis of BLD claims |
-| [dependency-graph.md](dependency-graph.md) | File dependency visualization |
 
 ## Purpose
 

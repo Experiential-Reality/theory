@@ -6,8 +6,6 @@ depends_on:
   - ../../mathematics/lie-theory/lie-correspondence.md
   - ../ml/variational-inference.md
 used_by:
-  - ../../analysis/theory-consistency-report.md
-  - ../../analysis/dependency-graph.md
   - ../../mathematics/lie-theory/killing-form.md
   - ../../mathematics/lie-theory/lie-correspondence.md
   - ../../mathematics/README.md

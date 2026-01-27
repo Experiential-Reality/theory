@@ -459,7 +459,8 @@ All citations use GitHub-flavored markdown inline links:
 
 ## References
 
-- [Reference Scale Derivation](../mathematics/cosmology/reference-scale-derivation.md) — **NEW**: v as fixed point of self-observation
+- [Research Directions](research-directions.md) — Open problems and future work
+- [Reference Scale Derivation](../mathematics/cosmology/reference-scale-derivation.md) — v as fixed point of self-observation
 - [Octonion Necessity](../mathematics/foundations/derivations/octonion-necessity.md) — **NEW**: Why SU(3) is derived (not observed)
 - [Scale Derivation](../mathematics/cosmology/scale-derivation.md) — v, c, G derivation (now complete)
 - [Structural-Observer Framework](../mathematics/quantum/structural-observer-framework.md) — Unified theory of pre-observation structure and observer corrections
