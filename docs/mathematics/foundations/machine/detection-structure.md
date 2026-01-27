@@ -17,25 +17,24 @@ used_by:
 
 # Detection Structure: The T ∩ S Formalism
 
-Whether a measurement has "+" (incomplete) or "−" (complete) corrections is determined by set intersection between traverser structure T and particle structure S.
+## Abstract
 
----
+We formalize the detection process using set intersection between traverser structure T and particle structure S. A particle is detected if and only if T ∩ S ≠ ∅ (the detector couples to at least one component of the particle). When T ∩ S = ∅, the particle escapes and contributes its structure (minus universal spacetime D) to the escaped portion. The sign of K/X corrections is determined by detection completeness: "+" for incomplete detection (something escapes), "−" for complete detection (everything observed). This formalism explains why neutrinos escape weak measurements (W decay), why jets are fully detected (strong coupling), and provides a universal framework for all measurements.
 
-## Quick Summary
+## 1. Introduction
 
-**Detection structure in 7 steps:**
+Force structure derivations (see [force-structure.md](../derivations/force-structure.md)) use "+" and "−" signs for K/X corrections. This document formalizes when each sign applies using the T ∩ S detection formalism.
 
-1. **T = traverser** — What the detector couples to (its BLD components)
-2. **S = particle** — What the particle is made of (its BLD components)
-3. **Detection rule** — Particle detected iff T ∩ S ≠ ∅
-4. **Escaped structure** — If T ∩ S = ∅, particle escapes; contributes S − {D}
-5. **Detection X** — X = X_traverser + X_escaped (from force physics)
-6. **Sign rule** — "+" if something escapes, "−" if everything detected
-7. **Universal** — Applies to ALL measurements, not just particle physics
+**Main Claim.** Detection is set intersection. The sign of K/X corrections is determined by whether all particle structure couples to the traverser.
 
----
+**Key Results:**
+- Detection rule: particle detected iff T ∩ S ≠ ∅
+- Sign rule: "+" for incomplete (escapes), "−" for complete (all detected)
+- Universal application to all measurements
 
-## 1. Definitions
+**Outline.** Section 2 presents definitions. Section 3 derives the detection rule. Section 4 explains sign conventions. Section 5 shows applications.
+
+## 2. Definitions
 
 ### 1.1 Traverser and Particle Structures
 

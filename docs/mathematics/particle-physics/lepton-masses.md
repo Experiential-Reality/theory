@@ -25,7 +25,7 @@ used_by:
 3. **Muon** — μ/e = (n²S-1) × corrections × (1+e²(S+1)/((n×L)²B²S²)) = 206.7682826 (**exact**)
 4. **Tau** — τ/μ = 2πe × (207/208) × (79/80) × (1042/1040) = 16.817 (**exact**)
 5. **Euler duality** — Muon uses e (discrete), Tau uses π (rotational) from e^(iπ)+1=0
-6. **Skip ratio** — All corrections are K/X × direction (same formula everywhere)
+6. **Observation cost** — All corrections are K/X × direction (same formula everywhere)
 7. **No fourth generation** — Structure complete; adding Gen 4 would change α
 
 | Particle | Formula | Predicted | Observed | Error | Meas. Prec. |
@@ -275,7 +275,7 @@ The machine traverses:
 - Third-order: n×L×B² = 250880
 - Fourth-order: e² × (S+1) / ((n×L)² × B² × S²) — universal machine
 
-The first three are **skip ratio K/X** at different scales. The fourth is the **universal machine** contribution: the discrete→continuous traversal cost (e²) applied to generation structure (S). This parallels the e² term in α⁻¹, but with S factors because μ/e is a generation ratio.
+The first three are **observation cost K/X** at different scales. The fourth is the **universal machine** contribution: the discrete→continuous traversal cost (e²) applied to generation structure (S). This parallels the e² term in α⁻¹, but with S factors because μ/e is a generation ratio.
 
 **Why "−" signs?** The muon is the **result** of generation traversal — you're observing it from the "after" side. Traversal is complete, so direction is backward (−1). This contrasts with the W boson, which **mediates** transitions and has "+" signs because traversal is in progress. See [Observer Corrections: Traversal Costs](../cosmology/observer-correction.md#25-observer-corrections-are-traversal-costs) and [Boson Masses: W/Muon Mirror](boson-masses.md#consistency-with-lepton-masses).
 

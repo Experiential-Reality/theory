@@ -42,7 +42,7 @@ used_by:
 | b | m_c × (3 + K/7) | 4173 MeV | 4180 MeV | **0.2%** |
 | t | v/√K × (1 - K/n²S) | 172.4 GeV | 172.69 GeV | **0.17%** |
 
-**All corrections follow the universal skip ratio K/X.**
+**All corrections follow the observation cost K/X.**
 
 ---
 

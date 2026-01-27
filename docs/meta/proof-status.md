@@ -107,7 +107,7 @@ Status labels exist on two orthogonal axes that can be composed.
 | Machine = any computing structure | **PROVEN** | All valid BLD structures compute | Mathematical |
 | Structure = what's being measured | **PROVEN** | Target of observation | Mathematical |
 | Solution = where both agree | **PROVEN** | Fixed-point or agreement | Mathematical |
-| Skip ratio = K/X × direction | **PROVEN** | Universal across all domains | Empirical + Mathematical |
+| Observation cost = K/X × direction | **PROVEN** | Universal across all domains | Empirical + Mathematical |
 | Temporal = Traversal (L) | **PROVEN** | Time is link, not dimension | Mathematical |
 
 **The Principle**:
@@ -119,7 +119,7 @@ Every measurement requires:
 Both touch the same problem → solution emerges
 ```
 
-**Universal Skip Ratio**: All corrections are K/X × direction
+**Observation Cost**: All corrections are K/X × direction
 - K = 2 (Killing form) for bidirectional, 1 for unidirectional
 - X = structure being traversed (B, n×L, n²S, etc.)
 - Direction = +1 (forward) or −1 (reverse)

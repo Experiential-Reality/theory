@@ -455,7 +455,7 @@ X_Z = B = 56      (all products detected)
 
 ### Why m_H Uses 1/B But κ Uses 2/B
 
-From [Observer Corrections](../cosmology/observer-correction.md) skip ratio table:
+From [Observer Corrections](../cosmology/observer-correction.md) observation cost table:
 
 | Measurement | K | Type |
 |-------------|---|------|
@@ -542,7 +542,7 @@ The apparent κ > 1 values are not:
 
 They ARE:
 - The detector's BLD interacting with the signal's BLD
-- Universal skip ratio K/X at the detection scale
+- Observation cost K/X at the detection scale
 - Same phenomenon as α⁻¹ = 137.036 vs 137
 
 ### Why This Matters

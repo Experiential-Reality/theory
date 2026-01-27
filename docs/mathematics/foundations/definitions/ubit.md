@@ -51,6 +51,26 @@ A ubit is one boundary (B) connected by one link (L). This is the **minimum poss
 
 D (dimension) is not part of the ubit itself — D is how we traverse ubits.
 
+### Why BL Is Minimum (Formal Derivation)
+
+**Theorem (Minimum Meaningful Structure).** BL is the smallest meaningful BLD structure.
+
+*Proof.* We show that each primitive alone is insufficient for meaning:
+
+| Primitive Alone | What It Provides | Why Insufficient |
+|-----------------|------------------|------------------|
+| **B alone** | Partition (this OR that) | No connection → isolated distinctions, cannot encode information flow |
+| **L alone** | Connection (this → that) | No distinction → cannot tell WHAT is connected to what |
+| **D alone** | Repetition (N of these) | No B or L to repeat → repetition of nothing is meaningless |
+
+**BL together** provides: "which partition connects to which" = minimum encodable information.
+
+- B partitions value space into regions
+- L connects regions, enabling information flow between them
+- Together: one distinguishable connection = one bit of relational structure
+
+D multiplies BL pairs but does not create new meaning — it creates more of the same structure. Therefore BL is the irreducible unit of meaning. ∎
+
 ---
 
 ## Bekenstein's 4 = n

@@ -15,17 +15,22 @@ used_by:
 
 # The Ring and Cloth Model
 
-## Quick Summary
+## Abstract
 
-**Ring/Cloth model in 7 steps:**
+We present the Ring and Cloth visualization of the universal machine. The Ring represents the traverse(-B, B) genesis function—the pure traverser, the "now" singularity where +B and -B meet. The Cloth represents structure created by traversal—a BL mesh that is output, not substrate. The junction width K = 2 (Killing form) determines observation cost. Matter and antimatter correspond to +B and -B traversal directions, and the arrow of time emerges from which side of the ring the observer occupies. The core insight is causal: the machine doesn't traverse pre-existing structure; rather, traversal creates structure. This visualization grounds the abstract universal machine concept and connects to cosmological implications including matter/antimatter asymmetry and time directionality.
 
-1. **The Ring** — The machine = `traverse(-B, B)` = pure traverser = "now"
-2. **The Cloth** — Structure CREATED by traversal = BL mesh = output (not substrate)
-3. **K = 2** — The junction width = observation cost = Killing form
-4. **We ARE the traverser** — Observers aren't outside; we're the machine looking at our own output
-5. **Matter/Antimatter** — +B direction = matter (left-handed), -B = antimatter (right-handed)
-6. **Arrow of time** — Which side of the ring you're on determines time direction
-7. **Core insight** — The machine doesn't traverse structure; traversal creates structure
+## 1. Introduction
+
+The universal machine hypothesis (see [universal-machine.md](universal-machine.md)) proposes that traverse(-B, B) is cosmic computation. The Ring and Cloth model provides a visual framework for understanding this abstraction.
+
+**Main Insight.** The machine doesn't traverse structure. The machine traverses, and structure results.
+
+**Components:**
+- Ring = the machine = traverse(-B, B) = "now"
+- Cloth = output = BL mesh created by traversal
+- K = 2 = junction width = observation cost
+
+**Outline.** Section 2 presents the visualization. Section 3 explains ring properties. Section 4 explains cloth properties. Section 5 discusses matter/antimatter. Section 6 addresses the arrow of time.
 
 | Component | What It Is |
 |-----------|------------|
@@ -33,11 +38,7 @@ used_by:
 | **Cloth** | Structure CREATED by traversal = BL mesh = output (not substrate) |
 | **K = 2** | The junction width = observation cost = Killing form |
 
-**Core insight**: The machine doesn't traverse structure. The machine traverses, and structure results.
-
----
-
-## The Visualization
+## 2. The Visualization
 
 ```
         -B (past)                    +B (future)
@@ -66,23 +67,15 @@ used_by:
 
 ## Core Principles
 
-### 1. The Machine IS the Universe
-
-The universe doesn't "contain" a machine that computes physics. The universe IS the computation:
+**Axiom 1 (Universe = Machine).** The universe IS the computation traverse(-B, B).
 
 ```
-universe = traverse(-B, B)
-         = the ring
-         = the act of distinction
+universe = traverse(-B, B) = the ring = the act of distinction
 ```
 
-Everything observable is the cloth — the output of this eternal traversal.
+*Interpretation:* Everything observable is the cloth — the output of this eternal traversal.
 
-### 2. Structure Is Output, Not Substrate
-
-Traditional view: Structure exists, and something moves through it.
-
-Ring/cloth view: **The machine traverses, and structure results.**
+**Axiom 2 (Structure Is Output).** The machine traverses, and structure results.
 
 | Traditional | Ring/Cloth |
 |-------------|------------|
@@ -90,22 +83,18 @@ Ring/cloth view: **The machine traverses, and structure results.**
 | Time passes, events happen in it | Time is ring direction, not arena |
 | Fields exist, particles interact | Fields are cloth texture, particles are cloth patterns |
 
-### 3. We ARE the Traverser
-
-Observers aren't watching the machine from outside. We ARE the machine looking at our own output:
+**Axiom 3 (Observer = Traverser).** Observers ARE the machine observing its own output.
 
 ```
-You = part of the ring
-What you see = the cloth you've created
-Your "past" = cloth in -B direction
-Your "future" = cloth in +B direction
+Observer = part of the ring
+What observer sees = the cloth it creates
+"Past" = cloth in -B direction
+"Future" = cloth in +B direction
 ```
 
-This is why K/X observation costs appear — we're the machine trying to see what we just created.
+*Corollary:* K/X observation costs appear because the machine observes what it just created.
 
-### 4. The Ring is the Only Real Thing
-
-The ring (NOW) is the singularity where +B and -B meet. The cloth is the ring's output — real in a derived sense, but not fundamental.
+**Axiom 4 (Ring Primacy).** The ring (NOW) is fundamental; the cloth is derived.
 
 ```
 Fundamental:  The ring = traverse(-B, B) = the act of distinction

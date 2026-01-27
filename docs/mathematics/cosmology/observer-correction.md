@@ -26,7 +26,7 @@ used_by:
 1. **Two references required**: Machine (observer/computer) + Structure (what's measured)
 2. **All valid structures compute**: The machine IS a BLD structure
 3. **Both touch same problem**: Machine and structure reference the same quantity
-4. **Universal skip ratio**: Cost = K/X × direction (same ratio everywhere)
+4. **Observation cost**: Cost = K/X × direction (same formula everywhere)
 5. **Temporal = Traversal**: Time is L (the link), spatial is D (n-1 = 3 dimensions)
 6. **Direction matters**: Forward (+) or reverse (−) traversal
 7. **Solution emerges**: Where machine and structure agree — often a fixed point
@@ -112,14 +112,14 @@ When both references touch the same problem:
 
 ---
 
-## 2. The Universal Skip Ratio
+## 2. The Observation Cost
 
-### 2.1 One Formula, One Ratio
+### 2.1 One Formula
 
 All corrections reduce to:
 
 ```
-skip = (K/X) × direction
+cost = (K/X) × direction
 ```
 
 Where:
@@ -127,46 +127,45 @@ Where:
 - **X** = structure being traversed
 - **direction** = +1 (forward) or −1 (reverse)
 
-### 2.2 Why "Skip"?
+### 2.2 How X Is Computed (T ∩ S Formalism)
 
-The discrete/continuous mismatch — "gears skipping teeth":
-- Discrete structure (B) has finite modes (teeth)
-- Continuous observation (π) expects smooth traversal
-- They don't perfectly mesh → skip 1 tooth per rotation
-- The skip ratio is always K/X
+X is not a fitting parameter — it's computed from the T ∩ S detection formalism (see [Detection Structure](../foundations/machine/detection-structure.md)):
 
 ```
-THE GEARS METAPHOR: Discrete Structure vs Continuous Observation
+T ∩ S DETECTION FORMALISM
 
-DISCRETE STRUCTURE (B)              CONTINUOUS OBSERVATION (π)
-┌─────────────────────────┐         ┌─────────────────────────┐
-│                         │         │                         │
-│    ▄█▀▀▀▀█▄             │         │      ╭──────────╮       │
-│   █▀      ▀█            │         │     ╱            ╲      │
-│  █   B=56   █           │         │    ╱   smooth     ╲     │
-│  █  teeth   █           │         │   ╱    rotation    ╲    │
-│  ▀█▄      ▄█▀           │         │   │      (π)      │     │
-│    ▀█▄▄▄▄█▀             │         │   │               │     │
-│                         │         │    ╲             ╱      │
-│   (discrete modes)      │         │     ╲           ╱       │
-│                         │         │      ╰─────────╯        │
-└─────────────────────────┘         └─────────────────────────┘
-           │                                    │
-           └─────────────┬──────────────────────┘
-                         │
-                         ▼
-              MESHING: GEARS DON'T ALIGN PERFECTLY
+1. IDENTIFY traverser T (what the detector couples to)
+   - EM detector: T = {B} (couples to boundaries)
+   - Hadronic detector: T = {L} (couples to geometry)
 
-    Discrete:  | 1 | 2 | 3 | 4 | 5 | 6 | ... | 56 |   (B teeth)
-               ↓   ↓   ↓   ↓   ↓   ↓         ↓
-    Continuous: ──●──●──●──●──●──●─────●────  (smooth traversal)
-                   ↑
-                   └── SKIP: After 56 teeth, observation expects
-                       smooth continuation but finds gap
+2. IDENTIFY particle structures S (from particle classification)
+   - Photon: S_γ = {B}
+   - Lepton: S_ℓ = {B, L, D}
+   - Neutrino: S_ν = {L, D} (no B — escapes EM!)
 
-    Skip per rotation = K/B = 2/56 ≈ 0.0357
+3. DETECTION: particle i detected iff T ∩ Sᵢ ≠ ∅
 
-WHY K = 2 (KILLING FORM)?
+4. COMPUTE X:
+   X = X_traverser + X_escaped
+
+   where X values come from force physics:
+   - EM couples to B → X_traverser = B = 56
+   - Strong couples to geometry → X_traverser = n+L = 24
+   - Escaped structure adds to X (dilutes correction)
+
+5. SIGN from detection completeness:
+   "+" if something escapes (T ∩ S = ∅ for some particle)
+   "−" if everything detected (T ∩ S ≠ ∅ for all)
+```
+
+**Example: W → ℓν**
+- T = {B} (EM detector)
+- T ∩ S_ℓ = {B} ≠ ∅ → lepton DETECTED
+- T ∩ S_ν = ∅ → neutrino ESCAPES
+- X = X_traverser + X_escaped = B + L = 56 + 20 = 76
+- Correction = +K/X = +2/76 (positive because neutrino escaped)
+
+**WHY K = 2 (KILLING FORM)?**
 
     Bidirectional observation:
     ┌──────────────────────────────────────────────────┐
@@ -180,11 +179,11 @@ WHY K = 2 (KILLING FORM)?
     │                                                  │
     └──────────────────────────────────────────────────┘
 
-THE UNIVERSAL SKIP RATIO:
+THE OBSERVATION COST:
 
     ┌───────────────────────────────────────────────────────────┐
     │                                                           │
-    │    skip = K / X                                           │
+    │    cost = K / X                                           │
     │                                                           │
     │    where:                                                 │
     │      K = 2 (bidirectional) or 1 (unidirectional)         │
@@ -331,7 +330,7 @@ For the complete detection structure formalism, see [Detection Structure](../fou
 
 This formalism reproduces all the "+" vs "−" assignments in the framework.
 
-### 2.6 The Skip Ratio Table
+### 2.6 The Observation Cost Table
 
 | Measurement | X (structure) | K | Direction | K/X | Result |
 |-------------|---------------|---|-----------|-----|--------|
@@ -414,6 +413,21 @@ The accumulated correction IS K/X at the full structural level:
 - ratio = 120/119 (how much structure is accessible vs total)
 
 This unifies all corrections under K/X — from simple boundary terms (+K/B) to the accumulated discrete→continuous mismatch.
+
+#### The Universal (Structure+1)/Structure Pattern
+
+The ratio 120/119 follows a pattern that appears throughout BLD:
+
+| Quantity | Ratio | Structure | +1 Meaning |
+|----------|-------|-----------|------------|
+| α⁻¹ accumulated | 120/119 | 2B+n+K+1 = 119 | observation act |
+| Gravity | 79/78 | n×L−K = 78 | observer in geometry |
+| μ/e base | 208/207 | n²S = 208 | generation position |
+| Cabibbo | (S+1)/S = 14/13 | S = 13 | structure + observer |
+
+**Theorem (Observer Ratio).** All observer corrections include a factor (X+1)/X or X/(X+1), where X is the structure being traversed and +1 is the observer's irreducible contribution.
+
+This is NOT coincidence. The observer ADDS to structure when measuring it. The correction captures this addition.
 
 ### 3.2 Muon/Electron Ratio (μ/e) — EXACT (0.5 ppb)
 
@@ -709,17 +723,16 @@ The two-reference principle is fundamental to BLD:
 
 This isn't a special rule — it's how BLD methodology works. You can't solve a problem with one reference. Two references that touch the same problem give the unique solution.
 
-### 8.2 Skip = Discrete/Continuous Mismatch
+### 8.2 Observation Cost = K/X
 
-The skip ratio K/X comes from:
-- **Discrete**: B modes, n²S positions, finite structure
-- **Continuous**: π rotation, smooth traversal
-- **Mismatch**: Gears skipping teeth
+The correction K/X comes from:
+- **K = 2**: Bidirectional observation cost (Killing form) — see [killing-form.md](../lie-theory/killing-form.md)
+- **X**: Detection structure (computed via T ∩ S formalism) — see [detection-structure.md](../foundations/machine/detection-structure.md)
 
-Euler's identity e^(iπ) + 1 = 0 encodes this:
-- e (discrete accumulation) and π (continuous rotation) don't perfectly mesh
-- The mismatch is 1 tooth per structure = 1/X
-- Bidirectional observation doubles it: K/X = 2/X
+Euler's identity e^(iπ) + 1 = 0 unifies the two compensation mechanisms:
+- e governs discrete accumulation (traverser constant)
+- π governs continuous closure (structure constant)
+- Together they span all observation modes
 
 ### 8.2.1 e = The Self-Referential Limit
 

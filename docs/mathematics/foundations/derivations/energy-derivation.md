@@ -15,31 +15,25 @@ used_by:
 
 # Energy from BLD Structure
 
-Energy is accumulated K/X (accumulated inverse structure), which equals observation scope.
+## Abstract
 
----
+We derive the concept of energy from BLD structural principles. Energy is identified as accumulated observation cost: E = K × Σ(1/Xᵢ), where K = 2 (Killing form) and Xᵢ are the structures traversed. This formula unifies rest mass energy (structural position), kinetic energy (motion through structure), potential energy (position in boundary field), and thermal energy (active observation modes). The key insight is that energy equals observation scope—more energy means access to finer structure and the ability to traverse barriers. We show that E = mc², E = hf, and thermodynamic free energy F = U - TS all emerge from the BLD framework, providing a structural interpretation of phase transitions and running couplings.
 
-## Quick Summary
+## 1. Introduction
 
-**Energy from BLD in 7 steps:**
+Standard physics treats energy as a primitive concept defined by various formulas (E = mc², E = hf, E = ½mv², etc.) without explaining what energy fundamentally *is*. BLD theory provides a structural answer: energy is accumulated observation cost.
 
-1. **Energy is counted** — Every measurement counts interactions with structure
-2. **E = K × Σ(1/Xᵢ)** — Accumulated inverse structure (sum of observation costs)
-3. **E = v × position** — Equivalently: structural depth relative to boundary scale
-4. **Energy = scope** — More energy = wider observation range
-5. **Barriers fall at threshold** — When accumulated K/X exceeds barrier, new alignments accessible
-6. **Free energy shifts position** — F = U - TS changes effective structural depth
-7. **Explains everything** — Phase transitions, running couplings, top quark, confinement breaking
+**Main Claim.** Energy = K × Σ(1/Xᵢ) = accumulated observations = observation scope = accessible alignments.
 
-| Formula | Expression | Meaning |
-|---------|------------|---------|
-| E = K × Σ(1/Xᵢ) | Accumulated inverse structure | What traverser has observed |
-| E = v × position | Structural depth × reference | Where in hierarchy |
-| E = scope | Observation range | What alignments are accessible |
+**Key Results:**
+- Rest mass energy derives from structural position (v × position)
+- Kinetic energy derives from motion through structure (K/X accumulation with velocity)
+- Gravitational potential derives from curvature as K/X
+- Phase transitions occur when energy scope expands past barriers
 
----
+**Outline.** Section 2 presents the core energy formula. Section 3 explains energy as observation scope. Section 4 connects to standard physics formulas. Section 5 derives energy components (rest, kinetic, potential). Section 6 discusses free energy and phase transitions. Section 7 provides validation.
 
-## The Core Insight: What IS Energy?
+## 2. The Core Insight: What IS Energy?
 
 ### How Experiments Measure Energy
 
@@ -79,6 +73,23 @@ Where:
 - Xᵢ = structures being observed/traversed
 - Sum over all scales the particle participates in
 ```
+
+**Connection to α⁻¹** (see [E7 Derivation](../../particle-physics/e7-derivation.md)):
+
+| Quantity | What it counts | Formula | Example |
+|----------|----------------|---------|---------|
+| **α⁻¹** | Mode count | Σ dim(Vᵢ) | n×L + B + 1 = 137 |
+| **E** | Observation cost | K × Σ(1/dim(Vᵢ)) | K/B + K/(n×L) + ... |
+
+Both sum over the **same structure** V_EM = V_geom ⊕ V_bound ⊕ V_trav:
+
+| Space | dim(Vᵢ) | Contribution to α⁻¹ | Contribution to E |
+|-------|---------|---------------------|-------------------|
+| V_geom (geometry) | 80 | +80 | K/80 = 0.025 |
+| V_bound (boundary) | 56 | +56 | K/56 ≈ 0.036 |
+| V_trav (traverser) | 1 | +1 | K/1 = 2 |
+
+α⁻¹ counts HOW MANY dimensions exist (mode count). E counts HOW MUCH it costs to observe them (observation cost). The +1 in α⁻¹ = 137 is the traverser's contribution — the trivial representation with dim = 1.
 
 **Equivalently**, using the reference scale v = 246 GeV:
 
@@ -135,7 +146,7 @@ When you accumulate enough K/X, you can **see past barriers** to new alignments:
 
 ## The Formula Derivation
 
-### Step 1: Observation Has Cost
+### Observation Has Cost
 
 From [Killing Form](../../lie-theory/killing-form.md):
 
@@ -146,7 +157,7 @@ To observe anything:
   Total cost: K = 2 (minimum for observation)
 ```
 
-### Step 2: Cost Depends on Structure Size
+### Cost Depends on Structure Size
 
 From [Observer Corrections](../../cosmology/observer-correction.md):
 
@@ -159,7 +170,7 @@ Where X = structure being traversed
 - Small X (fine structure) → large K/X (expensive to observe)
 - Large X (coarse structure) → small K/X (cheap to observe)
 
-### Step 3: Energy = Accumulated Cost
+### Energy = Accumulated Cost
 
 The traverser accumulates K/X at each scale it observes:
 
@@ -169,7 +180,7 @@ E = K × Σ(1/Xᵢ) = K/X₁ + K/X₂ + K/X₃ + ...
 
 **Higher energy = more observations = finer structure accessible**
 
-### Step 4: Reference Scale
+### Reference Scale
 
 The Higgs VEV v = 246 GeV is the **full boundary crossing** cost — the energy to traverse all of B = 56.
 
@@ -590,10 +601,41 @@ the observer doesn't need to traverse as far to see it all):
 
 ---
 
+## 8. Related Work
+
+The equivalence of mass and energy (E = mc²) was established by [Einstein, 1905]. The quantum energy relation E = hf originates with [Planck, 1900] and was interpreted as photon energy by [Einstein, 1905b]. Thermodynamic free energy was developed by [Gibbs, 1873] and [Helmholtz, 1882].
+
+The structural interpretation of energy as observation cost is original to BLD theory. Unlike standard physics, which treats energy as a primitive, BLD derives energy from observation cost K/X (the cost of traversing hidden structure), providing a unified framework for all energy forms.
+
+The connection between observation and energy has been explored in quantum foundations [Wheeler, 1983] and information-theoretic approaches [Landauer, 1961], but BLD provides an explicit structural formula.
+
+## 9. Conclusion
+
+We have derived energy as accumulated observation cost E = K × Σ(1/Xᵢ), unifying rest mass, kinetic, potential, and thermal energy under a single structural principle. Energy equals observation scope: more energy means finer structure is accessible and barriers can be traversed. This interpretation explains running couplings (scope-dependent K/X), phase transitions (scope expansion past barriers), and the top quark's unique behavior (L within scope).
+
 ## References
+
+### External References
+
+[Einstein, 1905] A. Einstein. "Ist die Trägheit eines Körpers von seinem Energieinhalt abhängig?" *Annalen der Physik* 18, 1905, pp. 639-641.
+
+[Einstein, 1905b] A. Einstein. "Über einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt." *Annalen der Physik* 17, 1905, pp. 132-148.
+
+[Gibbs, 1873] J. W. Gibbs. "A method of geometrical representation of the thermodynamic properties of substances by means of surfaces." *Transactions of the Connecticut Academy* 2, 1873, pp. 382-404.
+
+[Helmholtz, 1882] H. von Helmholtz. "Die Thermodynamik chemischer Vorgänge." *Sitzungsberichte der Preussischen Akademie der Wissenschaften*, 1882, pp. 22-39.
+
+[Landauer, 1961] R. Landauer. "Irreversibility and heat generation in the computing process." *IBM Journal of Research and Development* 5, 1961, pp. 183-191.
+
+[Planck, 1900] M. Planck. "Zur Theorie des Gesetzes der Energieverteilung im Normalspectrum." *Verhandlungen der Deutschen Physikalischen Gesellschaft* 2, 1900, pp. 237-245.
+
+[Wheeler, 1983] J. A. Wheeler. "Law without law." In *Quantum Theory and Measurement*, Princeton University Press, 1983.
+
+### Internal BLD References
 
 - [Killing Form](../../lie-theory/killing-form.md) — Why K = 2
 - [Observer Corrections](../../cosmology/observer-correction.md) — K/X framework
 - [Discovery Method](../discovery-method.md) — How this was derived
 - [Quark Masses](../../particle-physics/quark-masses.md) — Energy/scope explains top quark
 - [Thermodynamics](../../derived/thermodynamics.md) — Free energy and phase transitions
+- [Force Structure](force-structure.md) — K/X applied to all four forces

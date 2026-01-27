@@ -19,11 +19,15 @@ used_by:
 
 ---
 
-## The Question a Human Asks
+## Abstract
 
-"You proved B, L, D can't express each other. But how do you know there isn't a fourth thing you missed?"
+We prove that BLD has exactly three primitives — no more, no fewer. The irreducibility proof establishes independence; this document establishes maximality. We catalogue all structural capabilities (choice, reference, repetition) and show every candidate fourth primitive (time, probability, recursion, identity, negation, ordering, containment, similarity) reduces to B, L, D, or their compositions. Independent confirmation comes from Lie theory (exactly three algebra components) and type theory (exactly three type constructors for completeness). The closure property ensures B+L+D combinations yield only B+L+D. Three is not arbitrary; it emerges from the structure of structure itself.
 
-This is a fair question. The irreducibility proof shows that B, L, D are **independent**. It doesn't directly show they are **complete**.
+---
+
+## The Maximality Question
+
+The [irreducibility proof](irreducibility-proof.md) establishes that B, L, D are **independent** (none is expressible in terms of the others). This does not directly establish that they are **complete** (that no fourth primitive exists). This document addresses maximality.
 
 ---
 
@@ -41,7 +45,7 @@ This is a fair question. The irreducibility proof shows that B, L, D are **indep
 
 ---
 
-## Step 1: What We HAVE Proven
+## 1. What We HAVE Proven
 
 From [irreducibility-proof.md](irreducibility-proof.md) and [irreducibility-categorical.md](irreducibility-categorical.md):
 
@@ -57,7 +61,7 @@ From [irreducibility-proof.md](irreducibility-proof.md) and [irreducibility-cate
 
 ---
 
-## Step 2: Catalogue Structural Capabilities
+## 2. Catalogue Structural Capabilities
 
 What does "structure" mean? Structure is the organization of information. There are only three things you can DO with structure:
 
@@ -71,7 +75,7 @@ What does "structure" mean? Structure is the organization of information. There 
 
 ---
 
-## Step 3: Test Candidate 4th Primitives
+## 3. Test Candidate 4th Primitives
 
 For each candidate, we ask: Does it reduce to B+L+D, or is it genuinely new?
 
@@ -92,7 +96,7 @@ For each candidate, we ask: Does it reduce to B+L+D, or is it genuinely new?
 
 ---
 
-## Step 4: Lie Theory Confirmation
+## 4. Lie Theory Confirmation
 
 From [lie-correspondence.md](../../lie-theory/lie-correspondence.md):
 
@@ -110,7 +114,7 @@ Lie theory was developed independently of BLD. The fact that it has exactly thre
 
 ---
 
-## Step 5: Type Theory Confirmation
+## 5. Type Theory Confirmation
 
 From [bld-calculus.md](../definitions/bld-calculus.md):
 
@@ -128,7 +132,7 @@ The simply-typed lambda calculus with sums and products is **complete** for repr
 
 ---
 
-## Step 6: The Closure Property
+## 6. The Closure Property
 
 Consider what happens when you combine B, L, D:
 
@@ -148,7 +152,7 @@ This is like asking "are there more than 3 primary colors (RGB)?" — you can mi
 
 ---
 
-## Step 7: The Conclusion
+## 7. The Conclusion
 
 **Why exactly three?**
 
@@ -178,17 +182,6 @@ The question of maximality admits two framings:
 **Evidence**: All physics, all computation, all mathematics we've examined uses only B+L+D.
 
 **Current position**: We adopt the strong claim based on the multiple independent confirmations. If a 4th primitive were discovered, the theory would need extension — but no such discovery has occurred despite extensive search.
-
----
-
-## The Meta-Observation
-
-This document itself uses B, L, D:
-- **B**: The partition into 7 steps
-- **L**: The logical chain from premise to conclusion
-- **D**: The repeated pattern of "check, verify, confirm"
-
-There is no 4th structural operation used in this explanation. The medium demonstrates the message.
 
 ---
 

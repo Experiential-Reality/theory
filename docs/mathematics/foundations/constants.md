@@ -18,7 +18,9 @@ used_by:
 
 # BLD Constants
 
-All constants derived from BLD axioms and genesis closure. This file is the authoritative source — other files reference this rather than redefining.
+## Abstract
+
+The five fundamental BLD constants (B, L, n, K, S) are derived from axioms and structural closure requirements, not measured. B = 56 arises from triality structure (2 × dim(Spin(8))), L = 20 from Riemann tensor components, n = 4 from octonion reference fixing, K = 2 from bidirectional observation, and S = 13 from structural intervals. These constants determine all physical coupling constants through the formula α⁻¹ = n×L + B + 1 = 137. This file is the authoritative source for constant values and derivation references.
 
 ---
 
@@ -41,10 +43,32 @@ All constants derived from BLD axioms and genesis closure. This file is the auth
 | Symbol | Value | Meaning | Derived From |
 |--------|-------|---------|--------------|
 | **B** | 56 | Boundary modes | 2 × dim(Spin(8)) = 2 × 28. See [E7 Derivation](../particle-physics/e7-derivation.md) |
-| **L** | 20 | Riemann components | n²(n²-1)/12 = 16×15/12. See [Lie Correspondence](../lie-theory/lie-correspondence.md) |
+| **L** | 20 | Riemann components | n²(n²-1)/12 = 16×15/12. See below and [Lie Correspondence](../lie-theory/lie-correspondence.md) |
 | **n** | 4 | Spacetime dimensions | sl(2,ℂ) ⊂ sl(2,𝕆) from reference fixing. See [Octonion Derivation](derivations/octonion-derivation.md) |
 | **K** | 2 | Killing form | Bidirectional observation (forward + back). See [Killing Form](../lie-theory/killing-form.md) |
 | **S** | 13 | Structural intervals | (B - n)/n = (56 - 4)/4 = 13 |
+
+---
+
+## Why L = Riemann Tensor Components
+
+**Question**: Why Riemann tensor and not connection coefficients (Christoffel symbols)?
+
+**Answer**: L measures how links vary across structure. The Riemann tensor is the unique gauge-invariant measure of this.
+
+| Object | Components (n=4) | Problem |
+|--------|------------------|---------|
+| Christoffel Γ^λ_μν | n³ = 64 | Coordinate-dependent (gauge artifact) |
+| Riemann R^ρ_σμν | n²(n²-1)/12 = 20 | Gauge-invariant (geometric truth) |
+
+**Physical meaning**: The Riemann tensor answers "if you parallel transport a vector around a loop, how much does it rotate?" This is exactly how links (connections between points) vary — the structural content of L.
+
+**Why the formula n²(n²-1)/12**:
+- Riemann has symmetries: R_abcd = -R_bacd = -R_abdc, R_abcd = R_cdab, R_[abc]d = 0
+- These reduce n⁴ = 256 components to n²(n²-1)/12 = 20 independent ones
+- This is a mathematical fact, not a choice
+
+**Therefore**: L = 20 is the number of independent ways curvature (link variation) can exist in n=4 dimensions.
 
 ---
 

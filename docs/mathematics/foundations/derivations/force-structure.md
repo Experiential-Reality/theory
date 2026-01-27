@@ -19,15 +19,23 @@ used_by:
 
 # Force Structure: Deriving All Four Forces from BLD
 
-All four fundamental forces derived from BLD. Residuals (< 0.02%) are K/X(universe).
+## Abstract
 
-Forces are observer corrections at different levels of the division algebra tower. All corrections follow the universal skip ratio K/X:
-- Every measurement correction = K/X, where K=2 (Killing form) and X = structure traversed
-- Remaining ~0.002-0.02% residuals are K/X(universe), the [Universal Machine](../machine/universal-machine.md)'s self-traversal cost
+We derive all four fundamental forces—electromagnetic, weak, strong, and gravitational—from BLD structural principles. Each force emerges as an observer correction at a different level of the division algebra tower: gravity at ℝ, electromagnetism at ℂ, weak force at ℍ, and strong force at 𝕆. All corrections follow the observation cost K/X, where K = 2 (Killing form) and X is the structure traversed by the measurement. We derive: α⁻¹ = 137.035999177 (0.0 ppt error), sin²θ_W = 0.231215 (~0.002% residual), α_s⁻¹ = 8.4814 (~0.02% residual), and M_P = 1.2209 × 10¹⁹ GeV (0.00003% error). The remaining residuals are identified as K/X(universe)—the Universal Machine's self-traversal cost. This framework unifies force couplings as different K/X corrections and explains their running as scope-dependent structure.
 
----
+## 1. Introduction
 
-## 1. The Principle
+The Standard Model treats force coupling constants as empirical parameters requiring experimental determination. BLD theory derives these constants from structural principles, reducing them to the observation cost K/X applied at different scales.
+
+**Main Results:**
+- **Electromagnetic:** α⁻¹ = n×L + B + 1 + K/B + corrections = 137.035999177
+- **Weak:** sin²θ_W = 3/S + K/(n×L×B) = 0.231215
+- **Strong:** α_s⁻¹ = α⁻¹/n² − K/(n+L) = 8.4814
+- **Gravity:** M_P derived from cascade coupling with 0.00003% accuracy
+
+**Outline.** Section 2 presents the structural vs observed principle. Section 3 reviews the division algebra tower. Section 4 derives electromagnetic coupling. Section 5 derives weak mixing. Section 6 derives strong coupling. Section 7 derives gravitational coupling. Section 8 establishes the universal K/X principle. Section 9 discusses unification.
+
+## 2. The Structural vs Observed Principle
 
 ### 1.1 Structural vs Observed
 
@@ -268,7 +276,7 @@ sin²θ_W = 3/S + K/(n×L×B)
 
 ### 5.4 Why This Form (K/X Principle)
 
-The L cost follows the universal skip ratio K/X:
+The L cost follows the observation cost K/X:
 - **K = 2**: Killing form (bidirectional observation cost)
 - **X = n×L×B = 4480**: The Z pole measurement traverses ALL geometric-boundary structure
 - **+sign**: Incomplete traversal (neutrinos escape in W decays, contaminating Z measurements)
@@ -337,7 +345,7 @@ This is the principled K/X form. The earlier formula (B/n)/S² = 14/169 ≈ 0.08
 
 ### 6.4 Why This Form (K/X Principle)
 
-The L cost follows the universal skip ratio K/X:
+The L cost follows the observation cost K/X:
 - **K = 2**: Killing form (bidirectional observation cost)
 - **X = n+L = 24**: The measurement traverses geometric structure (spacetime + curvature)
 - **−sign**: Complete traversal (jets are fully observed)
@@ -457,7 +465,7 @@ All four forces follow the SAME K/X principle — just at different scales.
 
 ### 8.1 The Master Table
 
-Every experimental L cost follows the universal skip ratio: **correction = K/X**
+Every experimental L cost follows the observation cost: **correction = K/X**
 
 ```
 K/X DERIVATION TOWER
@@ -477,16 +485,25 @@ Sign = traversal completeness
 | **Strong** | α⁻¹/n²=8.56 | n+L=24 | 0.083 | − | Jets: geometry only |
 | **Gravity** | v×λ⁻²⁶×√(5/14) | n×L−K=78 | 79/78 | × | Embedded observer |
 
-### 8.2 Why Each X?
+### 8.2 Why Each X? (Derivation)
 
-```
-FORCE → WHAT COUPLES → X
-────────────────────────
-EM      → photon creates/destroys partitions    → B (boundary)
-Weak    → Z couples to everything               → n×L×B (full structure)
-Strong  → gluon confined to geometry            → n+L (spacetime+Riemann)
-Gravity → observer IS the geometry              → n×L−K (self-reference)
-```
+X is NOT a fitting parameter. It is derived from what the force physically couples to.
+
+**Theorem (X Derivation).** For each force, X equals the BLD structure that the force carrier traverses.
+
+| Force | Carrier | Physical Action | X Derivation |
+|-------|---------|-----------------|--------------|
+| **EM** | Photon | Transitions between states |A⟩→|B⟩ | States are partitions. Photon crosses partition. X = B |
+| **Weak** | Z | Couples to ALL fermions | Sees geometry AND boundaries. X = n×L×B |
+| **Strong** | Gluon | Confined within hadrons | Confinement is geometric (spatial + links). X = n+L |
+| **Gravity** | Metric | Observer embedded in geometry | Self-reference: geometry minus observation. X = n×L−K |
+
+**Why these specific combinations:**
+
+- **B (not L)** for EM: Photons don't continuously connect — they CREATE/DESTROY distinctions. That's B, not L.
+- **n+L (not n×L)** for strong: Confinement adds spacetime TO links (quarks bound within geometry), not multiplies.
+- **n×L×B (product)** for weak: Z sees ALL structure simultaneously — the product, not sum.
+- **n×L−K** for gravity: Observer IS part of geometry, so subtract observation cost K from total geometric structure n×L.
 
 ### 8.3 Sign Rule
 
@@ -576,14 +593,14 @@ Observed = Structure + K/X(experiment) + K/X(universe)
 | K/X(experiment) | Our apparatus | K/B = 2/56 |
 | K/X(universe) | Universal machine | Remaining ~0.002% |
 
-### 10.3 The Universal Skip Ratio
+### 10.3 Observation Cost (K/X)
 
 All corrections follow:
 ```
-correction = K/X where K = 2 (always), X = structure traversed
+correction = K/X where K = 2 (always), X = hidden structure the detector couples to
 ```
 
-This comes from discrete/continuous mismatch — "gears skipping teeth" between finite BLD structure and continuous observation.
+X is determined by detection physics — what the experimental apparatus traverses.
 
 ### 10.4 Interpretation
 
@@ -596,11 +613,41 @@ The coupling constants are not free parameters — they are determined by:
 
 ---
 
+## 11. Related Work
+
+The Standard Model gauge couplings have been measured with extraordinary precision by [CODATA, 2018] and [Particle Data Group, 2022]. The running of coupling constants is a well-established prediction of quantum field theory [Gross & Wilczek, 1973; Politzer, 1973].
+
+The connection between division algebras and gauge groups has been explored by [Günaydin & Gürsey, 1973] and systematically developed in [Dixon, 1994]. The exceptional role of octonions in unification attempts is reviewed in [Baez, 2002].
+
+The observation cost K/X is original to BLD theory and provides a structural explanation for measurement corrections. Unlike renormalization group approaches that treat running as fundamental, BLD interprets running as scope-dependent structure.
+
+## 12. Conclusion
+
+We have derived all four force coupling constants from the observation cost K/X applied at different levels of the division algebra tower. The electromagnetic, weak, strong, and gravitational couplings are not free parameters but determined by what hidden structure each detector couples to. Remaining residuals (~0.002-0.02%) are identified as K/X(universe), not experimental error.
+
 ## References
+
+### External References
+
+[Baez, 2002] J. C. Baez. "The Octonions." *Bulletin of the American Mathematical Society* 39, 2002, pp. 145-205.
+
+[CODATA, 2018] P. J. Mohr, D. B. Newell, and B. N. Taylor. "CODATA recommended values of the fundamental physical constants: 2018." *Reviews of Modern Physics* 93, 2021, 025010.
+
+[Dixon, 1994] G. M. Dixon. *Division Algebras: Octonions, Quaternions, Complex Numbers and the Algebraic Design of Physics*. Kluwer Academic Publishers, 1994.
+
+[Gross & Wilczek, 1973] D. J. Gross and F. Wilczek. "Ultraviolet behavior of non-abelian gauge theories." *Physical Review Letters* 30, 1973, pp. 1343-1346.
+
+[Günaydin & Gürsey, 1973] M. Günaydin and F. Gürsey. "Quark structure and octonions." *Journal of Mathematical Physics* 14, 1973, pp. 1651-1667.
+
+[Particle Data Group, 2022] R. L. Workman et al. "Review of Particle Physics." *Progress of Theoretical and Experimental Physics* 2022, 083C01.
+
+[Politzer, 1973] H. D. Politzer. "Reliable perturbative results for strong interactions?" *Physical Review Letters* 30, 1973, pp. 1346-1349.
+
+### Internal BLD References
 
 - [Special Relativity](../../derived/special-relativity.md) — c, γ, E=mc² from K/X
 - [General Relativity](../../derived/general-relativity.md) — Gravity as K/X, Schwarzschild radius = K×GM/c²
-- [Discovery Method](../discovery-method.md) — How K/X was found
+- [Observation Cost](../discovery-method.md) — K/X principle and hidden structure
 - [Universal Machine](../machine/universal-machine.md) — K/X(universe) and remaining residuals
 - [BLD Calculus](../definitions/bld-calculus.md) — Foundational definitions
 - [Irreducibility Proof](../proofs/irreducibility-proof.md) — Why L costs are unavoidable

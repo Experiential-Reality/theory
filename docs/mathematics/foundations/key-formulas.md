@@ -15,7 +15,9 @@ used_by:
 
 # Key BLD Formulas
 
-Central reference for all major formulas.
+## Abstract
+
+This document collects the seven core formulas of BLD theory: fine structure constant (α⁻¹ = 137.036), weak mixing angle (sin²θ_W = 0.231), strong coupling (α_s⁻¹ = 8.48), energy formula (E = K × Σ(1/Xᵢ)), observation cost (K/X), generation ratio (μ/e = 207), and Planck mass derivation. All formulas share a common pattern: structural value plus K/X observation corrections. This file serves as the central reference for formula statements with links to full derivations.
 
 ---
 
@@ -27,7 +29,7 @@ Central reference for all major formulas.
 2. **Weak mixing** — sin²θ_W = 3/S + K/(n×L×B) = 0.231
 3. **Strong coupling** — α_s⁻¹ = α⁻¹/n² − K/(n+L) = 8.48
 4. **Energy** — E = K × Σ(1/Xᵢ) = observation scope
-5. **Skip ratio** — correction = K/X (universal pattern)
+5. **Observation cost** — correction = K/X (hidden structure cost)
 6. **Generation ratio** — μ/e = n²S − 1 = 207
 7. **Planck mass** — M_P = v × λ⁻²⁶ × √(5/14) × corrections
 
@@ -121,28 +123,30 @@ Energy is NOT a fundamental quantity — it IS the scope of what alignments are 
 
 ---
 
-## 3. The Universal Skip Ratio
+## 3. Observation Cost (K/X)
+
+Every measurement includes a cost for traversing hidden experimental structure:
 
 ```
 correction = K/X
 
 where:
-  K = 2 (Killing form, always)
-  X = structure traversed (varies by measurement)
+  K = 2 (Killing form, bidirectional observation)
+  X = hidden structure the detector couples to
 ```
 
-| Force | X | K/X | Sign | Why |
-|-------|---|-----|------|-----|
-| EM | B = 56 | 0.036 | + | Photon crosses boundaries |
-| Weak | n×L×B = 4480 | 0.00045 | + | Z couples to everything |
-| Strong | n+L = 24 | 0.083 | − | Gluon confined to geometry |
-| Gravity | n×L−K = 78 | 0.013 | × | Observer IS the geometry |
+| Force | Detector Couples To | X | K/X | Sign |
+|-------|--------------------|----|-----|------|
+| EM | Boundaries (photon exchange) | B = 56 | 0.036 | + |
+| Weak | Full structure (Z pole) | n×L×B = 4480 | 0.00045 | + |
+| Strong | Geometry (jets) | n+L = 24 | 0.083 | − |
+| Gravity | Self (embedded observer) | n×L−K = 78 | 0.013 | × |
 
 **Sign rule**:
 - **+** (incomplete): Something escapes observation
 - **−** (complete): Everything detected
 
-**Source**: [force-structure.md](derivations/force-structure.md) §8, [killing-form.md](../lie-theory/killing-form.md)
+**Source**: [discovery-method.md](discovery-method.md), [force-structure.md](derivations/force-structure.md) §8
 
 ---
 

@@ -83,6 +83,8 @@ graph TD
 ```
 foundations/
 ├── README.md              (this file)
+├── axioms.md              (Layer 0: foundational axioms A1-A7)
+├── notation.md            (Layer 0: standard notation guide)
 ├── constants.md           (cross-cutting: used by all)
 ├── discovery-method.md    (cross-cutting: Q1/Q2/Q3 methodology)
 ├── key-formulas.md        (cross-cutting: all major formulas)
@@ -128,6 +130,12 @@ foundations/
 **When files contradict**: Lower layers win (Layer 0 > Layer 1).
 
 ## Contents by Cluster
+
+### Foundation (Layer 0)
+| File | Status | Description |
+|------|--------|-------------|
+| [axioms.md](axioms.md) | PROVEN (Layer 0) | The seven foundational axioms (A1-A7) |
+| [notation.md](notation.md) | DERIVED (Layer 0) | Standard notation and conventions |
 
 ### Cross-Cutting (Top Level)
 | File | Status | Description |
@@ -177,9 +185,13 @@ foundations/
 
 ## Reading Order
 
+### Path 0: Foundations (Start Here)
+0. **Axioms**: `axioms.md` — the seven foundational axioms
+1. **Notation**: `notation.md` — standard symbols and conventions
+
 ### Path 1: Core Theory (Required)
-1. **Start**: `definitions/bld-calculus.md` — definitions of B, L, D
-2. **Then**: `proofs/irreducibility-proof.md` — why all three are needed
+2. **Start**: `definitions/bld-calculus.md` — definitions of B, L, D
+3. **Then**: `proofs/irreducibility-proof.md` — why all three are needed
 3. **Then**: `proofs/irreducibility-categorical.md` — formal categorical proof
 4. **Then**: `proofs/completeness-proof.md` — why three is enough
 5. **Then**: `proofs/why-exactly-three.md` — why no fourth exists

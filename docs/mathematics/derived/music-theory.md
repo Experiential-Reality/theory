@@ -141,7 +141,7 @@ This is a single cycle visiting all 12 tones before returning — the defining p
 
 ### 2.1 The Consonance Formula
 
-From [Energy Derivation](../foundations/derivations/energy-derivation.md), the universal skip ratio is K/X where K = observation cost and X = structure size.
+From [Energy Derivation](../foundations/derivations/energy-derivation.md), the observation cost is K/X where K = 2 (bidirectional observation) and X = structure size.
 
 For musical intervals, the "structure size" is the complexity of the frequency ratio:
 

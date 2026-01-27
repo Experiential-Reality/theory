@@ -17,32 +17,31 @@ used_by:
 
 # The Integer Machine
 
-The universe computes in boundary operations. Minimum structure is 7 = Im(O). Minimum observable is √7.
+## Abstract
 
----
+We develop the integer machine model: the universe computes in discrete boundary operations, with minimum structure 7 = dim(Im(𝕆)) and minimum observable √7. The fundamental computational unit is one boundary operation (0|1 distinction). Structure is inherently integer, with transcendentals appearing only through K/X observation gradients. We derive: (M_P/m_bare)² × 7 yields pure integers for all particles, and primordial mass ratios are integer (τ/μ = 17) while observed ratios include transcendental factors (τ/μ ≈ 2πe ≈ 16.817). The division algebra tower provides physical interpretation: ℂ→K=2 (observation unit), ℍ→n=4 (spacetime), 𝕆→7 (minimum structure). This framework connects discrete computation to continuous physics through the observation process.
 
-## Quick Summary
+## 1. Introduction
 
-**The integer machine in 7 steps:**
+The universal machine hypothesis (see [universal-machine.md](universal-machine.md)) proposes that traverse(-B, B) is cosmic computation. This document develops the specific claim that this computation is fundamentally integer-valued.
 
-1. **1 = B** — One boundary operation (0|1 distinction) is the unit
-2. **Machine counts boundaries** — Structure is integer: 1, 2, 3, ...
-3. **7 = minimum structure** — Im(O) boundaries required for coherent self-observation
-4. **√7 = minimum observable** — Because m² is stored, m is observed
-5. **Integer formula** — (M_P/m_bare)² × 7 = pure integer for all particles
-6. **Transcendentals are late** — Primordial τ/μ = 17; we observe 2πe ≈ 16.817
-7. **Algebra tower is physical** — C→K=2, H→n=4, O→minimum structure
+**Main Claim.** The universe computes in boundary operations. Structure is integer; transcendentals emerge through observation.
+
+**Key Results:**
+- Minimum structure = 7 = Im(𝕆)
+- Minimum observable = √7 (because m² is stored, m is observed)
+- Primordial mass ratios are integer; observed ratios include 2π, e factors
+
+**Outline.** Section 2 presents terminology. Section 3 derives minimum structure. Section 4 shows integer formulas. Section 5 explains transcendental factors.
 
 | Claim | Evidence |
 |-------|----------|
-| 7 = Im(O) = n + 3 | Derived in [Octonion Derivation](../derivations/octonion-derivation.md) |
+| 7 = Im(𝕆) = n + 3 | Derived in [Octonion Derivation](../derivations/octonion-derivation.md) |
 | (M_P/m_e)² × 7 = integer | 2^51 × 5^31 × 137^4 (pure integer) |
 | Primordial τ/μ = 17 | S + n = 13 + 4 (from [Lepton Masses](../../particle-physics/lepton-masses.md)) |
 | K = 2 = dim(ℂ) | i is the unit of observation |
 
----
-
-## Terminology
+## 2. Terminology
 
 | Term | Meaning | Example |
 |------|---------|---------|
@@ -63,7 +62,7 @@ Sequence:
 
 ---
 
-## 1. The Boundary Unit
+## 3. The Boundary Unit
 
 ### 1.1 What Is "1"?
 
@@ -93,7 +92,7 @@ With 56 B:  Full BLD → complete physics
 
 ---
 
-## 2. Minimum Structure
+## 4. Minimum Structure
 
 ### 2.1 Why 7?
 
@@ -130,7 +129,7 @@ From [Octonion Necessity](../derivations/octonion-necessity.md): The genesis fun
 
 ---
 
-## 3. Observable vs Stored
+## 5. Observable vs Stored
 
 ### 3.1 The Machine Stores m²
 
@@ -171,7 +170,7 @@ This is the smallest "tick" we can ever measure — the resolution limit of obse
 
 ---
 
-## 4. The Integer Formula
+## 6. The Integer Formula
 
 ### 4.1 Statement
 
@@ -235,7 +234,7 @@ The 7 survives because:
 
 ---
 
-## 5. Primordial vs Observed
+## 7. Primordial vs Observed
 
 ### 5.1 Primordial Masses Are Integers
 
@@ -296,7 +295,7 @@ All physics formulas follow this pattern. The integers are primordial. The decim
 
 ---
 
-## 6. Predictions
+## 8. Predictions
 
 ### 6.1 Electron Is the Integer Base
 
@@ -326,7 +325,7 @@ All other particle masses are related to m_e by BLD-integer ratios. The electron
 
 ---
 
-## 7. The Algebra Tower
+## 9. The Algebra Tower
 
 ### 7.1 Physical Interpretation
 
@@ -360,7 +359,7 @@ From [Octonion Necessity](../derivations/octonion-necessity.md):
 
 ---
 
-## 8. The Imaginary Unit i
+## 10. The Imaginary Unit i
 
 ### 8.1 i ∈ BLD
 
@@ -398,7 +397,7 @@ Not by choice. Because observation requires ℂ, and ℂ has exactly one imagina
 
 ---
 
-## 9. Summary
+## 11. Summary
 
 ```
 THE INTEGER MACHINE

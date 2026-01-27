@@ -43,11 +43,11 @@
 
 > **Note**: All predictions are at or below current measurement precision. The "Error" column shows deviation from central measured value; "Meas. Prec." shows experimental uncertainty (CODATA 2022 / PDG 2024).
 
-## Key Insight: Universal Skip Ratio K/X
+## Key Insight: Observation Cost K/X
 
 **Principle**: Observed = Structural + K/X(experiment)
 
-All corrections follow the universal skip ratio K/X where:
+All corrections follow the observation cost K/X where:
 - **K = 2** (Killing form, always)
 - **X** = structure being traversed
 - **Sign** = traversal completeness

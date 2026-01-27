@@ -101,7 +101,7 @@ At M_Z, the strong coupling is measured via:
 2. **qq̄ → hadrons**: Quarks confine into hadrons (can't see free quarks)
 3. **hadrons → jets**: Hadrons collimate into jets (what we actually detect)
 
-### 4.2 The Universal Skip Ratio K/X
+### 4.2 The Observation Cost K/X
 
 All corrections follow:
 ```

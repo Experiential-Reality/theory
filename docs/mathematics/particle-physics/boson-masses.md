@@ -530,7 +530,7 @@ To observe anything:
   Total cost: K = 2 links (minimum for observation)
 ```
 
-The skip ratio K/X appears because:
+The observation cost K/X appears because:
 - **X** = the structure being traversed (B, n×L, n²S, etc.)
 - **K** = the observation cost (2 for bidirectional, 1 for ratios)
 - **K/X** = what fraction of the structure is "consumed" by observing

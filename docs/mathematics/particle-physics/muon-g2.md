@@ -156,7 +156,7 @@ The SM calculation accounts for:
 
 What's **not** accounted for: the second-order observer correction K²/X at the (n×L)²×S scale.
 
-### Step 2: Apply the Universal Skip Ratio (Second Order)
+### Step 2: Apply the Observation Cost (Second Order)
 
 From [Killing Form](../lie-theory/killing-form.md), all observer corrections have the form:
 

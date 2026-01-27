@@ -15,34 +15,24 @@ used_by:
 
 # Structural Cost Conservation
 
-Structural cost is conserved during refactoring (factorization). Factorization reveals hidden cost — it doesn't reduce total cost.
+## Abstract
 
----
+We establish that structural cost is conserved under factorization: C(S) = C(FACTOR(S)). While factorization may appear to simplify structure, it actually transfers cost from hidden (implicit) to visible (explicit) components. The decomposition C_total = C_visible + C_hidden is invariant, with factorization monotonically increasing the explicitness ratio C_visible/C_total toward 1. We provide exact formulas for primitive costs: C(B) = ½log(1+d²_Mahal) for boundaries, C(L) = -½ln(1-ρ²) for links, and C(D) = n × C(element) for dimensions. This principle connects refactoring practices to BLD theory and explains why "simpler" code isn't necessarily lower cost—it's more explicit about its inherent complexity.
 
-## Quick Summary
+## 1. Introduction
 
-**Cost conservation in 7 steps:**
+The intuition that refactoring "simplifies" code is misleading. Complexity doesn't disappear—it becomes explicit. This document formalizes structural cost conservation and its implications.
 
-1. **C : S → ℝ⁺** — cost function on structures
-2. **C(b), C(l), C(d)** — primitive costs (proven exact formulas)
-3. **C_total = C_visible + C_hidden** — decomposition into explicit + implicit
-4. **Conservation: C(S) = C(FACTOR(S))** — total cost unchanged
-5. **FACTOR: C_hidden → C_visible** — factorization reveals hidden cost
-6. **Explicitness(S) = C_visible/C_total** — fraction of cost that's explicit
-7. **Monotonic: FACTOR increases explicitness** — approaches 1 at normal form
+**Main Claim.** Structural cost is conserved under factorization: FACTOR reveals hidden cost but doesn't reduce total cost.
 
-| Quantity | Definition | FACTOR Effect |
-|----------|------------|---------------|
-| C_visible | Cost of explicit BLD | Increases |
-| C_hidden | Cost of implicit structure | Decreases |
-| C_total | C_visible + C_hidden | **Conserved** |
-| Explicitness | C_visible / C_total | Increases → 1 |
+**Key Results:**
+- Exact primitive cost formulas for B, L, D
+- Conservation law: C(S) = C(FACTOR(S))
+- Monotonic increase in explicitness
 
-**Key insight**: Refactoring doesn't make code simpler — it makes complexity explicit and auditable.
+**Outline.** Section 2 presents primitive cost formulas. Section 3 defines the cost function. Section 4 proves the conservation law. Section 5 introduces the explicitness metric.
 
----
-
-## Primitive Cost Formulas
+## 2. Primitive Cost Formulas
 
 | Primitive | Formula | Meaning |
 |-----------|---------|---------|
@@ -384,15 +374,19 @@ Track explicitness as a code quality metric.
 
 ---
 
-## 8. Open Questions
+## 8. Research Questions
+
+**Application Questions** (for practitioners):
 
 1. **Measurement**: How to precisely measure C_hidden in practice? (Currently requires factorization to discover)
 
-2. **Optimal explicit form**: Given multiple normal forms, which has lowest **cognitive cost**?
+2. **Partial factorization value**: At what explicitness threshold do benefits plateau?
 
-3. **Partial factorization value**: At what explicitness threshold do benefits plateau?
+3. **Cross-language comparison**: Is C_total comparable across programming languages?
 
-4. **Cross-language comparison**: Is C_total comparable across programming languages?
+**Outside BLD Scope**:
+
+4. **Optimal explicit form**: Given multiple normal forms, which has lowest *cognitive cost*? (Cognitive cost is a separate domain from structural cost.)
 
 ---
 

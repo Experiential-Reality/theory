@@ -18,11 +18,19 @@ used_by:
 
 # The Universal Machine: traverse(-B, B) as Cosmic Computation
 
-The traverse(-B, B) genesis function IS a universal computer. The Planck scale defines its computational step. The remaining ~0.002-0.02% residuals in force predictions are K/X(universe) — the universe's self-traversal cost.
+## Abstract
 
----
+We interpret the genesis function traverse(-B, B) as a universal computational process, identifying the Planck scale as its fundamental step size. The framework predicts three layers of measurement correction: (1) structural (pure BLD), (2) experimental (K/X for apparatus traversal), and (3) universal (K/X for cosmic self-computation). After accounting for the first two layers, remaining residuals in force predictions (~0.002-0.02%) are identified as K/X(universe)—the universe's self-traversal signature. We derive specific X(universe) values for each force using the ring/cloth model: X(strong) = 10,400 yielding K/X = 0.019%, and X(weak/grav) = 89,600 yielding K/X = 0.0022%. These predictions match observed residuals. The framework connects to relativity: time dilation is interpreted as the universe enforcing K/X ≤ 1 through increased computational steps at high velocity or gravitational depth.
 
-## 1. Three Layers of K/X
+## 1. Introduction
+
+The BLD framework derives physical constants with extraordinary precision (α⁻¹ at 0.0 ppt error). However, some forces show small but systematic residuals (~0.002-0.02%) that are not experimental error. This document proposes these residuals arise from a third computational layer: the universe computing itself.
+
+**Main Claim.** The genesis function traverse(-B, B) is a universal computer operating at the Planck scale, and the remaining force residuals are its self-traversal signature.
+
+**Outline.** Section 2 presents the three-layer structure. Section 3 introduces the universal machine concept. Section 4 analyzes residual patterns. Section 5 derives X(universe) values. Section 6 connects to time dilation. Section 7 discusses implications.
+
+## 2. Three Layers of K/X
 
 Every measurement has THREE traversal costs:
 
@@ -60,7 +68,7 @@ traverse(-B, B) computes existence by:
 | l_P (Planck length) | Minimum structure traversable in one step |
 | M_P (Planck mass) | Energy of one computational step |
 
-**Why K=2 defines Planck scale**: The skip ratio K/X governs all corrections. When X = K = 2, the correction is O(1). Below this scale, observation cost exceeds structure size — you can't traverse it in one step.
+**Why K=2 defines Planck scale**: Observation cost K/X governs all corrections. When X = K = 2, the correction is O(1). Below this scale, observation cost exceeds structure size — you can't traverse it in one step.
 
 ---
 
@@ -234,11 +242,6 @@ The time dilation hypothesis is now rigorously derived. See:
 | **Gravitational time dilation** | √(1-r_s/r) = K/X correction where X = 2r/r_s | general-relativity.md §2 |
 | **r_s = 2GM/c²** | r_s = K×GM/c² — the factor 2 IS K=2! | general-relativity.md §1 |
 
-### Remaining Open Questions
-
-1. **Derive X(universe) for each force** from traverse(-B, B) structure
-2. **Connect to black hole thermodynamics** — is entropy S ~ C_hidden?
-
 ### Testable Predictions
 
 1. Residuals across forces should follow consistent K/X(universe) pattern
@@ -271,6 +274,18 @@ Layer 3: The universe computing itself
 
 ---
 
+## 9. Related Work
+
+The interpretation of physics as computation has a long history. [Wheeler, 1990] proposed "it from bit"—that physical reality emerges from information-theoretic processes. [Lloyd, 2002] estimated the universe's computational capacity in terms of operations and memory. [Wolfram, 2002] explored computational irreducibility and cellular automata as physical models.
+
+The Planck scale as a fundamental computational unit connects to [Bekenstein, 1973] and [Hawking, 1975] on black hole thermodynamics, where entropy counts microstates. The holographic principle [Susskind, 1995] bounds information by area rather than volume.
+
+BLD contributes: (1) specific derivation of Planck units from structural constants, (2) identification of K = 2 as the universal correction factor, and (3) quantitative predictions for residual values as K/X(universe).
+
+## 10. Conclusion
+
+The universal machine hypothesis interprets traverse(-B, B) as cosmic computation, explaining the ~0.002-0.02% residuals in force predictions as K/X(universe). The ring/cloth model provides specific X values matching observed residuals. Time dilation emerges as the universe enforcing K/X ≤ 1.
+
 ## See Also
 
 - [Integer Machine](integer-machine.md) — Concrete implementation: universe computes in boundary operations, minimum structure = 7.
@@ -278,6 +293,22 @@ Layer 3: The universe computing itself
 - [Constants](../constants.md) — B=56, L=20, n=4, K=2, S=13 with derivation links.
 
 ## References
+
+### External References
+
+[Bekenstein, 1973] J. D. Bekenstein. "Black holes and entropy." *Physical Review D* 7, 1973, pp. 2333-2346.
+
+[Hawking, 1975] S. W. Hawking. "Particle creation by black holes." *Communications in Mathematical Physics* 43, 1975, pp. 199-220.
+
+[Lloyd, 2002] S. Lloyd. "Computational capacity of the universe." *Physical Review Letters* 88, 2002, 237901.
+
+[Susskind, 1995] L. Susskind. "The world as a hologram." *Journal of Mathematical Physics* 36, 1995, pp. 6377-6396.
+
+[Wheeler, 1990] J. A. Wheeler. "Information, physics, quantum: The search for links." In *Complexity, Entropy, and the Physics of Information*, Addison-Wesley, 1990.
+
+[Wolfram, 2002] S. Wolfram. *A New Kind of Science*. Wolfram Media, 2002.
+
+### Internal BLD References
 
 - [Special Relativity](../../derived/special-relativity.md) — c, γ, E=mc² from BLD
 - [General Relativity](../../derived/general-relativity.md) — Gravity as stack depth

@@ -14,21 +14,22 @@ used_by:
 
 # Refactoring as Factorization (RF-Calculus)
 
-Refactoring is factorization: decomposition of composite structures into smaller structures, terminating at irreducible BLD primitives.
+## Abstract
 
----
+We formalize refactoring as factorization—the decomposition of composite structures into smaller structures, terminating at irreducible BLD primitives. The RF-Calculus defines three factorization rules: B-Factor (scattered conditionals → explicit sum types), L-Factor (cyclic dependencies → shared state + directed acyclic graph), and D-Factor (heterogeneous loops → homogeneous products). We prove termination: repeated application reaches an irreducible B × L × D form. The key theorem is behavioral preservation: eval(S) = eval(FACTOR(S)). This provides formal foundations for refactoring practices and explains why refactoring reveals complexity rather than eliminating it.
 
-## Quick Summary
+## 1. Introduction
 
-**RF-Calculus in 7 steps:**
+Code refactoring is typically described informally—"improve structure without changing behavior." The RF-Calculus provides a formal foundation using BLD theory.
 
-1. **FACTOR : S → S₁ × S₂ × ...** — decomposition into smaller structures
-2. **Structural Terms** — s ::= b | l | d | s × s | s + s | s → s
-3. **B-Factor** — scattered conditionals → explicit sum type (boundary)
-4. **L-Factor** — cyclic dependencies → shared + directed (link acyclicity)
-5. **D-Factor** — heterogeneous loops → homogeneous products (dimension purity)
-6. **Termination** — stops at irreducible B × L × D (proven from BLD calculus)
-7. **Isomorphism** — eval(S) = eval(FACTOR(S)) (behavior preserved)
+**Main Claim.** Refactoring is factorization: decomposition into BLD primitives that preserves behavior while revealing implicit structure.
+
+**Key Results:**
+- Three factorization rules (B-Factor, L-Factor, D-Factor)
+- Termination at irreducible primitives
+- Behavioral preservation: eval(S) = eval(FACTOR(S))
+
+**Outline.** Section 2 presents the three factorization rules. Section 3 defines structural terms. Section 4 proves termination. Section 5 proves behavioral preservation.
 
 | Rule | Input Pattern | Output Pattern | Reveals |
 |------|---------------|----------------|---------|
@@ -36,11 +37,7 @@ Refactoring is factorization: decomposition of composite structures into smaller
 | L-Factor | Cycle A→B→C→A | Shared + DAG | Link structure |
 | D-Factor | Mixed loop | Homogeneous products | Dimension |
 
-**Key insight**: Refactoring doesn't reduce complexity — it reveals implicit structure by decomposing composites into explicit primitives.
-
----
-
-## The Three Factorization Rules
+## 2. The Three Factorization Rules
 
 ```
 ┌─────────────────────┐  ┌─────────────────────┐  ┌─────────────────────┐
@@ -493,15 +490,15 @@ FACTOR(S) = D[User, User, User] × D[Product, Product]
 
 ---
 
-## 9. Open Questions
+## 9. Conjectures
 
-1. **Uniqueness of factorization order**: Does the order of applying rules matter for the final result? (Conjecture: No — confluence)
+**Conjecture 1 (Confluence).** The order of applying factorization rules does not affect the normal form.
 
-2. **Optimal factorization**: Is there a canonical sequence that minimizes intermediate size?
+**Conjecture 2 (Optimal Sequence).** There exists a canonical sequence that minimizes intermediate structure size.
 
-3. **Partial factorization**: Can useful invariants be proven without reaching full normal form?
+**Conjecture 3 (Partial Invariants).** Useful invariants can be proven without reaching full normal form.
 
-4. **Cost prediction**: Can we predict the cost of factorization before performing it?
+**Conjecture 4 (Cost Prediction).** The cost of factorization is predictable from structure size before performing it.
 
 ---
 

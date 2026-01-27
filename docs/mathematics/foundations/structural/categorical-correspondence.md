@@ -12,21 +12,22 @@ used_by:
 
 # BLD = Category Theory: The Categorical Correspondence
 
-The type-theoretic proof already establishes the categorical structure.
+## Abstract
 
----
+We establish that BLD theory is categorically equivalent to a fragment of category theory via the Curry-Howard-Lambek correspondence. The three BLD primitives map to fundamental categorical constructions: B (Boundary) to coproducts, L (Link) to morphisms/exponential objects, and D (Dimension) to products. This correspondence is not by analogy but by construction—the BLD calculus inherits 100+ years of category theory results. We extend the standard correspondence by showing that BLD's observation cost K/X appears as a modification to the adjunction structure: the triangle identities acquire K/X residue, quantifying what standard category theory treats as zero. BLD is characterized as a quantale-enriched category with truth values in [0, ∞] rather than Bool, where truth is graded by observation cost.
 
-## Quick Summary
+## 1. Introduction
 
-**BLD = Category Theory in 7 steps:**
+The Curry-Howard-Lambek correspondence establishes that type theory, logic, and category theory are three views of the same structure. BLD inherits this correspondence through its type-theoretic foundation.
 
-1. **B = Coproduct** — Sum types ARE coproducts (categorical disjoint union)
-2. **L = Morphism** — Function types ARE morphisms (categorical arrows)
-3. **D = Product** — Product types ARE products (categorical tuples)
-4. **Objects = BLD structures** — Any (B, L, D) configuration is an object
-5. **Composition = Traversal** — Following links is morphism composition
-6. **Two-reference = Adjunction** — Machine ⊣ Structure (observation as adjoint)
-7. **Verified** — Type theory = category theory (Curry-Howard-Lambek)
+**Main Results:**
+- B = Coproduct, L = Morphism/Exponential, D = Product
+- K/X corrections appear as natural transformations
+- The two-reference principle is an adjunction Machine ⊣ Structure
+- ∞-groupoids arise from iterated D with L at each level
+- BLD is a quantale-enriched category (truth by cost, not boolean)
+
+**Outline.** Section 2 presents the core mapping. Section 3 defines the category of BLD structures. Section 4 discusses functors as domain mappings. Section 5 shows K/X as natural transformation. Section 6 establishes the two-reference adjunction. Section 7 covers limits/colimits. Section 8 addresses higher categories. Section 9 resolves the topos question.
 
 | BLD | Type Theory | Category Theory |
 |-----|-------------|-----------------|
@@ -34,11 +35,7 @@ The type-theoretic proof already establishes the categorical structure.
 | **L** (Link) | Function (→) | **Morphism** |
 | **D** (Dimension) | Product (Πₙ) | **Product** |
 
-**Key insight**: This isn't new — the [Curry-Howard-Lambek correspondence](https://ncatlab.org/nlab/show/computational+trinitarianism) already establishes that type theory IS category theory. BLD inherits this equivalence.
-
----
-
-## 1. The Core Mapping
+## 2. The Core Mapping
 
 ### 1.1 Primitives
 
@@ -184,7 +181,7 @@ The square commutes: G(f) ∘ η_A = η_B ∘ F(f)
 
 ### 4.2 K/X Corrections Are Natural
 
-The universal skip ratio K/X appears uniformly across all objects:
+Observation cost K/X appears uniformly across all objects:
 
 **Claim**: Observer corrections form a natural transformation.
 
@@ -489,19 +486,45 @@ The categorical correspondence means:
 
 ---
 
+## 11. Related Work
+
+The Curry-Howard correspondence between proofs and programs was established by [Howard, 1980]. The extension to categories (Curry-Howard-Lambek) appears in [Lambek & Scott, 1986]. Modern treatments include [Awodey, 2010] for category theory fundamentals and [Univalent Foundations Program, 2013] for homotopy type theory.
+
+Quantale-enriched categories and Lawvere metric spaces are developed in [Lawvere, 1973] and [Stubbe, 2005]. The connection between observation cost and enriched categories is original to BLD.
+
+## 12. Conclusion
+
+BLD inherits the full power of category theory through the Curry-Howard-Lambek correspondence. The K/X correction extends standard category theory with observation cost, characterizing BLD as a quantale-enriched category where truth is graded rather than boolean.
+
 ## References
 
-1. [nLab: Category](https://ncatlab.org/nlab/show/category) — Basic definitions
-2. [nLab: Adjunction](https://ncatlab.org/nlab/show/adjunction) — Adjoint functors
-3. [nLab: Topos](https://ncatlab.org/nlab/show/topos) — Topos theory
-4. [nLab: Computational Trinitarianism](https://ncatlab.org/nlab/show/computational+trinitarianism) — Curry-Howard-Lambek
-5. [nLab: ∞-Groupoid](https://ncatlab.org/nlab/show/infinity-groupoid) — Higher categories
-6. [nLab: Quantale](https://ncatlab.org/nlab/show/quantale) — Generalized truth values
-7. [nLab: Lawvere metric space](https://ncatlab.org/nlab/show/Lawvere+metric+space) — [0, ∞] as enrichment
+### External References
 
----
+[Awodey, 2010] S. Awodey. *Category Theory*. Oxford University Press, 2nd edition, 2010.
 
-## See Also
+[Howard, 1980] W. A. Howard. "The formulae-as-types notion of construction." In *To H.B. Curry: Essays on Combinatory Logic*, Academic Press, 1980.
+
+[Lambek & Scott, 1986] J. Lambek and P. J. Scott. *Introduction to Higher Order Categorical Logic*. Cambridge University Press, 1986.
+
+[Lawvere, 1973] F. W. Lawvere. "Metric spaces, generalized logic, and closed categories." *Rendiconti del Seminario Matematico e Fisico di Milano* 43, 1973, pp. 135-166.
+
+[Mac Lane, 1971] S. Mac Lane. *Categories for the Working Mathematician*. Springer, 1971.
+
+[Stubbe, 2005] I. Stubbe. "Categorical structures enriched in a quantaloid: Categories, distributors and functors." *Theory and Applications of Categories* 14, 2005, pp. 1-45.
+
+[Univalent Foundations Program, 2013] *Homotopy Type Theory: Univalent Foundations of Mathematics*. Institute for Advanced Study, 2013.
+
+### Online Resources
+
+- [nLab: Category](https://ncatlab.org/nlab/show/category)
+- [nLab: Adjunction](https://ncatlab.org/nlab/show/adjunction)
+- [nLab: Topos](https://ncatlab.org/nlab/show/topos)
+- [nLab: Computational Trinitarianism](https://ncatlab.org/nlab/show/computational+trinitarianism)
+- [nLab: ∞-Groupoid](https://ncatlab.org/nlab/show/infinity-groupoid)
+- [nLab: Quantale](https://ncatlab.org/nlab/show/quantale)
+- [nLab: Lawvere metric space](https://ncatlab.org/nlab/show/Lawvere+metric+space)
+
+### Internal BLD References
 
 - [Glossary](../../../glossary.md) — Central definitions
 - [BLD Calculus](../definitions/bld-calculus.md) — The formal type system

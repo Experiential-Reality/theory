@@ -36,8 +36,8 @@ K = 2    (Killing form — bidirectional observation cost)
 ## Key Formulas
 
 ```
-Universal Skip Ratio:    correction = K/X
-                         (every measurement pays this)
+Observation Cost:        correction = K/X
+                         (cost of traversing hidden structure)
 
 Energy:                  E = K × Σ(1/Xᵢ) = observation scope
                          (energy IS what alignments are accessible)
