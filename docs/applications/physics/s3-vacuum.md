@@ -17,7 +17,7 @@ used_by:
 **ε = λ_Cabibbo is derived, not fit:**
 
 1. Self-consistency: α = 2λ² gives ε = 0.225 exactly (ratio = 0.988) — [Derivation Complete](#derivation-complete-α--2λ²)
-2. λ appears in three places from one source: mass hierarchy, CKM mixing, flavon potential — [Why ε ≈ λ_Cabibbo?](#why-ε--λ_cabibbo)
+2. λ appears in three places from one source: mass hierarchy, CKM mixing, flavon potential — [Why ε ≈ λ_Cabibbo?](#why-ε--λ-cabibbo)
 3. Clebsch-Gordan coefficients from S₃ group theory eliminate 15% discrepancy — [Structural Origins](#structural-origins-of-ε--022)
 4. λ² = 1/20 = 1/(4×C₃) where C₃=5 is Catalan number, giving λ = 0.2236 — [Structural Origins](#structural-origins-of-ε--022)
 5. CP phase: δ_CP = golden_angle/2 = 68.75° (exp: 68°, 1.1% error) — [CP Phase](#cp-phase-from-two-flavon-model)
@@ -166,7 +166,7 @@ This means each flavon sits at ~20% of the cutoff scale.
 
 ---
 
-## Why ε ≈ λ_Cabibbo? {#why-ε--λ_cabibbo}
+## Why ε ≈ λ_Cabibbo?
 
 ### The Froggatt-Nielsen Connection
 

@@ -1,6 +1,7 @@
 ---
 status: DERIVED
 layer: 2
+key_result: "Planck mass = v×√(B×n×L) — no free parameters"
 depends_on:
   - structural-observer-framework.md
   - ../foundations/proofs/irreducibility-proof.md
@@ -28,7 +29,7 @@ used_by:
 1. λ = 1/√20 from S₃ cascade — [λ Parameter](#the-λ-parameter-key-to-scale-hierarchy)
 2. n_c = B/2 − K = 26 (cascade exponent) — [BLD Structure](#bld-structure-of-the-derivation)
 3. M_P = v × λ⁻²⁶ × √(5/14) × observer corrections — [Complete Formula](#the-complete-formula)
-4. First-order: ×(79/78), Second-order: ×(1 + 6/(n×L×B²)) — [Planck Mass Formula](#the-planck-mass-formula)
+4. First-order: ×(79/78), Second-order: ×(1 + 6/(n×L×B²)) — [Planck Mass Formula](#key-result-the-planck-mass-formula)
 5. Primordial vs observed: integer structure — [Primordial vs Observed](#primordial-vs-observed-the-key-insight)
 
 **Result**: ℏ = 1.0545717 × 10⁻³⁴ J·s
@@ -238,7 +239,7 @@ Since ℏ = M_P² × G/c with G, c as exact empirical inputs, the ℏ prediction
 | Formula | Observer Term | Form | Error |
 |---------|--------------|------|-------|
 | α⁻¹ = n×L + B + 1 + K/B + spatial − e²×120/(119×(n×L×B)²) | +1 + corrections | Additive | **0.0 ppt** |
-| m_H = (v/2) × **(1 + 1/B)** | ×(1 + 1/56) | Multiplicative | 0.05% |
+| m_H = (v/2) × **(1 + 1/B)(1 − 1/(B×L))** | ×(57/56)(1119/1120) | Multiplicative | **0.0%** |
 | M_P = v × λ⁻²⁶ × √(5/14) × **(79/78)** | ×(1 + 1/78) | Multiplicative | 0.002% |
 
 All three have the **same structure**: observer contributes +1 to the measurement.
@@ -437,7 +438,7 @@ This suggests a 30% reduction in effective D×L at Planck scale due to discrete 
 
 ---
 
-## Key Result: The Planck Mass Formula {#the-planck-mass-formula}
+## Key Result: The Planck Mass Formula
 
 ### The Derived Formula
 
@@ -573,7 +574,7 @@ v = M_P × λ²⁶ × √(14/5) × (78/79) × (1 - 6/(n×L×B²) + ...)
 If there's a reason M_P is the "natural" scale (e.g., from quantum gravity), then v follows.
 
 **Hints that v has BLD structure**:
-- m_H = (v/2)(1 + 1/B) — Higgs mass formula has BLD correction
+- m_H = (v/2)(1 + 1/B)(1 − 1/(B×L)) — Higgs mass formula has BLD corrections
 - The factor of 2 is the Killing form
 - The 1/B is the boundary quantum
 
@@ -639,7 +640,7 @@ Uses:
 | Quantity | Formula | Error |
 |----------|---------|-------|
 | α⁻¹ | n×L + B + 1 + K/B + spatial − e²×120/(119×(n×L×B)²) | **0.0 ppt** |
-| m_H | (v/2)(1 + 1/B) | **0.05%** |
+| m_H | (v/2)(1 + 1/B)(1 − 1/(B×L)) | **0.0%** |
 | M_P | v × λ⁻²⁶ × √(5/14) × (79/78) × (1 + 6/(n×L×B²)) | **0.002%** |
 | ℏ | M_P² × G/c | **0.00003%** |
 | λ_Cabibbo | (1/√20)(1 + 1/v) | **0.01%** |

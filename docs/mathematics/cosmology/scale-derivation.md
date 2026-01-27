@@ -451,7 +451,7 @@ The NUMBER 246 is a unit convention. The PHYSICS is in the ratios.
 2. B = K(n_c + K) = 56 ✓
 3. n = B/K - K = 26 ✓
 4. v/M_P = λ²⁶ × √(14/5) × (78/79) × ... ✓
-5. m_H/v = (1/2)(1 + 1/B) ✓
+5. m_H/v = (1/2)(1 + 1/B)(1 − 1/(B×L)) ✓
 6. α⁻¹ = n×L + B + 1 + 2/B = 137.036 ✓
 7. All mass ratios ✓
 

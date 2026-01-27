@@ -1,6 +1,7 @@
 ---
 status: DERIVED
 layer: 0
+key_result: "K/X pattern: Observed = Structural + K/X(experiment)"
 depends_on:
   - constants.md
   - derivations/force-structure.md

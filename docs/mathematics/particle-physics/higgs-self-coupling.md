@@ -1,6 +1,7 @@
 ---
 status: PREDICTED
 layer: 2
+key_result: "κ_λ = 1.025 predicted — testable at HL-LHC ~2040"
 depends_on:
   - e7-derivation.md
   - boson-masses.md
@@ -20,10 +21,10 @@ prediction_date: 2026-01-22
 
 **Higgs self-coupling prediction (testable at HL-LHC):**
 
-1. κ_λ(structural) = 1.000: Higgs potential is exactly SM — [Why κ_λ = 1](#why-κ_λstructural--1-exactly)
+1. κ_λ(structural) = 1.000: Higgs potential is exactly SM — [Why κ_λ = 1](#why-κ-λstructural--1-exactly)
 2. Detection uses HH → bb̄γγ: both EM (X=B=56) and hadronic (X=n+L=24) — [Detection Chain](#step-2-the-detection-chain)
 3. Combined detection structure: X = B + (n+L) = 80 = n×L — [Detection Structure](#step-3-the-detection-structure-key-insight)
-4. κ_λ(observed) = 1 + K/(n×L) = 1.025: detection adds 2.5% (K/(D×L) derived from [Cost = B + D×L](../lie-theory/killing-form.md#why-2nxl-derived-from-cost-formula)) — [The Correction](#step-4-the-correction)
+4. κ_λ(observed) = 1 + K/(n×L) = 1.025: detection adds 2.5% (K/(D×L) derived from [Cost = B + D×L](../lie-theory/killing-form.md#why-2nl-derived-from-cost-formula)) — [The Correction](#step-4-the-correction)
 5. Falsifiable: BLD confirmed if 1.025±0.03, falsified if 1.000±0.02 — [Falsification Conditions](#falsification-conditions)
 6. Current bounds too loose: HL-LHC will test at ~5% precision — [Experimental Tests](#experimental-tests)
 
@@ -150,7 +151,7 @@ For **m_H measurement** via H → γγ:
 
 This matches the known Higgs mass formula:
 ```
-m_H = (v/2) × (1 + 1/B) = 125.25 GeV ✓
+m_H = (v/2) × (1 + 1/B) × (1 - 1/(B×L)) = 125.20 GeV ✓
 ```
 
 For **κ_λ measurement** via HH → bb̄γγ:
@@ -192,7 +193,7 @@ Therefore:
 
 | Quantity | Structural Value | Observed Value | Correction | Error |
 |----------|------------------|----------------|------------|-------|
-| m_H | v/2 = 123.11 GeV | 125.25 GeV | 1 + 1/B | 0.05% |
+| m_H | v/2 = 123.11 GeV | 125.20 GeV | (1 + 1/B)(1 − 1/(B×L)) | **0.0%** |
 | α⁻¹ | n×L + B + 1 = 137 | 137.036 | + K/B + ... | 0.0 ppt |
 | m_e | v × α² × (n/L)² | 0.511 MeV | × (78/80) | 0% |
 | **κ_λ** | **1.000** | **1.025** | **1 + K/(n×L)** | **TBD** |
@@ -201,7 +202,7 @@ Therefore:
 
 ---
 
-## Why κ_λ(structural) = 1 Exactly {#why-κ_λstructural--1-exactly}
+## Why κ_λ(structural) = 1 Exactly
 
 The SM Higgs potential:
 ```

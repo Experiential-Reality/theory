@@ -295,4 +295,4 @@ Euler's formula shows these are aspects of the same underlying structure — the
 - [Lie Algebra Examples](./lie-algebras.md) — so(2) as the simplest non-trivial BLD structure
 - [Lie Correspondence](../mathematics/lie-theory/lie-correspondence.md) — BLD = Lie theory mapping
 - [BLD Conservation](../mathematics/bld-conservation.md) — Noether's theorem in BLD (π appears in angular momentum conservation)
-- [Traverser as Causal Agent](../glossary.md#traverser-causal) — The e-domain in action
+- [Traverser as Causal Agent](../glossary.md#traverser-as-causal-agent) — The e-domain in action

@@ -1,6 +1,7 @@
 ---
 status: PROVEN
 layer: 0
+key_result: "Seven axioms: A1-A3 existence, A4-A6 closure, A7 genesis"
 depends_on: []
 used_by:
   - definitions/bld-calculus.md

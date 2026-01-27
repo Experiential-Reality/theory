@@ -1,6 +1,7 @@
 ---
 status: DERIVED
 layer: 1
+key_result: "traverse(-B,B): existence bootstraps because nothing is impossible"
 depends_on:
   - nothing-instability.md
   - ../quantum/chirality-cpt.md

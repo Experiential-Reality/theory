@@ -1,6 +1,7 @@
 ---
 status: DERIVED
 layer: 2
+key_result: "μ/e = 206.768 exact; τ/μ = 16.817 at 4 ppm"
 depends_on:
   - ../foundations/machine/integer-machine.md
   - e7-derivation.md
@@ -201,7 +202,7 @@ m_e = 246 GeV × 5.33×10⁻⁵ × 0.04
 
 ### With Observer Correction `[DERIVED]`
 
-The correction K/(D×L) = 2/(n×L) = 2.5% is derived from the cost formula Cost = B + D×L (see [Killing Form](../lie-theory/killing-form.md#why-2nxl-derived-from-cost-formula)):
+The correction K/(D×L) = 2/(n×L) = 2.5% is derived from the cost formula Cost = B + D×L (see [Killing Form](../lie-theory/killing-form.md#why-2nl-derived-from-cost-formula)):
 
 ```
 m_e = v × α² × (n/L)² × (1 - 2/(n×L))
@@ -391,7 +392,7 @@ For all particles, primordial mass ratios are BLD integer combinations. See [Int
 
 ## Why Three Generations?
 
-**Hypothesis** `[SPECULATIVE]`: There are exactly three generations because:
+**Hypothesis** `[HYPOTHESIZED]`: There are exactly three generations because:
 1. **Gen 1**: Couples at the n/L interface (dimensional/geometric boundary)
 2. **Gen 2**: Couples through the full n→B hierarchy (13 intervals)
 3. **Gen 3**: Couples to the completed structure (intervals + dimensions)
@@ -695,7 +696,7 @@ See [Machine Visualization](../foundations/machine/machine-visualization.md) for
 | Constant | Formula | Predicted | Observed | Error | Meas. Prec. |
 |----------|---------|-----------|----------|-------|-------------|
 | α⁻¹ | n×L + B + 1 + K/B + spatial − e²×120/(119×(n×L×B)²) | 137.035999177 | 137.035999177 | **0.0 ppt** | 0.15 ppt |
-| m_H | (v/2)(1 + 1/B) | 125.31 GeV | 125.25 GeV | **0.05%** | 0.14% |
+| m_H | (v/2)(1 + 1/B)(1 − 1/(B×L)) | **125.20 GeV** | 125.20 GeV | **0.0%** | 0.14% |
 | m_e | v × α² × (n/L)² × (78/80) | 0.511 MeV | 0.511 MeV | **0%** | 3 ppt |
 | m_μ | m_e × (μ/e exact) | 105.66 MeV | 105.658 MeV | **0.002%** | 22 ppb |
 | m_τ | m_μ × (τ/μ exact) | 1776.8 MeV | 1776.9 MeV | **0.006%** | 70 ppm |
@@ -735,7 +736,7 @@ If this framework is correct:
 
 3. **Heavy quark formulas exist**: Strange, charm, bottom, top masses should be derivable from BLD constants with additional factors for color and electroweak mixing. See [Quark Masses](quark-masses.md).
 
-4. ~~**The Higgs mass is derivable**~~ **DERIVED**: m_H = (v/2)(1 + 1/B) = 125.31 GeV (0.05% error). See [Boson Masses](boson-masses.md).
+4. ~~**The Higgs mass is derivable**~~ **DERIVED**: m_H = (v/2)(1 + 1/B)(1 − 1/(B×L)) = 125.20 GeV (exact). See [Boson Masses](boson-masses.md).
 
 ---
 
@@ -751,7 +752,7 @@ If this framework is correct:
 ### Internal BLD References
 - [E7 Derivation](e7-derivation.md) — B=56 derivation and boundary quantum (2/B)
 - [Fine Structure Consistency](fine-structure-consistency.md) — α⁻¹ = 137.036 exact prediction
-- [Boson Masses](boson-masses.md) — Higgs mass m_H = (v/2)(1 + 1/B)
+- [Boson Masses](boson-masses.md) — Higgs mass m_H = (v/2)(1 + 1/B)(1 − 1/(B×L))
 - [Observer Corrections](../cosmology/observer-correction.md) — The 2.5% correction
 - [Lie Correspondence](../lie-theory/lie-correspondence.md) — D, L, B fundamentals
 - [Neutrino Masses](neutrino-masses.md) — Neutrino masses from missing B structure

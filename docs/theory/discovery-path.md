@@ -11,7 +11,16 @@ depends_on:
   - ../mathematics/particle-physics/e7-derivation.md
   - ../mathematics/cosmology/observer-correction.md
 used_by: []
+key_result: "B, L, D emerged from GPU performance patterns"
 ---
+
+## Summary
+
+**The discovery journey from GPU kernels to fundamental physics:**
+
+1. GPU memory patterns revealed structural properties — [Step 1](#step-1-gpu-compute-and-structure)
+2. LLM introspection confirmed substrate-independence — [Step 2](#step-2-asking-llms-philosophical-questions)
+3. Three primitives kept appearing: partitions, connections, repetitions — [Step 1](#step-1-gpu-compute-and-structure)
 
 # L: The Path from GPU Kernels to BLD
 

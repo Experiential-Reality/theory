@@ -993,7 +993,7 @@ This would explain why θ_QCD is exactly zero (or effectively zero via axion), w
 
 ---
 
-## Mass Hierarchy: S₃ Breaking Cascade (P11) {#mass-hierarchy-s₃-breaking-cascade-p11}
+## Mass Hierarchy: S₃ Breaking Cascade (P11)
 
 The mass hierarchy (12 orders of magnitude from electron to top quark) emerges from the S₃ family symmetry discovered in P9.
 
@@ -1120,7 +1120,7 @@ See [Mass Prediction](../applications/physics/mass-prediction.md) for full analy
 
 ---
 
-## Mixing Angles: Tribimaximal as S₃ Limit (P12) {#mixing-angles-tribimaximal-as-s₃-limit-p12}
+## Mixing Angles: Tribimaximal as S₃ Limit (P12)
 
 The quark and lepton mixing matrices (CKM, PMNS) have specific patterns that appear connected to the S₃ family symmetry.
 
@@ -1764,7 +1764,7 @@ Consequences:
 
 ---
 
-## Baryogenesis: S₃ Phase Compensation (P18) {#baryogenesis-s₃-phase-compensation-p18}
+## Baryogenesis: S₃ Phase Compensation (P18)
 
 The matter-antimatter asymmetry arises from S₃ CP phases via compensation.
 

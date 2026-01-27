@@ -18,7 +18,7 @@ used_by:
 
 **BLD validated (6/6 tests):**
 
-1. D×L scaling: C scales with N (R²=1.0), V_th invariant — [Proof](#dxl-scaling-proof)
+1. D×L scaling: C scales with N (R²=1.0), V_th invariant — [Proof](#dl-scaling-proof)
 2. Compensation asymmetry: L→B works (cascading), B→L limited — [Principle](#compensation-principle)
 3. Circuits use e (gain stacking is multiplicative) — [Why e](#why-circuits-use-e-exponential-compensation)
 
@@ -42,7 +42,7 @@ used_by:
 
 ---
 
-## D×L Scaling Proof {#dxl-scaling-proof}
+## D×L Scaling Proof
 
 ### The Claim
 
@@ -263,7 +263,7 @@ In the Euler unification e^(iπ) + 1 = 0:
 
 Circuit cascades are pure exponential because they lack the closed boundary that would make π appear.
 
-See [Compensation Principle](../../mathematics/foundations/structural/compensation-principle.md) and [Euler's Formula in BLD](../../glossary.md#euler).
+See [Compensation Principle](../../mathematics/foundations/structural/compensation-principle.md) and [Euler's Formula in BLD](../../glossary.md#eulers-formula-in-bld).
 
 ---
 

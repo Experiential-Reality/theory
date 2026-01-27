@@ -740,6 +740,6 @@ See [Observer Corrections](../mathematics/cosmology/observer-correction.md) for 
 - [Lepton Masses](../mathematics/particle-physics/lepton-masses.md#euler-connection-derived) — e as discrete accumulation in mass ratios
 - [Lie Correspondence](../mathematics/lie-theory/lie-correspondence.md) — BLD = Lie theory mapping
 - [Compensation Principle](../mathematics/foundations/structural/compensation-principle.md) — The two mechanisms
-- [Traverser as Causal Agent](../glossary.md#traverser-causal) — e as the do() operator
+- [Traverser as Causal Agent](../glossary.md#traverser-as-causal-agent) — e as the do() operator
 - [BLD Conservation](../mathematics/bld-conservation.md) — Noether's theorem in BLD
 - [Research Directions](../meta/research-directions.md) — Next steps: physics traverser

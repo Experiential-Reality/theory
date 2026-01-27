@@ -1,6 +1,7 @@
 ---
 status: DERIVED
 layer: 0
+key_result: "B=56, L=20, n=4, K=2, S=13 — all derived"
 depends_on:
   - ../particle-physics/e7-derivation.md
   - ../lie-theory/lie-correspondence.md

@@ -117,7 +117,7 @@ This document establishes:
 This document does NOT establish:
 - That dark matter IS geometric L `[CONJECTURED]`
 - That the 25%/27% ratio follows `[EMPIRICAL]`
-- That the observer correction applies here `[CONJECTURED]` (formula K/(D×L) is derived from Cost = B + D×L, see [Killing Form](../lie-theory/killing-form.md#why-2nxl-derived-from-cost-formula))
+- That the observer correction applies here `[CONJECTURED]` (formula K/(D×L) is derived from Cost = B + D×L, see [Killing Form](../lie-theory/killing-form.md#why-2nl-derived-from-cost-formula))
 
 See [Dark Matter Mapping](dark-matter-mapping.md) for the conjectured application.
 

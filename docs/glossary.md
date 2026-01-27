@@ -12,7 +12,7 @@ depends_on: []
 
 1. Core primitives: B (Boundary), L (Link), D (Dimension) — [Core Primitives](#core-primitives)
 2. Derived concepts: alignment cost, compensation, factorization, K, entropy — [Derived Concepts](#derived-concepts)
-3. Key formulas: K = 2 (Killing form), S = K × L (entropy) — [Killing Form](#killing-form), [Entropy Formula](#entropy-formula)
+3. Key formulas: K = 2 (Killing form), S = K × L (entropy) — [Killing Form](#killing-form-k), [Entropy Formula](#entropy-formula)
 4. Mathematical background: Fisher information, KL divergence, Lie algebras — [Math Background](#mathematical-background)
 5. Notation: n vs n_c, λ vs λ_C — [Notation](#notation-convention)
 6. Status levels: PROVEN, DERIVED, VALIDATED, HYPOTHESIZED — [Status Levels](#status-levels)
@@ -49,7 +49,7 @@ Single source of truth for core BLD concepts.
 
 ## Core Primitives
 
-### Boundary (B) {#boundary}
+### Boundary (B)
 
 A **boundary** partitions a value space into disjoint regions based on a discriminator function:
 
@@ -73,7 +73,7 @@ where:
 
 ---
 
-### Link (L) {#link}
+### Link (L)
 
 A **link** is a directed connection from source to target:
 
@@ -99,7 +99,7 @@ where:
 
 ---
 
-### Dimension (D) {#dimension}
+### Dimension (D)
 
 A **dimension** is an axis of homogeneous repetition:
 
@@ -125,7 +125,7 @@ where:
 
 ## Derived Concepts
 
-### Alignment Cost {#alignment-cost}
+### Alignment Cost
 
 The cost of mapping one structure onto another:
 
@@ -146,7 +146,7 @@ cost(S₁, S₂) = Σ_b penalty(S₁.b, S₂) + Σ_l penalty(S₁.l, S₂) + Σ_
 
 ---
 
-### D×L Scaling Principle {#dxl-scaling}
+### D×L Scaling Principle
 
 **D multiplies L, not B.**
 
@@ -177,7 +177,7 @@ See [Circuits](applications/physics/circuits.md) for detailed proof.
 
 ---
 
-### Noise Floor {#noise-floor}
+### Noise Floor
 
 The **noise floor** is the irreducible prediction error that cannot be modeled as B/L/D structure.
 
@@ -210,7 +210,7 @@ See [Proof Status](meta/proof-status.md) for derivation details.
 
 ---
 
-### Compensation Principle {#compensation}
+### Compensation Principle
 
 In some domains, **L can compensate for B deficiency, but B cannot compensate for L deficiency**.
 
@@ -268,7 +268,7 @@ See also [Neural Network Alignment](applications/ml/neural-network-alignment.md)
 
 ---
 
-### FACTOR Operation {#factor}
+### FACTOR Operation
 
 **FACTOR** is the decomposition operation that breaks composite structures into smaller structures:
 
@@ -297,7 +297,7 @@ See [Factorization Calculus](mathematics/foundations/structural/factorization-ca
 
 ---
 
-### Structural Cost {#structural-cost}
+### Structural Cost
 
 The cost of a structure, decomposed into visible and hidden components:
 
@@ -326,7 +326,7 @@ See [Structural Cost Conservation](mathematics/foundations/structural/structural
 
 ---
 
-### Killing Form (K) {#killing-form}
+### Killing Form (K)
 
 The **Killing form** K = 2 is the bidirectional observation cost — the minimum number of traversals required to complete an observation.
 
@@ -359,7 +359,7 @@ See [Killing Form](mathematics/lie-theory/killing-form.md) for the derivation.
 
 ---
 
-### Entropy Formula {#entropy-formula}
+### Entropy Formula
 
 The **entropy formula** S = K × L is the universal entropy relationship:
 
@@ -390,7 +390,7 @@ See [Key Principles - Entropy Formula](mathematics/foundations/key-principles.md
 
 ---
 
-### Explicitness {#explicitness}
+### Explicitness
 
 **Explicitness** measures the fraction of structural cost that is explicit:
 
@@ -410,11 +410,11 @@ S →_FACTOR S'  implies  Explicitness(S') > Explicitness(S)
 
 **Fixed point**: FACTOR terminates when Explicitness = 1, at which point all structure is expressed as irreducible B × L × D.
 
-See [Structural Cost Conservation](mathematics/foundations/structural/structural-cost-conservation.md#the-explicitness-metric).
+See [Structural Cost Conservation](mathematics/foundations/structural/structural-cost-conservation.md#4-the-explicitness-metric).
 
 ---
 
-### Fixed Point (Normal Form) {#fixed-point}
+### Fixed Point (Normal Form)
 
 A **fixed point** (or **normal form**) is a structure where no factorization rule applies:
 
@@ -440,7 +440,7 @@ See [Factorization Calculus](mathematics/foundations/structural/factorization-ca
 
 ---
 
-### Structure {#structure}
+### Structure
 
 A **structure** is a triple S = (B, L, D):
 
@@ -457,7 +457,7 @@ Every system can be described as a configuration of these three primitives.
 
 ---
 
-### Traverser {#traverser}
+### Traverser
 
 A **traverser** is also a structure — it describes *how* another structure is processed:
 
@@ -487,7 +487,7 @@ Both satisfy D×L scaling and B invariance. This is why documentation structured
 
 See [Documentation Structure](examples/docs-structure.md) for the full human traverser model.
 
-### Traverser as Causal Agent {#traverser-causal}
+### Traverser as Causal Agent
 
 The traverser is more than hardware — it is the **source of causal agency** in the BLD framework.
 
@@ -516,7 +516,7 @@ Causation:   do(X), see(Y)   →  traverser → structure (unidirectional L)
 
 ---
 
-### Structural Interest {#structural-interest}
+### Structural Interest
 
 **Structural interest** is the potential for non-trivial alignment outcomes.
 
@@ -544,7 +544,7 @@ See [Structural Interest](theory/structural-interest.md) for the full treatment.
 
 ## Mathematical Background
 
-### Fisher Information {#fisher-information}
+### Fisher Information
 
 The curvature of the log-likelihood surface:
 
@@ -556,7 +556,7 @@ On probability distributions, the BLD metric reduces to the Fisher-Rao metric.
 
 ---
 
-### KL Divergence {#kl-divergence}
+### KL Divergence
 
 The information lost when approximating one distribution with another:
 
@@ -568,7 +568,7 @@ The link cost formula L = -½ ln(1 - ρ²) is derived from KL divergence between
 
 ---
 
-### Lie Algebra {#lie-algebra}
+### Lie Algebra
 
 An algebraic structure capturing infinitesimal symmetries:
 
@@ -585,7 +585,7 @@ where fᵢⱼᵏ are structure constants.
 
 ---
 
-### Noether's Theorem {#noether}
+### Noether's Theorem
 
 Every continuous symmetry of the action corresponds to a conserved quantity:
 
@@ -599,7 +599,7 @@ See [BLD Conservation](mathematics/bld-conservation.md) for the full derivation.
 
 ---
 
-### π (Pi) in BLD {#pi}
+### π (Pi) in BLD
 
 π is the **closure constant** for continuous periodic structures:
 
@@ -622,7 +622,7 @@ See [π from BLD](examples/pi-from-bld.md) for the derivation.
 
 ---
 
-### Euler's Formula in BLD {#euler}
+### Euler's Formula in BLD
 
 Euler's identity **e^(iπ) + 1 = 0** unifies the two compensation mechanisms:
 
@@ -662,7 +662,7 @@ See [π from BLD](examples/pi-from-bld.md), [e from BLD](examples/e-from-bld.md)
 
 ---
 
-### Gaussian Curvature on SPD(d) {#spd-curvature}
+### Gaussian Curvature on SPD(d)
 
 The **Gaussian curvature** on the space of symmetric positive definite matrices SPD(d) governs the geometry of the BLD manifold.
 
@@ -691,7 +691,7 @@ See [Boundary Derivation](mathematics/lie-theory/boundary-derivation.md#the-α-e
 
 ---
 
-### Fokker-Planck Equation {#fokker-planck}
+### Fokker-Planck Equation
 
 The **Fokker-Planck equation** describes the time evolution of probability distributions on the BLD manifold.
 
@@ -713,11 +713,11 @@ The integrand is manifestly non-negative, proving entropy increase.
 
 **Equilibrium**: dS/dt = 0 when P ∝ e^{-E/k_B T} (Boltzmann distribution).
 
-See [Thermodynamics](mathematics/derived/thermodynamics.md#second-law-entropy-increase-rigorous-derivation) for the complete proof with boundary conditions.
+See [Thermodynamics](mathematics/derived/thermodynamics.md#43-second-law-entropy-increase-rigorous-derivation) for the complete proof with boundary conditions.
 
 ---
 
-### e (Traverser Constant) {#e-constant}
+### e (Traverser Constant)
 
 **e** is the **traverser constant** — the characteristic of sequential accumulation.
 
@@ -770,7 +770,7 @@ See [e from BLD](examples/e-from-bld.md) for the full derivation and the travers
 
 ---
 
-### Physics Traverser {#physics-traverser}
+### Physics Traverser
 
 The **physics traverser** is a traverser constrained to operate in physical reality — respecting causality, unitarity, and locality.
 
@@ -807,7 +807,7 @@ See [Physics Traverser](examples/physics-traverser.md) for the full derivation.
 
 ---
 
-### Triality {#triality}
+### Triality
 
 **Triality** is a 3-fold automorphism of the Lie group Spin(8), unique to 8-dimensional (octonionic) structures.
 
@@ -852,7 +852,7 @@ See [Physics Traverser - Triality](examples/physics-traverser.md#the-generation-
 
 ---
 
-### θ-Vacuum (Theta-Vacuum) {#theta-vacuum}
+### θ-Vacuum (Theta-Vacuum)
 
 The **θ-vacuum** is the true QCD vacuum, a superposition of topologically distinct sectors labeled by winding number.
 
@@ -883,7 +883,7 @@ See [Physics Traverser - Strong CP Problem](examples/physics-traverser.md#strong
 
 ---
 
-### Instanton {#instanton}
+### Instanton
 
 An **instanton** is a non-perturbative gauge field configuration that tunnels between topologically distinct vacua.
 
@@ -911,7 +911,7 @@ See [Physics Traverser - Strong CP Problem](examples/physics-traverser.md#strong
 
 ---
 
-### Topological Closure (P10) {#topological-closure}
+### Topological Closure (P10)
 
 **Topological closure** is the principle that angular parameters with 2π-periodicity in the partition function satisfy D×L = 2π×B closure.
 
@@ -949,7 +949,7 @@ See [Physics Traverser - Strong CP Problem](examples/physics-traverser.md#strong
 
 ---
 
-### Tribimaximal Mixing {#tribimaximal}
+### Tribimaximal Mixing
 
 **Tribimaximal mixing** is a specific form of the PMNS neutrino mixing matrix that preserves S₃ family symmetry.
 
@@ -981,7 +981,7 @@ See [Physics Traverser - Mixing Angles](examples/physics-traverser.md#mixing-ang
 
 ---
 
-### De Sitter Spacetime {#de-sitter}
+### De Sitter Spacetime
 
 **De Sitter spacetime** is the maximally symmetric solution of Einstein's equations with positive cosmological constant Λ > 0.
 
@@ -1019,7 +1019,7 @@ See [Physics Traverser - Dark Energy](examples/physics-traverser.md#dark-energy-
 
 ---
 
-### Yukawa Structure (P11) {#yukawa-structure}
+### Yukawa Structure (P11)
 
 **Yukawa structure** refers to the pattern of fermion masses arising from S₃ triality breaking.
 
@@ -1052,7 +1052,7 @@ See [Physics Traverser - Strong CP Problem](examples/physics-traverser.md#strong
 
 ---
 
-### Conformal Unification (P14) {#conformal-unification}
+### Conformal Unification (P14)
 
 **Conformal unification** is the principle that the three Standard Model gauge couplings are projections of a single GUT-scale coupling.
 
@@ -1080,7 +1080,7 @@ See [Physics Traverser - Coupling Unification](examples/physics-traverser.md#cou
 
 ---
 
-### Diffeomorphism Boundary (P15) {#diffeomorphism-boundary}
+### Diffeomorphism Boundary (P15)
 
 **Diffeomorphism boundary** refers to gravity as boundary enforcement rather than gauge structure.
 
@@ -1106,7 +1106,7 @@ See [Physics Traverser - Gravity](examples/physics-traverser.md#gravity-as-diffe
 
 ---
 
-### Seesaw Mechanism (P17) {#seesaw-mechanism}
+### Seesaw Mechanism (P17)
 
 The **seesaw mechanism** explains neutrino mass smallness through coupling to a high mass scale.
 
@@ -1129,7 +1129,7 @@ See [Physics Traverser - Neutrino Mass](examples/physics-traverser.md#neutrino-m
 
 ---
 
-### Baryogenesis (P18) {#baryogenesis}
+### Baryogenesis (P18)
 
 **Baryogenesis** is the process that created the matter-antimatter asymmetry in the early universe.
 
@@ -1153,7 +1153,7 @@ See [Physics Traverser - Baryogenesis](examples/physics-traverser.md#baryogenesi
 
 ---
 
-### Cosmic Inflation (P19) {#cosmic-inflation}
+### Cosmic Inflation (P19)
 
 **Cosmic inflation** is the exponential expansion of the early universe (~60 e-folds).
 
@@ -1178,7 +1178,7 @@ See [Physics Traverser - Inflation](examples/physics-traverser.md#inflation-symm
 
 ---
 
-### QFT Cost Minimization (P20) {#qft-cost-minimization}
+### QFT Cost Minimization (P20)
 
 **QFT cost minimization** is the principle that quantum field theory axioms emerge from alignment cost minimization.
 

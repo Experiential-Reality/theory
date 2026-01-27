@@ -17,7 +17,7 @@ used_by:
 
 1. The anomaly — up-quark masses don't fit single spurion ε = λ — [The Discovery](#the-discovery)
 2. Two-stage cascade — S₃ → S₂ → {e} has two stages, each √λ — [Cascade Splitting](#physical-interpretation-cascade-splitting)
-3. 5̄×10 sees both stages: √λ × √λ = λ — [Full Link](#full-link-5̄10-for-leptonsdown)
+3. 5̄×10 sees both stages: √λ × √λ = λ — [Full Link](#full-link-510-for-leptonsdown)
 4. 10×10 sees only one stage: √λ × 1 = √λ — [Partial Link](#partial-link-1010-for-up-quarks)
 5. Symmetry reason — symmetric indices can't distinguish stage 2 — [Why 10×10 Skips](#why-1010-skips-stage-2)
 6. Formula: ε₂ = (1/20)^(1/4) = 0.4729, 0.31% error — [Mathematical Derivation](#mathematical-derivation)
@@ -135,7 +135,7 @@ This is the **geometric mean** of 1 and λ:
 
 The S₃ → S₂ → {e} cascade has **two stages**, each contributing √λ:
 
-### Full Link (5̄×10 for leptons/down): {#full-link-5̄10-for-leptonsdown}
+### Full Link (5̄×10 for leptons/down):
 
 ```
 ┌───────────────────────────────────────┐
@@ -147,7 +147,7 @@ The S₃ → S₂ → {e} cascade has **two stages**, each contributing √λ:
 └───────────────────────────────────────┘
 ```
 
-### Partial Link (10×10 for up quarks): {#partial-link-1010-for-up-quarks}
+### Partial Link (10×10 for up quarks):
 
 ```
 ┌───────────────────────────────────────┐
@@ -159,7 +159,7 @@ The S₃ → S₂ → {e} cascade has **two stages**, each contributing √λ:
 └───────────────────────────────────────┘
 ```
 
-### Why 10×10 Skips Stage 2 {#why-1010-skips-stage-2}
+### Why 10×10 Skips Stage 2
 
 In SU(5):
 - **5̄×10** → antisymmetric in generation indices → couples to both stages

@@ -219,7 +219,7 @@ Rapidity is the natural logarithm's presence in special relativity. Velocities d
 
 ---
 
-## D×L Scaling {#dl-scaling}
+## D×L Scaling
 
 **D multiplies L, not B**:
 

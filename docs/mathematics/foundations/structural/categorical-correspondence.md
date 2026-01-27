@@ -18,7 +18,7 @@ used_by:
 2. Category BLD: objects are structures, morphisms are alignments — [Category of BLD Structures](#2-category-of-bld-structures)
 3. K/X corrections appear as natural transformations — [Natural Transformations as Observer Corrections](#4-natural-transformations-as-observer-corrections)
 4. Two-reference principle is an adjunction Machine |- Structure — [The Two-Reference Adjunction](#5-the-two-reference-adjunction)
-5. Infinity-groupoids arise from iterated D with L at each level — [Higher Categories and Infinity-Groupoids](#7-higher-categories-and-infinity-groupoids)
+5. Infinity-groupoids arise from iterated D with L at each level — [Higher Categories and Infinity-Groupoids](#7-higher-categories-and--groupoids)
 6. BLD is quantale-enriched with truth values in [0, infinity] — [Is BLD a Topos?](#8-is-bld-a-topos)
 
 # BLD = Category Theory: The Categorical Correspondence
@@ -305,7 +305,7 @@ The function type τ₁ → τ₂ connects the colimit structure of τ₁ to the
 
 ---
 
-## 7. Higher Categories and ∞-Groupoids {#7-higher-categories-and-infinity-groupoids}
+## 7. Higher Categories and ∞-Groupoids
 
 ### 7.1 The Claim
 

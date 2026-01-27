@@ -176,7 +176,7 @@ These are the same structural fact. The complex numbers ARE the observation alge
 
 **i appears in quantum mechanics because observation uses i.** The Schrödinger equation has i because wavefunctions live in ℂ, and ℂ is the observation algebra.
 
-See [Integer Machine](../foundations/machine/integer-machine.md#8-the-imaginary-unit-i) for the complete derivation.
+See [Integer Machine](../foundations/machine/integer-machine.md#10-the-imaginary-unit-i) for the complete derivation.
 
 **What BLD explains about ℏ**:
 - There MUST be a minimum action (from D×L irreducibility)

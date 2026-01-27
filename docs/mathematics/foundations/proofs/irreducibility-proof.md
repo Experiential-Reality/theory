@@ -1,6 +1,7 @@
 ---
 status: PROVEN
 layer: 1
+key_result: "B, L, D are irreducible — none expressible via the other two"
 depends_on:
   - ../definitions/bld-calculus.md
   - ../axioms.md

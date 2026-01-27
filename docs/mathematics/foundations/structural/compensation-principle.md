@@ -497,7 +497,7 @@ The compensation principle—L compensates for B but not vice versa—follows fr
 
 ### Internal BLD References
 
-- [D×L Scaling Principle](../../../glossary.md#dxl-scaling) — Why D multiplies L, not B
+- [D×L Scaling Principle](../../../glossary.md#dl-scaling-principle) — Why D multiplies L, not B
 - [Circuits Validation](../../../applications/physics/circuits.md) — 87.8% compensation via cascading
 - [Neural Network Alignment](../../../applications/ml/neural-network-alignment.md) — 6.2% diagonal advantage
 - [Lie Correspondence](../../lie-theory/lie-correspondence.md) — BLD = Lie theory mapping

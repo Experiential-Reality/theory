@@ -419,7 +419,7 @@ The α-helix demonstrates angular compensation (π mechanism) with linear extens
 
 **Empirical observation**: Every domain examined decomposes into B/L/D without residue, and no structural phenomenon has required a fourth primitive. This is supported by evidence, not mathematical proof.
 
-See [Euler's Formula in BLD](../glossary.md#euler) and [Compensation Principle](../mathematics/foundations/structural/compensation-principle.md).
+See [Euler's Formula in BLD](../glossary.md#eulers-formula-in-bld) and [Compensation Principle](../mathematics/foundations/structural/compensation-principle.md).
 
 ---
 

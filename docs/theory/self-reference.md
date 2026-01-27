@@ -20,7 +20,7 @@ used_by: []
 2. Three questions apply to BLD syntax itself — [Three Questions Applied](#the-three-questions-applied-to-bld)
 3. bld.bld: the grammar file that describes itself — [Self-Referential Grammar](#bldbld-the-self-referential-grammar)
 4. Parsing is traversal over grammar structure — [Parser IS Traverser](#the-parser-is-a-traverser)
-5. Parse cost = B_grammar + D_tokens × L_match — [D×L Scaling](#dxl-scaling-in-parsing)
+5. Parse cost = B_grammar + D_tokens × L_match — [D×L Scaling](#dl-scaling-in-parsing)
 6. Bootstrap is recursion, not circularity — [Bootstrap Circle](#the-bootstrap-circle)
 
 | Component | BLD |
@@ -145,7 +145,7 @@ The parser traverses this structure, matching tokens against the grammar.
 
 ---
 
-## D×L Scaling in Parsing {#dxl-scaling-in-parsing}
+## D×L Scaling in Parsing
 
 The cost formula applies to parsing itself:
 

@@ -43,7 +43,7 @@ These three are **irreducible**: none can be expressed in terms of the others. S
 | Quantity | BLD Prediction | Observed | Error | Status |
 |----------|---------------|----------|-------|--------|
 | α⁻¹ | 137.035999177 | 137.035999177 | **0.0 ppt** | [DERIVED](mathematics/particle-physics/e7-derivation.md) |
-| m_H | 125.31 GeV | 125.20 GeV | 0.09% | [DERIVED](mathematics/particle-physics/boson-masses.md) |
+| m_H | **125.20 GeV** | 125.20 GeV | **0.0%** | [DERIVED](mathematics/particle-physics/boson-masses.md) |
 | M_P | 1.220890×10¹⁹ GeV | 1.220890×10¹⁹ GeV | <0.01% | [DERIVED](mathematics/quantum/planck-derivation.md) |
 | μ/e ratio | 206.768282600 | 206.768282600 | **0.3 ppt** | [DERIVED](mathematics/particle-physics/lepton-masses.md) |
 

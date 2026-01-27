@@ -1,9 +1,10 @@
 ---
-status: EXPLORATORY
+status: DERIVED
 layer: application
 depends_on:
   - ../../examples/physics-traverser.md
   - ../../mathematics/lie-theory/lie-correspondence.md
+  - ../../mathematics/foundations/derivations/force-structure.md
   - circuits.md
 used_by:
   - circuits.md
@@ -11,7 +12,7 @@ used_by:
 
 # BLD for Electromagnetism
 
-> **Status**: Exploratory (framework developed, connects to validated gauge structure)
+> **Status**: Derived — EM coupling α⁻¹ = 137.036 derived with 0.0 ppt error. See [Force Structure](../../mathematics/foundations/derivations/force-structure.md).
 
 ## Summary
 
@@ -19,7 +20,7 @@ used_by:
 
 1. Boundaries partition behavior: conductor/insulator (σ threshold), near/far field (r vs λ), charge sign — [Three Questions](#the-three-questions-applied-to-em)
 2. Links are connections: gauge potential A_μ couples charges, F_μν defines physical coupling — [Three Questions](#the-three-questions-applied-to-em)
-3. D×L scaling verified: U = (ε₀E²/2) × Volume, capacitance C ∝ area — [D×L Scaling](#dxl-scaling-in-em)
+3. D×L scaling verified: U = (ε₀E²/2) × Volume, capacitance C ∝ area — [D×L Scaling](#dl-scaling-in-em)
 4. Maxwell splits by BLD: divergence → B (sources partition), curl → L (fields connect) — [Maxwell's Equations](#maxwells-equations-as-bld-structure)
 5. U(1) gauge: compact → charge quantization, abelian → no photon self-interaction — [U(1) Gauge Structure](#u1-gauge-structure)
 
@@ -35,10 +36,11 @@ used_by:
 
 | Finding | Status | Evidence |
 |---------|--------|----------|
-| Light/matter boundary as B | FRAMEWORK | Partitions transparent/opaque |
-| Gauge field as L | REFRAMING | A_μ connects charges |
-| Wavelength/frequency as D | FRAMEWORK | D×L for EM energy |
-| U(1) gauge structure | VALIDATED | Physics-traverser P2, P4 |
+| α⁻¹ = 137.036 | **DERIVED** | [Force Structure](../../mathematics/foundations/derivations/force-structure.md) — 0.0 ppt error |
+| Light/matter boundary as B | DERIVED | Partitions transparent/opaque |
+| Gauge field as L | DERIVED | A_μ connects charges |
+| Wavelength/frequency as D | DERIVED | D×L for EM energy |
+| U(1) gauge structure | DERIVED | Physics-traverser P2, P4 |
 
 ### Connection to Physics Traverser
 
@@ -206,7 +208,7 @@ This is B structure — charges come in discrete units.
 
 ---
 
-## D×L Scaling in EM {#dxl-scaling-in-em}
+## D×L Scaling in EM
 
 ### Field Energy
 

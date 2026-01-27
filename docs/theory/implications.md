@@ -6,7 +6,16 @@ depends_on:
   - ../mathematics/lie-theory/lie-correspondence.md
 used_by:
   - ../../README.md
+key_result: "Structure is substrate-independent; physics is traversal"
 ---
+
+## Summary
+
+**Six implications if BLD is correct:**
+
+1. Structure is substrate-independent — [Point 1](#implications)
+2. Cost = alignment; complexity = structural — [Points 2-3](#implications)
+3. Physics and experience as traversal — [Points 4-5](#implications)
 
 # Implications
 

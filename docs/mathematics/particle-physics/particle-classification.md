@@ -8,6 +8,7 @@ depends_on:
   - e7-derivation.md
 used_by:
   - ../../meta/proof-status.md
+  - ../foundations/machine/detection-structure.md
 ---
 
 # Particle Classification from BLD
@@ -100,6 +101,27 @@ D component:  generation (νe, νμ, ντ from n²S = 208)
 **Why weak force can "see" neutrinos**: The W/Z bosons carry B structure and act as bridges between the neutrino's pure geometry and boundary-coupled particles.
 
 **Neutrino mass**: The missing B coupling suppresses neutrino mass by (K/B)² × K/(n×L) ≈ 1/31,000 relative to electron. See [Neutrino Masses](neutrino-masses.md).
+
+### 1.3 Particle Structures for Detection (S Values)
+
+**Canonical table for T ∩ S detection.** These S values determine which particles are detected and which escape.
+
+| Particle | S (BLD structure) | Has B? | Detected by EM? |
+|----------|-------------------|--------|-----------------|
+| γ (photon) | {B} | ✓ | ✓ |
+| ℓ (e, μ, τ) | {B, L, D} | ✓ | ✓ |
+| ν (νe, νμ, ντ) | {L, D} | ✗ | ✗ |
+| q (quarks) | {B, L, D} + color | ✓ | ✓ |
+| W±, Z | {B, L, D} | ✓ | ✓ |
+| H (Higgs) | {B, L} | ✓ | ✓ |
+| g (gluon) | {L} + color | ✗ | ✗ |
+
+**Detection rule**: A particle is detected iff T ∩ S ≠ ∅. EM detectors have T = {B}.
+
+**Escaped structure**: When T ∩ S = ∅, the particle escapes. Its contribution: X_escaped = S − {D}.
+- Example: ν escapes EM because {B} ∩ {L,D} = ∅. Its X_escaped = {L} → L = 20.
+
+**Apply this table**: See [Detection Structure](../foundations/machine/detection-structure.md) for the complete algorithm with worked examples.
 
 ---
 

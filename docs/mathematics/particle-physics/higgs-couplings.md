@@ -24,7 +24,7 @@ prediction_date: 2026-01-22
 1. κ(structural) = 1 exactly — No BSM physics needed — [Core Principle](#the-core-principle)
 2. κ(observed) = 1 + K/X — Detection adds observer correction — [Detection Analysis](#detection-structure-analysis)
 3. EM detection → X = B = 56 → κ = 1.036 — [Complete Predictions](#complete-κ-predictions)
-4. Hadronic detection → X = n+L = 24 → κ = 1.083 — [Hadronic Prediction](#the-hadronic-prediction-κ_b--1083)
+4. Hadronic detection → X = n+L = 24 → κ = 1.083 — [Hadronic Prediction](#the-hadronic-prediction-κ-b--1083)
 5. Neutrino escape → +L = 20 — [Neutrino Rule](#the-neutrino-rule)
 6. ATLAS κ_V = 1.035±0.031 falls within BLD [1.026, 1.036] — [Validation](#experimental-validation)
 
@@ -385,7 +385,7 @@ As precision improves to ~2%, BLD predicts:
 
 ---
 
-## The Hadronic Prediction: κ_b = 1.083 {#the-hadronic-prediction-κ_b--1083}
+## The Hadronic Prediction: κ_b = 1.083
 
 This is the **most distinctive prediction**:
 
@@ -443,7 +443,7 @@ X_Z = B = 56      (all products detected)
 | Observable | Structure | Detection | K/X | Result |
 |------------|-----------|-----------|-----|--------|
 | α⁻¹ | 137 | EM probe | +2/56 | 137.036 |
-| m_H | v/2 | H→γγ (EM) | +1/56 | 125.31 GeV |
+| m_H | v/2 | H→γγ (EM) | (1+1/B)(1−1/(B×L)) | **125.20 GeV** |
 | κ_γ | 1 | EM | +2/56 | 1.036 |
 | κ_b | 1 | Hadronic | +2/24 | 1.083 |
 | κ_λ | 1 | EM+Had | +2/80 | 1.025 |
@@ -467,7 +467,7 @@ PROPERTY measurement (m_H):
   - Observe a single particle's energy/momentum
   - One "link" from observer to particle
   - K = 1 (unidirectional)
-  - m_H = (v/2) × (1 + 1/B)
+  - m_H = (v/2) × (1 + 1/B) × (1 - 1/(B×L))
 
 INTERACTION measurement (κ, α):
   - Observe how two things interact
@@ -589,7 +589,7 @@ This follows from the same K/X framework that derives α⁻¹, m_H, and all part
 
 ### Internal BLD References
 - [Higgs Self-Coupling](higgs-self-coupling.md) — κ_λ = 1.025 detailed derivation
-- [Boson Masses](boson-masses.md) — m_H = (v/2)(1 + 1/B) derivation
+- [Boson Masses](boson-masses.md) — m_H = (v/2)(1 + 1/B)(1 − 1/(B×L)) derivation
 - [Observer Corrections](../cosmology/observer-correction.md) — Two-reference framework
 - [Force Structure](../foundations/derivations/force-structure.md) — Why X = B for EM, X = n+L for strong
 - [Fine Structure Consistency](fine-structure-consistency.md) — α⁻¹ = 137.036 from same framework

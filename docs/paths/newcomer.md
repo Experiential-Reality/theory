@@ -81,7 +81,7 @@ After this path, you can:
 
 Once you understand B/L/D, explore how they unify through Euler's formula:
 
-**Read**: [Euler's Formula in BLD](../glossary.md#euler) and [π from BLD](../examples/pi-from-bld.md)
+**Read**: [Euler's Formula in BLD](../glossary.md#eulers-formula-in-bld) and [π from BLD](../examples/pi-from-bld.md)
 
 **Key takeaway**: e^(iπ) + 1 = 0 connects the two compensation mechanisms:
 - **e** (exponential) — cascades, depth, gain stacking

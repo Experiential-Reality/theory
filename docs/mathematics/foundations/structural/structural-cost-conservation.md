@@ -241,7 +241,7 @@ FACTOR: C_hidden → C_visible
 
 ---
 
-## 4. The Explicitness Metric {#the-explicitness-metric}
+## 4. The Explicitness Metric
 
 ### 4.1 Definition
 

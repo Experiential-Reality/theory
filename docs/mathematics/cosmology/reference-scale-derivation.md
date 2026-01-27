@@ -444,7 +444,7 @@ DERIVATION CHAIN:
 ALL PHYSICAL SCALES DERIVED FROM v:
   M_P = v × λ⁻²⁶ × corrections
   m_e = v × α² × (n/L)² × corrections
-  m_H = v/2 × (1 + 1/B)
+  m_H = v/2 × (1 + 1/B) × (1 - 1/(B×L))
   etc.
 
 ZERO EMPIRICAL INPUTS.

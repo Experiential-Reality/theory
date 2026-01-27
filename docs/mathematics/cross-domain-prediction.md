@@ -193,4 +193,4 @@ If this is true, structural similarity should predict behavioral similarity—wh
 - [Neural Network Alignment](../applications/ml/neural-network-alignment.md) — Neural validation details
 - [Variational Inference](../applications/ml/variational-inference.md) — VI formula derivation
 - [Circuits](../applications/physics/circuits.md) — Circuit formula derivation
-- [Compensation Principle](../glossary.md#compensation) — Why L gates B in neural
+- [Compensation Principle](../glossary.md#compensation-principle) — Why L gates B in neural

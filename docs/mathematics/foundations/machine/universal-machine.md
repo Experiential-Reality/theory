@@ -1,6 +1,7 @@
 ---
 status: DERIVED
 layer: 1
+key_result: "traverse(-B,B) is a universal computer at Planck scale"
 depends_on:
   - ../definitions/bld-calculus.md
   - ../../cosmology/genesis-function.md

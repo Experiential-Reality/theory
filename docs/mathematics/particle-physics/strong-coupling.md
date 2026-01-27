@@ -1,6 +1,7 @@
 ---
 status: DERIVED
 layer: 2
+key_result: "α_s⁻¹ = 8.4814 from K/X principle"
 depends_on:
   - ../foundations/derivations/force-structure.md
   - ../foundations/derivations/octonion-derivation.md
@@ -20,7 +21,7 @@ used_by:
 
 ---
 
-## 1. Quick Summary
+## Summary
 
 **The strong coupling in 5 steps:**
 

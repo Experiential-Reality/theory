@@ -299,7 +299,7 @@ Total energy is the alignment cost, which is conserved under traverser evolution
 - đQ: Thermal traverser exchanges energy between structures
 - đW: Changing boundary conditions (constraints) changes alignment cost
 
-### 4.3 Second Law: Entropy Increase (Rigorous Derivation) {#second-law-entropy-increase-rigorous-derivation}
+### 4.3 Second Law: Entropy Increase (Rigorous Derivation)
 
 **Theorem**: For an isolated system evolving under thermal dynamics, entropy is non-decreasing:
 ```

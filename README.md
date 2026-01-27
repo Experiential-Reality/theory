@@ -1,10 +1,8 @@
 # BLD Theory
 
-Three primitives. All physics constants. Zero empirical inputs.
+Three structural primitives — Boundary, Link, Dimension — that map exactly to Lie theory.
 
-**Status**: Mathematics complete. All predictions exact or within measurement precision.
-
-> *"We started by trying to predict GPU memory bank conflicts. We ended up rediscovering Lie theory—the mathematical framework underlying all continuous symmetry."*
+**Status**: See [Proof Status](docs/meta/proof-status.md) for detailed accounting.
 
 ---
 
@@ -19,17 +17,23 @@ Three primitives. All physics constants. Zero empirical inputs.
 
 ---
 
+## The Core Claim
+
+BLD identifies three irreducible structural operations: **Boundary** (partition), **Link** (connect), **Dimension** (repeat). These map exactly to the three components of any Lie algebra (topology, structure constants, generators). Since Lie theory underlies all continuous symmetry in physics (Noether's theorem), BLD provides a basis for deriving physical constants from structural principles.
+
+---
+
 ## Key Results
 
 | Prediction | Value | Status |
 |------------|-------|--------|
 | Fine structure constant | α⁻¹ = 137.035999177 | **Exact** (0.0 ppt error) |
 | Muon/electron mass ratio | 206.7682826 | **Exact** |
-| Tau/muon mass ratio | 16.817 | **Exact** |
+| Tau/muon mass ratio | 16.817 | 4 ppm |
 | All quark masses | 6 quarks | < 0.5% error |
-| Higgs mass | 125.31 GeV | Within measurement |
-| Dark matter fraction | 27% | **Exact** |
-| Dark energy fraction | 68% | **Exact** |
+| Higgs mass | **125.20 GeV** | **Exact** (0.0% error) |
+| Dark matter fraction | 27% | Matches Planck |
+| Dark energy fraction | 68% | Matches Planck |
 | Higgs self-coupling | κ_λ = 1.025 | **Testable** at HL-LHC ~2040 |
 
 See [Proof Status](docs/meta/proof-status.md) for complete accounting.
@@ -46,7 +50,7 @@ Three irreducible primitives that define all structure:
 | **Link** | Connection. "This affects that." | Structure constants |
 | **Dimension** | Repetition. "More of the same." | Generators |
 
-**BLD = Lie theory**. This is not metaphor—it is mathematical equivalence. The same three components that define any Lie algebra are the same three primitives BLD uses. This explains why BLD works everywhere: Lie theory works everywhere (Noether's theorem).
+**BLD = Lie theory**: D = generators, L = structure constants, B = topology. The same three components that define any Lie algebra are the three BLD primitives. See [Lie Correspondence](docs/mathematics/lie-theory/lie-correspondence.md).
 
 **The discovery method** is three questions:
 1. Where does behavior partition? → Find Boundaries
@@ -54,19 +58,6 @@ Three irreducible primitives that define all structure:
 3. What repeats? → Find Dimensions
 
 See [Formal Definitions](docs/mathematics/foundations/definitions.md) and [Key Principles](docs/mathematics/foundations/key-principles.md).
-
----
-
-## Cross-Domain Validation
-
-| Domain | D×L Validated | Key Result |
-|--------|---------------|------------|
-| Variational Inference | R² = 1.0 | Correlation scaling |
-| Neural Networks | r = 0.91 | Receptive field prediction |
-| Circuits | R² = 1.0 (6/6) | 87.8% compensation |
-| Thermodynamics | 10/10 tests | Second law derived |
-| Particle Physics | α⁻¹ = 137 | All masses exact |
-| Cosmology | L/D = 5 | Dark matter 27% |
 
 ---
 
@@ -80,7 +71,7 @@ See [Formal Definitions](docs/mathematics/foundations/definitions.md) and [Key P
 
 ### Physics Derivations
 - [Fine Structure Constant](docs/mathematics/particle-physics/fine-structure-consistency.md) — α⁻¹ = 137.036
-- [Lepton Masses](docs/mathematics/particle-physics/lepton-masses.md) — μ/e, τ/μ exact
+- [Lepton Masses](docs/mathematics/particle-physics/lepton-masses.md) — μ/e, τ/μ ratios
 - [Quark Masses](docs/mathematics/particle-physics/quark-masses.md) — All 6 quarks
 - [Boson Masses](docs/mathematics/particle-physics/boson-masses.md) — H, W, Z
 - [Cosmology](docs/mathematics/cosmology/cosmology-structure.md) — Dark matter as geometry

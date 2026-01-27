@@ -23,7 +23,7 @@ used_by:
 
 # Key Principles
 
-## D×L Scaling {#dl-scaling}
+## D×L Scaling
 
 D multiplies L, not B.
 - Geometric properties (L) scale with dimension

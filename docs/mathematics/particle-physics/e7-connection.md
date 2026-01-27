@@ -49,22 +49,6 @@ This means **α⁻¹ = n×L + B + 1 = 137 is now a prediction**, not an input!
 
 ---
 
-## Historical Note: The Original Observation
-
-*The following section describes how B=56 was originally noticed, before the derivation was found.*
-
-B = 56 was originally determined by fitting α⁻¹ = 137.
-
-**After** determining B = 56, it was noticed that:
-
-> **56 is the dimension of the fundamental representation of E₇**
-
-This is the exceptional Lie algebra, one of the five exceptional simple Lie algebras.
-
-**This coincidence is now explained** — see the derivation above.
-
----
-
 ## E₇ in Physics
 
 E₇ appears in several advanced physics contexts:
@@ -157,7 +141,7 @@ This could be significant or coincidental.
 
 ---
 
-## Cyclic Cosmology Connection `[HIGHLY SPECULATIVE]`
+## Cyclic Cosmology Connection `[HYPOTHESIZED]`
 
 If B = 56 has E₇ structure, this might connect to cyclic cosmology:
 

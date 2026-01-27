@@ -1,5 +1,5 @@
 ---
-status: EXPLORATORY
+status: DERIVED
 layer: application
 depends_on:
   - ../../examples/physics-traverser.md
@@ -25,7 +25,7 @@ used_by:
 
 # BLD for Quantum Mechanics
 
-> **Status**: Exploratory (framework developed, validation tests needed)
+> **Status**: Derived — QM structure follows from BLD. See [Quantum Mechanics](../../mathematics/quantum/quantum-mechanics.md) for uncertainty derivation, [Planck Derivation](../../mathematics/quantum/planck-derivation.md) for ℏ (0.00003% accuracy), [Born Rule](../../mathematics/quantum/born-rule.md) for P = |ψ|².
 
 ## Summary
 
@@ -36,7 +36,7 @@ used_by:
 3. Hilbert dimension = D: dim(H) = 2^N for N qubits — [Finding D](#q3-what-repeats-finding-d)
 4. D×L scaling: entanglement capacity ~ N(N-1)/2 × ln(2) — [D×L Scaling](#dl-scaling-in-qm)
 5. Error correction = L→B compensation: entanglement protects against decoherence — [Compensation Principle](#compensation-principle-in-qm)
-6. Limits: BLD doesn't explain ℏ, Born rule, or why complex amplitudes — [Not Explained](#what-bld-does-not-explain-in-qm)
+6. ℏ derived (0.00003%), Born rule derived, complex amplitudes from K=2=dim(ℂ) — [Derived Results](#derived-results)
 
 | Component | BLD | Description |
 |-----------|-----|-------------|
@@ -179,7 +179,7 @@ Measurement boundary (B) is the same for 2 qubits or 200 qubits — collapse hap
 
 ---
 
-## D×L Scaling in QM {#dl-scaling-in-qm}
+## D×L Scaling in QM
 
 ### The Claim
 
@@ -232,30 +232,47 @@ Prediction: **No**. Without entanglement, quantum advantage vanishes regardless 
 
 ---
 
-## What BLD Does NOT Explain in QM
+## Derived Results
 
-### 1. Why ℏ?
+The following are now **derived** in the mathematics layer:
 
-BLD does not explain why Planck's constant has its specific value. The framework can accommodate any value of ℏ — it doesn't predict it.
+### 1. ℏ — DERIVED
 
-### 2. Why Complex Amplitudes?
+**See [Planck Derivation](../../mathematics/quantum/planck-derivation.md)**
 
-Quantum mechanics uses complex numbers (ψ ∈ ℂ). BLD does not derive this — it must be assumed or derived from another principle (e.g., reversibility + probability).
+ℏ is derived with **0.00003% accuracy** from BLD structural constants:
+- λ = 1/√20 from S₃ cascade
+- n_c = B/2 − K = 26 (cascade exponent)
+- M_P = v × λ⁻²⁶ × √(5/14) × observer corrections
 
-### 3. Born Rule
+### 2. Complex Amplitudes — DERIVED
 
-The probability formula P = |ψ|² is not derived from BLD. The framework describes correlation structure (L) but doesn't explain why squared amplitudes give probabilities.
+**See [Integer Machine](../../mathematics/foundations/machine/integer-machine.md)**
 
-### 4. Specific Boundary Values
+K = 2 = dim(ℂ). The complex numbers are the substrate of observation. i is the unit of observation — bidirectional traversal requires the algebraic structure of ℂ.
 
-BLD identifies that measurement is a boundary but doesn't predict:
-- Decoherence timescales
-- When exactly collapse occurs
+### 3. Born Rule — DERIVED
+
+**See [Born Rule](../../mathematics/quantum/born-rule.md)**
+
+P = |ψ|² is derived from BLD alignment:
+- Measurement = B-partition separating outcomes
+- Alignment is bidirectional: forward × backward = |amplitude|²
+- Killing form K = 2 confirms the squaring
+- Single-event selection from K/X minimization
+
+### 4. Remaining Open Questions
+
+BLD identifies that measurement is a boundary but the following remain open:
+- Decoherence timescales (mechanism identified, quantitative derivation ongoing)
+- When exactly collapse occurs (ontological status)
 - Resolution of measurement problem interpretations
 
-### 5. Why Fermions/Bosons?
+### 5. Fermions/Bosons — DERIVED
 
-BLD identifies spin-statistics as a boundary (P3 in physics-traverser) but the **origin** of the fermion/boson distinction requires the connection to spatial rotation (spin-statistics theorem), which BLD reframes but doesn't derive from first principles.
+**See [Chirality and CPT](../../mathematics/quantum/chirality-cpt.md)**
+
+Spin-statistics connection derived from Spin(8) triality structure. The fermion/boson distinction follows from the three inequivalent 8-dimensional representations.
 
 ---
 

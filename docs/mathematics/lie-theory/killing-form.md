@@ -1,5 +1,6 @@
 ---
 status: DERIVED
+key_result: "K=2 from bidirectional observation; appears in ℏ/2, Bell 2√2"
 depends_on:
   - ../foundations/proofs/irreducibility-proof.md
   - lie-correspondence.md
@@ -96,7 +97,7 @@ This is not coincidence:
 | ℍ | 4 | 3 | n = 4 |
 | 𝕆 | 8 | 7 | minimum structure |
 
-The imaginary unit i = Im(ℂ) is the **unit of observation**. See [Integer Machine](../foundations/machine/integer-machine.md#8-the-imaginary-unit-i) for the full derivation.
+The imaginary unit i = Im(ℂ) is the **unit of observation**. See [Integer Machine](../foundations/machine/integer-machine.md#10-the-imaginary-unit-i) for the full derivation.
 
 ---
 
@@ -225,7 +226,7 @@ Observer correction = 2/(n×L) = 2/80 = 2.5%
 | n×L = 80 | L (total) | Full geometric structure (4 dimensions × 20 Riemann) |
 | 2/80 | L/L | Observer fraction of structure |
 
-### Why 2/(n×L)? (Derived from Cost Formula) {#why-2nxl-derived-from-cost-formula}
+### Why 2/(n×L)? (Derived from Cost Formula)
 
 The observer correction is **uniquely determined** by the BLD cost formula:
 

@@ -1,6 +1,7 @@
 ---
 status: PROVEN
 layer: 0
+key_result: "Sum=B, Function=L, Product=D — α⁻¹=137 as mode count"
 depends_on:
   - ../axioms.md
   - ../notation.md

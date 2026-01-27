@@ -233,7 +233,7 @@ Both traversers satisfy BLD principles:
 
 ---
 
-## D×L Scaling Demonstrated {#dl-scaling-demonstrated}
+## D×L Scaling Demonstrated
 
 **L scales with D** (geometric property):
 - ~94 documents × ~6 links/doc = ~564 total links

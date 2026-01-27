@@ -1,7 +1,17 @@
 ---
 status: META
 layer: N/A
+key_result: "B=56, L=20, n=4 emerged from GPU optimization before physics matching"
 ---
+
+## Summary
+
+**The actual discovery path from GPU optimization to physics:**
+
+1. GPU performance patterns revealed B, L, D primitives — [The Origin](#the-origin-gpu-performance-optimization-jan-6-2026)
+2. Formal primitives proven irreducible (Jan 11) — [Phase 1](#phase-1-formal-primitives-jan-11-2026)
+3. Physics constants emerged from structure — [Phase 6](#phase-6-particle-physics-jan-21-23-2026)
+4. Distinction: discovery path vs logical reconstruction — [Abstract](#abstract)
 
 # Discovery History: From JPEG Decoder to Fundamental Physics
 

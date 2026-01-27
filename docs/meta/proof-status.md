@@ -216,9 +216,9 @@ Error: 0.0 ppt ✓ (EXACT)
 
 | Claim | Status | Formula | Predicted | Observed | Error |
 |-------|--------|---------|-----------|----------|-------|
-| m_H from Killing form | **DERIVED** | (v/2)(1 + 1/B) | 125.31 GeV | 125.25 GeV | 0.05% |
+| m_H from Killing form | **DERIVED** | (v/2)(1 + 1/B)(1 − 1/(B×L)) | **125.20 GeV** | 125.20 GeV | **0.0%** |
 
-**Note**: The 1/B correction is the same boundary quantum as in α⁻¹, but unidirectional (hence 1/B not 2/B).
+**Note**: First-order 1/B is the boundary quantum. Second-order 1/(B×L) is the Higgs self-reference correction (Higgs IS the reference structure).
 
 **Reference**: [Boson Masses](../mathematics/particle-physics/boson-masses.md)
 

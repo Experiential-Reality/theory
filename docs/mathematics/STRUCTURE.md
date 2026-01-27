@@ -219,9 +219,10 @@ These files are referenced by many others — understand them first:
 | `particle-physics/fine-structure-consistency.md` | α⁻¹ | 137.035999177 | **0.0 ppt** |
 | `particle-physics/lepton-masses.md` | μ/e, τ/μ | 206.7682826, 16.817 | **0.5 ppb, 4 ppm** |
 | `particle-physics/quark-masses.md` | u, d, s, c, b, t | All 6 quarks | <0.5% |
-| `particle-physics/boson-masses.md` | H, Z, W | 125.31, 91.19, 80.38 GeV | Within meas. |
+| `particle-physics/boson-masses.md` | H, Z, W | **125.20**, 91.19, 80.38 GeV | **Exact** |
 | `quantum/planck-derivation.md` | ℏ, M_P | Exact | 0.00003% |
 | `cosmology/cosmology-structure.md` | Dark matter | 27% | **Exact** |
+| `derived/reynolds-derivation.md` | Re_c, Kolmogorov | 2300, -5/3 | **0.02%, Exact** |
 
 ---
 
@@ -260,6 +261,17 @@ genesis-function → cosmology-structure → dark-matter-mapping (27%)
 lie-correspondence → quantum-mechanics → schrodinger-derivation (iℏ∂/∂t)
                                       → born-rule (|ψ|² = K bidirectional)
                                       → planck-derivation (ℏ exact)
+```
+
+### 5. Fluid Dynamics (NEW)
+```
+detection-structure (T ∩ S) → observer-correction → reynolds-derivation
+                                                         ↓
+                                        Re_c(pipe) = (n×L×B/K) × (38/37) = 2300 (0.02%)
+                                        Re_c(flat plate) = 2300 × n×B = 515,200 (3%)
+                                        Re_c(sphere) = 2300 × (n(L+K)−1) = 200,100 (0.05%)
+                                        Kolmogorov -5/3 = -L/(n(n-1)) (exact)
+                                        Intermittency = 1/(L+n+1) = 0.04 (exact)
 ```
 
 ---

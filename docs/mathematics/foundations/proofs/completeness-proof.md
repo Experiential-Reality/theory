@@ -1,6 +1,7 @@
 ---
 status: PROVEN
 layer: 1
+key_result: "B, L, D are sufficient — unique minimal complete basis"
 depends_on:
   - irreducibility-proof.md
   - irreducibility-categorical.md
@@ -249,10 +250,10 @@ Beyond the theoretical proof, BLD completeness is supported by extensive empiric
 
 **Table 7.1** (Derivation Accuracy). BLD predictions versus experimental measurements.
 
-| Quantity | BLD Prediction | Experimental Value | Discrepancy |
-|----------|----------------|-------------------|-------------|
-| α⁻¹ (fine structure) | 137.035999177 | 137.035999084(21) | 0.0 ppt |
-| μ/e mass ratio | 206.7682830 | 206.7682830(46) | 0.5 ppb |
+| Quantity | BLD Prediction | Experimental Value (CODATA 2022) | Discrepancy |
+|----------|----------------|----------------------------------|-------------|
+| α⁻¹ (fine structure) | 137.035999177 | 137.035999177(21) | 0.0 ppt |
+| μ/e mass ratio | 206.7682830 | 206.7682827(46) | 1.5 ppb |
 | τ/e mass ratio | 3477.48 | 3477.23(23) | 4 ppm |
 | sin²θ_W (weak mixing) | 0.231215 | 0.23121(4) | ~0.002% |
 | α_s⁻¹ (strong coupling) | 8.4814 | 8.482 | ~0.02% |

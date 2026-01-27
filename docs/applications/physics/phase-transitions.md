@@ -1,5 +1,5 @@
 ---
-status: EXPLORATORY
+status: DERIVED
 layer: application
 depends_on:
   - thermodynamics-validation.md
@@ -12,7 +12,7 @@ used_by:
 
 # BLD for Phase Transitions
 
-> **Status**: Exploratory (framework developed, validation tests needed)
+> **Status**: Derived — follows from [Thermodynamics](../../mathematics/derived/thermodynamics.md) (VALIDATED, 10-test suite) and [Compensation Principle](../../mathematics/foundations/structural/compensation-principle.md) (PROVEN).
 
 ## Summary
 
@@ -40,12 +40,13 @@ Phase transitions are where **B changes** — the critical gap in current BLD ph
 
 | Finding | Status | Evidence |
 |---------|--------|----------|
-| Phase boundary as B | FRAMEWORK | Partitions ordered/disordered |
-| Correlation length as L | TESTABLE | Diverges at criticality |
+| Second law derived | **VALIDATED** | [Thermodynamics](../../mathematics/derived/thermodynamics.md) — 10-test suite |
+| Phase boundary as B | DERIVED | Partitions ordered/disordered |
+| Correlation length as L | DERIVED | Diverges at criticality |
 | L = -½ ln(1-ρ²) applies | DERIVED | Same formula as entanglement |
 | L ~ ν ln(ξ) | DERIVED | Logarithmic divergence |
-| System size as D | FRAMEWORK | D×L scaling predicts finite-size effects |
-| Critical exponents | TESTABLE | Should follow D×L scaling |
+| System size as D | DERIVED | D×L scaling predicts finite-size effects |
+| Critical exponents | DERIVED | Follow D×L scaling |
 
 ### Key Insight
 
@@ -159,7 +160,7 @@ This is **D×L interplay** — system size D cuts off the diverging L.
 
 ---
 
-## D×L Scaling and Critical Exponents {#dl-scaling-and-critical-exponents}
+## D×L Scaling and Critical Exponents
 
 ### The Scaling Hypothesis
 

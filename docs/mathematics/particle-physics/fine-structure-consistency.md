@@ -18,9 +18,9 @@ used_by:
 **α⁻¹ = 137.035999177 (0.0 ppt error):**
 
 1. n = 4: from sl(2,ℂ) ⊂ sl(2,𝕆) — [Primordial Structure](#primordial-structure)
-2. L = 20: Riemann n²(n²-1)/12 — [The Terms](#nxl--80-derived)
+2. L = 20: Riemann n²(n²-1)/12 — [The Terms](#nl--80-derived)
 3. B = 56: 2 × dim(Spin(8)) from triality + Killing — [B = 56](#b--56-derived)
-4. +1: observer self-reference — [+1 Term](#+1-derived)
+4. +1: observer self-reference — [+1 Term](#1-derived)
 5. +K/B = +0.0357: boundary quantum — [BLD Assembly](#bld-assembly-diagram)
 6. ±spatial, −accumulated: two-reference corrections — [The Formula](#the-formula)
 
@@ -263,7 +263,7 @@ The experiment doesn't "see" 137 — it measures 137.036. The difference is the 
 
 ## The Terms Explained
 
-### n×L = 80 `[DERIVED]` {#nxl--80-derived}
+### n×L = 80 `[DERIVED]`
 
 This is the **geometric coupling**: spacetime dimensions × curvature components.
 
@@ -287,7 +287,7 @@ This is the **topological term**, representing boundary structure.
 
 **See [E7 Derivation](e7-derivation.md)** for the complete proof.
 
-### +1 `[DERIVED]` {#+1-derived}
+### +1 `[DERIVED]`
 
 This is the **self-reference term**, representing the observer.
 
@@ -346,7 +346,7 @@ The entire particle physics chain is now genuinely predictive!
 
 ---
 
-## The E₇ Coincidence `[SPECULATIVE]`
+## The E₇ Coincidence `[HYPOTHESIZED]`
 
 56 = dim(E₇ fundamental representation)
 

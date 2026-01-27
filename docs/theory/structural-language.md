@@ -403,7 +403,7 @@ The α-helix demonstrates angular closure (π mechanism) with linear extension. 
 
 This is an **empirical observation**, not a proven theorem.
 
-See [Euler's Formula in BLD](../glossary.md#euler), [π from BLD](../examples/pi-from-bld.md), and [Compensation Principle](../mathematics/foundations/structural/compensation-principle.md).
+See [Euler's Formula in BLD](../glossary.md#eulers-formula-in-bld), [π from BLD](../examples/pi-from-bld.md), and [Compensation Principle](../mathematics/foundations/structural/compensation-principle.md).
 
 ---
 
@@ -638,7 +638,7 @@ Causation = structure + traverser interaction:
 
 **The traverser constant**: The mathematical signature of the traverser is **e** — the constant characterizing sequential accumulation. Just as π characterizes structure (closure), e characterizes the traverser (accumulation). See [e from BLD](../examples/e-from-bld.md) for the derivation.
 
-See [Glossary: Traverser as Causal Agent](../glossary.md#traverser-causal) and [e (Traverser Constant)](../glossary.md#e-constant).
+See [Glossary: Traverser as Causal Agent](../glossary.md#traverser-as-causal-agent) and [e (Traverser Constant)](../glossary.md#e-traverser-constant).
 
 ---
 

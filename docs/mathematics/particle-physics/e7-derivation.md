@@ -1,6 +1,7 @@
 ---
 status: DERIVED
 layer: 2
+key_result: "B=56 from E7 triality; α⁻¹ = n×L + B + 1 + corrections"
 depends_on:
   - ../foundations/derivations/octonion-derivation.md
   - ../lie-theory/killing-form.md
@@ -466,7 +467,7 @@ The Higgs mass shows the same structure:
 
 ```
 BLD prediction:  m_H = v/2 = 123.11 GeV
-Observed:        125.25 GeV
+Observed:        125.20 GeV
 Correction:      125.25/123.11 = 1.017 ≈ 1 + 1/56 = 1 + 1/B
 ```
 

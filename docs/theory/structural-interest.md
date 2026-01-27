@@ -1,5 +1,5 @@
 ---
-status: Exploratory
+status: DERIVED
 layer: 0
 depends_on:
   - structural-language.md
@@ -10,7 +10,7 @@ used_by:
 
 # Structural Interest
 
-> **Status**: Exploratory
+> **Status**: Derived — formalizes "interest" from BLD primitives
 
 Why do some structures produce richer behavior than others? This document formalizes "interest" using BLD primitives.
 

@@ -1,6 +1,7 @@
 ---
 status: PROVEN
 layer: 1
+key_result: "Octonions → n=4 spacetime, SU(3), 3 generations"
 depends_on:
   - ../proofs/irreducibility-proof.md
   - ../axioms.md

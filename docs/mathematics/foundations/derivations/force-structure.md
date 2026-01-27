@@ -1,6 +1,7 @@
 ---
 status: DERIVED
 layer: 1
+key_result: "All four forces from division algebra tower + K/X corrections"
 depends_on:
   - ../definitions/bld-calculus.md
   - ../proofs/irreducibility-proof.md
@@ -152,28 +153,40 @@ The fine structure constant is measured via:
 Each measurement traverses boundary structure B:
 
 ```
-L_cost(EM) = +K/B + spatial − e²×(2B+n+K+2)/((2B+n+K+1)×(n×L)²×B²)
-           = +2/56 + 0.00028 − 0.00037
-           = +0.0357 + 0.00028 − 0.00037
-           = +0.03561
+L_cost(EM) = +K/B                         [Boundary quantum]
+           + n/((n-1)×n×L×B)              [Outbound spatial]
+           - (n-1)/((n×L)²×B)             [Return spatial]
+           - 1/(n×L×B²)                   [Return boundary]
+           - e²×120/(119×(n×L)²×B²)       [Accumulated]
+
+           = +0.0357143                   [2/56]
+           + 0.0002976                    [4/13440]
+           - 0.0000084                    [3/358400]
+           - 0.0000040                    [1/250880]
+           - 0.0000004                    [e²×120/2.386×10⁹]
+           ─────────────────
+           = +0.035999177
 ```
 
 **Terms**:
 - K/B = 2/56: Boundary quantum (discrete measurement of continuous field)
-- spatial: 3D measurement correction
-- e² term: Continuous accumulation (squared because bidirectional)
+- Outbound spatial: Forward traversal through 3D space
+- Return spatial/boundary: Bidirectional observation cost
+- e² term: Continuous accumulation (e = Euler's number)
 
 ### 4.3 Complete Formula
 
 ```
-α⁻¹ = n×L + B + 1 + K/B + spatial − e²×120/119
-    = 137 + 0.03561
+α⁻¹ = n×L + B + 1 + corrections
+    = 137 + 0.035999177
     = 137.035999177
 ```
 
-**Observed**: 137.035999177
+**Observed**: 137.035999177 (CODATA 2022)
 
 **Error**: 0.0 ppt
+
+See [Fine Structure Consistency](../../particle-physics/fine-structure-consistency.md) for full derivation.
 
 ### 4.4 Why K/B (Experimental Basis)
 

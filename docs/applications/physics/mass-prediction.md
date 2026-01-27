@@ -1,5 +1,5 @@
 ---
-status: EXPLORATORY
+status: MECHANISM
 layer: application
 depends_on:
   - ../../examples/physics-traverser.md
@@ -14,7 +14,7 @@ used_by:
 
 # Mass Prediction from S₃ Breaking
 
-> **Status**: Exploratory (quantitative results, theoretical interpretation ongoing)
+> **Status**: Mechanism — quantitative predictions with 5-12% error, derivation incomplete
 
 ## Summary
 
@@ -282,7 +282,7 @@ The same S₃ breaking that produces masses should constrain mixing:
 | **L** | Spurion couplings | Link generations with ε suppression |
 | **D** | 3 generations | From triality (D = 3) |
 
-### D×L Scaling {#dl-scaling}
+### D×L Scaling
 
 The mass hierarchy IS a D×L phenomenon:
 ```

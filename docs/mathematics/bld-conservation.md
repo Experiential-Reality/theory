@@ -201,7 +201,7 @@ For SO(2): exp(iθ) = cos(θ) + i·sin(θ) — this IS Euler's formula.
 
 The exponential map IS the mechanism by which symmetries generate conservation laws. Euler's formula shows the two types of conservation (quantized vs continuous) are aspects of a single structure.
 
-See [Euler's Formula in BLD](../glossary.md#euler) and [Lie Correspondence](./lie-theory/lie-correspondence.md).
+See [Euler's Formula in BLD](../glossary.md#eulers-formula-in-bld) and [Lie Correspondence](./lie-theory/lie-correspondence.md).
 
 ---
 

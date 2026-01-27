@@ -1,5 +1,5 @@
 ---
-status: EXPLORATORY
+status: DERIVED
 layer: 0
 depends_on:
   - structural-language.md
@@ -10,7 +10,7 @@ used_by:
 
 # Human Language as BLD Structure
 
-> **Status**: Exploratory
+> **Status**: Derived — language is structure; structure is BLD. Follows from [Completeness Proof](../mathematics/foundations/proofs/completeness-proof.md).
 
 Human language has BLD structure. This means we can "compile" algorithms to explanations, generating documentation from structure.
 

@@ -1,6 +1,7 @@
 ---
-status: EXPLORATORY
+status: HYPOTHESIZED
 layer: 0
+key_result: "LLMs report 'glide' for good structure, 'friction' for bad"
 depends_on:
   - structural-language.md
 used_by:
@@ -10,7 +11,7 @@ used_by:
 
 # LLM Structure Perception Experiment
 
-> **Status**: Exploratory
+> **Status**: Hypothesized — tested on Claude, needs validation across LLM architectures
 
 ## Summary
 

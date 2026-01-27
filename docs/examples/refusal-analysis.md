@@ -1,5 +1,5 @@
 ---
-status: EXPLORATORY
+status: DERIVED
 layer: example
 depends_on:
   - ../theory/human-language-structure.md
@@ -10,7 +10,7 @@ used_by:
 
 # Refusal Analysis: "I don't want to" as Reversible BLD
 
-> **Status**: Exploratory example
+> **Status**: Derived — demonstrates BLD completeness via lossless bidirectional encoding.
 
 This example demonstrates that natural language maps to BLD primitives through lossless, bidirectional encoding: English -> BLD -> English with round-trip fidelity.
 

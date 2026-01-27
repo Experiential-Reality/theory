@@ -1,6 +1,7 @@
 ---
 status: DERIVED
 layer: 2
+key_result: "P=|ψ|² derived from BLD structure alignment"
 depends_on:
   - ../lie-theory/killing-form.md
   - ../lie-theory/lie-correspondence.md

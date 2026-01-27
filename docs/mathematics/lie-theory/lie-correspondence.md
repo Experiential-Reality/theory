@@ -1,6 +1,7 @@
 ---
 status: PROVEN
 layer: 1
+key_result: "BLD = Lie theory: D=generators, L=structure constants, B=topology"
 depends_on: []
 used_by:
   - ../foundations/derivations/octonion-derivation.md

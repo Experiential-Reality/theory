@@ -1,5 +1,5 @@
 ---
-status: EXPLORATORY
+status: HYPOTHESIZED
 layer: application
 depends_on:
   - ../../mathematics/derived/thermodynamics.md
@@ -15,7 +15,7 @@ used_by:
 
 # Protein Folding as Structural Alignment
 
-> **Status**: Exploratory (no validation tests yet)
+> **Status**: Hypothesized — framework only, no validated predictions
 
 > **Epistemic Note**: This document provides a BLD **framework** for understanding protein folding, but contains no validated predictions. The claims are consistent with known protein physics but do not derive new results. Specific predictions (folding rate scaling, chaperone effects) need experimental validation. See [Epistemic Honesty](../../meta/epistemic-honesty.md).
 

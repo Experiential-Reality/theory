@@ -73,7 +73,7 @@ Values as actually measured. Include the "cost" of observation.
 | Constant | Observed | Structural | Correction |
 |----------|----------|------------|------------|
 | ℏ | 1.0546 × 10⁻³⁴ J·s | M_P(structural)² × G/c | First + second order |
-| m_H | 125.25 GeV | v/2 = 123.11 GeV | ×(1 + 1/B) |
+| m_H | 125.20 GeV | v/2 = 123.11 GeV | ×(1 + 1/B)×(1 - 1/(B×L)) |
 | α⁻¹ | 137.036 | 137 (= n×L + B + 1) | +2/B |
 | λ_Cabibbo | 0.22453 | 1/√20 = 0.22361 | ×(1 + 1/v) |
 
@@ -114,7 +114,7 @@ Where X, Y, Z are combinations of {v, B, n×L, K}.
 
 | Prediction | Correction | X Value | Meaning |
 |------------|------------|---------|---------|
-| m_H | ×(1 + 1/B) | B = 56 | Boundary quantum at Planck scale |
+| m_H | ×(1 + 1/B)×(1 − 1/(B×L)) | B=56, B×L=1120 | Boundary + Higgs self-reference |
 | λ_Cabibbo | ×(1 + 1/v) | v = 246 | Reference scale correction |
 | M_P | ×(79/78) = ×(1 + 1/78) | n×L - K = 78 | Observer in geometric structure |
 
@@ -216,7 +216,7 @@ This is why "+1" appears in α⁻¹ — the observer's irreducible contribution.
 |----------|------------|------------|-----------|----------|-------|
 | M_P | v × λ⁻²⁶ × √(5/14) | ×(79/78)×(1+6/(n×L×B²)) | 1.2209 × 10¹⁹ GeV | 1.2209 × 10¹⁹ GeV | **0.002%** |
 | ℏ | M_P² × G/c | (via M_P) | 1.0545 × 10⁻³⁴ J·s | 1.0546 × 10⁻³⁴ J·s | **0.00003%** |
-| m_H | v/2 | ×(1 + 1/B) | 125.31 GeV | 125.25 GeV | **0.05%** |
+| m_H | v/2 | ×(1 + 1/B)×(1 - 1/(B×L)) | **125.20 GeV** | 125.20 GeV | **0.0%** |
 | α⁻¹ | n×L + B + 1 | +K/B + spatial − e²×120/(119×(n×L×B)²) | 137.035999177 | 137.035999177 | **0.0 ppt** |
 | λ_Cabibbo | 1/√20 | ×(1 + 1/v) | 0.22452 | 0.22453 | **0.01%** |
 
@@ -283,7 +283,7 @@ The minimum non-trivial BLD structure is Cost = 1 (one boundary, link, or dimens
 When an observer measures, they add at least +1 to the structure. This appears:
 - In α⁻¹: the +1 term
 - In M_P: the 79/78 = (78+1)/78 ratio
-- In m_H: the (1 + 1/B) factor
+- In m_H: the (1 + 1/B)(1 − 1/(B×L)) factors
 
 ### 8.3 Killing Form as K = 2
 
@@ -363,7 +363,7 @@ All other scales are measured relative to v. The corrections (1 + 1/v), (1 + 1/B
 
 Currently v = 246 GeV is empirical input. If v can be expressed as λᵐ × (some derived quantity), then v would also be derived.
 
-**Hint**: m_H = (v/2)(1 + 1/B) suggests v has BLD structure. The factor v/2 relates v to Killing form K = 2.
+**Hint**: m_H = (v/2)(1 + 1/B)(1 − 1/(B×L)) suggests v has BLD structure. The factor v/2 relates v to Killing form K = 2.
 
 ### 10.2 Higher-Order Corrections?
 

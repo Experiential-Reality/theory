@@ -309,7 +309,7 @@ Current AI frameworks hide structure. PyTorch, TensorFlow, JAX — they optimize
 
 ### The Math
 
-From the [D×L Scaling Principle](../glossary.md#dxl-scaling):
+From the [D×L Scaling Principle](../glossary.md#dl-scaling-principle):
 
 ```
 Energy ∝ Alignment Cost × Scale

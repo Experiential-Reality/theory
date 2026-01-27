@@ -370,7 +370,7 @@ From [Octonion Necessity](../derivations/octonion-necessity.md):
 
 ---
 
-## 10. The Imaginary Unit i {#8-the-imaginary-unit-i}
+## 10. The Imaginary Unit i
 
 ### 8.1 i ∈ BLD
 

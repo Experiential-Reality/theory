@@ -450,7 +450,7 @@ def handle(request):
 
 ---
 
-## D×L Scaling: A Design Heuristic {#dl-scaling-a-design-heuristic}
+## D×L Scaling: A Design Heuristic
 
 The BLD principle that "D multiplies L, not B" gives a useful design heuristic:
 
