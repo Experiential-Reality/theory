@@ -17,25 +17,23 @@ used_by:
 
 ---
 
-## Quick Summary (D~7 Human Traversal)
+## Summary
 
-**Exceptional algebras from division algebra tensor products:**
+**Exceptional Lie algebras from BLD via Freudenthal magic square:**
 
-1. **G₂ = Aut(O)** — K × Im(O) = 2 × 7 = 14
-2. **F₄ = B - n** — boundary minus spacetime = 56 - 4 = 52
-3. **E₆ = O ⊗ C** — structure + quantum phase = 78 (fund = 27 = one generation)
-4. **E₇ = O ⊗ H** — structure + spacetime = 133 (fund = 56 = B)
-5. **E₈ = O ⊗ O** — structure observes itself = n(B + n + K) = 4 × 62 = 248 (self-dual)
+1. G₂ = K × Im(O) = 14 (octonion automorphisms) — [G₂](#g₂-the-automorphisms-of-octonions)
+2. F₄ = B - n = 52 (pure structure, no spacetime) — [F₄](#f₄-boundary-minus-spacetime)
+3. E₆ = F₄ + 26 = 78, fund = 27 = one generation — [E₆](#e₆-quantum-phase-couples-to-structure)
+4. E₇ = so(3) + F₄ + 3×26 = 133, fund = 56 = B — [E₇](#e₇-structure-in-spacetime)
+5. E₈ = n(B + n + K) = 248 (self-dual: structure observes itself) — [E₈](#e₈-structure-observes-itself)
 
 | Algebra | Dim | Fund | BLD Formula | Freudenthal |
 |---------|-----|------|-------------|-------------|
 | G₂ | 14 | 7 | K × Im(O) = 2 × 7 | Aut(O) |
 | F₄ | 52 | 26 | B - n = 56 - 4 | O ⊗ R |
-| E₆ | 78 | 27 | F₄ + 26 = (B-n) + (27-1) | O ⊗ C |
+| E₆ | 78 | 27 | F₄ + 26 | O ⊗ C |
 | E₇ | 133 | 56 | so(3) + F₄ + 3×26 | O ⊗ H |
 | E₈ | 248 | 248 | n(B + n + K) = 4 × 62 | O ⊗ O |
-
-**Key insight**: The exceptional chain represents layers of observation, from pure structure (F₄) to self-observing structure (E₈).
 
 ---
 

@@ -21,19 +21,17 @@ used_by:
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**ℏ derivation in 7 steps:**
+**ℏ derived from BLD (0.00003% error):**
 
-1. **λ = 1/√20** — DERIVED from S₃ cascade (Catalan number C₃ = 5)
-2. **B = 56** — DERIVED from triality + Killing form
-3. **n_c = B/2 - K = 26** — Cascade exponent, DERIVED from B (distinct from n=4 spacetime)
-4. **Base formula**: M_P = v × λ⁻²⁶ × √(5/14)
-5. **First-order observer**: ×(79/78) — observer measuring M_P from v
-6. **Second-order observer**: ×(1 + K×3/(n×L×B²)) — meta-observer deriving the formula
-7. **Result**: ℏ = 1.0545717 × 10⁻³⁴ J·s (**0.00003% error**)
+1. λ = 1/√20 from S₃ cascade — [λ Parameter](#the-λ-parameter-key-to-scale-hierarchy)
+2. n_c = B/2 − K = 26 (cascade exponent) — [BLD Structure](#bld-structure-of-the-derivation)
+3. M_P = v × λ⁻²⁶ × √(5/14) × observer corrections — [Complete Formula](#the-complete-formula)
+4. First-order: ×(79/78), Second-order: ×(1 + 6/(n×L×B²)) — [Planck Mass Formula](#the-planck-mass-formula)
+5. Primordial vs observed: integer structure — [Primordial vs Observed](#primordial-vs-observed-the-key-insight)
 
-**Empirical inputs**: v (Higgs VEV), c, G
+**Result**: ℏ = 1.0545717 × 10⁻³⁴ J·s
 
 ---
 
@@ -207,6 +205,24 @@ The Killing form K = 2 appears in BOTH observer corrections:
 - First-order: n×L - **K** = 78
 - Second-order: **K** × 3 / (n×L × B²)
 - M_P: -(2) from n×L (bidirectional observation cost)
+
+### Connection to Entropy: S = K × L
+
+The **same K = 2** in the Planck derivation governs the unified entropy formula:
+
+| Context | Formula | K = 2 Role |
+|---------|---------|------------|
+| **Planck corrections** | 79/78 = (n×L - K + 1)/(n×L - K) | Observer correction |
+| **Entanglement entropy** | S = 2L | Bidirectional observation |
+| **Black hole entropy** | S = A/(4ℓ_P²) = K × L | Horizon entropy |
+
+**The connection**: At the Planck scale, K = 2 enters in two ways:
+1. **Observer corrections**: The (79/78) factor comes from n×L - K = 78
+2. **Entropy**: Black hole entropy S = K × L has the same K = 2
+
+This suggests the Planck scale is where observer corrections (K/X) and entropy (K × L) become comparable — the scale where observation cost equals structure size.
+
+**Reference**: [Entropy Formula](../foundations/key-principles.md#entropy-formula), [Black Hole Entropy](black-hole-entropy.md)
 
 ### Numerical Verification
 
@@ -421,7 +437,7 @@ This suggests a 30% reduction in effective D×L at Planck scale due to discrete 
 
 ---
 
-## Key Result: The Planck Mass Formula
+## Key Result: The Planck Mass Formula {#the-planck-mass-formula}
 
 ### The Derived Formula
 

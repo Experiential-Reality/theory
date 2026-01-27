@@ -7,27 +7,22 @@ depends_on:
 
 # Why Lie Theory?
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**BLD = Lie theory in 7 steps:**
+**Why BLD = Lie theory matters:**
 
-1. **Symmetry = unchanged under transformation** — Rotations, translations, gauge transformations
-2. **Lie algebra captures infinitesimals** — Generators (directions), structure constants (how they combine)
-3. **Noether's theorem** — Every continuous symmetry ↔ conservation law (energy, momentum, charge)
-4. **BLD maps exactly** — D = generators, L = structure constants, B = group topology
-5. **Discovery story** — Started with GPU prediction, found same patterns everywhere, arrived at 1870s math
-6. **BLD adds operational access** — Don't need grad math; handles discrete structures; focuses on prediction
-7. **Universality explained** — BLD works across domains because symmetry exists everywhere
+1. Symmetry = unchanged under transformation — [What Is Symmetry](#what-is-symmetry)
+2. Lie algebra: generators (D) + structure constants (L) + topology (B) — [What Is a Lie Algebra](#what-is-a-lie-algebra)
+3. Noether: continuous symmetry ↔ conservation law — [Noether's Theorem](#noethers-theorem)
+4. BLD maps exactly: D=generators, L=constants, B=topology — [BLD Inherits This Power](#bld-inherits-this-power)
+5. Discovered via GPU prediction → same patterns everywhere — [Discovery Story](#the-discovery-story)
+6. BLD adds: operational access, discrete structures, prediction focus — [What BLD Adds](#what-bld-adds)
 
 | Concept | Plain English | BLD Primitive |
 |---------|--------------|---------------|
-| Generator | Direction of continuous change | Dimension (D) |
-| Structure constant | How directions interact | Link (L) |
-| Group topology | Bounded or unbounded | Boundary (B) |
-
-> **Status**: Foundational
-
-This document explains Lie theory for non-mathematicians and why discovering that BLD = Lie theory matters.
+| Generator | Direction of change | D |
+| Structure constant | How directions interact | L |
+| Group topology | Bounded or unbounded | B |
 
 ---
 
@@ -198,7 +193,7 @@ The Lie correspondence validates BLD. It explains why the framework works. But B
 
 ---
 
-## Summary
+## Conclusion
 
 | Concept | Plain English | BLD Primitive |
 |---------|--------------|---------------|

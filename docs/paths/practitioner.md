@@ -16,17 +16,23 @@ used_by:
 
 This path focuses on methodology and applications.
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Practitioner reading path in 7 steps:**
+**Practitioner reading path — methodology and applications:**
 
-1. **Discovery Method** — Learn the three diagnostic questions that reveal B, L, D in any system
-2. **BLD-Driven Development** — Design with structure from the start, finding primitives before code
-3. **Domain Applications** — Explore software, ML, or physics examples relevant to your work
-4. **Worked Examples** — Study ZIP format analysis, then try the three questions on your own system
-5. **Why It Works** — Understand the Lie theory foundation that makes BLD universally applicable
-6. **Application Checklist** — Use the 6-step checklist for analyzing new systems systematically
-7. **e vs π Diagnostic** — Identify which compensation mechanism applies: exponential, angular, or both
+1. Discovery Method: three diagnostic questions (B, L, D) — [Step 1](#step-1-the-discovery-method)
+2. BLD-Driven Development: design with structure first — [Step 2](#step-2-bld-driven-development)
+3. Domain Applications: software, ML, physics examples — [Step 3](#step-3-see-it-applied)
+4. Worked Examples: ZIP format, then your own system — [Step 4](#step-4-worked-examples)
+5. Why It Works: Lie theory foundation — [Step 5](#step-5-understanding-why-it-works)
+6. Application Checklist: 6-step analysis for new systems — [Quick Application Checklist](#quick-application-checklist)
+7. e vs π Diagnostic: which compensation mechanism? — [Diagnostic](#diagnostic-identifying-e-vs-π-in-new-domains)
+
+| Domain | Example Files |
+|--------|---------------|
+| Software | Refactoring, Code Generation |
+| ML | Neural Architectures, Alignment |
+| Physics | GPU Calibration, Circuits |
 
 ---
 

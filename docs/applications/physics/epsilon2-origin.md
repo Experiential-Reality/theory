@@ -11,17 +11,17 @@ used_by:
 
 # Discovery: The Structural Origin of ε₂ = √λ
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Deriving ε₂ = √λ in 7 steps:**
+**Derivation of ε₂ = √λ:**
 
-1. **The anomaly** — Up-quark masses don't fit single spurion ε = λ; m_c/m_u and m_t/m_c have wrong ratios
-2. **Two-stage cascade** — S₃ → S₂ → {e} breaking has two stages, each contributing √λ
-3. **5̄×10 coupling** — Leptons and down quarks see BOTH stages: √λ × √λ = λ (full link)
-4. **10×10 coupling** — Up quarks see only ONE stage: √λ × 1 = √λ (partial link)
-5. **Symmetry reason** — 10×10 is symmetric in generation indices; S₂→{e} distinction vanishes
-6. **Formula** — ε₂ = (1/20)^(1/4) = 1/√(2√5) = 0.4729 (0.31% error from experiment)
-7. **Half-integer steps** — √λ enables non-integer exponents: m_u/m_t ~ λ^7.57, m_c/m_t ~ λ^3.29
+1. The anomaly — up-quark masses don't fit single spurion ε = λ — [The Discovery](#the-discovery)
+2. Two-stage cascade — S₃ → S₂ → {e} has two stages, each √λ — [Cascade Splitting](#physical-interpretation-cascade-splitting)
+3. 5̄×10 sees both stages: √λ × √λ = λ — [Full Link](#full-link-5̄10-for-leptonsdown)
+4. 10×10 sees only one stage: √λ × 1 = √λ — [Partial Link](#partial-link-1010-for-up-quarks)
+5. Symmetry reason — symmetric indices can't distinguish stage 2 — [Why 10×10 Skips](#why-1010-skips-stage-2)
+6. Formula: ε₂ = (1/20)^(1/4) = 0.4729, 0.31% error — [Mathematical Derivation](#mathematical-derivation)
+7. Half-integer steps enable non-integer exponents — [Impact](#impact-on-up-quark-masses)
 
 | Component | BLD |
 |-----------|-----|
@@ -135,7 +135,7 @@ This is the **geometric mean** of 1 and λ:
 
 The S₃ → S₂ → {e} cascade has **two stages**, each contributing √λ:
 
-### Full Link (5̄×10 for leptons/down):
+### Full Link (5̄×10 for leptons/down): {#full-link-5̄10-for-leptonsdown}
 
 ```
 ┌───────────────────────────────────────┐
@@ -147,7 +147,7 @@ The S₃ → S₂ → {e} cascade has **two stages**, each contributing √λ:
 └───────────────────────────────────────┘
 ```
 
-### Partial Link (10×10 for up quarks):
+### Partial Link (10×10 for up quarks): {#partial-link-1010-for-up-quarks}
 
 ```
 ┌───────────────────────────────────────┐
@@ -159,7 +159,7 @@ The S₃ → S₂ → {e} cascade has **two stages**, each contributing √λ:
 └───────────────────────────────────────┘
 ```
 
-### Why 10×10 Skips Stage 2
+### Why 10×10 Skips Stage 2 {#why-1010-skips-stage-2}
 
 In SU(5):
 - **5̄×10** → antisymmetric in generation indices → couples to both stages

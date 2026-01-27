@@ -16,6 +16,16 @@ used_by:
   - ../../derived/general-relativity.md
 ---
 
+## Summary
+
+**The genesis function as universal computation:**
+
+1. Three layers: Observed = Structure + K/X(experiment) + K/X(universe) — [Three Layers of K/X](#2-three-layers-of-kx)
+2. Planck scale = computational step size of the universal machine — [The Universal Machine](#2-the-universal-machine)
+3. Remaining residuals (~0.002-0.02%) are K/X(universe), not error — [Evidence: Residual Errors Follow a Pattern](#3-evidence-residual-errors-follow-a-pattern)
+4. X(universe) derived: strong=10,400, weak/grav=89,600 — [What Is X(universe)?](#4-what-is-xuniverse-derived)
+5. Time dilation = universe enforcing K/X <= 1 — [Connection to Time Dilation](#5-connection-to-time-dilation)
+
 # The Universal Machine: traverse(-B, B) as Cosmic Computation
 
 ## Abstract

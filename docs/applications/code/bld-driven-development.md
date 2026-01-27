@@ -17,17 +17,17 @@ used_by:
 
 > **Status**: Foundational
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**BLD-driven development in 7 steps:**
+**BLD-Driven Development:**
 
-1. **Find structure first** — Before writing code, answer: What partitions behavior? What depends on what? What repeats?
-2. **Boundaries should be explicit** — Use enums and dispatch tables, never scatter the same condition across multiple locations
-3. **Dependencies should form a DAG** — If you can't draw it as a directed acyclic graph, there's hidden state
-4. **Dimensions should be homogeneous** — If elements need different handling, that's a hidden boundary—make it explicit
-5. **FACTOR operation decomposes** — `S → S₁ × S₂ × ... × Sₙ` terminates at irreducible B × L × D primitives
-6. **D×L scaling reveals hidden B** — If adding more items makes code significantly more complex, you've hidden a boundary
-7. **BLD code is naturally concurrent** — Explicit B (no races), DAG L (no deadlocks), homogeneous D (parallel-safe)
+1. Find structure first — answer Q1/Q2/Q3 before implementing — [Core Idea](#the-core-idea)
+2. Boundaries explicit — enums and dispatch tables — [Pre-Implementation Checklist](#the-pre-implementation-checklist)
+3. Dependencies form DAG — if cycles exist, redesign — [Design Principles](#principle-2-dependencies-as-dag)
+4. Dimensions homogeneous — different handling = hidden B — [Design Principles](#principle-3-uniform-dimensions)
+5. FACTOR operation — decomposes to irreducible B×L×D — [Formal Operation](#formal-operation-factor)
+6. D×L scaling reveals hidden B — [D×L Scaling](#dl-scaling-a-design-heuristic)
+7. BLD code is naturally concurrent — [Concurrency](#why-bld-code-is-naturally-concurrent)
 
 | Component | BLD Mapping |
 |-----------|-------------|
@@ -450,7 +450,7 @@ def handle(request):
 
 ---
 
-## D×L Scaling: A Design Heuristic
+## D×L Scaling: A Design Heuristic {#dl-scaling-a-design-heuristic}
 
 The BLD principle that "D multiplies L, not B" gives a useful design heuristic:
 
@@ -694,7 +694,7 @@ def test_batch_send_scales_linearly():
 
 ---
 
-## Summary
+## Conclusion
 
 BLD-driven development is about finding structure before writing code:
 

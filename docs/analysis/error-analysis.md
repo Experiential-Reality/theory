@@ -11,17 +11,22 @@ used_by: []
 
 # Error Analysis: Observation Efficiency vs Experimental Uncertainty
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Error analysis in 7 steps:**
+**All precision-limited constants now derived exactly:**
 
-1. **Compare errors to experimental uncertainty** — Is the BLD error larger or smaller?
-2. **α⁻¹ (0.0 ppt)** — EXACT with e²×120/119 accumulated correction
-3. **m_H (0.09%)** — Matches experimental uncertainty exactly; measurement-limited
-4. **μ/e (0.5 ppb)** — EXACT with e²×(S+1)/((n×L)²×B²×S²) accumulated correction
-5. **e-accumulation pattern** — Both bidirectional (α⁻¹) and ratio (μ/e) use e² (K=2 always)
-6. **X/(X+1) structure** — Observer creates additional state (120/119 or X/(X+1))
-7. **Conclusion** — All precision-limited constants now derived exactly
+1. α⁻¹: 0.0 ppt error — EXACT with e²×120/119 accumulated correction — [Fine Structure](#31-fine-structure-constant-α⁻¹)
+2. m_H: 0.09% = experimental uncertainty — measurement-limited — [Higgs Mass](#32-higgs-mass-m_h)
+3. μ/e: 0.5 ppb error — EXACT with e²×(S+1)/((n×L)²×B²×S²) correction — [Muon/Electron](#33-muonelectron-mass-ratio-μe)
+4. e² pattern: both α⁻¹ and μ/e use e² because K=2 always (bidirectional) — [Why Structural](#61-errors-are-structural-not-random)
+5. X/(X+1) structure: observer creates additional state (120/119) — [Summary](#4-summary-what-explains-each-error)
+6. τ/μ: 0.004% — consistent with higher-order corrections — [Tau/Muon](#34-taumuon-mass-ratio-τμ)
+
+| Quantity | BLD Error | Exp. Uncertainty | Status |
+|----------|-----------|------------------|--------|
+| α⁻¹ | **0.0 ppt** | 0.15 ppb | **EXACT** |
+| m_H | 0.09% | 0.09% | **MEASUREMENT-LIMITED** |
+| μ/e | **0.5 ppb** | 22 ppb | **EXACT** |
 
 ---
 
@@ -51,7 +56,7 @@ From [Observer Corrections](../mathematics/cosmology/observer-correction.md), co
 
 ## 3. Analysis of Each Error
 
-### 3.1 Fine Structure Constant α⁻¹
+### 3.1 Fine Structure Constant α⁻¹ {#31-fine-structure-constant-α⁻¹}
 
 **Exact formula**:
 ```
@@ -78,7 +83,7 @@ Error:   0.0 ppt
 
 ---
 
-### 3.2 Higgs Mass m_H
+### 3.2 Higgs Mass m_H {#32-higgs-mass-m_h}
 
 **Current formula**: m_H = (v/2)(1 + 1/B) = 125.31 GeV
 

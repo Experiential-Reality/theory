@@ -23,19 +23,17 @@ used_by:
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**α⁻¹ = 137.035999177 in 7 components:**
+**α⁻¹ = 137.035999177 (exact derivation):**
 
-1. **n×L = 80** — geometric structure (4 dimensions × 20 Riemann components)
-2. **B = 56** — boundary modes (2 × dim(Spin(8)) from triality)
-3. **+1** — traverser's minimum contribution (the thing doing the measuring)
-4. **+K/B, ±spatial** — two-reference corrections (outbound/return traversal)
-5. **−e²×120/(119×(n×L×B)²)** — accumulated discrete→continuous correction
-6. **Total: 137.035999177** (0.0 ppt accuracy)
-7. **Everything else derived** — n=4, 3 generations, B=56, K=2, α⁻¹
+1. n×L = 80 (geometric structure: 4 dimensions × 20 Riemann) — [Core Formula](#the-core-formula)
+2. B = 56 (boundary modes from triality: 2 × dim(Spin(8))) — [Complete Derivation](#the-complete-derivation)
+3. +1 (traverser's minimum contribution) — [+1 Derivation](#the-1-derivation-traversers-contribution)
+4. K/X corrections (two-reference traversal) — [Mathematical Verification](#mathematical-verification)
+5. SU(3) is derived from genesis closure — [SU(3) Derived](#su3-is-derived-from-genesis-closure)
 
-**One sentence**: The fine structure constant encodes how structure connects (80), partitions (56), observes itself (+1), how the machine traverses it (±spatial), and the discrete→continuous cost (−e²×120/(119×(n×L×B)²)).
+**One formula**: α⁻¹ = n×L + B + 1 + corrections = 137.035999177
 
 ---
 
@@ -585,7 +583,7 @@ See [Observer Corrections](../cosmology/observer-correction.md) for full two-ref
 
 ---
 
-## Summary
+## Conclusion
 
 **α⁻¹ = 137.035999177 is fully derived from BLD.**
 
@@ -607,13 +605,6 @@ The complete derivation chain:
 15. **α⁻¹ = 137.035999177** (exact prediction, **0.0 ppt error**)
 
 **See [Octonion Derivation](../foundations/derivations/octonion-derivation.md) for steps 1-5.**
-
-This breaks the circular dependency that previously plagued BLD particle physics:
-
-```
-Before: α⁻¹ → B → S → masses → "validate α"  [CIRCULAR]
-After:  genesis closure → 𝕆 required → triality → 56 + 80 + 1 + 2/B → α⁻¹  [LINEAR]
-```
 
 **Zero empirical inputs**: SU(3) is derived from genesis closure (see [Octonion Necessity](../foundations/derivations/octonion-necessity.md))
 **All derived**: n=4, 3 generations, B=56, α⁻¹ = 137.035999177

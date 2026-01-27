@@ -13,17 +13,16 @@ used_by:
 
 # Deriving π from BLD
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**π from BLD in 7 steps:**
+**π derived from closed boundary traversal:**
 
-1. **π appears in rotation** — Whenever a boundary closes and must be traversed
-2. **Circle has BLD structure** — B=1 (closed), L=r (radius), D=2π (full turn)
-3. **D×L scaling principle** — Dimension multiplies Link, not Boundary
-4. **Circumference = D×L = 2πr** — The formula emerges from BLD structure
-5. **π converts B-space to D-space** — Topology (1 closure) to geometry (2π radii)
-6. **Why exactly π?** — Curvature constraint: B_closure = D × L_curvature
-7. **π is structure's constant** — As e is to traverser, π is to closed boundaries
+1. Circle BLD: B=1 (closed), L=r, D=2π (full turn) — [BLD Structure](#the-bld-structure-of-a-circle)
+2. D×L scaling: dimension multiplies link, not boundary — [Derivation](#the-derivation)
+3. Circumference = D×L = 2πr — [The Formula](#the-formula)
+4. Why π? Curvature constraint: B_closure = D × L_curvature — [Why π](#why-π-and-not-some-other-number)
+5. Gauss-Bonnet: D × L_curvature = 2π × B_topology — [Generalization](#generalization-gauss-bonnet-theorem)
+6. Euler's formula: e^(iπ)+1=0 unifies π and e — [Euler](#eulers-formula-the-unification)
 
 | π | e |
 |---|---|
@@ -212,7 +211,7 @@ The compactness of B (closed topology) means:
 
 ---
 
-## Summary
+## Conclusion
 
 π is not arbitrary—it's the universal constant that reconciles:
 - **B** (topological closure—"returning to start")

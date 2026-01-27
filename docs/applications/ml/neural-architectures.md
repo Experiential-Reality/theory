@@ -9,17 +9,17 @@ depends_on:
 
 > **Status**: Validated (see [Neural Network Alignment](./neural-network-alignment.md))
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Neural architecture analysis via BLD in 7 steps:**
+**Neural Architecture BLD Analysis:**
 
-1. **Every architecture has BLD structure** — MLP, CNN, Transformer, GNN, LSTM each have distinct B (boundaries), L (links), D (dimensions)
-2. **L determines connectivity** — MLP: dense static, CNN: sparse local, Transformer: dynamic content-dependent, GNN: graph-structured, LSTM: sequential
-3. **B determines partitioning** — Activations (ReLU at x=0), attention masks (which tokens see which), gate activations (what to remember/forget)
-4. **D determines repetition axes** — Batch, spatial (height×width), sequence, heads, channels, layers
-5. **Architecture-data alignment predicts success** — CNN works on images (local L matches spatial locality), Transformer on language (dynamic L matches context-dependence)
-6. **L subtypes are distinct** — Dynamic L (attention) enables feature selection; Sequential L (LSTM) enables state accumulation; they are NOT interchangeable
-7. **Inductive bias = BLD constraint** — Translation equivariance = L is translation-invariant; local receptive field = L is sparse
+1. Every architecture has distinct BLD structure — [The Analysis](#the-analysis)
+2. L determines connectivity: MLP dense, CNN sparse local, Transformer dynamic — [Key Differences](#key-structural-differences)
+3. B determines partitioning: activations, masks, gates — [The Analysis](#the-analysis)
+4. D determines repetition axes: batch, spatial, sequence, heads — [The Analysis](#the-analysis)
+5. Architecture-data alignment predicts success — [Prediction 1](#prediction-1-architecture-data-alignment--validated)
+6. L subtypes are distinct and complementary — [L Subtype Taxonomy](#l-subtype-taxonomy-validated)
+7. Inductive bias = BLD constraint — [Prediction 4](#prediction-4-inductive-bias-is-structural-constraint)
 
 | Architecture | L Structure | B Structure | D Structure |
 |--------------|-------------|-------------|-------------|
@@ -316,7 +316,7 @@ Test: does matching architecture → better performance?
 
 ---
 
-## Summary
+## Conclusion
 
 BLD analysis of neural networks reveals:
 

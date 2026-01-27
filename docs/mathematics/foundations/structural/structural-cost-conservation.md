@@ -15,6 +15,25 @@ used_by:
 
 # Structural Cost Conservation
 
+## Summary
+
+**Cost is conserved under factorization:**
+
+1. Conservation theorem: C(S) = C(FACTOR(S)) — cost redistributes, doesn't disappear — [The Conservation Theorem](#3-the-conservation-theorem)
+2. Decomposition: C_total = C_visible + C_hidden — structure is either explicit or implicit — [Cost Decomposition](#2-cost-decomposition)
+3. Primitive costs: C(B)=½log(1+d²), C(L)=-½ln(1-ρ²), C(D)=n×C(element) — [Primitive Costs](#12-primitive-costs-proven)
+4. Explicitness = C_visible/C_total monotonically increases toward 1 — [The Explicitness Metric](#4-the-explicitness-metric)
+5. Refactoring makes complexity visible, not simpler — [Practical Implications](#6-practical-implications)
+6. Cost conservation ↔ structural symmetry (Noether) — [Connection to Physics](#5-connection-to-physics)
+
+| State | C_visible | C_hidden | Audit |
+|-------|-----------|----------|-------|
+| Before factoring | Low | High | Hard |
+| After factoring | High | Low | Easy |
+| Normal form | C_total | 0 | Complete |
+
+---
+
 ## Abstract
 
 We establish that structural cost is conserved under factorization: C(S) = C(FACTOR(S)). While factorization may appear to simplify structure, it actually transfers cost from hidden (implicit) to visible (explicit) components. The decomposition C_total = C_visible + C_hidden is invariant, with factorization monotonically increasing the explicitness ratio C_visible/C_total toward 1. We provide exact formulas for primitive costs: C(B) = ½log(1+d²_Mahal) for boundaries, C(L) = -½ln(1-ρ²) for links, and C(D) = n × C(element) for dimensions. This principle connects refactoring practices to BLD theory and explains why "simpler" code isn't necessarily lower cost—it's more explicit about its inherent complexity.
@@ -222,7 +241,7 @@ FACTOR: C_hidden → C_visible
 
 ---
 
-## 4. The Explicitness Metric
+## 4. The Explicitness Metric {#the-explicitness-metric}
 
 ### 4.1 Definition
 

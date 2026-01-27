@@ -7,17 +7,17 @@ depends_on:
 
 # Performance Comparison Theorem
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Performance prediction in 7 steps:**
+**Performance Comparison Theorem:**
 
-1. **Structure S meets traverser T** — Algorithm (S) runs on hardware (T)
-2. **Cost = alignment penalty** — Misalignment between S and T creates performance loss
-3. **Cost decomposes** — cost(S,T) = Σ boundary + Σ link + Σ dimension + overhead
-4. **Compare traversers** — T₁ outperforms T₂ ⟺ cost(S,T₁) < cost(S,T₂)
-5. **Geometric view** — On manifold, better hardware is "closer" to your algorithm
-6. **Predictive** — Rank hardware options by alignment cost without running code
-7. **Universal** — Same math applies to GPU optimization, protein engineering, ML architecture search
+1. Structure S meets traverser T — [Theorem Statement](#theorem-statement)
+2. Cost = alignment penalty — [Proof](#proof)
+3. Cost decomposes: boundary + link + dimension — [Proof](#proof)
+4. T₁ outperforms T₂ ⟺ cost(S,T₁) < cost(S,T₂) — [Comparison Formula](#comparison-formula)
+5. Geometric view: better hardware = closer on manifold — [Geometric View](#the-geometric-view)
+6. Predictive: rank hardware by cost without running code — [Predictive Power](#predictive-power)
+7. Universal: GPU, proteins, ML architecture search — [Implications](#implications)
 
 | Misalignment Type | What Causes It | Penalty |
 |-------------------|---------------|---------|

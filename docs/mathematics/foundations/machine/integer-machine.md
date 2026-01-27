@@ -15,6 +15,17 @@ used_by:
   - ../../../meta/proof-status.md
 ---
 
+## Summary
+
+**The universe computes in discrete boundary operations:**
+
+1. Minimum structure = 7 = Im(O) = n + 3 — [Minimum Structure](#4-minimum-structure)
+2. Machine stores m^2 (integers); we observe sqrt (transcendentals) — [Observable vs Stored](#5-observable-vs-stored)
+3. (M_P/m_e)^2 x 7 = pure integer with octonionic signature — [The Integer Formula](#6-the-integer-formula)
+4. Primordial ratios are integer; observed include 2pi, e factors — [Primordial vs Observed](#7-primordial-vs-observed)
+5. Division algebra tower: C->K=2, H->n=4, O->7 — [The Algebra Tower](#9-the-algebra-tower)
+6. The imaginary unit i is the unit of observation — [The Imaginary Unit i](#10-the-imaginary-unit-i)
+
 # The Integer Machine
 
 ## Abstract
@@ -359,7 +370,7 @@ From [Octonion Necessity](../derivations/octonion-necessity.md):
 
 ---
 
-## 10. The Imaginary Unit i
+## 10. The Imaginary Unit i {#8-the-imaginary-unit-i}
 
 ### 8.1 i ∈ BLD
 

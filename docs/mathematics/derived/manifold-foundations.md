@@ -14,25 +14,22 @@ A mathematical formalization of what the structural manifold IS and its primitiv
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Structural manifold in 7 steps:**
+**The structural manifold (BLD extends information geometry):**
 
-1. **BLD is stratified extension of Info Geometry** — Information Geometry = BLD_{k=1} (unimodal stratum)
-2. **B = topological** — mode structure, dimension-independent: B(d=16)/B(d=2) = 1.03
-3. **L = metric** — correlation structure, exact formula: L = -½ ln(1-ρ²)
-4. **D = multiplier** — repetition count, scales L linearly (KL additivity)
-5. **Algebraically independent** — each zero when structure absent
-6. **Geometrically coupled** — off-diagonal Hessian ~16% when both present
-7. **Universal** — works for Gaussian, Student-t, Laplace (exponential family)
+1. BLD = stratified extension: Info Geo = BLD_{k=1} (unimodal) — [Main Result](#bld-as-stratified-extension-of-information-geometry)
+2. B = topological: mode structure, dimension-independent — [Boundary](#boundary-b--topological-derived)
+3. L = metric: correlation, L = -½ ln(1-ρ²) exact — [Link](#link-l--metric)
+4. D = multiplier: scales L linearly (KL additivity) — [Dimension](#dimension-d--structural-multiplier-theorem)
+5. Algebraically independent, geometrically coupled (~16%) — [Coupling](#geometric-coupling-between-primitives)
+6. Universal: Gaussian, Student-t, Laplace all work — [Universality](#universality-across-distributions)
 
 | Primitive | Character | Scaling | Exact Formula |
 |-----------|-----------|---------|---------------|
 | B | Topological | O(1) | ½ log(1 + d²_Mahal) |
 | L | Metric | O(s) | -½ ln(1 - ρ²) |
 | D | Multiplier | × on L | KL additivity |
-
-**Key insight**: BLD reveals the discrete topology (mode structure) that information geometry misses.
 
 ---
 

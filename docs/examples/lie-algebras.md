@@ -9,20 +9,19 @@ used_by:
 
 # Lie Algebra Examples in BLD
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Lie algebras in BLD in 7 steps:**
+**Lie algebra examples showing BLD = Lie correspondence:**
 
-1. **D = generators** — Each symmetry direction is a BLD dimension
-2. **L = structure constants** — [Xᵢ, Xⱼ] = fᵢⱼᵏXₖ are the links between generators
-3. **B = topology** — Compact (closed B) vs non-compact (open B)
-4. **so(2)** — 1 generator, no links (abelian), closed boundary
-5. **su(2)** — 3 generators Jₓ,Jᵧ,Jᵤ, links via εᵢⱼₖ (Levi-Civita), closed
-6. **Heisenberg** — Position (D), momentum (L), [x,p]=iℏ, open boundary
-7. **Standard Model** — SU(3)×SU(2)×U(1) = 12 generators, specific links, closed
+1. D = generators, L = structure constants, B = topology — [Summary Table](#summary-table)
+2. so(2): 1 generator, no links (abelian), closed — [so(2)](#so2-2d-rotations)
+3. su(2): 3 generators Jₓ,Jᵧ,Jᵤ, εᵢⱼₖ links, closed — [su(2)](#so3--su2-3d-rotations-and-spin)
+4. Heisenberg: position, momentum, [x,p]=iℏ, open — [Heisenberg](#heisenberg-algebra-position-and-momentum)
+5. Poincaré: 10 generators, mixed topology — [Poincaré](#poincaré-algebra-spacetime-symmetry)
+6. Euler type: π (angular) vs e (exponential) — [Euler Type](#euler-type-classification)
 
-| Algebra | D (generators) | L (structure) | B (topology) |
-|---------|----------------|---------------|--------------|
+| Algebra | D | L | B |
+|---------|---|---|---|
 | so(2) | 1 | ∅ | closed |
 | su(2) | 3 | εᵢⱼₖ | closed |
 | Heisenberg | 3 | [x,p]=iℏ | open |

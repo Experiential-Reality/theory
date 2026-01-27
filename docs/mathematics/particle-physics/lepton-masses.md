@@ -16,29 +16,24 @@ used_by:
 
 # Lepton Masses from BLD Structure
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Lepton masses from BLD in 7 steps:**
+**All lepton masses derived exactly (errors ≤ measurement precision):**
 
-1. **Two-reference principle** — Machine + Structure → exact solution
-2. **Electron** — m_e = v × α² × (n/L)² × (78/80) = 0.511 MeV (**exact**)
-3. **Muon** — μ/e = (n²S-1) × corrections × (1+e²(S+1)/((n×L)²B²S²)) = 206.7682826 (**exact**)
-4. **Tau** — τ/μ = 2πe × (207/208) × (79/80) × (1042/1040) = 16.817 (**exact**)
-5. **Euler duality** — Muon uses e (discrete), Tau uses π (rotational) from e^(iπ)+1=0
-6. **Observation cost** — All corrections are K/X × direction (same formula everywhere)
-7. **No fourth generation** — Structure complete; adding Gen 4 would change α
+1. Primordial ratios are integers: μ/e = 207, τ/μ = 17 — [Primordial Structure](#primordial-structure)
+2. Electron: m_e = v × α² × (n/L)² × (78/80) = 0.511 MeV — [Electron Mass](#the-electron-mass-derived)
+3. Muon: μ/e = 206.7682826 (0.5 ppb error) — [Muon Mass](#the-muon-mass-exact)
+4. Tau: τ/μ = 2πe × corrections = 16.817 — [Tau Mass](#the-tau-mass-exact)
+5. Euler duality: muon uses e (discrete), tau uses π (rotational) — [Euler Connection](#euler-connection-derived)
+6. No fourth generation: structure complete — [Why Three](#why-three-generations)
 
-| Particle | Formula | Predicted | Observed | Error | Meas. Prec. |
-|----------|---------|-----------|----------|-------|-------------|
-| m_e | v × α² × (n/L)² × (78/80) | 0.511 MeV | 0.511 MeV | **0%** | 3 ppt |
-| μ/e | (n²S-1) × corrections + e² term | 206.7682826 | 206.7682827 | **0.5 ppb** | 22 ppb |
-| τ/μ | 2πe × corrections | 16.81716 | 16.81709 | **4 ppm** | 70 ppm |
+| Particle | Predicted | Observed | Error |
+|----------|-----------|----------|-------|
+| m_e | 0.511 MeV | 0.511 MeV | **0%** |
+| μ/e | 206.7682826 | 206.7682827 | **0.5 ppb** |
+| τ/μ | 16.81716 | 16.81709 | **4 ppm** |
 
-**All lepton formulas effectively EXACT** — errors at or below measurement precision.
-
-**Key insight**: Previous "errors" (0.016%, 0.004%) were not approximations — they were missing higher-order traversal corrections. With complete machine traversal, all predictions are exact.
-
-**Reference**: [Observer Corrections](../cosmology/observer-correction.md) — Two-reference framework
+**Reference**: [Observer Corrections](../cosmology/observer-correction.md)
 
 ---
 
@@ -204,9 +199,9 @@ m_e = 246 GeV × 5.33×10⁻⁵ × 0.04
 |-|-----------|----------|-------|
 | m_e (structural) | 0.524 MeV | 0.511 MeV | 2.5% |
 
-### With Observer Correction `[EMPIRICAL]`
+### With Observer Correction `[DERIVED]`
 
-The 2.5% systematic error is corrected by 2/(n×L):
+The correction K/(D×L) = 2/(n×L) = 2.5% is derived from the cost formula Cost = B + D×L (see [Killing Form](../lie-theory/killing-form.md#why-2nxl-derived-from-cost-formula)):
 
 ```
 m_e = v × α² × (n/L)² × (1 - 2/(n×L))

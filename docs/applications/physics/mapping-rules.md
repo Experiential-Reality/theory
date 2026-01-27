@@ -14,22 +14,21 @@ used_by:
 
 > **Status**: Foundational (establishes criteria for B/L/D assignment)
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**BLD Mapping Rules in 7 steps:**
+**Falsifiable criteria for B/L/D assignment:**
 
-1. Rule 1 — B is topological: if observable X is unchanged when system size D changes, then X is a boundary (e.g., V_th same for 1 or 100 transistors)
-2. Rule 2 — L is geometric: if observable X scales proportionally with D, then X is a link (e.g., capacitance C_total = N × C_single)
-3. Rule 3 — D is repetition: if observable X counts instances of identical structure, then X is a dimension (e.g., particle number N, qubit count)
-4. Rule 4 — Falsification tests: B must be D-invariant (vary D, measure X); L must scale with D (fit X vs D); total cost must be B + D×L
-5. Common errors to avoid: confusing intensive (B) with extensive (L/D); confusing ratios (B) with absolutes (L/D); confusing parameters (B) with variables (L)
-6. Cross-domain consistency: the same observable type should map consistently (threshold is B in circuits, thermodynamics, fluids, and QM)
-7. When rules conflict, reconsider decomposition — X might be compound (e.g., entropy S = D × L_per_particle)
+1. B is topological: X unchanged when D changes (e.g., V_th same for 1 or 100 transistors) — [Rule 1](#rule-1-b--topological-invariant-under-d)
+2. L is geometric: X scales proportionally with D (e.g., C_total = N × C_single) — [Rule 2](#rule-2-l--geometric-scales-with-d)
+3. D is repetition: X counts instances of identical structure — [Rule 3](#rule-3-d--repetition-count)
+4. Falsification tests: B must be D-invariant, L must scale with D, total cost = B + D×L — [Rule 4](#rule-4-falsification-criteria)
+5. Common errors: confusing intensive (B) with extensive (L/D), ratios with absolutes — [Common Mapping Errors](#common-mapping-errors)
+6. Cross-domain consistency: same observable type maps consistently across domains — [Cross-Domain Consistency](#cross-domain-consistency-check)
 
 | Rule | Test | Classification |
 |------|------|----------------|
 | D-invariant? | X(D) = X(D') for all D | B (boundary) |
-| Scales with D? | X(alpha*D) = alpha^k × X(D) | L (link) |
+| Scales with D? | X(αD) = αᵏ × X(D) | L (link) |
 | Counts identical things? | X = integer count | D (dimension) |
 
 This document defines **explicit rules** for determining which physical observable maps to B, L, or D. The goal is to eliminate post-hoc fitting by providing falsifiable criteria.

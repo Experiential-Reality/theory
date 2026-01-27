@@ -12,6 +12,16 @@ used_by:
   - completeness-proof.md
 ---
 
+## Summary
+
+**Proof that B, L, D form an irreducible basis:**
+
+1. Boundary enables choice that L+D cannot express — [Lemma 1: Boundary Irreducibility](#3-lemma-1-boundary-irreducibility)
+2. Link enables directed reference that B+D cannot express — [Lemma 2: Link Irreducibility](#4-lemma-2-link-irreducibility)
+3. Dimension enables homogeneous multiplicity that B+L cannot express — [Lemma 3: Dimension Irreducibility](#5-lemma-3-dimension-irreducibility)
+4. Completeness: BLD covers Lie structures, computation, and more — [Scope and Completeness](#7-scope-and-completeness)
+5. The +1 in alpha^-1 exists because observation requires all three — [Implications](#9-implications)
+
 # Proof of B/L/D Irreducibility
 
 ## Abstract

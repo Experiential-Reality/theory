@@ -23,25 +23,23 @@ used_by:
 
 > **Status**: Validated
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Variational inference via BLD in 7 steps:**
+**Structural mismatch predicts ELBO gaps (validated):**
 
-1. **Cost scales with structure strength** — Boundary mismatch cost scales with mode separation; Link mismatch cost scales with correlation
-2. **Link formula is exact** — `L = -1/2 ln(1 - rho^2)` is a mathematical theorem from KL divergence (0.3% error)
-3. **Boundary formula is empirical** — `B = 0.060 × sep^2 / (1 + 0.22 × corr)` with 9.2% mean error
-4. **B and L are orthogonal** — Each cost is zero when that structure doesn't exist; they capture genuinely distinct aspects
-5. **D scaling differs by primitive** — B is topological (constant across dimensions); L is geometric (scales with dim^2)
-6. **B×L interaction is synergistic** — Missing both creates ~2× amplified costs (R^2 = 0.997)
-7. **Angular (pi) compensation** — VI uses sin(2theta) alignment factor (periodic/compact), unlike neural networks which use exponential (non-periodic)
+1. Link formula exact: L = −½ ln(1 − ρ²) from KL divergence (0.3% error) — [Results](#results)
+2. Boundary formula empirical: B = 0.060 × sep²/(1 + 0.22 × corr) (9.2% error) — [Results](#results)
+3. B and L orthogonal; D×L scaling validated — [Deeper Validation](#deeper-validation-orthogonality-scaling-and-interaction)
+4. B×L interaction is synergistic (R² = 0.997) — [Deeper Validation](#deeper-validation-orthogonality-scaling-and-interaction)
+5. Angular (π) compensation: sin(2θ) alignment factor — [Angular Compensation](#angular-π-compensation-the-sin2θ-factor)
+6. Connection to Lie theory: B=topology, L=structure constants — [Lie Theory](#connection-to-lie-theory)
 
 | Component | BLD Mapping |
 |-----------|-------------|
-| Mode structure | B: multimodality, separation between modes |
-| Correlation structure | L: within-mode dependencies |
-| Variable count | D: multiplies L costs (geometric), not B costs (topological) |
-| Variational family match | B: unimodal vs mixture; L: diagonal vs full covariance |
-| ELBO gap | Sum of B + L costs + interaction term |
+| Mode structure | B (multimodality) |
+| Correlation structure | L (dependencies) |
+| Variable count | D (multiplies L, not B) |
+| ELBO gap | B + L + interaction |
 
 ---
 

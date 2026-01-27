@@ -12,21 +12,19 @@ used_by:
 
 > **Status**: Validated
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Cross-language targets via BLD in 7 steps:**
+**Multiple targets from one BLD structure:**
 
-1. **C generation** — Same BLD produces C code with identical semantics; `deps=1` → sequential loop, `hierarchy_depth` → reverse iteration
-2. **WGSL generation** — GPU shaders require explicit synchronization; BLD properties determine barrier placement automatically
-3. **Barrier mapping** — `deps=0` → no barriers (independent threads), `hierarchy_depth=N` → N barrier rounds, `communication_distances` → 2×log(N) barriers
-4. **Semantic validation** — C tests confirm `foldl(-) = -6` and `foldr(-) = 2` just like Python; 21/21 tests pass
-5. **Test generation** — BLD properties generate their own verification: deps pattern → specific expected results
-6. **Five targets from one BLD** — Python (48 tests), C (21 tests), WGSL (shaders), Tests (auto), English (explanations)
-7. **The complete picture** — Haskell Prelude → BLD → any target language with proven semantic preservation
+1. C generation: deps=1 → sequential loop, hierarchy_depth → reverse iteration — [C Generation](#c-generation-same-bld-different-language)
+2. WGSL generation: BLD properties determine barrier placement automatically — [WGSL Generation](#wgsl-generation-gpu-shaders-from-bld)
+3. Barrier mapping: deps=0 → no barriers, hierarchy_depth=N → N rounds, communication_distances → 2×log(N) — [WGSL Generation](#wgsl-generation-gpu-shaders-from-bld)
+4. Test generation: BLD properties generate their own verification — [Test Generation](#test-generation-from-bld)
+5. Five targets: Python (48 tests), C (21 tests), WGSL, Tests, English — [Validation Results](#validation-results)
 
 | Component | BLD Mapping |
 |-----------|-------------|
-| C implementation | L: deps=1 → sequential for, hierarchy_depth → reverse for |
+| C implementation | L: deps=1 → sequential for, hierarchy_depth → reverse |
 | WGSL shader | L: tree structure → workgroupBarrier() rounds |
 | Barrier count | log₂(workgroup_size) for tree reduction |
 | Test assertions | L/B properties → expected behavior |

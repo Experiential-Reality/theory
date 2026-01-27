@@ -12,23 +12,22 @@ used_by:
 
 # wgpu-jpeg Decoding Process
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**JPEG decoding in BLD in 7 steps:**
+**JPEG decoding as BLD structure:**
 
-1. **Process = D[6]** — Decoding is a dimension with 6 stages
-2. **jpeg_bytes → parsed** — B partitions headers vs scan data
-3. **parsed → dct_coeffs** — D[B] blocks × D[64] coefficients per block
-4. **dct → dequantized** — L links quantization tables to coefficients
-5. **dequantized → pixels** — IDCT transforms frequency → spatial
-6. **pixels → rgb_image** — D[W×H] pixels × D[3] RGB channels
-7. **Pipeline = sequential L** — Each stage links to next: element[i] → element[i+1]
+1. Process = D[6]: decoding is a dimension with 6 stages — [The Process as a Dimension](#the-process-as-a-dimension)
+2. GPU parallelism = orthogonal D: threads spread work, O(W×H/T) wall-clock — [The GPU Parallelism Dimension](#the-gpu-parallelism-dimension)
+3. Self-sync boundary: enables parallel Huffman (synced vs unsynced partition) — [The Self-Synchronization Property](#boundary-the-self-synchronization-property)
+4. Links reveal DAG: tables before decode, stages sequential, blocks parallel — [The Data Flow DAG](#links-the-data-flow-dag)
+5. Descriptors enable optimization: fixed, contiguous, aligned → SIMD, unrolling — [Dimension Descriptors](#dimension-descriptors-enable-optimization)
+6. Total complexity: O(N + W×H) ≈ O(W×H) for typical JPEGs — [Complexity Analysis](#complexity-analysis)
 
-| Stage | BLD Structure |
-|-------|---------------|
-| File bytes | D[N] homogeneous |
-| Blocks | D[B]×D[64] nested |
-| Output | D[W×H]×D[3] aligned |
+| Stage | Input | Output | GPU Parallel? |
+|-------|-------|--------|---------------|
+| Parse | D[N] bytes | headers + D[S] scan | No |
+| Huffman | D[S] bits | D[B]×D[64] | Yes |
+| IDCT | D[B]×D[64] | D[B]×D[64] | Yes |
 
 ---
 

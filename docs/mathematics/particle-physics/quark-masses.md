@@ -21,28 +21,25 @@ used_by:
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Quark masses from BLD in 7 steps:**
+**All six quark masses derived (< 0.5% error):**
 
-1. **Phase transition insight** — Quarks and leptons are the SAME fermion structure in DIFFERENT alignment phases
-2. **Strange (anchor)** — m_s/m_e = n²S - L - L/n = 183 (muon structure minus confinement)
-3. **Down** — m_s/m_d = L + K/L = 20.1 (link structure with traversal correction)
-4. **Up** — m_d/m_u = K × S/(S-1) = 2.167 (charge ratio with interval correction)
-5. **Charm** — m_c/m_s = S + K/3 = 13.67 (generation jump plus color traversal)
-6. **Bottom** — m_b/m_c = 3 + K/7 = 3.286 (color factor plus spacetime-color)
-7. **Top** — m_t = v/√K × (1 - K/n²S) = 172.4 GeV (direct Higgs, no confinement)
+1. Quarks and leptons are same structure in different alignment phases — [Phase Transition](#the-core-insight-phase-transition)
+2. Strange (anchor): m_s/m_e = n²S − L − L/n — [Strange](#1-the-strange-quark-anchor-derived)
+3. Light quarks: d, u from structural ratios — [Down](#2-the-down-quark-derived), [Up](#3-the-up-quark-derived)
+4. Heavy quarks: c, b from generation jumps — [Charm](#4-the-charm-quark-derived), [Bottom](#5-the-bottom-quark-derived)
+5. Top: m_t = v/√K × (1 − K/n²S) = 172.4 GeV (direct Higgs) — [Top](#6-the-top-quark-special-case-derived)
+6. All corrections follow K/X observation cost — [K/X Pattern](#the-kx-pattern-what-each-measurement-traverses)
 
-| Quark | Formula | Predicted | Observed | Error |
-|-------|---------|-----------|----------|-------|
-| u | m_d / (K×S/(S-1)) | 2.16 MeV | 2.16 MeV | **0.0%** |
-| d | m_s / (L + K/L) | 4.65 MeV | 4.67 MeV | **0.4%** |
-| s | m_e × (n²S - L - L/n) | 93.5 MeV | 93.4 MeV | **0.1%** |
-| c | m_s × (S + K/3) | 1276 MeV | 1270 MeV | **0.5%** |
-| b | m_c × (3 + K/7) | 4173 MeV | 4180 MeV | **0.2%** |
-| t | v/√K × (1 - K/n²S) | 172.4 GeV | 172.69 GeV | **0.17%** |
-
-**All corrections follow the observation cost K/X.**
+| Quark | Predicted | Observed | Error |
+|-------|-----------|----------|-------|
+| u | 2.16 MeV | 2.16 MeV | **0.0%** |
+| d | 4.65 MeV | 4.67 MeV | **0.4%** |
+| s | 93.5 MeV | 93.4 MeV | **0.1%** |
+| c | 1276 MeV | 1270 MeV | **0.5%** |
+| b | 4173 MeV | 4180 MeV | **0.2%** |
+| t | 172.4 GeV | 172.69 GeV | **0.17%** |
 
 ---
 
@@ -185,7 +182,7 @@ Gap: 182.8 - 208 = -25.2
 So: m_s/m_e = n²S - L - L/n = 208 - 20 - 5 = 183
 ```
 
-### The Formula
+### The Formula: Strange Quark
 
 ```
 m_s/m_e = n²S - L - L/n = 208 - 20 - 5 = 183
@@ -230,7 +227,7 @@ Gap: 0.1 = K/L = 2/20 ✓
 So: m_s/m_d = L + K/L = 20.1
 ```
 
-### The Formula
+### The Formula: Down Quark
 
 ```
 m_s/m_d = L + K/L = 20 + 0.1 = 20.1
@@ -270,7 +267,7 @@ Express in BLD: 0.16 ≈ K/(S-1) = 2/12 = 0.167 ✓
 So: m_d/m_u = K × S/(S-1) = 2 × 13/12 = 2.167
 ```
 
-### The Formula
+### The Formula: Up Quark
 
 ```
 m_d/m_u = K × S/(S-1) = 2 × 13/12 = 2.167
@@ -313,7 +310,7 @@ Gap: 13.6 - 13 = 0.6
 So: m_c/m_s = S + K/3 = 13.667
 ```
 
-### The Formula
+### The Formula: Charm Quark
 
 ```
 m_c/m_s = S + K/3 = 13 + 0.667 = 13.667
@@ -353,7 +350,7 @@ Express in BLD: 0.29 ≈ K/(n+3) = 2/7 = 0.286 ✓
 So: m_b/m_c = 3 + K/(n+3) = 3.286
 ```
 
-### The Formula
+### The Formula: Bottom Quark
 
 ```
 m_b/m_c = 3 + K/(n+3) = 3 + 2/7 = 3.286
@@ -412,7 +409,7 @@ Gap: 172.69 - 174.1 = -1.4 GeV (-0.8%)
 So: m_t = v/√K × (1 - K/n²S) = 174.1 × (206/208) = 172.4 GeV
 ```
 
-### The Formula
+### The Formula: Top Quark
 
 ```
 m_t = v/√K × (1 - K/n²S)

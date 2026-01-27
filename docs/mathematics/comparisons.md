@@ -7,17 +7,16 @@ depends_on:
 
 # Comparisons to Existing Frameworks
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**BLD vs established frameworks in 7 steps:**
+**BLD vs Established Frameworks:**
 
-1. **GPU: BLD extends Roofline** — Captures bank conflicts, cache pressure, coalescing that Roofline ignores
-2. **Proteins: BLD complements Force Fields** — Explains WHY (alignment cost) not just WHAT (energy terms)
-3. **Statistics: BLD generalizes Fisher-Rao** — Distributions are one type of structure; BLD handles non-probabilistic
-4. **Complexity: BLD characterizes P vs NP** — Local vs global temporal scope (structural, not computational)
-5. **Mathematics: BLD = constructive Lie theory** — Finds structure in any system (operational FFT : Fourier)
-6. **Pattern** — BLD doesn't replace frameworks; provides unifying perspective
-7. **Connection** — Shows why existing frameworks work and where they connect
+1. GPU: BLD extends Roofline — captures bank conflicts, cache, coalescing — [GPU Performance](#gpu-performance-bld-vs-roofline-model)
+2. Proteins: BLD complements Force Fields — explains WHY — [Protein Folding](#protein-folding-bld-vs-force-fields)
+3. Statistics: BLD generalizes Fisher-Rao — [Information Theory](#information-theory-bld-vs-fisher-rao)
+4. Complexity: BLD characterizes P vs NP structurally — [Complexity Theory](#complexity-theory-bld-vs-circuit-complexity)
+5. Math: BLD = constructive Lie theory — [Mathematics](#mathematics-bld-vs-lie-theory)
+6. Pattern: BLD provides unifying perspective — [Summary](#summary)
 
 | Domain | Established | BLD Relationship |
 |--------|-------------|------------------|
@@ -282,7 +281,7 @@ See [Lie Correspondence](./lie-theory/lie-correspondence.md) for the full mappin
 
 ---
 
-## Summary
+## Conclusion
 
 | Domain | Established Framework | B/L/D Relationship |
 |--------|----------------------|-------------------|

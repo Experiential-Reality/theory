@@ -15,6 +15,16 @@ used_by:
   - ../../cosmology/observer-correction.md
 ---
 
+## Summary
+
+**The formalism for detection and observation corrections:**
+
+1. Detection rule: particle detected iff T intersection S is non-empty — [The Detection Rule](#2-the-detection-rule)
+2. Escaped structure: S_escaped = S_i - {D} for undetected particles — [Escaped Structure](#3-escaped-structure)
+3. Detection structure: X = X_traverser + X_escaped — [Detection Structure Formula](#4-detection-structure-formula)
+4. Sign rule: + for incomplete traversal, - for complete traversal — [The Sign Rule](#5-the-sign-rule)
+5. Algorithm for computing K/X corrections in any measurement — [General Formulation](#6-general-formulation)
+
 # Detection Structure: The T ∩ S Formalism
 
 ## Abstract

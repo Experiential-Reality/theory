@@ -19,23 +19,22 @@ used_by:
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Quantum mechanics from BLD in 7 steps:**
+**Uncertainty principle derived from BLD:**
 
-1. **Position = D-type** — location in dimensional space
-2. **Momentum = L-type** — how positions link across time (dx/dt)
-3. **[x, p] = iℏ** — structure constant in phase space Lie algebra
-4. **D-L irreducibility** — neither can express the other (proven)
-5. **Non-commutativity** — irreducible types don't commute → uncertainty
-6. **Δx·Δp ≥ ℏ/2** — Robertson bound from Lie algebra (ℏ/2 is Killing form)
-7. **ℏ magnitude** — NOW DERIVED (0.00003% accuracy, see [Planck Derivation](planck-derivation.md))
+1. Position = D-type (dimensional location) — [Position](#position-d-type)
+2. Momentum = L-type (temporal link dx/dt) — [Momentum](#momentum-l-type)
+3. [x, p] = iℏ is structure constant; i from K = 2 = dim(ℂ) — [Coupling](#the-coupling-structure-constant)
+4. D-L irreducibility → non-commutativity → uncertainty — [Derivation](#the-uncertainty-principle-derived)
+5. Δx·Δp ≥ ℏ/2: the "2" is Killing form — [Killing Connection](#the-killing-form-connection)
+6. ℏ value derived (0.00003% accuracy) — [Planck Derivation](planck-derivation.md)
 
 | Concept | BLD Type | Why |
 |---------|----------|-----|
 | Position | D | Dimensional location |
-| Momentum | L | Temporal link (derivative) |
-| [x,p] | L-type | Structure constant |
+| Momentum | L | Temporal link |
+| [x,p] | L | Structure constant |
 | ℏ/2 | Killing | Bidirectional observation cost |
 
 ---

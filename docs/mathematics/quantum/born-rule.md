@@ -20,21 +20,18 @@ used_by:
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Born rule derivation in 8 steps:**
+**Born rule P = |ψ|² derived from BLD alignment:**
 
-1. **Measurement = B-partition** — measurement creates boundary separating outcomes
-2. **Alignment determines probability** — P(outcome) ∝ alignment(state, outcome)
-3. **Alignment is bidirectional** — observer queries state, state responds to observer
-4. **Bidirectional = squared** — forward × backward = |amplitude|²
-5. **Killing form = 2** — confirms the factor of 2 (see [Killing Form](../lie-theory/killing-form.md))
-6. **Result: P = |ψ|²** — probability IS the squared amplitude
-7. **Observer = traverser** — observer has BLD structure with K/X cost
-8. **Single event = min alignment cost** — outcome where observer and system structures meet
+1. Measurement = B-partition separating outcomes — [BLD Approach](#the-bld-approach)
+2. Alignment is bidirectional: forward × backward = |amplitude|² — [Bidirectional Alignment](#the-bld-derivation-bidirectional-alignment-primary)
+3. Killing form K = 2 confirms the squaring — [L-Cost Interpretation](#the-l-cost-interpretation)
+4. Single-event selection from K/X minimization — [Single-Event Selection](#single-event-selection-the-kx-derivation-derived)
+5. Connection to uncertainty principle — [Uncertainty](#connection-to-uncertainty)
 
-**What IS derived**: Form |ψ|², why squared, what measurement IS, single-event selection
-**What remains open**: Ontological status of collapse (interpretation, not mechanism)
+**Derived**: Form |ψ|², why squared, single-event selection
+**Open**: Ontological status of collapse — [Measurement Problem](#the-measurement-problem-what-bld-does-and-doesnt-solve)
 
 ---
 
@@ -285,6 +282,21 @@ Total L-overlap = forward × backward = |⟨outcome|ψ⟩|²
 2. Outcome projects strongly onto state (backward)
 
 The product captures "how much do they mutually align?"
+
+### K = 2 in Born Rule and Entropy
+
+The **same K = 2** (Killing form) that gives P = |ψ|² also governs entropy:
+
+| Context | Formula | K = 2 Meaning |
+|---------|---------|---------------|
+| **Born rule** | P = \|ψ\|² | Forward × backward = 2 factors |
+| **Entropy** | S = K × L = 2L | Bidirectional observation cost |
+
+**The connection**: Probability (|ψ|²) and entropy (S = 2L) both arise from bidirectional observation:
+- Born rule: The amplitude is squared because observation is bidirectional (K = 2)
+- Entropy: The link cost is doubled because observation is bidirectional (K = 2)
+
+**Reference**: [Entropy Formula](../foundations/key-principles.md#entropy-formula), [Entanglement Entropy](entanglement-entropy.md)
 
 ---
 

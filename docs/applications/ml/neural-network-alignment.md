@@ -12,17 +12,17 @@ used_by:
 
 > **Status**: Validated
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Neural network alignment via BLD in 7 steps:**
+**Neural Network BLD Alignment:**
 
-1. **L alignment is critical** — 6.2% diagonal advantage when data_L matches arch_L; local architectures CANNOT detect global patterns (structural impossibility)
-2. **B alignment is conditional on L** — B effect is 0.000 when L matched, 0.025 when L mismatched; global L compensates for B deficiency
-3. **The compensation principle** — MLP (global L) can brute-force solutions; CNN (local L) cannot compensate and must match B
-4. **D multiplies L costs** — L_total(d) = d × L(1); D does NOT affect B costs (topological invariance)
-5. **Neural networks use exponential (e) compensation** — Sigmoid-like threshold at ΔL ≈ 0.5, not cosine; depth cascade is non-periodic
-6. **Performance formula** — `Perf = a - b₁×ΔL - c×ΔB×ΔL` where b₁ ≈ 0.025, c ≈ 0.061
-7. **Practical guideline** — Analyze data L structure first; B matters only when L is constrained
+1. L alignment is critical — 6.2% diagonal advantage, local architectures cannot detect global patterns — [Experiment 1](#experiment-1-continuous-l-alignment)
+2. B alignment is conditional on L — B effect 0.000 when L matched, 0.025 when mismatched — [Experiment 2](#experiment-2-the-compensation-principle)
+3. Compensation principle — global L compensates for B deficiency, local L cannot — [The Compensation Principle](#the-compensation-principle)
+4. D multiplies L costs, not B costs — [D Dimension](#d-dimension-multiplier-validation)
+5. Neural networks use exponential (e) compensation — [Exponential Compensation](#neural-networks-use-exponential-e-compensation)
+6. Performance formula: `Perf = a - b₁×ΔL - c×ΔB×ΔL` — [The Formulas](#the-formulas)
+7. Practical guideline: analyze data L structure first — [Practical Guidelines](#practical-guidelines)
 
 | Component | BLD Mapping |
 |-----------|-------------|
@@ -38,7 +38,7 @@ Neural network architecture performance depends on BLD alignment with data struc
 
 ---
 
-## Summary
+## Conclusion
 
 | Finding | Status | Evidence |
 |---------|--------|----------|

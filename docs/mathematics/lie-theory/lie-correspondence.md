@@ -15,17 +15,16 @@ used_by:
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**BLD = Lie Theory in 7 steps:**
+**BLD = Lie Theory (exact correspondence):**
 
-1. **D = generators** — Dimension = direction in transformation space
-2. **L = structure constants** — [Dᵢ, Dⱼ] = Lᵢⱼᵏ Dₖ (the Lie bracket)
-3. **B = topology** — Boundary encodes compact vs non-compact groups
-4. **Verified for su(2)** — ε tensor gives L = ±i (exact match)
-5. **Verified for so(3,1)** — Lorentz algebra structure constants (exact)
-6. **No residue** — Every BLD has a Lie algebra, every Lie algebra has BLD
-7. **Implication** — 150 years of Lie theory transfers to BLD
+1. D = generators: direction in transformation space — [Generators](#d--lie-algebra-generators)
+2. L = structure constants: [Dᵢ, Dⱼ] = Lᵢⱼᵏ Dₖ — [Structure Constants](#l--structure-constants)
+3. B = topology: compact vs non-compact groups — [Topology](#b--group-topology)
+4. Killing form = alignment cost — [Killing Form](#alignment-cost-and-the-killing-form)
+5. Exponential map = compensation principle — [Exponential Map](#the-exponential-map-is-compensation)
+6. 150 years of Lie theory transfers to BLD — [Why This Matters](#why-this-matters)
 
 | BLD | Lie Theory | Status |
 |-----|-----------|--------|

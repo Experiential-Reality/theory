@@ -7,31 +7,24 @@ depends_on:
 
 # Thermodynamics from Structural Alignment
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Thermodynamics from BLD in 7 steps:**
+**Thermodynamics from structural alignment:**
 
-1. **Manifold M of structures** — Each point σ = (B, L, D) is a valid structure
-2. **Energy = alignment cost** — E(σ) = cost(σ, T_physics); low energy = good physics alignment
-3. **Temperature = thermal dimension** — T parameterizes the traverser's stochastic extent
-4. **Entropy = ln(manifold volume)** — S(E) = k_B ln Ω(E) at energy E
-5. **Boltzmann distribution emerges** — P(σ) = exp(-E/k_B T)/Z maximizes entropy at fixed ⟨E⟩
-6. **Second law is derived** — dS/dt = k_B T ∫ P|∇ln P + ∇E/k_B T|² dμ ≥ 0 (validated by 10-test suite)
-7. **Phase transitions = minima shifts** — Different alignment minima dominate at different T
+1. Manifold M of structures: each σ = (B, L, D) — [Foundations](#1-foundations)
+2. Energy = alignment cost: E(σ) = cost(σ, T_physics) — [Energy as Alignment](#12-energy-as-alignment-cost)
+3. Entropy = k ln(manifold volume) — [Entropy](#22-entropy)
+4. Second law derived: dS/dt = k_B T ∫ P|∇ln P + ∇E/k_B T|² ≥ 0 — [Second Law](#43-second-law-entropy-increase-rigorous-derivation)
+5. Phase transitions = minima shifts — [Phase Transitions](#5-phase-transitions)
+6. Validated by 10-test suite (Section 9) — [Validation](#9-validation)
 
-| Thermodynamic Concept | BLD Interpretation |
-|----------------------|---------------------|
-| Energy E(σ) | Alignment cost with physics traverser |
-| Entropy S | k ln(manifold volume at energy E) |
-| Temperature T | Thermal traverser dimension extent |
-| Free energy F | Effective cost balancing E and S |
-| Phase transition | Change in dominant alignment minimum |
-
-> **Status**: Validated
-
-> **Note on Rigor**: Section 4.3 provides the complete second law derivation with explicit integration-by-parts and boundary conditions. Partition function convergence conditions are stated in Section 2.3. Empirical validation (Section 9) confirms the formulas.
-
-Thermodynamics emerges from the BLD framework when structures evolve on a manifold under thermal dynamics.
+| Concept | BLD Interpretation |
+|---------|---------------------|
+| Energy E(σ) | Alignment cost |
+| Entropy S | k ln(manifold volume) |
+| Temperature T | Thermal dimension extent |
+| Free energy F | E - TS balance |
+| Phase transition | Minima shift |
 
 ---
 
@@ -306,7 +299,7 @@ Total energy is the alignment cost, which is conserved under traverser evolution
 - đQ: Thermal traverser exchanges energy between structures
 - đW: Changing boundary conditions (constraints) changes alignment cost
 
-### 4.3 Second Law: Entropy Increase (Rigorous Derivation)
+### 4.3 Second Law: Entropy Increase (Rigorous Derivation) {#second-law-entropy-increase-rigorous-derivation}
 
 **Theorem**: For an isolated system evolving under thermal dynamics, entropy is non-decreasing:
 ```
@@ -537,6 +530,44 @@ If the minimum is g-fold degenerate: Ω(E_min) = g, so S = k ln g. ∎
 - Correlation length diverges (manifold becomes flat over large regions)
 
 **Example**: Ferromagnetic transition—alignment minimum smoothly changes from symmetric to symmetry-broken.
+
+### 5.4 The Link Formula at Phase Transitions
+
+At phase transitions, the BLD link formula connects entropy to correlation:
+
+```
+L = -½ ln(1 - ρ²)
+
+where ρ is the correlation coefficient.
+```
+
+**At criticality (T → T_c)**:
+- Correlation length ξ → ∞
+- Correlations become long-range: ρ → 1
+- Link cost diverges: L → ∞
+
+**The entropy formula S = K × L applies**:
+```
+S = K × L = 2L
+
+where K = 2 (Killing form — bidirectional observation).
+```
+
+**Connection to critical exponents**:
+```
+If ξ ~ |T - T_c|^(-ν), then:
+  ρ² ~ 1 - |T - T_c|^(2ν)
+  L ~ -½ ln(|T - T_c|^(2ν))
+  L ~ ν × ln(ξ)
+```
+
+**Key result**: Link cost grows logarithmically with correlation length: **L ~ ν ln(ξ)**.
+
+This unifies phase transition entropy with:
+- Entanglement entropy (S = 2L at max entanglement)
+- Black hole entropy (S = A/(4ℓ_P²) = K × L)
+
+**Reference**: [Phase Transitions](../../applications/physics/phase-transitions.md), [Key Principles: Entropy Formula](../foundations/key-principles.md#entropy-formula)
 
 ### 5.3 Symmetry Breaking
 

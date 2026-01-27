@@ -9,26 +9,23 @@ depends_on:
 
 # Cyclic Cosmology: The Eternal Structure
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Eternal structure in 7 steps:**
+**Eternal structure (not temporal cycles):**
 
-1. **B exists** — Nothing is self-contradictory, so boundary must exist
-2. **B partitions direction** — Creates +B (matter/forward) and -B (antimatter/backward)
-3. **Connected by L=2** — Killing form constant links the partitions
-4. **Both sides compute** — +B computes past→future, -B computes future→past
-5. **Junction agreement** — At every "now," both computations must agree via L
-6. **No temporal cycle** — Universe isn't cyclic in time, it's eternal in structure
-7. **Time is perspective** — Big Bang and heat death are views within +B, not cosmic events
+1. B exists: nothing is self-contradictory — [The Structure](#the-structure)
+2. B partitions direction: +B (matter) and -B (antimatter) — [B Partitions Direction](#b-partitions-direction)
+3. Connected by L=2: Killing form links partitions — [Eternal Relation](#the-eternal-relation)
+4. Both sides compute: +B past→future, -B future→past — [Both Sides Compute](#both-sides-compute)
+5. Junction agreement: "now" is where computations agree — [The Junction](#the-junction-is-now)
+6. Time is perspective: Big Bang = +B view, not event — [Big Bang](#the-big-bang-and-heat-death)
 
 | Concept | BLD Interpretation |
 |---------|-------------------|
 | Big Bang | +B side of traverse(-B, B) |
 | Heat death | Perspective within +B |
-| Arrow of time | L-direction within our partition |
-| Conservation | B, +B/-B partition, and L=2 persist eternally |
-
-The universe is not cyclic in time. It is eternal in structure.
+| Arrow of time | L-direction within partition |
+| Conservation | B, +B/-B, and L=2 persist eternally |
 
 ---
 
@@ -345,7 +342,7 @@ But this deserves more investigation.
 
 ---
 
-## Summary
+## Conclusion
 
 ```
 The universe is not cyclic in time.

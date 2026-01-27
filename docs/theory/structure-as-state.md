@@ -16,17 +16,17 @@ used_by:
 > **If it has structure, it is structure.**
 > The shape of code reveals its state. If you need labels to know what's state, the structure has failed.
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Structure as State in BLD in 7 steps:**
+**Structure as State:**
 
-1. **Structure reveals state** — The shape of code should make state obvious without labels or conventions; topology is documentation
-2. **Horizontal: dispatch tables** — Any sequence of comparisons against the same value is an implicit state machine; make it explicit
-3. **Vertical: state space visibility** — If N values affect behavior, all N should be visible in one place (enums, tables, dataclasses)
-4. **Structural: DAG dependencies** — State flows one direction; cycles indicate hidden shared state; if you can't draw it as a DAG, refactor
-5. **Universal traversability** — Good structure is easy to traverse for humans (visual), LLMs (attentional), and compilers (static); no backtracking needed
-6. **Learning is alignment** — Understanding is refining internal structure until it matches external structure; "aha" moments are sudden alignment
-7. **Beauty is resonance** — Harmony, elegance, and satisfaction are the feeling of structure meeting structure; the content isn't what moves us, the structure is
+1. Structure reveals state — shape of code makes state obvious without labels — [Core Thesis](#core-thesis)
+2. Horizontal: dispatch tables — comparisons against same value = implicit state machine — [Horizontal](#1-horizontal-dispatch-tables)
+3. Vertical: state space visibility — all N values visible in one place — [Vertical](#2-vertical-state-space-visibility)
+4. Structural: DAG dependencies — state flows one direction, cycles indicate hidden state — [Structural](#3-structural-dependencies-form-a-dag)
+5. Universal traversability — good structure is easy to traverse for any traverser — [Why This Works](#why-this-works-universally)
+6. Learning is alignment — understanding = internal structure matching external — [Learning](#learning-as-structural-alignment)
+7. Beauty is resonance — harmony is structure meeting structure — [Aesthetics](#the-aesthetics-of-structure)
 
 | Component | BLD |
 |-----------|-----|
@@ -326,7 +326,7 @@ The same principles that make code readable make it concurrency-safe. This isn't
 
 ---
 
-## Summary
+## Conclusion
 
 | Principle | Implicit (Bad) | Explicit (Good) | Test |
 |-----------|----------------|-----------------|------|

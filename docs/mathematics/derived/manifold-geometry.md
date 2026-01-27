@@ -11,23 +11,23 @@ used_by:
 
 # The Structural Manifold: Geometry
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Structural manifold geometry in 7 steps:**
+**Metric and differential geometry of structures:**
 
-1. **Points are structures** — Each point S = (B, L, D) is a configuration of primitives
-2. **Distance = alignment cost** — Metric measures how well structures align
-3. **Fisher-Rao emerges** — For probability distributions, alignment cost recovers classical info geometry
-4. **SPD(d) is symmetric space** — Connects to Lie theory via GL⁺(d)/O(d) quotient structure
-5. **Stratified by topology** — Smooth within strata, discrete jumps between (adding/removing primitives)
-6. **Curvature from Lie bracket** — R(X,Y)Z = -[[X,Y], Z] for symmetric spaces
-7. **Geodesics = optimal paths** — Shortest transformation between structures follows manifold geometry
+1. Points are structures: S = (B, L, D) configurations — [Points on the Manifold](#points-on-the-manifold)
+2. Distance = alignment cost: metric from Hessian of cost — [The Metric](#the-metric)
+3. Fisher-Rao emerges: for distributions, recovers classical info geometry — [Information-Geometric Foundation](#information-geometric-foundation)
+4. SPD(d) = GL⁺(d)/O(d): symmetric space connects to Lie theory — [SPD as Symmetric Space](#spdd-as-a-symmetric-space)
+5. Stratified: smooth within strata, discrete jumps between (add/remove primitives) — [Stratification](#stratification)
+6. Curvature from Lie bracket: R(X,Y)Z = -[[X,Y], Z] — [Curvature](#curvature)
+7. Geodesics = optimal paths: shortest structural transformation — [Geodesics](#geodesics)
 
 | BLD Primitive | Lie Theory | On SPD(d) |
 |---------------|------------|-----------|
-| **D** (Dimension) | Generator | Symmetric matrix direction |
-| **L** (Link) | Structure constant | [Dᵢ, Dⱼ] = Lᵢⱼᵏ Dₖ |
-| **B** (Boundary) | Topology | Non-compact (open) |
+| **D** | Generator | Symmetric matrix direction |
+| **L** | Structure constant | [Dᵢ, Dⱼ] = Lᵢⱼᵏ Dₖ |
+| **B** | Topology | Non-compact (open) |
 
 > **Status**: Validated
 

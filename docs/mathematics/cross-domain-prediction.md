@@ -7,23 +7,22 @@ depends_on:
 
 # Cross-Domain Prediction Framework
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Cross-domain prediction in 7 steps:**
+**Predicting behavior across domains through shared BLD:**
 
-1. **Structural bridge** — Same BLD primitives describe different domains
-2. **Hypothesis** — If domains share BLD structure, their costs should correlate
-3. **Experiment** — VI cost vs neural accuracy on same data (controlled B, L)
-4. **Result** — r = -0.57 correlation; higher VI cost → harder neural learning
-5. **Formulas differ in interaction** — VI: B, L independent; Neural: L gates B; Circuits: D×L
-6. **Applications** — Estimate difficulty, select architecture, transfer domain knowledge
-7. **Validates substrate independence** — Structure determines behavior, not implementation
+1. Structural bridge: same primitives describe different domains — [The Core Insight](#the-core-insight)
+2. Experiment: VI cost vs neural accuracy on controlled B, L data — [Experiment](#experiment-vi--neural-prediction)
+3. Result: r = -0.57 correlation (higher VI cost → harder neural learning) — [Results](#results)
+4. B-L interactions differ: VI independent, Neural L gates B, Circuits D×L — [Why Formulas Differ](#why-formulas-differ)
+5. Applications: difficulty estimation, architecture selection, domain transfer — [Practical Applications](#practical-applications)
+6. Validates substrate independence: structure determines behavior — [Connection to Main Theory](#connection-to-main-theory)
 
 | Domain | B-L Interaction | Why |
 |--------|-----------------|-----|
-| VI | Independent | Each mode/correlation is separate constraint |
-| Neural | L gates B | Global connectivity compensates B deficiency |
-| Circuits | Independent | Physics separates topology from geometry |
+| VI | Independent | Each mode/correlation separate |
+| Neural | L gates B | Connectivity compensates B |
+| Circuits | D×L | Physics separates |
 
 > **Status**: Validated
 
@@ -31,7 +30,7 @@ BLD enables predicting behavior across domains through shared structural primiti
 
 ---
 
-## Summary
+## Conclusion
 
 | Finding | Status | Evidence |
 |---------|--------|----------|

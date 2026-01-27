@@ -16,23 +16,22 @@ This example demonstrates that natural language maps to BLD primitives through l
 
 ---
 
-## Quick Summary (D~7 Human Traversal)
+## Summary
 
-**Refusal structure in 7 steps:**
+**"I don't want to" in BLD — lossless bidirectional encoding:**
 
-1. **Semantic primitives (B)** - Categories that partition meaning: person, number, polarity, tense, modality, aspect
-2. **Active configuration** - This sentence: first + singular + negative + present + desire + infinitive
-3. **Semantic links (L)** - How primitives compose: subject->predicate, negation->auxiliary, modal->verb
-4. **Encoding dimension (D)** - Token count: 4 sequential words
-5. **Bidirectional mapping** - Structure -> tokens (encode) and tokens -> structure (decode)
-6. **Round-trip verification** - encode(decode(tokens)) = tokens (lossless)
-7. **Cross-language invariance** - Same structure, different encoding: "I don't want to" (4 tokens) = "No quiero" (2 tokens)
+1. Semantic primitives (B): person, number, polarity, tense, modality, aspect — [Semantic Primitives](#semantic-primitives-b)
+2. Active configuration: first + singular + negative + present + desire + infinitive — [Active Configuration](#active-configuration)
+3. Semantic links (L): subject→predicate, negation→auxiliary, modal→verb — [Semantic Links](#semantic-links-l)
+4. Token dimension (D): 4 sequential words encode the structure — [Encoding Dimension](#encoding-dimension-d)
+5. Round-trip: encode(decode(tokens)) = tokens (lossless) — [Round-Trip Verification](#round-trip-verification)
+6. Cross-language: same B+L, different D — "I don't want to" (4) = "No quiero" (2) — [Cross-Language Invariance](#cross-language-invariance)
 
-| Component | BLD | Example |
-|-----------|-----|---------|
-| Semantic categories | B | person: first \| second \| third |
-| Semantic composition | L | negation -> auxiliary (deps=1) |
-| Token sequence | D | 4 words [sequential] |
+| Language | Encoding | D (tokens) |
+|----------|----------|------------|
+| English | "I don't want to" | 4 |
+| Spanish | "No quiero" | 2 |
+| German | "Ich will nicht" | 3 |
 
 ---
 

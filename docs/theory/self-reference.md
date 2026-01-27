@@ -12,24 +12,23 @@ used_by: []
 
 > BLD can define its own grammar using its own primitives. This is not circular dependency—it's structural recursion.
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**BLD Self-Reference in 7 steps:**
+**BLD can define its own grammar:**
 
-1. **Languages are structures** — Token types are B (boundaries), grammar rules are L (links), repetition is D (dimensions)
-2. **BLD can describe BLD** — Because BLD describes any structure, it can describe its own grammar (bld.bld)
-3. **The three questions apply** — Where does syntax partition? (B: decl_type, token) What connects? (L: parse rules) What repeats? (D: structures, declarations)
-4. **Parsing is traversal** — A parser is a traverser over a grammar structure applied to a token stream
-5. **D×L scaling applies** — Parse cost = B_grammar + D_tokens × L_match; boundaries are topological (fixed), links scale with input
-6. **Bootstrap is recursion, not circularity** — Python parser reads bld.bld, generates Rust compiler, which can then compile bld.bld itself
-7. **Self-reference proves universality** — If BLD couldn't describe itself, it couldn't describe everything; this is the same as Gödel and Church
+1. Languages are structures: tokens=B, grammar rules=L, repetition=D — [Meta-Structural Insight](#the-meta-structural-insight)
+2. Three questions apply to BLD syntax itself — [Three Questions Applied](#the-three-questions-applied-to-bld)
+3. bld.bld: the grammar file that describes itself — [Self-Referential Grammar](#bldbld-the-self-referential-grammar)
+4. Parsing is traversal over grammar structure — [Parser IS Traverser](#the-parser-is-a-traverser)
+5. Parse cost = B_grammar + D_tokens × L_match — [D×L Scaling](#dxl-scaling-in-parsing)
+6. Bootstrap is recursion, not circularity — [Bootstrap Circle](#the-bootstrap-circle)
 
 | Component | BLD |
 |-----------|-----|
-| Token types (keyword, identifier) | B (Boundary) |
-| Production rules (A -> B -> C) | L (Link) |
-| Multiple structures/declarations | D (Dimension) |
-| The parser itself | Traverser |
+| Token types | B (Boundary) |
+| Production rules | L (Link) |
+| Declarations | D (Dimension) |
+| Parser | Traverser |
 
 ---
 
@@ -146,7 +145,7 @@ The parser traverses this structure, matching tokens against the grammar.
 
 ---
 
-## D×L Scaling in Parsing
+## D×L Scaling in Parsing {#dxl-scaling-in-parsing}
 
 The cost formula applies to parsing itself:
 

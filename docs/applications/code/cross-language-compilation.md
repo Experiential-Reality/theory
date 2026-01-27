@@ -12,17 +12,15 @@ used_by:
 
 > **Status**: Validated
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Cross-language compilation via BLD in 7 steps:**
+**BLD as universal intermediate language for compilation:**
 
-1. **Traditional transpilers fail** — Syntax-to-syntax translation loses semantic meaning; `foldl` vs `foldr` distinctions get blurred
-2. **BLD captures structure** — Translate meaning (what computation does) not spelling (how it looks)
-3. **Link properties encode dependencies** — `deps=0` means parallel, `deps=1` means sequential, `hierarchy_depth` means tree structure
-4. **Boundaries partition behavior** — Empty vs non-empty, predicate passes vs fails
-5. **Dimensions specify repetition** — The axis over which computation repeats (list elements, etc.)
-6. **Generate any target** — Same BLD structure produces Python, C, WGSL with preserved semantics
-7. **Validation through tests** — `foldl(-, 0, [1,2,3]) = -6` vs `foldr(-, 0, [1,2,3]) = 2` proves semantic preservation
+1. Traditional transpilers fail: syntax-to-syntax loses semantics (foldl vs foldr blurred) — [The Insight](#the-insight-structure-is-the-translation)
+2. BLD captures structure: translate meaning not spelling — [The Insight](#the-insight-structure-is-the-translation)
+3. Link properties encode dependencies: deps=0 parallel, deps=1 sequential, hierarchy_depth tree — [BLD Structure Examples](#bld-structure-examples)
+4. Same BLD produces Python, C, WGSL with preserved semantics — [Why This Works](#why-this-works)
+5. Validation: foldl(-, 0, [1,2,3]) = -6 vs foldr(-, 0, [1,2,3]) = 2 proves semantic preservation — [BLD Structure Examples](#bld-structure-examples)
 
 | Component | BLD Mapping |
 |-----------|-------------|
@@ -38,7 +36,7 @@ BLD serves as a universal intermediate language for cross-language compilation. 
 
 ---
 
-## Summary
+## Conclusion
 
 | Finding | Status | Evidence |
 |---------|--------|----------|

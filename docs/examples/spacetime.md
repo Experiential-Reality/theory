@@ -13,17 +13,16 @@ used_by:
 
 # Spacetime (Three Primitives)
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Spacetime in BLD in 7 steps:**
+**Spacetime BLD structure (reframing, D×L validated):**
 
-1. **Light cone = B** — Partitions intervals: timelike (ds²<0), lightlike (ds²=0), spacelike (ds²>0)
-2. **Event horizon = B** — Partitions space: escapable (r>rₛ) vs trapped (r<rₛ)
-3. **Metric = L** — Connects events: ds² = gμν dxμ dxν
-4. **Curvature = L** — Parallel transport around loop reveals Riemann tensor
-5. **4D = D** — Spacetime has 4 dimensions (t,x,y,z)
-6. **D×L scaling** — Riemann has n²(n²-1)/12 = 20 components; metric has n(n+1)/2 = 10
-7. **GR in BLD** — Reframing, not derivation; D×L scaling validated
+1. Light cone = B: partitions timelike/lightlike/spacelike — [Boundaries](#boundaries-b)
+2. Event horizon = B: escapable vs trapped — [Boundaries](#boundaries-b)
+3. Metric = L: ds² = gμν dxμ dxν connects events — [Links](#links-l)
+4. 4D = D: now derived from octonions — [Why n=4](#why-n--4-now-derived)
+5. D×L scaling: Riemann 20 components, metric 10 — [D×L Scaling](#dl-scaling)
+6. Lorentz SO(3,1): both e (boost) and π (rotation) — [Lie Theory](#lie-theory-lorentz-group)
 
 | Component | BLD | Physics |
 |-----------|-----|---------|
@@ -220,7 +219,7 @@ Rapidity is the natural logarithm's presence in special relativity. Velocities d
 
 ---
 
-## D×L Scaling
+## D×L Scaling {#dl-scaling}
 
 **D multiplies L, not B**:
 

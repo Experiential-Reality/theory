@@ -14,24 +14,21 @@ used_by:
 
 # Neutrino Masses from BLD Structure
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Neutrino masses from BLD in 7 steps:**
+**Neutrino masses from missing B coupling:**
 
-1. **Neutrinos lack B** — No boundary coupling, only geometry (L)
-2. **Double suppression** — Missing B in structure AND in measurement
-3. **Formula** — m_νe = m_e × (K/B)² × (K/(n×L)) ≈ 16 meV
-4. **Always "+" corrections** — Measurement is always incomplete (EM can't see ν)
-5. **Generation structure** — Same n²S = 208, but B-suppressed
-6. **Δm² ratio** — Δm²₃₂/Δm²₂₁ ≈ L + S = 33 ✓
-7. **Cosmological bound** — Σm_ν < 0.12 eV satisfied ✓
+1. Neutrinos lack B: only geometry (L), no boundary — [BLD Structure](#2-neutrino-bld-structure)
+2. Double suppression: (K/B)² × (K/(n×L)) ≈ 1/31,360 — [Why Missing B](#3-why-missing-b-suppresses-mass)
+3. m_νe ≈ 16 meV from m_e × suppression — [The Formula](#4-the-neutrino-mass-formula)
+4. Δm² ratio = L + S = 33 (exact match) — [Generation Structure](#5-generation-structure)
+5. Σm_ν ≈ 80 meV < 120 meV bound (consistent) — [Sum of Masses](#53-sum-of-neutrino-masses)
+6. Always "+" corrections (EM can't see ν) — [Sign Rule](#43-the-sign-rule-why--corrections)
 
-| Neutrino | Formula | Predicted | Experimental Bound | Status |
-|----------|---------|-----------|-------------------|--------|
-| m_νe | m_e × (K/B)² × (K/(n×L)) | ~16 meV | < 0.8 eV (direct) | **DERIVED** |
-| Σm_ν | 3 × m_νe × (1 + ratios) | ~60 meV | < 0.12 eV (cosmo) | **CONSISTENT** |
-
-**Key insight**: Neutrinos have the SAME underlying structure as electrons, but without B (boundary) coupling. The "missing B" creates the ~10⁵ mass suppression.
+| Neutrino | Formula | Predicted | Bound | Status |
+|----------|---------|-----------|-------|--------|
+| m_νe | m_e × (K/B)² × (K/(n×L)) | ~16 meV | < 0.8 eV | **DERIVED** |
+| Σm_ν | ~5 × m_νe | ~80 meV | < 0.12 eV | **CONSISTENT** |
 
 ---
 

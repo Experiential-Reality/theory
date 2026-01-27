@@ -20,20 +20,19 @@ used_by:
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Structural reality in 7 steps:**
+**Structural-Observer Framework:**
 
-1. **Structural constants exist**: λ = 1/√20, B = 56, n_c = 26 are mathematically unique
-2. **Observers are unavoidable**: BLD irreducibility → observer must participate in measurement
-3. **Observer corrections have structure**: All involve K=2 (Killing form) and/or B
-4. **v is the reference**: One scale must be uncorrected; v is distinguished by symmetry breaking
-5. **Corrections transform structural→observed**: Observed = Structural × (observer factor)
-6. **Numerical validation**: ℏ (0.00003%), m_H (0.05%), α⁻¹ (**0.0 ppt**), μ/e (**0.5 ppb**), λ_Cabibbo (0.01%)
-7. **Physical interpretation**: We measure the structure + the cost of measuring it
-8. **Key insight**: Observer corrections ARE traversal costs — the "+1" IS the traverser, the "±" indicates direction
+1. Structural constants (λ, B, n×L) are mathematically unique — [Definitions](#2-definitions)
+2. Observers unavoidable — BLD irreducibility — [Why Observers](#5-why-observers-are-unavoidable)
+3. Observer corrections involve K=2 and/or B — [Correction Algebra](#3-the-observer-correction-algebra)
+4. v is the uncorrected reference scale — [Reference Scale](#23-the-reference-scale)
+5. Observed = Structural × (1 + correction) — [General Form](#31-general-form)
+6. Validated: ℏ (0.00003%), α⁻¹ (0.0 ppt), μ/e (0.5 ppb) — [Validation](#6-numerical-validation)
+7. We measure structure + cost of measuring — [Physical Interpretation](#7-physical-interpretation)
 
-See [Observer Corrections: Traversal Costs](../cosmology/observer-correction.md#25-observer-corrections-are-traversal-costs) for experimental grounding.
+See [Observer Corrections](../cosmology/observer-correction.md#25-observer-corrections-are-traversal-costs) for experimental grounding.
 
 ---
 
@@ -301,6 +300,38 @@ This appears in:
 - The "-2" in n = B/2 - 2 = 26
 - The "2" in 2/B boundary quantum
 - The K = 2 in second-order correction K×3/(n×L×B²)
+
+### 8.4 K = 2 in the Entropy Formula
+
+The **same K = 2** that governs observer corrections also governs entropy:
+
+```
+S = K × L = 2L
+```
+
+| Context | Formula | K = 2 Role |
+|---------|---------|------------|
+| **Observer corrections** | cost = K/X | Bidirectional traversal |
+| **Entanglement entropy** | S = 2L | Bidirectional observation |
+| **Black hole entropy** | S = A/(4ℓ_P²) | K×L where L = A/(8ℓ_P²) |
+| **Phase transitions** | L → ∞ as ρ → 1 | Same L formula, diverges at criticality |
+
+**Why this is the same K**:
+
+Observer corrections: When the machine (observer) traverses structure X, it must go OUT and BACK. Cost = K/X = 2/X.
+
+Entropy: When structure is observed (not just traversed), the bidirectional observation creates entropy S = K × L. Entropy IS the accumulated cost of bidirectional observation.
+
+**The unification**: Observer corrections (K/X) and entropy (K×L) are the **same phenomenon** at different scales:
+- K/X: Cost of traversing structure X once (small, per-observation)
+- K×L: Total accumulated observation cost (entropy)
+
+Both require K = 2 because observation is inherently bidirectional — you cannot observe without being affected by what you observe.
+
+**References**:
+- [Entanglement Entropy](entanglement-entropy.md) — S = 2L derivation
+- [Black Hole Entropy](black-hole-entropy.md) — S = K × L = A/(4ℓ_P²)
+- [Phase Transitions](../../applications/physics/phase-transitions.md) — L → ∞ at criticality
 
 ---
 

@@ -11,17 +11,16 @@ used_by:
 
 # The Physics Traverser: Discovering Physical Structure via BLD
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Physics from BLD in 7 steps:**
+**Standard Model physics discovered via BLD's three questions:**
 
-1. **Ask "What is physics?"** — Apply BLD's three questions to a physical traverser
-2. **Find B (partitions)** — Causality creates light cones; charges partition into discrete values
-3. **Find L (connections)** — Locality requires gauge fields; forces connect matter
-4. **Find D (repetitions)** — Spacetime is 4D; 3 generations repeat the same pattern
-5. **P1-P12 DERIVED** — SO(3,1), SU(3)×SU(2)×U(1), 3 generations all follow from BLD
-6. **P13-P20 HYPOTHESIS** — Dark energy, unification, gravity await full derivation
-7. **One empirical input** — "SU(3) matter exists" selects octonions; everything else follows
+1. Q1 (B): Where does physics partition? → causality, charges, spin-statistics — [Finding B](#q1-where-does-physics-behavior-partition-finding-b)
+2. Q2 (L): What connects? → gauge fields, forces, locality — [Finding L](#q2-what-connects-in-physics-finding-l)
+3. Q3 (D): What repeats? → 4D spacetime, 3 generations — [Finding D](#q3-what-repeats-in-physics-finding-d)
+4. P1-P12: SO(3,1), gauge structure, generations — all DERIVED — [Axiom Summary](#complete-axiom-summary-p1-p20)
+5. P11: Mass hierarchy from S₃ breaking — [Mass Hierarchy](#mass-hierarchy-s₃-breaking-cascade-p11)
+6. P12: Mixing angles from tribimaximal — [Mixing Angles](#mixing-angles-tribimaximal-as-s₃-limit-p12)
 
 | Status | Axioms | Coverage |
 |--------|--------|----------|
@@ -827,7 +826,7 @@ This is a **structural** explanation, not just a label.
 
 The Strong CP problem represents another mystery: Why is θ_QCD < 10⁻¹⁰ when it appears as an arbitrary parameter in QCD?
 
-### The Problem
+### The Problem: Strong CP
 
 The QCD Lagrangian contains a term:
 
@@ -976,7 +975,7 @@ Unified picture:
 
 This would explain why θ_QCD is exactly zero (or effectively zero via axion), while CKM and PMNS phases are non-zero.
 
-### What Falls Out
+### What Falls Out: Strong CP
 
 | Prediction | Status |
 |------------|--------|
@@ -998,7 +997,7 @@ This would explain why θ_QCD is exactly zero (or effectively zero via axion), w
 
 The mass hierarchy (12 orders of magnitude from electron to top quark) emerges from the S₃ family symmetry discovered in P9.
 
-### The Problem
+### The Problem: Mass Hierarchy
 
 Fermion masses span enormous ranges:
 
@@ -1052,7 +1051,7 @@ Different generations have different "charges" n_i:
 
 **The L structure**: Spurions link generations with different strengths. Mass hierarchy reflects the **topological distance** in S₃ representation space.
 
-### What Falls Out
+### What Falls Out: Mass Hierarchy
 
 | Prediction | Status |
 |------------|--------|
@@ -1125,7 +1124,7 @@ See [Mass Prediction](../applications/physics/mass-prediction.md) for full analy
 
 The quark and lepton mixing matrices (CKM, PMNS) have specific patterns that appear connected to the S₃ family symmetry.
 
-### The Problem
+### The Problem: Mixing Angles
 
 Measured mixing angles:
 
@@ -1190,7 +1189,7 @@ The mixing angles ARE the link structure between bases.
 
 **Hidden L**: The mixing angles quantify how the S₃ symmetry basis connects to the mass basis.
 
-### What Falls Out
+### What Falls Out: Mixing Angles
 
 | Prediction | Status |
 |------------|--------|
@@ -1307,7 +1306,7 @@ See `scripts/lepton_mass_predictor.py`:
 
 Dark energy (68% of the universe) may be fundamentally a **boundary structure (B)**, not a field or particle.
 
-### The Problem
+### The Problem: Dark Energy
 
 The cosmological constant:
 
@@ -1367,7 +1366,7 @@ This is topological closure at cosmological scale:
   D_cosmo × L_holographic = constant × B_horizon
 ```
 
-### What Falls Out
+### What Falls Out: Dark Energy
 
 | Prediction | Status |
 |------------|--------|
@@ -1421,7 +1420,7 @@ The cosmological constant may be the closure constant for **cosmological-scale**
 
 The three gauge coupling constants appear unrelated, but BLD analysis reveals they are projections of a single structure.
 
-### The Problem
+### The Problem: Coupling Unification
 
 ```
 Measured coupling constants (at Z mass scale):
@@ -1468,7 +1467,7 @@ All three couplings run along the same D axis.
 They converge at GUT scale — unification point.
 ```
 
-### What Falls Out
+### What Falls Out: Coupling Unification
 
 | Prediction | Status |
 |------------|--------|
@@ -1505,7 +1504,7 @@ Consequences:
 
 Gravity (spin-2) has fundamentally different BLD structure than gauge forces (spin-1).
 
-### The Problem
+### The Problem: Gravity
 
 ```
 Gauge forces: SU(3)×SU(2)×U(1) with 12 generators
@@ -1550,7 +1549,7 @@ This is B structure, not gauge D:
   - Gravity: D = 2 polarizations (boundary modes)
 ```
 
-### What Falls Out
+### What Falls Out: Gravity
 
 | Prediction | Status |
 |------------|--------|
@@ -1593,7 +1592,7 @@ Consequences:
 
 The Higgs vacuum expectation value v = 246 GeV is not arbitrary — it's determined by S₃ breaking structure.
 
-### The Problem
+### The Problem: Electroweak Scale
 
 ```
 Electroweak scale: v = 246 GeV
@@ -1641,7 +1640,7 @@ D_scale = number of breaking steps
 v is structurally the SECOND stage, not arbitrary.
 ```
 
-### What Falls Out
+### What Falls Out: Electroweak Scale
 
 | Prediction | Status |
 |------------|--------|
@@ -1682,7 +1681,7 @@ Consequence:
 
 Neutrino masses are suppressed by a topological constraint: the Majorana boundary.
 
-### The Problem
+### The Problem: Neutrino Mass
 
 ```
 Neutrino masses: m_ν < 0.1 eV
@@ -1726,7 +1725,7 @@ The link L_seesaw connects EW scale to GUT scale.
   - But suppressed by Majorana factor
 ```
 
-### What Falls Out
+### What Falls Out: Neutrino Mass
 
 | Prediction | Status |
 |------------|--------|
@@ -1769,7 +1768,7 @@ Consequences:
 
 The matter-antimatter asymmetry arises from S₃ CP phases via compensation.
 
-### The Problem
+### The Problem: Baryogenesis
 
 ```
 Observed: n_B/n_γ ~ 10⁻¹⁰ (baryon-to-photon ratio)
@@ -1819,7 +1818,7 @@ Compensation principle:
 The asymmetry is L×D compensation.
 ```
 
-### What Falls Out
+### What Falls Out: Baryogenesis
 
 | Prediction | Status |
 |------------|--------|
@@ -1864,7 +1863,7 @@ Consequence:
 
 Cosmic inflation is triggered by a phase transition boundary — symmetry restoration at GUT scale.
 
-### The Problem
+### The Problem: Inflation
 
 ```
 The universe expanded exponentially in early times:
@@ -1910,7 +1909,7 @@ This is the repetition dimension:
 Scale factor: a(t) = e^(Ht) — exponential in D.
 ```
 
-### What Falls Out
+### What Falls Out: Inflation
 
 | Prediction | Status |
 |------------|--------|
@@ -1949,7 +1948,7 @@ Consequences:
 
 Quantum field theory itself emerges as the minimum alignment cost framework.
 
-### The Problem
+### The Problem: QFT Axioms
 
 ```
 QFT has specific axioms:
@@ -1994,7 +1993,7 @@ Each mode is a D axis.
 Creation/annihilation repeat along these axes.
 ```
 
-### What Falls Out
+### What Falls Out: QFT Axioms
 
 | Prediction | Status |
 |------------|--------|
@@ -2210,7 +2209,7 @@ P20:     ██████░░░░░░░░░░░░░░ (30% - Fra
 
 ---
 
-## Summary
+## Conclusion
 
 ### What BLD Discovers About Physics
 

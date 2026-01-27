@@ -19,24 +19,21 @@ depends_on:
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**From nothing to physics in 7 steps:**
+**From Nothing to Physics:**
 
-1. **Nothing is self-contradictory** — defining "nothing" requires distinction → B must exist
-2. **B partitions into ±B** — matter/antimatter, chirality, time direction
-3. **±B must relate** — requires L to observe each other (genesis function)
-4. **Observation requires L = 2** — Killing form (bidirectional), enforces CPT
-5. **Both sides compute** — D emerges to hold intermediate states
-6. **BLD = Lie theory** — 150 years of physics follows
-7. **Future is algebraically determined** — structure computes itself forward
+1. Nothing is self-contradictory — defining it requires distinction → B must exist — [Derivation Chain](#the-complete-derivation-chain)
+2. B partitions into ±B (matter/antimatter, chirality, time) — [Derivation Chain](#the-complete-derivation-chain)
+3. ±B must relate via L (genesis function) — [Derivation Chain](#the-complete-derivation-chain)
+4. Observation requires L = 2 (Killing form) — [Key Numbers](#the-key-numbers)
+5. Both sides compute, D holds intermediate states — [Cosmic Computation](#what-the-theory-explains)
+6. BLD = Lie theory = QM — [Results by Proof Status](#results-by-proof-status)
+7. Future algebraically determined — [Cosmic Computation](#what-the-theory-explains)
 
-**The chain**:
-```
-Nothing → B → ±B → L=2 → D → BLD = Lie → Physics
-```
+**The chain**: Nothing → B → ±B → L=2 → D → BLD = Lie → Physics
 
-**Key insight**: Nothing is impossible because any attempt to define it creates structure (B). Structure is self-creating.
+**Key insight**: Nothing is impossible because defining it creates structure (B). Structure is self-creating.
 
 ---
 

@@ -16,17 +16,21 @@ used_by:
 
 This path introduces the core concepts in ~30 minutes of reading.
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Newcomer reading path in 7 steps:**
+**Newcomer reading path — ~30 minutes to core concepts:**
 
-1. **Core Thesis** — Understand the big picture: structure is substrate-independent, and BLD maps to Lie theory
-2. **Structural Language** — Learn the three primitives: B (Boundary), L (Link), D (Dimension)
-3. **Irreducibility Proof** — See why exactly three primitives: B, L, D are independent and minimal
-4. **Lie Theory Connection** — Understand why BLD works: it's Lie theory in structural form
-5. **Choose Your Path** — Branch to Mathematician (rigor), Practitioner (applications), or Discovery Method
-6. **Euler Unification** — Optional deep dive into how e and π unify the compensation mechanisms
-7. **Quick Reference** — Use the cost formula and primitive-to-Lie mapping as mental tools
+1. Big Picture: structure is substrate-independent, BLD maps to Lie theory — [Step 1](#step-1-the-big-picture)
+2. Three Primitives: B (Boundary), L (Link), D (Dimension) — [Step 2](#step-2-the-three-primitives)
+3. Irreducibility: why exactly three, independent and minimal — [Step 3](#step-3-why-exactly-three)
+4. Why It Works: BLD = Lie theory — [Step 4](#step-4-why-it-works)
+5. Next Steps: Mathematician (rigor), Practitioner (applications), Discovery Method — [What's Next](#whats-next)
+
+| Primitive | Question | Lie Equivalent |
+|-----------|----------|----------------|
+| **B** | Where does behavior partition? | Group topology |
+| **L** | What connects to what? | Structure constants |
+| **D** | What repeats? | Generators |
 
 ---
 

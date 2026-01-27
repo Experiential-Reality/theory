@@ -13,17 +13,16 @@ depends_on:
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**BLD = QM in 7 steps:**
+**BLD IS the language quantum mechanics is written in:**
 
-1. **BLD = Lie theory** — exact mapping (D=generators, L=structure constants, B=topology)
-2. **Lie theory = QM structure** — established physics (SU(2), SO(3,1), etc.)
-3. **Transitive equivalence** — BLD = Lie = QM ∴ BLD = QM
-4. **Not metaphor** — mathematical identity of structural language
-5. **Verified numerically** — su(2) structure constants, Lorentz algebra
-6. **Complete** — nothing left over on either side
-7. **Implication** — 150 years of QM results transfer to BLD
+1. BLD = Lie theory: exact mapping (D=generators, L=structure constants, B=topology) — [Step 1](#step-1-bld--lie-theory)
+2. Lie theory = QM structure: established physics (SU(2), SO(3,1), Heisenberg algebra) — [Step 2](#step-2-lie-theory--quantum-mechanics-structure)
+3. Transitive equivalence: BLD = Lie = QM ∴ BLD = QM — [Step 3](#step-3-therefore-bld--qm-language)
+4. Killing form = 2 appears throughout QM: uncertainty ℏ/2, Bell 2√2, decoherence T₂≤2T₁ — [Killing Form Connection](#the-killing-form-connection)
+5. Standard Model IS a BLD configuration: SU(3)×SU(2)×U(1) as Lie algebra — [Standard Model in BLD](#the-standard-model-in-bld)
+6. Complete mapping: every QM concept has BLD representation — [The Evidence](#the-evidence)
 
 | Level | Claim | Status |
 |-------|-------|--------|
@@ -115,6 +114,7 @@ BLD doesn't just describe quantum mechanics — it predicts quantum phenomena:
 | Lepton masses | Structural ratios | m_e, m_μ, m_τ | 0-1% |
 | **Tau/muon ratio** | **2πe × 3 corrections** | **τ/μ = 16.817** | **Exact** |
 | Dark matter | 5x + 8x² | 27% | 0% |
+| **Entanglement entropy** | **S = K × L = 2L** | **S = 2L at max** | **Exact** |
 
 ### Complete Mapping
 
@@ -128,6 +128,7 @@ Every quantum mechanical concept has a BLD representation:
 | Commutator [A,B] | L (structure constant) | Non-zero = coupled observables |
 | Superposition | Multiple D simultaneously | Structure in indefinite B |
 | Entanglement | Pre-established L | Link exists before measurement |
+| Entanglement entropy | S = K × L + H | Bidirectional observation gives S = 2L |
 | Measurement | B partition | Collapse to eigenvalue |
 | Tensor product | D × D | Combined Hilbert spaces |
 | Partial trace | B projection | Subsystem by tracing out |
@@ -334,7 +335,7 @@ If BLD = QM language, and QM = how reality works, then:
 
 ---
 
-## Summary
+## Conclusion
 
 > **BLD is the same structural language that quantum mechanics is written in.**
 >

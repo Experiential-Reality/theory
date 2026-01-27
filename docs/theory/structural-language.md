@@ -9,23 +9,22 @@ depends_on: []
 
 > Three primitives for describing the shape of information.
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Structural Description Language in 7 steps:**
+**Three primitives for describing structure:**
 
-1. **Three primitives only** — BLD uses exactly three concept characters: `|` (Boundary), `/` (Link), `\n` (Dimension)
-2. **Three questions** — Where does behavior partition? (B) What connects to what? (L) What repeats? (D)
-3. **Cost formula** — Cost = B + D × L; boundaries are topological (invariant), links scale with dimensions
-4. **Lie correspondence** — B = group topology, L = structure constants, D = generators; this is why BLD works universally
-5. **Irreducibility** — Each primitive provides unique capability: choice (B), reference (L), multiplicity (D); none can express another
-6. **Composition** — Complex patterns (containment, scope, conditionals) emerge from combining B/L/D primitives
-7. **Traverser as agent** — The traverser provides causal direction and temporal arrow; structure alone is static
+1. Three concept characters: `|` (B), `/` (L), `\n` (D) — [Concept Characters](#the-three-concept-characters)
+2. Three questions: Where partitions? What connects? What repeats? — [Three Questions](#the-three-questions)
+3. Cost = B + D×L: boundaries topological, links scale with dimension — [Cost Formula](#the-cost-formula)
+4. Lie correspondence: B=topology, L=structure constants, D=generators — [Why Exactly Three](#why-exactly-three)
+5. Irreducibility: each provides unique capability (choice, reference, multiplicity) — [Three Primitives](#the-three-primitives)
+6. Traverser provides causal direction; structure alone is static — [Traverser](#traverser-as-causal-agent)
 
 | Component | BLD |
 |-----------|-----|
 | Value partitions | B (Boundary) |
-| Dependencies, offsets, counts | L (Link) |
-| Repetition, arrays, sequences | D (Dimension) |
+| Dependencies, references | L (Link) |
+| Repetition, arrays | D (Dimension) |
 | Processing direction | Traverser |
 
 ---

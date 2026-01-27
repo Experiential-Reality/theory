@@ -10,17 +10,17 @@ depends_on:
 
 A constructive procedure for finding structure in any system.
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**The BLD Discovery Method in 7 steps:**
+**Constructive procedure for finding structure:**
 
-1. **Lie Theory Inverted** — BLD is constructive: given any system, find its structure (vs. Lie theory: given structure, analyze properties)
-2. **Question 1: Boundaries** — Ask "Where does behavior partition?" to find conditionals, thresholds, and mode changes that separate regions
-3. **Question 2: Links** — Ask "What connects to what?" to find references, dependencies, and interactions between components
-4. **Question 3: Dimensions** — Ask "What repeats?" to find arrays, iterations, and homogeneous multiplicities
-5. **Output Structure S=(B,L,D)** — The three answers form a Lie algebra configuration: D=generators, L=structure constants, B=topology
-6. **Recognizing Primitives** — Boundaries select among alternatives, Links reference specific targets, Dimensions group homogeneous things
-7. **BLD Reveals, Not Imposes** — The structure you find is the structure that exists; the method is self-consistent and self-describing
+1. Lie theory inverted: given system → find structure — [Contribution](#the-contribution)
+2. Q1: Where does behavior partition? → find B — [Three Questions](#the-three-questions)
+3. Q2: What connects to what? → find L — [Three Questions](#the-three-questions)
+4. Q3: What repeats? → find D — [Three Questions](#the-three-questions)
+5. Output S=(B,L,D) is a Lie algebra configuration — [Output](#the-output)
+6. How to recognize each primitive — [Recognize Primitives](#how-to-recognize-each-primitive)
+7. Worked example: neural network architectures — [Worked Example](#worked-example-neural-network-architectures)
 
 ---
 

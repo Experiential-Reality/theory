@@ -17,6 +17,17 @@ used_by:
   - ../../../meta/proof-status.md
 ---
 
+## Summary
+
+**Derivation of all four fundamental forces from BLD:**
+
+1. Each force emerges at a different level of the division algebra tower — [The Division Algebra Tower](#2-the-division-algebra-tower)
+2. Electromagnetic: alpha^-1 = n×L + B + 1 + K/B + corrections = 137.036 — [Electromagnetic Force](#4-electromagnetic-force)
+3. Weak: sin^2(theta_W) = 3/S + K/(n×L×B) = 0.231215 — [Weak Force](#5-weak-force)
+4. Strong: alpha_s^-1 = alpha^-1/n^2 - K/(n+L) = 8.4814 — [Strong Force](#6-strong-force)
+5. Gravity: M_P derived from cascade coupling with 0.00003% accuracy — [Gravity](#7-gravity)
+6. Universal K/X principle: correction = K/X where K=2 always — [The Universal K/X Principle](#8-the-universal-kx-principle)
+
 # Force Structure: Deriving All Four Forces from BLD
 
 ## Abstract

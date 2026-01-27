@@ -16,17 +16,17 @@ used_by:
 > **Date**: 2026-01-13
 > **Test Suite**: 10 tests (positive and negative)
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Thermodynamics Validation in 7 steps:**
+**Thermodynamics Validation:**
 
-1. The second law derives from structural alignment: dS/dt = k_B*T * integral(P * |grad(ln P) + grad(E)/k_B*T|^2 dmu) >= 0 — integrand is squared norm, making dS/dt >= 0 mandatory
-2. Core tests pass (1-4): entropy increases (1.41 -> 3.46), Boltzmann equilibrium achieved (0.08% error), equipartition holds (1.1% error), curvature scaling verified (R^2 = 0.9999)
-3. Critical negative test (5): Hamiltonian dynamics does NOT increase entropy — dissipation (Langevin structure) is REQUIRED, not just any dynamics
-4. Double-well test (6): multimodal energy landscapes work — population ratio matches Boltzmann prediction within 15%
-5. Entropy rate test (7): not just the sign (dS/dt >= 0) but the actual RATE matches the squared-norm formula (correlation = 0.72)
-6. Wrong temperature test (8): noise temperature must match system — 288% deviation when mismatched confirms specific mechanism
-7. BLD interpretation: Temperature T = traversal noise scale, Energy E = alignment cost, Entropy S = -integral(P ln P), Boltzmann distribution = equilibrium on manifold
+1. Second law derives from squared-norm form: dS/dt ≥ 0 mandatory — [Conclusion](#conclusion)
+2. Core tests pass: entropy increases, Boltzmann equilibrium, equipartition — [Core Tests](#core-tests-1-4-basic-second-law)
+3. Critical negative test: Hamiltonian dynamics does NOT increase entropy — [Test 5](#test-5-hamiltonian-dynamics-critical-negative-test)
+4. Double-well test: multimodal landscapes work — [Test 6](#test-6-double-well-potential)
+5. Entropy rate test: actual RATE matches formula, not just sign — [Test 7](#test-7-entropy-production-rate)
+6. Wrong temperature test: noise T must match system — [Discriminating Tests](#discriminating-tests-5-10-prove-the-mechanism)
+7. BLD: T = traversal noise, E = alignment cost, S = -∫P ln P — [Connection](#connection-to-the-bld-framework)
 
 | Component | BLD | Description |
 |-----------|-----|-------------|
@@ -34,7 +34,7 @@ used_by:
 | Fisher metric / correlations | L | Geometric coupling — scales with distance |
 | Configuration dimension | D | Degrees of freedom — multiplies L |
 
-## Summary
+## Conclusion
 
 The second law derivation from structural alignment has been empirically validated. The key claim:
 

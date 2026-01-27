@@ -12,6 +12,16 @@ used_by:
   - ../cosmology/observer-correction.md
 ---
 
+## Summary
+
+**The K/X observation cost principle:**
+
+1. Every measurement: Observed = Structural + K/X — [The Observation Cost Theorem](#1-the-observation-cost-theorem)
+2. K = 2 (Killing form) and X = hidden structure the detector couples to — [Hidden Structure by Force](#2-hidden-structure-by-force)
+3. Sign rule: + for incomplete traversal, - for complete traversal — [The Sign Rule](#3-the-sign-rule)
+4. Higher-order corrections: K/X^2, accumulated e^2 terms — [Higher-Order Corrections](#4-higher-order-corrections)
+5. Three-layer decomposition: structural + K/X(experiment) + K/X(universe) — [The Three-Layer Decomposition](#5-the-three-layer-decomposition)
+
 # Observation Cost: The K/X Principle
 
 ## Abstract

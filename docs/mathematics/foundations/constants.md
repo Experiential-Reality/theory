@@ -24,17 +24,17 @@ The five fundamental BLD constants (B, L, n, K, S) are derived from axioms and s
 
 ---
 
-## Quick Summary
+## Summary
 
-**The 5 core constants:**
+**Five core constants, all derived:**
 
-1. **B = 56** — Boundary modes (from triality + Killing form)
-2. **L = 20** — Riemann tensor components (geometric structure)
-3. **n = 4** — Spacetime dimensions (from octonion reference fixing)
-4. **K = 2** — Killing form (bidirectional observation cost)
-5. **S = 13** — Structural intervals ((B-n)/n = 52/4)
+1. B = 56 — Boundary modes (2 × dim(Spin(8))) — [Constants](#the-constants)
+2. L = 20 — Riemann tensor components — [Why L = Riemann](#why-l--riemann-tensor-components)
+3. n = 4 — Spacetime dimensions (octonion reference fixing) — [Constants](#the-constants)
+4. K = 2 — Killing form (bidirectional observation) — [Constants](#the-constants)
+5. S = 13 — Structural intervals ((B−n)/n) — [Derived Combinations](#derived-combinations)
 
-**One formula**: α⁻¹ = n×L + B + 1 = 80 + 56 + 1 = 137
+**One formula**: α⁻¹ = n×L + B + 1 = 80 + 56 + 1 = 137 — [Derivation Chain](#the-derivation-chain)
 
 ---
 

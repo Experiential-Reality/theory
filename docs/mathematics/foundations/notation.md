@@ -12,6 +12,18 @@ used_by:
   - constants.md
 ---
 
+## Summary
+
+**Standard notation used throughout BLD theory:**
+
+1. Three primitives: B=56 (boundary), L=20 (link), n=4 (dimension) — [The Three Primitives](#2-the-three-primitives)
+2. Derived constants: K=2 (Killing form), S=13 (structural intervals) — [Derived Constants](#3-derived-constants)
+3. Type-theoretic notation: sum (+), function (->), product (Pn) — [Type-Theoretic Notation](#4-type-theoretic-notation)
+4. Categorical notation: coproduct, morphism, product — [Categorical Notation](#5-categorical-notation)
+5. Lie-theoretic notation: algebras, groups, brackets — [Lie-Theoretic Notation](#6-lie-theoretic-notation)
+6. Physical quantities: coupling constants and masses — [Physical Quantities](#7-physical-quantities)
+7. BLD-specific notation: traversal, K/X corrections — [BLD-Specific Notation](#10-bld-specific-notation)
+
 # Notation and Conventions
 
 ## Abstract

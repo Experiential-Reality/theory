@@ -14,29 +14,29 @@ used_by:
 
 > **Status**: Exploratory (framework developed, validation tests needed)
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Fluid Dynamics through BLD in 7 steps:**
+**Fluid Dynamics as D×L/B Balance:**
 
-1. The Reynolds number Re = rho*v*L/mu is literally D×L/B: characteristic length (D) times momentum flux (L) divided by viscosity (B)
-2. Laminar/turbulent transition is the fundamental B: at Re_c ~ 2300 (pipe flow), behavior partitions from predictable to chaotic
-3. Viscosity mu is the key L: it couples adjacent fluid layers through shear stress tau = mu * dv/dy, opposing inertial (D×L) forces
-4. The Navier-Stokes equation decomposes into BLD: inertial term (D×L), pressure coupling (L), and viscous damping (B)
-5. Turbulence occurs when D×L overwhelms B: when inertia exceeds viscous damping, perturbations amplify rather than decay
-6. Kolmogorov -5/3 scaling E(k) ~ k^(-5/3) is universal — a D×L prediction independent of specific fluid properties
-7. Polymer drag reduction demonstrates B compensation: modified viscosity (B) can partially compensate for high D×L, reducing drag up to 80%
+1. Reynolds number Re = ρvL/μ is D×L/B — [Key Insight](#key-insight)
+2. Laminar/turbulent transition is fundamental B — [Q1](#q1-where-does-behavior-partition-finding-b)
+3. Viscosity μ is key L, couples fluid layers — [Q2](#q2-what-connects-finding-l)
+4. Navier-Stokes decomposes into BLD terms — [Navier-Stokes](#navier-stokes-as-bld-structure)
+5. Turbulence: D×L overwhelms B — [Turbulence](#turbulence-where-b-cannot-contain-dl)
+6. Kolmogorov -5/3 is universal D×L scaling — [Energy Cascade](#energy-cascade-kolmogorov)
+7. Polymer drag reduction = B compensation — [Compensation](#compensation-in-turbulence)
 
 | Component | BLD | Description |
 |-----------|-----|-------------|
 | Critical Re_c | B | Topological threshold — laminar/turbulent boundary |
-| Viscosity mu | L | Momentum diffusion coupling — opposes D×L |
+| Viscosity μ | L | Momentum diffusion coupling — opposes D×L |
 | Characteristic length L | D | Spatial dimension — multiplies L in Re |
 
 Fluid dynamics provides a domain where the boundary between ordered and chaotic flow (laminar/turbulent) offers a clear B structure, with viscosity and Reynolds number playing key roles.
 
 ---
 
-## Summary
+## Conclusion
 
 | Finding | Status | Evidence |
 |---------|--------|----------|
@@ -229,7 +229,7 @@ As Re increases, the smallest scales shrink — D×L overwhelms B down to smalle
 
 ---
 
-## Turbulence: Where B Cannot Contain D×L
+## Turbulence: Where B Cannot Contain D×L {#turbulence-where-b-cannot-contain-dl}
 
 ### The Transition
 

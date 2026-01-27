@@ -13,25 +13,23 @@ used_by:
 
 > **Status**: Foundational
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**BLD code generation in 7 steps:**
+**Generate code by treating Python as a traverser:**
 
-1. **Python is a traverser** — Just as GPU traverses algorithm structure to produce cost, Python traverses to produce code
-2. **Boundaries map to control flow** — 2 partitions → `if/else`, 3-4 → `match/case`, 5+ → dispatch dict
-3. **Links map to dependencies** — `deps=0` → parallel map, `deps=1` → sequential fold, `hierarchy_depth` → tree reduction
-4. **Dimensions map to iteration** — Parallel → `asyncio.gather` or `Pool.map`, sequential → `for` loop
-5. **Alignment determines quality** — Good structure match produces clean code, mismatch produces awkward code
-6. **Alignment scoring** — Score < 2.0 means clean code; higher scores indicate structural mismatch
-7. **Cross-language extension** — Same BLD → Python, C, WGSL, Rust with appropriate construct selection
+1. Python is a traverser: structure + Python → code (cost = complexity) — [The Core Insight](#the-core-insight)
+2. Boundaries → control flow: 2 partitions → if/else, 3-4 → match, 5+ → dispatch dict — [Boundaries](#boundaries-b---control-flow)
+3. Links → dependencies: deps=0 → map, deps=1 → fold, hierarchy_depth → reduce — [Links](#links-l---dependencies)
+4. Dimensions → iteration: parallel → Pool.map, sequential → for — [Dimensions](#dimensions-d---iteration)
+5. Alignment scoring: < 2.0 = clean code — [Alignment Scoring](#alignment-scoring)
+6. BLAS validated: 8 routines (dasum, dgemm, etc.) from BLD, <1e-10 error vs NumPy — [BLAS Library](#blas-library-full-validation)
+7. Cross-language: Haskell → BLD → Python (48 tests pass) — [Cross-Language Compilation](#cross-language-compilation)
 
-| Component | BLD Mapping |
-|-----------|-------------|
-| Control flow | B: partition count → if/match/dispatch |
-| Data flow | L: deps, pattern → reduce/accumulate/map |
-| Iteration style | D: parallel property → Pool.map vs for |
-| Code complexity | Alignment score (sum of construct costs) |
-| Generated docstring | BLD structure annotation |
+| Algorithm BLD | Python Construct |
+|---------------|------------------|
+| `Dimension(parallel=True)` | `Pool.map` or `asyncio.gather` |
+| `Boundary(partitions=2)` | `if/else` |
+| `Link(hierarchy_depth=N)` | `functools.reduce` |
 
 ---
 

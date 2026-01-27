@@ -13,6 +13,17 @@ used_by:
   - ../../particle-physics/lepton-masses.md
 ---
 
+## Summary
+
+**Visual model for the universal machine:**
+
+1. Ring = traverse(-B, B) = the machine = "now" — [The Visualization](#2-the-visualization)
+2. Cloth = BL mesh = structure created by traversal (output, not substrate) — [Core Principles](#core-principles)
+3. Matter/antimatter = +B/-B traversal directions — [Matter and Antimatter](#matter-and-antimatter)
+4. Arrow of time = which side of the ring you're on — [The Arrow of Time](#the-arrow-of-time)
+5. Dark matter = L (links), dark energy = B (boundary topology) — [Dark Matter and Dark Energy](#dark-matter-and-dark-energy)
+6. Three generations from ring junction structure — [Generations and Triality](#generations-and-triality)
+
 # The Ring and Cloth Model
 
 ## Abstract

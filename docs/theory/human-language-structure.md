@@ -14,24 +14,22 @@ used_by:
 
 Human language has BLD structure. This means we can "compile" algorithms to explanations, generating documentation from structure.
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Human Language Structure in BLD in 7 steps:**
+**Human language has BLD structure — algorithms compile to explanations:**
 
-1. **Language has BLD structure** — Human language partitions (B), connects (L), and repeats (D) just like any other structure
-2. **Boundaries are discourse partitions** — Sentences, paragraphs, sections, and contrasts ("however", "but") partition meaning
-3. **Links are reference and causation** — Pronouns, citations, "because", "therefore" create connections between ideas
-4. **Dimensions are enumeration** — "First... Second... Third...", bullet points, and examples repeat structural patterns
-5. **Algorithms compile to explanations** — The same BLD that generates code can generate structurally-aligned documentation
-6. **Alignment rules map primitives** — D (parallel) becomes "Each X is processed independently"; B becomes "In case A... in case B..."
-7. **Structure mirrors meaning** — Generated explanations reflect the algorithm's actual shape, not just a description of it
+1. Boundaries = discourse partitions: sentences, paragraphs, "however", "but" — [Boundaries](#boundaries-b--discourse-partitions)
+2. Links = reference and causation: pronouns, "because", citations — [Links](#links-l--reference-and-causation)
+3. Dimensions = enumeration: "First... Second... Third...", bullet points — [Dimensions](#dimensions-d--repetition-and-enumeration)
+4. Alignment rules: D (parallel) → "Each X is processed independently" — [Alignment Rules](#alignment-rules)
+5. Merge sort example: BLD structure generates explanation — [Merge Sort](#example-explaining-merge-sort)
+6. MLP example: dimensions, boundaries, links all mapped — [MLP Forward Pass](#example-explaining-mlp-forward-pass)
 
-| Component | BLD |
-|-----------|-----|
-| Paragraph, section breaks | B (Boundary) |
-| Pronouns, "because", citations | L (Link) |
-| Enumeration, lists, examples | D (Dimension) |
-| Reader/audience | Traverser |
+| Algorithm Structure | Code | Explanation |
+|---------------------|------|-------------|
+| D (Dimension) | Loop/map/parallel | "Each X is processed..." |
+| B (Boundary) | If/match/dispatch | "In case A... in case B..." |
+| L (Link) | Function call/reference | "X feeds into Y" |
 
 ---
 

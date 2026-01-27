@@ -19,19 +19,18 @@ used_by:
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**The Two-Reference Principle in 7 steps:**
+**Two-reference principle: observation requires two points of reference.**
 
-1. **Two references required**: Machine (observer/computer) + Structure (what's measured)
-2. **All valid structures compute**: The machine IS a BLD structure
-3. **Both touch same problem**: Machine and structure reference the same quantity
-4. **Observation cost**: Cost = K/X × direction (same formula everywhere)
-5. **Temporal = Traversal**: Time is L (the link), spatial is D (n-1 = 3 dimensions)
-6. **Direction matters**: Forward (+) or reverse (−) traversal
-7. **Solution emerges**: Where machine and structure agree — often a fixed point
+1. Two references: Machine + Structure touch same problem — [Two-Reference Principle](#1-the-two-reference-principle)
+2. Observation cost = K/X × direction (same formula everywhere) — [Observation Cost](#2-the-observation-cost)
+3. Primordial values are integers; decimals come from traversal costs — [Core Insight](#the-core-insight)
+4. Orders of traversal determine correction terms — [Orders](#4-orders-of-traversal)
+5. Two references appear in every domain — [Each Domain](#6-the-two-references-in-each-domain)
+6. All prediction errors now zero (within measurement) — [Verification](#7-verification-all-errors-are-now-zero)
 
-**Result**: All predictions now **exact** (within measurement uncertainty)
+**Result**: All predictions now exact.
 
 ---
 
@@ -781,6 +780,36 @@ Adding vs subtracting is just traversal direction:
 - **Reverse** (structure → observer): subtracts from measurement
 
 Not two different formulas — one formula, two directions.
+
+### 8.5 K = 2 in the Entropy Formula
+
+The same K = 2 (Killing form) that appears in observer corrections also governs entropy:
+
+| Context | Formula | K = 2 Meaning |
+|---------|---------|---------------|
+| **Observer corrections** | cost = K/X | Traversal cost (per observation) |
+| **Entropy** | S = K × L | Accumulated observation cost |
+
+**The connection**:
+- Observer corrections K/X: Cost of ONE bidirectional traversal through structure X
+- Entropy S = K × L: TOTAL accumulated cost of all bidirectional observations
+
+**Unified across domains**:
+| Domain | Formula | Interpretation |
+|--------|---------|----------------|
+| **Entanglement** | S = 2L | At max entanglement, S = 2L exactly |
+| **Black holes** | S = A/(4ℓ_P²) = K × L | L = A/(8ℓ_P²). The 1/4 comes from n=4 |
+| **Phase transitions** | L → ∞ as ρ → 1 | At criticality, correlations become long-range |
+
+**Why entropy and corrections share K = 2**: Both arise from bidirectional observation:
+- To observe, the machine must traverse OUT and BACK (K = 2 links)
+- Entropy accumulates as bidirectional observations pile up
+- S = K × L is the total bidirectional cost; K/X is the per-observation cost
+
+**References**:
+- [Entanglement Entropy](../quantum/entanglement-entropy.md) — S = 2L derivation
+- [Black Hole Entropy](../quantum/black-hole-entropy.md) — S = K × L = A/(4ℓ_P²)
+- [Key Principles: Entropy Formula](../foundations/key-principles.md#entropy-formula)
 
 ---
 

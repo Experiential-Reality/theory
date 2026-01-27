@@ -10,17 +10,17 @@ used_by:
 
 # Scale Hierarchy from S₃ Structure
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Deriving scale hierarchy from S₃ in 7 steps:**
+**Scale Hierarchy from S₃ Structure:**
 
-1. **λ = 1/√20** — The fundamental suppression factor from S₃ → S₂ → {e} cascade (derived from Catalan C₃ = 5)
-2. **P14: Gauge unification** — Three SM couplings meet at ~10¹⁶ GeV; sin²θ_W → 3/8 exactly (SU(5) prediction)
-3. **M_GUT from λ** — M_GUT ≈ M_P × λ⁸ relates Planck and unification scales
-4. **P16: EW scale** — v/M_GUT ~ 10⁻¹⁴ is TOO LARGE for simple λⁿ; needs exponential mechanism
-5. **P17: Majorana mass** — M_R = M_GUT × λ² gives seesaw scale ~10¹⁵ GeV; requires y_ν ~ O(1)
-6. **Neutrino masses** — m_ν = m_D²/M_R ~ 0.05 eV (correct order of magnitude)
-7. **Complete hierarchy** — M_P → M_GUT → M_R → v → m_f connected by powers of λ
+1. λ = 1/√20 from S₃ cascade — [Summary](#summary-of-findings)
+2. P14: Gauge unification — sin²θ_W → 3/8 exactly — [P14](#p14-coupling-unification)
+3. M_GUT ≈ M_P × λ⁸ — [Complete Hierarchy](#complete-scale-hierarchy)
+4. P16: EW scale needs exponential mechanism — [P16](#p16-electroweak-scale)
+5. P17: M_R = M_GUT × λ² gives seesaw scale — [P17](#p17-majorana-mass)
+6. Neutrino masses: m_ν ~ 0.05 eV — [P17](#p17-majorana-mass)
+7. Complete hierarchy connected by λ powers — [Complete Hierarchy](#complete-scale-hierarchy)
 
 | Component | BLD |
 |-----------|-----|

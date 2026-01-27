@@ -14,24 +14,23 @@ used_by:
 
 BLD is not a framework for analyzing code. **BLD is a programming language** — a structural language that compiles to any substrate.
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**BLD as Universal Language in 7 steps:**
+**BLD is a programming language that compiles to any substrate:**
 
-1. **BLD is a language** — Not a framework for analysis, but a programming language that compiles to any substrate
-2. **Structure, not syntax** — Traditional compilers translate syntax to syntax; BLD aligns structure with structure (meaning to meaning)
-3. **Three primitives capture computation** — B (where behavior partitions), L (what depends on what), D (what repeats)
-4. **Same structure, many targets** — The same BLD compiles to Python, GPU cost models, SQL, hardware, and human language
-5. **Compilation is alignment** — Good alignment yields clean code; poor alignment yields awkward code
-6. **Lie theory explains universality** — D = generators, L = structure constants, B = topology; every computational system has these
-7. **Energy efficiency follows alignment** — Misaligned structure wastes energy; explicit structure enables optimization
+1. Structure, not syntax: BLD aligns meaning with meaning — [Traditional vs Structural](#traditional-vs-structural-compilation)
+2. Three primitives capture all computation: B (branching), L (data flow), D (iteration) — [What BLD Captures](#what-bld-captures)
+3. Same structure compiles to Python, GPU, SQL, hardware — [Compilation Targets](#compilation-targets)
+4. Compilation is alignment; quality = alignment score — [Compilation as Alignment](#compilation-as-alignment)
+5. Lie theory explains universality — [Why This Works](#why-this-works)
+6. Misaligned structure wastes energy; AI energy crisis needs structural alignment — [AI Energy Crisis](#why-this-matters-ai-energy-crisis)
 
 | Component | BLD |
 |-----------|-----|
 | Control flow, branching | B (Boundary) |
 | Data flow, references | L (Link) |
 | Iteration, parallelism | D (Dimension) |
-| Code generation target | Traverser (Python, GPU, etc.) |
+| Target platform | Traverser |
 
 ---
 

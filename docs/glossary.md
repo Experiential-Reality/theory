@@ -2,80 +2,24 @@
 status: FOUNDATIONAL
 layer: reference
 depends_on: []
-used_by:
-  - theory/structural-language.md
-  - theory/bld-as-language.md
-  - theory/llm-experiment.md
-  - theory/structure-as-state.md
-  - theory/self-reference.md
-  - theory/structural-interest.md
-  - theory/README.md
-  - applications/code/cross-language-compilation.md
-  - applications/physics/thermodynamics-validation.md
-  - applications/code/code-generation-cli.md
-  - applications/physics/protein-folding.md
-  - applications/code/code-generation.md
-  - applications/code/refactoring.md
-  - applications/physics/circuits.md
-  - applications/code/bld-driven-development.md
-  - applications/physics/mapping-rules.md
-  - applications/code/cross-language-targets.md
-  - applications/physics/engine-temporal-scope.md
-  - applications/physics/gpu-calibration.md
-  - applications/ml/neural-architectures.md
-  - applications/ml/neural-network-experiments.md
-  - applications/ml/variational-inference.md
-  - meta/discovery-method.md
-  - paths/README.md
-  - paths/newcomer.md
-  - README.md
-  - examples/docs-structure.md
-  - examples/spacetime.md
-  - examples/pi-from-bld.md
-  - mathematics/foundations/structural/compensation-principle.md
-  - examples/wgpu-jpeg-process.md
-  - mathematics/foundations/structural/structural-cost-conservation.md
-  - examples/e-from-bld.md
-  - mathematics/foundations/structural/canonical-hardness.md
-  - examples/zip.md
-  - mathematics/foundations/proofs/irreducibility-categorical.md
-  - examples/lie-algebras.md
-  - mathematics/foundations/definitions/bld-calculus.md
-  - mathematics/cross-domain-prediction.md
-  - mathematics/foundations/proofs/irreducibility-proof.md
-  - mathematics/lie-theory/lie-correspondence.md
-  - mathematics/README.md
-  - mathematics/comparisons.md
-  - mathematics/bld-conservation.md
-  - mathematics/derived/discovery-algorithm.md
-  - mathematics/derived/manifold-geometry.md
-  - mathematics/derived/manifold-applications.md
-  - mathematics/derived/thermodynamics.md
-  - mathematics/derived/manifold-foundations.md
-  - mathematics/derived/performance-theorem.md
-  - mathematics/lie-theory/constructive-lie.md
-  - mathematics/lie-theory/boundary-derivation.md
-  - mathematics/lie-theory/why-lie-theory.md
-  - mathematics/foundations/structural/factorization-calculus.md
 ---
 
 # Glossary
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Using the BLD Glossary in 7 steps:**
+**Central definitions for BLD theory:**
 
-1. **Core Primitives** — B (Boundary), L (Link), D (Dimension) are the three irreducible structural elements
-2. **Derived Concepts** — Alignment cost, compensation, factorization build on primitives
-3. **Mathematical Background** — Fisher information, KL divergence, Lie algebras provide formal grounding
-4. **Constants e and π** — e characterizes traversers (sequential accumulation), π characterizes closure (periodic structure)
-5. **Traverser Framework** — The traverser is the causal agent; structure alone has no direction
-6. **Physics Axioms** — P1-P20 derive Standard Model from BLD (see physics-traverser.md)
-7. **Status Levels** — FOUNDATIONAL, VALIDATED, EXPLORATORY indicate proof status
+1. Core primitives: B (Boundary), L (Link), D (Dimension) — [Core Primitives](#core-primitives)
+2. Derived concepts: alignment cost, compensation, factorization, K, entropy — [Derived Concepts](#derived-concepts)
+3. Key formulas: K = 2 (Killing form), S = K × L (entropy) — [Killing Form](#killing-form), [Entropy Formula](#entropy-formula)
+4. Mathematical background: Fisher information, KL divergence, Lie algebras — [Math Background](#mathematical-background)
+5. Notation: n vs n_c, λ vs λ_C — [Notation](#notation-convention)
+6. Status levels: PROVEN, DERIVED, VALIDATED, HYPOTHESIZED — [Status Levels](#status-levels)
 
 | Component | BLD |
 |-----------|-----|
-| Definitions | B (partitions concepts), L (links terms), D (repeats pattern) |
+| Definitions | B (partitions concepts), L (links terms) |
 | Navigation | L (cross-references) |
 | Hierarchy | B (sections), D (entries per section) |
 
@@ -379,6 +323,70 @@ C(S) = C(FACTOR(S))
 - D: C(d) = n × C(element) [multiplicative]
 
 See [Structural Cost Conservation](mathematics/foundations/structural/structural-cost-conservation.md).
+
+---
+
+### Killing Form (K) {#killing-form}
+
+The **Killing form** K = 2 is the bidirectional observation cost — the minimum number of traversals required to complete an observation.
+
+```
+K = 2
+
+Why 2?
+  Observation = forward query + backward response
+  Forward: observer → system (what are you?)
+  Backward: system → observer (here's the answer)
+  Total: 2 traversals
+```
+
+**Mathematical definition**: K is the diagonal element of the Killing form on so(3,1) (Lorentz algebra).
+
+**Where K = 2 appears**:
+
+| Context | Formula | The "2" |
+|---------|---------|---------|
+| Uncertainty | Δx·Δp ≥ ℏ/**2** | Robertson bound |
+| Bell violation | **2**√2 | CHSH inequality |
+| Decoherence | T₂ ≤ **2**×T₁ | Phase vs energy ratio |
+| Schwarzschild | r_s = **2**GM/c² | Event horizon radius |
+| Entropy | S = **2**L | Bidirectional observation |
+| Observer correction | **2**/B, **2**/(n×L) | Traversal costs |
+
+**Key insight**: All appearances of 2 in fundamental physics formulas are the same K = 2, arising from the requirement that observation be bidirectional.
+
+See [Killing Form](mathematics/lie-theory/killing-form.md) for the derivation.
+
+---
+
+### Entropy Formula {#entropy-formula}
+
+The **entropy formula** S = K × L is the universal entropy relationship:
+
+```
+S = K × L
+
+where:
+  K = 2 (Killing form, bidirectional observation cost)
+  L = link cost (from L = -½ ln(1 - ρ²))
+```
+
+**Unifies entropy across three domains**:
+
+| Domain | Formula | S = K × L Form |
+|--------|---------|----------------|
+| **Entanglement** | S = 2L | K = 2, L = -½ ln(1 - ρ²), exact at max entanglement |
+| **Black holes** | S = A/(4ℓ_P²) | K = 2, L = A/(8ℓ_P²), 1/4 from n=4 dimensions |
+| **Phase transitions** | L → ∞ at T_c | ρ → 1 at criticality, L diverges |
+
+**Why this matters**: The same formula governs quantum entanglement, gravitational entropy, and classical phase transitions. Entropy IS link cost times observation cost.
+
+**Connection to other formulas**:
+- Uses Link Formula: L = -½ ln(1 - ρ²)
+- Uses Killing Form: K = 2
+- Extends D×L Scaling: entropy scales with link structure
+
+See [Key Principles - Entropy Formula](mathematics/foundations/key-principles.md#entropy-formula), [Entanglement Entropy](mathematics/quantum/entanglement-entropy.md), [Black Hole Entropy](mathematics/quantum/black-hole-entropy.md).
 
 ---
 

@@ -31,17 +31,16 @@ The [irreducibility proof](irreducibility-proof.md) establishes that B, L, D are
 
 ---
 
-## Quick Summary
+## Summary
 
-**Why exactly three in 7 steps:**
+**Why exactly three primitives (not two, not four):**
 
-1. **Independence proven** — B, L, D cannot express each other (type theory)
-2. **Catalogue capabilities** — Choice, Reference, Repetition are the only structural operations
-3. **Test candidates** — Time, probability, recursion, identity, negation all reduce to B+L+D
-4. **Lie theory confirms** — Lie algebras have exactly generators (D), constants (L), topology (B)
-5. **Type theory confirms** — Complete type systems need exactly sums, functions, products
-6. **Closure property** — B+L+D combinations yield only B+L+D (no new primitives emerge)
-7. **Conclusion** — Three is not arbitrary; it emerges from the structure of structure itself
+1. Independence proven: B, L, D cannot express each other — [What We HAVE Proven](#1-what-we-have-proven)
+2. Capabilities exhausted: Choice (B), Reference (L), Repetition (D) — [Catalogue](#2-catalogue-structural-capabilities)
+3. All candidates reduce: time, probability, recursion → B+L+D — [Test Candidates](#3-test-candidate-4th-primitives)
+4. Lie theory confirms: generators (D), constants (L), topology (B) — [Lie Confirmation](#4-lie-theory-confirmation)
+5. Type theory confirms: sums, functions, products are complete — [Type Confirmation](#5-type-theory-confirmation)
+6. Closure under composition: B+L+D never yields new primitive — [Closure](#6-the-closure-property)
 
 ---
 

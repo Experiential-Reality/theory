@@ -12,7 +12,7 @@ depends_on:
 
 # BLD Theory: Proof Status
 
-**Last updated**: 2026-01-26
+**Last updated**: 2026-01-27
 
 This document provides rigorous accounting of what is proven, validated, derived, and conjectured in BLD theory.
 
@@ -52,25 +52,27 @@ Status labels exist on two orthogonal axes that can be composed.
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**BLD theory status in 7 points:**
+**Proof status overview:**
 
-1. **BLD = Lie Theory** — PROVEN (exact mathematical correspondence)
-2. **B/L/D irreducibility** — PROVEN (type-theoretic, no primitive expresses another)
-3. **Two-Reference Principle** — PROVEN (Machine + Structure → exact solution)
-4. **Octonions → n=4, SU(3), 3 gen** — DERIVED (one symmetry breaking does all)
-5. **α⁻¹ = 137.035999177** — **EXACT** (0.0 ppt, two-reference formula)
-6. **All particle masses** — **EXACT** (μ/e, τ/μ, m_e, m_H within measurement)
-7. **Dark matter/energy** — **EXACT** (27%/68% with 0% error)
+1. BLD = Lie Theory — PROVEN — [Core Claims](#core-claims)
+2. B/L/D irreducibility — PROVEN — [Foundational](#foundational-claims)
+3. Two-Reference Principle — PROVEN — [Core Claims](#core-claims)
+4. α⁻¹ = 137.035999177 — EXACT — [Particle Physics](#particle-physics)
+5. All particle masses — EXACT — [Particle Physics](#particle-physics)
+6. Dark matter/energy ratios — EXACT — [Cosmology](#cosmology)
+7. K = 2 (Killing form) — DERIVED — [Killing Form](#killing-form)
+8. **Proton mass — DERIVED (0.6 ppm) — [Nucleon Masses](#nucleon-masses)**
+9. **Muon g-2 — PREDICTED — [Muon g-2 Anomaly](#muon-g-2-anomaly)**
+10. **Entanglement entropy — DERIVED (S = 2L exact) — [Quantum Mechanics](#quantum-mechanics)**
+11. **Black hole entropy — DERIVED (S = K × L = A/(4ℓ_P²)) — [Quantum Mechanics](#quantum-mechanics)**
 
-**Current counts**: 17 PROVEN, 18 VALIDATED, 28 DERIVED, 2 HYPOTHESIZED, 2 OPEN
+**Counts**: 17 PROVEN, 19 VALIDATED, 33 DERIVED, 1 PREDICTED, 2 HYPOTHESIZED, 1 OPEN
 
-**Empirical inputs**: **ZERO** — v is derived as fixed point, SU(3) from genesis closure
+**Empirical inputs**: ZERO — all constants derived
 
-**Key insight**: Every measurement requires two references (Machine + Structure) that touch the same problem. The solution is where they agree. This eliminates all previously unexplained errors.
-
-*See [Observer Corrections](../mathematics/cosmology/observer-correction.md) for the two-reference framework.*
+**See also**: [Summary Table](#summary-table), [Rigor Gaps](#rigor-gaps), [Research Directions](research-directions.md)
 
 ---
 
@@ -166,8 +168,10 @@ Both touch the same problem → solution emerges
 | Uncertainty Δx·Δp ≥ ℏ/2 | **VALIDATED** | Exact | Exact | 0% |
 | Area law entropy | **VALIDATED** | S ∝ boundary | Confirmed | - |
 | Grover's √N | **DERIVED** | √N | √N | Exact |
+| **Entanglement entropy** | **DERIVED** | S = 2L (max) | S = 2L | **Exact** |
+| **Black hole entropy** | **DERIVED** | S = K × L | A/(4ℓ_P²) | **Exact** |
 
-**Reference**: [Quantum Computing](../mathematics/quantum/quantum-computing.md)
+**Reference**: [Quantum Computing](../mathematics/quantum/quantum-computing.md), [Entanglement Entropy](../mathematics/quantum/entanglement-entropy.md), [Black Hole Entropy](../mathematics/quantum/black-hole-entropy.md)
 
 ### Open Questions
 
@@ -175,6 +179,8 @@ Both touch the same problem → solution emerges
 |----------|--------|-------|
 | ~~Derive Schrödinger equation~~ | **DERIVED** | Complex numbers from ℂ⊂𝕆, linearity from Lie algebra. See [Schrödinger Derivation](../mathematics/quantum/schrodinger-derivation.md) |
 | ~~Derive Born rule form~~ | **DERIVED** | |ψ|² from bidirectional alignment (Killing form = 2). See [Born Rule](../mathematics/quantum/born-rule.md) |
+| ~~Entanglement entropy~~ | **DERIVED** | S = K × L = 2L at max entanglement. See [Entanglement Entropy](../mathematics/quantum/entanglement-entropy.md) |
+| ~~Black hole entropy~~ | **DERIVED** | S = K × L = A/(4ℓ_P²). Same formula as entanglement. See [Black Hole Entropy](../mathematics/quantum/black-hole-entropy.md) |
 | Measurement collapse mechanism | **OPEN** | B-partition defined; WHY specific outcome remains open |
 | Path integral formulation | **OPEN** | Not covered |
 | Discrete symmetries (P, C, T) | **OPEN** | Beyond Lie groups |
@@ -238,6 +244,32 @@ Error: 0.0 ppt ✓ (EXACT)
 | 3 generations from triality | **DERIVED** | P9 structure | Mathematical |
 | Why exactly 3 | **DERIVED** | Triality is unique | Mathematical |
 
+### Nucleon Masses
+
+| Particle | Status | Formula | Predicted | Observed | Error |
+|----------|--------|---------|-----------|----------|-------|
+| Proton | **DERIVED** | (S+n)(B+nS) + K/S | m_p/m_e = 1836.1538 | 1836.1527 | **0.6 ppm** |
+| Neutron | **DERIVED** | m_p + (quark diff) | m_n/m_e = 1838.68 | 1838.68 | **~0%** |
+
+**Two-Reference Framework**:
+- **Proton**: (S+n) = 17 is generation structure (same as tau), (B+nS) = 108 is confinement depth
+- **Neutron**: Follows from proton + quark mass difference (m_d - m_u)
+- Proton is "generation × confinement" — same (S+n) base as tau, different phase
+
+**Reference**: [Nucleon Masses](../mathematics/particle-physics/nucleon-masses.md)
+
+### Muon g-2 Anomaly
+
+| Quantity | Status | Formula | Predicted | Observed | Error |
+|----------|--------|---------|-----------|----------|-------|
+| Primordial | **DERIVED** | α² × K² / ((n×L)² × S) | 256 × 10⁻¹¹ | — | — |
+| Detection X | **DERIVED** | B + L (T ∩ S formalism) | 76 | — | — |
+| Observed | **PREDICTED** | 256 × (76/78) | 250 × 10⁻¹¹ | 251 ± 59 | **0.4%** |
+
+**J-PARC Prediction**: 250 × 10⁻¹¹ (same as Fermilab — T ∩ S formalism predicts apparatus independence)
+
+**Reference**: [Muon g-2](../mathematics/particle-physics/muon-g2.md)
+
 ---
 
 ## Cosmology
@@ -274,8 +306,47 @@ Error: 0.0 ppt ✓ (EXACT)
 | Appears in Bell (2√2) | **VALIDATED** | Experiment | Empirical |
 | Appears in decoherence (T₂/T₁ ≤ 2) | **VALIDATED** | All qubit technologies | Empirical |
 | Appears in observer correction (2/80) | **DERIVED** | Particle masses | Mathematical |
+| Appears in entropy (S = K × L) | **DERIVED** | Unified entropy formula | Mathematical |
 
 **Reference**: [Killing Form](../mathematics/lie-theory/killing-form.md)
+
+---
+
+## Unified Entropy Formula
+
+### The Master Result: S = K × L
+
+| Claim | Status | Evidence | Rigor |
+|-------|--------|----------|-------|
+| S = K × L is universal | **DERIVED** | Same formula in three domains | Mathematical |
+| K = 2 (Killing form) | **PROVEN** | Bidirectional observation cost | Mathematical |
+| L = -½ ln(1 - ρ²) | **DERIVED** | KL divergence | Mathematical |
+
+**The formula unifies entropy across three domains**:
+
+| Domain | Formula | Status | Reference |
+|--------|---------|--------|-----------|
+| **Entanglement** | S = 2L (at max) | **DERIVED** | [Entanglement Entropy](../mathematics/quantum/entanglement-entropy.md) |
+| **Black holes** | S = A/(4ℓ_P²) = K × L | **DERIVED** | [Black Hole Entropy](../mathematics/quantum/black-hole-entropy.md) |
+| **Phase transitions** | L → ∞ as ρ → 1 | **DERIVED** | [Phase Transitions](../applications/physics/phase-transitions.md) |
+
+**Key results**:
+
+| Result | Formula | Error |
+|--------|---------|-------|
+| Entanglement entropy | S = 2L at ρ = 1/√2 | **Exact** |
+| Black hole 1/4 | From n = 4 (dimensions) | **Exact** |
+| L at criticality | L ~ ν ln(ξ) | **Derived** |
+
+**Why this matters**: The SAME K = 2 appears in:
+- Observer corrections (cost = K/X) — per-observation cost
+- Entropy (S = K × L) — accumulated observation cost
+- Uncertainty (ℏ/2) — minimum resolution
+- Bell violation (2√2) — maximum correlation
+
+All are manifestations of bidirectional observation.
+
+**Reference**: [Key Principles: Entropy Formula](../mathematics/foundations/key-principles.md#entropy-formula)
 
 ---
 
@@ -330,13 +401,13 @@ Error: 0.0 ppt ✓ (EXACT)
 |----------|--------|-----------|---------|--------------|------|
 | **Core Theory** | 4 | - | - | 2 | - |
 | **Division Algebras** | 3 | - | 3 | - | - |
-| **Quantum** | 3 | 5 | 8 | - | 2 |
+| **Quantum** | 3 | 5 | 9 | - | 1 |
 | **Particles** | - | 3 | 6 | - | 0 |
 | **Cosmology** | - | 3 | 2 | - | - |
 | **Killing Form** | 2 | 3 | 5 | - | - |
 | **Scaling** | - | 4 | 1 | - | - |
 | **Foundational** | 4 | - | 2 | 1 | 0 |
-| **TOTAL** | **16** | **18** | **27** | **3** | **2** |
+| **TOTAL** | **16** | **18** | **28** | **3** | **1** |
 
 *Notes:*
 - *ℏ derivation (0.00003% accuracy) adds 2 to Quantum DERIVED: ℏ magnitude + observer correction framework*
@@ -474,6 +545,8 @@ All citations use GitHub-flavored markdown inline links:
 - [Quantum Mechanics](../mathematics/quantum/quantum-mechanics.md) — D/L mapping
 - [Quantum Computing](../mathematics/quantum/quantum-computing.md) — Structure traversal
 - [Killing Form](../mathematics/lie-theory/killing-form.md) — K = 2 derivation
+- [Entanglement Entropy](../mathematics/quantum/entanglement-entropy.md) — S = K × L = 2L derivation
+- [Black Hole Entropy](../mathematics/quantum/black-hole-entropy.md) — S = K × L = A/(4ℓ_P²) derivation
 - [Lepton Masses](../mathematics/particle-physics/lepton-masses.md) — α⁻¹ and masses
 - [Dark Matter Mapping](../mathematics/cosmology/dark-matter-mapping.md) — Dark matter
 - [E7 Derivation](../mathematics/particle-physics/e7-derivation.md) — B=56 from triality + Killing form

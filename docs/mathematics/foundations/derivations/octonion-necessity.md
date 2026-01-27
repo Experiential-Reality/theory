@@ -14,6 +14,16 @@ used_by:
   - ../../../meta/proof-status.md
 ---
 
+## Summary
+
+**Why octonions (and SU(3)) are logically necessary:**
+
+1. Genesis function closure requires a division algebra — [The Genesis Function Closure Requirement](#2-the-genesis-function-closure-requirement)
+2. Quaternions fail: Aut(H) = SO(3) supports only 6 modes, not 56 — [The Richness Requirement: Why Quaternions Fail](#3-the-richness-requirement-why-quaternions-fail)
+3. Octonions succeed: G2 in Spin(8) supports exactly B=56 — [Octonion Success](#4-octonion-success)
+4. Reference fixing yields SU(3) as stabilizer in G2 — [Deriving SU(3) Color Symmetry](#5-deriving-su3-color-symmetry)
+5. Stable self-reference requires 3-fold symmetry (triality) — [The Triality Requirement](#7-the-triality-requirement)
+
 # Octonion Necessity: Why SU(3) is Derived, Not Observed
 
 ## Abstract

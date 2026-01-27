@@ -27,29 +27,26 @@ used_by:
 
 > **Status**: Exploratory (framework developed, validation tests needed)
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Quantum Mechanics through BLD in 7 steps:**
+**BLD analysis of quantum mechanics:**
 
-1. Measurement is the fundamental B in QM: before measurement, system is in superposition; after measurement, it collapses to eigenstate — this boundary is D-invariant (same for 2 or 200 qubits)
-2. Entanglement is the fundamental L: for bipartite systems, product states have L=0, entangled states have L>0 — testable hypothesis: L = -1/2 ln(1-rho^2) may apply to quantum correlations
-3. Hilbert dimension is D: for N qubits, dim(H) = 2^N — exponential growth explains quantum computing's potential
-4. D×L scaling hypothesis: total entanglement capacity scales as N(N-1)/2 pairs times ln(2) max entanglement per pair
-5. Spin-statistics (fermion/boson) is a fundamental B: half-integer spin obeys Pauli exclusion, integer spin doesn't — topological, D-invariant
-6. Quantum error correction may be L compensation: entanglement (L) protects against decoherence (soft B) through redundant encoding
-7. GHZ vs W states show different B/L tradeoffs: GHZ has global B (all-or-nothing correlation), W has distributed L (robust to particle loss)
+1. Measurement = B: superposition → eigenstate, D-invariant (same for any N) — [Three Questions](#q1-where-does-behavior-partition-finding-b)
+2. Entanglement = L: product states L=0, entangled L>0; hypothesis: L = -½ ln(1-ρ²) — [Finding L](#q2-what-connects-finding-l)
+3. Hilbert dimension = D: dim(H) = 2^N for N qubits — [Finding D](#q3-what-repeats-finding-d)
+4. D×L scaling: entanglement capacity ~ N(N-1)/2 × ln(2) — [D×L Scaling](#dl-scaling-in-qm)
+5. Error correction = L→B compensation: entanglement protects against decoherence — [Compensation Principle](#compensation-principle-in-qm)
+6. Limits: BLD doesn't explain ℏ, Born rule, or why complex amplitudes — [Not Explained](#what-bld-does-not-explain-in-qm)
 
 | Component | BLD | Description |
 |-----------|-----|-------------|
-| Measurement / collapse | B | Topological boundary — superposition to eigenstate |
-| Entanglement S(rho_A) | L | Quantum correlation — geometric coupling |
-| Qubit count N | D | Repetition — Hilbert space dimension = 2^N |
-
-Quantum mechanics is assumed throughout the physics-traverser but never derived from BLD. This document applies the three questions to QM foundations.
+| Measurement / collapse | B | Topological — superposition to eigenstate |
+| Entanglement S(ρ_A) | L | Quantum correlation |
+| Qubit count N | D | Hilbert space dimension = 2^N |
 
 ---
 
-## Summary
+## Conclusion
 
 | Finding | Status | Evidence |
 |---------|--------|----------|
@@ -182,7 +179,7 @@ Measurement boundary (B) is the same for 2 qubits or 200 qubits — collapse hap
 
 ---
 
-## D×L Scaling in QM
+## D×L Scaling in QM {#dl-scaling-in-qm}
 
 ### The Claim
 

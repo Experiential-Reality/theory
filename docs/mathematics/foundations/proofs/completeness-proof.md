@@ -10,6 +10,16 @@ used_by:
   - ../../../meta/proof-status.md
 ---
 
+## Summary
+
+**Proof that B, L, D are sufficient for all observable structure:**
+
+1. Lie theory route: all continuous symmetry systems map to BLD — [Proof Route 1: Lie Theory Universality](#2-proof-route-1-lie-theory-universality)
+2. Computational route: all computable types map to BLD — [Proof Route 2: Computational Universality](#3-proof-route-2-computational-universality)
+3. No fourth primitive has been found or is needed — [Why No Fourth Primitive?](#5-why-no-fourth-primitive)
+4. BLD is the unique minimal complete basis — [Implications](#7-implications)
+5. Empirical validation: alpha^-1 at 0.0 ppt, all masses derived — [Empirical Validation](#75-empirical-validation)
+
 # Completeness Proof: B/L/D Are Sufficient
 
 ## Abstract

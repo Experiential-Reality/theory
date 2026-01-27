@@ -19,23 +19,21 @@ used_by:
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Boson masses in 7 steps:**
+**Electroweak boson masses derived (within measurement uncertainty):**
 
-1. **v = 246 GeV** — Higgs VEV (reference scale)
-2. **Higgs**: m_H = (v/K)(1 + 1/B) — Killing form × boundary quantum
-3. **Z**: m_Z = (v/e)(137/136)(1 - K/B²) — continuous limit × α⁻¹ structure
-4. **W**: m_W = m_Z × cos(θ_W) × (209/208) × (1 + 1/6452) — mixing × generation
-5. **sin²(θ_W) = 3/S = 3/13** — weak mixing from structural intervals
-6. **W mirrors muon** — both use n²S and 6452, opposite signs
-7. **All within measurement uncertainty** — observer corrections zero out
+1. Higgs: m_H = (v/K)(1 + 1/B) = 125.31 GeV — [Higgs Mass](#the-higgs-mass-derived)
+2. Z: m_Z = (v/e)(137/136)(1 − K/B²) = 91.187 GeV — [Z Mass](#the-z-boson-mass-derived)
+3. W: m_W = m_Z × cos(θ_W) × corrections = 80.373 GeV — [W Mass](#the-w-boson-mass-derived)
+4. sin²(θ_W) = 3/S = 3/13 = 0.231 — [Weak Mixing](#the-weak-mixing-angle-derived)
+5. W mirrors muon structure (n²S and 6452) — [Consistency](#consistency-with-lepton-masses)
 
-| Boson | Formula | Predicted | Observed | Δ (MeV) | Uncertainty |
-|-------|---------|-----------|----------|---------|-------------|
-| H | (v/K)(1+1/B) | 125.31 GeV | 125.25 GeV | 58 | 170 MeV ✓ |
-| Z | (v/e)(137/136)(1-K/B²) | 91.187 GeV | 91.188 GeV | 0.5 | 2.1 MeV ✓ |
-| W | m_Z×cos(θ)×(209/208)×(1+1/6452) | 80.373 GeV | 80.377 GeV | 3.7 | 12 MeV ✓ |
+| Boson | Predicted | Observed | Δ | Uncertainty |
+|-------|-----------|----------|---|-------------|
+| H | 125.31 GeV | 125.25 GeV | 58 MeV | 170 MeV ✓ |
+| Z | 91.187 GeV | 91.188 GeV | 0.5 MeV | 2.1 MeV ✓ |
+| W | 80.373 GeV | 80.377 GeV | 3.7 MeV | 12 MeV ✓ |
 
 ---
 
@@ -67,7 +65,7 @@ See [Integer Machine](../foundations/machine/integer-machine.md) for the complet
 
 **Observed**: m_H = [125.25 ± 0.17 GeV](https://pdg.lbl.gov/2024/listings/rpp2024-list-higgs-boson.pdf) (PDG 2024, ATLAS+CMS combined)
 
-### The Formula
+### The Formula: Higgs Mass
 
 ```
 m_H = (v/K) × (1 + 1/B)
@@ -96,7 +94,7 @@ The Higgs field breaks electroweak symmetry in **one direction** (unidirectional
 
 **Observed**: m_Z = [91.1876 ± 0.0021 GeV](https://pdg.lbl.gov/2024/listings/rpp2024-list-z-boson.pdf) (PDG 2024)
 
-### The Formula
+### The Formula: Z Boson
 
 ```
 m_Z = (v/e) × ((n×L+B+1)/(n×L+B)) × (1 - K/B²)
@@ -133,7 +131,7 @@ e = lim_{B→∞} (1 + 1/B)^B
 
 **Observed**: m_W = [80.377 ± 0.012 GeV](https://pdg.lbl.gov/2024/listings/rpp2024-list-w-boson.pdf) (PDG 2024)
 
-### The Formula
+### The Formula: W Boson
 
 ```
 m_W = m_Z × cos(θ_W) × ((n²S+1)/(n²S)) × (1 + 1/((n×L)²+n×S))

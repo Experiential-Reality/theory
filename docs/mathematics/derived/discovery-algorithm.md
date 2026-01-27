@@ -6,24 +6,23 @@ depends_on:
 
 # The BLD Discovery Algorithm
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Discovering BLD structure in 7 steps:**
+**Algorithm for discovering BLD structure in any system:**
 
-1. **Input any system** — Algorithm applies to code, data, neural nets, or physics
-2. **Find partitions → B** — Where does behavior change based on value? (if/switch/match)
-3. **Find connections → L** — What affects what? (pointers, calls, correlations, forces)
-4. **Find repetitions → D** — What repeats? (loops, arrays, particles, dimensions)
-5. **Output BLD structure** — Configuration equivalent to a Lie algebra
-6. **Properties hold** — Complete (every system has BLD), non-unique (multiple valid representations)
-7. **Polynomial time** — O(n+e) for code, O(n·d²) for data
+1. Input any system (code, data, neural nets, physics) — [Abstract Algorithm](#abstract-algorithm)
+2. Find partitions → B (if/switch/match) — [Schema](#the-schema)
+3. Find connections → L (pointers, calls, forces) — [Domain Instantiations](#domain-instantiations)
+4. Find repetitions → D (loops, arrays, dimensions) — [Domain Instantiations](#domain-instantiations)
+5. Output = Lie algebra configuration — [Connection to Lie](#connection-to-lie-theory)
+6. Complete (every system has BLD), non-unique, polynomial time — [Properties](#properties)
 
 | Domain | Find B | Find L | Find D | Complexity |
 |--------|--------|--------|--------|------------|
-| Code (AST) | if/switch nodes | pointers/calls | for/while loops | O(n+e) |
-| Data | Clusters/modes | Correlations | Data shape | O(n·d²) |
-| Neural nets | Activations | Weights | Tensor dims | O(params) |
-| Physics | Phase transitions | Forces | Degrees of freedom | O(n²) |
+| Code (AST) | if/switch | pointers/calls | for/while | O(n+e) |
+| Data | Clusters | Correlations | Shape | O(n·d²) |
+| Neural nets | Activations | Weights | Tensors | O(params) |
+| Physics | Phase transitions | Forces | DOF | O(n²) |
 
 > **Status**: Foundational
 
@@ -434,7 +433,7 @@ See [Constructive Lie](../lie-theory/constructive-lie.md) for the mathematical c
 
 ---
 
-## Summary
+## Conclusion
 
 ```
 ┌─────────────────────────────────────────────────────────────┐

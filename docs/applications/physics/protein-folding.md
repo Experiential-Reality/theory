@@ -19,17 +19,17 @@ used_by:
 
 > **Epistemic Note**: This document provides a BLD **framework** for understanding protein folding, but contains no validated predictions. The claims are consistent with known protein physics but do not derive new results. Specific predictions (folding rate scaling, chaperone effects) need experimental validation. See [Epistemic Honesty](../../meta/epistemic-honesty.md).
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Protein Folding through BLD in 7 steps:**
+**Protein Folding as BLD Alignment:**
 
-1. Protein folding is structural alignment between sequence (algorithm) and physics (traverser) — cost = free energy, alignment = stability
-2. Sequence boundaries (B) include disorder regions, conformational switches, and anchor sites; physics boundaries include hydrophobic interface, steric exclusion, and Ramachandran regions
-3. Sequence links (L) are backbone connectivity, disulfides, H-bond potential; physics links are collapse pathways, H-bond formation, nucleation
-4. Dimensions (D) count residues, repeats, hydrophobic clusters (sequence) and 3D space, phi/psi angles, thermal fluctuations (physics)
-5. Folding is fast (Levinthal resolved) because alignment is LOCAL: each exposed hydrophobic or unsatisfied H-bond feels immediate cost gradient — gradient descent, not random search
-6. Prions demonstrate two traversers: PrP^Sc template provides better alignment than aqueous physics alone, making conversion thermodynamically favored
-7. The alpha-helix demonstrates angular compensation (pi mechanism): 3.6 residues per turn closes rotationally at 2*pi while extending linearly along axis
+1. Folding = structural alignment between sequence and physics — [The Claim](#the-claim)
+2. Sequence B: disorder regions, conformational switches; Physics B: hydrophobic interface, Ramachandran — [Algorithm](#the-algorithm-prp-sequence-structure) / [Traverser](#the-traverser-physics)
+3. Sequence L: backbone, disulfides, H-bond potential; Physics L: collapse pathways, nucleation — [Algorithm](#the-algorithm-prp-sequence-structure) / [Traverser](#the-traverser-physics)
+4. Sequence D: residues, repeats; Physics D: 3D space, phi/psi angles — [Algorithm](#the-algorithm-prp-sequence-structure) / [Traverser](#the-traverser-physics)
+5. Folding is fast (Levinthal resolved) — alignment is LOCAL, gradient descent not search — [Why Folding is Fast](#why-folding-is-fast-levinthal-resolved)
+6. Prions: template provides better traverser than physics alone — [Template Conversion](#the-template-conversion-process)
+7. α-helix: angular compensation, 3.6 residues per turn closes at 2π — [Lie Theory](#the-lie-theory-connection)
 
 | Component | BLD | Description |
 |-----------|-----|-------------|
@@ -501,7 +501,7 @@ See [Lie Correspondence](../../mathematics/lie-theory/lie-correspondence.md) and
 
 ---
 
-## Summary
+## Conclusion
 
 Protein folding in three primitives:
 

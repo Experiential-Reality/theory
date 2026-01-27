@@ -11,23 +11,20 @@ used_by:
 
 # σ₈ Tension Resolution from K/X
 
-## Quick Summary
+## Summary
 
-**The σ₈ tension is not a tension — it's K/X observation cost.**
+**σ₈ tension resolved via K/X observation cost:**
 
-```
-σ₈(primordial) = L/(n+L) = 20/24 = 0.8333
+1. Primordial value σ₈ = L/(n+L) = 20/24 = 0.8333 (link density) — [The Primordial Value](#the-primordial-value)
+2. CMB correction: σ₈(CMB) = 0.8333 × (1 - K/(n×L)) = 0.812 — [CMB Correction](#cmb-correction)
+3. Local correction: σ₈(local) = 0.812 × (1 - K/(2L)) = 0.77 — [Local Correction](#local-correction)
+4. Same physics as Hubble tension, opposite sign (observation smooths structure) — [Comparison with Hubble](#comparison-with-hubble-tension)
+5. Both CMB and local are correct — they measure with different K/X costs — [Implications](#implications)
 
-σ₈(CMB)   = σ₈(primordial) × (1 - K/(n×L)) = 0.812
-σ₈(local) = σ₈(CMB) × (1 - K/(2L))         = 0.77
-```
-
-| Measurement | Predicted | Observed |
-|-------------|-----------|----------|
-| CMB (Planck) | 0.812 | 0.811 ± 0.006 |
-| Local (lensing) | 0.77 | ~0.77 |
-
-**The "discrepancy" is the same K/X observation cost that explains Hubble tension.**
+| Measurement | Predicted | Observed | Error |
+|-------------|-----------|----------|-------|
+| CMB (Planck) | 0.812 | 0.811 ± 0.006 | **0.1%** |
+| Local (lensing) | 0.77 | ~0.77 | **~0%** |
 
 ---
 
@@ -166,7 +163,7 @@ Any measurement of σ₈ should show consistent K/X corrections based on what st
 
 ---
 
-## Summary
+## Conclusion
 
 ```
 The σ₈ tension = K/X observation cost

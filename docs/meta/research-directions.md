@@ -12,17 +12,16 @@ Open research directions for extending BLD.
 
 **Update**: The physics traverser analysis has been conducted. See [Physics Traverser](../examples/physics-traverser.md) for full details.
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Research Directions in 7 steps:**
+**Active research directions for BLD:**
 
-1. **Validated Methodology** — BLD's three questions discover axioms (not assert them); e derivation proved the method works
-2. **Physics Traverser Success** — Applying BLD to "What is physics?" derived 20 axioms (P1-P20) covering gauge structure, generations, masses, and cosmology
-3. **Key Discoveries** — Triality explains 3 generations (P9), topological closure solves Strong CP (P10), S3 breaking creates mass hierarchy (P11)
-4. **Extended Axioms P14-P20** — Coupling unification, gravity as boundary, EW scale, neutrino mass, baryogenesis, inflation, and QFT axioms all derived
-5. **What Remains Open** — Specific numerical values (masses, angles, Lambda) require computing S3 breaking potentials
-6. **Other Directions** — Exceptional Lie algebras, BLD beyond Lie theory, consciousness and the traverser
-7. **Overall Assessment** — Highly successful: methodology derives fundamental structure; only specific numerical values remain undetermined
+1. Validated methodology: three questions discover axioms — [Validated Methodology](#validated-methodology)
+2. Physics traverser: 20 axioms (P1-P20) derived — [Physics Traverser](#the-physics-traverser-deriving-the-standard-model)
+3. Key discoveries: triality (P9), topological closure (P10), S₃ breaking (P11) — [Triality](#the-triality-discovery)
+4. Extended axioms P14-P20: unification, gravity, neutrinos, inflation — [Extended Axioms](#extended-axioms-p14-p20)
+5. Exceptional algebras resolved: G₂, F₄, E₆, E₇, E₈ all have BLD formulas — [Exceptionals](#exceptional-lie-algebras-in-bld--resolved)
+6. Remaining open: specific numerical values require S₃ potential computation — [Success Criteria](#success-criteria--assessment)
 
 ---
 

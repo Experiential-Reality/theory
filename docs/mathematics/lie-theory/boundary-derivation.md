@@ -7,23 +7,21 @@ depends_on:
 
 # Boundary Cost Derivation
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Boundary cost formula in 7 steps:**
+**Boundary cost formula derivation:**
 
-1. **Exact formula** — B = ½ log(1 + d²_Mahal) from Killing form + volume on SPD(d)
-2. **Two traversers** — Entropy regime (optimal Q) vs Mahalanobis regime (fixed Q)
-3. **Alignment factor g(ρ,θ)** — g = (1 - ρ sin(2θ))/(1 - ρ²); perpendicular modes cost more
-4. **α exponent varies** — α(ρ) captures transition from flat (α≈1) to curved (α≈2) geometry
-5. **Curvature drives α** — Gaussian curvature K = -1/(2(1-ρ²)²) diverges as ρ→1
-6. **Simplified formula** — B ≈ a·sep²·g^α valid in regime sep ∈ [1.5, 5.0] with <5% error
-7. **Dimension-independent** — B(d=16)/B(d=2) = 1.03 (topological, not geometric)
+1. Exact formula: B = ½ log(1 + d²_Mahal) from Killing form + volume — [Exact Formula](#the-exact-formula-from-lie-theory)
+2. Two traversers: entropy (optimal Q) vs Mahalanobis (fixed Q) — [Two Traversers](#the-two-traversers)
+3. Alignment factor g(ρ,θ) = (1-ρ sin(2θ))/(1-ρ²) — [Alignment Factor](#the-alignment-factor-exact-theorem)
+4. α(ρ) from Gaussian curvature K = -1/(2(1-ρ²)²) — [α Exponent](#the-α-exponent-analytical-derivation)
+5. Simplified: B ≈ a·sep²·g^α (regime-specific, <5% error) — [Complete Formula](#complete-b-formula)
+6. Dimension-independent: B(d=16)/B(d=2) = 1.03 — [Validation](#validation)
 
 | Aspect | L (Link) | B (Boundary) |
 |--------|----------|--------------|
 | Exact formula | L = -½ ln(1 - ρ²) | B = ½ log(1 + d²_Mahal) |
 | Origin | KL divergence | Killing form + volume |
-| Parameters | 1 (ρ) | 1 (d²_Mahal) |
 | Status | **EXACT** | **EXACT** |
 
 > **Status**: Validated

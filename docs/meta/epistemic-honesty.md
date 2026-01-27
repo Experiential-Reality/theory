@@ -8,17 +8,21 @@ status: FOUNDATIONAL
 
 This document defines standards for intellectual honesty in BLD physics documentation — distinguishing what is derived vs reframed, what is prediction vs explanation, and what is validated vs hypothesized.
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Epistemic Honesty in 7 steps:**
+**Standards for intellectual honesty in BLD physics:**
 
-1. **Derivation vs Reframing** — Derivation produces results not assumed as input; Reframing expresses known physics in BLD language (both valuable, but different)
-2. **Novel vs Post-Hoc** — Novel predictions precede observation (stronger); Post-hoc explanations follow observation (weaker but useful)
-3. **Six Levels** — VALIDATED (empirical tests), DERIVED (mathematical), REFRAMING (organizational), MECHANISM (structure known, values TBD), HYPOTHESIS (conjectural), EXPLORATORY (early-stage)
-4. **Marking Requirements** — Every claim needs epistemic level, summary table, "What BLD Does NOT Explain", and "Falsifiable Predictions" sections
-5. **Detecting Post-Hoc Fitting** — Warning signs: multiple valid mappings, retroactive selection, no falsification criterion, vague boundaries
-6. **Status Updates** — Upgrade on test pass or new derivation; Revise on test fail; Note alternatives when discovered
-7. **Goal: Accurate Representation** — Not to minimize claims, but to honestly distinguish what is known, derived, hypothesized, and unknown
+1. Derivation vs Reframing: derivation produces results not assumed; reframing organizes known physics — [Core Distinction](#the-core-distinction)
+2. Novel vs Post-Hoc: predictions before observation (stronger) vs explanations after (weaker) — [Novel vs Post-Hoc](#novel-prediction-vs-post-hoc-explanation)
+3. Six levels: VALIDATED, DERIVED, REFRAMING, MECHANISM, HYPOTHESIS, EXPLORATORY — [Classification](#classification-scheme)
+4. Required sections: status header, summary table, "What BLD Does NOT Explain", "Falsifiable Predictions" — [Marking Requirements](#marking-requirements)
+5. Detecting post-hoc fitting: multiple mappings, retroactive selection, no falsification — [Warning Signs](#warning-signs)
+6. Status updates: upgrade on test pass, revise on fail, note alternatives — [When to Update](#when-to-update-status)
+
+| Category | Definition | Test |
+|----------|------------|------|
+| Derivation | Result not assumed as input | Could you predict without knowing physics? |
+| Reframing | Known physics in BLD language | Organizational value, not predictive novelty |
 
 ---
 
@@ -139,7 +143,7 @@ Every new physics document MUST include:
 
 ---
 
-## Summary
+## Conclusion
 
 | Finding | Status | Evidence |
 |---------|--------|----------|

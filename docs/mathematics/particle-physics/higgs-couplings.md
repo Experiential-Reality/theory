@@ -17,25 +17,22 @@ prediction_date: 2026-01-22
 
 ---
 
-## Quick Summary (D~7 Human Traversal)
+## Summary
 
-**All Higgs couplings in 7 steps:**
+**Higgs coupling predictions from detection structure:**
 
-1. **κ(structural) = 1 exactly** — No BSM physics in Higgs sector
-2. **κ(observed) = 1 + K/X** — Detection adds observer correction
-3. **K = 2 always** — Killing form (bidirectional observation)
-4. **X = detection structure** — What the detector physically measures
-5. **EM detection → X = B = 56** — Photons, leptons via ionization
-6. **Hadronic detection → X = n+L = 24** — Jets via nuclear showers
-7. **Neutrino escape → add L = 20** — Information leaves undetected
+1. κ(structural) = 1 exactly — No BSM physics needed — [Core Principle](#the-core-principle)
+2. κ(observed) = 1 + K/X — Detection adds observer correction — [Detection Analysis](#detection-structure-analysis)
+3. EM detection → X = B = 56 → κ = 1.036 — [Complete Predictions](#complete-κ-predictions)
+4. Hadronic detection → X = n+L = 24 → κ = 1.083 — [Hadronic Prediction](#the-hadronic-prediction-κ_b--1083)
+5. Neutrino escape → +L = 20 — [Neutrino Rule](#the-neutrino-rule)
+6. ATLAS κ_V = 1.035±0.031 falls within BLD [1.026, 1.036] — [Validation](#experimental-validation)
 
 | Detection Type | X Value | κ predicted |
 |----------------|---------|-------------|
 | EM only | B = 56 | **1.036** |
 | Hadronic only | n+L = 24 | **1.083** |
 | EM + Hadronic | B+(n+L) = 80 | **1.025** |
-
-**Key validation**: ATLAS κ_V = **1.035 ± 0.031** falls within BLD range [1.026, 1.036].
 
 ---
 
@@ -388,7 +385,7 @@ As precision improves to ~2%, BLD predicts:
 
 ---
 
-## The Hadronic Prediction: κ_b = 1.083
+## The Hadronic Prediction: κ_b = 1.083 {#the-hadronic-prediction-κ_b--1083}
 
 This is the **most distinctive prediction**:
 
@@ -556,7 +553,7 @@ If BLD is correct, then:
 
 ---
 
-## Summary
+## Conclusion
 
 ```
 THE BLD PREDICTION FOR HIGGS COUPLINGS

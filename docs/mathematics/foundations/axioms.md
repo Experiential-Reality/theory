@@ -10,6 +10,16 @@ used_by:
   - constants.md
 ---
 
+## Summary
+
+**The seven axioms that ground BLD theory:**
+
+1. Three existence axioms (A1-A3) establish B, L, D as primitives — [Existence Axioms](#existence-axioms)
+2. Three closure axioms (A4-A6) ensure structural operations are well-defined — [Closure Axioms](#closure-axioms)
+3. The genesis axiom (A7) grounds the system in logical necessity — [Genesis Axiom](#genesis-axiom)
+4. Derived principles include irreducibility, completeness, and observation cost — [Derived Principles](#4-derived-principles)
+5. The axiom system is proven consistent and independent — [Consistency](#5-consistency), [Independence](#6-independence)
+
 # Axioms of BLD Theory
 
 ## Abstract

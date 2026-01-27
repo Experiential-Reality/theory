@@ -15,27 +15,27 @@ used_by:
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**The reference scale in 7 steps:**
+**v derived as fixed point of self-observation:**
 
-1. **Two-reference principle** — Machine + Structure must agree at solution
-2. **Self-observation** — Structure observes itself (traverse(-B, B))
-3. **Fixed point emerges** — Where observer capacity = observable modes
-4. **B = 56 modes** — Total boundary structure from triality
-5. **K = 2 cost** — Each observation pays Killing form cost
-6. **Capacity = B - K = 54** — Available after observation cost
-7. **v = scale where gap = K** — The irreducible observation remainder
+1. Two-reference principle: Machine + Structure must agree — [The Fixed Point Condition](#12-the-fixed-point-condition)
+2. Self-observation: traverse(-B, B) requires a scale — [Self-Observation Requirement](#1-the-self-observation-requirement)
+3. Capacity = B - K = 56 - 2 = 54 usable modes — [Net Capacity](#22-net-capacity)
+4. Gap = K = 2 (irreducible observation cost) — [The Gap](#23-the-gap)
+5. Cascade exponent n_c = B/2 - K = 26 steps — [Why 26 Steps](#31-why-26-steps)
+6. v = M_P × λ²⁶ × corrections — inverse cascade — [Verification](#6-verification)
+7. Zero free parameters: all from BLD — [Mutual Determination](#53-the-complete-mutual-determination)
 
 | Component | Value | Role |
 |-----------|-------|------|
 | B | 56 | Total modes |
 | K | 2 | Observation cost |
 | B - K | 54 | Usable capacity |
-| Gap | K = 2 | Irreducible remainder |
-| v | Fixed point | Where gap = observation cost |
+| n_c | 26 | Cascade exponent |
+| v | Fixed point | Where self-observation balances |
 
-**Key insight**: v is not arbitrary — it's where self-observation exactly balances.
+**v is derived, not empirical.**
 
 ---
 

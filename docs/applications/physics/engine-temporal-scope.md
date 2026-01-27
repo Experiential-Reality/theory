@@ -14,22 +14,20 @@ used_by:
 
 > **When hardware engines overlap, costs combine as max() not sum().**
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Engine Temporal Scope in 7 steps:**
+**When hardware engines overlap, costs combine as max() not sum():**
 
-1. GPU hardware has multiple execution engines (memory, compute, copy) that can operate in parallel — naive cost models summing all costs overpredict by 2x
-2. The key insight: when engines overlap, use max() not sum() for cost aggregation — overlapping engines complete simultaneously
-3. Engine overlap has an efficiency factor (0.22 on Intel Xe) capturing resource contention when engines compete for registers, instruction bandwidth, or cache
-4. Sustained compute rate differs from peak rate: compute_independent is ~484 GFLOPS, but overlapping with memory drops to ~105 GFLOPS (22% efficiency)
-5. Sqrt cache efficiency models tiled access patterns: cache_efficiency = sqrt(L2_size / working_set) — better than linear model for GEMM-style algorithms
-6. TraverserLink gains an "engine" field to classify links by hardware engine; Traverser gains "engine_overlap" to declare parallel execution relationships
-7. These three concepts together achieve <20% prediction error on GEMM across sizes from 256×256 to 4096×4096
+1. GPU has multiple engines (memory, compute, copy) operating in parallel — naive sum overpredicts 2x — [Engine Temporal Scope](#1-engine-temporal-scope)
+2. When engines overlap: use max() not sum() for cost aggregation — [Engine Temporal Scope](#1-engine-temporal-scope)
+3. Overlap efficiency (0.22 on Intel Xe): resource contention when engines compete — [Sustained Compute Rate](#2-sustained-compute-rate-via-overlap-efficiency)
+4. Sqrt cache efficiency models tiled access: √(L2_size/working_set) — [Sqrt Cache Efficiency](#3-sqrt-cache-efficiency)
+5. Together achieves <20% prediction error on GEMM (256×256 to 4096×4096) — [Validation Results](#validation-results)
 
 | Component | BLD | Description |
 |-----------|-----|-------------|
-| Cache boundary | B | Topological threshold — behavior changes at L2 size |
-| Memory/compute rates | L | Geometric coupling — ns_per_access values |
+| Cache boundary | B | Topological threshold at L2 size |
+| Memory/compute rates | L | Geometric coupling — ns_per_access |
 | Engine overlap efficiency | L | Scaling factor for parallel execution |
 | Block count / workgroups | D | Repetition — multiplies link costs |
 
@@ -43,7 +41,7 @@ This document describes three interrelated concepts that emerged from achieving 
 
 ## 1. Engine Temporal Scope
 
-### The Problem
+### The Problem: Overlapping Engines
 
 GPU hardware has multiple execution engines:
 - **Memory Engine** - handles global/shared memory loads and stores
@@ -108,7 +106,7 @@ else:
 
 ## 2. Sustained Compute Rate (via Overlap Efficiency)
 
-### The Problem
+### The Problem: Resource Contention
 
 When memory and compute engines overlap, they compete for shared resources:
 - Register file ports
@@ -157,7 +155,7 @@ This unifies the old "sustained rate" link with the engine overlap model—one c
 
 ## 3. Sqrt Cache Efficiency
 
-### The Problem
+### The Problem: Cache Miss Prediction
 
 For algorithms with working sets larger than L2 cache, we need to model cache efficiency. Linear models are too pessimistic:
 

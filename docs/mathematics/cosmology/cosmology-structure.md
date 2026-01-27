@@ -13,17 +13,15 @@ The L/D = 5 ratio follows from Lie theory; mapping to dark matter is conjectured
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Cosmological L/D ratio in 7 steps:**
+**L/D = 5 ratio derivation (dark matter mapping conjectured):**
 
-1. **D = 4** — spacetime dimensions (given)
-2. **L = 20** — Riemann tensor independent components: n²(n²-1)/12 = 20
-3. **L/D = 5** — geometry has 5× more degrees of freedom than dimensions
-4. **L ≠ D** — BLD irreducibility: links not reducible to dimensions
-5. **Weyl tensor** — 10 components unconstrained by local matter
-6. **Weyl = L without D source** — pure geometric structure exists
-7. **Dark matter conjecture** — some gravitational L has no D source
+1. D = 4: spacetime dimensions — [Core Derivation](#the-core-derivation-derived)
+2. L = 20: Riemann tensor n²(n²-1)/12 — [Degrees of Freedom](#step-3-degrees-of-freedom-in-4d-spacetime-derived)
+3. L/D = 5: geometry has 5× dimensions' degrees of freedom — [Core Derivation](#the-core-derivation-derived)
+4. Weyl tensor (10 components): unconstrained by local matter — [Independence Theorem](#the-independence-theorem-derived)
+5. Conjecture: D=matter, L=dark matter, B=dark energy — [Dark Matter Mapping](dark-matter-mapping.md)
 
 | Component | Count | Status |
 |-----------|-------|--------|
@@ -119,7 +117,7 @@ This document establishes:
 This document does NOT establish:
 - That dark matter IS geometric L `[CONJECTURED]`
 - That the 25%/27% ratio follows `[EMPIRICAL]`
-- That the observer correction is valid `[EMPIRICAL]`
+- That the observer correction applies here `[CONJECTURED]` (formula K/(D×L) is derived from Cost = B + D×L, see [Killing Form](../lie-theory/killing-form.md#why-2nxl-derived-from-cost-formula))
 
 See [Dark Matter Mapping](dark-matter-mapping.md) for the conjectured application.
 

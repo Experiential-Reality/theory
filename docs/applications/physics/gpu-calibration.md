@@ -17,23 +17,21 @@ used_by:
 
 > **Status**: Validated (NVIDIA RTX 3090: 8/10 tests, 18.6% avg error)
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**GPU Calibration through BLD in 7 steps:**
+**GPU calibration through BLD structure:**
 
-1. GPU performance prediction requires measuring burst vs sustained rates: burst rates include startup overhead, sustained rates (4-5x better) reflect real workload throughput
-2. Cold vs warm dispatch is critical: first dispatch ~2.1ms, subsequent ~1.2ms — use warm for benchmarks, cold for single-operation predictions
-3. Cache boundary at L2 size (4MB) creates a hardware boundary (B): working sets near cache size thrash, causing 3.3x cost multiplier at 100% capacity
-4. Memory startup overhead (3.38 us) is a boundary crossing cost — transitioning from idle to active memory access has fixed overhead
-5. Engine overlap efficiency (22% on Intel Xe) captures resource contention when memory and compute compete for shared resources
-6. The cost model is non-linear: Cost != SUM(primitive_costs), but depends on resource utilization, cache state, and occupancy
-7. GPU traverser structure IS a Lie algebra: compute units = generators (D), memory patterns = structure constants (L), cache boundaries = group topology (B)
+1. Burst vs sustained rates: burst includes startup, sustained 4-5x better — [Model Components](#model-components)
+2. Cold vs warm dispatch: first ~2.1ms, subsequent ~1.2ms — [Key Insight](#key-insight-cold-vs-warm-dispatch)
+3. Cache boundary at L2 (4MB): working sets near cache size thrash (3.3x multiplier) — [Model Components](#model-components)
+4. Engine overlap efficiency (22% on Intel Xe): compute runs at 22% during memory activity — [Model Components](#model-components)
+5. GPU traverser IS a Lie algebra: compute units = D, memory patterns = L, cache boundaries = B — [Connection to Lie Theory](#connection-to-lie-theory)
 
 | Component | BLD | Description |
 |-----------|-----|-------------|
-| L2 cache boundary | B | Topological threshold — cached vs uncached behavior |
-| ns_per_access rates | L | Geometric coupling — measured per access pattern |
-| Dispatch overhead | B | Boundary crossing cost — cold vs warm state |
+| L2 cache boundary | B | Topological threshold — cached vs uncached |
+| ns_per_access rates | L | Geometric coupling per access pattern |
+| Dispatch overhead | B | Boundary crossing — cold vs warm state |
 | Block/workgroup count | D | Repetition — determines total link cost |
 
 ## Multi-GPU Support

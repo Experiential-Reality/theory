@@ -8,17 +8,17 @@ depends_on:
 
 # Constructive Lie Theory: From BLD to Homomorphisms
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**BLD = Lie homomorphisms in 7 steps:**
+**Constructive Lie Theory:**
 
-1. **Three questions → Lie components** — Partitions→topology, connections→structure constants, repetitions→generators
-2. **Completeness** — Every system has BLD representation (at minimum: ∅, ∅, {point})
-3. **Alignment = homomorphism** — Map φ: S₁→S₂ preserving generators, structure, topology
-4. **Perfect alignment** — When φ is isomorphism, cost = 0 (no obstruction)
-5. **Cost = obstruction** — cost(S₁,S₂) = lost dimensions + structure violation + topology mismatch
-6. **Representation theory applies** — Reducible (parallelizable) vs irreducible (serial) structures
-7. **Examples work** — GPU (threads→SIMD), VI (correlations→variational family), neural nets (data→network)
+1. Three questions → Lie components — [Why BLD Produces Lie Structures](#why-bld-produces-lie-structures)
+2. Every system has BLD representation — [Completeness](#why-completeness)
+3. Alignment = Lie homomorphism — [Definition](#definition)
+4. Perfect alignment = isomorphism, cost = 0 — [Perfect Alignment](#perfect-alignment)
+5. Cost = obstruction (lost D + L violation + B mismatch) — [Cost Decomposition](#cost-decomposition)
+6. Representation theory applies — [Relationship to Representation Theory](#relationship-to-representation-theory)
+7. Examples: GPU, VI, neural nets — [Examples](#examples)
 
 | BLD Question | What You Find | Lie Component |
 |--------------|---------------|---------------|
@@ -236,7 +236,7 @@ Semisimple Lie algebras have completely reducible representations. This means an
 
 ---
 
-## Summary
+## Conclusion
 
 1. **BLD discovery produces Lie structures** because the three questions find the three components that define any Lie algebra.
 

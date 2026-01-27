@@ -14,48 +14,21 @@ used_by:
 
 > **Status**: Validated (6/6 tests passing)
 
-## Quick Summary (D≈7 Human Traversal)
-
-**Electrical Circuits through BLD in 7 steps:**
-
-1. Circuits are governed by three BLD primitives: Boundaries (mode transitions like V_th), Links (electrical coupling like capacitance), and Dimensions (repetition like parallel transistors)
-2. The D×L scaling law states that dimension multiplies link, not boundary — capacitance scales linearly with transistor count (R²=1.0), while threshold voltage remains invariant
-3. The compensation principle explains why cascading works: L (multiple stages) can compensate for weak B (soft transitions), achieving 87.8% error reduction
-4. Ring oscillators demonstrate D×L directly: period T = 2×N×t_pd scales linearly with stage count
-5. Flash ADC power scales perfectly with comparator count (D), while each comparator maintains identical threshold structure (B)
-6. Op-amps use two stages rather than one mega-stage because L→B compensation works, but B→L compensation is limited by bandwidth and stability
-7. This D×L principle is universal across domains (circuits, neural networks, variational inference) because it follows from Lie theory
-
-| Component | BLD | Description |
-|-----------|-----|-------------|
-| V_th (threshold) | B | Topological boundary — invariant under D |
-| Capacitance C | L | Geometric coupling — scales with D |
-| Transistor count N | D | Repetition dimension — multiplies L |
-
-Electrical circuits provide a clean validation of BLD principles, particularly the D×L scaling law and compensation principle.
-
-**Repository**: [bld-circuits](https://github.com/rax-V/bld-circuits)
-
----
-
 ## Summary
 
-| Finding | Status | Evidence |
-|---------|--------|----------|
-| D×L scaling | **VALIDATED** | R² = 1.0 across all tests |
-| Compensation principle | **VALIDATED** | 87.8% error reduction via cascading |
-| Cross-domain consistency | **VALIDATED** | Same formulas as VI and neural networks |
+**BLD validated (6/6 tests):**
 
-### All 6 Validations
+1. D×L scaling: C scales with N (R²=1.0), V_th invariant — [Proof](#dxl-scaling-proof)
+2. Compensation asymmetry: L→B works (cascading), B→L limited — [Principle](#compensation-principle)
+3. Circuits use e (gain stacking is multiplicative) — [Why e](#why-circuits-use-e-exponential-compensation)
 
-| Test | Result | Metric |
-|------|--------|--------|
-| Ring Oscillator Timing | PASS | T = 2×N×t_pd |
-| Current Mirror D×L | PASS | R² = 1.0 |
-| Power Scaling D×L | PASS | R² = 1.0 |
-| Flash ADC D×L | PASS | R² = 1.0 |
-| Compensation (L→B) | PASS | 87.8% improvement |
-| Boundary Invariance | PASS | CV < 1% |
+| BLD | Circuit | Scales? |
+|-----|---------|---------|
+| B | V_th | No (topological) |
+| L | Capacitance | Yes (D×L) |
+| D | Transistor count | Multiplier |
+
+**Repo**: [bld-circuits](https://github.com/rax-V/bld-circuits)
 
 ---
 
@@ -69,7 +42,7 @@ Electrical circuits provide a clean validation of BLD principles, particularly t
 
 ---
 
-## D×L Scaling Proof
+## D×L Scaling Proof {#dxl-scaling-proof}
 
 ### The Claim
 

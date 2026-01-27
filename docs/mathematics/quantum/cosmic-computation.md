@@ -12,25 +12,22 @@ used_by:
 
 # Cosmic Computation: The -B = B Junction
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Cosmic computation in 7 steps:**
+**Cosmic computation: +B and -B meet at L junction:**
 
-1. **Two computations run** — +B computes past→future, -B computes future→past
-2. **Connected by constant L** — Killing form L=2 links the partitions
-3. **Both describe same present** — At every "now," both computations meet
-4. **Junction consistency** — ⟨B·future | L | F·past⟩ = c (must agree via L)
-5. **Future is constrained** — Not "open"; algebraically determined by handshake requirement
-6. **Determinism via consistency** — future = {f : junction equation holds}
-7. **Universe computes itself** — The computation IS existence; +B and -B computing through L
+1. Two computations: +B past→future, -B future→past — [The Setup](#the-setup)
+2. Connected by L=2 (Killing form constant) — [The Connection](#the-connection)
+3. Junction equation: ⟨B·future | L | F·past⟩ = c — [Junction Equation](#the-junction-equation)
+4. Future algebraically constrained (not "open") — [Future Constraint](#the-future-constraint)
+5. Universe computes itself via self-consistency — [Implications](#implications)
+6. Maps to Aharonov, Cramer, Wheeler-Feynman — [Connection to Physics](#connection-to-existing-physics)
 
 | Existing Theory | BLD Derivation |
 |-----------------|----------------|
-| Two-State Vector (Aharonov) | Forward state + backward state meet at L junction |
-| Transactional QM (Cramer) | Offer wave (+B) + confirmation wave (-B) |
-| Wheeler-Feynman Absorber | Retarded (+B) + advanced (-B) waves |
-
-The final piece: existence determines its own evolution through self-consistency.
+| Two-State Vector | Forward + backward meet at L junction |
+| Transactional QM | Offer (+B) + confirmation (-B) |
+| Wheeler-Feynman | Retarded (+B) + advanced (-B) |
 
 ---
 
@@ -401,7 +398,7 @@ There's nowhere else to go. The structure explains:
 
 ---
 
-## Summary
+## Conclusion
 
 ```
 The universe is a cosmic computation.

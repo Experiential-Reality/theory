@@ -10,25 +10,22 @@ Logical necessity from BLD structure.
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Nothing instability in 7 steps:**
+**Why something exists (nothing is self-contradictory):**
 
-1. **Define nothing** — S₀ = (D=0, L=0, B=0)
-2. **Definition requires distinction** — must distinguish nothing from something
-3. **Distinction IS a boundary** — call it B*
-4. **B* > 0** — the boundary exists
-5. **Contradiction** — nothing requires B=0, but defining it requires B*>0
-6. **Nothing is self-contradictory** — cannot exist
-7. **Therefore B must exist** — something exists because nothing cannot
+1. Define nothing: S₀ = (D=0, L=0, B=0) — [Define Nothing](#step-1-define-nothing)
+2. Definition requires distinction from something — [Requires Distinction](#step-2-the-definition-requires-distinction)
+3. Distinction IS a boundary (B* > 0) — [Distinction Is Boundary](#step-3-distinction-is-a-boundary)
+4. Contradiction: B=0 required but B*>0 exists — [The Contradiction](#step-4-the-contradiction)
+5. Nothing cannot exist, therefore B must — [Conclusion](#step-5-conclusion)
+6. Big Bang = logical necessity, not event — [Implications](#implications)
 
 | Step | Content | Result |
 |------|---------|--------|
 | 1-4 | Define nothing | Requires B* to distinguish |
 | 5 | Contradiction | B=0 AND B*>0 |
-| 6-7 | Resolution | ∄ Nothing ∴ ∃ Something |
-
-**The equation**: ∄ S : (B=0 ∧ L=0 ∧ D=0) — "Nothing cannot be defined."
+| 6 | Resolution | ∄ Nothing ∴ ∃ Something |
 
 ---
 

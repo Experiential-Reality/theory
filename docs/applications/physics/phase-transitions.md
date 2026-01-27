@@ -5,6 +5,7 @@ depends_on:
   - thermodynamics-validation.md
   - ../../mathematics/derived/thermodynamics.md
   - ../../mathematics/foundations/structural/compensation-principle.md
+  - ../../mathematics/quantum/entanglement-entropy.md
 used_by:
   - fluids.md
 ---
@@ -13,34 +14,36 @@ used_by:
 
 > **Status**: Exploratory (framework developed, validation tests needed)
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Phase Transitions through BLD in 7 steps:**
+**Phase Transitions as BLD Structure Reorganization:**
 
-1. Phase transitions are where B changes — not just cost evaluation, but the boundary structure itself transforms (ordered to disordered symmetry)
-2. Correlation length xi is the fundamental L: at T_c, xi diverges (xi ~ |T-T_c|^(-nu)) — the system becomes maximally connected
-3. System size L is D: finite-size effects occur when xi_bulk > L, cutting off the diverging correlation (D×L interplay)
-4. Critical exponents (nu, beta, gamma, alpha) satisfy scaling relations that encode D×L constraints: alpha + 2*beta + gamma = 2 (Rushbrooke)
-5. Universality classes share the same (B, L, D) structure: systems with same spatial dimension d, order parameter dimension n, and symmetry have identical exponents
-6. At T_c, B is critical: fluctuations at all scales, domains of all sizes (fractal), self-similarity — B is undefined at the critical point
-7. Renormalization group describes how B, L, D flow under scale transformation — critical fixed points are where this structure becomes self-similar
+1. Phase transitions are where B changes — [Q1](#q1-where-does-behavior-partition-finding-b)
+2. Correlation length ξ is fundamental L, diverges at T_c — [Q2](#q2-what-connects-finding-l)
+3. System size is D, determines finite-size effects — [Q3](#q3-what-repeats-finding-d)
+4. Critical exponents satisfy D×L scaling relations — [D×L Scaling](#dl-scaling-and-critical-exponents)
+5. Universality from same (d, n, symmetry) — [Universality Classes](#universality-classes)
+6. At T_c, B is undefined — fluctuations at all scales — [Where B Changes](#where-b-changes-the-critical-point)
+7. RG describes B/L/D flow under scale change — [Renormalization Group](#renormalization-group-bld-flow)
 
 | Component | BLD | Description |
 |-----------|-----|-------------|
 | Phase boundary T_c | B | Topological threshold — partitions ordered/disordered |
-| Correlation length xi | L | Connection strength — diverges at T_c |
+| Correlation length ξ | L | Connection strength — diverges at T_c |
 | System size / lattice sites | D | Repetition — determines finite-size effects |
 
 Phase transitions are where **B changes** — the critical gap in current BLD physics coverage, which mostly addresses equilibrium structure.
 
 ---
 
-## Summary
+## Conclusion
 
 | Finding | Status | Evidence |
 |---------|--------|----------|
 | Phase boundary as B | FRAMEWORK | Partitions ordered/disordered |
 | Correlation length as L | TESTABLE | Diverges at criticality |
+| L = -½ ln(1-ρ²) applies | DERIVED | Same formula as entanglement |
+| L ~ ν ln(ξ) | DERIVED | Logarithmic divergence |
 | System size as D | FRAMEWORK | D×L scaling predicts finite-size effects |
 | Critical exponents | TESTABLE | Should follow D×L scaling |
 
@@ -104,6 +107,35 @@ The exponent ν is **universal** — depends only on symmetry and dimension, not
 
 **BLD Interpretation**: At criticality, L becomes infinite. The system is maximally connected.
 
+### L Formula at Criticality
+
+From [Entanglement Entropy](../../mathematics/quantum/entanglement-entropy.md):
+
+```
+L = -½ ln(1 - ρ²)
+```
+
+where ρ is the correlation coefficient. At a phase transition:
+
+```
+ρ → 1  (long-range correlations)
+L → ∞  (link cost diverges)
+```
+
+**Connection to critical exponents:**
+```
+If ξ ~ |T - T_c|^(-ν), then:
+  ρ² ~ 1 - |T - T_c|^(2ν)
+  L ~ -½ ln(|T - T_c|^(2ν))
+  L ~ ν × ln(ξ)
+```
+
+**Key result**: Link cost grows logarithmically with correlation length: **L ~ ν ln(ξ)**.
+
+This connects the BLD link formula to statistical mechanics. The same L = -½ ln(1 - ρ²) governs:
+- Quantum entanglement (ρ = C/√2)
+- Phase transitions (ρ → 1 at T_c)
+
 ### Q3: What Repeats? (Finding D)
 
 | Dimension | Meaning | Effect on Transition |
@@ -127,7 +159,7 @@ This is **D×L interplay** — system size D cuts off the diverging L.
 
 ---
 
-## D×L Scaling and Critical Exponents
+## D×L Scaling and Critical Exponents {#dl-scaling-and-critical-exponents}
 
 ### The Scaling Hypothesis
 

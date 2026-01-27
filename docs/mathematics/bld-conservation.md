@@ -12,25 +12,21 @@ BLD conservation is Noether's theorem expressed in structural language. Every co
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**BLD conservation in 7 steps:**
+**BLD conservation IS Noether's theorem:**
 
-1. **Noether's theorem** — continuous symmetry → conserved quantity
-2. **Symmetries are Lie groups** — all physics symmetries have Lie structure
-3. **BLD = Lie theory** — D=generators, L=structure constants, B=topology
-4. **D conserves** — number of independent symmetry directions (charges)
-5. **L conserves** — composition rules for how charges interact
-6. **B determines quantization** — compact (closed) → discrete charges
-7. **Physics conservation = BLD invariance** — same mathematical structure
+1. Noether: continuous symmetry → conserved quantity — [The Connection](#the-connection)
+2. Symmetries are Lie groups with BLD structure: D=generators, L=structure constants, B=topology — [Mathematical Framework](#the-mathematical-framework)
+3. D conserves: number of independent symmetry directions (charges) — [What Each Primitive Conserves](#what-each-primitive-conserves)
+4. L conserves: composition rules for how charges interact — [What Each Primitive Conserves](#what-each-primitive-conserves)
+5. B determines quantization: compact (closed) → discrete charges — [Why B Determines Quantization](#why-b-determines-quantization)
 
 | Symmetry | Lie Group | D | B | Conserved |
 |----------|-----------|---|---|-----------|
 | Time | ℝ | 1 | Open | Energy |
 | Rotation | SO(3) | 3 | Closed | Angular momentum |
 | U(1) gauge | U(1) | 1 | Closed | Electric charge |
-
-**Key insight**: We don't prove BLD conservation separately — it IS Noether's theorem.
 
 ---
 

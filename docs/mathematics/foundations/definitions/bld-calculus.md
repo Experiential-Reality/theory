@@ -13,6 +13,25 @@ used_by:
 
 # The BLD Calculus: A Minimal Type System
 
+## Summary
+
+**Minimal typed lambda calculus with exactly three constructors:**
+
+1. Sum (+) = B, Function (→) = L, Product (Πₙ) = D — [Syntax](#2-syntax)
+2. Type safety proven: Progress + Preservation theorems — [Metatheory](#5-metatheory)
+3. Three sublanguages: LD (no B), BD (no L), BL (no D) — for irreducibility proofs — [Sublanguages](#6-sublanguages)
+4. LD-calculus has cardinality 1 for all types → cannot encode Bool — [Cardinality Lemmas](#7-cardinality-lemmas)
+5. Traverser type τ_trav = 1 is unique (the only type with cardinality 1) — [Theorem 8.7](#8-connection-to-bld-primitives)
+6. α⁻¹ = 137 as mode count: μ(Π₄(Π₂₀1)) + μ(Σ₅₆1) + μ(1) = 80 + 56 + 1 — [Proposition 8.5](#8-connection-to-bld-primitives)
+
+| Type Constructor | BLD | Elimination | Traversal |
+|-----------------|-----|-------------|-----------|
+| Sum (+) | B | case | which partition? |
+| Function (→) | L | apply | follow reference |
+| Product (Πₙ) | D | project | access i-th element |
+
+---
+
 ## Abstract
 
 We present the BLD calculus, a typed lambda calculus with exactly three type constructors: Sum (+) for Boundary, Function (→) for Link, and n-fold Product (Πₙ) for Dimension. We prove the calculus is type-safe (Progress and Preservation theorems) and define three sublanguages—LD-calculus, BD-calculus, and BL-calculus—each missing one constructor. These sublanguages are used in the irreducibility proofs to show that no constructor can be expressed using the other two. The BLD calculus serves as the formal foundation for BLD theory, providing precise semantics for the three structural primitives.

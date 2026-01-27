@@ -12,28 +12,24 @@ depends_on:
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Quantum computing from BLD in 7 steps:**
+**Quantum advantage = deferred L-cost via pre-established links:**
 
-1. **Classical**: Observer measures → pays L-cost → uncertainty at each step
-2. **Quantum**: Structure evolves → no intermediate measurement → pay once
-3. **Entanglement**: Pre-established L (no measurement needed to link)
-4. **Grover's √N**: Structure self-traverses, observer reads once
-5. **Bell's 2√2**: Maximum L-cost for bidirectional observation (Killing form)
-6. **Decoherence**: T₂ ≤ 2×T₁ (L-cost bounds structure lifetime)
-7. **Quantum advantage**: Route AROUND uncertainty, don't beat it
-
-### BLD Type Mapping
+1. Classical: measure each step → pay L-cost continuously — [Two Modes](#two-modes-of-computation)
+2. Quantum: structure evolves → pay L once at end — [Core Insight](#the-core-insight)
+3. Entanglement = pre-established L (no cost to use) — [Entanglement](#entanglement-as-pre-established-l)
+4. Grover √N: amplitude rotates √N times, measure once — [Grover](#test-2-grovers-algorithm-n-speedup)
+5. Bell 2√2 = K × √2 (Killing × rotation factor) — [Bell](#test-1-bell-inequality-violation)
+6. Decoherence: T₂ ≤ 2×T₁ (Killing form bound) — [Decoherence](#decoherence-as-l-breaking)
 
 | Quantum Concept | BLD Type | Meaning |
 |-----------------|----------|---------|
-| Qubit state | D | Dimensional location in Hilbert space |
-| Quantum gate | L | Link that transforms states |
-| Measurement basis | B | Boundary partition of outcomes |
-| Superposition | Multiple D | Paths through dimension space |
-| Entanglement | Pre-established L | Link without measurement cost |
-| Decoherence | L leakage | Structure loses L to environment |
+| Qubit state | D | Location in Hilbert space |
+| Quantum gate | L | Link that transforms |
+| Measurement | B | Partition of outcomes |
+| Entanglement | Pre-established L | Link without cost |
+| Decoherence | L leakage | L lost to environment |
 
 ---
 

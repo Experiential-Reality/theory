@@ -8,6 +8,16 @@ used_by:
   - ../axioms.md
 ---
 
+## Summary
+
+**Proof that no BLD axiom is redundant:**
+
+1. For each axiom, a model exists satisfying all others except that one — [Independence of A1 (Boundary)](#3-independence-of-a1-boundary)
+2. M1 (LD-calculus): no sums, all types have cardinality 1 — [Independence of A1 (Boundary)](#3-independence-of-a1-boundary)
+3. M2 (BD-calculus): no functions, values are static data trees — [Independence of A2 (Link)](#4-independence-of-a2-link)
+4. M3 (BL-calculus): no products, fixed-arity structure only — [Independence of A3 (Dimension)](#5-independence-of-a3-dimension)
+5. M7 (Empty calculus): nothing exists, vacuously satisfies A1-A6 — [Independence of A7 (Genesis)](#9-independence-of-a7-genesis)
+
 # Axiom Independence Proof
 
 ## Abstract

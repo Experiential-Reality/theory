@@ -13,17 +13,16 @@ used_by:
 
 > **Status**: Validated
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Extended neural network validation in 7 steps:**
+**Extended neural network validation:**
 
-1. **Real dataset validation** — MNIST: CNN +0.9%; Permuted MNIST: MLP +1.1% (CNN's local L becomes liability when spatial structure destroyed); CIFAR-10: CNN +27.5%
-2. **GNN validates graph L** — Multi-hop reasoning: GNN 93.25% vs MLP 63.5% (+29.75%); graph-structured L manifests when relational reasoning required
-3. **Transformer validates dynamic L** — Context-dependent tasks: Transformer +5.7%; static L (CNN/MLP) struggles with content-dependent structure
-4. **LSTM validates sequential L** — Advantage is task-specific (-10.9% average); wins only on cumulative computation, NOT universal
-5. **L subtypes are distinct** — Transformer fails XOR parity at length 8 (52%) while LSTM succeeds at length 16 (99.6%); attention ≠ state accumulation
-6. **Hybrid L validation** — Parallel Transformer+LSTM achieves 99% on tasks where each alone is at chance; L subtypes are complementary
-7. **Cross-domain prediction** — VI cost correlates with neural error (r = -0.57); same BLD primitives, domain-specific interactions
+1. Real datasets: MNIST CNN +0.9%, Permuted MNIST MLP +1.1%, CIFAR-10 CNN +27.5% — [Real Dataset Validation](#real-dataset-validation)
+2. GNN validates graph L: multi-hop reasoning GNN 93.25% vs MLP 63.5% (+29.75%) — [Graph Neural Networks](#graph-neural-networks-gnn)
+3. Transformer validates dynamic L: context-dependent tasks +5.7% — [Transformers](#transformers-dynamic-l)
+4. LSTM advantage is task-specific: wins only on cumulative computation — [LSTMs](#lstms-sequential-l)
+5. L subtypes are distinct: Transformer fails XOR parity where LSTM succeeds (attention ≠ state accumulation) — [L Subtype Taxonomy](#l-subtype-taxonomy)
+6. Hybrid L validation: parallel Transformer+LSTM achieves 99% on tasks where each alone is at chance — [Hybrid L Validation](#hybrid-l-validation)
 
 | Architecture | L Subtype | Best Task Type | Validated Margin |
 |--------------|-----------|----------------|------------------|

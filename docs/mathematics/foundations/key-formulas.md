@@ -21,23 +21,22 @@ This document collects the seven core formulas of BLD theory: fine structure con
 
 ---
 
-## Quick Summary
+## Summary
 
-**The 7 core formulas:**
+**Core formulas (structural value + K/X corrections):**
 
-1. **Fine structure** — α⁻¹ = n×L + B + 1 + K/B + ... = 137.036
-2. **Weak mixing** — sin²θ_W = 3/S + K/(n×L×B) = 0.231
-3. **Strong coupling** — α_s⁻¹ = α⁻¹/n² − K/(n+L) = 8.48
-4. **Energy** — E = K × Σ(1/Xᵢ) = observation scope
-5. **Observation cost** — correction = K/X (hidden structure cost)
-6. **Generation ratio** — μ/e = n²S − 1 = 207
-7. **Planck mass** — M_P = v × λ⁻²⁶ × √(5/14) × corrections
+1. α⁻¹ = 137.036 (fine structure) — [Four Forces](#1-the-four-forces)
+2. sin²θ_W = 0.231 (weak mixing) — [Four Forces](#1-the-four-forces)
+3. α_s⁻¹ = 8.48 (strong coupling) — [Four Forces](#1-the-four-forces)
+4. E = K × Σ(1/Xᵢ) (energy = observation scope) — [Energy](#2-energy-and-observation-scope)
+5. correction = K/X (observation cost) — [K/X Principle](#3-observation-cost-kx)
+6. μ/e = 207 (generation ratio) — [Lepton Ratios](#4-lepton-generation-ratios)
 
-| Formula | Structural | Correction | Total | Source |
-|---------|------------|------------|-------|--------|
-| α⁻¹ | 137 | +K/B+... | 137.036 | [force-structure](derivations/force-structure.md) |
-| sin²θ_W | 0.231 | +K/(nLB) | 0.23121 | [force-structure](derivations/force-structure.md) |
-| α_s⁻¹ | 8.56 | −K/(n+L) | 8.48 | [force-structure](derivations/force-structure.md) |
+| Formula | Structural | Correction | Total |
+|---------|------------|------------|-------|
+| α⁻¹ | 137 | +K/B+... | 137.036 |
+| sin²θ_W | 0.231 | +K/(nLB) | 0.23121 |
+| α_s⁻¹ | 8.56 | −K/(n+L) | 8.48 |
 
 ---
 

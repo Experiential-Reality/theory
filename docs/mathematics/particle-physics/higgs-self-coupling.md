@@ -16,23 +16,22 @@ prediction_date: 2026-01-22
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Higgs self-coupling prediction in 7 steps:**
+**Higgs self-coupling prediction (testable at HL-LHC):**
 
-1. **SM relationship** — λ_HHH = 3m_H²/v (triple Higgs coupling)
-2. **κ_λ defined** — κ_λ = λ_HHH(measured) / λ_HHH(SM) = 1 if SM exact
-3. **Detection matters** — HH → bb̄γγ uses BOTH EM and hadronic calorimeters
-4. **EM detection** — Photons interact via X = B = 56
-5. **Strong detection** — b-jets interact via X = n + L = 24
-6. **Combined structure** — X_total = B + n + L = 80 = n×L (full observer structure)
-7. **Prediction** — κ_λ(observed) = 1 + K/(n×L) = 1.025
+1. κ_λ(structural) = 1.000: Higgs potential is exactly SM — [Why κ_λ = 1](#why-κ_λstructural--1-exactly)
+2. Detection uses HH → bb̄γγ: both EM (X=B=56) and hadronic (X=n+L=24) — [Detection Chain](#step-2-the-detection-chain)
+3. Combined detection structure: X = B + (n+L) = 80 = n×L — [Detection Structure](#step-3-the-detection-structure-key-insight)
+4. κ_λ(observed) = 1 + K/(n×L) = 1.025: detection adds 2.5% (K/(D×L) derived from [Cost = B + D×L](../lie-theory/killing-form.md#why-2nxl-derived-from-cost-formula)) — [The Correction](#step-4-the-correction)
+5. Falsifiable: BLD confirmed if 1.025±0.03, falsified if 1.000±0.02 — [Falsification Conditions](#falsification-conditions)
+6. Current bounds too loose: HL-LHC will test at ~5% precision — [Experimental Tests](#experimental-tests)
 
 | Quantity | Structural | Observed | Correction |
 |----------|------------|----------|------------|
-| κ_λ | **1.000 (exactly SM)** | **1.025** | 1 + K/(n×L) = 1 + 2/80 |
+| κ_λ | **1.000** | **1.025** | 1 + K/(n×L) |
 
-**Key insight**: The Higgs self-coupling IS exactly SM at the structural level. The 2.5% enhancement is the observer correction from detection apparatus structure.
+**Prediction date**: 2026-01-22. Not yet measured with sufficient precision.
 
 ---
 
@@ -202,7 +201,7 @@ Therefore:
 
 ---
 
-## Why κ_λ(structural) = 1 Exactly
+## Why κ_λ(structural) = 1 Exactly {#why-κ_λstructural--1-exactly}
 
 The SM Higgs potential:
 ```
@@ -369,7 +368,7 @@ The Higgs self-coupling being exactly SM (κ_λ = 1) means:
 
 ---
 
-## Summary
+## Conclusion
 
 **The BLD prediction for Higgs self-coupling:**
 

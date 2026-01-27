@@ -18,6 +18,18 @@ used_by:
 
 # The Compensation Principle
 
+## Summary
+
+**The Compensation Principle:**
+
+1. L → B works, B → L fails — [Statement](#2-the-statement)
+2. B is topological (local), L is geometric (global) — [Why the Asymmetry](#why-the-asymmetry-exists)
+3. D×L accumulates and can approximate B — [L Can Approximate B](#l-can-approximate-b)
+4. D×B stays local, cannot replace L — [B Cannot Approximate L](#b-cannot-approximate-l)
+5. Two mechanisms: exponential (e) and angular (π) — [Two Compensation Mechanisms](#two-compensation-mechanisms)
+6. Validated: 87.8% in circuits, 6.2% in neural nets — [Validated Examples](#validated-examples)
+7. Implications for architecture design and P vs NP — [Implications](#implications)
+
 ## Abstract
 
 We establish the compensation principle: L (Link) can compensate for B (Boundary) deficiency, but B cannot compensate for L deficiency. This asymmetry is not empirical but follows from the definitions of the BLD primitives. B is topological (local, invariant under D), while L is geometric (global, scales with D). Consequently, D×L accumulates across distance and can approximate sharp boundaries through cascade integration, but D×B remains local and cannot reach distant information. We identify two compensation mechanisms: exponential (cascade growth, governed by e) and angular (periodic closure, governed by π). Empirical validation shows 87.8% error reduction via 5-stage cascades in circuits and 6.2% diagonal advantage when L matches task correlation structure in neural networks. The principle has implications for neural architecture design, algorithm complexity, and potentially P vs NP.

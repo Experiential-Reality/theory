@@ -8,17 +8,17 @@ depends_on:
 
 # The E₇ Connection
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**B = 56 from E₇ in 7 steps:**
+**B = 56 derived from E₇ structure:**
 
-1. **Three generations require triality** — P9 derivation shows triality is necessary
-2. **Triality unique to Spin(8)** — Mathematical fact: only Spin(8) has triality
-3. **dim(Spin(8) adjoint) = 28** — Mathematical fact
-4. **Killing form = 2** — Bidirectional observation (proven)
-5. **B = 2 × 28 = 56** — Derived, not fitted
-6. **56 = dim(E₇ fundamental)** — The exceptional Lie algebra connection
-7. **α⁻¹ = 80 + 56 + 1 = 137** — Now a prediction, not input
+1. Three generations require triality → unique to Spin(8) — [The Derivation](#the-derivation-completed)
+2. dim(Spin(8) adjoint) = 28 — mathematical fact
+3. Killing form K = 2 (bidirectional observation) — proven
+4. B = K × 28 = 2 × 28 = 56 — derived, not fitted — [The Core Formula](#the-core-formula)
+5. 56 = dim(E₇ fundamental representation) — explained — [E₇ in Physics](#e₇-in-physics)
+6. α⁻¹ = n×L + B + 1 = 80 + 56 + 1 = 137 — now a prediction — [What This Achieves](#what-this-achieves)
+7. Structural hierarchy n=4 → B=56 in S=13 intervals — [Structural Hierarchy](#the-structural-hierarchy)
 
 | Constant | Status |
 |----------|--------|
@@ -26,7 +26,7 @@ depends_on:
 | S = 13 | **DERIVED** |
 | α⁻¹ = 137 | **PREDICTION** |
 
-**Now DERIVED** — See [E7 Derivation](e7-derivation.md) for the complete proof.
+**See [E7 Derivation](e7-derivation.md) for the complete proof.**
 
 ---
 

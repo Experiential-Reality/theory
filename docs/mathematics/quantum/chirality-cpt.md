@@ -14,25 +14,22 @@ see_also:
 
 # Chirality and CPT Symmetry from the Killing Form
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Chirality and CPT from Killing form in 7 steps:**
+**Chirality and CPT derived from K=2 bidirectionality:**
 
-1. **K=2 is observation cost** — Forward (1 L) + backward (1 L) = 2 L (irreducible)
-2. **Bidirectionality creates two perspectives** — Forward A→B (+B) and backward B→A (-B)
-3. **The perspectives are NOT identical** — +B ≠ -B, they're opposite directions
-4. **This IS chirality** — Left-handed = +B perspective, right-handed = -B perspective
-5. **C, P, T operate on B, D, L** — C swaps B-side, P reverses D, T reverses L
-6. **CPT exact because K=2 constant** — K doesn't depend on which side you're on
-7. **Individual violations because +B ≠ -B** — Our physics is described FROM +B
+1. K=2 = observation cost: forward + backward = 2 links — [Foundation](#1-foundation-the-observation-cost-k2)
+2. Bidirectionality creates +B and -B perspectives — [The Partition](#2-bidirectionality-creates-the-partition)
+3. +B ≠ -B (opposite directions) = chirality — [This IS Chirality](#3-this-is-chirality)
+4. C, P, T operate on B, D, L respectively — [C, P, T Operations](#4-c-p-t-as-b-d-l-operations)
+5. CPT exact (K=2 constant); individual violations from +B ≠ -B — [CPT Conservation](#5-cpt-conservation-from-k2-constancy)
+6. Weak force couples to "forward"; we call it left-handed — [Weak Force](#7-weak-force-chirality-explained)
 
 | Symmetry | Operation | BLD Component |
 |----------|-----------|---------------|
-| **C** (Charge) | Swap +B ↔ -B | B (which side of partition) |
-| **P** (Parity) | Reverse spatial direction | D (dimensional traversal) |
-| **T** (Time) | Reverse temporal direction | L (link direction) |
-
-**Key insight**: Chirality isn't assumed — it's DERIVED from the bidirectional structure of observation (K=2).
+| **C** | Swap +B ↔ -B | B (partition side) |
+| **P** | Reverse spatial | D (dimensional) |
+| **T** | Reverse temporal | L (link direction) |
 
 ---
 

@@ -16,17 +16,17 @@ used_by:
 
 > **Status**: Foundational
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Refactoring with BLD in 7 steps:**
+**Refactoring as BLD Factorization:**
 
-1. **Refactoring is factorization** — Decompose complex structures into explicit B × L × D primitives; complexity is conserved but becomes visible
-2. **Horizontal: Extract dispatch tables** — Scattered if/elif against same value = hidden Boundary; extract to `dict[Key, Handler]`
-3. **Vertical: Enumerate state space** — Magic strings in 5 places = hidden Dimension; extract to enum or config dataclass
-4. **Structural: Break cycles into DAG** — Circular dependencies = hidden Links; extract shared state to third module
-5. **Cost conservation** — `C_total = C_visible + C_hidden`; FACTOR moves hidden cost to visible cost
-6. **Same fixes improve performance** — Explicit B enables branch elimination, explicit D enables vectorization, explicit L enables parallelism
-7. **Refactoring = finding Lie structure** — Dispatch tables reveal group topology (B), enums reveal generators (D), DAGs reveal structure constants (L)
+1. Refactoring is factorization — decompose to explicit B×L×D — [Refactoring = Factorization](#refactoring--factorization)
+2. Horizontal: extract dispatch tables — hidden B in if/elif — [Horizontal](#1-horizontal-dispatch-tables--boundary)
+3. Vertical: enumerate state space — hidden D in magic strings — [Vertical](#2-vertical-state-space-visibility--dimension)
+4. Structural: break cycles into DAG — hidden L in circular deps — [Structural](#3-structural-dependencies-form-a-dag--link)
+5. Cost conservation — complexity becomes visible, not reduced — [Refactoring = Factorization](#refactoring--factorization)
+6. Same fixes improve performance — explicit structure enables optimization — [The Mapping](#the-mapping-refactoring--structure--performance)
+7. Refactoring = finding Lie structure — [Connection to Lie Theory](#connection-to-lie-theory)
 
 | Component | BLD Mapping |
 |-----------|-------------|
@@ -317,7 +317,7 @@ When you refactor code to make state explicit, you're aligning with universal st
 
 ---
 
-## Summary
+## Conclusion
 
 | Principle | Pattern | Primitive | Question to Ask |
 |-----------|---------|-----------|-----------------|

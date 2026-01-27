@@ -12,23 +12,20 @@ used_by:
 
 # Deriving e from BLD
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Euler's e from BLD in 7 steps:**
+**Euler's e derived from traverser structure:**
 
-1. **Ask "What is a traverser?"** — Something that processes structure sequentially
-2. **Q1 (Find B)** — Steps partition time; uniform boundaries → T2 (homogeneity)
-3. **Q2 (Find L)** — Self-link only; rate ∝ state → T3 (self-reference)
-4. **Q3 (Find D)** — Time axis repeats; natural scale k=1 → T4-T5 (scaling)
-5. **Axioms T1-T5** — Discovered, not postulated, via BLD three-question method
-6. **Solve dy/dt = y** — Unique solution y(t) = eᵗ with y(0) = 1
-7. **e = 2.718...** — The traverser's characteristic constant (rate = state)
+1. BLD three questions discover traverser axioms T1-T5 — [Discovering Axioms](#discovering-the-axioms-via-bld)
+2. Axioms uniquely imply dy/dt = y — [Derivation](#the-derivation)
+3. Solution: y(t) = eᵗ, so e is the traverser's characteristic constant — [Formula](#the-formula)
+4. e is late emergence: continuous limit of discrete compounding — [Late Emergence](#late-emergence)
+5. Connection to Lie theory: e characterizes non-compact structure — [Lie Theory](#connection-to-lie-theory)
 
 | e | π |
 |---|---|
 | Traverser constant | Structure constant |
 | Sequential accumulation | Rotational closure |
-| dy/dt = y | D×L = 2πB |
 
 ---
 
@@ -635,7 +632,7 @@ BLD is not just a framework for discovering structure in other systems — it is
 
 ---
 
-## Summary
+## Conclusion
 
 | π (Structure) | e (Traverser) |
 |---------------|---------------|

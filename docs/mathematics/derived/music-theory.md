@@ -16,23 +16,22 @@ used_by:
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Music from BLD in 7 steps:**
+**Musical structure from BLD:**
 
-1. **Pitch space = SO(2)** — Continuous frequency wraps with octave (2:1 ratio = full rotation)
-2. **12 tones from closure** — (3/2)^12 ≈ 2^7 means 12 fifths ≈ 7 octaves (Pythagorean closure)
-3. **Consonance = 1/(p×q)** — Simple frequency ratios (low p×q) sound consonant
-4. **7-note scales from fifths** — Stack 6 fifths before redundancy → 7 distinct pitches
-5. **Modes = B-rotations** — Same intervals, different starting boundary
-6. **Harmony = alignment** — Chords are simultaneous L-links; voice leading minimizes cost
-7. **Temperament = B vs L trade-off** — Just intonation optimizes L; equal temperament optimizes B
+1. Pitch space = SO(2): octave (2:1) = full rotation — [Pitch Space](#part-1-pitch-space-as-so2)
+2. 12 tones from closure: (3/2)¹² ≈ 2⁷ (Pythagorean) — [Why 12](#12-why-12-tones)
+3. Consonance = 1/(p×q): simple ratios sound consonant — [Consonance](#part-2-consonance-from-kx)
+4. 7-note scales: stack 6 fifths before redundancy — [Scales](#part-3-scales-as-b-partitions)
+5. Harmony = simultaneous L-links; voice leading minimizes cost — [Harmony](#part-4-harmony-as-alignment)
+6. Temperament = B vs L trade-off: just vs equal — [Temperament](#part-5-temperament-systems)
 
 | BLD | Music Domain | Structure |
 |-----|--------------|-----------|
-| **B** (Boundary) | Pitch partitions | 12 semitones, 7 scale degrees, modes |
-| **L** (Link) | Frequency ratios | 2/1 (octave), 3/2 (fifth), 5/4 (third) |
-| **D** (Dimension) | Octave repetition | Every 2:1, pitch "returns" |
+| **B** | Pitch partitions | 12 semitones, 7 scale degrees, modes |
+| **L** | Frequency ratios | 2/1 (octave), 3/2 (fifth), 5/4 (third) |
+| **D** | Octave repetition | Every 2:1, pitch "returns" |
 
 ---
 
@@ -532,7 +531,7 @@ Preliminary: All are fifth-generated partitions with different closure points:
 
 ---
 
-## Summary
+## Conclusion
 
 Music theory emerges from BLD structure:
 

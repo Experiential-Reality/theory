@@ -13,17 +13,16 @@ depends_on:
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Dark matter mapping in 7 steps:**
+**Dark matter as geometric structure (L without D):**
 
-1. **L/D = 5** — DERIVED from 20 Riemann components / 4 dimensions
-2. **Mapping** — D=matter, L=dark matter, B=dark energy
-3. **If x = matter fraction** — then dark matter = 5x + 8x², dark energy = 1-6x-8x²
-4. **Observed x = 5%** — gives 25% + 2% = 27% dark matter
-5. **Observer correction** — 8x² = 2% (observation creates structure)
-6. **Result** — 27% dark matter, 68% dark energy (**EXACT match**)
-7. **Status** — ratio DERIVED, predictions VALIDATED (0% error)
+1. L/D = 5: derived from 20 Riemann components / 4 dimensions — [Status Breakdown](#status-breakdown)
+2. Mapping: D=matter, L=dark matter, B=dark energy — [The Conjecture](#the-conjecture-conjectured)
+3. Formula: dark matter = 5x + 8x², dark energy = 1-6x-8x² — [The Calculation](#the-calculation)
+4. Observer correction: 8x² = K×n×x² = 2% — [Observer Correction](#the-observer-correction-primordial-structure)
+5. Result: 27% dark matter, 68% dark energy (0% error) — [Observed Values](#observed-values)
+6. Implication: no WIMPs (there are no particles to find) — [Implications](#implications)
 
 ---
 

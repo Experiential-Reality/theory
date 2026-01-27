@@ -7,29 +7,26 @@ depends_on:
   - ../../lie-theory/killing-form.md
 used_by:
   - ../../cosmology/cyclic-cosmology.md
+  - ../../quantum/black-hole-entropy.md
 ---
 
 # The Ubit: Universal Bit of Structure
 
-## Quick Summary
+## Summary
 
-**The ubit in 7 steps:**
+**The ubit (universal bit of structure):**
 
-1. **Definition** — 1 ubit = 1 BL pair = minimum structure
-2. **Components** — B (boundary) partitions, L (link) relates
-3. **Why n=4** — Spacetime dimension derived from sl(2,ℂ) ⊂ sl(2,𝕆)
-4. **Bekenstein's 4 = n** — The factor 4 in S = A/(4 l_P²) is the same derived constant
-5. **1 ubit = n Planck areas** — Creating structure requires traversing all n dimensions
-6. **Holographic principle** — Information ∝ area because structure IS surface (BL mesh)
-7. **Total ubits** — Observable universe ≈ 10¹²¹ ubits
+1. Definition: 1 ubit = 1 BL pair = minimum structure — [Definition](#definition)
+2. BL is minimum: B alone or L alone insufficient for meaning — [Why BL Is Minimum](#why-bl-is-minimum-formal-derivation)
+3. Bekenstein's 4 = n: factor in S = A/(4 l_P²) is derived n = 4 — [Bekenstein](#bekensteins-4--n)
+4. Holographic principle: structure IS surface (BL mesh) — [Holographic](#the-holographic-principle-explained)
+5. Observable universe: ~10¹²¹ ubits total — [Total Ubits](#total-ubits-in-the-universe)
 
 | Concept | Value | Source |
 |---------|-------|--------|
 | Definition | 1 boundary + 1 link | BLD primitives |
-| Planck area per ubit | n l_P² = 4 l_P² | Bekenstein's 4 = n (derived) |
+| Planck area per ubit | n l_P² = 4 l_P² | Bekenstein's 4 = n |
 | Total ubits (universe) | ~10¹²¹ | Holographic bound |
-
-**Key derivation**: Bekenstein's factor of 4 in S = A/(4 l_P²) is exactly n = 4 from BLD.
 
 ---
 
@@ -110,6 +107,27 @@ S = A / (4 l_P²) = A / (n l_P²) = number of ubits
 ```
 
 **Entropy IS ubit count.**
+
+### Connection to S = K × L
+
+From [Entanglement Entropy](../../quantum/entanglement-entropy.md) and [Black Hole Entropy](../../quantum/black-hole-entropy.md):
+
+```
+S = K × L = 2L
+
+where:
+  K = 2 (Killing form, bidirectional observation)
+  L = S/K = A/(2n ℓ_P²) = (1/2) × ubit count
+```
+
+The same formula governs both entanglement entropy and black hole entropy.
+
+| System | S | K | L |
+|--------|---|---|---|
+| Bell state | ln(2) | 2 | ln(2)/2 |
+| Black hole | A/(4ℓ_P²) | 2 | A/(8ℓ_P²) |
+
+**L is "one-way" entropy** — the raw structural content before bidirectional observation.
 
 ---
 
@@ -234,7 +252,7 @@ The 20 diagonal neighbors equals L. The total 26 = B/2 - K.
 
 ---
 
-## Summary
+## Conclusion
 
 ```
 The ubit is the quantum of structure:

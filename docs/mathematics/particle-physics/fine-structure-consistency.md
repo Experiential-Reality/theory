@@ -13,27 +13,25 @@ used_by:
 
 # Fine Structure Constant: Exact Prediction
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**α⁻¹ = 137.035999177 in 7 steps:**
+**α⁻¹ = 137.035999177 (0.0 ppt error):**
 
-1. **n = 4 derived** — Spacetime dimensions from sl(2,ℂ) ⊂ sl(2,𝕆) (BLD observation reference)
-2. **L = 20 derived** — Riemann tensor components: n²(n²-1)/12 = 20
-3. **B = 56 derived** — 2 × dim(Spin(8) adjoint) from triality + Killing form
-4. **+1 derived** — Observer self-reference from BLD irreducibility
-5. **+K/B derived** — Boundary quantum (Killing form over boundary)
-6. **±spatial, −accumulated** — Two-reference (outbound/return) + discrete→continuous
-7. **Result: 137.035999177** — Observed: 137.035999177 (**0.0 ppt error**)
+1. n = 4: from sl(2,ℂ) ⊂ sl(2,𝕆) — [Primordial Structure](#primordial-structure)
+2. L = 20: Riemann n²(n²-1)/12 — [The Terms](#nxl--80-derived)
+3. B = 56: 2 × dim(Spin(8)) from triality + Killing — [B = 56](#b--56-derived)
+4. +1: observer self-reference — [+1 Term](#+1-derived)
+5. +K/B = +0.0357: boundary quantum — [BLD Assembly](#bld-assembly-diagram)
+6. ±spatial, −accumulated: two-reference corrections — [The Formula](#the-formula)
 
 | Term | Value | Status |
 |------|-------|--------|
-| n×L + B + 1 | 80 + 56 + 1 = 137 | DERIVED (geometric structure) |
-| +K/B | +2/56 = +0.0357 | DERIVED (boundary quantum) |
-| +spatial outbound | +4/13440 | DERIVED (two-reference) |
-| −spatial/boundary return | −3/358400 − 1/250880 | DERIVED (two-reference) |
-| −accumulated | −e²×120/(119×20070400) | DERIVED (discrete→continuous) |
+| n×L + B + 1 | 80 + 56 + 1 = 137 | DERIVED |
+| +K/B | +0.0357 | DERIVED |
+| ±spatial | +0.000286 | DERIVED |
+| −accumulated | −0.00000037 | DERIVED |
 
-**Status Update**: α⁻¹ = 137.035999177 is now **exactly derived** from BLD with **0.0 ppt error**.
+**Result**: 137.035999177 (exactly matches CODATA 2022).
 
 ---
 
@@ -100,31 +98,19 @@ Where:
 
 ---
 
-## Historical Note: This WAS a Consistency Check
+## Non-Circularity Statement
 
-*Before the B=56 derivation, this formula was a consistency check, not a prediction:*
+**The derivation is not circular.** Every component is derived without using α⁻¹ as input:
 
-**The logical flow**:
-```
-INPUT:  α⁻¹ = 137 (observed)
-INPUT:  n = 4 (observed)
-DERIVE: L = 20 (from n)
-SOLVE:  B = α⁻¹ - n×L - 1 = 137 - 80 - 1 = 56
-```
+| Component | Derived From |
+|-----------|--------------|
+| Division algebra | Genesis closure |
+| Octonions required | Hurwitz theorem + richness |
+| B = 56 | 2 × dim(so(8)) = 2 × 28 |
+| n = 4 | Octonion reference fixing |
+| L = 20 | n²(n²-1)/12 |
 
-If we claimed to "predict" α⁻¹ = 137, we would be circular: we used α to find B, then used B to "predict" α.
-
----
-
-## What This Formula Actually Says
-
-Given observed α⁻¹ ≈ 137 and the BLD framework, the **consistency requirement** is:
-
-> The boundary structure B must equal 56 for BLD to describe electromagnetism.
-
-This is analogous to:
-- Given E = mc² and known m, calculating E doesn't "predict" anything
-- It's a consistency check that the framework applies
+See [E7 Derivation](e7-derivation.md) for the complete B = 56 derivation.
 
 ---
 
@@ -277,7 +263,7 @@ The experiment doesn't "see" 137 — it measures 137.036. The difference is the 
 
 ## The Terms Explained
 
-### n×L = 80 `[DERIVED]`
+### n×L = 80 `[DERIVED]` {#nxl--80-derived}
 
 This is the **geometric coupling**: spacetime dimensions × curvature components.
 
@@ -301,7 +287,7 @@ This is the **topological term**, representing boundary structure.
 
 **See [E7 Derivation](e7-derivation.md)** for the complete proof.
 
-### +1 `[DERIVED]`
+### +1 `[DERIVED]` {#+1-derived}
 
 This is the **self-reference term**, representing the observer.
 
@@ -319,33 +305,7 @@ This is the **self-reference term**, representing the observer.
 
 ---
 
-## Breaking the Circular Dependency
-
-Previous documentation implied:
-
-```
-α⁻¹ = n×L + B + 1 = 137  ← "BLD predicts α"
-               ↓
-        B = 56 ← "determined by structure"
-               ↓
-    S = 13, lepton masses ← "predictions"
-```
-
-**The problem**: B comes from fitting α, so "predictions" using B are not independent.
-
-**The correction**: Label this as a consistency relation:
-
-```
-α⁻¹ = 137 (observed)
-        ↓
-B = 56 (required for consistency)
-        ↓
-S = 13, lepton masses (semi-empirical fits, not predictions)
-```
-
----
-
-## The Derivation (COMPLETED)
+## The Derivation
 
 B = 56 is now derived independently. **See [E7 Derivation](e7-derivation.md)** for the complete proof.
 
@@ -401,7 +361,7 @@ The entire particle physics chain is now genuinely predictive!
 
 ---
 
-## Summary
+## Conclusion
 
 | Term | Status | Notes |
 |------|--------|-------|

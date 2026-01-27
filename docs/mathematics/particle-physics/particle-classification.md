@@ -18,19 +18,23 @@ used_by:
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Particle classification in 7 steps:**
+**Standard Model particle content from BLD:**
 
-1. **Particles = BLD structures**: Each particle is defined by which structures it couples to
-2. **Division algebra tower**: ℝ ⊂ ℂ ⊂ ℍ ⊂ 𝕆 gives U(1), SU(2), SU(3)
-3. **Nesting constraint**: Higher algebras require lower (can't have color without weak)
-4. **Triality → 3 generations**: Spin(8) three-fold symmetry, exactly 3 copies
-5. **B = 56 → 48 fermions + 8 gluons**: Boundary structure partitions particles
-6. **Bosons from gauge symmetries**: 8 + 3 + 1 + 1 = 13 force carriers
-7. **Forbidden particles**: No 4th generation, no colored leptons, no SUSY partners
+1. Particles = valid BLD structures: each defined by gauge couplings (color, weak, EM, mass) — [The Principle](#1-the-principle-particles-as-bld-structures)
+2. Division algebra tower ℝ ⊂ ℂ ⊂ ℍ ⊂ 𝕆 → U(1), SU(2), SU(3) — [Enumerating Structures](#2-enumerating-valid-structures)
+3. Nesting constraint: higher algebras require lower (can't have color without weak) — [The Nesting Constraint](#22-the-nesting-constraint)
+4. Triality → exactly 3 generations: Spin(8) three-fold symmetry — [Generation Structure](#3-the-generation-structure)
+5. B = 56 → 48 fermions + 8 gluons: boundary partitions particle content — [Complete Fermion Spectrum](#4-the-complete-fermion-spectrum)
+6. Charge quantization: Q = T₃ + Y/2, fractional charges from 3 colors — [Charge Quantization](#7-charge-quantization)
+7. Forbidden: 4th generation (triality=3), colored leptons (nesting), SUSY partners (tentative) — [Predictions](#8-predictions-what-can-and-cannot-exist)
 
-**Result**: BLD predicts the Standard Model particle content from first principles.
+| Prediction | BLD Origin | Status |
+|------------|------------|--------|
+| SU(3)×SU(2)×U(1) | Division algebra tower | Matches SM |
+| 3 generations | Spin(8) triality | Matches SM |
+| No 4th generation | Triality = 3 exactly | Matches experiment |
 
 ---
 

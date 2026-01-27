@@ -16,23 +16,21 @@ used_by:
 
 > **Status**: Exploratory (quantitative results, theoretical interpretation ongoing)
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Mass Prediction from S3 Breaking in 7 steps:**
+**Mass prediction from S₃ breaking (mechanism → quantitative results):**
 
-1. The charged lepton mass hierarchy is explained by Froggatt-Nielsen mechanism with generation charges n = (3, 1, 0) and spurion ratio epsilon ~ 0.26
-2. Mass ratios m_mu/m_e = 217 (exp: 207, 4.8% error) and m_tau/m_mu = 14.7 (exp: 16.8, 12.4% error) from Y_ij = C_ij × epsilon^(n_i + n_j)
-3. Key discovery: epsilon ~ lambda_Cabibbo (0.26 vs 0.22) — suggesting a single S3 breaking parameter controls both masses and CKM mixing
-4. Standard triality charges (2,1,0) fail — electron requires MORE suppression (n=3) than simple triality predicts
-5. PMNS angles predicted: sin(theta_13)/epsilon = 0.92 (O(1) as expected), theta_12 ~ 35 degrees (tribimaximal limit)
-6. Up-quark sector anomaly: m_c/m_u and m_t/m_c ratios prove no integer charge assignment works — requires second spurion or additional L structure
-7. The mass hierarchy IS a D×L phenomenon: ln(m_tau/m_e) = 2×(n_e - n_tau)×ln(1/epsilon), where D=3 generations multiplies L=ln(1/epsilon)
+1. Charges n = (3, 1, 0) with ε ≈ 0.26: m_μ/m_e = 217 (4.8% error), m_τ/m_μ = 14.7 (12.4% error) — [Key Finding](#key-finding-3-1-0-charges-with-ε--14)
+2. Standard (2,1,0) fails — electron needs n=3 (more suppression than triality predicts) — [Testing Charges](#3-testing-charge-assignments)
+3. ε ≈ λ_Cabibbo discovery: single parameter controls masses AND CKM mixing — [ε = λ Unification](#ε--λ-unification)
+4. PMNS predicted: sin(θ₁₃)/ε = 0.92, θ₁₂ ≈ 35° (tribimaximal limit) — [PMNS Prediction](#pmns-prediction)
+5. Up-quark anomaly: no integer charges work — needs second spurion (missing L) — [Up-Quark Anomaly](#up-quark-anomaly-error-compounding-discovery)
+6. D×L scaling: ln(m_τ/m_e) = 2×(n_e - n_τ)×ln(1/ε) — hierarchy IS D×L phenomenon — [D×L Scaling](#dl-scaling)
 
-| Component | BLD | Description |
-|-----------|-----|-------------|
-| Mass thresholds | B | Created by S3 breaking cascade |
-| Spurion couplings epsilon | L | Link generations with suppression |
-| 3 generations | D | From triality (D = 3) |
+| Ratio | Predicted | Experimental | Error |
+|-------|-----------|--------------|-------|
+| m_μ/m_e | 217 | 207 | 4.8% |
+| m_τ/m_μ | 14.7 | 16.8 | 12.4% |
 
 This document records our attempt to move from **mechanism** (P11: Yukawa structure from S₃ breaking) to **prediction** (actual mass values).
 
@@ -284,7 +282,7 @@ The same S₃ breaking that produces masses should constrain mixing:
 | **L** | Spurion couplings | Link generations with ε suppression |
 | **D** | 3 generations | From triality (D = 3) |
 
-### D×L Scaling
+### D×L Scaling {#dl-scaling}
 
 The mass hierarchy IS a D×L phenomenon:
 ```

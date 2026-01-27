@@ -14,6 +14,18 @@ used_by:
 
 # Refactoring as Factorization (RF-Calculus)
 
+## Summary
+
+**Factorization Calculus:**
+
+1. FACTOR decomposes composite structures to irreducibles — [Definition](#11-definition)
+2. B-Factor: scattered conditionals → sum types — [B-Factor](#31-b-factor-boundary-decomposition)
+3. L-Factor: cycles → shared state + DAG — [L-Factor](#32-l-factor-link-decomposition)
+4. D-Factor: heterogeneous → homogeneous products — [D-Factor](#33-d-factor-dimension-decomposition)
+5. Termination guaranteed at B×L×D form — [Termination](#4-termination)
+6. Behavioral preservation: eval(S) = eval(FACTOR(S)) — [Preservation](#5-isomorphism-preservation)
+7. Corresponds to Levi decomposition in Lie theory — [Lie Connection](#63-lie-correspondence)
+
 ## Abstract
 
 We formalize refactoring as factorization—the decomposition of composite structures into smaller structures, terminating at irreducible BLD primitives. The RF-Calculus defines three factorization rules: B-Factor (scattered conditionals → explicit sum types), L-Factor (cyclic dependencies → shared state + directed acyclic graph), and D-Factor (heterogeneous loops → homogeneous products). We prove termination: repeated application reaches an irreducible B × L × D form. The key theorem is behavioral preservation: eval(S) = eval(FACTOR(S)). This provides formal foundations for refactoring practices and explains why refactoring reveals complexity rather than eliminating it.

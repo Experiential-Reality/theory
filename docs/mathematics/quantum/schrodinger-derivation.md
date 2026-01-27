@@ -9,33 +9,20 @@ depends_on:
 
 # Schrödinger Equation from BLD Traversal
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Deriving Schrödinger's equation in 7 steps:**
+**iℏ ∂ψ/∂t = Ĥψ derived from BLD:**
 
-1. **Complex numbers (i)** — Derived from octonion structure; BLD observation fixes reference point, isolating ℂ ⊂ 𝕆
-2. **Linear evolution** — Derived from Lie algebra structure; G is L-type (structure constant), acts linearly
-3. **Continuous traversal** — Time evolution generates infinitesimal change: dS/dt = G·S
-4. **Information conservation** — Closed systems preserve norm (|ψ|² constant), requiring anti-Hermitian G
-5. **Generator form** — Write G = -iH/ℏ where H is Hermitian (Hamiltonian)
-6. **Schrödinger equation** — Combining: iℏ ∂ψ/∂t = Ĥψ emerges uniquely
-7. **ℏ magnitude** — Derived from scale hierarchy with 2.5% accuracy (see planck-derivation.md)
+1. i from ℂ ⊂ 𝕆 (octonion reference fixing) — [Deriving ℂ](#01-deriving-complex-numbers-from-bld)
+2. Linearity from Lie algebra structure (G is L-type) — [Deriving Linearity](#02-deriving-linearity-from-lie-algebra-structure)
+3. Unitarity from closed system (|ψ|² conserved → G anti-Hermitian) — [Conservation](#step-4-information-conservation)
+4. ℏ from scale hierarchy + K/(D×L) correction (0.00003%) — [ℏ Derivation](#open-problems)
 
-| Component | BLD |
-|-----------|-----|
-| Wave function ψ | D-configuration (state in dimension space) |
-| Hamiltonian H | L-operator (traverser connecting states) |
-| i factor | B-structure (ℂ isolation from 𝕆) |
-
----
-
-**Status Update**: The Schrödinger equation is now **FULLY DERIVED** from BLD principles. Key advances:
-- Complex numbers (i) — DERIVED from octonion structure + BLD observation
-- Linearity — DERIVED from Lie algebra structure
-- Form iℏ∂ψ/∂t = Ĥψ — DERIVED from above + norm conservation
-- **ℏ magnitude** — DERIVED with 2.5% accuracy (see [Planck Derivation](planck-derivation.md))
-
-Empirical inputs: v (Higgs VEV), c, G only.
+| Component | BLD Origin | Status |
+|-----------|------------|--------|
+| i | ℂ ⊂ 𝕆 isolation | DERIVED |
+| Linear | Lie algebra | DERIVED |
+| ℏ | Scale + K/(D×L) | DERIVED |
 
 ---
 
@@ -288,7 +275,7 @@ iℏ ∂ψ/∂t = Ĥψ
 
 3. **Why ℏ has its value?** — **RESOLVED (DERIVED)**
    - ℏ appears as the magnitude of [x,p]
-   - Structural prediction: 2.5% accuracy via scale hierarchy
+   - Base prediction ~1.3% error; observer correction K/(D×L) = 2.5% derived from Cost = B + D×L
    - With observer corrections: 0.00003% accuracy
    - See [Planck Derivation](planck-derivation.md) for full derivation
 

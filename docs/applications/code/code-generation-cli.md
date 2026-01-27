@@ -12,25 +12,23 @@ used_by:
 
 > **Status**: Validated
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**BLD CLI and multi-target generation in 7 steps:**
+**Unified CLI and multi-target code generation:**
 
-1. **Unified CLI** — `bld compile <file.bld> --target <lang>` generates code; `bld run <file.bld>` executes directly
-2. **Pattern detection from Link properties** — `deps=0` → parallel, `deps=1` → sequential, `hierarchy_depth` → tree, `communication_distances` → scan
-3. **Multiple targets from same BLD** — Python, Rust, C, WGSL all generated from identical structure specification
-4. **WGSL barrier placement** — BLD properties determine where `workgroupBarrier()` calls are needed (deps=0: none, hierarchy_depth=N: N rounds)
-5. **Test generation from structure** — BLD properties generate appropriate tests (deps=1 → test for -6, hierarchy_depth → test for 2)
-6. **Meta-validation** — BLD describes its own validator, proving general-purpose expressiveness
-7. **English as target** — Generate human-readable explanations alongside code
+1. CLI: `bld compile <file.bld> --target <lang>` or `bld run <file.bld>` — [Available Commands](#available-commands)
+2. Pattern detection: deps=0→parallel, deps=1→sequential, hierarchy_depth→tree — [Pattern Detection](#pattern-detection)
+3. Multiple targets: Python, Rust, C, WGSL from same BLD — [Available Backends](#available-backends)
+4. WGSL barriers: BLD properties determine workgroupBarrier() placement — [WGSL Generation](#wgsl-generation)
+5. Test generation: structure properties → semantic assertions — [Test Generation](#test-generation)
+6. Meta-validation: BLD describes its own validator (self-referential) — [Meta-Validation](#meta-validation-bld-describes-its-own-validator)
+7. English target: generate human-readable explanations — [English Generation](#english-generation)
 
-| Component | BLD Mapping |
-|-----------|-------------|
-| Execution pattern | L: deps, hierarchy_depth, communication_distances |
-| Target language | Traverser structure (Python, C, WGSL, Rust) |
-| Barrier placement | L: deps=0 → none, deps>0 → sync required |
-| Generated tests | L/B properties → semantic assertions |
-| Documentation | BLD → English explanation |
+| BLD Property | Pattern | Execution Strategy |
+|--------------|---------|-------------------|
+| `deps=0` | parallel | Independent (map) |
+| `deps=1` | sequential | Linear fold |
+| `hierarchy_depth=N` | tree | Log(N) reduction |
 
 ---
 

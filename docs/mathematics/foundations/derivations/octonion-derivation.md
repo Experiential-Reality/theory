@@ -12,6 +12,17 @@ used_by:
   - octonion-necessity.md
 ---
 
+## Summary
+
+**How BLD uniquely selects octonions, spacetime dimension, and gauge symmetry:**
+
+1. Bidirectional observation requires the division property — [BLD Requires the Division Property](#2-bld-requires-the-division-property)
+2. Hurwitz theorem limits options to R, C, H, O — [The Hurwitz Theorem](#3-the-hurwitz-theorem)
+3. Only octonions satisfy B=56 and SU(3) containment — [Why Octonions Specifically](#4-why-octonions-specifically)
+4. Fixing a reference point breaks G2 to SU(3) — [Deriving SU(3) from BLD + Octonions](#5-deriving-su3-from-bld--octonions)
+5. Same symmetry breaking gives n=4 spacetime — [Deriving n = 4 Spacetime Dimensions](#6-deriving-n--4-spacetime-dimensions)
+6. Spin(8) triality gives exactly 3 generations — [Deriving 3 Generations from Triality](#7-deriving-3-generations-from-triality)
+
 # Deriving Octonions, n=4, and SU(3) from BLD First Principles
 
 ## Abstract

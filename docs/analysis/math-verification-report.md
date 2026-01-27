@@ -10,17 +10,21 @@ used_by: []
 
 # Mathematical Verification Report
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**External verification in 7 steps:**
+**External verification results:**
 
-1. **Physics constants** — α⁻¹, ℏ, m_H verified against CODATA 2022 and PDG 2024
-2. **Lie theory claims** — Hurwitz, triality, G₂, E₇ verified against standard references
-3. **Accuracy claims** — Error percentages recalculated and verified
-4. **Structural constants** — n=4, L=20, B=56 derivation chains traced
-5. **Speculative claims** — Quark/boson masses documented with honest errors
-6. **All major claims verified** — No fundamental discrepancies found
-7. **Sources cited** — CODATA, PDG, nLab, Wikipedia, textbooks
+1. Physics constants verified: α⁻¹ EXACT, M_P EXACT, m_H within 1σ — [Tier 1](#tier-1-physics-constants)
+2. Lie theory claims verified: Hurwitz, triality, G₂, E₇ all standard results — [Tier 2](#tier-2-lie-theory-claims)
+3. Structural constants consistent: B=56, L=20, n=4 derivation chains valid — [Tier 3](#tier-3-structural-constants)
+4. Speculative claims honestly documented with real errors — [Tier 4](#tier-4-speculative-claims)
+5. All major claims verified against CODATA 2022 / PDG 2024 — [Summary](#summary)
+
+| Claim | BLD Prediction | External Value | Status |
+|-------|----------------|----------------|--------|
+| α⁻¹ | 137.035999177 | 137.035999177 | EXACT |
+| M_P | 1.220890×10¹⁹ GeV | 1.220890×10¹⁹ GeV | EXACT |
+| m_H | 125.31 GeV | 125.20±0.11 GeV | Within 1σ |
 
 ---
 
@@ -275,7 +279,7 @@ These are explicitly marked as SPECULATIVE in the documentation:
 
 ---
 
-## Summary
+## Conclusion
 
 | Category | Claims | Verified | Notes |
 |----------|--------|----------|-------|

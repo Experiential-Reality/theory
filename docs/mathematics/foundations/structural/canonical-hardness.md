@@ -8,6 +8,16 @@ used_by:
   - ../../../paths/mathematician.md
 ---
 
+## Summary
+
+**NP-completeness of finding minimal BLD representations:**
+
+1. CANONICAL-BLD is NP-complete via reduction from MINIMUM-GRAMMAR — [The Reduction](#the-reduction)
+2. Grammar components map to BLD: terminals->B, rules->L, non-terms->D — [BLD Encoding Diagram](#2-bld-encoding-diagram)
+3. Cost equivalence: cost(R_G) <= 3|G| — [Cost Equivalence](#cost-equivalence)
+4. Hardness arises from global comparison across all representations — [Connection to Global Temporal Scope](#connection-to-global-temporal-scope)
+5. Tractable cases: O(log n) approximation, FPT for output size, O(n) for trees — [Tractability Results](#tractability-results)
+
 # Hardness of Canonical BLD: Formal Proof
 
 ## Abstract

@@ -12,31 +12,27 @@ used_by:
 
 > **Status**: DERIVED (ε = λ_Cabibbo follows from self-consistency)
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**S3 Vacuum Structure in 7 steps:**
+**ε = λ_Cabibbo is derived, not fit:**
 
-1. Key finding: epsilon = lambda_Cabibbo = 0.225 is EXACT, not a coincidence — it follows from self-consistency: alpha = 2*lambda^2 (ratio = 0.988)
-2. The self-consistency derivation: defining lambda as S3 breaking strength (VEV/M), the potential V = m^2|phi|^2 + lambda_coupling|phi|^4 automatically gives m^2 = -2*lambda_coupling*lambda^2*M^2
-3. Lambda appears in THREE places from the SAME source: mass hierarchy (Y_ij ~ lambda^(n_i+n_j)), CKM mixing (V_us ~ lambda), and flavon potential (m^2/M^2 ~ lambda^2)
-4. Clebsch-Gordan coefficients C = (2.22, 1.18, 1.00) from S3 group theory eliminate the 15% apparent discrepancy — with CG factors, error = 0%
-5. Lambda^2 = 1/20 = 1/(4 × C_3) where C_3 = 5 is the Catalan number for electron pathways, giving lambda = 0.2236 (0.6% from experimental 0.225)
-6. CP phase derived: delta_CP (CKM) = golden_angle/2 = 68.75 degrees (experimental: 68 degrees, 1.1% error)
-7. BLD interpretation: B = mass thresholds from S3 breaking, L = spurion couplings with epsilon suppression, D = 3 generations from triality
+1. Self-consistency: α = 2λ² gives ε = 0.225 exactly (ratio = 0.988) — [Derivation Complete](#derivation-complete-α--2λ²)
+2. λ appears in three places from one source: mass hierarchy, CKM mixing, flavon potential — [Why ε ≈ λ_Cabibbo?](#why-ε--λ_cabibbo)
+3. Clebsch-Gordan coefficients from S₃ group theory eliminate 15% discrepancy — [Structural Origins](#structural-origins-of-ε--022)
+4. λ² = 1/20 = 1/(4×C₃) where C₃=5 is Catalan number, giving λ = 0.2236 — [Structural Origins](#structural-origins-of-ε--022)
+5. CP phase: δ_CP = golden_angle/2 = 68.75° (exp: 68°, 1.1% error) — [CP Phase](#cp-phase-from-two-flavon-model)
 
 | Component | BLD | Description |
 |-----------|-----|-------------|
-| Mass thresholds | B | Created by S3 -> S2 -> {e} cascade |
-| Spurion ratio epsilon | L | Link strength between generations |
+| Mass thresholds | B | Created by S₃ → S₂ → {e} cascade |
+| Spurion ratio ε | L | Link strength between generations |
 | 3 generations | D | From triality automorphism |
-
-This document records our derivation of the spurion parameter ε = λ_Cabibbo from S₃ symmetry breaking structure.
 
 ---
 
-## Summary
+## Key Finding: ε = λ_Cabibbo
 
-### Key Finding: ε = λ_Cabibbo is EXACT (Not a Coincidence)
+### ε = λ_Cabibbo is EXACT (Not a Coincidence)
 
 The constraint α = 0.1 that gives ε = 0.22 is actually **α = 2λ²**:
 
@@ -170,7 +166,7 @@ This means each flavon sits at ~20% of the cutoff scale.
 
 ---
 
-## Why ε ≈ λ_Cabibbo?
+## Why ε ≈ λ_Cabibbo? {#why-ε--λ_cabibbo}
 
 ### The Froggatt-Nielsen Connection
 

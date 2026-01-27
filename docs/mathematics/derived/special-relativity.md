@@ -16,17 +16,16 @@ used_by:
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Special relativity in 7 steps:**
+**Special relativity from K=2 observation cost:**
 
-1. **c = l_P/t_P** — Speed of light is minimum K=2 traversal rate
-2. **K=2** — Observation requires bidirectional traversal (forward + backward)
-3. **γ = 1/√(1-v²/c²)** — Lorentz factor is stack depth multiplier
-4. **E=mc²** — Mass is structural cost, c² encodes K=2
-5. **Time dilation** — More computational steps needed when moving
-6. **Length contraction** — C_hidden increases, C_visible decreases
-7. **All effects from C_total = C_visible + C_hidden** — Cost conservation
+1. c = l_P/t_P: minimum traversal rate when K=2 is entire cost — [Speed of Light](#1-speed-of-light-c-derived)
+2. γ = 1/√(1-v²/c²): stack depth multiplier from motion using computational budget — [Lorentz Factor](#2-lorentz-factor-γ-derived)
+3. E = mc²: mass is structural cost, c² encodes K=2 (forward × backward) — [Mass-Energy](#3-emc²-mass-energy-equivalence-derived)
+4. Time dilation: more steps needed per observation when moving — [Time Dilation](#4-time-dilation-derived)
+5. Length contraction: C_hidden increases, C_visible decreases, C_total conserved — [Length Contraction](#5-length-contraction-derived)
+6. Simultaneity: different frames have different stack depths at same x — [Relativity of Simultaneity](#6-relativity-of-simultaneity-derived)
 
 | Effect | Formula | BLD Meaning |
 |--------|---------|-------------|
@@ -65,7 +64,7 @@ From [Universal Machine](../foundations/machine/universal-machine.md):
 
 ## 1. Speed of Light c `[DERIVED]`
 
-### The Formula
+### The Formula: Speed of Light
 
 ```
 c = l_P / t_P = (minimum distance) / (minimum time for K=2 round trip)
@@ -106,7 +105,7 @@ Cannot go faster because:
 
 ## 2. Lorentz Factor γ `[DERIVED]`
 
-### The Formula
+### The Formula: Lorentz Factor
 
 ```
 γ = 1/√(1 - v²/c²)
@@ -160,7 +159,7 @@ As v → c:
 
 ## 3. E=mc² (Mass-Energy Equivalence) `[DERIVED]`
 
-### The Formula
+### The Formula: Mass-Energy
 
 ```
 E = mc²
@@ -237,7 +236,7 @@ This differs from force couplings like α⁻¹ = 137 + K/B + ... where we measur
 
 ## 4. Time Dilation `[DERIVED]`
 
-### The Formula
+### The Formula: Time Dilation
 
 ```
 Δt_observed = γ × Δt_proper
@@ -283,7 +282,7 @@ From the observer's frame:
 
 ## 5. Length Contraction `[DERIVED]`
 
-### The Formula
+### The Formula: Length Contraction
 
 ```
 L_observed = L_proper / γ = L_proper × √(1 - v²/c²)

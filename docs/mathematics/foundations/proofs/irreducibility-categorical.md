@@ -9,6 +9,16 @@ used_by:
   - why-exactly-three.md
 ---
 
+## Summary
+
+**Rigorous categorical proof of BLD irreducibility:**
+
+1. Sum types cannot be expressed in LD-calculus (cardinality always 1) — [Theorem 1: Boundary Irreducibility](#3-theorem-1-boundary-irreducibility)
+2. Function types cannot be expressed in BD-calculus (no application) — [Theorem 2: Link Irreducibility](#4-theorem-2-link-irreducibility)
+3. Product types cannot be expressed in BL-calculus (fixed arity) — [Theorem 3: Dimension Irreducibility](#5-theorem-3-dimension-irreducibility)
+4. Conservation theorem: any complete calculus needs all three — [Conservation Theorem](#6-conservation-theorem)
+5. Elimination forms correspond to traversal operations — [Connection to Traversal](#7-connection-to-traversal)
+
 # B/L/D Irreducibility Theorem: Categorical Proof
 
 ## Abstract

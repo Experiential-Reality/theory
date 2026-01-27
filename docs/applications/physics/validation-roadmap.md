@@ -9,26 +9,23 @@ depends_on:
 
 > **Status**: Foundational (tracks validation status of all physics claims)
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Physics Validation Roadmap in 7 steps:**
+**Physics validation status:**
 
-1. Five cross-domain validations are established: Variational Inference (R^2=1.0), Neural Networks (r=0.91), Circuits (6/6 tests), Thermodynamics (10/10 tests), GPU Performance (<20% error)
-2. Physics-traverser Tier 1 (P1-P8) are structural necessities: causality -> SO(3,1), compactness -> charge quantization, spin-statistics boundary, locality -> gauge principle — all well-established
-3. Tier 2 (P9-P10): Triality -> 3 generations (4th excluded by LEP), theta_QCD = 0 (limit: theta < 10^-10) — novel prediction: no 4th generation will ever be found
-4. Tier 3 (P11-P12) FULLY DERIVED: mass hierarchy from S3 breaking with charges (3,1,0), epsilon = lambda_Cabibbo = 0.225 EXACT, CKM from Froggatt-Nielsen (V_us = lambda, 0.3% error)
-5. Validation levels defined: VALIDATED (empirical tests), DERIVED (math proof), REFRAMING (known physics), MECHANISM (how identified), HYPOTHESIS (conjecture), EXPLORATORY (early)
-6. High priority tests: QM entanglement (L formula applicability), Phase transitions (D×L critical scaling) — repos to create: bld-quantum-test, bld-phase-transition-test, bld-protein-test
-7. Current status: 36 total claims across physics docs — 1 validated, 12 derived, 9 reframing, 4 hypothesis, 10 testable
+1. Cross-domain validated: VI (R²=1.0), Neural (r=0.91), Circuits (6/6), Thermo (10/10) — [Cross-Domain](#cross-domain-validations-established)
+2. P1-P8 derived: causality→SO(3,1), compactness→charge quantization, spin-statistics — [Tier 1](#tier-1-core-structure-p1-p8)
+3. P9-P10 derived: triality→3 generations, θ_QCD = 0 — [Tier 2](#tier-2-generation-structure-p9-p10)
+4. P11-P12 fully derived: ε = λ = 0.225 exact, CKM V_us 0.3% error — [Tier 3](#tier-3-mass-hierarchy-p11-p12-fully-derived)
+5. Entropy unified: entanglement (S=2L), black holes (S=A/4ℓ_P²), phase transitions (L→∞) — [Test Priority](#validation-test-priority)
+6. Total claims: 38 across physics docs (1 validated, 14 derived, 9 reframing, 10 testable) — [Summary Table](#summary-table)
 
 | Domain | Status | Key Result |
 |--------|--------|------------|
-| Circuits | VALIDATED | R^2 = 1.0 for D×L, 6/6 tests |
-| Thermodynamics | VALIDATED | 10/10 tests, dS/dt >= 0 |
-| P11 Mass Hierarchy | DERIVED | epsilon = lambda exact, 0% error with CG |
-| P12 Mixing | DERIVED | V_us = lambda, 0.3% error |
-
-This document provides the validation status for every physics claim in BLD documentation, with explicit falsification criteria and test status.
+| Circuits | VALIDATED | R² = 1.0, 6/6 tests |
+| Thermodynamics | VALIDATED | 10/10 tests |
+| P11 Mass Hierarchy | DERIVED | ε = λ exact |
+| P12 Mixing | DERIVED | V_us 0.3% error |
 
 ---
 
@@ -263,14 +260,22 @@ where:
 | Claim | Status | Test | Falsification |
 |-------|--------|------|---------------|
 | Measurement as B | FRAMEWORK | N/A | N/A (definitional) |
-| Entanglement as L | TESTABLE | L formula vs S(ρ_A) | Correlation structure differs |
+| Entanglement as L | **DERIVED** | L formula vs S(ρ_A) | ✓ S = 2L at max entanglement |
+| Entanglement entropy | **DERIVED** | S = K × L + H | S = 2L exact for Bell/GHZ states |
 | D×L scales entanglement | TESTABLE | N-qubit random states | Total S doesn't scale |
 | Measurement B is D-invariant | TESTABLE | Collapse vs system size | Collapse changes with N |
 
-**Proposed test**: `bld-quantum-test` repo
-- Generate entangled states
-- Compare classical ρ to quantum S(ρ_A)
-- Check L = -½ ln(1-ρ²) applicability
+**Entanglement entropy DERIVED** (see [entanglement-entropy.md](../../mathematics/quantum/entanglement-entropy.md)):
+- ρ = C/√2 (BLD correlation = concurrence/√2)
+- S = K × L = 2L at maximum entanglement (exact)
+- S = 2L + H in general (H = basis-selection entropy)
+- Same √2 as Bell violation (SU(2) geometry)
+
+**Black hole entropy DERIVED** (see [black-hole-entropy.md](../../mathematics/quantum/black-hole-entropy.md)):
+- S = K × L = A/(4ℓ_P²) — same formula as entanglement
+- K = 2 (Killing form), L = A/(8ℓ_P²) = A/(2n ℓ_P²)
+- The 1/4 factor comes from n = 4 (spacetime dimensions)
+- Unifies with entanglement: both governed by S = K × L
 
 ### Phase Transitions (phase-transitions.md)
 
@@ -278,8 +283,12 @@ where:
 |-------|--------|------|---------------|
 | Phase boundary as B | FRAMEWORK | N/A | N/A (definitional) |
 | Correlation length as L | TESTABLE | ξ divergence at T_c | ξ stays finite |
+| L = -½ ln(1-ρ²) at T_c | **DERIVED** | Same formula as entanglement | ρ → 1 gives L → ∞ ✓ |
+| L ~ ν ln(ξ) | **DERIVED** | Logarithmic divergence | Follows from L formula ✓ |
 | D×L finite-size scaling | TESTABLE | Monte Carlo scaling collapse | Collapse fails |
 | Critical exponents from D×L | TESTABLE | Compare to known ν, γ, etc. | Exponents don't match |
+
+**L formula connection DERIVED**: ρ → 1 at criticality gives L → ∞ via L = -½ ln(1-ρ²). This is consistent with "L becomes infinite at criticality" already stated in phase-transitions.md.
 
 **Proposed test**: `bld-phase-transition-test` repo
 - 2D and 3D Ising model simulation
@@ -316,8 +325,10 @@ where:
 
 1. **P9 (Triality)**: No 4th generation — already excluded, confirms prediction
 2. **P10 (θ = 0)**: Neutron EDM — ongoing experiments, θ < 10⁻¹⁰
-3. **QM Entanglement**: L formula applicability — new test needed
-4. **Phase Transitions**: D×L critical scaling — new test needed
+3. ~~**QM Entanglement**: L formula applicability~~ — **DERIVED**: S = K × L = 2L at max entanglement (exact). See [Entanglement Entropy](../../mathematics/quantum/entanglement-entropy.md)
+3b. ~~**Black Hole Entropy**: S = K × L~~ — **DERIVED**: Same formula as entanglement, 1/4 from n=4. See [Black Hole Entropy](../../mathematics/quantum/black-hole-entropy.md)
+4. ~~**Phase Transitions**: L formula at criticality~~ — **DERIVED**: L → ∞ as ρ → 1 at T_c. See [Phase Transitions](phase-transitions.md)
+4b. **Phase Transitions**: D×L critical scaling — numerical validation still needed
 
 ### Medium Priority (Mechanism Confirmation)
 

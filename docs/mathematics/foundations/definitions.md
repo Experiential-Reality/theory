@@ -6,6 +6,17 @@ used_by:
   - ../../../README.md
 ---
 
+## Summary
+
+**The formal definitions of BLD's three primitives:**
+
+1. Boundary partitions value space into disjoint regions via a discriminator — [Boundary](#boundary)
+2. Link creates directed connections between source and target — [Link](#link)
+3. Dimension enables homogeneous repetition along an axis — [Dimension](#dimension)
+4. Structure is the triple (B, L, D) of finite sets — [Structure](#structure)
+5. Each primitive provides a unique, irreducible capability — [Irreducibility](#irreducibility)
+6. Alignment cost measures structural mismatch between structures — [Alignment Cost](#alignment-cost)
+
 # BLD Formal Definitions
 
 ## Boundary

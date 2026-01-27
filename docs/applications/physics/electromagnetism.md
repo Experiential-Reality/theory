@@ -13,29 +13,25 @@ used_by:
 
 > **Status**: Exploratory (framework developed, connects to validated gauge structure)
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Electromagnetism through BLD in 7 steps:**
+**Electromagnetism as U(1) gauge structure in BLD:**
 
-1. EM boundaries (B) partition behavior: conductor/insulator (conductivity threshold), near-field/far-field (r vs wavelength), and charge sign (positive/negative)
-2. EM links (L) are the connections: electric and magnetic fields couple charges, the gauge potential A_mu provides the fundamental link structure
-3. EM dimensions (D) count repetition: spatial extent, wavelength, photon number, and field modes
-4. The gauge potential A_mu is L: gauge-invariant field strength F_mu_nu defines physical coupling, while the boundary F_mu_nu -> F_mu_nu remains invariant under gauge transformations
-5. D×L scaling verified: field energy U = (epsilon_0 E^2 / 2) × Volume = L × D, capacitance C = epsilon_0 A/d scales with area (D)
-6. Maxwell's equations split by BLD role: divergence equations (nabla dot E, nabla dot B) define B (where sources partition space), curl equations (nabla cross E, nabla cross B) define L (how fields connect)
-7. U(1) gauge structure explains charge quantization (compact group -> discrete charges) and photon properties (abelian -> no self-interaction)
+1. Boundaries partition behavior: conductor/insulator (σ threshold), near/far field (r vs λ), charge sign — [Three Questions](#the-three-questions-applied-to-em)
+2. Links are connections: gauge potential A_μ couples charges, F_μν defines physical coupling — [Three Questions](#the-three-questions-applied-to-em)
+3. D×L scaling verified: U = (ε₀E²/2) × Volume, capacitance C ∝ area — [D×L Scaling](#dxl-scaling-in-em)
+4. Maxwell splits by BLD: divergence → B (sources partition), curl → L (fields connect) — [Maxwell's Equations](#maxwells-equations-as-bld-structure)
+5. U(1) gauge: compact → charge quantization, abelian → no photon self-interaction — [U(1) Gauge Structure](#u1-gauge-structure)
 
 | Component | BLD | Description |
 |-----------|-----|-------------|
-| Conductivity sigma | B | Material boundary — topological partition |
-| Gauge field A_mu | L | Connection between charges — geometric |
+| Conductivity σ | B | Material boundary — topological partition |
+| Gauge field A_μ | L | Connection between charges — geometric |
 | Volume / wavelength | D | Spatial repetition — multiplies L |
-
-Electromagnetism is the prototypical U(1) gauge theory. This document maps Maxwell's equations and EM phenomena to BLD structure.
 
 ---
 
-## Summary
+## Conclusion
 
 | Finding | Status | Evidence |
 |---------|--------|----------|
@@ -210,7 +206,7 @@ This is B structure — charges come in discrete units.
 
 ---
 
-## D×L Scaling in EM
+## D×L Scaling in EM {#dxl-scaling-in-em}
 
 ### Field Energy
 

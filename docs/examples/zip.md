@@ -14,17 +14,16 @@ used_by:
 
 # ZIP Structure (Three Primitives)
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**ZIP file in BLD in 7 steps:**
+**ZIP file structure in BLD:**
 
-1. **Signature = B** — Partitions entry type: 0x504B0304 (local), 0x504B0102 (central), 0x504B0506 (end)
-2. **flags.bit3 = B** — Partitions size placement: inline (0) vs deferred (1)
-3. **filename_len = L** — Links to filename extent
-4. **compressed_size = L** — Links to data extent (or sentinel for ZIP64)
-5. **local_file_entry = D[N]** — N files repeated in same structure
-6. **central_dir = D[M]** — M directory entries repeated
-7. **ZIP = nested BLD** — Boundaries partition types, links specify lengths, dimensions repeat entries
+1. Signature = B: partitions local/central/end — [Visual](#visual-boundaries-partition-value-space)
+2. flags.bit3 = B: inline (0) vs deferred (1) sizes — [ZIP Structure](#zip-in-three-primitives)
+3. Length fields = L: link to extent — [Visual](#visual-links-connect-values)
+4. local_file_entry = D[N]: N files — [Visual](#visual-dimensions-add-axes)
+5. central_dir = D[M]: M index entries — [ZIP Structure](#zip-in-three-primitives)
+6. No containment primitive needed: B + L + optional D — [Observations](#observations)
 
 | ZIP Component | BLD Primitive |
 |---------------|---------------|

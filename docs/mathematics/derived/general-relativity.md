@@ -17,17 +17,16 @@ used_by:
 
 ---
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**General relativity in 7 steps:**
+**Gravity as stack depth from mass:**
 
-1. **r_s = K×GM/c²** — Schwarzschild radius contains K=2 (Killing form!)
-2. **K/X gravitational** — Same framework as forces, different X
-3. **Stack depth near mass** — Deeper potential = more computational steps
-4. **√(1 - r_s/r)** — Time dilation factor IS a K/X correction
-5. **Event horizon at r = r_s** — Where X = K (infinite depth)
-6. **Geodesics = minimum cost** — Free fall minimizes traversal cost
-7. **8π = K×n×π** — Einstein equation factor from BLD structure
+1. r_s = 2GM/c² = K×GM/c²: the factor 2 IS the Killing form — [Schwarzschild Radius](#1-the-schwarzschild-radius-verified)
+2. √(1 - r_s/r): gravitational time dilation IS a K/X correction — [Gravitational Time Dilation](#2-gravitational-time-dilation-derived)
+3. Event horizon at r = r_s: where K/X = 1 (infinite stack depth) — [Event Horizons](#6-event-horizons-and-black-holes)
+4. Geodesics minimize traversal cost: free fall = path of least computational resistance — [Geodesic Equation](#5-geodesic-equation-derived)
+5. 8π = K×n×π = 2×4×π: Einstein equation coupling from BLD structure — [Einstein Field Equations](#4-einstein-field-equations-derived)
+6. Gravity follows same K/X pattern as other forces, different X — [Connection to Force Structure](#7-connection-to-force-structure)
 
 | Effect | Formula | BLD Meaning |
 |--------|---------|-------------|
@@ -110,7 +109,7 @@ At r = r_s:
 
 ## 2. Gravitational Time Dilation `[DERIVED]`
 
-### The Formula
+### The Formula: Time Dilation
 
 ```
 Time dilation factor = √(1 - r_s/r) = √(1 - K×GM/(c²×r))
@@ -159,7 +158,7 @@ At r → ∞:   depth → 1 (flat space)
 
 ## 3. The Schwarzschild Metric `[DERIVED]`
 
-### The Formula
+### The Formula: Schwarzschild
 
 ```
 ds² = -(1 - r_s/r)c²dt² + (1 - r_s/r)⁻¹dr² + r²(dθ² + sin²θ dφ²)
@@ -211,7 +210,7 @@ Near mass:
 
 ## 4. Einstein Field Equations `[DERIVED]`
 
-### The Formula
+### The Formula: Einstein Equations
 
 ```
 G_μν = (8πG/c⁴) × T_μν
@@ -259,7 +258,7 @@ Curvature IS the geometric response to matter's BLD structure
 
 ## 5. Geodesic Equation `[DERIVED]`
 
-### The Formula
+### The Formula: Geodesics
 
 ```
 d²x^μ/dτ² + Γ^μ_νλ (dx^ν/dτ)(dx^λ/dτ) = 0
@@ -368,6 +367,31 @@ Hawking radiation (speculative):
   - Slow leakage of C_hidden → C_visible
   - Information preserved but takes cosmological time
 ```
+
+### Connection to Entropy: S = K × L
+
+The **same K = 2** that appears in r_s = 2GM/c² also governs black hole entropy:
+
+```
+S = K × L = A/(4ℓ_P²)
+
+Where:
+  K = 2 (Killing form — bidirectional observation)
+  L = A/(8ℓ_P²) (link cost per horizon area)
+  n = 4 (spacetime dimensions → the 1/4 factor)
+```
+
+**The unification**:
+| Context | Formula | K = 2 Role |
+|---------|---------|------------|
+| Schwarzschild radius | r_s = **2**GM/c² | Gravitational structure |
+| Time dilation | √(1 - r_s/r) | K/X correction |
+| Black hole entropy | S = **2**L | Bidirectional observation cost |
+| Entanglement entropy | S = **2**L | Same formula as black holes |
+
+The factor 2 in the Schwarzschild radius is NOT coincidental — it's the same Killing form K = 2 that governs all bidirectional observation, including entropy.
+
+**Reference**: [Black Hole Entropy](../quantum/black-hole-entropy.md), [Key Principles: Entropy Formula](../foundations/key-principles.md#entropy-formula)
 
 ---
 

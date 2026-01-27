@@ -1,3 +1,13 @@
+## Summary
+
+**The foundational layer of BLD theory:**
+
+1. Core constants: B=56, L=20, n=4, K=2, S=13 — [Core Terms](#core-terms)
+2. Dependency structure shows how concepts build on each other — [Dependency Diagram](#dependency-diagram)
+3. Four reading paths: Foundations, Core Theory, Physics, Machine — [Reading Order](#reading-order)
+4. Key results include irreducibility, completeness, and all four forces derived — [Key Results](#key-results)
+5. Files organized by question: What is BLD? Why correct? How gives physics? — [Folder Structure](#folder-structure)
+
 # BLD Foundations
 
 **Layer 0-1**: Core axioms and theorems that establish BLD as a formal system.

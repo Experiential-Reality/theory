@@ -17,26 +17,23 @@ used_by:
 
 # The Genesis Function: traverse(-B, B)
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**How existence bootstraps in 7 steps:**
+**How existence bootstraps (genesis = traverse(-B, B)):**
 
-1. **Nothing is impossible** — Defining "nothing" requires distinction, which IS a boundary
-2. **B must partition** — A boundary that doesn't partition isn't a boundary
-3. **Only direction available** — B partitions into +B (forward) and -B (backward)
-4. **Creates chirality** — +B = matter/left-handed, -B = antimatter/right-handed
-5. **Requires constant L** — traverse(-B, B) needs links; Killing form gives L=2
-6. **Mutual observation** — +B observes -B and vice versa through constant L
-7. **Genesis = traverse(-B, B)** — The Big Bang isn't an event; it's eternal mutual observation
+1. Nothing is impossible: defining it requires B — [Chain of Necessity](#the-chain-of-necessity)
+2. B must partition: only direction available → +B/-B — [Step 3-4](#step-3-the-only-available-content-is-direction)
+3. Creates chirality: +B = matter/left, -B = antimatter/right — [Chirality](#step-4-this-creates-b-and--b)
+4. Constant L = 2: traverse(-B, B) requires bidirectional links — [Constant L](#the-constant-l-between-b-and--b)
+5. Big Bang = eternal mutual observation — [Genesis Function](#the-genesis-function)
+6. Closure requires octonions → SU(3) — [Octonions Required](#why-octonions-are-required-closure-argument)
 
-| What Genesis Explains | Mechanism |
-|----------------------|-----------|
+| Genesis Explains | Mechanism |
+|-----------------|-----------|
 | Why something exists | Nothing is self-contradictory |
 | Why chirality | B can only partition direction |
 | Why CPT symmetry | Constant L connects +B and -B |
 | Why matter asymmetry | We ARE the +B partition |
-
-How existence bootstraps itself through mutual observation of its partitions.
 
 ---
 
@@ -417,7 +414,7 @@ SU(3) EXISTS (derived, not empirical)
 
 ---
 
-## Summary
+## Conclusion
 
 ```
 The genesis function IS traverse(-B, B).

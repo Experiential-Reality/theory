@@ -12,23 +12,23 @@ used_by:
 
 # BLD Structure of This Documentation
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Documentation structure in BLD in 7 steps:**
+**This documentation is BLD structure — self-demonstrating:**
 
-1. **B₁ (epistemic status)** — Partitions all docs: PROVEN | DERIVED | HYPOTHESIZED
-2. **B₂ (audience)** — Partitions reading paths: newcomer | mathematician | practitioner
-3. **L (glossary hub)** — Central node with ~50 inbound links from all sections
-4. **L (depends_on)** — Each file declares what it builds upon
-5. **D (file repetition)** — Same YAML template repeats across all .md files
-6. **D (layer hierarchy)** — Layer 0 → 1 → 2 → application progression
-7. **Self-application** — BLD applied to BLD docs demonstrates the framework
+1. B₁ (epistemic status): partitions docs into PROVEN | DERIVED | HYPOTHESIZED — [Boundaries](#the-complete-drawing)
+2. B₂ (audience): partitions reading paths: newcomer | mathematician | practitioner — [The Complete Drawing](#the-complete-drawing)
+3. L (glossary hub): ~50 inbound links, highest centrality — [Quantitative Summary](#quantitative-summary)
+4. D (sections): 7 top-level directories, ~94 total documents — [Dimensions](#the-complete-drawing)
+5. D×L scaling: ~94 docs × ~6 links/doc = ~564 total links — [D×L Scaling Demonstrated](#dl-scaling-demonstrated)
+6. B invariant: 5 epistemic statuses regardless of doc count — [D×L Scaling Demonstrated](#dl-scaling-demonstrated)
+7. Self-reference: this document describes structure that includes itself — [Self-Reference](#self-reference)
 
-| Doc Component | BLD |
-|---------------|-----|
-| Status tags | B (partitions) |
-| Cross-refs | L (links) |
-| File array | D (repetition) |
+| Hub | Inbound Links | Role |
+|-----|---------------|------|
+| glossary.md | ~50 | Central hub |
+| lie-correspondence | ~20 | Key result |
+| octonion-derivation | ~15 | Foundation |
 
 ---
 
@@ -233,7 +233,7 @@ Both traversers satisfy BLD principles:
 
 ---
 
-## D×L Scaling Demonstrated
+## D×L Scaling Demonstrated {#dl-scaling-demonstrated}
 
 **L scales with D** (geometric property):
 - ~94 documents × ~6 links/doc = ~564 total links

@@ -7,17 +7,15 @@ depends_on:
 
 # The Killing Form in BLD
 
-## Quick Summary (D≈7 Human Traversal)
+## Summary
 
-**Killing form = 2 in 7 steps:**
+**Killing form K = 2:**
 
-1. **Observation requires connection** — Observer → observed needs a link (L)
-2. **Feedback required** — Observed → observer needs another link; observation is bidirectional
-3. **Minimum = 2** — Forward + backward = 2 links (irreducible)
-4. **Killing form B(X,X) = 2** — For so(3,1), trace of adjoint composition gives exactly 2
-5. **Sign = topology** — +2 for compact (rotations), -2 for non-compact (boosts)
-6. **Appears everywhere** — Observer correction 2/(n×L), uncertainty ℏ/2, Bell 2√2, T2 ≤ 2×T1
-7. **Dual Coxeter number** — h∨ = 2 for so(4) confirms algebraic origin
+1. Derived from bidirectional observation: forward + backward = 2 links — [BLD Derivation](#bld-derivation-why-exactly-2)
+2. Appears in QM: uncertainty ℏ/2, Bell 2√2, decoherence T2 ≤ 2×T1 — [Quantum Mechanics](#quantum-mechanics-interpretation)
+3. Sign encodes topology: +2 compact (rotations), −2 non-compact (boosts) — [Three Boundaries](#the-three-boundaries-in-so31)
+4. Observer correction = K/(n×L) = 2/80 = 2.5% — [Observer Corrections](#connection-to-observer-corrections)
+5. K = 2 = dim(ℂ): minimum algebra for bidirectional observation — [Division Algebras](#connection-to-division-algebras)
 
 | Domain | Formula | The "2" |
 |--------|---------|---------|
@@ -25,8 +23,6 @@ depends_on:
 | Uncertainty | ℏ/2 | Robertson bound |
 | Bell violation | 2√2 | Killing × √2 |
 | Decoherence | T2 ≤ 2×T1 | Phase/energy link ratio |
-
-**Status: DERIVED** — The value 2 is derived from BLD bidirectional observation, not fitted.
 
 ---
 
@@ -229,14 +225,31 @@ Observer correction = 2/(n×L) = 2/80 = 2.5%
 | n×L = 80 | L (total) | Full geometric structure (4 dimensions × 20 Riemann) |
 | 2/80 | L/L | Observer fraction of structure |
 
-### Why 2/(n×L)?
+### Why 2/(n×L)? (Derived from Cost Formula) {#why-2nxl-derived-from-cost-formula}
 
-The observer correction is: **(minimum observation cost) / (total structure)**
+The observer correction is **uniquely determined** by the BLD cost formula:
 
-- **Numerator (2)**: You can't observe with less than 2 links (Killing form minimum)
-- **Denominator (80)**: The total geometric structure you're measuring
+```
+Cost = B + D×L
+```
 
-The ratio tells you: "What fraction of the structure is consumed by the act of observation?"
+**The derivation:**
+
+1. **Measurement is a traversal** with cost = B + D×L
+2. **D×L is the geometric cost** — the channel capacity for the measurement
+3. **K is an L-cost** — the observer consumes K links from the D×L budget
+4. **Therefore:** overhead = K / (D×L) = K / (n×L) = 2/80 = 2.5%
+
+**Why not K/B or K/L or K/(B+L)?**
+
+| Candidate | Why not |
+|-----------|---------|
+| K/B | K is L-type, B is topological — can't divide L by B |
+| K/L | Missing D multiplier — cost formula says D×L, not L |
+| K/(B+L) | Mixing types — B and L don't add (different units) |
+| **K/(D×L)** | ✓ Correct — K is L-cost, D×L is total L-cost |
+
+The denominator n×L = 80 is not chosen to fit data — it's the geometric cost term from Cost = B + D×L.
 
 ### The Corrected Electron Mass
 
@@ -468,7 +481,7 @@ External reference (apparatus, second observer, measurement record) provides add
 
 ---
 
-## Summary
+## Conclusion
 
 > **The Killing form is the L-cost of D observing D through the algebra's link structure—and that cost is always at least 2 because observation is bidirectional.**
 
