@@ -384,13 +384,8 @@ where:
 
 ### Calculations Needed
 
-1. ~~**S₃ breaking potential**~~ — **COMPLETE** (see `scripts/s3_potential_full.py`)
-2. ~~**S₃ violation strength**~~ — **COMPLETE** (sin(θ₁₃)/ε = 0.92)
-3. ~~**GUT scale**~~ — **COMPLETE** (sin²θ_W → 3/8; see `scripts/gauge_unification.py`)
-4. ~~**ε₂ origin**~~ — **COMPLETE** (cascade symmetry; see `scripts/epsilon2_discovery.py`)
-5. ~~**M_R derivation**~~ — **COMPLETE** (M_R = M_GUT × λ²; see `scripts/neutrino_seesaw.py`)
-6. **EW scale formula** — INCOMPLETE (v/M_GUT ~ λ²¹, exponential mechanism needed)
-7. **Neutrino Dirac Yukawas** — INCOMPLETE (need y_ν from S₃)
+1. **EW scale formula** — v/M_GUT ~ λ²¹, exponential mechanism needed
+2. **Neutrino Dirac Yukawas** — need y_ν from S₃
 
 ---
 
@@ -404,12 +399,6 @@ where:
 | electromagnetism.md | 4 | 0 | 0 | 3 | 0 | 1 |
 | fluids.md | 4 | 1 | 0 | 2 | 0 | 1 |
 | **Total** | **36** | **1** | **12** | **9** | **4** | **10** |
-
-**Updates**:
-- P11 up-quark sector: DERIVED (ε₂ = √λ from cascade symmetry, 0.31% error)
-- P14: SUPPORTED (sin²θ_W → 3/8 exactly)
-- P17: MECHANISM+ (M_R = M_GUT × λ²)
-- See [Scale Hierarchy](scale-hierarchy.md) for full analysis
 
 ---
 

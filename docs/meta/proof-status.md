@@ -12,7 +12,7 @@ depends_on:
 
 # BLD Theory: Proof Status
 
-**Last updated**: 2026-01-18
+**Last updated**: 2026-01-26
 
 This document provides rigorous accounting of what is proven, validated, derived, and conjectured in BLD theory.
 
