@@ -1,6 +1,6 @@
 ---
 status: PROVEN
-layer: 0
+layer: 1
 depends_on:
   - ../axioms.md
   - ../definitions/bld-calculus.md
