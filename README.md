@@ -92,6 +92,7 @@ See [Formal Definitions](docs/mathematics/foundations/definitions.md) and [Key P
 
 ### Theory
 - [Discovery Method](docs/meta/discovery-method.md) — The three questions
+- [Discovery History](docs/meta/discovery-history.md) — From JPEG decoder to particle physics
 - [Proof Status](docs/meta/proof-status.md) — What is proven vs. conjectured
 - [Implications](docs/theory/implications.md) — If this framework is correct
 - [Genesis Function](docs/mathematics/cosmology/genesis-function.md) — Why something exists

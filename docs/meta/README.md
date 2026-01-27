@@ -16,6 +16,10 @@ This directory contains documents about **how BLD theory is developed and mainta
 - [Discovery Method](discovery-method.md) — How to find BLD structure in any system
 - [Research Directions](research-directions.md) — Open problems and active research
 
+### History
+
+- [Discovery History](discovery-history.md) — From JPEG decoder to fundamental physics: the actual discovery journey vs logical reconstruction
+
 ---
 
 ## Status Categories
