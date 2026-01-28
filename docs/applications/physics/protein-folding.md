@@ -544,6 +544,7 @@ This exploratory analysis requires the following tests before upgrading to valid
 
 ## See Also
 
+- [Genetic Code](../biology/genetic-code.md) — Why 20 amino acids (L = n(n+1))
 - [Glossary](../../glossary.md) — Central definitions
 - [Thermodynamics](../../mathematics/derived/thermodynamics.md) — Free energy on the manifold
 - [Lie Correspondence](../../mathematics/lie-theory/lie-correspondence.md) — Physics as Lie group

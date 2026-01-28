@@ -9,6 +9,7 @@ Applying BLD theory to practical domains.
 | [physics/](physics/) | Physics simulations and validations | epsilon2-origin, scale-hierarchy |
 | [ml/](ml/) | Machine learning and neural networks | neural-network-alignment |
 | [code/](code/) | Code generation and analysis | cross-language-compilation |
+| [biology/](biology/) | Biological systems | genetic-code |
 
 ## Key Applications
 
@@ -24,3 +25,7 @@ Applying BLD theory to practical domains.
 ### Code
 - **Cross-language compilation**: BLD as intermediate representation
 - **Refactoring**: BLD-guided code transformation
+
+### Biology
+- **Genetic code**: 20 amino acids = L, degeneracy divides n(n-1) = 12
+- **Cross-validation**: Same 20/12 structure as Kolmogorov turbulence and icosahedral geometry
