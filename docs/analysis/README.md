@@ -13,13 +13,13 @@ Documentation analysis and consistency checking.
 
 | File | Description |
 |------|-------------|
-| [math-verification-report.md](math-verification-report.md) | External source verification of all math claims |
-| [error-analysis.md](error-analysis.md) | Analysis of BLD errors vs experimental uncertainty |
+| [math-verification-report.md](math-verification-report.md) | External verification of physics constants, Lie theory, quarks, bosons, novel predictions |
+| [error-analysis.md](error-analysis.md) | Analysis of BLD errors vs experimental uncertainty, including cosmological K/X examples |
 
 ## Purpose
 
 This directory contains meta-analysis of the BLD documentation:
-- Checking for circular dependencies
-- Verifying claim status consistency
-- Tracking broken references
-- Monitoring proof completeness
+- External verification against CODATA 2022 / PDG 2024
+- Error source analysis (measurement vs K/X observer correction)
+- Tracking novel predictions (muon g-2, Higgs κ_λ)
+- Documenting derived constants (Feigenbaum, Reynolds)

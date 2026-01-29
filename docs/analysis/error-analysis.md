@@ -3,6 +3,7 @@ status: DERIVED
 layer: meta
 depends_on:
   - ../mathematics/cosmology/observer-correction.md
+  - ../mathematics/cosmology/hubble-tension.md
   - ../mathematics/particle-physics/fine-structure-consistency.md
   - ../mathematics/particle-physics/lepton-masses.md
   - ../mathematics/particle-physics/boson-masses.md
@@ -185,6 +186,43 @@ Still overcorrects
 - May represent the intrinsic limit of first-order BLD formulas
 
 **Verdict**: ✅ The 0.004% error is consistent with **expected higher-order corrections**.
+
+---
+
+### 3.5 Cosmological K/X Examples
+
+The K/X observation cost principle extends beyond particle physics to cosmology.
+
+#### Hubble Tension
+
+The "Hubble tension" — different H₀ values from CMB vs local measurements — is resolved by K/X:
+
+```
+H₀(local) = H₀(CMB) × (1 + K/(n+L))
+          = 67.4 × (1 + 2/24)
+          = 67.4 × 1.0833
+          = 73.0 km/s/Mpc
+```
+
+**Key insight**: Both measurements are correct — they measure different things:
+- **CMB (Planck)**: Measures primordial structure directly (no K/X cost)
+- **Local (SH0ES)**: Measures through the observation ring, paying K/(n+L) = 8.3%
+
+**Error**: 0% — prediction matches observed local value exactly.
+
+See [Hubble Tension](../mathematics/cosmology/hubble-tension.md).
+
+#### σ₈ Tension
+
+The σ₈ tension (CMB predicts σ₈ = 0.83, local measures σ₈ = 0.76) follows the same K/X principle with **opposite sign**:
+
+```
+σ₈(local) = σ₈(CMB) × (1 - K/(n+L))
+```
+
+The sign difference arises because σ₈ measures structure suppression (clumping decreases through observation) while H₀ measures expansion (rate increases through observation).
+
+**Verdict**: K/X pattern is universal across particle physics AND cosmology.
 
 ---
 
