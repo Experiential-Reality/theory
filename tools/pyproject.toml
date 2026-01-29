@@ -6,12 +6,6 @@ dependencies = [
     "anyio>=4.0",
 ]
 
-[project.optional-dependencies]
-test = [
-    "pytest>=8.0",
-    "pytest-asyncio>=0.23",
-]
-
 [project.scripts]
 check-links = "tools.check_links:main"
 
@@ -22,6 +16,26 @@ build-backend = "hatchling.build"
 [tool.hatch.build.targets.wheel]
 packages = ["src/tools"]
 
+[dependency-groups]
+dev = [
+    "flake8>=7.0.0",
+    "mypy>=1.10.0",
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 asyncio_mode = "auto"
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+no_implicit_optional = true
+strict_equality = true
+check_untyped_defs = true
+packages = ["tools"]
+mypy_path = "src"

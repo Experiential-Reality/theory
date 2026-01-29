@@ -13,20 +13,20 @@ from tools.check_links import (
 
 class TestValidateAnchor:
     def test_valid_anchor(self):
-        anchors = {"section-one", "section-two"}
+        anchors = frozenset({"section-one", "section-two"})
         link = Link(kind=LinkKind.INLINE, text="test", url="#section-one", line=1)
         error = validate_anchor("section-one", anchors, pathlib.Path("test.md"), link)
         assert error is None
 
     def test_missing_anchor(self):
-        anchors = {"section-one"}
+        anchors = frozenset({"section-one"})
         link = Link(kind=LinkKind.INLINE, text="test", url="#missing", line=1)
         error = validate_anchor("missing", anchors, pathlib.Path("test.md"), link)
         assert error is not None
         assert "not found" in error.message
 
     def test_similar_anchor_hint(self):
-        anchors = {"section-one", "section-two"}
+        anchors = frozenset({"section-one", "section-two"})
         link = Link(kind=LinkKind.INLINE, text="test", url="#sectionone", line=1)
         error = validate_anchor("sectionone", anchors, pathlib.Path("test.md"), link)
         assert error is not None
@@ -35,17 +35,17 @@ class TestValidateAnchor:
 
 class TestFindSimilar:
     def test_finds_similar_by_removing_dashes(self):
-        anchors = {"section-one", "other-section"}
+        anchors = frozenset({"section-one", "other-section"})
         similar = find_similar("sectionone", anchors)
         assert "section-one" in similar
 
     def test_finds_substring_match(self):
-        anchors = {"the-compensation-principle", "other"}
+        anchors = frozenset({"the-compensation-principle", "other"})
         similar = find_similar("compensation-principle", anchors)
         assert "the-compensation-principle" in similar
 
     def test_limits_results(self):
-        anchors = {f"section-{i}" for i in range(10)}
+        anchors = frozenset({f"section-{i}" for i in range(10)})
         similar = find_similar("section", anchors, limit=3)
         assert len(similar) <= 3
 
