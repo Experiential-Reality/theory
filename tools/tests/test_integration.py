@@ -4,17 +4,13 @@ import pathlib
 
 import pytest
 
-from tools.check_links import (
-    collect_files,
-    process_file,
-    validate_inter_file,
-)
+from tools.check_links import check, process_file
 
 
 class TestProcessFile:
     def test_extracts_anchors_and_links(self, all_link_types_md: pathlib.Path):
         content = all_link_types_md.read_text()
-        file_data, errors = process_file(all_link_types_md, content)
+        file_data, errors = process_file(str(all_link_types_md), content)
 
         # Should extract headers as anchors
         assert "valid-links" in file_data.anchors
@@ -27,34 +23,23 @@ class TestProcessFile:
 
     def test_validates_intra_file_anchors(self, all_link_types_md: pathlib.Path):
         content = all_link_types_md.read_text()
-        file_data, errors = process_file(all_link_types_md, content)
+        file_data, errors = process_file(str(all_link_types_md), content)
 
         # Self anchor #valid-links should be valid (no error)
         error_anchors = [e.link for e in errors if e.link.startswith("#")]
         assert "#valid-links" not in error_anchors
 
 
-class TestCollectFiles:
+class TestCheck:
     @pytest.mark.asyncio
     async def test_finds_all_fixture_files(self, fixtures_dir: pathlib.Path):
-        files = {}
-        async for path, data, errs in collect_files(fixtures_dir):
-            files[path] = data
-        assert len(files) == 2
-
-        filenames = {p.name for p in files.keys()}
-        assert "all_link_types.md" in filenames
-        assert "other.md" in filenames
+        file_count, errors = await check(fixtures_dir)
+        assert file_count == 2
 
     @pytest.mark.asyncio
     async def test_detects_broken_links(self, fixtures_dir: pathlib.Path):
-        files = {}
-        intra_errors = []
-        async for path, data, errs in collect_files(fixtures_dir):
-            files[path] = data
-            intra_errors.extend(errs)
-        inter_errors = list(validate_inter_file(files, fixtures_dir))
-        all_errors = intra_errors + inter_errors
+        file_count, errors = await check(fixtures_dir)
+        all_errors = list(errors)
 
         # Should find broken inline link
         error_urls = {e.link for e in all_errors}
@@ -66,13 +51,8 @@ class TestCollectFiles:
 
     @pytest.mark.asyncio
     async def test_valid_links_no_errors(self, fixtures_dir: pathlib.Path):
-        files = {}
-        intra_errors = []
-        async for path, data, errs in collect_files(fixtures_dir):
-            files[path] = data
-            intra_errors.extend(errs)
-        inter_errors = list(validate_inter_file(files, fixtures_dir))
-        all_errors = intra_errors + inter_errors
+        file_count, errors = await check(fixtures_dir)
+        all_errors = list(errors)
 
         # Valid links should not appear in errors
         error_urls = {e.link for e in all_errors}

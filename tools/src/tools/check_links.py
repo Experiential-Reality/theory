@@ -3,10 +3,10 @@
 
 BLD Structure:
   B: LinkKind, ErrorKind - partition link/error types
-  L: extract_links → process_file → validate_inter_file
-  D: Files (async generator), Links per file (generator)
+  L: extract_links → process_file → check → validate_inter_file
+  D: Files (concurrent tasks), Links per file (generator)
 
-All functions return/yield data. Only main() handles IO.
+All functions return/yield data. Only async_main() handles IO.
 """
 
 import bisect
@@ -32,7 +32,9 @@ REF_DEF_PATTERN = re.compile(r"^\[([^\]]+)\]:\s*(\S+)", re.MULTILINE)
 HEADER_PATTERN = re.compile(r"^#{1,6}\s+(.+)$", re.MULTILINE)
 CODE_FENCE_PATTERN = re.compile(r"```")
 CODE_REF_PATTERN = re.compile(r"^[a-z_]+$")
-STRIP_MD_PATTERN = re.compile(r"\*\*([^*]+)\*\*|\*([^*]+)\*|`([^`]+)`|\[([^\]]+)\]\([^)]+\)")
+STRIP_MD_PATTERN = re.compile(
+    r"\*\*([^*]+)\*\*|\*([^*]+)\*|`([^`]+)`|\[([^\]]+)\]\([^)]+\)"
+)
 
 
 class LinkKind(enum.Enum):
@@ -95,7 +97,9 @@ def _should_skip(url: str, text: str) -> bool:
         url.startswith(EXTERNAL_PREFIXES)
         or url.endswith(SKIP_SUFFIXES)
         or " " in url
-        or bool(CODE_REF_PATTERN.match(text) and not url.endswith(".md") and "#" not in url)
+        or bool(
+            CODE_REF_PATTERN.match(text) and not url.endswith(".md") and "#" not in url
+        )
     )
 
 
@@ -115,7 +119,9 @@ def extract_links(content: str) -> typing.Iterator[Link]:
     """Yield links from markdown content."""
     blocks = _build_code_blocks(content)
     line_starts = [0] + [m.end() for m in re.finditer(r"\n", content)]
-    ref_defs = {m.group(1).lower(): m.group(2) for m in REF_DEF_PATTERN.finditer(content)}
+    ref_defs = {
+        m.group(1).lower(): m.group(2) for m in REF_DEF_PATTERN.finditer(content)
+    }
 
     for m in INLINE_LINK_PATTERN.finditer(content):
         pos = m.start()
@@ -159,11 +165,13 @@ def extract_headers(content: str) -> typing.Iterator[str]:
 def find_similar(anchor: str, valid: frozenset[str], limit: int = 3) -> list[str]:
     """Find similar anchors for error hints."""
     n = anchor.replace("-", "")
-    return [h for h in valid if n in h.replace("-", "") or h.replace("-", "") in n][:limit]
+    return [h for h in valid if n in h.replace("-", "") or h.replace("-", "") in n][
+        :limit
+    ]
 
 
 def validate_anchor(
-    anchor: str, anchors: frozenset[str], source: anyio.Path, link: Link
+    anchor: str, anchors: frozenset[str], source: str, link: Link
 ) -> Error | None:
     if anchor in anchors:
         return None
@@ -171,39 +179,35 @@ def validate_anchor(
     hint = f" Similar: {similar}" if similar else ""
     return Error(
         ErrorKind.ANCHOR_NOT_FOUND,
-        str(source),
+        source,
         link.line,
         link.format_for_error(),
         f"Anchor #{anchor} not found.{hint}",
     )
 
 
-def process_file(
-    path: anyio.Path, content: str
-) -> tuple[FileData, typing.Iterator[Error]]:
-    """Process file, return data and yield intra-file errors."""
+def process_file(path: str, content: str) -> tuple[FileData, list[Error]]:
+    """Process file, return data and intra-file errors."""
     anchors = frozenset(extract_headers(content))
     inter_file: list[Link] = []
+    errors: list[Error] = []
 
-    def errors() -> typing.Iterator[Error]:
-        for link in extract_links(content):
-            if link.kind == LinkKind.UNDEFINED_REF:
-                yield Error(
-                    ErrorKind.UNDEFINED_REF,
-                    str(path),
-                    link.line,
-                    link.format_for_error(),
-                    f"Reference [{link.ref}] is not defined",
-                )
-            elif link.url.startswith("#"):
-                if err := validate_anchor(link.url[1:], anchors, path, link):
-                    yield err
-            else:
-                inter_file.append(link)
+    for link in extract_links(content):
+        if link.kind == LinkKind.UNDEFINED_REF:
+            errors.append(Error(
+                ErrorKind.UNDEFINED_REF,
+                path,
+                link.line,
+                link.format_for_error(),
+                f"Reference [{link.ref}] is not defined",
+            ))
+        elif link.url.startswith("#"):
+            if err := validate_anchor(link.url[1:], anchors, path, link):
+                errors.append(err)
+        else:
+            inter_file.append(link)
 
-    err_iter = errors()
-    errs = list(err_iter)  # Must consume to populate inter_file
-    return FileData(anchors, tuple(inter_file)), iter(errs)
+    return FileData(anchors, tuple(inter_file)), errors
 
 
 def resolve_target(
@@ -216,55 +220,24 @@ def resolve_target(
     return anyio.Path(os.path.normpath(source.parent / file_part)), anchor
 
 
-def validate_inter_file(
-    files: Files, docs_root: anyio.Path
-) -> typing.Iterator[Error]:
+def validate_inter_file(files: Files, docs_root: anyio.Path) -> typing.Iterator[Error]:
     """Yield errors for broken inter-file links."""
     for source, data in files.items():
+        source_str = str(source)
         for link in data.inter_file_links:
             target, anchor = resolve_target(link, source, docs_root)
             if target not in files:
                 yield Error(
                     ErrorKind.FILE_NOT_FOUND,
-                    str(source),
+                    source_str,
                     link.line,
                     link.format_for_error(),
                     f"File not found: {link.url.split('#')[0]}",
                 )
             elif anchor and (
-                err := validate_anchor(anchor, files[target].anchors, source, link)
+                err := validate_anchor(anchor, files[target].anchors, source_str, link)
             ):
                 yield err
-
-
-async def collect_files(
-    docs_root: os.PathLike[str],
-) -> typing.AsyncIterator[tuple[anyio.Path, FileData, list[Error]]]:
-    """Yield (path, data, errors) as each file is processed."""
-    docs_root = anyio.Path(docs_root)
-    sem = anyio.Semaphore(MAX_CONCURRENT_IO)
-    send, recv = anyio.create_memory_object_stream[
-        tuple[anyio.Path, FileData, list[Error]]
-    ](32)
-
-    async def process_one(path: anyio.Path) -> None:
-        async with sem:
-            content = await path.read_text()
-        norm = await path.resolve()
-        data, errs = process_file(norm, content)
-        await send.send((norm, data, list(errs)))
-
-    async def producer() -> None:
-        async with send:
-            async with anyio.create_task_group() as tg:
-                async for path in docs_root.rglob("*.md"):
-                    tg.start_soon(process_one, path)
-
-    async with anyio.create_task_group() as tg:
-        tg.start_soon(producer)
-        async with recv:
-            async for item in recv:
-                yield item
 
 
 async def check(docs_root: os.PathLike[str]) -> tuple[int, typing.Iterator[Error]]:
@@ -272,10 +245,19 @@ async def check(docs_root: os.PathLike[str]) -> tuple[int, typing.Iterator[Error
     docs_root = anyio.Path(docs_root)
     files: Files = {}
     intra_errors: list[Error] = []
+    sem = anyio.Semaphore(MAX_CONCURRENT_IO)
 
-    async for path, data, errs in collect_files(docs_root):
-        files[path] = data
+    async def process_one(path: anyio.Path) -> None:
+        async with sem:
+            content = await path.read_text()
+        norm = await path.resolve()
+        data, errs = process_file(str(norm), content)
+        files[norm] = data
         intra_errors.extend(errs)
+
+    async with anyio.create_task_group() as tg:
+        async for path in docs_root.rglob("*.md"):
+            tg.start_soon(process_one, path)
 
     def all_errors() -> typing.Iterator[Error]:
         yield from intra_errors
@@ -284,7 +266,7 @@ async def check(docs_root: os.PathLike[str]) -> tuple[int, typing.Iterator[Error
     return len(files), all_errors()
 
 
-def format_errors(errors: typing.Iterator[Error]) -> typing.Iterator[str]:
+def format_errors(errors: typing.Iterable[Error]) -> typing.Iterator[str]:
     """Format errors grouped by file, yield output lines."""
     by_file: dict[str, list[Error]] = collections.defaultdict(list)
     for e in errors:
@@ -314,7 +296,7 @@ async def async_main() -> int:
     print(f"Checking {file_count} markdown files...\n", file=sys.stderr)
 
     errors_list = list(errors)
-    for line in format_errors(iter(errors_list)):
+    for line in format_errors(errors_list):
         print(line)
 
     return 1 if errors_list else 0
