@@ -17,10 +17,12 @@
 
 ## Key Results
 
-| Quantity | Formula | Predicted | Observed |
-|----------|---------|-----------|----------|
-| Dark matter | 5x = 25% + 2% correction | 27% | ~27% |
-| Dark energy | 1 - 6x - 8x² | 68% | ~68% |
+| Quantity | Formula | Predicted | Observed | Source |
+|----------|---------|-----------|----------|--------|
+| Dark matter | 5x = 25% + 2% correction | 27% | ~27% | [dark-matter-mapping.md](dark-matter-mapping.md) |
+| Dark energy | 1 - 6x - 8x² | 68% | ~68% | [dark-matter-mapping.md](dark-matter-mapping.md) |
+
+See [observer-correction.md](observer-correction.md) for the unified correction framework.
 
 ## Observer Correction Framework
 

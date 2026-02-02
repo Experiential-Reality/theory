@@ -19,11 +19,11 @@
 
 ## Key Derivations
 
-| Quantity | Formula | Accuracy |
-|----------|---------|----------|
-| ℏ | M_P² × G/c (with observer corrections) | 0.00003% |
-| [x,p] = iℏ | Structure constant from D-L coupling | Exact |
-| P = |ψ|² | Bidirectional alignment (Killing form K=2) | Derived |
+| Quantity | Formula | Accuracy | Source |
+|----------|---------|----------|--------|
+| ℏ | M_P² × G/c (with observer corrections) | 0.00003% | [planck-derivation.md](planck-derivation.md) |
+| [x,p] = iℏ | Structure constant from D-L coupling | Exact | [quantum-mechanics.md](quantum-mechanics.md) |
+| P = |ψ|² | Bidirectional alignment (Killing form K=2) | Derived | [born-rule.md](born-rule.md) |
 
 ## Reading Order
 
@@ -34,5 +34,5 @@
 
 ## Open Questions
 
-- **Measurement collapse**: Why specific outcome? (documented as OPEN)
+- **Collapse ontology**: Is the B-transition physical or epistemic? ([born-rule.md:458](born-rule.md))
 - **Path integrals**: Not covered (future work)
