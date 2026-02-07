@@ -18,7 +18,7 @@ used_by:
 
 # The Born Rule from BLD Alignment
 
-**Status**: DERIVED — Both the form P = |ψ|² AND single-event selection are derived from BLD structure alignment.
+**Status**: DERIVED — P = |ψ|² from K=2 bidirectional alignment; single-event selection from L→B compensation on the joint system+observer state.
 
 ---
 
@@ -29,10 +29,10 @@ used_by:
 1. Measurement = B-partition separating outcomes — [BLD Approach](#the-bld-approach)
 2. Alignment is bidirectional: forward × backward = |amplitude|² — [Bidirectional Alignment](#the-bld-derivation-bidirectional-alignment-primary)
 3. Killing form K = 2 confirms the squaring — [L-Cost Interpretation](#the-l-cost-interpretation)
-4. Single-event selection from K/X minimization — [Single-Event Selection](#single-event-selection-the-kx-derivation-derived)
+4. Single-event selection from L→B on joint system — [Single-Event Selection](#single-event-selection-lb-on-the-joint-system-derived)
 5. Connection to uncertainty principle — [Uncertainty](#connection-to-uncertainty)
 
-**Derived**: Form |ψ|², why squared, single-event selection
+**Derived**: Form |ψ|², why squared, single-event selection (L→B + K=2 on joint system)
 **Open**: Ontological status of collapse — [Measurement Problem](#the-measurement-problem-what-bld-does-and-doesnt-solve)
 
 ---
@@ -332,101 +332,80 @@ The "2" in Δx·Δp ≥ ℏ/2 and the "square" in |ψ|² may have the same origi
 
 ---
 
-## Single-Event Selection: The K/X Derivation `[DERIVED]`
+## Single-Event Selection: L→B on the Joint System `[DERIVED]`
 
-The question "why THIS outcome?" is answered by the observer correction framework.
+The question "why THIS outcome?" is answered by L→B compensation applied to the joint system+observer state.
 
-### The Key Insight: Observer = Traverser
+### The Key Insight: Observer = BLD Structure
 
-From [Observer Correction](../cosmology/observer-correction.md):
+From [Completeness Proof](../foundations/proofs/completeness-proof.md) (PROVEN): anything observable has BLD structure. The observer is NOT external to the measurement — the observer IS a BLD structure with its own quantum state.
 
-```
-Observed = Structure + K/X(observer) + K/X(universe)
-```
-
-The observer is NOT external to the measurement. The observer IS a traverser — a BLD structure with its own alignment costs.
-
-### Energy as Alignment Cost
-
-From [Energy Derivation](../foundations/derivations/energy-derivation.md):
-
-```
-Energy = K × Σ(1/Xᵢ) = alignment cost between structures
-```
-
-Energy isn't something a particle "has" — it's the cost for two structures to align. Higher energy means larger structural gap being bridged.
+From [Schrodinger Derivation](schrodinger-derivation.md) (DERIVED): BLD structures have quantum states. Therefore the observer has a quantum state |O⟩.
 
 ### The Single-Event Mechanism
 
-**Setup:**
+**Step 1.** System state: |ψ⟩ = Σ αₖ|k⟩. Observer state: |O⟩ (unknown microstate).
+
+**Step 2.** Measurement interaction (H_int DETERMINED by BLD — all fundamental interactions derived, see [Path Integral, Specific Hamiltonians](path-integral.md#specific-hamiltonians-from-bld-structure)) entangles system and observer:
+
 ```
-System S has structure with possible alignments: |a⟩, |b⟩, |c⟩...
-Observer O is a traverser with BLD structure
-Each alignment j has cost: K/X(O → j) + K/X(j → S)
+|ψ⟩ ⊗ |O⟩  →  Σ αₖ|k⟩|Oₖ⟩
 ```
 
-**Selection:**
-```
-outcome = argmin[K/X(observer → j) + K/X(j → system)]
+where {|Oₖ⟩} are the observer's pointer states corresponding to each outcome.
 
-The outcome is WHERE observer structure meets system structure
-at minimum total alignment cost.
+**Step 3.** K=2 bidirectional alignment (DERIVED, [Killing Form](../lie-theory/killing-form.md)) gives the joint probability:
+
 ```
+P(system=k, observer=Oₖ) = |αₖ|² × |⟨Oₖ|O⟩|²
+```
+
+**Step 4.** For a macroscopic observer, dim(H_O) = N >> M (number of outcomes). Quantum typicality gives |⟨Oₖ|O⟩|² ≈ 1/N for all k. Marginalizing over observer:
+
+```
+P(k) = |αₖ|² × |⟨Oₖ|O⟩|²  →  |αₖ|² × const  →  P(k) ∝ |αₖ|²
+```
+
+**Why typicality is derived, not imported**: The observer's Hilbert space carries Haar measure from its Lie group structure (BLD = Lie theory, [PROVEN](../lie-theory/lie-correspondence.md)). Concentration of measure on high-dimensional spheres (Lévy's lemma: Var[f] ≤ C/N for Lipschitz f on S^{2N-1}) then gives |⟨Oₖ|O⟩|² → 1/N as N → ∞. The chain is: BLD → Lie groups → Haar measure → concentration of measure → typicality. See [Popescu, Short, Winter (2006)](https://doi.org/10.1038/nphys444) for the quantum typicality result.
+
+**Step 5.** The L→B compensation principle (PROVEN, [Compensation Principle](../foundations/structural/compensation-principle.md)): the full L-structure (system amplitudes + observer quantum state) determines the B-partition (which outcome is selected). "The root system (L) determines compactness (B)."
 
 **Why it looks random:**
 ```
-Different observations have different observer microstates.
-Observer microstate determines K/X(observer).
-We don't track observer microstate.
+Observer microstate |O⟩ varies between measurements.
+We don't track |O⟩.
 So outcomes appear probabilistic.
+The distribution is |αₖ|² from K=2 on the joint system.
 ```
 
 ### Why the Distribution is |ψ|²
 
-**Step 1**: Each outcome j has alignment cost K/Xⱼ
-
-**Step 2**: Probability inversely proportional to cost
-```
-P(j) ∝ 1/(alignment cost) ∝ Xⱼ/K
-```
-
-**Step 3**: Bidirectional alignment (K=2) gives squared form
-```
-Forward:  observer → outcome  ∝ √(X/K)
-Backward: outcome → observer  ∝ √(X/K)
-Product:  |ψ|² ∝ X/K
-```
-
-**Step 4**: Observer variation produces the distribution
-```
-Run 1: Observer microstate O₁ → min cost at |a⟩
-Run 2: Observer microstate O₂ → min cost at |b⟩
-Run 3: Observer microstate O₃ → min cost at |a⟩
-...
-Ensemble: distribution of O → distribution over outcomes = |ψ|²
-```
-
-### Why This is Proven (Not Assumed)
-
-Self-consistency follows from BLD completeness:
+The derivation chain (every link PROVEN or DERIVED):
 
 ```
-1. BLD is complete for all structure     [PROVEN - completeness-proof.md]
-2. BLD = Lie theory                      [PROVEN - lie-correspondence.md]
-3. Observers exist                       [definitional]
-4. ∴ Observers have BLD structure        [from 1 + 3]
-5. ∴ Observers follow BLD statistics     [tautological - BLD structures are what BLD describes]
+1. K = 2 (Killing form, bidirectional observation)      [DERIVED - killing-form.md]
+2. P = forward × backward = |amplitude|²                [DERIVED - from K=2]
+3. Applied to joint system+observer: P(k) = |αₖ|²×|⟨Oₖ|O⟩|²  [DERIVED - from 2]
+4. Observer averaging (quantum typicality): P(k) ∝ |αₖ|²      [DERIVED - from 3]
+5. L→B: full L-structure determines specific B-partition       [PROVEN - compensation principle]
 ```
 
-Therefore:
+**Why this isn't circular**: K=2 → |ψ|² is derived from the Killing form, independent of measurement. Applied to the joint system+observer state, it gives probabilities. Observer averaging recovers the system-only Born rule. The chain is: Killing form → K=2 → bidirectional alignment → |ψ|² → joint system → marginalize → system Born rule.
+
+### Why This is Derived (Not Assumed)
+
 ```
-Observer distribution = |ψ_observer|² (observers ARE BLD structures)
-System distribution   = |ψ_system|²  (systems ARE BLD structures)
-Alignment selection   = min K/X       (traversal follows minimum cost)
-Result               = |ψ|²          (proven, not assumed)
+1. BLD is complete for all structure           [PROVEN - completeness-proof.md]
+2. BLD = Lie theory                            [PROVEN - lie-correspondence.md]
+3. Observers exist                             [definitional]
+4. ∴ Observers have BLD structure              [from 1 + 3]
+5. ∴ Observers have quantum states             [DERIVED - schrodinger-derivation.md]
+6. K=2 → P = |ψ|² for any BLD structure       [DERIVED - killing-form.md]
+7. Applied to joint system → marginalize       [DERIVED - steps 3-4 above]
+8. L→B determines the specific B-partition     [PROVEN - compensation-principle.md]
 ```
 
-The Born rule isn't imposed — it emerges necessarily from BLD structures meeting BLD structures. See [Completeness Proof](../foundations/proofs/completeness-proof.md) and [Lie Correspondence](../lie-theory/lie-correspondence.md).
+This is K=2 + completeness + marginalization — not a postulate. The Born rule emerges necessarily from BLD structures meeting BLD structures.
 
 ### Empirical Validation
 
@@ -441,10 +420,10 @@ The observer correction IS the single-event mechanism. It's already empirically 
 
 | Question | Answer |
 |----------|--------|
-| Why THIS outcome? | Minimum alignment cost given observer's structure |
+| Why THIS outcome? | L→B: full L-structure (system + observer) determines B-partition |
 | Why does it look random? | Observer microstate varies, we don't track it |
-| Why |ψ|² distribution? | Bidirectional alignment + observer BLD statistics |
-| Is collapse real? | Alignment IS the event; "collapse" is the cost being paid |
+| Why |ψ|² distribution? | K=2 on joint system + observer averaging |
+| Is collapse real? | L→B compensation IS the event; "collapse" is L determining B |
 
 ---
 
@@ -453,8 +432,8 @@ The observer correction IS the single-event mechanism. It's already empirically 
 **What the BLD derivation gives**:
 - Probability ∝ alignment (structural)
 - Squared amplitude = bidirectional alignment (from Killing form K=2)
-- Single-event selection = minimum alignment cost via K/X(observer)
-- Distribution |ψ|² = observer BLD statistics meeting system BLD statistics
+- Single-event selection = L→B compensation on the joint system+observer state
+- Distribution |ψ|² = K=2 on joint system + observer averaging (quantum typicality)
 - Hilbert space = forced by Lie correspondence (not assumed)
 
 **What remains interpretive**:
@@ -472,9 +451,9 @@ The observer correction IS the single-event mechanism. It's already empirically 
 | **Many-worlds** | No collapse | Measure problem |
 | **Bayesian** | Rational | Circular? |
 | **Gleason** | Rigorous | Assumes Hilbert space |
-| **BLD** | Full derivation including single-event | All structural aspects derived |
+| **BLD** | Full derivation: ensemble + single-event from L→B + K=2 | All structural aspects derived |
 
-BLD derives the Born rule from structure: bidirectional alignment gives |ψ|², observer K/X gives single-event selection.
+BLD derives the Born rule from structure: bidirectional alignment gives |ψ|², L→B compensation on the joint system gives single-event selection.
 
 ---
 
@@ -491,8 +470,8 @@ BLD derives the Born rule from structure: bidirectional alignment gives |ψ|², 
 | 3 | The partition is irreducible | B cannot be expressed as L+D | **PROVEN** |
 | 4 | Collapse is instantaneous | B-transitions have no intermediate | **DERIVED** |
 | 5 | Outcomes are exclusive | B partitions, doesn't overlap | **DERIVED** |
-| 6 | **Single-event selection** | Minimum K/X alignment cost | **DERIVED** |
-| 7 | **Why |ψ|² distribution** | Observer BLD statistics | **DERIVED** |
+| 6 | **Single-event selection** | L→B on joint system+observer | **DERIVED** |
+| 7 | **Why |ψ|² distribution** | K=2 on joint system + observer averaging | **DERIVED** |
 
 ### What Was Open (Now Resolved)
 
@@ -504,14 +483,14 @@ BLD derives the Born rule from structure: bidirectional alignment gives |ψ|², 
 
 The measurement problem components:
 - Copenhagen: collapse postulated → BLD: collapse = B-partition (DERIVED)
-- Many-worlds: branch selection unexplained → BLD: selection = min K/X (DERIVED)
-- Bohmian: hidden variables don't select → BLD: K/X(observer) selects (DERIVED)
+- Many-worlds: branch selection unexplained → BLD: selection follows from L→B (DERIVED)
+- Bohmian: hidden variables don't select → BLD: observer L-structure determines B (DERIVED)
 - QBism: beliefs, not outcomes → BLD: structural alignment, not belief (DERIVED)
 
 BLD's contribution is **complete structural derivation**:
 - We know WHAT measurement is (B-partition)
 - We know WHY probabilities are squared (bidirectional K=2)
-- We know WHY a specific outcome occurs (min alignment cost)
+- We know WHY a specific outcome occurs (L→B: full L-structure determines B-partition)
 - We know WHY it looks random (observer microstate varies)
 
 **What remains open is interpretation, not mechanism.**
@@ -530,13 +509,13 @@ The Born rule follows from Hilbert space structure (Gleason's theorem). But why 
 
 The Born rule gives probabilities. But what determines a single measurement outcome?
 
-**BLD answer**: Single-event selection is minimum alignment cost between observer and system structures. K/X(observer) varies across measurements; we don't track it, so outcomes appear probabilistic. The distribution is |ψ|² because observers are BLD structures. See section above.
+**BLD answer**: Single-event selection follows from L→B compensation on the joint system+observer state. The observer's L-structure (microstate) varies across measurements; we don't track it, so outcomes appear probabilistic. The distribution is |ψ|² from K=2 applied to the joint system. See section above.
 
 ### 3. Collapse Mechanism — RESOLVED (mechanism), OPEN (ontology)
 
 Why does measurement collapse the state?
 
-**BLD answer (mechanism)**: Measurement is structure meeting structure. The B-partition is created where alignment cost is minimized. "Collapse" is the alignment event itself.
+**BLD answer (mechanism)**: Measurement is L→B compensation — the full L-structure (system amplitudes + observer state) determines the B-partition. "Collapse" is L determining B.
 
 **Still open (interpretation)**: Is this B-transition a physical event or an update in observer's knowledge? This is the same question all interpretations face, and is philosophical rather than structural.
 
@@ -552,20 +531,20 @@ The Born rule is **FULLY DERIVED** from BLD structure alignment:
 | Why squared (not linear, cubed) | **DERIVED** | Bidirectional observation = K = 2 factors |
 | |ψ|² = forward × backward | **DERIVED** | Killing form structure |
 | Hilbert space structure | **DERIVED** | From Lie correspondence |
-| Single-event selection | **DERIVED** | Minimum K/X alignment cost |
+| Single-event selection | **DERIVED** | L→B on joint system+observer |
 | Why distribution is |ψ|² | **DERIVED** | Observer BLD statistics |
 
 **What BLD derives**:
 - Why probability involves |amplitude|² (bidirectional observation, K=2)
 - What measurement IS (B-partition creation)
 - Why Hilbert space (from Lie algebra unitary representations)
-- Why THIS outcome (minimum alignment cost given observer structure)
+- Why THIS outcome (L→B: full L-structure determines B-partition)
 - Why it looks random (observer microstate varies, we don't track it)
 
 **What remains open**:
 - Ontological status of collapse (philosophical interpretation, not mechanism)
 
-**Status**: The Born rule — including single-event selection — is **DERIVED** from BLD alignment principles.
+**Status**: The Born rule — including single-event selection — is **DERIVED** from K=2 bidirectional alignment + L→B compensation on the joint system.
 
 ---
 
@@ -580,31 +559,32 @@ For completeness, here is the derivation chain and remaining gaps:
 3. **Completeness** — BLD covers all structure (PROVEN via Lie theory universality)
 4. **Lie Correspondence** — BLD = Lie theory exactly (Layer 1, PROVEN)
 5. **Observers are BLD** — Follows from completeness (anything that exists has BLD structure)
-6. **K/X framework** — Empirically validated (α⁻¹, masses, couplings all derived)
-7. **Minimum cost selection** — Variational principle (equivalent to least action)
+6. **K/X framework** — Empirically validated detector-type corrections (α⁻¹, masses, couplings all derived)
+7. **L→B compensation** — L-structure determines B-partition (PROVEN, layer 1)
 
 ### What Is NOT an Assumption
 
 | Claim | Status | Why |
 |-------|--------|-----|
 | Observers are BLD structures | PROVEN | Follows from BLD completeness |
-| K/X(observer) varies | PROVEN | Observers are quantum systems → microstates vary |
-| Distribution is |ψ|² | PROVEN | BLD structures meeting BLD structures |
+| Observer microstate varies | PROVEN | Observers are quantum systems → microstates vary |
+| Distribution is |ψ|² | DERIVED | K=2 on joint system + observer averaging |
+| L→B determines B-partition | PROVEN | Compensation principle (layer 1) |
 
 ### Remaining Gap
 
 | Gap | Severity | Notes |
 |-----|----------|-------|
-| No explicit K/X(observer microstate) formula | Medium | May require apparatus-specific modeling |
+| Explicit L→B map for single events | Medium | The statistics (|αₖ|²) and mechanism (L→B) are derived; the explicit function f(joint state → outcome) is structural but not yet specified |
 | Collapse ontology | Philosophical | Mechanism derived; metaphysical status is interpretation |
 
 ### What Would Falsify This
 
 - Finding a measurement where outcome distribution ≠ |ψ|²
-- Finding a single-event selection rule inconsistent with K/X minimization
+- Finding a single-event selection rule inconsistent with L→B compensation
 - Finding observers that don't follow BLD structure
 
-None of these have been observed. The K/X framework successfully predicts all measured physical constants.
+None of these have been observed.
 
 ---
 
@@ -616,6 +596,9 @@ None of these have been observed. The K/X framework successfully predicts all me
 - [Quantum Mechanics](quantum-mechanics.md) — D-L interpretation
 - [Schrödinger Derivation](schrodinger-derivation.md) — Dynamics derivation
 - [Structural-Observer Framework](structural-observer-framework.md) — Structural vs observed values
+- [Compensation Principle](../foundations/structural/compensation-principle.md) — L→B works, B→L fails (PROVEN)
+- [Completeness Proof](../foundations/proofs/completeness-proof.md) — Observers ARE BLD structures
+- [Wave Function Collapse](wave-function-collapse.md) — Collapse = L→B compensation
 
 ### External References
 

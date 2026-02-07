@@ -12,7 +12,7 @@ depends_on:
 
 # BLD Theory: Proof Status
 
-**Last updated**: 2026-01-28
+**Last updated**: 2026-02-06
 
 This document provides rigorous accounting of what is proven, validated, derived, and conjectured in BLD theory.
 
@@ -76,7 +76,7 @@ Status labels exist on two orthogonal axes that can be composed.
 18. **Neutrino mixing θ₁₃ — DERIVED (0.00σ) — [Particle Physics](#neutrino-mixing-angles-pmns)**
 19. **Neutrino mixing θ₂₃ — DERIVED (0.07σ) — [Particle Physics](#neutrino-mixing-angles-pmns)**
 
-**Counts**: 17 PROVEN, 19 VALIDATED, 46 DERIVED, 2 PREDICTED, 2 HYPOTHESIZED, 1 OPEN
+**Counts**: 26 PROVEN, 18 VALIDATED, 61 DERIVED, 3 PREDICTED, 1 HYPOTHESIZED, 0 OPEN
 
 **Empirical inputs**: Structural constants (B, L, n, K) derived from genesis closure. Zero free parameters in all formulas. Reference scale v derived as fixed point (0.00014%).
 
@@ -191,7 +191,7 @@ Both touch the same problem → solution emerges
 | ~~Black hole entropy~~ | **DERIVED** | S = K × L = A/(4ℓ_P²). Same formula as entanglement. See [Black Hole Entropy](../mathematics/quantum/black-hole-entropy.md) |
 | ~~Measurement collapse mechanism~~ | **DERIVED** | Collapse = L→B compensation. No-communication, no-cloning, irreversibility all derived. See [Wave Function Collapse](../mathematics/quantum/wave-function-collapse.md) |
 | ~~Path integral formulation~~ | **DERIVED** | Forward and backward directions. See [Path Integral](../mathematics/quantum/path-integral.md) |
-| Discrete symmetries (P, C, T) | **OPEN** | Beyond Lie groups |
+| ~~Discrete symmetries (P, C, T)~~ | **DERIVED** | C=B (swap +B↔-B), P=D (reverse spatial), T=L (reverse temporal). CPT conservation from K=2 constancy. See [Chirality-CPT](../mathematics/quantum/chirality-cpt.md) |
 
 ---
 
@@ -505,22 +505,24 @@ All are manifestations of bidirectional observation.
 
 ## Summary Table
 
-| Category | Proven | Validated | Derived | Hypothesized | Open |
-|----------|--------|-----------|---------|--------------|------|
-| **Core Theory** | 4 | - | - | 2 | - |
-| **Division Algebras** | 3 | - | 3 | - | - |
-| **Quantum** | 3 | 5 | 9 | - | 1 |
-| **Particles** | - | 3 | 6 | - | 0 |
-| **Cosmology** | - | 3 | 2 | - | - |
-| **Killing Form** | 2 | 3 | 5 | - | - |
-| **Scaling** | - | 4 | 1 | - | - |
-| **Foundational** | 4 | - | 2 | 1 | 0 |
-| **TOTAL** | **16** | **18** | **28** | **3** | **1** |
+| Category | Proven | Validated | Derived | Predicted | Hypothesized | Open |
+|----------|--------|-----------|---------|-----------|--------------|------|
+| **Core Claims** | 18 | - | 3 | - | - | - |
+| **Quantum** | 2 | 4 | 13 | - | - | - |
+| **Particles** | - | 4 | 15 | 3 | - | - |
+| **Chaos Theory** | - | - | 8 | - | - | - |
+| **Biology** | - | - | 8 | - | - | - |
+| **Cosmology** | - | 3 | 3 | - | - | - |
+| **Killing Form** | 1 | 2 | 4 | - | - | - |
+| **Unified Entropy** | 1 | - | 5 | - | - | - |
+| **Scaling** | - | 5 | 1 | - | - | - |
+| **Foundational** | 4 | - | 1 | - | 1 | - |
+| **TOTAL** | **26** | **18** | **61** | **3** | **1** | **0** |
 
 *Notes:*
-- *ℏ derivation (0.00003% accuracy) adds 2 to Quantum DERIVED: ℏ magnitude + observer correction framework*
-- *Structural-observer framework adds 1 to Foundational DERIVED*
-- *The Division Algebras section closes the loop: n=4, SU(3), and 3 generations are derived from BLD first principles*
+- *Core Claims includes BLD=Lie (4P), Irreducibility (5P), Two-Reference (6P), Division Algebras (3P + 3D)*
+- *Quantum includes Core Mappings, Predictions, and resolved Open Questions (Schrödinger, Born rule, entanglement/BH entropy, collapse, path integral, CPT)*
+- *Particles EXACT entries counted as VALIDATED; PREDICTED entries: muon g-2 observed value, neutron beam-bottle discrepancy, neutron beam lifetime*
 - *K/X framework (zero free parameters) gives α⁻¹ = 137.035999177 (matches CODATA), μ/e to 0.3 ppt, m_H to 0.05% (measurement-limited)*
 
 ---
@@ -547,8 +549,7 @@ All are manifestations of bidirectional observation.
 ### Medium Priority (Requires New Work)
 
 10. **Machine-verified proofs** — Current proofs are paper-based
-11. **Path integral in BLD** — Not addressed
-12. **Formal Lie isomorphism theorem** — BLD-Lie correspondence verified numerically for su(2) but a formal isomorphism theorem is not stated
+11. **Formal Lie isomorphism theorem** — BLD-Lie correspondence verified numerically for su(2) but a formal isomorphism theorem is not stated
 
 ### Empirical Inputs
 
@@ -590,12 +591,6 @@ Where ALL factors are derived:
 **The physics is in the ratios**. What we call "1.055 × 10⁻³⁴ J·s" is just ℏ expressed in SI units, which is a unit conversion from natural units where ℏ = 1.
 
 **Reference**: [Planck Derivation](../mathematics/quantum/planck-derivation.md), [Scale Derivation](../mathematics/cosmology/scale-derivation.md)
-
-### Medium Priority (Requires New Work)
-
-5. **Machine-verified proofs** — Current proofs are paper-based
-6. **Path integral in BLD** — Not addressed
-7. **Discrete symmetries** — Beyond current scope
 
 ### Low Priority (Foundational/Philosophical)
 
