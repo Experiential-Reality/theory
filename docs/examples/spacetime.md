@@ -149,7 +149,7 @@ SPACETIME
 From the [Octonion Derivation](../mathematics/foundations/derivations/octonion-derivation.md), **n = 4 is now derived from BLD first principles**:
 
 1. BLD observation requires bidirectional links → division property required
-2. Hurwitz theorem: only ℝ, ℂ, ℍ, 𝕆 have division with norm
+2. Zorn/Hurwitz: only ℝ, ℂ, ℍ, 𝕆 are alternative division algebras
 3. SU(3) color symmetry requires Aut ⊃ SU(3) → only octonions work
 4. Fixing a reference octonion (for observation) breaks G₂ → SU(3)
 5. Same symmetry breaking: so(9,1) → so(3,1) → **n = 4 derived**

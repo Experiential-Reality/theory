@@ -44,7 +44,7 @@ From [Octonion Derivation](../foundations/derivations/octonion-derivation.md):
 ```
 BLD requires division
     ↓
-Only ℝ, ℂ, ℍ, 𝕆 have division (Hurwitz theorem)
+Only ℝ, ℂ, ℍ, 𝕆 are alternative division algebras (Zorn/Hurwitz)
     ↓
 Octonions 𝕆 have automorphism group G₂
     ↓

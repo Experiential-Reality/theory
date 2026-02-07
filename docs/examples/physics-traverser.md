@@ -696,7 +696,7 @@ The number 3 comes from:
 
 **Foundation**: The octonion requirement is now **derived from BLD first principles**:
 1. BLD requires bidirectional observation → division property
-2. Hurwitz theorem: only ℝ, ℂ, ℍ, 𝕆 have division + norm
+2. Zorn/Hurwitz: only ℝ, ℂ, ℍ, 𝕆 are alternative division algebras
 3. SU(3) requires Aut ⊃ SU(3) → only octonions work
 4. Octonions have Spin(8) structure with triality
 

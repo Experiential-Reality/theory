@@ -138,6 +138,7 @@ BLD theory uses the following well-known mathematical results. These are cited h
 
 | Theorem | Statement | Reference |
 |---------|-----------|-----------|
+| Zorn (1930) | Only ℝ, ℂ, ℍ, 𝕆 are alternative division algebras | [Alternative algebra](https://en.wikipedia.org/wiki/Alternative_algebra) |
 | Hurwitz (1898) | Only ℝ, ℂ, ℍ, 𝕆 are normed division algebras | [Hurwitz's theorem](https://en.wikipedia.org/wiki/Hurwitz%27s_theorem_(composition_algebras)) |
 | Frobenius (1878) | Only ℝ, ℂ, ℍ are associative division algebras | [Frobenius theorem](https://en.wikipedia.org/wiki/Frobenius_theorem_(real_division_algebras)) |
 

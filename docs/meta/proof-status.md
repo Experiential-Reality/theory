@@ -65,13 +65,14 @@ Status labels exist on two orthogonal axes that can be composed.
 7. K = 2 (Killing form) — DERIVED — [Killing Form](#killing-form)
 8. **Proton mass — DERIVED (0.6 ppm) — [Nucleon Masses](#nucleon-masses)**
 9. **Muon g-2 — PREDICTED — [Muon g-2 Anomaly](#muon-g-2-anomaly)**
-10. **Entanglement entropy — DERIVED (S = 2L exact) — [Quantum Mechanics](#quantum-mechanics)**
-11. **Black hole entropy — DERIVED (S = K × L = A/(4ℓ_P²)) — [Quantum Mechanics](#quantum-mechanics)**
-12. **Feigenbaum δ — DERIVED (0.00003%) — [Chaos Theory](#chaos-theory)**
-13. **Feigenbaum α — DERIVED (0.0000005%) — [Chaos Theory](#chaos-theory)**
-14. **Genetic code (20 amino acids = L) — DERIVED (exact) — [Biology](#biology)**
+10. **Neutron lifetime beam-bottle discrepancy — PREDICTED — [Neutron Lifetime](#neutron-lifetime)**
+11. **Entanglement entropy — DERIVED (S = 2L exact) — [Quantum Mechanics](#quantum-mechanics)**
+12. **Black hole entropy — DERIVED (S = K × L = A/(4ℓ_P²)) — [Quantum Mechanics](#quantum-mechanics)**
+13. **Feigenbaum δ — DERIVED (0.00003%) — [Chaos Theory](#chaos-theory)**
+14. **Feigenbaum α — DERIVED (0.0000005%) — [Chaos Theory](#chaos-theory)**
+15. **Genetic code (20 amino acids = L) — DERIVED (exact) — [Biology](#biology)**
 
-**Counts**: 17 PROVEN, 19 VALIDATED, 43 DERIVED, 1 PREDICTED, 2 HYPOTHESIZED, 1 OPEN
+**Counts**: 17 PROVEN, 19 VALIDATED, 43 DERIVED, 2 PREDICTED, 2 HYPOTHESIZED, 1 OPEN
 
 **Empirical inputs**: Structural constants (B, L, n, K) derived from genesis closure. Zero free parameters in all formulas. Reference scale v derived as fixed point (0.00014%).
 
@@ -136,7 +137,7 @@ Both touch the same problem → solution emerges
 | Claim | Status | Evidence | Rigor |
 |-------|--------|----------|-------|
 | BLD observation requires division property | **PROVEN** | Bidirectional observation (Killing form = 2) | Mathematical |
-| Hurwitz: only ℝ, ℂ, ℍ, 𝕆 have division + norm | **PROVEN** | Hurwitz theorem (1898) | Mathematical |
+| Zorn/Hurwitz: only ℝ, ℂ, ℍ, 𝕆 are alternative division algebras | **PROVEN** | Zorn (1930), Hurwitz (1898) | Mathematical |
 | Octonions uniquely required | **PROVEN** | Aut(ℍ) = SO(3) dim 3 < dim(SU(3)) = 8 | Mathematical |
 | SU(3) from G₂ stabilizer | **DERIVED** | Fixing imaginary octonion breaks G₂ → SU(3) | Mathematical |
 | n = 4 from sl(2,ℂ) ⊂ sl(2,𝕆) | **DERIVED** | Same symmetry breaking gives so(3,1) | Mathematical |
@@ -272,6 +273,17 @@ Matches CODATA (zero free parameters) ✓
 **J-PARC Prediction**: 250 × 10⁻¹¹ (same as Fermilab — T ∩ S formalism predicts apparatus independence)
 
 **Reference**: [Muon g-2](../mathematics/particle-physics/muon-g2.md)
+
+### Neutron Lifetime
+
+| Quantity | Status | Formula | Predicted | Observed | Error |
+|----------|--------|---------|-----------|----------|-------|
+| Δτ/τ (beam-bottle) | **PREDICTED** | K/S² = 2/169 | 0.01183 | 0.0117 ± 0.003 | **~2%** |
+| τ_beam | **PREDICTED** | τ_bottle × (1 + K/S²) | 888.2 s | 888.1 ± 2.0 s | **match** |
+
+**Prediction date**: 2026-02-06. BL3 (NIST) and J-PARC experiments expected 2026-2027.
+
+**Reference**: [Neutron Lifetime](../mathematics/particle-physics/neutron-lifetime.md)
 
 ---
 
@@ -512,7 +524,7 @@ All are manifestations of bidirectional observation.
 
 | Input | Status | Derivation | Notes |
 |-------|--------|------------|-------|
-| **B, L, n, K** | **DERIVED** | Genesis closure + Hurwitz + triality | Structural, no empirical input |
+| **B, L, n, K** | **DERIVED** | Genesis closure + Zorn + triality | Structural, no empirical input |
 | **v** (Higgs VEV) | **DERIVED (0.00014%)** | Fixed point of self-observation | v/M_P from BLD constants |
 | **m_e** (electron mass) | **DERIVED** | m_e/v from BLD structure | Ratio is structural |
 | **c** (speed of light) | **DERIVED** | Lorentz invariance = equal D/L cost | BLD theorem |
@@ -581,7 +593,7 @@ All leaf files (files making numerical predictions) now include inline citations
 | Category | File | Citation Sources |
 |----------|------|------------------|
 | **Foundations** | irreducibility-proof.md | nLab (type theory) |
-| | octonion-necessity.md | Hurwitz theorem, Baez arXiv |
+| | octonion-necessity.md | Zorn/Hurwitz, Baez arXiv |
 | | octonion-derivation.md | Division algebra refs |
 | **Lie Theory** | lie-correspondence.md | nLab, Noether's theorem |
 | | killing-form.md | nLab, Wikipedia (uncertainty, Bell) |

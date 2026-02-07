@@ -105,7 +105,7 @@ Where:
 | Component | Derived From |
 |-----------|--------------|
 | Division algebra | Genesis closure |
-| Octonions required | Hurwitz theorem + richness |
+| Octonions required | Zorn/Hurwitz + richness |
 | B = 56 | 2 × dim(so(8)) = 2 × 28 |
 | n = 4 | Octonion reference fixing |
 | L = 20 | n²(n²-1)/12 |

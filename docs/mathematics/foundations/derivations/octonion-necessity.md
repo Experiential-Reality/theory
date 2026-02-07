@@ -40,7 +40,7 @@ The Standard Model of particle physics treats SU(3) color symmetry as an empiric
 **Main Claim.** The existence of SU(3) color symmetry follows from the closure requirement of the genesis function traverse(-B, B).
 
 **Proof Strategy.** We show:
-1. Genesis function closure requires a normed division algebra (Section 2)
+1. Genesis function closure requires an alternative division algebra (Section 2)
 2. The algebra must be "rich enough" to support B = 56 modes (Section 3)
 3. Only octonions satisfy both constraints (Section 4)
 4. Fixing a reference point yields SU(3) as stabilizer (Section 5)
@@ -74,6 +74,10 @@ From Axiom 7 (Genesis) in [axioms.md](../axioms.md): existence is logically nece
 **Theorem 2.4** (Hurwitz, 1898). The only normed division algebras over ℝ are: ℝ (1D), ℂ (2D), ℍ (4D), and 𝕆 (8D).
 
 *Reference.* See [Hurwitz, 1898] for the original proof, or [Baez, 2002] for a modern treatment.
+
+**Theorem 2.5** (Zorn, 1930). The only finite-dimensional alternative division algebras over ℝ are: ℝ (1D), ℂ (2D), ℍ (4D), and 𝕆 (8D).
+
+*Remark.* Zorn's classification requires only alternativity (pairwise observation consistency), not a multiplicative norm. Since BLD forces alternativity through Axiom 5 determinacy, Zorn's theorem is the natural route to the same classification. See [octonion-derivation.md §3](octonion-derivation.md#3-classification-zorn-and-hurwitz) for the full argument.
 
 ## 3. The Richness Requirement: Why Quaternions Fail
 
@@ -153,7 +157,7 @@ This matches the required boundary count. ∎
 
 ### 4.4 The Elimination Cascade
 
-**Theorem 4.4** (Uniqueness). Among normed division algebras, only octonions satisfy both the division requirement and the richness requirement.
+**Theorem 4.4** (Uniqueness). Among alternative division algebras, only octonions satisfy both the division requirement and the richness requirement.
 
 | Algebra | d | Division | B = d(d-1) | Triality? | Status |
 |---------|---|----------|------------|-----------|--------|
@@ -163,7 +167,7 @@ This matches the required boundary count. ∎
 | 𝕆       | 8 | ✓        | **56**     | **Yes** (D₄) | **Required** |
 | Sedenions | 16 | ✗ (zero divisors) | — | — | Eliminated |
 
-*Proof.* Sedenions and higher Cayley-Dickson algebras have zero divisors (ab = 0 with a,b ≠ 0), failing the division requirement. Among the four normed division algebras {ℝ, ℂ, ℍ, 𝕆}, only d = 8 (octonions) gives B = d(d-1) = 56. ∎
+*Proof.* Sedenions and higher Cayley-Dickson algebras have zero divisors (ab = 0 with a,b ≠ 0) and lose alternativity, failing both the division and consistency requirements. Among the four alternative division algebras {ℝ, ℂ, ℍ, 𝕆} (Zorn, 1930), only d = 8 (octonions) gives B = d(d-1) = 56. ∎
 
 ## 5. Deriving SU(3) Color Symmetry
 
@@ -255,7 +259,7 @@ Therefore self-observation closure uniquely requires Spin(8). ∎
 
 The derivation assumes only:
 - Axiom 7 (genesis function must close)
-- The definition of normed division algebra
+- The definition of alternative division algebra (Zorn's classification)
 - Standard Lie group theory
 
 It does NOT assume:
@@ -281,7 +285,7 @@ BLD: SU(3) × SU(2) × U(1) emerges from genesis closure. The one remaining empi
 
 ## 9. Related Work
 
-The uniqueness of normed division algebras was proven by [Hurwitz, 1898]. The connection between octonions and exceptional Lie groups is developed in [Baez, 2002]. The role of G₂ as the automorphism group of octonions was established by [Cartan, 1914]. Triality and its connection to Spin(8) is discussed in [Study, 1913] and [Cartan, 1925].
+The classification of alternative division algebras was proven by [Zorn, 1930]; the equivalent classification of normed division algebras by [Hurwitz, 1898]. The connection between octonions and exceptional Lie groups is developed in [Baez, 2002]. The role of G₂ as the automorphism group of octonions was established by [Cartan, 1914]. Triality and its connection to Spin(8) is discussed in [Study, 1913] and [Cartan, 1925].
 
 The application of octonions to particle physics has been explored by [Günaydin & Gürsey, 1973] and systematically developed in [Dixon, 1994].
 
@@ -307,7 +311,11 @@ This result significantly reduces the empirical content of fundamental physics: 
 
 [Hurwitz, 1898] A. Hurwitz. "Über die Composition der quadratischen Formen von beliebig vielen Variabeln." *Nachrichten von der Gesellschaft der Wissenschaften zu Göttingen*, 1898, pp. 309-316.
 
+[Schafer, 1995] R. D. Schafer. *An Introduction to Nonassociative Algebras*. Dover Publications, 1995. Originally published 1966.
+
 [Study, 1913] E. Study. "Grundlagen und Ziele der analytischen Kinematik." *Sitzungsberichte der Berliner Mathematischen Gesellschaft* 12, 1913, pp. 36-60.
+
+[Zorn, 1930] M. Zorn. "Theorie der alternativen Ringe." *Abhandlungen aus dem Mathematischen Seminar der Universität Hamburg* 8, 1930, pp. 123-147.
 
 ### Internal BLD References
 

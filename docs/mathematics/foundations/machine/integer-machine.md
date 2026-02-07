@@ -364,7 +364,7 @@ And 1 + 3 + 7 = 11 (M-theory dimension).
 From [Octonion Necessity](../derivations/octonion-necessity.md):
 - Sedenions (16D) lose the division property
 - Without division, bidirectional observation fails
-- Octonions are the **last** normed division algebra
+- Octonions are the **last** alternative division algebra
 
 **The algebra tower terminates at O. Physics is octonionic.**
 

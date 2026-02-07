@@ -591,7 +591,7 @@ See [Observer Corrections](../cosmology/observer-correction.md) for full two-ref
 
 The complete derivation chain:
 1. BLD requires bidirectional observation → division property (proven)
-2. Hurwitz theorem: only ℝ, ℂ, ℍ, 𝕆 have division (mathematical fact)
+2. Zorn/Hurwitz: only ℝ, ℂ, ℍ, 𝕆 are alternative division algebras (mathematical fact)
 3. SU(3) requires Aut ⊃ SU(3) → only octonions work (proven)
 4. Fixing reference octonion → G₂ breaks to SU(3) (derived)
 5. Same symmetry breaking → so(9,1) breaks to so(3,1) → **n=4 derived**
