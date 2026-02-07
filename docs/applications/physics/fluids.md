@@ -4,6 +4,7 @@ layer: application
 depends_on:
   - ../../mathematics/foundations/structural/compensation-principle.md
   - ../../mathematics/derived/reynolds-derivation.md
+  - ../../mathematics/derived/she-leveque-derivation.md
   - phase-transitions.md
   - thermodynamics-validation.md
 used_by:
@@ -24,8 +25,9 @@ used_by:
 3. Geometry multipliers via T ∩ S: n×B = 224 (flat plate), n(L+K)−1 = 87 (sphere) — [T ∩ S](#geometry-dependent-re-c-via-t--s)
 4. **Kolmogorov -5/3 = -L/(n(n-1)) (DERIVED)** — [Kolmogorov Exponents](#kolmogorov-exponents-derived)
 5. Intermittency = 1/(L+n+1) = 0.04 (DERIVED) — [Intermittency](#intermittency-correction)
-6. Navier-Stokes decomposes into BLD terms — [Navier-Stokes](#navier-stokes-as-bld-structure)
-7. Polymer drag reduction = B compensation — [Compensation](#compensation-in-turbulence)
+6. **She-Leveque ζ_p = p/(n-1)² + K[1-(K/(n-1))^(p/(n-1))] (DERIVED)** — [She-Leveque](../../mathematics/derived/she-leveque-derivation.md)
+7. Navier-Stokes decomposes into BLD terms — [Navier-Stokes](#navier-stokes-as-bld-structure)
+8. Polymer drag reduction = B compensation — [Compensation](#compensation-in-turbulence)
 
 | Quantity | BLD Formula | Result | Error |
 |----------|-------------|--------|-------|
@@ -34,6 +36,8 @@ used_by:
 | Re_c(sphere) | 2300 × n(L+K)−1 | 200,100 | 0.05% |
 | Kolmogorov exponent | -L/(n(n-1)) | -5/3 | exact |
 | Intermittency | 1/(L+n+1) | 0.04 | ~exact |
+| She-Leveque ζ₃ | 3/(n-1)² + K[1-K/(n-1)] | 1.000 | exact |
+| She-Leveque ζ₆ | 6/(n-1)² + K[1-(K/(n-1))²] | 1.778 | <0.5% |
 
 Fluid dynamics provides a domain where the boundary between ordered and chaotic flow (laminar/turbulent) offers a clear B structure, with viscosity and Reynolds number playing key roles.
 

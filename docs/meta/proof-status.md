@@ -70,7 +70,8 @@ Status labels exist on two orthogonal axes that can be composed.
 12. **Black hole entropy — DERIVED (S = K × L = A/(4ℓ_P²)) — [Quantum Mechanics](#quantum-mechanics)**
 13. **Feigenbaum δ — DERIVED (0.00003%) — [Chaos Theory](#chaos-theory)**
 14. **Feigenbaum α — DERIVED (0.0000005%) — [Chaos Theory](#chaos-theory)**
-15. **Genetic code (20 amino acids = L) — DERIVED (exact) — [Biology](#biology)**
+15. **She-Leveque ζ_p — DERIVED (<0.5%) — [Chaos Theory](#chaos-theory)**
+16. **Genetic code (20 amino acids = L) — DERIVED (exact) — [Biology](#biology)**
 
 **Counts**: 17 PROVEN, 19 VALIDATED, 43 DERIVED, 2 PREDICTED, 2 HYPOTHESIZED, 1 OPEN
 
@@ -319,6 +320,18 @@ Where X = n + K + K/n + 1/L = 6.55 and D = L + 1 - 1/n² = 20.9375
 | Intermittency | **DERIVED** | 1/(L+n+1) | 0.04 | ~0.04 | **exact** |
 
 **Reference**: [Reynolds Derivation](../mathematics/derived/reynolds-derivation.md)
+
+### She-Leveque Structure Functions
+
+| Quantity | Status | Formula | Predicted | DNS | Error |
+|----------|--------|---------|-----------|-----|-------|
+| ζ₃ | **DERIVED** | 3/(n-1)² + K[1-K/(n-1)] | 1.000 | 1.000 | **exact** |
+| ζ₆ | **DERIVED** | 6/(n-1)² + K[1-(K/(n-1))²] | 1.778 | 1.78 | **<0.5%** |
+| All ζ_p | **DERIVED** | p/(n-1)² + K[1-(K/(n-1))^(p/(n-1))] | — | — | **<0.5% (p≤8)** |
+
+**Significance**: First derivation of She-Leveque parameters from first principles. All three "free parameters" (9, 2, 2/3) are BLD structural constants: (n-1)²=9, K=2, K/(n-1)=2/3. No e-correction (finite p, not continuous limit).
+
+**Reference**: [She-Leveque Derivation](../mathematics/derived/she-leveque-derivation.md)
 
 ---
 

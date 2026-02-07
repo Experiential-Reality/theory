@@ -272,6 +272,7 @@ detection-structure (T ∩ S) → observer-correction → reynolds-derivation
                                         Re_c(sphere) = 2300 × (n(L+K)−1) = 200,100 (0.05%)
                                         Kolmogorov -5/3 = -L/(n(n-1)) (exact)
                                         Intermittency = 1/(L+n+1) = 0.04 (exact)
+                                        She-Leveque ζ_p = p/(n-1)² + K[1-(K/(n-1))^(p/(n-1))] (<0.5%)
 ```
 
 ---

@@ -410,6 +410,7 @@ The same detection rules apply to both particle physics measurements and fluid d
 
 ### Applications
 - [Fluid Dynamics](../../applications/physics/fluids.md) — Application of these derivations
+- [She-Leveque Derivation](she-leveque-derivation.md) — Structure function exponents from same constants
 
 ### External
 - Reynolds, O. (1883) — Original pipe flow experiments

@@ -345,6 +345,7 @@ Match: ✓
 | **Re_c** | Threshold | No | 0.02% |
 | **δ** | Continuous limit | **Yes** | 0.00003% |
 | **α** | Continuous limit | **Yes** | 0.0000005% |
+| **ζ_p** | Finite power-law | No | <0.5% |
 
 **Pattern**: e appears if and only if the constant is defined as a continuous limit.
 

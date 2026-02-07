@@ -97,6 +97,9 @@ Mathematical frameworks built on the foundations.
 - [Performance Theorem](./derived/performance-theorem.md) — Traverser ordering from structure
 - [Special Relativity](./derived/special-relativity.md) — SR from BLD
 - [General Relativity](./derived/general-relativity.md) — GR from BLD
+- [Reynolds Derivation](./derived/reynolds-derivation.md) — **Re_c = 2300, Kolmogorov -5/3 from BLD**
+- [Feigenbaum Constants](./derived/feigenbaum-derivation.md) — **δ = 4.6692 (0.00003%), α = 2.5029 (0.0000005%)**
+- [She-Leveque Derivation](./derived/she-leveque-derivation.md) — **ζ_p = p/(n-1)² + K[1-(K/(n-1))^(p/(n-1))] from BLD**
 
 ---
 
