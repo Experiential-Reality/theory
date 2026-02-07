@@ -21,6 +21,8 @@ used_by:
 4. All 6 quark masses < 0.5% error — [quark-masses.md](quark-masses.md)
 5. Higgs 125.20 GeV exact — [boson-masses.md](boson-masses.md)
 6. **Novel prediction**: κ_λ = 1.025 testable at HL-LHC — [higgs-self-coupling.md](higgs-self-coupling.md)
+7. **Novel prediction**: Muon g-2 Δa_μ = 250×10⁻¹¹ (J-PARC = Fermilab, same T∩S) — [muon-g2.md](muon-g2.md)
+8. **Novel prediction**: Beam-bottle Δτ/τ = K/S² = 0.01183 — [neutron-lifetime.md](neutron-lifetime.md)
 
 # BLD Particle Physics
 
@@ -41,6 +43,8 @@ used_by:
 | [neutrino-masses.md](neutrino-masses.md) | DERIVED | Neutrino masses from missing B coupling |
 | [higgs-self-coupling.md](higgs-self-coupling.md) | **PREDICTED** | κ_λ = 1.025 (testable at HL-LHC) |
 | [higgs-couplings.md](higgs-couplings.md) | **PREDICTED** | All κ values from detection structure |
+| [muon-g2.md](muon-g2.md) | **PREDICTED** | Δa_μ = 250×10⁻¹¹ (J-PARC = Fermilab) |
+| [neutron-lifetime.md](neutron-lifetime.md) | **PREDICTED** | Beam-bottle Δτ/τ = K/S² = 0.01183 |
 
 ## Key Predictions
 
