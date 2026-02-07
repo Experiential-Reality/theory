@@ -494,11 +494,11 @@ All are manifestations of bidirectional observation.
 6. ~~**Conjecture 7.1 (Stability → 3-fold symmetry)**~~ — **RESOLVED**: Self-observation closure requires S₃ outer automorphism, proven from irreducibility of B, L, D + K=2 bidirectional observation + inner automorphisms preserve representation isomorphism class. See [Octonion Necessity §7](../mathematics/foundations/derivations/octonion-necessity.md) Theorem 7.1.
 7. ~~**Completeness (general case)**~~ — **RESOLVED**: Proven for all observable systems via Axiom 5 (finite cost → finite information → computable type → BLD). See [Completeness Proof](../mathematics/foundations/proofs/completeness-proof.md) Theorem 4.1 Case 3.
 
+8. ~~**Reference scale residual**~~ — **RESOLVED**: v/M_P predicted to 0.00014% from BLD constants alone. See [Reference Scale Derivation](../mathematics/cosmology/reference-scale-derivation.md) §6.
+
 ### Acknowledged Limitations
 
-8. **K/X correction framework** — Systematic theory with zero free parameters. Over-determined: 5 structural constants explain 4+ independent force couplings. X assignments use principled physical reasoning about what each measurement traverses. The framework was developed to explain known values, then validated by its consistency across all four forces. Base structural predictions (α⁻¹ = 137, α_s⁻¹ ≈ α⁻¹/n²) are a priori.
-
-9. ~~**Reference scale residual**~~ — **RESOLVED**: v/M_P predicted to 0.00014% from BLD constants alone. See [Reference Scale Derivation](../mathematics/cosmology/reference-scale-derivation.md) §6.
+9. **K/X correction framework** — Systematic theory with zero free parameters. Over-determined: 5 structural constants explain 4+ independent force couplings. X assignments use principled physical reasoning about what each measurement traverses. The framework was developed to explain known values, then validated by its consistency across all four forces. Base structural predictions (α⁻¹ = 137, α_s⁻¹ ≈ α⁻¹/n²) are a priori.
 
 ### Medium Priority (Requires New Work)
 
