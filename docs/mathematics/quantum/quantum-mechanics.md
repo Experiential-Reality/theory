@@ -476,7 +476,7 @@ B precision_choice: know_position | know_momentum
 
 | Question | Status | Why Open |
 |----------|--------|----------|
-| Wave function collapse | **OPEN** | See [Born Rule](born-rule.md) |
+| Wave function collapse | **DERIVED** | See [Wave Function Collapse](wave-function-collapse.md) |
 | Single-event outcomes | **OPEN** | Why THIS measurement result? |
 | Path integral formulation | **DERIVED** | See [Path Integral](path-integral.md) |
 

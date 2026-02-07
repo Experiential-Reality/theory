@@ -189,8 +189,8 @@ Both touch the same problem → solution emerges
 | ~~Derive Born rule form~~ | **DERIVED** | |ψ|² from bidirectional alignment (Killing form = 2). See [Born Rule](../mathematics/quantum/born-rule.md) |
 | ~~Entanglement entropy~~ | **DERIVED** | S = K × L = 2L at max entanglement. See [Entanglement Entropy](../mathematics/quantum/entanglement-entropy.md) |
 | ~~Black hole entropy~~ | **DERIVED** | S = K × L = A/(4ℓ_P²). Same formula as entanglement. See [Black Hole Entropy](../mathematics/quantum/black-hole-entropy.md) |
-| Measurement collapse mechanism | **OPEN** | B-partition defined; WHY specific outcome remains open |
-| Path integral formulation | **OPEN** | Not covered |
+| ~~Measurement collapse mechanism~~ | **DERIVED** | Collapse = L→B compensation. No-communication, no-cloning, irreversibility all derived. See [Wave Function Collapse](../mathematics/quantum/wave-function-collapse.md) |
+| ~~Path integral formulation~~ | **DERIVED** | Forward and backward directions. See [Path Integral](../mathematics/quantum/path-integral.md) |
 | Discrete symmetries (P, C, T) | **OPEN** | Beyond Lie groups |
 
 ---

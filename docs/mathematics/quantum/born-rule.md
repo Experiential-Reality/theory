@@ -13,6 +13,7 @@ depends_on:
 used_by:
   - ../../meta/proof-status.md
   - theory-complete.md
+  - wave-function-collapse.md
 ---
 
 # The Born Rule from BLD Alignment
@@ -457,7 +458,7 @@ The observer correction IS the single-event mechanism. It's already empirically 
 - Hilbert space = forced by Lie correspondence (not assumed)
 
 **What remains interpretive**:
-- Ontological status of "collapse" — is the B-transition physical or epistemic?
+- ~~Ontological status of "collapse"~~ — RESOLVED: collapse is structural (L→B compensation). See [Wave Function Collapse](wave-function-collapse.md).
 
 **Status**: The Born rule is **DERIVED** from BLD alignment principles, including single-event selection.
 
@@ -471,7 +472,7 @@ The observer correction IS the single-event mechanism. It's already empirically 
 | **Many-worlds** | No collapse | Measure problem |
 | **Bayesian** | Rational | Circular? |
 | **Gleason** | Rigorous | Assumes Hilbert space |
-| **BLD** | Full derivation including single-event | Collapse ontology open |
+| **BLD** | Full derivation including single-event | All structural aspects derived |
 
 BLD derives the Born rule from structure: bidirectional alignment gives |ψ|², observer K/X gives single-event selection.
 
@@ -493,11 +494,11 @@ BLD derives the Born rule from structure: bidirectional alignment gives |ψ|², 
 | 6 | **Single-event selection** | Minimum K/X alignment cost | **DERIVED** |
 | 7 | **Why |ψ|² distribution** | Observer BLD statistics | **DERIVED** |
 
-### What Remains Open (1 thing)
+### What Was Open (Now Resolved)
 
-| # | Question | Status | Why |
-|---|----------|--------|-----|
-| 1 | **Is collapse ontologically real?** | INTERPRETIVE | The B-transition mechanism is derived; its metaphysical status is philosophy |
+| # | Question | Status | Resolution |
+|---|----------|--------|------------|
+| 1 | ~~Is collapse ontologically real?~~ | **RESOLVED** | Collapse is structural (L→B compensation). See [Wave Function Collapse](wave-function-collapse.md) |
 
 ### Why This Advances Beyond Other Approaches
 
