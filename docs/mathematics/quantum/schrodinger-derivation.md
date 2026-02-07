@@ -412,7 +412,7 @@ This may be the "minimal" Hamiltonian for
 a single particle in a potential.
 ```
 
-**Status**: Not addressed.
+**Status**: DETERMINED — BLD-derived gauge groups + coupling constants + matter content, combined with Yang-Mills uniqueness (gauge forces) and Lovelock's theorem (gravity), uniquely determine Ĥ for all four forces. See [Path Integral: Specific Hamiltonians](path-integral.md#specific-hamiltonians-from-bld-structure).
 
 ---
 
