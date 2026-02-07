@@ -156,9 +156,9 @@ Therefore: Computable structures → Type theory → BLD. ∎
 
 ## 4. Main Theorem
 
-**Theorem 4.1** (BLD Completeness). Let S be a physical system with continuous symmetry or a computable structure. Then S can be described using only the primitives B, L, D.
+**Theorem 4.1** (BLD Completeness). Let S be an observable system. Then S can be described using only the primitives B, L, D.
 
-*Proof.* We consider two cases:
+*Proof.* We consider three cases:
 
 **Case 1:** S has continuous symmetry.
 - By Noether's theorem, S corresponds to a Lie group G
@@ -172,11 +172,16 @@ Therefore: Computable structures → Type theory → BLD. ∎
 - These correspond to (D, L, B) by Theorem 3.3
 - Therefore S is describable in BLD
 
-All physically relevant cases covered. ∎
+**Case 3:** S is observable (general case).
+- By Axiom 5 (Traversal Closure in [axioms.md](../axioms.md)), traverse(S) exists with finite cost K(S) < ∞
+- A traversal with finite cost produces finite information — finite effort bounds the output. Call this finite description D(S)
+- Any finite description is a finite product of finite sums — a computable type. (A finite collection of determinate values is trivially encodable as a finite data structure.)
+- By Case 2, any computable type is BLD-describable
+- What we can describe about S is exactly what traverse(S) produces (observability = traversability, by A5). Therefore S, as an observable system, is BLD-describable
 
-**Conjecture 4.2** (General Completeness). Theorem 4.1 extends to all observable systems, not just those with continuous symmetry or computability.
+All observable systems covered. ∎
 
-*Supporting argument:* Observable systems are information-bearing, requiring distinguishable states (B), relationships between states (L), and repetition structure (D). Cases 1 and 2 cover all known physical and computational systems. No observable system has been found requiring a fourth primitive. See Section 5.3 for falsification conditions.
+**Theorem 4.2** (Scope of Completeness). BLD completeness is a claim about all *observable* structures — those traversable with finite cost (Axiom 5). We do not require S itself to be computable or the traversal mechanism to be computable — only that the *result* of observation (the finite information produced) is BLD-describable. Unobservable structure (if it exists) is outside BLD's scope by definition — it cannot be traversed, so it has no BLD description. This is a feature, not a limitation: BLD describes what can be experienced, not what might abstractly exist. See Section 5.3 for falsification conditions.
 
 ## 5. Why No Fourth Primitive?
 

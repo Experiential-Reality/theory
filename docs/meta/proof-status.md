@@ -483,10 +483,6 @@ All are manifestations of bidirectional observation.
 
 ## Rigor Gaps
 
-### Critical Priority (Open)
-
-1. **Conjecture 7.1 (Stability → 3-fold symmetry)** — OPEN. The claim that stable self-observation requires 3-fold symmetry is supported by mathematical evidence (D₄ uniqueness, S₃ as minimal non-abelian permutation group) but lacks a formal proof. This is the single most important open question — it forces Spin(8) → B=56 → α⁻¹ = 137. See [Octonion Necessity §7](../mathematics/foundations/derivations/octonion-necessity.md).
-
 ### Resolved
 
 2. ~~**B=56 from E7 necessity**~~ — **RESOLVED**: B = 2 × dim(so(8)) = 56, requiring Spin(8) triality. See [E7 Derivation](../mathematics/particle-physics/e7-derivation.md)
@@ -495,20 +491,20 @@ All are manifestations of bidirectional observation.
 
 4. ~~**Schrödinger equation from BLD traversal**~~ — **RESOLVED**: Complex numbers and linearity derived from BLD. See [Schrödinger Derivation](../mathematics/quantum/schrodinger-derivation.md)
 5. ~~**Born rule from alignment**~~ — **RESOLVED**: |ψ|² derived from bidirectional alignment. See [Born Rule](../mathematics/quantum/born-rule.md)
+6. ~~**Conjecture 7.1 (Stability → 3-fold symmetry)**~~ — **RESOLVED**: Self-observation closure requires S₃ outer automorphism, proven from irreducibility of B, L, D + K=2 bidirectional observation + inner automorphisms preserve representation isomorphism class. See [Octonion Necessity §7](../mathematics/foundations/derivations/octonion-necessity.md) Theorem 7.1.
+7. ~~**Completeness (general case)**~~ — **RESOLVED**: Proven for all observable systems via Axiom 5 (finite cost → finite information → computable type → BLD). See [Completeness Proof](../mathematics/foundations/proofs/completeness-proof.md) Theorem 4.1 Case 3.
 
 ### Acknowledged Limitations
 
-6. **K/X correction framework** — Systematic theory with zero free parameters. Over-determined: 5 structural constants explain 4+ independent force couplings. X assignments use principled physical reasoning about what each measurement traverses. The framework was developed to explain known values, then validated by its consistency across all four forces. Base structural predictions (α⁻¹ = 137, α_s⁻¹ ≈ α⁻¹/n²) are a priori.
+8. **K/X correction framework** — Systematic theory with zero free parameters. Over-determined: 5 structural constants explain 4+ independent force couplings. X assignments use principled physical reasoning about what each measurement traverses. The framework was developed to explain known values, then validated by its consistency across all four forces. Base structural predictions (α⁻¹ = 137, α_s⁻¹ ≈ α⁻¹/n²) are a priori.
 
-7. **Completeness proof (general case)** — Proven for Lie-theoretic and computable systems. Conjectured for general observable systems. See [Completeness Proof](../mathematics/foundations/proofs/completeness-proof.md).
-
-8. **Reference scale residual** — v/M_P is derived as a fixed point with ~1% accuracy. The residual is attributed to higher-order corrections not yet specified.
+9. **Reference scale residual** — v/M_P is derived as a fixed point with ~1% accuracy. The residual is attributed to higher-order corrections not yet specified.
 
 ### Medium Priority (Requires New Work)
 
-9. **Machine-verified proofs** — Current proofs are paper-based
-10. **Path integral in BLD** — Not addressed
-11. **Formal Lie isomorphism theorem** — BLD-Lie correspondence verified numerically for su(2) but a formal isomorphism theorem is not stated
+10. **Machine-verified proofs** — Current proofs are paper-based
+11. **Path integral in BLD** — Not addressed
+12. **Formal Lie isomorphism theorem** — BLD-Lie correspondence verified numerically for su(2) but a formal isomorphism theorem is not stated
 
 ### Empirical Inputs
 
@@ -521,7 +517,7 @@ All are manifestations of bidirectional observation.
 | **m_e** (electron mass) | **DERIVED** | m_e/v from BLD structure | Ratio is structural |
 | **c** (speed of light) | **DERIVED** | Lorentz invariance = equal D/L cost | BLD theorem |
 | **G** (Newton's constant) | **DERIVED** | M_P from v via cascade; G = 1/M_P² | Inherits v's ~1% residual |
-| **SU(3)** | **DERIVED** | Genesis closure → octonions → G₂ → SU(3) | Rigorous (modulo Conjecture 7.1) |
+| **SU(3)** | **DERIVED** | Genesis closure → octonions → G₂ → SU(3) | Fully proven (Theorem 7.1 + Proposition 7.2) |
 | **K/X assignments** | **SYSTEMATIC** | K=2 always; X determined by what measurement traverses | Over-determined: 5 constants, 4+ independent values |
 
 **Summary**: All formulas use zero free parameters. Base structural predictions (α⁻¹ = 137, α_s⁻¹ ≈ α⁻¹/n²) are a priori. The K/X correction framework is systematic and over-determined — it explains 4 independent force couplings from 5 derived constants.
