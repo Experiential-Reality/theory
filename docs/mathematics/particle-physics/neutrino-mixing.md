@@ -8,6 +8,7 @@ depends_on:
   - ../foundations/machine/detection-structure.md
   - ../foundations/derivations/force-structure.md
   - ../lie-theory/killing-form.md
+  - ../foundations/proofs/irreducibility-proof.md
   - ../cosmology/observer-correction.md
   - neutrino-masses.md
   - particle-classification.md
@@ -31,11 +32,11 @@ Combined χ² = 0.008 (3 dof), p = 0.9998. Every formula uses only pre-existing 
 
 **Bonus — Cabibbo angle**: tan(θ_C) = (n-1)/S = 3/13, giving |V_us| = 0.2249 (PDG: 0.2243 ± 0.0005, 1.2σ).
 
-**Key Insight**: A mixing angle measures the fraction of structural space occupied by one component. The formula type is determined by whether B (partition operator) is active in that sector:
+**Key Insight**: A mixing angle measures the fraction of structural space occupied by one component. The formula type is determined by the structural operation the angle performs:
 
-1. **B absent** → amplitude rotation (Pythagorean): sin²θ = direction²/(dir₁² + dir₂²)
-2. **B active** → budget partition (linear fraction): sin²θ = (B-component)/(total budget)
-3. **Cross-sector** → amplitude (sin θ, not sin²θ), following the K/X coupling pattern
+1. **Rotation** between independent directions → Pythagorean: sin²θ = direction²/(dir₁² + dir₂²)
+2. **Partition** of structural budget → linear fraction: sin²θ = (component)/(total budget)
+3. **Cross-sector coupling** → amplitude (sin θ, not sin²θ), following the K/X coupling pattern
 
 **Significance**: First derivation of neutrino mixing angles from first principles. Closer to NuFIT 6.0 data than tribimaximal mixing (TBM), trimaximal (TM1/TM2), A4, or any other zero-parameter prediction.
 
@@ -81,7 +82,7 @@ No existing theory derives these values from first principles.
 
 ### Q1 (B): Where does behavior partition?
 
-The PMNS matrix IS a B — it partitions the same neutrinos into two incompatible descriptions (flavor vs mass). Before measurement, the neutrino is in a mass eigenstate (propagation). After measurement, it's in a flavor eigenstate (observation). The matrix is the boundary between these descriptions.
+The PMNS matrix IS a B — it partitions the same neutrinos into two incompatible descriptions. The flavor basis (ν_e, ν_μ, ν_τ) is defined by weak interactions — what observation selects. The mass basis (ν₁, ν₂, ν₃) is defined by free propagation — what spacetime geometry selects. The PMNS matrix is the boundary between these two descriptions.
 
 ### Q2 (L): What connects?
 
@@ -126,15 +127,15 @@ sin²θ_W = dim(SU(2))/S = 3/S = 3/13 = 0.23077
 sin²θ = (coupling structure) / (total available structure in that sector)
 ```
 
-**Two formula types** — determined by whether B (partition operator, Axiom A1) is active:
+**Three formula types** — determined by the structural operation the mixing angle performs:
 
-| B status | Mixing type | Formula type | Example |
-|----------|-------------|-------------|---------|
-| Absent | Amplitude rotation | Pythagorean (quadratic) | θ_W = 3/13, θ₁₂ = 4/13 |
-| Active | Budget partition | Linear fraction | θ₂₃ = 14/25 |
-| Cross-sector | Amplitude coupling | K/X (linear) | θ₁₃ = 4/27 (sin) |
+| Operation | Formula type | What determines it | Example |
+|-----------|-------------|-------------------|---------|
+| Rotation between independent directions | Pythagorean (quadratic) | Two directions compose in quadrature (L⊥D irreducibility) | θ₁₂: K²/(K²+(n-1)²) = 4/13 |
+| Partition of structural budget | Linear fraction | Budget conservation (total fixed) | θ₂₃: (B/n)/(L+n+1) = 14/25 |
+| Cross-sector coupling | Amplitude (sin θ) | K/X principle: 1 link = influence, not observation | θ₁₃: n/(n-1)³ = 4/27 |
 
-For cross-sector couplings (connecting B-absent to B-active sectors), the formula gives an amplitude (sin θ, not sin²θ), following the K/X coupling pattern ([Force Structure](../foundations/derivations/force-structure.md) §8).
+Note: The Weinberg angle sin²θ_W = 3/S = 3/13 ([Force Structure](../foundations/derivations/force-structure.md) §5) is also a linear fraction ("3 of 13 intervals"). Both θ_W and θ₁₂ are fractions of S, but by different mechanisms: θ_W counts generators within intervals (linear), θ₁₂ rotates between orthogonal directions (quadratic). The formula type is determined by the physics, not by a classification of sectors.
 
 ---
 
@@ -151,13 +152,21 @@ In the no-B sector, the two structural directions are:
 1. **K = 2**: observation cost. Defines the flavor basis — neutrinos are identified by which charged lepton they produce, and this identification costs K per observation ([Killing Form](../lie-theory/killing-form.md): "2 links: forward query + backward response").
 2. **(n-1) = 3**: spatial dimensions. Defines the mass basis — neutrinos propagate as mass eigenstates through (n-1) spatial dimensions.
 
+### Why K and (n-1) Are Independent Directions
+
+K and (n-1) derive from different BLD primitives:
+- **K = 2** is an L-quantity: the Killing form measures "minimum L required to observe D" ([Killing Form](../lie-theory/killing-form.md) §Core Insight). It is a bilinear form on the link structure.
+- **(n-1) = 3** is a D-quantity: spatial dimensions are a dimension count, the D-primitive's domain.
+
+L and D are proven type-theoretically irreducible ([Irreducibility Proof](../foundations/proofs/irreducibility-proof.md)): L = function types, D = product types, no bijection exists between them. Irreducible primitives are structurally independent. Independent structural quantities compose in quadrature — the same principle that gives the Pythagorean theorem for perpendicular spatial directions.
+
 ### The Identity K² + (n-1)² = S
 
 ```
 K² + (n-1)² = 4 + 9 = 13 = S = (B-n)/n = (56-4)/4 = 13
 ```
 
-This is algebraically derivable from the existing constant definitions. It decomposes S into two orthogonal components: K² (observation²) and (n-1)² (spatial²). This is a right triangle with legs K and (n-1) and hypotenuse √S.
+This is not a coincidence but a structural decomposition: S (the total structural intervals between n and B) splits into its L-derived component squared plus its D-derived component squared.
 
 ### The Mixing Angle
 
@@ -212,15 +221,15 @@ BLD is closer to the NuFIT 6.0 central value than any other zero-parameter predi
 
 ### Sector
 
-The 1-3 plane. This CROSSES the B-boundary: ν₁ (light, no-B sector) to ν₃ (heavy, B-connected through mass hierarchy Δm²₃₂/Δm²₂₁ = L+S = 33 from [Neutrino Masses](neutrino-masses.md) §5.2).
+The 1-3 plane. This crosses the mass hierarchy: ν₁ (lightest) to ν₃ (heaviest), separated by Δm²₃₂/Δm²₂₁ = L+S = 33 ([Neutrino Masses](neutrino-masses.md) §5.2). The large mass gap means the 1-3 coupling spans different structural scales.
 
 ### Why sin(θ₁₃), Not sin²(θ₁₃)
 
 The distinction between amplitude and probability is structurally determined.
 
-θ₁₂ and θ₂₃ are *within-sector rotations*: both basis states share the same structural type. The formula gives sin²θ because the derivation produces a geometric fraction (ratio of areas in the structural space), which maps to a probability.
+θ₁₂ and θ₂₃ mix basis states within the same mass scale (ν₁↔ν₂ are both light; ν₂↔ν₃ are both in the heavier sector). The formula gives sin²θ because the derivation produces a geometric fraction — a ratio within a single structural space — which maps to a probability.
 
-θ₁₃ is a *cross-sector coupling*: it connects the no-B sector to the B-sector. From the K/X principle ([Force Structure](../foundations/derivations/force-structure.md) §8), all BLD couplings are K/X — linear in K, never squared. This is because a coupling between DIFFERENT structural types is an amplitude (one traversal direction: flavor → mass eigenstate), not a probability (round trip). The [Killing Form](../lie-theory/killing-form.md): "1 link: one-way → influence. 2 links: round trip → observation." Cross-sector couplings are influence, not observation.
+θ₁₃ couples across the mass hierarchy (ν₁ light ↔ ν₃ heavy, separated by a factor of L+S = 33 in Δm²). From the K/X principle ([Force Structure](../foundations/derivations/force-structure.md) §8), couplings across different structural scales follow K/X — linear in K, never squared. The [Killing Form](../lie-theory/killing-form.md): "1 link: one-way → influence. 2 links: round trip → observation." Cross-scale couplings are influence (amplitude), not observation (probability).
 
 **Numerical validation**: sin(θ₁₃) = 4/27 → sin²θ₁₃ = 16/729 = 0.02195 ✓. If we tried sin²θ₁₃ = 4/27 = 0.148, this is 217σ from NuFIT ✗. The formula can ONLY be an amplitude.
 
@@ -230,8 +239,11 @@ The distinction between amplitude and probability is structurally determined.
 ```
 sin(θ₁₃) = Kn/(B-K) = 8/54 = 4/27
 ```
-- Numerator Kn = 8: observation cost × spacetime dimensions = cross-sector coupling strength
+- Numerator Kn = 8: Following the K/X principle ([Force Structure](../foundations/derivations/force-structure.md) §8), cross-sector couplings have K in the numerator. The factor n arises because the coupling spans all spacetime dimensions (parallel to how n×L appears in α⁻¹). So Kn = "observation cost across all dimensions."
 - Denominator B-K = 54: usable boundary capacity ([Reference Scale Derivation](../cosmology/reference-scale-derivation.md) §2.2: "Capacity = B - K = 54 usable modes")
+- **Note**: K cancels in the final form n/(n-1)³, which depends only on n — purely geometric, independent of observation cost. This cancellation is itself structural: the cross-sector leakage is ultimately determined by spacetime geometry alone.
+
+**Derivation status**: The K/X pattern and the denominator B-K are pre-existing. The specific numerator Kn (rather than K alone or K(n-1)) is motivated by dimensional analysis — the coupling must span n dimensions — but this step is MOTIVATED rather than uniquely derived from axioms.
 
 **Form 2** — simplified (B-K = K(n-1)³):
 ```
@@ -271,28 +283,19 @@ The cross-sector leakage equals spacetime dimensions divided by spatial volume. 
 
 ### Sector
 
-The 2-3 plane. Both ν₂ and ν₃ are in the heavier part of the mass spectrum. The atmospheric mixing is within the "deep" sector where B is active (both states have significant mass through weak coupling).
+The 2-3 plane. Both ν₂ and ν₃ are in the heavier part of the mass spectrum. The atmospheric mixing probes the full link geometry — ν₂ and ν₃ differ primarily by their Riemann curvature coupling (Δm²₃₂/Δm²₂₁ = L+S = 33 from [Neutrino Masses](neutrino-masses.md) §5.2).
 
-### The B-Partition Principle
+### The Structural Space: L+n+1 = 25
 
-B is the partition operator (Axiom A1). When B enters a mixing sector, the mixing becomes a partition of the structural budget into B-coupled and non-B-coupled portions. This determines both the formula type and the specific quantities.
+The 2-3 mixing accesses the complete geometric-observer budget:
 
-| Sector | B status | Mixing type | Formula type |
-|--------|----------|-------------|-------------|
-| 1-2 | Absent | Amplitude rotation | Pythagorean (quadratic) |
-| 2-3 | Active | Budget partition | Linear fraction |
-
-**Why this distinction**: In the 1-2 sector, B is absent from neutrinos (S_ν = {L,D}). Without B (the partition operator), the two structural directions K and (n-1) are independent amplitudes. Amplitudes compose quadratically (Born rule → Pythagorean). In the 2-3 sector, B enters through the mass hierarchy. With B active, the mixing IS a partition — splitting the geometric-observer budget into B-coupled vs non-B-coupled modes. Partitions are linear (conservation of total), not quadratic.
-
-### The Denominator: L+n+1 = 25
-
-When B enters the sector, the available structural space expands from S = 13 (structural intervals, B-independent) to L+n+1 = 25 (geometric-observer budget, B-inclusive):
-
-- L = 20: link structure (Riemann curvature — connects TO and FROM B)
-- n = 4: spacetime dimensions (through which B propagates)
+- L = 20: Riemann curvature (how links vary across structure)
+- n = 4: spacetime dimensions (the stage on which mixing occurs)
 - +1: observer self-reference (same +1 as in α⁻¹ = nL + B + 1)
 
-**Pre-existing**: L+n+1 = 25 is the intermittency denominator ([Reynolds Derivation](../derived/reynolds-derivation.md) §3.3: 1/(L+n+1) = 1/25 = 0.04).
+**Pre-existing**: L+n+1 = 25 appears independently as the intermittency denominator ([Reynolds Derivation](../derived/reynolds-derivation.md) §3.3: 1/(L+n+1) = 1/25 = 0.04).
+
+**Structural assignment**: θ₁₂ operates in S-space (S = 13 structural intervals) because the 1-2 mixing probes the internal misalignment between observation (K) and propagation (n-1) — quantities that live within S. θ₂₃ operates in (L+n+1)-space because the 2-3 mixing probes the full link geometry that determines the mass hierarchy. This assignment is physically motivated by the mass scales involved.
 
 ### The Numerator: B/n = S+1 = 14
 
@@ -302,28 +305,35 @@ B/n = 56/4 = 14 — boundary modes per spacetime dimension. B distributes across
 
 **Why B/n (not B, B/K, or something else)**: The mixing is in a single rotation plane (the 2-3 plane). Each rotation plane spans one spacetime dimension. B/n is the boundary's contribution per dimension.
 
-### The Unique B vs Non-B Partition of L+n+1
+### The Partition: (B/n) + (S-K) = 14 + 11
+
+The PMNS matrix is PMNS = U†_ℓ × U_ν — the mismatch between the charged lepton diagonalization (U_ℓ, which carries B) and the neutrino diagonalization (U_ν, which does not). Within L+n+1 = 25, the question is: what fraction of the geometric-observer budget carries boundary structure from the charged lepton sector?
 
 ```
 L+n+1 = (B/n) + (S-K) = 14 + 11 = 25
 
-sin²θ₂₃ = (B/n)/(L+n+1) = 14/25     (B-coupled fraction)
-cos²θ₂₃ = (S-K)/(L+n+1) = 11/25     (non-B-coupled fraction)
+sin²θ₂₃ = (B/n)/(L+n+1) = 14/25     (boundary-carrying fraction)
+cos²θ₂₃ = (S-K)/(L+n+1) = 11/25     (boundary-free fraction)
 ```
 
-Both pieces are BLD-meaningful:
-- B/n = S+1 = 14: boundary per dimension (B-coupled modes)
+Both pieces are pre-existing BLD quantities:
+- B/n = S+1 = 14: boundary per dimension (boundary-carrying modes)
 - S-K = 11: structural intervals minus observation cost (free modes)
 
-**Uniqueness of the decomposition**: Alternative splits of L+n+1 = 25:
+**Uniqueness of the decomposition**: The partition (B/n) + (S-K) = 14 + 11 is the ONLY split of 25 where:
+1. The first term is B-related (B/n = boundary per dimension)
+2. The second term is B-independent (S-K = structural intervals minus observation)
+3. Both terms are independently meaningful BLD quantities
+
+Alternative splits fail both numerically and structurally:
 
 ```
-L + (n+1)     = 20 + 5  → sin² = 0.80 (15.9σ) — L vs spacetime+observer, NOT B vs non-B
-(L+K) + (n-1) = 22 + 3  → sin² = 0.88 (21.3σ) — geometry+obs vs spatial, NOT B vs non-B
-(n+L) + 1     = 24 + 1  → sin² = 0.96 (26.7σ) — geometry vs observer, NOT B vs non-B
+L + (n+1)     = 20 + 5  → sin² = 0.80 (15.9σ) — not a B vs non-B partition
+(L+K) + (n-1) = 22 + 3  → sin² = 0.88 (21.3σ)
+(n+L) + 1     = 24 + 1  → sin² = 0.96 (26.7σ)
 ```
 
-None of these is a B vs non-B partition. (B/n) + (S-K) = 14 + 11 is the ONLY decomposition where the first term is B-related and the second is non-B-related, with both being BLD-meaningful. The B-partition principle forces this specific formula.
+**Why the formula is a linear fraction (not Pythagorean)**: The 2-3 mixing is a partition — splitting a fixed budget (L+n+1 = 25 modes) into boundary-carrying and boundary-free portions. Conservation of the total forces a linear fraction. This contrasts with θ₁₂, which is a rotation between two independent directions (K and n-1), where independence forces quadratic composition. The formula type follows from the structural operation, not from a classification of sectors.
 
 **Algebraic identity**: (S+1) + (S-K) = 2S+1-K = 2×13+1-2 = 25 = L+n+1 ✓
 
@@ -331,16 +341,13 @@ None of these is a B vs non-B partition. (B/n) + (S-K) = 14 + 11 is the ONLY dec
 
 | Feature | θ₁₂ (1-2 sector) | θ₂₃ (2-3 sector) |
 |---------|-------------------|-------------------|
-| B status | Absent (no-B sector) | Active (B-coupled sector) |
-| Mixing type | Amplitude rotation | Budget partition |
+| Operation | Rotation | Partition |
+| Why | K⊥(n-1) by L⊥D irreducibility | Budget splits into B-carrying + B-free |
 | Formula type | Pythagorean (quadratic) | Linear fraction |
 | Space | S = K²+(n-1)² = 13 | L+n+1 = (B/n)+(S-K) = 25 |
-| Coupling direction | K² = 4 (observation²) | B/n = 14 (boundary per dim) |
-| sin²θ | K²/S = 4/13 | (B/n)/(L+n+1) = 14/25 |
-| cos²θ | (n-1)²/S = 9/13 | (S-K)/(L+n+1) = 11/25 |
-| Complementary meaningful? | ✓ (n-1)² = 9 | ✓ S-K = 11 |
-
-Every quantity is pre-existing. Every structural choice is forced by whether B is active or absent.
+| Numerator | K² = 4 (observation²) | B/n = 14 (boundary per dim) |
+| Complement | (n-1)² = 9 | S-K = 11 |
+| Both meaningful? | ✓ | ✓ |
 
 ### Result
 
@@ -457,7 +464,9 @@ e      0.6771    0.3009    0.0219    1.0000
 Sum    1.0000    1.0000    1.0000
 ```
 
-Unitarity verified to machine precision. J_max = 0.0332 (NuFIT: 0.0333 +/- 0.0007).
+**Note on δ_CP**: The electron row (|U_ei|²) is independent of δ_CP — it depends only on θ₁₂ and θ₁₃. The μ and τ rows shift when δ_CP ≠ 0. Unitarity holds for any δ_CP.
+
+Unitarity verified to machine precision.
 
 ### Electron Row — Exact Rational Form
 
@@ -469,17 +478,75 @@ Unitarity verified to machine precision. J_max = 0.0332 (NuFIT: 0.0333 +/- 0.000
 |U_e2|²/|U_e1|² = K²/(n-1)² = 4/9 exactly.
 ```
 
-### Product and Ratio Checks
-
-```
-(αδ)_BLD × analogy: sin²θ₁₂ + sin²θ₁₃ + sin²θ₂₃ = 4/13 + 16/729 + 14/25
-                                                     = 0.8895
-```
-
 ### Derived Quantities
 
-- Δm²₃₁/Δm²₂₁ = L+S = 33 (NuFIT: Δm²₃₁/Δm²₂₁ = 2.534/0.0749 = 33.8, deviation -0.8σ)
-- BLD does not yet predict δ_CP. NuFIT 6.0: δ_CP ≈ 177° (IC19), 3σ range covers nearly all values for NO.
+- |Δm²₃₂|/Δm²₂₁ = L+S = 33 (NuFIT: ≈ 33.3 from [Neutrino Masses](neutrino-masses.md) §5.2)
+### CP Phase δ_CP
+
+#### Why δ_CP Exists at θ₁₃
+
+The 1-link/2-link distinction (§"Why sin(θ₁₃), Not sin²(θ₁₃)") determines which angles can carry a CP phase:
+
+- **θ₁₂ and θ₂₃** are 2-link quantities (observation → probability): forward × backward = real. Phase cancels.
+- **θ₁₃** is a 1-link quantity (influence → amplitude): a single directed reference across the mass hierarchy. A single link can be complex ([Killing Form](../lie-theory/killing-form.md): "1 link: one-way → influence").
+
+This is why the standard parameterization places δ_CP in the 1-3 rotation: U = R₂₃ × Δ(δ) × R₁₃ × Δ*(δ) × R₁₂. The phase attaches to the only amplitude-type angle.
+
+#### Derivation: δ_CP = 3π/2
+
+The observation algebra determines the phase:
+
+1. **K = 2 = dim(ℂ)**: The observation algebra is ℂ ([Killing Form](../lie-theory/killing-form.md) §Connection to Division Algebras, [Integer Machine](../foundations/machine/integer-machine.md) §10).
+
+2. **i = observation unit**: Im(ℂ) = {i}. "i is the unit of observation" — not a mathematical convenience, a structural necessity ([Integer Machine](../foundations/machine/integer-machine.md) §10: bidirectionality requires inverses → division algebra → ℂ → i).
+
+3. **Links compose by application**: L = function types ([BLD Calculus](../foundations/definitions/bld-calculus.md) Rule 3.8). In ℂ, function application is multiplication — ℂ is a field, and its only operation is multiplication by elements of ℂ.
+
+4. **Forward link = ×i = e^(iπ/2)**: The observation unit acts by multiplication. One application of i rotates by π/2 in the Argand plane — this is Euler's formula at θ=π/2. "Phases are rotations in ℂ" ([Integer Machine](../foundations/machine/integer-machine.md) §10.3). BLD derives all three constants independently: e ([e from BLD](../../examples/e-from-bld.md)), π ([π from BLD](../../examples/pi-from-bld.md)), i ([Integer Machine](../foundations/machine/integer-machine.md) §10).
+
+5. **Backward link = ×i\* = ×(-i) = e^(-iπ/2)**: Bidirectionality requires inverses ([Integer Machine](../foundations/machine/integer-machine.md) §10 step 2). The inverse of i is its conjugate -i.
+
+6. **Round trip (K=2)**: e^(iπ/2) × e^(-iπ/2) = e^0 = 1 → real. This is why sin²θ₁₂ and sin²θ₂₃ are real: the phase cancels in the round trip, consistent with the [Born rule](../quantum/born-rule.md) derivation: |ψ|² = forward × backward. Note: K=2 counts the links (1+1=2); the product i×(-i)=1 composes the phases (net rotation = identity). These are different operations — no inconsistency.
+
+7. **Single link (K=1, θ₁₃)**: ×i alone → phase π/2 survives. In the PDG parameterization U_e3 = sin(θ₁₃) × e^{-iδ}, setting e^{-iδ} = i = e^{iπ/2} gives δ = -π/2 → δ_CP = 3π/2 = 270°.
+
+```
+sin(δ_CP) = sin(270°) = -1     → maximal CP violation
+
+J = J_max × sin(δ_CP) = -0.0332
+```
+
+**Physical meaning**: Maximal CP violation in the lepton sector. The observation unit i introduces a quarter-turn (π/2) per link. A round trip (2 links) completes a half-turn (π) which is real. A single link stops at a quarter-turn — maximally imaginary, maximally CP-violating.
+
+**Why PMNS, not CKM**: This prediction applies to neutrinos specifically because neutrinos lack B (boundary). Without B, the 1-3 link is a pure observation coupling — unmodulated by boundary structure. Quarks have B, which constrains the phase through the [S₃ vacuum](../../applications/physics/s3-vacuum.md) at the application layer → CKM δ_CP = 68.75°.
+
+#### Experimental Status
+
+```
+BLD prediction:  δ_CP = 3π/2 = 270°     sin(δ_CP) = -1
+
+NuFIT 6.0 (IO):  best-fit 274-285°      3σ: 201-348°     4-15° from BLD
+NuFIT 6.0 (NO):  best-fit 177° (IC19)   3σ: covers nearly all values
+T2K+NOvA joint:  IO 3σ includes 270°    Nature (2025)
+```
+
+Current precision (~25° at 1σ) cannot yet confirm or exclude. DUNE and Hyper-K will achieve ~10-15° precision within the next decade.
+
+#### Competing Prediction and the CKM Sector
+
+The S₃ two-flavon model (application layer) predicts:
+- δ_CP(PMNS) = 360°/φ = 222.5° — from golden angle geometry
+- δ_CP(CKM) = golden_angle/2 = 68.75° — experimentally confirmed (68°, 1.1% error)
+
+See [S₃ Vacuum Structure](../../applications/physics/s3-vacuum.md) §CP Phase.
+
+The PMNS predictions differ: 270° (this derivation, foundational layer) vs 222.5° (S₃, application layer). The difference is 47.5° — distinguishable at ~3σ by DUNE/Hyper-K.
+
+**Why do quarks and neutrinos differ?** Quarks have B (boundary structure), neutrinos lack B. Without B, the PMNS 1-3 link is a pure observation coupling → the phase is determined entirely by the observation algebra (×i → 270°). With B, the CKM phase is modulated by boundary structure → the S₃ vacuum determines it (68.75°). The foundational prediction (270°) applies where B is absent; the application-layer prediction applies where B is present.
+
+#### Jarlskog Invariant
+
+J_max = 0.0332 (NuFIT: 0.0333 ± 0.0007). BLD predicts J = -J_max = -0.0332 (maximal, negative sign). This is the maximum possible leptonic CP violation for BLD's mixing angles.
 
 ---
 
@@ -489,6 +556,7 @@ Unitarity verified to machine precision. J_max = 0.0332 (NuFIT: 0.0333 +/- 0.000
 2. **JUNO θ₁₂ precision**: sin²θ₁₂ = 4/13 = 0.30769... JUNO will achieve ~0.5% → distinguishable from TM1 (0.318).
 3. **|U_e2|²/|U_e1|² = 4/9 exactly**: cos²θ₁₃ cancels. Testable ratio independent of θ₁₃ precision.
 4. **No discrete flavor symmetry**: BLD predicts the mixing does NOT arise from A4, S4, or any modular group. If a discrete symmetry is experimentally confirmed as the origin of mixing, BLD is falsified.
+5. **δ_CP = 270°**: BLD predicts maximal CP violation (sin δ_CP = -1). DUNE/Hyper-K measurement of |sin δ_CP| significantly less than 1, or δ_CP far from 270°, would falsify this prediction.
 
 ---
 
@@ -505,6 +573,21 @@ All provable from BLD axioms and constants:
 | L² = n²(L+n+1) | 400 = 16×25 | Specific to n=4 |
 | n/(n-1)³ = Kn/(B-K) | 4/27 = 8/54 | Combines above |
 
+### Derivation Status
+
+| Step | Status | Grounding |
+|------|--------|-----------|
+| K²+(n-1)²=S | **DERIVED** | Algebraic + L⊥D irreducibility |
+| sin²θ₁₂ = K²/S | **DERIVED** | Pythagorean trig from grounded orthogonality |
+| sin(θ₁₃) = n/(n-1)³ | **MOTIVATED** | K cancels; follows K/X pattern; product Kn not uniquely forced |
+| L+n+1 as θ₂₃ space | **STRUCTURAL ASSIGNMENT** | Pre-existing quantity; assignment physically motivated |
+| (B/n)+(S-K)=25 decomposition | **DERIVED** | Unique B/non-B partition; algebraic identity |
+| sin²θ₂₃ = 14/25 | **DERIVED** (given assignment) | Follows from decomposition once space is set |
+| δ_CP existence at θ₁₃ | **DERIVED** | θ₁₃ is 1-link (amplitude) → can carry complex phase |
+| δ_CP = 3π/2 (270°) | **DERIVED** | i = observation unit, L-composition = ×i in ℂ, single link → phase π/2 |
+
+All formulas use only pre-existing BLD constants. No free parameters. The distinction between DERIVED, MOTIVATED, and STRUCTURAL ASSIGNMENT is made explicit so the reader knows exactly where the axiomatic chain is tight vs. where physical reasoning enters.
+
 ---
 
 ## References
@@ -519,9 +602,15 @@ All provable from BLD axioms and constants:
 - [Detection Structure](../foundations/machine/detection-structure.md) — T ∩ S formalism
 - [Force Structure](../foundations/derivations/force-structure.md) — K/X principle, sin²θ_W = 3/S
 - [Killing Form](../lie-theory/killing-form.md) — K = 2, amplitude vs probability
+- [Irreducibility Proof](../foundations/proofs/irreducibility-proof.md) — L⊥D grounds K⊥(n-1) orthogonality
 - [Observer Corrections](../cosmology/observer-correction.md) — Two-reference framework
 - [Neutrino Masses](neutrino-masses.md) — Missing B structure, Δm² ratio
 - [Particle Classification](particle-classification.md) — Neutrino S = {L, D}
 - [Reynolds Derivation](../derived/reynolds-derivation.md) — L+n+1 = 25 (intermittency)
 - [She-Leveque Derivation](../derived/she-leveque-derivation.md) — K/(n-1) = 2/3 cross-confirmation
 - [E7 Derivation](e7-derivation.md) — B = 56, Spin(8) triality
+- [S₃ Vacuum Structure](../../applications/physics/s3-vacuum.md) — Competing δ_CP prediction (222.5°, application layer)
+- [Born Rule](../quantum/born-rule.md) — |ψ|² = forward × backward (K=2 → real)
+- [BLD Calculus](../foundations/definitions/bld-calculus.md) — L = function types, Rule 3.8 (application)
+- [e from BLD](../../examples/e-from-bld.md) — e² corrections use same K=2 structure; e^(iπ/2) = i
+- [π from BLD](../../examples/pi-from-bld.md) — π = closure constant; Euler unification e^(iπ)+1=0
