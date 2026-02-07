@@ -478,7 +478,7 @@ B precision_choice: know_position | know_momentum
 |----------|--------|----------|
 | Wave function collapse | **OPEN** | See [Born Rule](born-rule.md) |
 | Single-event outcomes | **OPEN** | Why THIS measurement result? |
-| Path integral formulation | **OPEN** | Not covered in BLD yet |
+| Path integral formulation | **DERIVED** | See [Path Integral](path-integral.md) |
 
 ### The Honest Summary
 

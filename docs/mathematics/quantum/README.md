@@ -35,4 +35,4 @@
 ## Open Questions
 
 - **Collapse ontology**: Is the B-transition physical or epistemic? ([born-rule.md:458](born-rule.md))
-- **Path integrals**: Not covered (future work)
+- **Path integrals**: [Derived](path-integral.md) — D(L(B)) applied to time evolution

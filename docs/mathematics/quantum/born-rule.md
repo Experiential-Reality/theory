@@ -284,6 +284,8 @@ Total L-overlap = forward × backward = |⟨outcome|ψ⟩|²
 
 The product captures "how much do they mutually align?"
 
+**Connection to observation algebra**: In ℂ, the forward link acts as ×i (observation unit) and the backward link acts as ×(-i) (conjugate). The round trip i × (-i) = 1 → real, which is why probabilities are real and non-negative. This is the same K=2 round-trip structure that makes sin²θ₁₂ and sin²θ₂₃ real in [Neutrino Mixing](../particle-physics/neutrino-mixing.md), and explains why the Born rule requires EXACTLY 2 factors (K=2), not 1 or 3. See also [e from BLD](../../examples/e-from-bld.md) §e² in Physics — the e² corrections in α⁻¹ arise from the same bidirectional structure.
+
 ### K = 2 in Born Rule and Entropy
 
 The **same K = 2** (Killing form) that gives P = |ψ|² also governs entropy:

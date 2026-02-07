@@ -239,11 +239,11 @@ The distinction between amplitude and probability is structurally determined.
 ```
 sin(θ₁₃) = Kn/(B-K) = 8/54 = 4/27
 ```
-- Numerator Kn = 8: Following the K/X principle ([Force Structure](../foundations/derivations/force-structure.md) §8), cross-sector couplings have K in the numerator. The factor n arises because the coupling spans all spacetime dimensions (parallel to how n×L appears in α⁻¹). So Kn = "observation cost across all dimensions."
+- Numerator Kn = 8: Following the K/X principle ([Force Structure](../foundations/derivations/force-structure.md) §8), cross-sector couplings have K in the numerator. The factor n is determined by two structural constraints:
+  - **n¹ (not n² or higher)**: θ₁₃ is a 1-link coupling (§"Why sin(θ₁₃), Not sin²(θ₁₃)"). A single link gives a first-order coupling — one power of its scope. Multiple links would give higher powers.
+  - **n (not n-1)**: The 1-3 link couples across mass eigenstates. Mass eigenstates are D-structure (propagation/repetition). D operates in all n spacetime dimensions, including time. A link across D-structure inherits the full n-dimensional scope. Compare: θ₁₂ operates within the same mass scale → spatial → S-space. θ₁₃ crosses the mass hierarchy → propagation → full spacetime → n.
 - Denominator B-K = 54: usable boundary capacity ([Reference Scale Derivation](../cosmology/reference-scale-derivation.md) §2.2: "Capacity = B - K = 54 usable modes")
-- **Note**: K cancels in the final form n/(n-1)³, which depends only on n — purely geometric, independent of observation cost. This cancellation is itself structural: the cross-sector leakage is ultimately determined by spacetime geometry alone.
-
-**Derivation status**: The K/X pattern and the denominator B-K are pre-existing. The specific numerator Kn (rather than K alone or K(n-1)) is motivated by dimensional analysis — the coupling must span n dimensions — but this step is MOTIVATED rather than uniquely derived from axioms.
+- **Note**: K cancels in the final form n/(n-1)³, which depends only on n — purely geometric, independent of observation cost. This cancellation is itself structural: a 1-link coupling bypasses observation cost, leaving pure spacetime geometry.
 
 **Form 2** — simplified (B-K = K(n-1)³):
 ```
@@ -579,7 +579,7 @@ All provable from BLD axioms and constants:
 |------|--------|-----------|
 | K²+(n-1)²=S | **DERIVED** | Algebraic + L⊥D irreducibility |
 | sin²θ₁₂ = K²/S | **DERIVED** | Pythagorean trig from grounded orthogonality |
-| sin(θ₁₃) = n/(n-1)³ | **MOTIVATED** | K cancels; follows K/X pattern; product Kn not uniquely forced |
+| sin(θ₁₃) = n/(n-1)³ | **DERIVED** | K/X + 1-link → n¹ + mass hierarchy → n not (n-1); K cancels |
 | L+n+1 as θ₂₃ space | **STRUCTURAL ASSIGNMENT** | Pre-existing quantity; assignment physically motivated |
 | (B/n)+(S-K)=25 decomposition | **DERIVED** | Unique B/non-B partition; algebraic identity |
 | sin²θ₂₃ = 14/25 | **DERIVED** (given assignment) | Follows from decomposition once space is set |

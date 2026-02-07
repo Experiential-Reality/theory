@@ -85,6 +85,8 @@ BLD observation → bidirectional (Killing form = 2)
 
 **Status**: Complex numbers are **DERIVED** from BLD first principles.
 
+**The operational meaning of i**: Beyond being the imaginary unit of ℂ, i is the unit of observation — each observation link in ℂ acts as multiplication by i ([Integer Machine](../foundations/machine/integer-machine.md) §10). The Schrödinger equation iℏ∂ψ/∂t = Ĥψ says: time evolution = the observation unit (i) times the structural unit (ℏ) times the rate of change, equaling the structure being traversed (Ĥψ). The i is not a mathematical convenience — it is the structural signature of observation in the time evolution equation. This same ×i appears in the [path integral](path-integral.md) (accumulated over many links → e^{iS/ℏ}), the [Born rule](born-rule.md) (round trip ×i × ×(-i) = 1 → real probability), and [δ_CP = 270°](../particle-physics/neutrino-mixing.md) (single link → phase π/2 survives).
+
 ---
 
 ### 0.2 Deriving Linearity from Lie Algebra Structure
