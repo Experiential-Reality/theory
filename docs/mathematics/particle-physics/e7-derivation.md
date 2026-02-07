@@ -610,7 +610,7 @@ The complete derivation chain:
 
 **Structural constants derived**: n=4, 3 generations, B=56 from genesis closure (see [Octonion Necessity](../foundations/derivations/octonion-necessity.md))
 **K/X framework**: Systematic corrections with zero free parameters. Same 5 constants (n, L, B, K, e) explain EM, weak, strong, and gravity.
-**Reference scale**: v derived as fixed point (~1% accuracy, see [Reference Scale](../cosmology/reference-scale-derivation.md))
+**Reference scale**: v derived as fixed point (0.00014%, see [Reference Scale](../cosmology/reference-scale-derivation.md))
 
 **The fine structure constant encodes:**
 1. How structure connects (D×L = 80)

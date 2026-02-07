@@ -73,7 +73,7 @@ Status labels exist on two orthogonal axes that can be composed.
 
 **Counts**: 17 PROVEN, 19 VALIDATED, 43 DERIVED, 1 PREDICTED, 2 HYPOTHESIZED, 1 OPEN
 
-**Empirical inputs**: Structural constants (B, L, n, K) derived from genesis closure. Zero free parameters in all formulas. Reference scale v derived as fixed point (~1% residual).
+**Empirical inputs**: Structural constants (B, L, n, K) derived from genesis closure. Zero free parameters in all formulas. Reference scale v derived as fixed point (0.00014%).
 
 **See also**: [Summary Table](#summary-table), [Rigor Gaps](#rigor-gaps), [Research Directions](research-directions.md)
 
@@ -498,7 +498,7 @@ All are manifestations of bidirectional observation.
 
 8. **K/X correction framework** — Systematic theory with zero free parameters. Over-determined: 5 structural constants explain 4+ independent force couplings. X assignments use principled physical reasoning about what each measurement traverses. The framework was developed to explain known values, then validated by its consistency across all four forces. Base structural predictions (α⁻¹ = 137, α_s⁻¹ ≈ α⁻¹/n²) are a priori.
 
-9. **Reference scale residual** — v/M_P is derived as a fixed point with ~1% accuracy. The residual is attributed to higher-order corrections not yet specified.
+9. ~~**Reference scale residual**~~ — **RESOLVED**: v/M_P predicted to 0.00014% from BLD constants alone. See [Reference Scale Derivation](../mathematics/cosmology/reference-scale-derivation.md) §6.
 
 ### Medium Priority (Requires New Work)
 
@@ -508,15 +508,15 @@ All are manifestations of bidirectional observation.
 
 ### Empirical Inputs
 
-**Key insight**: Structural constants are derived. The K/X framework has zero free parameters. The reference scale has a ~1% residual.
+**Key insight**: Structural constants are derived. The K/X framework has zero free parameters. The reference scale v/M_P is derived to 0.00014% accuracy.
 
 | Input | Status | Derivation | Notes |
 |-------|--------|------------|-------|
 | **B, L, n, K** | **DERIVED** | Genesis closure + Hurwitz + triality | Structural, no empirical input |
-| **v** (Higgs VEV) | **DERIVED (~1%)** | Fixed point of self-observation | ~1% residual attributed to higher-order corrections |
+| **v** (Higgs VEV) | **DERIVED (0.00014%)** | Fixed point of self-observation | v/M_P from BLD constants |
 | **m_e** (electron mass) | **DERIVED** | m_e/v from BLD structure | Ratio is structural |
 | **c** (speed of light) | **DERIVED** | Lorentz invariance = equal D/L cost | BLD theorem |
-| **G** (Newton's constant) | **DERIVED** | M_P from v via cascade; G = 1/M_P² | Inherits v's ~1% residual |
+| **G** (Newton's constant) | **DERIVED** | M_P from v via cascade; G = 1/M_P² | Same precision as v (0.00014%) |
 | **SU(3)** | **DERIVED** | Genesis closure → octonions → G₂ → SU(3) | Fully proven (Theorem 7.1 + Proposition 7.2) |
 | **K/X assignments** | **SYSTEMATIC** | K=2 always; X determined by what measurement traverses | Over-determined: 5 constants, 4+ independent values |
 
@@ -526,7 +526,7 @@ All are manifestations of bidirectional observation.
 ```
 NOTHING IS IMPOSSIBLE → B MUST EXIST → traverse(-B, B) REQUIRES CLOSURE
 → CLOSURE REQUIRES B=56 → REQUIRES OCTONIONS → SU(3), n=4, 3 GENERATIONS
-→ v = FIXED POINT (~1%) → K/X CORRECTIONS (zero free parameters) → ALL PHYSICS
+→ v = FIXED POINT (0.00014%) → K/X CORRECTIONS (zero free parameters) → ALL PHYSICS
 ```
 
 See [Scale Derivation](../mathematics/cosmology/scale-derivation.md) and [Reference Scale Derivation](../mathematics/cosmology/reference-scale-derivation.md) for full analysis.
