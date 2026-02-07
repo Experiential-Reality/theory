@@ -73,7 +73,7 @@ Status labels exist on two orthogonal axes that can be composed.
 
 **Counts**: 17 PROVEN, 19 VALIDATED, 43 DERIVED, 1 PREDICTED, 2 HYPOTHESIZED, 1 OPEN
 
-**Empirical inputs**: ZERO — all constants derived
+**Empirical inputs**: Structural constants (B, L, n, K) derived from genesis closure. Zero free parameters in all formulas. Reference scale v derived as fixed point (~1% residual).
 
 **See also**: [Summary Table](#summary-table), [Rigor Gaps](#rigor-gaps), [Research Directions](research-directions.md)
 
@@ -196,7 +196,7 @@ Both touch the same problem → solution emerges
 
 | Claim | Status | Formula | Result |
 |-------|--------|---------|--------|
-| α⁻¹ from BLD constants | **EXACT** | n×L + B + 1 + 2/B + spatial − e²×120/119 | 137.035999177 (0.0 ppt) |
+| α⁻¹ from BLD constants | **EXACT** | n×L + B + 1 + 2/B + spatial − e²×120/119 | 137.035999177 (matches CODATA) |
 | n×L = 80 | **DERIVED** | Geometric structure (D×L) | From Riemann components |
 | B = 56 | **DERIVED** | 2 × dim(Spin(8) adjoint) | From triality + Killing form |
 | +1 | **DERIVED** | Observer self-reference | From BLD irreducibility |
@@ -210,7 +210,7 @@ Reference 2 (Machine): +2/B + spatial − e²×120/119 = 0.035999177
 
 α⁻¹ = 137 + 0.035999177 = 137.035999177
 Observed: 137.035999177
-Error: 0.0 ppt ✓ (EXACT)
+Matches CODATA (zero free parameters) ✓
 ```
 
 **Reference**: [Observer Corrections](../mathematics/cosmology/observer-correction.md) — Two-reference framework
@@ -477,42 +477,60 @@ All are manifestations of bidirectional observation.
 - *ℏ derivation (0.00003% accuracy) adds 2 to Quantum DERIVED: ℏ magnitude + observer correction framework*
 - *Structural-observer framework adds 1 to Foundational DERIVED*
 - *The Division Algebras section closes the loop: n=4, SU(3), and 3 generations are derived from BLD first principles*
-- *Full observer corrections give α⁻¹ (0.0 ppt EXACT) and μ/e (0.3 ppt EXACT); m_H (0.05% error) is measurement-limited*
+- *K/X framework (zero free parameters) gives α⁻¹ = 137.035999177 (matches CODATA), μ/e to 0.3 ppt, m_H to 0.05% (measurement-limited)*
 
 ---
 
 ## Rigor Gaps
 
-### Critical Priority (Highest Impact)
+### Critical Priority (Open)
 
-1. ~~**B=56 from E7 necessity**~~ — **RESOLVED**: B = 2 × dim(Spin(8) adjoint) = 56. See [E7 Derivation](../mathematics/particle-physics/e7-derivation.md)
+1. **Conjecture 7.1 (Stability → 3-fold symmetry)** — OPEN. The claim that stable self-observation requires 3-fold symmetry is supported by mathematical evidence (D₄ uniqueness, S₃ as minimal non-abelian permutation group) but lacks a formal proof. This is the single most important open question — it forces Spin(8) → B=56 → α⁻¹ = 137. See [Octonion Necessity §7](../mathematics/foundations/derivations/octonion-necessity.md).
 
-2. ~~**0.03% error in α⁻¹**~~ — **RESOLVED**: Full formula with e²×120/119 accumulated correction gives α⁻¹ = 137.035999177 (0.0 ppt EXACT). See [Fine Structure Consistency](../mathematics/particle-physics/fine-structure-consistency.md).
+### Resolved
 
-### High Priority (Close to Proof)
+2. ~~**B=56 from E7 necessity**~~ — **RESOLVED**: B = 2 × dim(so(8)) = 56, requiring Spin(8) triality. See [E7 Derivation](../mathematics/particle-physics/e7-derivation.md)
 
-2. ~~**Schrödinger equation from BLD traversal**~~ — **RESOLVED**: Complex numbers and linearity derived from BLD. See [Schrödinger Derivation](../mathematics/quantum/schrodinger-derivation.md)
-3. ~~**Born rule from alignment**~~ — **RESOLVED**: |ψ|² derived from bidirectional alignment. See [Born Rule](../mathematics/quantum/born-rule.md)
+3. ~~**0.03% error in α⁻¹**~~ — **RESOLVED**: Full K/X framework with e²×120/119 accumulated correction gives α⁻¹ = 137.035999177 (matches CODATA, zero free parameters). See [Fine Structure Consistency](../mathematics/particle-physics/fine-structure-consistency.md).
 
-### Empirical Inputs (Resolved)
+4. ~~**Schrödinger equation from BLD traversal**~~ — **RESOLVED**: Complex numbers and linearity derived from BLD. See [Schrödinger Derivation](../mathematics/quantum/schrodinger-derivation.md)
+5. ~~**Born rule from alignment**~~ — **RESOLVED**: |ψ|² derived from bidirectional alignment. See [Born Rule](../mathematics/quantum/born-rule.md)
 
-**Key insight**: ALL inputs are now DERIVED. Zero empirical inputs remain.
+### Acknowledged Limitations
 
-| Input | Old Status | New Status | Derivation |
-|-------|------------|------------|------------|
-| **v** (Higgs VEV) | UNIT CHOICE | **DERIVED** | Fixed point of self-observation. See [Reference Scale Derivation](../mathematics/cosmology/reference-scale-derivation.md) |
-| **m_e** (electron mass) | DERIVED RATIO | **DERIVED** | m_e/v is derived from BLD structure |
-| **c** (speed of light) | c = 1 | **DERIVED** | Lorentz invariance = equal D/L cost (BLD theorem) |
-| **G** (Newton's constant) | G = 1/M_P² | **DERIVED** | M_P derived from v via cascade; G = 1/M_P² |
-| **SU(3) matter exists** | OBSERVED | **DERIVED** | Genesis function closure requires octonions → SU(3). See [Octonion Necessity](../mathematics/foundations/derivations/octonion-necessity.md) |
+6. **K/X correction framework** — Systematic theory with zero free parameters. Over-determined: 5 structural constants explain 4+ independent force couplings. X assignments use principled physical reasoning about what each measurement traverses. The framework was developed to explain known values, then validated by its consistency across all four forces. Base structural predictions (α⁻¹ = 137, α_s⁻¹ ≈ α⁻¹/n²) are a priori.
 
-**What's truly empirical**: Nothing. The universe must exist (nothing is self-contradictory), and its structure follows from self-observation closure.
+7. **Completeness proof (general case)** — Proven for Lie-theoretic and computable systems. Conjectured for general observable systems. See [Completeness Proof](../mathematics/foundations/proofs/completeness-proof.md).
+
+8. **Reference scale residual** — v/M_P is derived as a fixed point with ~1% accuracy. The residual is attributed to higher-order corrections not yet specified.
+
+### Medium Priority (Requires New Work)
+
+9. **Machine-verified proofs** — Current proofs are paper-based
+10. **Path integral in BLD** — Not addressed
+11. **Formal Lie isomorphism theorem** — BLD-Lie correspondence verified numerically for su(2) but a formal isomorphism theorem is not stated
+
+### Empirical Inputs
+
+**Key insight**: Structural constants are derived. The K/X framework has zero free parameters. The reference scale has a ~1% residual.
+
+| Input | Status | Derivation | Notes |
+|-------|--------|------------|-------|
+| **B, L, n, K** | **DERIVED** | Genesis closure + Hurwitz + triality | Structural, no empirical input |
+| **v** (Higgs VEV) | **DERIVED (~1%)** | Fixed point of self-observation | ~1% residual attributed to higher-order corrections |
+| **m_e** (electron mass) | **DERIVED** | m_e/v from BLD structure | Ratio is structural |
+| **c** (speed of light) | **DERIVED** | Lorentz invariance = equal D/L cost | BLD theorem |
+| **G** (Newton's constant) | **DERIVED** | M_P from v via cascade; G = 1/M_P² | Inherits v's ~1% residual |
+| **SU(3)** | **DERIVED** | Genesis closure → octonions → G₂ → SU(3) | Rigorous (modulo Conjecture 7.1) |
+| **K/X assignments** | **SYSTEMATIC** | K=2 always; X determined by what measurement traverses | Over-determined: 5 constants, 4+ independent values |
+
+**Summary**: All formulas use zero free parameters. Base structural predictions (α⁻¹ = 137, α_s⁻¹ ≈ α⁻¹/n²) are a priori. The K/X correction framework is systematic and over-determined — it explains 4 independent force couplings from 5 derived constants.
 
 **The complete derivation chain**:
 ```
 NOTHING IS IMPOSSIBLE → B MUST EXIST → traverse(-B, B) REQUIRES CLOSURE
 → CLOSURE REQUIRES B=56 → REQUIRES OCTONIONS → SU(3), n=4, 3 GENERATIONS
-→ v = FIXED POINT → ALL PHYSICS DERIVED
+→ v = FIXED POINT (~1%) → K/X CORRECTIONS (zero free parameters) → ALL PHYSICS
 ```
 
 See [Scale Derivation](../mathematics/cosmology/scale-derivation.md) and [Reference Scale Derivation](../mathematics/cosmology/reference-scale-derivation.md) for full analysis.

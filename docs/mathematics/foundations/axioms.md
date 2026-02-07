@@ -104,9 +104,9 @@ Formally: ¬∃ empty state, because the assertion "nothing exists" is itself so
 
 *Corollary 7.1.* At minimum, Boundary must exist (the primordial distinction between existence and non-existence).
 
-*Corollary 7.2.* The traversal from -B to B (non-existence to existence) must close on itself for consistency.
+*Corollary 7.2.* The traversal from -B to B (non-existence to existence) must close on itself for consistency. (From A1+A2+A5+A6+A7: B must partition [A1] into +B/-B, which must relate via L [A2]. Self-reference [A6] with finite cost [A5] requires that composing forward and backward observation yields identity — otherwise the distinction is ill-defined. See [Theorem 2.2 in octonion-necessity.md](derivations/octonion-necessity.md#22-the-closure-condition) for the formal argument.)
 
-*Remark 7.1.* This axiom grounds BLD in logic rather than observation. The closure requirement (Corollary 7.2) leads to the derivation of all constants. See [octonion-necessity.md](derivations/octonion-necessity.md).
+*Remark 7.1.* This closure requirement, combined with the richness requirement (B = 56 modes), leads to the derivation of all constants. See [octonion-necessity.md](derivations/octonion-necessity.md).
 
 ## 4. Derived Principles
 

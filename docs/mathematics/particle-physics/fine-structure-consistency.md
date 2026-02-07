@@ -15,7 +15,7 @@ used_by:
 
 ## Summary
 
-**α⁻¹ = 137.035999177 (0.0 ppt error):**
+**α⁻¹ = 137.035999177 (matches CODATA, zero free parameters):**
 
 1. n = 4: from sl(2,ℂ) ⊂ sl(2,𝕆) — [Primordial Structure](#primordial-structure)
 2. L = 20: Riemann n²(n²-1)/12 — [The Terms](#nl--80-derived)
@@ -35,7 +35,7 @@ used_by:
 
 ---
 
-## Status: EXACT PREDICTION (0 ppt)
+## Status: FULLY DERIVED PREDICTION (matches CODATA)
 
 All terms are now derived, including the accumulated correction:
 
@@ -51,7 +51,7 @@ All terms are now derived, including the accumulated correction:
 ```
 
 **Observed**: α⁻¹ = [137.035999177(21)](https://physics.nist.gov/cgi-bin/cuu/Value?alphinv) (CODATA 2022)
-**Error**: 0.0 ppt (exact within measurement uncertainty)
+**Error**: matches CODATA (zero free parameters)
 
 ---
 
@@ -118,7 +118,7 @@ See [E7 Derivation](e7-derivation.md) for the complete B = 56 derivation.
 
 ```
 ┌───────────────────────────────────────────────────────────────────────────┐
-│                    α⁻¹ = 137.035999177 (EXACT)                            │
+│                    α⁻¹ = 137.035999177 (matches CODATA)                   │
 │                                                                           │
 │ LAYER 1: STRUCTURAL BASE (137)                                            │
 │ ┌─────────┐   ┌─────────┐   ┌─────────┐   ┌─────────┐                     │
@@ -170,7 +170,7 @@ See [E7 Derivation](e7-derivation.md) for the complete B = 56 derivation.
 │                             ▼                                             │
 │                    α⁻¹ = 137.035999177                                    │
 │                    observed = 137.035999177                               │
-│                    error = 0.0 ppt                                        │
+│                    matches CODATA                                         │
 └───────────────────────────────────────────────────────────────────────────┘
 
 BLD COMPONENT MAPPING:
@@ -374,7 +374,7 @@ The entire particle physics chain is now genuinely predictive!
 | ±spatial | **DERIVED** | Two-reference outbound/return corrections |
 | −e²×120/(119×(n×L×B)²) | **DERIVED** | Accumulated discrete→continuous correction |
 
-**Predictive power**: α⁻¹ = 137.035999177 is now a **FULLY DERIVED PREDICTION** with **0.0 ppt error**.
+**Predictive power**: α⁻¹ = 137.035999177 is now a **FULLY DERIVED PREDICTION** that **matches CODATA (zero free parameters)**.
 
 **All terms are now derived from BLD first principles.** See:
 - [Octonion Derivation](../foundations/derivations/octonion-derivation.md) for the complete chain

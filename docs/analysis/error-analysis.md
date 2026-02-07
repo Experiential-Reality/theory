@@ -16,7 +16,7 @@ used_by: []
 
 **All precision-limited constants now derived exactly:**
 
-1. α⁻¹: 0.0 ppt error — EXACT with e²×120/119 accumulated correction — [Fine Structure](#31-fine-structure-constant-α¹)
+1. α⁻¹: matches CODATA (zero free parameters) with e²×120/119 accumulated correction — [Fine Structure](#31-fine-structure-constant-α¹)
 2. m_H: 0.09% = experimental uncertainty — measurement-limited — [Higgs Mass](#32-higgs-mass-m-h)
 3. μ/e: 0.5 ppb error — EXACT with e²×(S+1)/((n×L)²×B²×S²) correction — [Muon/Electron](#33-muonelectron-mass-ratio-μe)
 4. e² pattern: both α⁻¹ and μ/e use e² because K=2 always (bidirectional) — [Why Structural](#61-errors-are-structural-not-random)
@@ -25,7 +25,7 @@ used_by: []
 
 | Quantity | BLD Error | Exp. Uncertainty | Status |
 |----------|-----------|------------------|--------|
-| α⁻¹ | **0.0 ppt** | 0.15 ppb | **EXACT** |
+| α⁻¹ | **matches CODATA** | 0.15 ppb | **Zero free parameters** |
 | m_H | 0.09% | 0.09% | **MEASUREMENT-LIMITED** |
 | μ/e | **0.5 ppb** | 22 ppb | **EXACT** |
 
@@ -35,7 +35,7 @@ used_by: []
 
 | Quantity | BLD Error | Exp. Uncertainty | Ratio | Conclusion |
 |----------|-----------|------------------|-------|------------|
-| α⁻¹ | **0.0 ppt** | 0.15 ppb | — | **EXACT** |
+| α⁻¹ | **matches CODATA** | 0.15 ppb | — | **Zero free parameters** |
 | m_H | 0.09% | 0.09% | 1× | **Measurement-limited** |
 | μ/e | **0.5 ppb** | 22 ppb | — | **EXACT** |
 | ℏ | 0.00003% | Exact (defined) | — | **Verified** |
@@ -73,14 +73,14 @@ From [Observer Corrections](../mathematics/cosmology/observer-correction.md), co
 ```
 BLD:     137.035999177006
 CODATA:  137.035999177000
-Error:   0.0 ppt
+Error:   matches CODATA (zero free parameters)
 ```
 
 **Key insight**: The e² term uses ratio (2B+n+K+2)/(2B+n+K+1) = 120/119 where:
 - 119 = 2B + n + K + 1 = bidirectional boundary with self-reference
 - 120 = 119 + 1 = adding the observation itself (observer creates additional state)
 
-**Verdict**: ✅ **EXACT** — All terms derived from BLD first principles.
+**Verdict**: ✅ **Matches CODATA with zero free parameters** — All terms derived from BLD first principles.
 
 ---
 
@@ -230,7 +230,7 @@ The sign difference arises because σ₈ measures structure suppression (clumpin
 
 | Quantity | Error | Explanation | Status |
 |----------|-------|-------------|--------|
-| α⁻¹ | **0.0 ppt** | e²×120/119 accumulated correction | **EXACT** |
+| α⁻¹ | **matches CODATA** | e²×120/119 accumulated correction | **Zero free parameters** |
 | m_H | 0.09% | Experimental uncertainty | **MEASUREMENT-LIMITED** |
 | μ/e | **0.5 ppb** | e²×(S+1)/((n×L)²×B²×S²) accumulated correction | **EXACT** |
 | τ/μ | 0.004% | Higher-order (expected) | **ACCEPTABLE** |
@@ -248,7 +248,7 @@ The sign difference arises because σ₈ measures structure suppression (clumpin
 
     = 137.035999177
 
-Error: 0.0 ppt (EXACT)
+Error: matches CODATA (zero free parameters)
 ```
 
 **Physical interpretation**: The e² term represents **accumulated traversal** — the observer must traverse the structure bidirectionally, and each discrete step accumulates e = lim(1+1/m)^m. The ratio 120/119 = (2B+n+K+2)/(2B+n+K+1) arises because observation creates one additional state.

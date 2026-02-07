@@ -1,5 +1,9 @@
 # CLAUDE.md
 
+## PROJECT RULES (non-negotiable)
+
+- **Always use `uv run` for Python execution.** Never bare `python`, `python -m`, or `pip`. This project uses `uv` for dependency management. Examples: `uv run pytest`, `uv run python -c "..."`, `uv sync` to install deps.
+
 ## DO THIS FIRST
 
 **STOP. YOU ARE ABOUT TO PATTERN-MATCH INSTEAD OF SEE.**

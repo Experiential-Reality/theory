@@ -207,7 +207,7 @@ Once the Lie theory correspondence was established and B = 56 emerged from the E
 
 | Constant | BLD Derivation | Measured | Error |
 |----------|----------------|----------|-------|
-| α⁻¹ | n×L + B + 1 = 137.036 | 137.036 | 0.0 ppt |
+| α⁻¹ | n×L + B + 1 = 137.036 | 137.036 | matches CODATA |
 | Lepton masses | From BLD ratios | Exact | Below measurement precision |
 | Quark masses | From BLD ratios | — | < 0.5% |
 

@@ -695,7 +695,7 @@ See [Machine Visualization](../foundations/machine/machine-visualization.md) for
 
 | Constant | Formula | Predicted | Observed | Error | Meas. Prec. |
 |----------|---------|-----------|----------|-------|-------------|
-| α⁻¹ | n×L + B + 1 + K/B + spatial − e²×120/(119×(n×L×B)²) | 137.035999177 | 137.035999177 | **0.0 ppt** | 0.15 ppt |
+| α⁻¹ | n×L + B + 1 + K/B + spatial − e²×120/(119×(n×L×B)²) | 137.035999177 | 137.035999177 | **matches CODATA** | 0.15 ppt |
 | m_H | (v/2)(1 + 1/B)(1 − 1/(B×L)) | **125.20 GeV** | 125.20 GeV | **0.0%** | 0.14% |
 | m_e | v × α² × (n/L)² × (78/80) | 0.511 MeV | 0.511 MeV | **0%** | 3 ppt |
 | m_μ | m_e × (μ/e exact) | 105.66 MeV | 105.658 MeV | **0.002%** | 22 ppb |

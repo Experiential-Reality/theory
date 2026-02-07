@@ -170,7 +170,7 @@ Observed = Structural + K/X(experiment) + K/X(universe)
 
 | Quantity | Structural | X | Correction | Observed | Residual |
 |----------|------------|---|------------|----------|----------|
-| α⁻¹ | 137 | B = 56 | +K/B | 137.036 | 0.0 ppt |
+| α⁻¹ | 137 | B = 56 | +K/B | 137.036 | matches CODATA |
 | sin²θ_W | 0.2308 | n×L×B = 4480 | +K/(n×L×B) | 0.23121 | 0.002% |
 | α_s⁻¹ | 8.56 | n+L = 24 | −K/(n+L) | 8.48 | 0.02% |
 | M_P | derived | n×L−K = 78 | ×79/78 | 1.22×10¹⁹ GeV | 0.002% |

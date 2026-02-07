@@ -238,7 +238,7 @@ Since ℏ = M_P² × G/c with G, c as exact empirical inputs, the ℏ prediction
 
 | Formula | Observer Term | Form | Error |
 |---------|--------------|------|-------|
-| α⁻¹ = n×L + B + 1 + K/B + spatial − e²×120/(119×(n×L×B)²) | +1 + corrections | Additive | **0.0 ppt** |
+| α⁻¹ = n×L + B + 1 + K/B + spatial − e²×120/(119×(n×L×B)²) | +1 + corrections | Additive | **matches CODATA** |
 | m_H = (v/2) × **(1 + 1/B)(1 − 1/(B×L))** | ×(57/56)(1119/1120) | Multiplicative | **0.0%** |
 | M_P = v × λ⁻²⁶ × √(5/14) × **(79/78)** | ×(1 + 1/78) | Multiplicative | 0.002% |
 
@@ -639,7 +639,7 @@ Uses:
 
 | Quantity | Formula | Error |
 |----------|---------|-------|
-| α⁻¹ | n×L + B + 1 + K/B + spatial − e²×120/(119×(n×L×B)²) | **0.0 ppt** |
+| α⁻¹ | n×L + B + 1 + K/B + spatial − e²×120/(119×(n×L×B)²) | **matches CODATA** |
 | m_H | (v/2)(1 + 1/B)(1 − 1/(B×L)) | **0.0%** |
 | M_P | v × λ⁻²⁶ × √(5/14) × (79/78) × (1 + 6/(n×L×B²)) | **0.002%** |
 | ℏ | M_P² × G/c | **0.00003%** |

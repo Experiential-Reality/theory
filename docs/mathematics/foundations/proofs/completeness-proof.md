@@ -19,7 +19,7 @@ used_by:
 2. Computational route: all computable types map to BLD — [Proof Route 2: Computational Universality](#3-proof-route-2-computational-universality)
 3. No fourth primitive has been found or is needed — [Why No Fourth Primitive?](#5-why-no-fourth-primitive)
 4. BLD is the unique minimal complete basis — [Implications](#7-implications)
-5. Empirical validation: alpha^-1 at 0.0 ppt, all masses derived — [Empirical Validation](#75-empirical-validation)
+5. Empirical validation: alpha^-1 matches CODATA (zero free parameters), all masses derived — [Empirical Validation](#75-empirical-validation)
 
 # Completeness Proof: B/L/D Are Sufficient
 
@@ -156,9 +156,9 @@ Therefore: Computable structures → Type theory → BLD. ∎
 
 ## 4. Main Theorem
 
-**Theorem 4.1** (BLD Completeness). Let S be an observable physical system or computable structure. Then S can be described using only the primitives B, L, D.
+**Theorem 4.1** (BLD Completeness). Let S be a physical system with continuous symmetry or a computable structure. Then S can be described using only the primitives B, L, D.
 
-*Proof.* We consider three cases:
+*Proof.* We consider two cases:
 
 **Case 1:** S has continuous symmetry.
 - By Noether's theorem, S corresponds to a Lie group G
@@ -172,13 +172,11 @@ Therefore: Computable structures → Type theory → BLD. ∎
 - These correspond to (D, L, B) by Theorem 3.3
 - Therefore S is describable in BLD
 
-**Case 3:** S is observable but neither symmetric nor computable.
-- Observable → information-bearing → distinguishable states (requires B)
-- Information-bearing → relationships between states (requires L)
-- Multiple instances → repetition structure (requires D)
-- Therefore S is describable in BLD
+All physically relevant cases covered. ∎
 
-All cases covered. ∎
+**Conjecture 4.2** (General Completeness). Theorem 4.1 extends to all observable systems, not just those with continuous symmetry or computability.
+
+*Supporting argument:* Observable systems are information-bearing, requiring distinguishable states (B), relationships between states (L), and repetition structure (D). Cases 1 and 2 cover all known physical and computational systems. No observable system has been found requiring a fourth primitive. See Section 5.3 for falsification conditions.
 
 ## 5. Why No Fourth Primitive?
 
@@ -252,7 +250,7 @@ Beyond the theoretical proof, BLD completeness is supported by extensive empiric
 
 | Quantity | BLD Prediction | Experimental Value (CODATA 2022) | Discrepancy |
 |----------|----------------|----------------------------------|-------------|
-| α⁻¹ (fine structure) | 137.035999177 | 137.035999177(21) | 0.0 ppt |
+| α⁻¹ (fine structure) | 137.035999177 | 137.035999177(21) | matches CODATA |
 | μ/e mass ratio | 206.7682830 | 206.7682827(46) | 1.5 ppb |
 | τ/e mass ratio | 3477.48 | 3477.23(23) | 4 ppm |
 | sin²θ_W (weak mixing) | 0.231215 | 0.23121(4) | ~0.002% |

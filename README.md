@@ -27,7 +27,7 @@ BLD identifies three irreducible structural operations: **Boundary** (partition)
 
 | Prediction | Value | Status |
 |------------|-------|--------|
-| Fine structure constant | α⁻¹ = 137.035999177 | **Exact** (0.0 ppt error) |
+| Fine structure constant | α⁻¹ = 137.035999177 | **matches CODATA** |
 | Muon/electron mass ratio | 206.7682826 | **Exact** |
 | Tau/muon mass ratio | 16.817 | 4 ppm |
 | All quark masses | 6 quarks | < 0.5% error |

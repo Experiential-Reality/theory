@@ -8,7 +8,7 @@ This document maps how derivations connect — the DAG of dependencies that form
 
 ## The Theory in One Paragraph
 
-Three primitives — **Boundary (B=56)**, **Link (L=20)**, **Dimension (n=4)** — are proven irreducible and complete. From the logical necessity that "nothing is self-contradictory," the genesis function `traverse(-B,B)` must close, requiring octonions as the minimal algebra with sufficient richness. This derives n=4 spacetime, 3 generations via triality, and all particle physics. The **integer machine** stores structure as integers (137, 208, 17); transcendentals emerge from continuous observation of discrete structure. Every measurement = primordial integer + K/X traversal cost. Results: α⁻¹ = 137.035999177 (0.0 ppt error), μ/e = 206.7682826 (0.5 ppb), all predictions exact.
+Three primitives — **Boundary (B=56)**, **Link (L=20)**, **Dimension (n=4)** — are proven irreducible and complete. From the logical necessity that "nothing is self-contradictory," the genesis function `traverse(-B,B)` must close, requiring octonions as the minimal algebra with sufficient richness. This derives n=4 spacetime, 3 generations via triality, and all particle physics. The **integer machine** stores structure as integers (137, 208, 17); transcendentals emerge from continuous observation of discrete structure. Every measurement = primordial integer + K/X traversal cost. Results: α⁻¹ = 137.035999177 (matches CODATA (zero free parameters)), μ/e = 206.7682826 (0.5 ppb), all predictions exact.
 
 ---
 
@@ -94,7 +94,7 @@ Layer 3: Derived Physics
 │                   ▼                                                     │
 │          ALL PHYSICS DERIVED                                            │
 │                                                                         │
-│  α⁻¹ = n×L + B + 1 + K/B + ... = 137.035999177 (0.0 ppt)               │
+│  α⁻¹ = n×L + B + 1 + K/B + ... = 137.035999177 (matches CODATA (zero free parameters))               │
 │  μ/e = (n²S-1) × corrections = 206.7682826 (0.5 ppb)                   │
 │  τ/μ = 2πe × corrections = 16.81716 (4 ppm)                            │
 │                                                                         │
@@ -216,7 +216,7 @@ These files are referenced by many others — understand them first:
 
 | File | What It Derives | Key Result | Error |
 |------|-----------------|------------|-------|
-| `particle-physics/fine-structure-consistency.md` | α⁻¹ | 137.035999177 | **0.0 ppt** |
+| `particle-physics/fine-structure-consistency.md` | α⁻¹ | 137.035999177 | **matches CODATA** |
 | `particle-physics/lepton-masses.md` | μ/e, τ/μ | 206.7682826, 16.817 | **0.5 ppb, 4 ppm** |
 | `particle-physics/quark-masses.md` | u, d, s, c, b, t | All 6 quarks | <0.5% |
 | `particle-physics/boson-masses.md` | H, Z, W | **125.20**, 91.19, 80.38 GeV | **Exact** |
@@ -374,11 +374,11 @@ lie-correspondence ◄──── killing-form ──────────�
 | n = 4 spacetime | **DERIVED** | sl(2,ℂ) ⊂ sl(2,𝕆) |
 | 3 generations | **DERIVED** | Spin(8) triality |
 | B = 56 | **DERIVED** | 2 × dim(Spin(8) adjoint) |
-| α⁻¹ = 137.035999177 | **EXACT** | 0.0 ppt error |
+| α⁻¹ = 137.035999177 | **EXACT** | matches CODATA |
 | μ/e = 206.7682826 | **EXACT** | 0.5 ppb error |
 | τ/μ = 16.817 | **EXACT** | 4 ppm error |
 | Dark matter = 27% | **EXACT** | Matches observation |
 | All particle masses | **DERIVED** | Within measurement |
 
-**Zero empirical inputs**: SU(3) is derived from genesis closure (see [Octonion Necessity](foundations/derivations/octonion-necessity.md)).
-**All derived from logical necessity**: n=4, 3 generations, B=56, α⁻¹, all masses, all forces.
+**Zero free parameters**: SU(3) is derived from genesis closure (see [Octonion Necessity](foundations/derivations/octonion-necessity.md)). Structural constants derived; K/X correction framework is systematic and over-determined.
+**All derived from structural necessity**: n=4, 3 generations, B=56, α⁻¹, all masses, all forces.

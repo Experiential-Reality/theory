@@ -85,7 +85,7 @@ SU(3) EXISTS (derived, not empirical)
 | Planck constant | ℏ | Structural derivation |
 | All particle masses | See lepton/quark files | Structural corrections |
 
-**Zero empirical inputs. All of physics derived from genesis closure.**
+**Zero free parameters. Structural constants derived from genesis closure. K/X corrections systematic and over-determined.**
 
 ---
 
@@ -570,8 +570,9 @@ At Planck scale:    D×L ≈ B (comparable)
     = 137 + 0.0357 + 0.000298 - 0.0000124 - 0.00000037
     = 137.035999177
 
-Observed: 137.035999177
-Error: 0.0 ppt (exact)
+Observed: 137.035999177 (CODATA 2022)
+Base prediction: α⁻¹ = 137 (structural, 0.026%)
+Full K/X framework: 137.035999177 (matches CODATA 2022, zero free parameters)
 ```
 
 The formula now reads:
@@ -603,12 +604,13 @@ The complete derivation chain:
 12. +1 = traverser's minimum contribution (derived from BLD irreducibility)
 13. +K/B, ±spatial = two-reference corrections (outbound/return traversal)
 14. −e²×120/(119×(n×L×B)²) = accumulated discrete→continuous correction
-15. **α⁻¹ = 137.035999177** (exact prediction, **0.0 ppt error**)
+15. **α⁻¹ = 137** (structural) → **137.035999177** via K/X corrections (zero free parameters, matches CODATA)
 
 **See [Octonion Derivation](../foundations/derivations/octonion-derivation.md) for steps 1-5.**
 
-**Zero empirical inputs**: SU(3) is derived from genesis closure (see [Octonion Necessity](../foundations/derivations/octonion-necessity.md))
-**All derived**: n=4, 3 generations, B=56, α⁻¹ = 137.035999177
+**Structural constants derived**: n=4, 3 generations, B=56 from genesis closure (see [Octonion Necessity](../foundations/derivations/octonion-necessity.md))
+**K/X framework**: Systematic corrections with zero free parameters. Same 5 constants (n, L, B, K, e) explain EM, weak, strong, and gravity.
+**Reference scale**: v derived as fixed point (~1% accuracy, see [Reference Scale](../cosmology/reference-scale-derivation.md))
 
 **The fine structure constant encodes:**
 1. How structure connects (D×L = 80)

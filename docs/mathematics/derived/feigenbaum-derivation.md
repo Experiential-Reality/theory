@@ -340,7 +340,7 @@ Match: ✓
 
 | Constant | Type | e-correction? | Error |
 |----------|------|---------------|-------|
-| **α⁻¹** | Mode counting | No | 0.0 ppt |
+| **α⁻¹** | Mode counting | No | matches CODATA |
 | **-5/3** | Scaling exponent | No | exact |
 | **Re_c** | Threshold | No | 0.02% |
 | **δ** | Continuous limit | **Yes** | 0.00003% |

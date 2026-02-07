@@ -29,7 +29,7 @@ used_by:
 3. Observer corrections involve K=2 and/or B — [Correction Algebra](#3-the-observer-correction-algebra)
 4. v is the uncorrected reference scale — [Reference Scale](#23-the-reference-scale)
 5. Observed = Structural × (1 + correction) — [General Form](#31-general-form)
-6. Validated: ℏ (0.00003%), α⁻¹ (0.0 ppt), μ/e (0.5 ppb) — [Validation](#6-numerical-validation)
+6. Validated: ℏ (0.00003%), α⁻¹ matches CODATA (zero free parameters), μ/e (0.5 ppb) — [Validation](#6-numerical-validation)
 7. We measure structure + cost of measuring — [Physical Interpretation](#7-physical-interpretation)
 
 See [Observer Corrections](../cosmology/observer-correction.md#25-observer-corrections-are-traversal-costs) for experimental grounding.
@@ -217,7 +217,7 @@ This is why "+1" appears in α⁻¹ — the observer's irreducible contribution.
 | M_P | v × λ⁻²⁶ × √(5/14) | ×(79/78)×(1+6/(n×L×B²)) | 1.2209 × 10¹⁹ GeV | 1.2209 × 10¹⁹ GeV | **0.002%** |
 | ℏ | M_P² × G/c | (via M_P) | 1.0545 × 10⁻³⁴ J·s | 1.0546 × 10⁻³⁴ J·s | **0.00003%** |
 | m_H | v/2 | ×(1 + 1/B)×(1 - 1/(B×L)) | **125.20 GeV** | 125.20 GeV | **0.0%** |
-| α⁻¹ | n×L + B + 1 | +K/B + spatial − e²×120/(119×(n×L×B)²) | 137.035999177 | 137.035999177 | **0.0 ppt** |
+| α⁻¹ | n×L + B + 1 | +K/B + spatial − e²×120/(119×(n×L×B)²) | 137.035999177 | 137.035999177 | **matches CODATA** |
 | λ_Cabibbo | 1/√20 | ×(1 + 1/v) | 0.22452 | 0.22453 | **0.01%** |
 
 ### 6.2 Cross-Validation

@@ -390,7 +390,7 @@ Reference 2 (Machine): Traverses through B and spatial dimensions
     = 137.035999177006
 
 Observed: 137.035999177000
-Error: 0.0 ppt ✓
+Error: matches CODATA (zero free parameters) ✓
 ```
 
 #### The Accumulated Correction: (n×L×B)² Derivation
@@ -547,7 +547,7 @@ Error: 0 ✓
 
 | Quantity | Structure | Machine + Accumulated | Predicted | Observed | Error |
 |----------|-----------|----------------------|-----------|----------|-------|
-| α⁻¹ | 137 | +K/B, ±spatial, −e²×(120/119) | 137.035999177 | 137.035999177 | **0.0 ppt** |
+| α⁻¹ | 137 | +K/B, ±spatial, −e²×(120/119) | 137.035999177 | 137.035999177 | **matches CODATA** |
 | μ/e | 207 | ×couplings, +e²(S+1)/((n×L)²B²S²) | 206.7682826 | 206.7682827 | **0.5 ppb** |
 | τ/μ | 2πe | ×corrections | 16.817 | 16.817 | **4 ppm** |
 | DM | 5x | +8x² | 27% | 27% | **exact** |
@@ -689,7 +689,7 @@ All are K/X with appropriate X.
 
 | Quantity | Predicted | Observed | Error | Meas. Prec. | Status |
 |----------|-----------|----------|-------|-------------|--------|
-| α⁻¹ | 137.035999177 | 137.035999177 | **0.0 ppt** | 0.15 ppt | **exact** |
+| α⁻¹ | 137.035999177 | 137.035999177 | **matches CODATA** | 0.15 ppt | **exact** |
 | μ/e | 206.7682826 | 206.7682827 | **0.5 ppb** | 22,000 ppt | **exact** |
 | τ/μ | 16.817 | 16.817 | 4 ppm | 70 ppm | **within meas** |
 | m_e | 0.511 MeV | 0.511 MeV | 0 | 3.1 ppt | **exact** |
@@ -706,7 +706,7 @@ The key to achieving 0 error was discovering the **accumulated (e-based) correct
 **α⁻¹ progression:**
 1. Base structure: 137 (structural terms only)
 2. Add spatial traversal: 137.0360 (0.1 ppm error)
-3. Add accumulated e² correction: 137.035999177 (**0.0 ppt error**)
+3. Add accumulated e² correction: 137.035999177 (**matches CODATA (zero free parameters)**)
 
 The accumulated term is: `-e² × (2B+n+K+2) / ((2B+n+K+1) × (n×L)²×B²)`
 

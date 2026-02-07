@@ -321,7 +321,7 @@ ALL SCALES DERIVED
 | G | G = 1/M_P² | **DERIVED** (from M_P) |
 | SU(3) | EMPIRICAL | **DERIVED** (genesis closure) |
 
-**Zero empirical inputs remain.** See [Octonion Necessity](../foundations/derivations/octonion-necessity.md) for why SU(3) is also derived.
+**Zero free parameters.** Structural constants derived from genesis closure. See [Octonion Necessity](../foundations/derivations/octonion-necessity.md) for why SU(3) is also derived.
 
 ---
 

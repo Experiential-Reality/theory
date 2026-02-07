@@ -33,7 +33,7 @@ used_by:
 
 ## Abstract
 
-We derive all four fundamental forces—electromagnetic, weak, strong, and gravitational—from BLD structural principles. Each force emerges as an observer correction at a different level of the division algebra tower: gravity at ℝ, electromagnetism at ℂ, weak force at ℍ, and strong force at 𝕆. All corrections follow the observation cost K/X, where K = 2 (Killing form) and X is the structure traversed by the measurement. We derive: α⁻¹ = 137.035999177 (0.0 ppt error), sin²θ_W = 0.231215 (~0.002% residual), α_s⁻¹ = 8.4814 (~0.02% residual), and M_P = 1.2209 × 10¹⁹ GeV (0.00003% error). The remaining residuals are identified as K/X(universe)—the Universal Machine's self-traversal cost. This framework unifies force couplings as different K/X corrections and explains their running as scope-dependent structure.
+We derive all four fundamental forces—electromagnetic, weak, strong, and gravitational—from BLD structural principles. Each force emerges as an observer correction at a different level of the division algebra tower: gravity at ℝ, electromagnetism at ℂ, weak force at ℍ, and strong force at 𝕆. All corrections follow the observation cost K/X, where K = 2 (Killing form) and X is the structure traversed by the measurement. We derive: α⁻¹ = 137.035999177 (matches CODATA (zero free parameters)), sin²θ_W = 0.231215 (~0.002% residual), α_s⁻¹ = 8.4814 (~0.02% residual), and M_P = 1.2209 × 10¹⁹ GeV (0.00003% error). The remaining residuals are identified as K/X(universe)—the Universal Machine's self-traversal cost. This framework unifies force couplings as different K/X corrections and explains their running as scope-dependent structure.
 
 ## 1. Introduction
 
@@ -184,7 +184,7 @@ L_cost(EM) = +K/B                         [Boundary quantum]
 
 **Observed**: 137.035999177 (CODATA 2022)
 
-**Error**: 0.0 ppt
+**Error**: matches CODATA
 
 See [Fine Structure Consistency](../../particle-physics/fine-structure-consistency.md) for full derivation.
 
@@ -598,7 +598,7 @@ The couplings differ because the EXPERIMENTS differ.
 
 | Force | Formula | Predicted | Observed | Residual |
 |-------|---------|-----------|----------|----------|
-| EM | α⁻¹ = n×L+B+1+K/B+... | 137.035999177 | 137.035999177 | **0.0 ppt** |
+| EM | α⁻¹ = n×L+B+1+K/B+... | 137.035999177 | 137.035999177 | **matches CODATA** |
 | Weak | sin²θ_W = 3/S+K/(n×L×B) | 0.231215 | 0.23121 | **~0.002%** |
 | Strong | α_s⁻¹ = α⁻¹/n²−K/(n+L) | 8.4814 | 8.482 | **~0.02%** |
 | Gravity | M_P = v×λ⁻²⁶×√(5/14)×(79/78)×... | 1.2209×10¹⁹ | 1.2209×10¹⁹ | **~0.002%** |

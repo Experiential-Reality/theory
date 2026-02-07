@@ -126,7 +126,7 @@ Then the fine structure constant:
     = 137.035999177
 ```
 
-Observed: 137.035999177. Error: **0.0 ppt**.
+Observed: 137.035999177. Matches CODATA (zero free parameters).
 
 Not fitted. **Derived exactly.**
 

@@ -8,6 +8,9 @@ depends_on:
 # Note: genesis-function.md and octonion-necessity.md form a two-reference closure.
 # Octonions are necessary for genesis to close; genesis requires octonion structure.
 # Neither is "first" — they mutually determine each other.
+# Note: Conjecture 7.1 (stability → 3-fold) is a conjecture, not a proof.
+# Proposition 7.2 (D₄ uniqueness) is a theorem. The derivation chain
+# depends on the conjunction: conjecture 7.1 + theorem 7.2.
 see_also:
   - ../../cosmology/genesis-function.md
 used_by:
@@ -84,30 +87,33 @@ B = 2 × dim(Spin(8)) = 2 × 28 = 56
 
 This is derived from triality and the Killing form, not assumed.
 
-### 3.2 Automorphism Group Constraint
+### 3.2 The Structural Requirement
 
-**Definition 3.1** (Richness). An algebra 𝔸 is *rich enough* for genesis closure if its automorphism group Aut(𝔸) can support B = 56 boundary modes.
+**Definition 3.1** (Richness). An algebra 𝔸 of dimension d is *rich enough* for genesis closure if the boundary modes B = K × dim(so(d)) = d(d-1) equal 56.
 
-**Proposition 3.2** (Automorphism Bound). The maximum boundary modes supportable by algebra 𝔸 is bounded by:
+**Proposition 3.2** (Dimension Requirement). Genesis closure with B = 56 uniquely requires a division algebra of dimension 8.
+
+*Proof.* Boundary modes come from bidirectional observation (K = 2) of the algebra's rotation structure (so(d)):
 
 ```
-B_max(𝔸) ≤ 2 × dim(Aut(𝔸))
+B = K × dim(so(d)) = 2 × d(d-1)/2 = d(d-1)
 ```
+
+Setting B = 56: d(d-1) = 56 → d² - d - 56 = 0 → d = 8.
+
+Among Hurwitz dimensions {1, 2, 4, 8}, only d = 8 (octonions) gives B = 56. ∎
+
+*Remark.* The automorphism group Aut(𝔸) is a SUBGROUP of the rotation group — it preserves the multiplication structure, not just the norm. For octonions, Aut(𝕆) = G₂ ⊂ Spin(8), with dim(G₂) = 14 < dim(so(8)) = 28. The role of Aut is not in the B count but in Section 5: fixing a reference direction in G₂ gives Stab_{G₂}(e) = SU(3).
 
 ### 3.3 Quaternion Failure
 
 **Theorem 3.3** (Quaternion Insufficiency). Quaternions cannot support genesis closure with B = 56.
 
-*Proof.* The automorphism group of quaternions is:
-- Aut(ℍ) = SO(3)
-- dim(SO(3)) = 3
+*Proof.* For quaternions, d = 4:
+- B = d(d-1) = 4 × 3 = 12
+- 12 ≠ 56: insufficient boundary modes
 
-Therefore:
-```
-B_max(ℍ) ≤ 2 × 3 = 6
-```
-
-Since 6 < 56, quaternions cannot support the required boundary structure. ∎
+Therefore quaternions cannot support the required boundary structure. ∎
 
 **Corollary 3.4.** A "quaternionic universe" (based on ℍ rather than 𝕆) cannot sustain self-observation—it lacks sufficient complexity for the genesis function to close.
 
@@ -149,15 +155,15 @@ This matches the required boundary count. ∎
 
 **Theorem 4.4** (Uniqueness). Among normed division algebras, only octonions satisfy both the division requirement and the richness requirement.
 
-| Algebra | Division | Richness (B_max) | Status |
-|---------|----------|-----------------|--------|
-| ℝ | ✓ | 0 (Aut = {1}) | Too simple |
-| ℂ | ✓ | 0 (Aut = ℤ₂, discrete) | Insufficient |
-| ℍ | ✓ | 6 (Aut = SO(3)) | Insufficient |
-| 𝕆 | ✓ | 56 (Aut = G₂ ⊂ Spin(8)) | **Required** |
-| Sedenions | ✗ (zero divisors) | — | Eliminated |
+| Algebra | d | Division | B = d(d-1) | Triality? | Status |
+|---------|---|----------|------------|-----------|--------|
+| ℝ       | 1 | ✓        | 0          | No        | Too simple |
+| ℂ       | 2 | ✓        | 2          | No        | Insufficient |
+| ℍ       | 4 | ✓        | 12         | No        | Insufficient |
+| 𝕆       | 8 | ✓        | **56**     | **Yes** (D₄) | **Required** |
+| Sedenions | 16 | ✗ (zero divisors) | — | — | Eliminated |
 
-*Proof.* Sedenions and higher Cayley-Dickson algebras have zero divisors (ab = 0 with a,b ≠ 0), failing the division requirement. Among the four normed division algebras, only octonions have Aut(𝔸) embedding in a structure that supports B = 56. ∎
+*Proof.* Sedenions and higher Cayley-Dickson algebras have zero divisors (ab = 0 with a,b ≠ 0), failing the division requirement. Among the four normed division algebras {ℝ, ℂ, ℍ, 𝕆}, only d = 8 (octonions) gives B = d(d-1) = 56. ∎
 
 ## 5. Deriving SU(3) Color Symmetry
 
@@ -215,19 +221,28 @@ Therefore: SU(3) color symmetry is logically necessary. ∎
 
 ### 7.1 Why 3-Fold Symmetry?
 
-**Theorem 7.1** (Stability). Stable self-reference requires at least 3-fold symmetry.
+**Conjecture 7.1** (Stability). Stable self-reference requires at least 3-fold symmetry.
 
-*Proof.* Consider self-observation as a directed graph:
-- **2-fold (A ↔ B):** A observes B, B observes A, repeat. This is oscillation without a fixed point—unstable.
-- **3-fold (A → B → C → A):** A directed cycle. Each vertex has one predecessor and one successor. The cycle itself is the fixed point—stable.
+*Argument.* Self-observation involves all three irreducible primitives (B, L, D). Consider the symmetry group of the roles (observer, observed, observation act):
 
-Two-fold symmetry is the "two mirrors facing each other" problem: infinite regress. Three-fold symmetry closes into a self-sustaining structure. ∎
+- **2-fold symmetry (ℤ₂):** Can swap two roles but the third is frozen. Generates only {id, σ}, an abelian group. The system cannot fully observe itself — one structural role is always external to the permutation.
+- **3-fold symmetry (S₃):** All three roles can interchange. S₃ is the smallest non-abelian group (order 6). Non-abelian structure is needed because the roles are *distinguishable* — observer ≠ observed ≠ act — yet must all be accessible to the self-referencing system.
+
+*Supporting evidence:*
+1. BLD has exactly three irreducible primitives (proven in [irreducibility-proof.md](../proofs/irreducibility-proof.md))
+2. Only D₄ has S₃ outer automorphism among all simple Lie algebras (Proposition 7.2)
+3. Three generations of fermions are observed empirically
+4. S₃ is the smallest non-abelian permutation group — the minimal structure with distinguishable-yet-interchangeable elements
+
+*Status:* This argument motivates the 3-fold requirement but does not constitute a formal proof. The gap: why must all three structural roles be permutable for self-observation to close? A rigorous proof would require a formal definition of "closure under self-observation" and a demonstration that S₃ is the minimal symmetry satisfying it.
 
 ### 7.2 Mathematical Grounding
 
-**Proposition 7.2.** Only the D₄ Dynkin diagram (corresponding to Spin(8)) has S₃ outer automorphism (triality).
+**Proposition 7.2** (Triality Uniqueness). Only the D₄ Dynkin diagram (corresponding to Spin(8)) has S₃ outer automorphism among all simple Lie algebras.
 
-This is a theorem of Lie algebra classification, not a choice. The requirement of stable self-observation forces Spin(8), which forces octonions, which forces SU(3).
+*Proof.* This is a theorem of the Cartan classification. The outer automorphism group of a simple Lie algebra equals the symmetry group of its Dynkin diagram. Among all Dynkin diagrams, only D₄ has S₃ symmetry (the three legs are permutable). All other diagrams have at most ℤ₂ symmetry (A_n for n≥2, D_n for n≥5, E₆) or trivial symmetry. ∎
+
+**Consequence:** IF self-observation requires S₃ outer automorphism (Conjecture 7.1), THEN Spin(8) is the unique solution. This forces octonions, which forces SU(3).
 
 ## 8. Discussion
 

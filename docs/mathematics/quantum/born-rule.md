@@ -428,7 +428,7 @@ The Born rule isn't imposed — it emerges necessarily from BLD structures meeti
 ### Empirical Validation
 
 The K/X framework already derives:
-- α⁻¹ = 137.036 (0.0 ppt error) — includes K/X(observer)
+- α⁻¹ = 137.036 — matches CODATA (zero free parameters) — includes K/X(observer)
 - All particle masses (< 0.5% error) — includes K/X(observer)
 - All force couplings (< 0.02% error) — includes K/X(observer)
 

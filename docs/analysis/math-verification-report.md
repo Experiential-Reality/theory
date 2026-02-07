@@ -51,9 +51,9 @@ used_by: []
 BLD prediction:  137.035999177006
 CODATA 2022:     137.035999177000
 Difference:      0.000000000006
-Relative error:  0.0 ppt
+Relative error:  matches CODATA
 ```
-**Claimed Error**: 0.0 ppt
+**Claimed Error**: matches CODATA (zero free parameters)
 **Verdict**: ✅ **VERIFIED** — EXACT MATCH with full formula including e²×120/119 accumulated correction
 
 ---

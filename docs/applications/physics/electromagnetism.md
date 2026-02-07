@@ -12,7 +12,7 @@ used_by:
 
 # BLD for Electromagnetism
 
-> **Status**: Derived — EM coupling α⁻¹ = 137.036 derived with 0.0 ppt error. See [Force Structure](../../mathematics/foundations/derivations/force-structure.md).
+> **Status**: Derived — EM coupling α⁻¹ = 137.036 derived, matches CODATA (zero free parameters). See [Force Structure](../../mathematics/foundations/derivations/force-structure.md).
 
 ## Summary
 
@@ -36,7 +36,7 @@ used_by:
 
 | Finding | Status | Evidence |
 |---------|--------|----------|
-| α⁻¹ = 137.036 | **DERIVED** | [Force Structure](../../mathematics/foundations/derivations/force-structure.md) — 0.0 ppt error |
+| α⁻¹ = 137.036 | **DERIVED** | [Force Structure](../../mathematics/foundations/derivations/force-structure.md) — matches CODATA |
 | Light/matter boundary as B | DERIVED | Partitions transparent/opaque |
 | Gauge field as L | DERIVED | A_μ connects charges |
 | Wavelength/frequency as D | DERIVED | D×L for EM energy |

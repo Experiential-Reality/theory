@@ -35,7 +35,7 @@ We interpret the genesis function traverse(-B, B) as a universal computational p
 
 ## 1. Introduction
 
-The BLD framework derives physical constants with extraordinary precision (α⁻¹ at 0.0 ppt error). However, some forces show small but systematic residuals (~0.002-0.02%) that are not experimental error. This document proposes these residuals arise from a third computational layer: the universe computing itself.
+The BLD framework derives physical constants with extraordinary precision (α⁻¹ matches CODATA (zero free parameters)). However, some forces show small but systematic residuals (~0.002-0.02%) that are not experimental error. This document proposes these residuals arise from a third computational layer: the universe computing itself.
 
 **Main Claim.** The genesis function traverse(-B, B) is a universal computer operating at the Planck scale, and the remaining force residuals are its self-traversal signature.
 
@@ -89,7 +89,7 @@ After accounting for Structure + K/X(experiment), small residuals remain:
 
 | Force | Predicted | Observed | Residual | K/X(universe)? |
 |-------|-----------|----------|----------|----------------|
-| EM | 137.035999177 | 137.035999177 | **0.0 ppt** | Fully included in e² terms |
+| EM | 137.035999177 | 137.035999177 | **matches CODATA** | Fully included in e² terms |
 | Weak | 0.231215 | 0.23121 | **~0.002%** | K/X ≈ 2/100,000 |
 | Strong | 8.4814 | 8.482 | **~0.02%** | K/X ≈ 2/10,000 |
 | Gravity | 1.2209×10¹⁹ | 1.2209×10¹⁹ | **~0.002%** | K/X ≈ 2/100,000 |
@@ -164,7 +164,7 @@ The universe IS the machine — not "contains" a machine, but IS `traverse(-B, B
 
 | Force | Predicted K/X | Observed Residual | Match |
 |-------|---------------|-------------------|-------|
-| EM | 0 (included) | 0.0 ppt | ✓ |
+| EM | 0 (included) | matches CODATA | ✓ |
 | Strong | 0.019% | ~0.02% | ✓ |
 | Weak | 0.0022% | ~0.002% | ✓ |
 | Gravity | 0.0022% | ~0.002% | ✓ |

@@ -670,7 +670,7 @@ See [Research Directions](../meta/research-directions.md) for the full program.
 
 ## e² in Physics: Accumulated Corrections
 
-The fine structure constant and muon/electron ratio are now **exactly derived** (0.0 ppt and 0.5 ppb error) using e²-based accumulated corrections. Both use e² because K=2 always (bidirectional observation cost).
+The fine structure constant and muon/electron ratio are now **exactly derived** (matches CODATA (zero free parameters) and 0.5 ppb error) using e²-based accumulated corrections. Both use e² because K=2 always (bidirectional observation cost).
 
 ### Why e Appears in Physical Constants
 
@@ -697,7 +697,7 @@ The e² term arises because:
 
 The ratio (120/119) = (2B+n+K+2)/(2B+n+K+1) encodes that observation creates one additional state beyond the 119 existing states.
 
-**Result**: α⁻¹ = 137.035999177 (0.0 ppt error)
+**Result**: α⁻¹ = 137.035999177 — matches CODATA (zero free parameters)
 
 ### e² for Generation Ratio Measurements (μ/e)
 
