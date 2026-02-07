@@ -72,8 +72,11 @@ Status labels exist on two orthogonal axes that can be composed.
 14. **Feigenbaum α — DERIVED (0.0000005%) — [Chaos Theory](#chaos-theory)**
 15. **She-Leveque ζ_p — DERIVED (<0.5%) — [Chaos Theory](#chaos-theory)**
 16. **Genetic code (20 amino acids = L) — DERIVED (exact) — [Biology](#biology)**
+17. **Neutrino mixing θ₁₂ — DERIVED (0.06σ) — [Particle Physics](#neutrino-mixing-angles-pmns)**
+18. **Neutrino mixing θ₁₃ — DERIVED (0.00σ) — [Particle Physics](#neutrino-mixing-angles-pmns)**
+19. **Neutrino mixing θ₂₃ — DERIVED (0.07σ) — [Particle Physics](#neutrino-mixing-angles-pmns)**
 
-**Counts**: 17 PROVEN, 19 VALIDATED, 43 DERIVED, 2 PREDICTED, 2 HYPOTHESIZED, 1 OPEN
+**Counts**: 17 PROVEN, 19 VALIDATED, 46 DERIVED, 2 PREDICTED, 2 HYPOTHESIZED, 1 OPEN
 
 **Empirical inputs**: Structural constants (B, L, n, K) derived from genesis closure. Zero free parameters in all formulas. Reference scale v derived as fixed point (0.00014%).
 
@@ -285,6 +288,22 @@ Matches CODATA (zero free parameters) ✓
 **Prediction date**: 2026-02-06. BL3 (NIST) and J-PARC experiments expected 2026-2027.
 
 **Reference**: [Neutron Lifetime](../mathematics/particle-physics/neutron-lifetime.md)
+
+### Neutrino Mixing Angles (PMNS)
+
+| Angle | Status | Formula | Predicted | NuFIT 6.0 | Deviation |
+|-------|--------|---------|-----------|-----------|-----------|
+| sin²θ₁₂ (solar) | **DERIVED** | K²/S = 4/13 | 0.30769 | 0.307 ± 0.012 | **0.06σ** |
+| sin²θ₁₃ (reactor) | **DERIVED** | n²/(n-1)⁶ = 16/729 | 0.02195 | 0.02195 ± 0.00058 | **0.00σ** |
+| sin²θ₂₃ (atmospheric) | **DERIVED** | (S+1)/(L+n+1) = 14/25 | 0.560 | 0.561 ± 0.015 | **0.07σ** |
+
+Combined χ² = 0.008 (3 dof), p = 0.9998. Zero free parameters.
+
+**Key Discovery**: Formula type is determined by whether B (partition operator) is active in the sector. B absent → Pythagorean rotation (θ₁₂). B active → linear partition (θ₂₃). Cross-sector → amplitude coupling (θ₁₃).
+
+**Falsification**: θ₂₃ octant — BLD predicts upper octant (sin²θ₂₃ = 14/25 > 1/2). DUNE/Hyper-K will test.
+
+**Reference**: [Neutrino Mixing](../mathematics/particle-physics/neutrino-mixing.md)
 
 ---
 

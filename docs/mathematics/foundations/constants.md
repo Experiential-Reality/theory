@@ -84,6 +84,10 @@ The five fundamental BLD constants (B, L, n, K, S) are derived from axioms and s
 | K / B | 2/56 ≈ 0.036 | Boundary quantum (observer correction) |
 | K / (n × L) | 2/80 = 0.025 | Geometric correction |
 | n × L × B | 4480 | Full structure product |
+| K² + (n-1)² | 4 + 9 = S = 13 | Observation² + spatial² = structural intervals |
+| S + 1 = B/n | 14 | Boundary per dimension = dim(G₂) |
+| B - K = K(n-1)³ | 54 = 2×27 | Usable boundary capacity |
+| L + n + 1 | 25 | Geometric-observer budget (intermittency denominator) |
 
 ---
 

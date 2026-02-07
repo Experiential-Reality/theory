@@ -46,6 +46,9 @@ These three are **irreducible**: none can be expressed in terms of the others. S
 | m_H | **125.20 GeV** | 125.20 GeV | **0.0%** | [DERIVED](mathematics/particle-physics/boson-masses.md) |
 | M_P | 1.220890×10¹⁹ GeV | 1.220890×10¹⁹ GeV | <0.01% | [DERIVED](mathematics/quantum/planck-derivation.md) |
 | μ/e ratio | 206.768282600 | 206.768282600 | **0.3 ppt** | [DERIVED](mathematics/particle-physics/lepton-masses.md) |
+| sin²θ₁₂ | 4/13 = 0.30769 | 0.307 ± 0.012 | **0.06σ** | [DERIVED](mathematics/particle-physics/neutrino-mixing.md) |
+| sin²θ₁₃ | 16/729 = 0.02195 | 0.02195 ± 0.00058 | **0.00σ** | [DERIVED](mathematics/particle-physics/neutrino-mixing.md) |
+| sin²θ₂₃ | 14/25 = 0.560 | 0.561 ± 0.015 | **0.07σ** | [DERIVED](mathematics/particle-physics/neutrino-mixing.md) |
 
 These are not curve fits—they emerge from structural constants B=56, L=20, n=4, K=2, and the accumulated correction e²×120/119.
 

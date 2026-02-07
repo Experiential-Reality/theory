@@ -223,6 +223,7 @@ These files are referenced by many others — understand them first:
 | `quantum/planck-derivation.md` | ℏ, M_P | Exact | 0.00003% |
 | `cosmology/cosmology-structure.md` | Dark matter | 27% | **Exact** |
 | `derived/reynolds-derivation.md` | Re_c, Kolmogorov | 2300, -5/3 | **0.02%, Exact** |
+| `particle-physics/neutrino-mixing.md` | PMNS angles θ₁₂, θ₁₃, θ₂₃ | 4/13, 16/729, 14/25 | **0.06σ, 0.00σ, 0.07σ** |
 
 ---
 
@@ -263,7 +264,7 @@ lie-correspondence → quantum-mechanics → schrodinger-derivation (iℏ∂/∂
                                       → planck-derivation (ℏ exact)
 ```
 
-### 5. Fluid Dynamics (NEW)
+### 5. Fluid Dynamics
 ```
 detection-structure (T ∩ S) → observer-correction → reynolds-derivation
                                                          ↓
@@ -273,6 +274,15 @@ detection-structure (T ∩ S) → observer-correction → reynolds-derivation
                                         Kolmogorov -5/3 = -L/(n(n-1)) (exact)
                                         Intermittency = 1/(L+n+1) = 0.04 (exact)
                                         She-Leveque ζ_p = p/(n-1)² + K[1-(K/(n-1))^(p/(n-1))] (<0.5%)
+```
+
+### 6. Neutrino Mixing Angles
+```
+detection-structure (T ∩ S) → force-structure (K/X) → neutrino-mixing
+    + killing-form (K=2)        + neutrino-masses          ↓
+    + axioms (A1: B partition)                   sin²θ₁₂ = K²/S = 4/13 (0.06σ)
+                                                 sin²θ₁₃ = n²/(n-1)⁶ = 16/729 (0.00σ)
+                                                 sin²θ₂₃ = (S+1)/(L+n+1) = 14/25 (0.07σ)
 ```
 
 ---

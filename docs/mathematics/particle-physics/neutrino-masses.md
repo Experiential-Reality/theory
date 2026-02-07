@@ -480,8 +480,25 @@ No B = weak Higgs coupling = small mass
 
 ---
 
+## 11. Mixing Angles
+
+The PMNS mixing angles are derived from the same BLD constants that determine neutrino masses. The missing B structure that suppresses mass also creates large mixing.
+
+| Angle | Formula | Value | NuFIT 6.0 | Deviation |
+|-------|---------|-------|-----------|-----------|
+| sin²θ₁₂ | K²/S | 4/13 = 0.308 | 0.307 ± 0.012 | 0.06σ |
+| sin²θ₁₃ | n²/(n-1)⁶ | 16/729 = 0.022 | 0.02195 ± 0.00058 | 0.00σ |
+| sin²θ₂₃ | (S+1)/(L+n+1) | 14/25 = 0.560 | 0.561 ± 0.015 | 0.07σ |
+
+**Key insight**: Neutrinos lack B → observation (K) and propagation (n-1) compete on equal footing → large mixing. Quarks have B → small mixing (CKM).
+
+See [Neutrino Mixing](neutrino-mixing.md) for full derivation.
+
+---
+
 ## References
 
+- [Neutrino Mixing](neutrino-mixing.md) — PMNS mixing angles from BLD
 - [Lepton Masses](lepton-masses.md) — Electron, muon, tau mass derivations
 - [Particle Classification](particle-classification.md) — Neutrino BLD structure (Row 2)
 - [Observer Corrections](../cosmology/observer-correction.md) — K/X framework, sign rule
