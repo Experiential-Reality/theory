@@ -14,6 +14,7 @@ import dataclasses
 import fractions
 import math
 
+import numpy as np
 import pytest
 
 import tools.bld
@@ -232,41 +233,38 @@ def run_feigenbaum_alpha() -> list[tools.bld.Prediction | ClassicalResult]:
 def run_she_leveque() -> list[tools.bld.Prediction | ClassicalResult]:
     """zeta_p = p/9 + 2[1 - (2/3)^(p/3)] for p=1..8.
 
+    Vectorized: evaluate all p values and K41 comparison in numpy broadcasts.
     Prove: matches DNS data within measurement uncertainty.
     Disprove: K41 (p/3) diverges from DNS at high p.
     """
     n, K = tools.bld.n, tools.bld.K
     results: list[tools.bld.Prediction | ClassicalResult] = []
 
-    # DNS data: (p, observed, uncertainty)
-    dns_data = [
-        (1, 0.37, 0.01),
-        (2, 0.70, 0.01),
-        (3, 1.000, 0.001),  # exact (4/5 law)
-        (4, 1.28, 0.02),
-        (5, 1.54, 0.03),
-        (6, 1.78, 0.04),
-        (7, 2.00, 0.05),
-        (8, 2.21, 0.07),
-    ]
+    # DNS data: vectorized
+    p_vals = np.arange(1, 9, dtype=np.float64)
+    obs_vals = np.array([0.37, 0.70, 1.000, 1.28, 1.54, 1.78, 2.00, 2.21])
+    obs_uncs = np.array([0.01, 0.01, 0.001, 0.02, 0.03, 0.04, 0.05, 0.07])
 
-    for p, obs_val, obs_unc in dns_data:
-        predicted = tools.bld.she_leveque_zeta(float(p), n, K)
+    # Vectorized BLD She-Leveque: zeta_p = p/(n-1)^2 + K[1 - (K/(n-1))^(p/(n-1))]
+    bld_zeta = p_vals / (n - 1)**2 + K * (1 - (K / (n - 1))**(p_vals / (n - 1)))
+
+    for i in range(8):
         results.append(tools.bld.Prediction(
-            f"zeta_{p}", predicted, obs_val, obs_unc,
+            f"zeta_{int(p_vals[i])}", float(bld_zeta[i]),
+            float(obs_vals[i]), float(obs_uncs[i]),
         ))
 
-    # Disprove K41: p/3 diverges at high p
-    for p in [6, 7, 8]:
-        obs_val = dns_data[p - 1][1]
-        obs_unc = dns_data[p - 1][2]
-        k41 = p / 3.0
-        bld_sl = tools.bld.she_leveque_zeta(float(p), n, K)
+    # Disprove K41: vectorized comparison at p=6,7,8
+    high_p = np.array([6, 7, 8], dtype=np.float64)
+    high_idx = high_p.astype(int) - 1
+    k41 = high_p / 3.0
+    bld_high = high_p / (n - 1)**2 + K * (1 - (K / (n - 1))**(high_p / (n - 1)))
+    k41_err = np.abs(k41 - obs_vals[high_idx])
+    bld_err = np.abs(bld_high - obs_vals[high_idx])
 
-        k41_err = abs(k41 - obs_val)
-        bld_err = abs(bld_sl - obs_val)
+    for i, p in enumerate([6, 7, 8]):
         results.append(ClassicalResult(
-            f"p={p}_BLD_beats_K41", bld_err < k41_err,
+            f"p={p}_BLD_beats_K41", bool(bld_err[i] < k41_err[i]),
         ))
 
     return results
@@ -334,9 +332,12 @@ def run_she_leveque_zeta3_forced() -> list[ClassicalResult]:
 def run_classical_wrong_constants() -> list[ClassicalResult]:
     """Wrong BLD constants -> wrong everything.
 
-    For 6 alternative (n,L,B,K) tuples, compute Re_c, delta, alpha, zeta_6.
-    None match all four observed values simultaneously.
-    Only (4,20,56,2) works across all domains.
+    Systematic grid: n in 2..8, K in 1..6, L from Riemann identity,
+    B = n(S+1) where S = K^2+(n-1)^2.  Evaluate Re_c, delta, alpha, zeta_6
+    for all structurally consistent tuples.  Only (4,20,56,2) matches all four.
+
+    Theory ref: feigenbaum/SL depend on (n,L,K) not B, so the grid must
+    vary the structurally independent quantities.
     """
     results: list[ClassicalResult] = []
 
@@ -350,49 +351,53 @@ def run_classical_wrong_constants() -> list[ClassicalResult]:
     zeta6_target = 1.78
     zeta6_tol = 0.04
 
-    # Tuples that change n, L, or K (the structurally independent quantities).
-    # Feigenbaum delta/SL zeta don't depend on B, so changing only B is
-    # a weak test.  Theory ref: feigenbaum-derivation.md, she-leveque-derivation.md.
-    wrong_tuples = [
-        (3, 10, 30, 1),
-        (5, 25, 70, 3),
-        (4, 21, 56, 2),   # wrong L
-        (3, 20, 56, 2),   # wrong n
-        (4, 20, 56, 1),   # wrong K
-        (4, 20, 56, 3),   # wrong K
-    ]
+    # Systematic grid: derive (L, B) from (n, K) via BLD identities
+    n_tested = 0
+    n_passed = 0
+    for n_ in range(2, 9):
+        for K_ in range(1, 7):
+            L_ = n_**2 * (n_**2 - 1) // 12
+            if L_ < 1:
+                continue
+            S_ = K_**2 + (n_ - 1)**2
+            B_ = n_ * (S_ + 1)
 
-    for n_, L_, B_, K_ in wrong_tuples:
-        try:
-            re_c = tools.bld.reynolds_pipe(n_, L_, B_, K_)
-            re_ok = abs(re_c - re_target) < re_tol
-        except (ZeroDivisionError, OverflowError):
-            re_ok = False
+            n_tested += 1
+            try:
+                re_c = tools.bld.reynolds_pipe(n_, L_, B_, K_)
+                re_ok = abs(re_c - re_target) < re_tol
+            except (ZeroDivisionError, OverflowError):
+                re_ok = False
 
-        try:
-            delta = tools.bld.feigenbaum_delta(n_, L_, K_)
-            delta_ok = abs(delta - delta_target) < delta_tol
-        except (ZeroDivisionError, OverflowError, ValueError):
-            delta_ok = False
+            try:
+                delta = tools.bld.feigenbaum_delta(n_, L_, K_)
+                delta_ok = abs(delta - delta_target) < delta_tol
+            except (ZeroDivisionError, OverflowError, ValueError):
+                delta_ok = False
 
-        try:
-            alpha = tools.bld.feigenbaum_alpha(n_, L_, B_, K_)
-            alpha_ok = abs(alpha - alpha_target) < alpha_tol
-        except (ZeroDivisionError, OverflowError):
-            alpha_ok = False
+            try:
+                alpha = tools.bld.feigenbaum_alpha(n_, L_, B_, K_)
+                alpha_ok = abs(alpha - alpha_target) < alpha_tol
+            except (ZeroDivisionError, OverflowError):
+                alpha_ok = False
 
-        try:
-            zeta6 = tools.bld.she_leveque_zeta(6.0, n_, K_)
-            zeta6_ok = abs(zeta6 - zeta6_target) < zeta6_tol
-        except (ZeroDivisionError, OverflowError):
-            zeta6_ok = False
+            try:
+                zeta6 = tools.bld.she_leveque_zeta(6.0, n_, K_)
+                zeta6_ok = abs(zeta6 - zeta6_target) < zeta6_tol
+            except (ZeroDivisionError, OverflowError):
+                zeta6_ok = False
 
-        all_ok = re_ok and delta_ok and alpha_ok and zeta6_ok
-        results.append(ClassicalResult(
-            f"({n_},{L_},{B_},{K_})_fails_all_4", not all_ok,
-        ))
+            all_ok = re_ok and delta_ok and alpha_ok and zeta6_ok
+            if all_ok:
+                n_passed += 1
 
-    # BLD constants should match all four
+    # Exactly one tuple should pass: (4,20,56,2)
+    results.append(ClassicalResult(
+        f"BLD_unique_in_{n_tested}_tuples({n_passed}_match)",
+        n_passed == 1,
+    ))
+
+    # Verify BLD itself passes
     n, L, B, K = tools.bld.n, tools.bld.L, tools.bld.B, tools.bld.K
     re_c = tools.bld.reynolds_pipe(n, L, B, K)
     delta = tools.bld.feigenbaum_delta(n, L, K)

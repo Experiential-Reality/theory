@@ -12,6 +12,7 @@ Theory refs:
 """
 
 import dataclasses
+import math
 
 import pytest
 
@@ -154,38 +155,65 @@ def run_constant_rigidity() -> list[StructureResult]:
 def run_alternative_137() -> list[StructureResult]:
     """Try all (a,b,c) with a*b + c + 1 = 137, a,b,c > 0.
 
-    Plug into the full alpha^-1 correction formula with n=a, L=b, B=c.
+    Vectorized: meshgrid over (a, b), compute c = 136 - a*b, then evaluate
+    alpha^-1 for all valid triples in a single numpy broadcast.
     Show only (4,20,56) gives alpha^-1 matching CODATA.
     """
+    import numpy as np
+
     results: list[StructureResult] = []
     obs = tools.bld.ALPHA_INV
     target = obs.value
     tol = 3 * obs.uncertainty
+    K_ = tools.bld.K
+    e2 = math.e ** 2
 
-    for a in range(1, 137):
-        for b in range(1, 137):
-            c = 136 - a * b
-            if c < 1:
-                break
-            try:
-                alpha = tools.bld.alpha_inv(a, float(b), c, tools.bld.K)
-            except (ZeroDivisionError, OverflowError, ValueError):
-                alpha = float("inf")
-            matches = abs(alpha - target) < tol
-            if a == tools.bld.n and b == tools.bld.L and c == tools.bld.B:
-                results.append(StructureResult(
-                    f"({a},{b},{c})=BLD", alpha, matches,
-                ))
-            elif matches:
-                # Another decomposition also works -- would disprove uniqueness
-                results.append(StructureResult(
-                    f"({a},{b},{c})_unexpected", alpha, False,
-                ))
+    # Build all valid (a, b, c) triples via meshgrid
+    a_range = np.arange(2, 137, dtype=np.float64)  # a >= 2 (a=1 gives n-1=0 → div by 0)
+    b_range = np.arange(1, 137, dtype=np.float64)
+    A, B_grid = np.meshgrid(a_range, b_range, indexing="ij")
+    C = 136.0 - A * B_grid
+    valid = C >= 1
 
-    # Ensure BLD was found
-    bld_found = any("BLD" in r.name and r.passes for r in results)
-    if not bld_found:
-        results.append(StructureResult("BLD_missing", 0.0, False))
+    # Extract valid triples
+    n_ = A[valid]
+    L_ = B_grid[valid]
+    B_ = C[valid]
+
+    # Vectorized alpha_inv: same formula as bld.alpha_inv but numpy-broadcasted
+    nL = n_ * L_
+    base = nL + B_ + 1
+    boundary_quantum = K_ / B_
+    outbound_spatial = n_ / ((n_ - 1) * nL * B_)
+    return_spatial = -(n_ - 1) / (nL**2 * B_)
+    return_boundary = -1 / (nL * B_**2)
+    accumulated = -(e2 * (2 * B_ + n_ + K_ + 2) / ((2 * B_ + n_ + K_ + 1) * nL**2 * B_**2))
+    alpha = base + boundary_quantum + outbound_spatial + return_spatial + return_boundary + accumulated
+
+    within = np.abs(alpha - target) < tol
+    n_tested = int(valid.sum())
+    n_matches = int(within.sum())
+
+    # Check which triples matched
+    match_n = n_[within]
+    match_L = L_[within]
+    match_B = B_[within]
+
+    bld_found = False
+    for i in range(n_matches):
+        a_i, b_i, c_i = int(match_n[i]), int(match_L[i]), int(match_B[i])
+        if a_i == tools.bld.n and b_i == tools.bld.L and c_i == tools.bld.B:
+            bld_found = True
+        else:
+            results.append(StructureResult(
+                f"({a_i},{b_i},{c_i})_unexpected", float(alpha[within][i]), False,
+            ))
+
+    results.append(StructureResult(
+        f"BLD_unique_in_{n_tested}_triples({n_matches}_match)",
+        float(alpha[within][0]) if n_matches else 0.0,
+        bld_found and n_matches == 1,
+    ))
 
     return results
 

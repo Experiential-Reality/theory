@@ -92,10 +92,15 @@ def run_alpha_decomposition() -> list[CorrectionResult]:
 
 
 def run_alternative_x_values() -> list[CorrectionResult]:
-    """For the leading correction K/X in alpha^-1: try all natural BLD
-    combinations for X.  Show only X=B gives correct alpha^-1."""
+    """For the leading correction K/X in alpha^-1: exhaustive sweep X = 1..10,000.
+
+    Show only X = B = 56 gives correct alpha^-1 within 3sigma of CODATA.
+    Vectorized: single numpy broadcast replaces 12 hand-picked candidates.
+    """
+    import numpy as np
+
     results: list[CorrectionResult] = []
-    B, L, n, K, S = tools.bld.B, tools.bld.L, tools.bld.n, tools.bld.K, tools.bld.S
+    B, L, n, K = tools.bld.B, tools.bld.L, tools.bld.n, tools.bld.K
     obs = tools.bld.ALPHA_INV
     target = obs.value
     tol = 3 * obs.uncertainty
@@ -103,28 +108,16 @@ def run_alternative_x_values() -> list[CorrectionResult]:
     _, terms = tools.bld.alpha_inv_full(n, float(L), B, K)
     base_without_kx = sum(v for k, v in terms.items() if k != "boundary_quantum")
 
-    x_candidates = {
-        "B": B,
-        "L": L,
-        "n": n,
-        "K": K,
-        "S": S,
-        "nL": n * L,
-        "nS": n * S,
-        "nK": n * K,
-        "LS": L * S,
-        "nLS": n * L * S,
-        "nLB": n * L * B,
-        "B2": B**2,
-    }
+    # Exhaustive vectorized sweep
+    X = np.arange(1, 10_001, dtype=np.float64)
+    modified = base_without_kx + K / X
+    within = np.abs(modified - target) < tol
+    matching_X = X[within].astype(int)
 
-    for name, x_val in x_candidates.items():
-        modified_total = base_without_kx + K / x_val
-        matches = abs(modified_total - target) < tol
-        if name == "B":
-            results.append(CorrectionResult(f"X={name}_matches", matches))
-        else:
-            results.append(CorrectionResult(f"X={name}_fails", not matches))
+    results.append(CorrectionResult(
+        f"X_unique_in_10000({len(matching_X)}_match)",
+        len(matching_X) == 1 and matching_X[0] == B,
+    ))
 
     return results
 
