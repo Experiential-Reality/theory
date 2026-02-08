@@ -1,6 +1,13 @@
 """Shared pytest fixtures."""
 
+import os
+
+# Must precede numpy import: prevents BLAS thread oversubscription with xdist workers.
+os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")
+
 import pathlib
+
+import numpy as np
 import pytest
 
 
@@ -12,3 +19,8 @@ def fixtures_dir() -> pathlib.Path:
 @pytest.fixture
 def all_link_types_md(fixtures_dir: pathlib.Path) -> pathlib.Path:
     return fixtures_dir / "all_link_types.md"
+
+
+@pytest.fixture
+def rng() -> np.random.Generator:
+    return np.random.default_rng(42)

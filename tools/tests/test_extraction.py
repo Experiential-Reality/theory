@@ -1,11 +1,15 @@
 """Tests for link and header extraction."""
 
+import pytest
+
 from tools.check_links import (
     extract_links,
     extract_headers,
     header_to_anchor,
     LinkKind,
 )
+
+pytestmark = pytest.mark.project
 
 
 class TestHeaderToAnchor:

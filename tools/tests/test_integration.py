@@ -6,6 +6,8 @@ import pytest
 
 from tools.check_links import check, process_file
 
+pytestmark = pytest.mark.project
+
 
 class TestProcessFile:
     def test_extracts_anchors_and_links(self, all_link_types_md: pathlib.Path):

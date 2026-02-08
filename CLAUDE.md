@@ -3,6 +3,8 @@
 ## PROJECT RULES (non-negotiable)
 
 - **Always use `uv run` for Python execution.** Never bare `python`, `python -m`, or `pip`. This project uses `uv` for dependency management. Examples: `uv run pytest`, `uv run python -c "..."`, `uv sync` to install deps.
+- **Import style**: `import module` for external packages (`import typing`, `import numpy as np`). `from . import module` for local within-package (`from . import quantum`). No `__all__` — every symbol has one import path, greppable. No `from module import *`. Tests can use `from package.module import name` since they're outside the package.
+- **No `__all__`**: One import path per symbol. Grep finds it. Attention heads find it. `__all__` is a second index that drifts.
 
 ## DO THIS FIRST
 
