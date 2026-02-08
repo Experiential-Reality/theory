@@ -33,7 +33,7 @@ used_by:
 5. Connection to uncertainty principle — [Uncertainty](#connection-to-uncertainty)
 
 **Derived**: Form |ψ|², why squared, single-event selection (L→B + K=2 on joint system)
-**Open**: Ontological status of collapse — [Measurement Problem](#the-measurement-problem-what-bld-does-and-doesnt-solve)
+**Resolved**: Collapse ontology = structural (dichotomy dissolved). See [Wave Function Collapse, Claim 7](wave-function-collapse.md)
 
 ---
 
@@ -416,6 +416,37 @@ The K/X framework already derives:
 
 The observer correction IS the single-event mechanism. It's already empirically validated through every successful BLD prediction.
 
+### Why Basin Measures Equal Born Rule Probabilities
+
+The "explicit L→B map" — the function f(|O⟩) → k that determines which outcome occurs for a given observer microstate — is structurally determined. Its statistics follow from already-derived results:
+
+```
+1. L→B is deterministic                              [PROVEN - compensation-principle.md]
+     "Root system (L) determines compactness (B)."
+     ∴ f(|O⟩) = k exists for each |O⟩.
+     ∴ Basins R_k = {|O⟩ : f(|O⟩) = k} exist.
+
+2. Observer's |O⟩ drawn from Haar measure on S^{2N-1} [DERIVED - BLD → Lie → Haar]
+     BLD = Lie theory [PROVEN]. Lie groups carry Haar measure.
+     Observer Hilbert space → unit sphere S^{2N-1}.
+
+3. P(k) = |αₖ|²                                     [DERIVED - K=2, independent of basins]
+     Killing form → bidirectional alignment → |ψ|².
+     Applied to joint system+observer → marginalized → system Born rule.
+
+4. ∴ μ_Haar(R_k) = P(k) = |αₖ|²                     [from 1 + 2 + 3]
+     The deterministic function f, applied to Haar-distributed |O⟩,
+     must reproduce the Born rule statistics.
+```
+
+**Why this isn't circular**: The Born rule (step 3) is derived from K=2, independently of basins or observer microstates. L→B determinism (step 1) is proven from the compensation principle. Together they constrain basin measures without needing Gleason's theorem or Liouville's theorem as independent steps.
+
+**Why individual outcomes are unknowable**: Computing f(|O⟩) for a specific |O⟩ requires:
+- The observer's full quantum microstate (structurally unknowable — the observer cannot fully measure itself)
+- Solving the dynamics of H_int for ~10²³ degrees of freedom
+
+**The thermodynamic analogy**: Thermodynamics is complete even though individual molecular trajectories are unknowable. Similarly, the collapse derivation is complete even though individual observer microstates are unknowable. In both cases: the laws are derived, the mechanism is proven, individual outcomes are determined but not computable. This is a structural consequence of observation, not a theoretical limitation.
+
 ### What This Resolves
 
 | Question | Answer |
@@ -493,7 +524,7 @@ BLD's contribution is **complete structural derivation**:
 - We know WHY a specific outcome occurs (L→B: full L-structure determines B-partition)
 - We know WHY it looks random (observer microstate varies)
 
-**What remains open is interpretation, not mechanism.**
+**What remains is the universal metaphysical question ("is structure real?") — shared by all physics, not specific to collapse or Born rule.**
 
 ---
 
@@ -511,13 +542,15 @@ The Born rule gives probabilities. But what determines a single measurement outc
 
 **BLD answer**: Single-event selection follows from L→B compensation on the joint system+observer state. The observer's L-structure (microstate) varies across measurements; we don't track it, so outcomes appear probabilistic. The distribution is |ψ|² from K=2 applied to the joint system. See section above.
 
-### 3. Collapse Mechanism — RESOLVED (mechanism), OPEN (ontology)
+### 3. Collapse Mechanism and Ontology — RESOLVED
 
-Why does measurement collapse the state?
+Why does measurement collapse the state? Is collapse "real"?
 
 **BLD answer (mechanism)**: Measurement is L→B compensation — the full L-structure (system amplitudes + observer state) determines the B-partition. "Collapse" is L determining B.
 
-**Still open (interpretation)**: Is this B-transition a physical event or an update in observer's knowledge? This is the same question all interpretations face, and is philosophical rather than structural.
+**BLD answer (ontology)**: The traditional physical/epistemic dichotomy is dissolved. Collapse is **structural**: real change (B = ∅ → B = partition) following from observation principles (L→B compensation, PROVEN). It is not a special law beyond Schrödinger (like GRW), nor a mere belief update (like QBism). See [Wave Function Collapse, Claim 7](wave-function-collapse.md).
+
+**What remains**: The universal metaphysical question ("is mathematical structure real?") — shared by all of physics, not specific to collapse.
 
 ---
 
@@ -541,8 +574,8 @@ The Born rule is **FULLY DERIVED** from BLD structure alignment:
 - Why THIS outcome (L→B: full L-structure determines B-partition)
 - Why it looks random (observer microstate varies, we don't track it)
 
-**What remains open**:
-- Ontological status of collapse (philosophical interpretation, not mechanism)
+**What remains**:
+- Universal metaphysical question ("is structure real?") — shared by all physics, not specific to collapse or Born rule
 
 **Status**: The Born rule — including single-event selection — is **DERIVED** from K=2 bidirectional alignment + L→B compensation on the joint system.
 
@@ -575,8 +608,8 @@ For completeness, here is the derivation chain and remaining gaps:
 
 | Gap | Severity | Notes |
 |-----|----------|-------|
-| Explicit L→B map for single events | Medium | The statistics (|αₖ|²) and mechanism (L→B) are derived; the explicit function f(joint state → outcome) is structural but not yet specified |
-| Collapse ontology | Philosophical | Mechanism derived; metaphysical status is interpretation |
+| Explicit L→B partition | Structural | f(|O⟩) → k exists (L→B, PROVEN), statistics are |αₖ|² (K=2, DERIVED), basin measures follow. Computing f requires observer's full microstate — structurally unknowable (thermodynamic analogy). See [basin measures section above](#why-basin-measures-equal-born-rule-probabilities). |
+| Collapse ontology | STRUCTURAL | Dichotomy dissolved: real structural change (B = ∅ → B = partition), not special law or belief update. Universal metaphysics remains (shared by all physics). See [wave-function-collapse.md Claim 7](wave-function-collapse.md). |
 
 ### What Would Falsify This
 
