@@ -12,7 +12,7 @@ import tools.quantum
 
 
 @dataclasses.dataclass(slots=True, frozen=True)
-class TestPoint:
+class SimPoint:
     g_tau: float
     epsilon: float
     p_integral: float
@@ -47,7 +47,7 @@ def _process_job(
     n_samples: int,
     tol: float,
     child_rng: np.random.Generator,
-) -> list[TestPoint]:
+) -> list[SimPoint]:
     a0, a1 = alphas_sq[0], alphas_sq[1]
     results = []
     for g_tau in g_tau_values:
@@ -68,7 +68,7 @@ def _process_job(
         )
         p_mc = outcome.counts[0] / n_samples
 
-        results.append(TestPoint(
+        results.append(SimPoint(
             g_tau=g_tau,
             epsilon=eps,
             p_integral=p_int,
@@ -78,7 +78,7 @@ def _process_job(
     return results
 
 
-def run_simulation(rng: np.random.Generator) -> list[TestPoint]:
+def run_simulation(rng: np.random.Generator) -> list[SimPoint]:
     n_samples = 100000
     tol = 0.006
     g_tau_values = [0.1, 0.3, 0.5, 0.8, 1.0, 1.5, 2.0, 3.0]
