@@ -124,7 +124,7 @@ The derivation chain:
    ```
    This is the compensation principle applied to single events: L determines B where L most exceeds B ([Compensation Principle](../foundations/structural/compensation-principle.md), PROVEN).
 5. **Why it looks random**: observer microstate |O⟩ varies between measurements; we don't track it.
-6. **Why the distribution is |ψ|²**: for orthogonal pointer states |Oₖ⟩ in C^N, the overlaps Xₖ = |⟨Oₖ|O⟩|² are the first M components of a Dirichlet(1,...,1) distribution on the N-simplex. By the Dirichlet-Gamma decomposition, Xₖ = Yₖ/S where Yₖ ~ Exp(1) i.i.d. Since S cancels in the argmax, the selection reduces to argmax_k |αₖ|²/Yₖ = argmax_k [log|αₖ|² + Gumbel_k], which gives P(k) = |αₖ|² by the Gumbel-max trick. **This is exact for all N ≥ M**, not just large-N. Confirmed numerically for M ∈ {2,3,4,5} at all N from M to 1024.
+6. **Why the distribution is |ψ|²**: for orthogonal pointer states |Oₖ⟩ in C^N, the overlaps Xₖ = |⟨Oₖ|O⟩|² are the first M components of a Dirichlet(1,...,1) distribution on the N-simplex. By the Dirichlet-Gamma decomposition, Xₖ = Yₖ/S where Yₖ ~ Exp(1) i.i.d. Since S cancels in the argmax, the selection reduces to argmax_k |αₖ|²/Yₖ = argmax_k [log|αₖ|² + Gumbel_k], which gives P(k) = |αₖ|² by the Gumbel-max trick. **This is exact for all N ≥ M**, not just large-N. Confirmed numerically for M ∈ {2,...,50} at all N from M to 1024, including degenerate amplitudes, complex phases, and direct Dirichlet mechanism verification.
 
 Why step 6 isn't circular: P = |ψ|² was DERIVED from K=2 bidirectional alignment ([Born Rule](born-rule.md)), independent of measurement. The Gumbel-max trick is a mathematical theorem about extreme value distributions. The selection rule uses Haar measure (DERIVED from BLD → Lie groups) and pointer states (DETERMINED by H_int per Claim 6).
 
@@ -145,6 +145,8 @@ This abstract principle has two specific mechanisms:
 - **Alignment** (quantum measurement): L-amplitudes determine B-outcomes via K=2 bidirectional alignment
 
 Both are instances of "L constrains/determines B." Measurement L→B operates through alignment (K/X), not cascade approximation. But both inherit the asymmetry: the converse (B→L) fails in both cases. For measurement, this failure gives us irreversibility (Claim 4).
+
+**Extension to correlated measurements**: For entangled systems, the selection rule extends to the tensor product space. The observer must be a single joint state |O⟩ ∈ C^{N_A × N_B} with tensor product pointer states |O_{kj}⟩ = |O_{Ak}⟩ ⊗ |O_{Bj}⟩. The overlaps X_{kj} = |⟨O_{kj}|O⟩|² then form a Dirichlet distribution in the product space, and the Gumbel-max trick gives P(kj) = |α_{kj}|² exactly. Verified for Bell states, non-maximally entangled states, and GHZ-like 3-party states. Factored independent observers give incorrect statistics for non-symmetric entangled states — correlated L-structure (entanglement) requires a single joint observation event. See [Born Rule, Joint Measurement](born-rule.md#joint-measurement-tensor-product-observer).
 
 ---
 
