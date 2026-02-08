@@ -16,13 +16,7 @@ import math
 
 import pytest
 
-
-B = 56
-L = 20
-n = 4
-K = 2
-S = 13
-LAMBDA = 1 / math.sqrt(20)
+import tools.bld
 
 
 @dataclasses.dataclass(slots=True, frozen=True)
@@ -51,77 +45,6 @@ class PatternEntry:
 
 
 # ---------------------------------------------------------------------------
-# Shared parameterized prediction formulas
-# ---------------------------------------------------------------------------
-
-
-def _alpha_inv_full(
-    n_: int, L_: float, B_: int, K_: int,
-) -> tuple[float, dict[str, float]]:
-    """Full alpha^-1 with individual correction terms returned."""
-    nL = n_ * L_
-    base = nL + B_ + 1
-    boundary_quantum = K_ / B_
-    outbound_spatial = n_ / ((n_ - 1) * nL * B_)
-    return_spatial = -(n_ - 1) / (nL**2 * B_)
-    return_boundary = -1 / (nL * B_**2)
-    accumulated = -(
-        math.e**2
-        * (2 * B_ + n_ + K_ + 2)
-        / ((2 * B_ + n_ + K_ + 1) * nL**2 * B_**2)
-    )
-    total = (
-        base + boundary_quantum + outbound_spatial
-        + return_spatial + return_boundary + accumulated
-    )
-    terms = {
-        "base": base,
-        "boundary_quantum": boundary_quantum,
-        "outbound_spatial": outbound_spatial,
-        "return_spatial": return_spatial,
-        "return_boundary": return_boundary,
-        "accumulated": accumulated,
-    }
-    return total, terms
-
-
-def _alpha_inv(n_: int, L_: float, B_: int, K_: int) -> float:
-    total, _ = _alpha_inv_full(n_, L_, B_, K_)
-    return total
-
-
-def _planck_mass(
-    v: float, lambda_sq: float, n_: int, L_: float, K_: int, B_: int,
-) -> float:
-    nL = n_ * L_
-    base = v * lambda_sq ** (-13) * math.sqrt(5 / 14)
-    first_order = (nL - K_ + 1) / (nL - K_)
-    second_order = 1 + K_ * 3 / (nL * B_**2)
-    return base * first_order * second_order
-
-
-def _higgs_mass(v: float, B_: int, L_: int) -> float:
-    return (v / 2) * (1 + 1 / B_) * (1 - 1 / (B_ * L_))
-
-
-def _mu_over_e(n_: int, L_: float, S_: int, B_: int) -> float:
-    nL = n_ * L_
-    nLS = nL * S_
-    e = math.e
-    return (
-        (n_**2 * S_ - 1)
-        * nLS / (nLS + 1)
-        * (1 - 1 / (nL**2 + n_ * S_))
-        * (1 - 1 / (nL * B_**2))
-        * (1 + e**2 * (S_ + 1) / (nL**2 * B_**2 * S_**2))
-    )
-
-
-def _mp_over_me(S_: int, n_: int, B_: int, K_: int) -> float:
-    return (S_ + n_) * (B_ + n_ * S_) + K_ / S_
-
-
-# ---------------------------------------------------------------------------
 # Run functions
 # ---------------------------------------------------------------------------
 
@@ -130,10 +53,12 @@ def run_alpha_decomposition() -> list[CorrectionResult]:
     """Decompose alpha^-1 into 6 terms.  Verify each matches the formula
     from test_predictions.py.  Then verify: zeroing ANY single correction
     breaks the total (moves it > 3sigma from CODATA)."""
-    target = 137.035999177
-    tol = 3 * 0.000000021
+    B, L, n, K = tools.bld.B, tools.bld.L, tools.bld.n, tools.bld.K
+    obs = tools.bld.ALPHA_INV
+    target = obs.value
+    tol = 3 * obs.uncertainty
 
-    total, terms = _alpha_inv_full(n, float(L), B, K)
+    total, terms = tools.bld.alpha_inv_full(n, float(L), B, K)
     results: list[CorrectionResult] = []
 
     # Total matches CODATA
@@ -170,10 +95,12 @@ def run_alternative_x_values() -> list[CorrectionResult]:
     """For the leading correction K/X in alpha^-1: try all natural BLD
     combinations for X.  Show only X=B gives correct alpha^-1."""
     results: list[CorrectionResult] = []
-    target = 137.035999177
-    tol = 3 * 0.000000021
+    B, L, n, K, S = tools.bld.B, tools.bld.L, tools.bld.n, tools.bld.K, tools.bld.S
+    obs = tools.bld.ALPHA_INV
+    target = obs.value
+    tol = 3 * obs.uncertainty
 
-    _, terms = _alpha_inv_full(n, float(L), B, K)
+    _, terms = tools.bld.alpha_inv_full(n, float(L), B, K)
     base_without_kx = sum(v for k, v in terms.items() if k != "boundary_quantum")
 
     x_candidates = {
@@ -210,31 +137,34 @@ def run_cross_force_k() -> list[CorrectionResult]:
     sin^2(theta_12) = K^2/S, M_P (K in correction terms).
     """
     results: list[CorrectionResult] = []
-    v = 246.2196
+    B, L, n, S = tools.bld.B, tools.bld.L, tools.bld.n, tools.bld.S
+    v = tools.bld.V_EW
 
     predictions = {
         "alpha_inv": (
-            lambda K_: _alpha_inv(n, float(L), B, K_),
-            137.035999177, 0.000000021,
+            lambda K_: tools.bld.alpha_inv(n, float(L), B, K_),
+            tools.bld.ALPHA_INV,
         ),
         "mp_me": (
-            lambda K_: _mp_over_me(S, n, B, K_),
-            1836.15267, 0.00085,
+            lambda K_: tools.bld.mp_over_me(S, n, B, K_),
+            tools.bld.MP_OVER_ME,
         ),
         "sin2_theta12": (
             lambda K_: float(K_**2) / S,
-            0.307, 0.012,
+            tools.bld.SIN2_THETA_12,
         ),
         "M_P": (
-            lambda K_: _planck_mass(v, LAMBDA**2, n, float(L), K_, B),
-            1.22091e19, 1.22091e16,
+            lambda K_: tools.bld.planck_mass(
+                v, tools.bld.LAMBDA**2, n, float(L), K_, B,
+            ),
+            tools.bld.PLANCK_MASS,
         ),
     }
 
-    for pred_name, (fn, obs, unc) in predictions.items():
+    for pred_name, (fn, obs) in predictions.items():
         # K=2 should pass
         val_2 = fn(2)
-        sigma_2 = abs(val_2 - obs) / unc
+        sigma_2 = abs(val_2 - obs.value) / obs.uncertainty
         results.append(CorrectionResult(
             f"{pred_name}_K=2_passes", sigma_2 < 3.0,
         ))
@@ -242,7 +172,7 @@ def run_cross_force_k() -> list[CorrectionResult]:
         # K=1 and K=3 should fail (at least one)
         for K_ in [1, 3]:
             val = fn(K_)
-            sigma = abs(val - obs) / unc
+            sigma = abs(val - obs.value) / obs.uncertainty
             results.append(CorrectionResult(
                 f"{pred_name}_K={K_}_fails", sigma > 3.0,
             ))
@@ -252,7 +182,8 @@ def run_cross_force_k() -> list[CorrectionResult]:
 
 def run_correction_convergence() -> list[CorrectionResult]:
     """Extract correction orders for alpha^-1.  Verify monotone decrease."""
-    _, terms = _alpha_inv_full(n, float(L), B, K)
+    B, L, n, K = tools.bld.B, tools.bld.L, tools.bld.n, tools.bld.K
+    _, terms = tools.bld.alpha_inv_full(n, float(L), B, K)
     results: list[CorrectionResult] = []
 
     orders = [
@@ -292,6 +223,7 @@ def run_sign_rule() -> list[CorrectionResult]:
     - = complete traversal (all products detected)
     """
     results: list[CorrectionResult] = []
+    B, L, n, K = tools.bld.B, tools.bld.L, tools.bld.n, tools.bld.K
 
     # Sign data from observer-correction.md and prediction formulas
     sign_catalog = [
@@ -315,18 +247,20 @@ def run_sign_rule() -> list[CorrectionResult]:
 def run_accumulated_e2() -> list[CorrectionResult]:
     """The accumulated correction uses e^2 (Euler's number squared).
 
-    e^2 = bidirectional discrete accumulation (K=2: forward × return).
+    e^2 = bidirectional discrete accumulation (K=2: forward x return).
     Replace e^2 with other transcendentals.  e^2 matches CODATA and is
-    uniquely precise — at least 1000x better than every alternative.
+    uniquely precise --- at least 1000x better than every alternative.
 
-    Theory ref: observer-correction.md §3.1
-      e  = lim(1+1/n)^n  (discrete→continuous limit, single traversal)
-      e² = forward × return  (bidirectional, K=2)
-      2π = continuous rotation (structural, NOT traversal)
+    Theory ref: observer-correction.md S3.1
+      e  = lim(1+1/n)^n  (discrete->continuous limit, single traversal)
+      e^2 = forward x return  (bidirectional, K=2)
+      2pi = continuous rotation (structural, NOT traversal)
     """
     results: list[CorrectionResult] = []
-    target = 137.035999177
-    tol = 3 * 0.000000021
+    B, L, n, K = tools.bld.B, tools.bld.L, tools.bld.n, tools.bld.K
+    obs = tools.bld.ALPHA_INV
+    target = obs.value
+    tol = 3 * obs.uncertainty
 
     nL = n * L
     base = nL + B + 1
@@ -376,6 +310,7 @@ def run_correction_pattern() -> list[PatternEntry]:
     """For each prediction with K/X corrections, extract X and verify it's
     a product of BLD primitives {B, L, n, K, S}."""
     results: list[PatternEntry] = []
+    B, L, n, K, S = tools.bld.B, tools.bld.L, tools.bld.n, tools.bld.K, tools.bld.S
 
     # From observer-correction.md: X values and their factorizations
     patterns = [
@@ -419,10 +354,12 @@ def run_kx_multiplicative() -> list[CorrectionResult]:
     The additive form should match CODATA better.
     """
     results: list[CorrectionResult] = []
-    target = 137.035999177
-    tol = 3 * 0.000000021
+    B, L, n, K = tools.bld.B, tools.bld.L, tools.bld.n, tools.bld.K
+    obs = tools.bld.ALPHA_INV
+    target = obs.value
+    tol = 3 * obs.uncertainty
 
-    _, terms = _alpha_inv_full(n, float(L), B, K)
+    _, terms = tools.bld.alpha_inv_full(n, float(L), B, K)
     base = terms["base"]
 
     # Additive form (the BLD form)
@@ -460,7 +397,7 @@ def test_alternative_x_values() -> None:
 @pytest.mark.theory
 def test_cross_force_k() -> None:
     results = run_cross_force_k()
-    # M_P has ~0.1% uncertainty — K=1,3 may still pass within 3sigma.
+    # M_P has ~0.1% uncertainty -- K=1,3 may still pass within 3sigma.
     # The sharp tests are alpha_inv, mp_me, sin2_theta12.
     sharp = [r for r in results if "M_P" not in r.name]
     assert all(r.passes for r in sharp)

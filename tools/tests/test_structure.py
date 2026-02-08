@@ -12,35 +12,10 @@ Theory refs:
 """
 
 import dataclasses
-import math
 
 import pytest
 
-
-B = 56
-L = 20
-n = 4
-K = 2
-S = 13
-LAMBDA = 1 / math.sqrt(20)
-
-
-@dataclasses.dataclass(slots=True, frozen=True)
-class Prediction:
-    name: str
-    predicted: float
-    observed: float
-    uncertainty: float
-
-    @property
-    def sigma(self) -> float:
-        if self.uncertainty <= 0:
-            return 0.0 if abs(self.predicted - self.observed) < 1e-15 else float("inf")
-        return abs(self.predicted - self.observed) / self.uncertainty
-
-    @property
-    def passes(self) -> bool:
-        return self.sigma < 3.0
+import tools.bld
 
 
 @dataclasses.dataclass(slots=True, frozen=True)
@@ -48,60 +23,6 @@ class StructureResult:
     name: str
     value: float
     passes: bool
-
-
-# ---------------------------------------------------------------------------
-# Shared prediction formulas (parameterized for constant variation)
-# ---------------------------------------------------------------------------
-
-
-def _alpha_inv(n_: int, L_: float, B_: int, K_: int) -> float:
-    nL = n_ * L_
-    base = nL + B_ + 1
-    boundary_quantum = K_ / B_
-    outbound_spatial = n_ / ((n_ - 1) * nL * B_)
-    return_spatial = -(n_ - 1) / (nL**2 * B_)
-    return_boundary = -1 / (nL * B_**2)
-    accumulated = -(
-        math.e**2
-        * (2 * B_ + n_ + K_ + 2)
-        / ((2 * B_ + n_ + K_ + 1) * nL**2 * B_**2)
-    )
-    return (
-        base + boundary_quantum + outbound_spatial
-        + return_spatial + return_boundary + accumulated
-    )
-
-
-def _planck_mass(
-    v: float, lambda_sq: float, n_: int, L_: float, K_: int, B_: int,
-) -> float:
-    nL = n_ * L_
-    base = v * lambda_sq ** (-13) * math.sqrt(5 / 14)
-    first_order = (nL - K_ + 1) / (nL - K_)
-    second_order = 1 + K_ * 3 / (nL * B_**2)
-    return base * first_order * second_order
-
-
-def _higgs_mass(v: float, B_: int, L_: int) -> float:
-    return (v / 2) * (1 + 1 / B_) * (1 - 1 / (B_ * L_))
-
-
-def _mu_over_e(n_: int, L_: float, S_: int, B_: int) -> float:
-    nL = n_ * L_
-    nLS = nL * S_
-    e = math.e
-    return (
-        (n_**2 * S_ - 1)
-        * nLS / (nLS + 1)
-        * (1 - 1 / (nL**2 + n_ * S_))
-        * (1 - 1 / (nL * B_**2))
-        * (1 + e**2 * (S_ + 1) / (nL**2 * B_**2 * S_**2))
-    )
-
-
-def _mp_over_me(S_: int, n_: int, B_: int, K_: int) -> float:
-    return (S_ + n_) * (B_ + n_ * S_) + K_ / S_
 
 
 # ---------------------------------------------------------------------------
@@ -120,6 +41,7 @@ def run_mode_count() -> list[StructureResult]:
     bld-calculus.md Proposition 8.5:
       alpha^-1 = mu(tau_geom) + mu(tau_bound) + mu(tau_trav) = 137
     """
+    B, L, n = tools.bld.B, tools.bld.L, tools.bld.n
     mu_unit = 1
     mu_geom = n * (L * mu_unit)     # Pi_4(Pi_20(1)) = 4 * 20 * 1 = 80
     mu_bound = B * mu_unit           # Sigma_56(1) = 56 * 1 = 56
@@ -198,24 +120,27 @@ def run_constant_rigidity() -> list[StructureResult]:
 
         # Alpha inverse
         try:
-            alpha = _alpha_inv(n_, L_, B_, K_)
+            alpha = tools.bld.alpha_inv(n_, L_, B_, K_)
         except (ZeroDivisionError, OverflowError):
             alpha = float("inf")
-        alpha_ok = abs(alpha - 137.035999177) < 3 * 0.000000021
+        obs = tools.bld.ALPHA_INV
+        alpha_ok = abs(alpha - obs.value) < 3 * obs.uncertainty
 
         # Mu/e
         try:
-            mu_e = _mu_over_e(n_, L_, S_, B_)
+            mu_e = tools.bld.mu_over_e(n_, L_, S_, B_)
         except (ZeroDivisionError, OverflowError):
             mu_e = float("inf")
-        mu_e_ok = abs(mu_e - 206.7682827) < 3 * 0.0000005
+        obs_mu = tools.bld.MU_OVER_E
+        mu_e_ok = abs(mu_e - obs_mu.value) < 3 * obs_mu.uncertainty
 
         # mp/me
         try:
-            mp_me = _mp_over_me(S_, n_, B_, K_)
+            mp_me = tools.bld.mp_over_me(S_, n_, B_, K_)
         except (ZeroDivisionError, OverflowError):
             mp_me = float("inf")
-        mp_me_ok = abs(mp_me - 1836.15267) < 3 * 0.00085
+        obs_mp = tools.bld.MP_OVER_ME
+        mp_me_ok = abs(mp_me - obs_mp.value) < 3 * obs_mp.uncertainty
 
         all_match = alpha_ok and mu_e_ok and mp_me_ok
         if K_ == 2:
@@ -233,8 +158,9 @@ def run_alternative_137() -> list[StructureResult]:
     Show only (4,20,56) gives alpha^-1 matching CODATA.
     """
     results: list[StructureResult] = []
-    target = 137.035999177
-    tol = 3 * 0.000000021
+    obs = tools.bld.ALPHA_INV
+    target = obs.value
+    tol = 3 * obs.uncertainty
 
     for a in range(1, 137):
         for b in range(1, 137):
@@ -242,16 +168,16 @@ def run_alternative_137() -> list[StructureResult]:
             if c < 1:
                 break
             try:
-                alpha = _alpha_inv(a, float(b), c, K)
+                alpha = tools.bld.alpha_inv(a, float(b), c, tools.bld.K)
             except (ZeroDivisionError, OverflowError, ValueError):
                 alpha = float("inf")
             matches = abs(alpha - target) < tol
-            if a == n and b == L and c == B:
+            if a == tools.bld.n and b == tools.bld.L and c == tools.bld.B:
                 results.append(StructureResult(
                     f"({a},{b},{c})=BLD", alpha, matches,
                 ))
             elif matches:
-                # Another decomposition also works — would disprove uniqueness
+                # Another decomposition also works -- would disprove uniqueness
                 results.append(StructureResult(
                     f"({a},{b},{c})_unexpected", alpha, False,
                 ))
@@ -264,64 +190,73 @@ def run_alternative_137() -> list[StructureResult]:
     return results
 
 
-def run_broken_k() -> list[Prediction]:
+def run_broken_k() -> list[tools.bld.Prediction]:
     """Compute K-dependent predictions with K=1 and K=3.
 
     Keep all other constants at BLD values (including S=13).
     K appears in: alpha^-1 (K/B term), mp/me (K/S term),
     sin^2(theta_12) = K^2/S.  mu/e and m_H do not depend on K.
     """
-    results: list[Prediction] = []
+    results: list[tools.bld.Prediction] = []
+    B, L, n, S = tools.bld.B, tools.bld.L, tools.bld.n, tools.bld.S
+
+    obs_alpha = tools.bld.ALPHA_INV
+    obs_mp = tools.bld.MP_OVER_ME
+    obs_s12 = tools.bld.SIN2_THETA_12
 
     for K_ in [1, 3]:
-        results.append(Prediction(
+        results.append(tools.bld.Prediction(
             f"alpha_inv_K={K_}",
-            _alpha_inv(n, float(L), B, K_),
-            137.035999177, 0.000000021,
+            tools.bld.alpha_inv(n, float(L), B, K_),
+            obs_alpha.value, obs_alpha.uncertainty,
         ))
-        results.append(Prediction(
+        results.append(tools.bld.Prediction(
             f"mp_me_K={K_}",
-            _mp_over_me(S, n, B, K_),
-            1836.15267, 0.00085,
+            tools.bld.mp_over_me(S, n, B, K_),
+            obs_mp.value, obs_mp.uncertainty,
         ))
-        results.append(Prediction(
+        results.append(tools.bld.Prediction(
             f"sin2_theta12_K={K_}",
             float(K_**2) / S,
-            0.307, 0.012,
+            obs_s12.value, obs_s12.uncertainty,
         ))
 
     return results
 
 
-def run_broken_n() -> list[Prediction]:
+def run_broken_n() -> list[tools.bld.Prediction]:
     """For n in {2,3,5,6}: compute L, then alpha^-1.  All should fail."""
-    results: list[Prediction] = []
+    results: list[tools.bld.Prediction] = []
+    obs = tools.bld.ALPHA_INV
 
     for n_ in [2, 3, 5, 6]:
         L_ = n_**2 * (n_**2 - 1) / 12
         if L_ < 1:
             continue
         try:
-            alpha = _alpha_inv(n_, L_, B, K)
+            alpha = tools.bld.alpha_inv(n_, L_, tools.bld.B, tools.bld.K)
         except (ZeroDivisionError, OverflowError):
             alpha = float("inf")
-        results.append(Prediction(
-            f"alpha_inv_n={n_}", alpha, 137.035999177, 0.000000021,
+        results.append(tools.bld.Prediction(
+            f"alpha_inv_n={n_}", alpha, obs.value, obs.uncertainty,
         ))
 
     return results
 
 
-def run_lambda_uniqueness() -> list[Prediction]:
+def run_lambda_uniqueness() -> list[tools.bld.Prediction]:
     """Perturb lambda^2.  Only 1/20 should match M_P and m_H."""
-    results: list[Prediction] = []
-    v = 246.2196
+    results: list[tools.bld.Prediction] = []
+    v = tools.bld.V_EW
+    obs = tools.bld.PLANCK_MASS
 
     for denom in [18, 19, 20, 21, 22]:
         lam_sq = 1.0 / denom
-        M_P = _planck_mass(v, lam_sq, n, float(L), K, B)
-        results.append(Prediction(
-            f"M_P_lambda2=1/{denom}", M_P, 1.22091e19, 1.22091e16,
+        M_P = tools.bld.planck_mass(
+            v, lam_sq, tools.bld.n, float(tools.bld.L), tools.bld.K, tools.bld.B,
+        )
+        results.append(tools.bld.Prediction(
+            f"M_P_lambda2=1/{denom}", M_P, obs.value, obs.uncertainty,
         ))
 
     return results

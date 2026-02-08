@@ -1,36 +1,11 @@
 """BLD theory prediction tests."""
 
-import dataclasses
 import math
 
 import numpy as np
 import pytest
 
-
-B = 56
-L = 20
-n = 4
-K = 2
-S = 13
-LAMBDA = 1 / math.sqrt(20)
-
-
-@dataclasses.dataclass(slots=True, frozen=True)
-class Prediction:
-    name: str
-    predicted: float
-    observed: float
-    uncertainty: float
-
-    @property
-    def sigma(self) -> float:
-        if self.uncertainty <= 0:
-            return 0.0 if abs(self.predicted - self.observed) < 1e-15 else float("inf")
-        return abs(self.predicted - self.observed) / self.uncertainty
-
-    @property
-    def passes(self) -> bool:
-        return self.sigma < 3.0
+import tools.bld
 
 
 # ---------------------------------------------------------------------------
@@ -38,47 +13,32 @@ class Prediction:
 # ---------------------------------------------------------------------------
 
 
-def run_constant_identities() -> list[Prediction]:
+def run_constant_identities() -> list[tools.bld.Prediction]:
+    B, L, n, K, S = tools.bld.B, tools.bld.L, tools.bld.n, tools.bld.K, tools.bld.S
     return [
-        Prediction("S=(B-n)/n", (B - n) / n, S, 0),
-        Prediction("K²+(n-1)²=S", K**2 + (n - 1) ** 2, S, 0),
-        Prediction("λ²×nL=K²", LAMBDA**2 * n * L, K**2, 0),
-        Prediction("S+1=B/n", S + 1, B / n, 0),
-        Prediction("Riemann=L", n**2 * (n**2 - 1) / 12, L, 0),
+        tools.bld.Prediction("S=(B-n)/n", (B - n) / n, S, 0),
+        tools.bld.Prediction("K²+(n-1)²=S", K**2 + (n - 1) ** 2, S, 0),
+        tools.bld.Prediction("λ²×nL=K²", tools.bld.LAMBDA**2 * n * L, K**2, 0),
+        tools.bld.Prediction("S+1=B/n", S + 1, B / n, 0),
+        tools.bld.Prediction("Riemann=L", n**2 * (n**2 - 1) / 12, L, 0),
     ]
 
 
-def run_fine_structure() -> list[Prediction]:
-    nL = n * L
-    base = nL + B + 1
-    boundary_quantum = K / B
-    outbound_spatial = n / ((n - 1) * nL * B)
-    return_spatial = -(n - 1) / (nL**2 * B)
-    return_boundary = -1 / (nL * B**2)
-    accumulated = -(
-        math.e**2
-        * (2 * B + n + K + 2)
-        / ((2 * B + n + K + 1) * nL**2 * B**2)
+def run_fine_structure() -> list[tools.bld.Prediction]:
+    alpha = tools.bld.alpha_inv(
+        tools.bld.n, float(tools.bld.L), tools.bld.B, tools.bld.K,
     )
-    alpha_inv = (
-        base + boundary_quantum + outbound_spatial
-        + return_spatial + return_boundary + accumulated
-    )
-    return [Prediction("α⁻¹", alpha_inv, 137.035999177, 0.000000021)]
+    obs = tools.bld.ALPHA_INV
+    return [tools.bld.Prediction("α⁻¹", alpha, obs.value, obs.uncertainty)]
 
 
-def run_lepton_ratios() -> list[Prediction]:
+def run_lepton_ratios() -> list[tools.bld.Prediction]:
+    B, L, n, K, S = tools.bld.B, tools.bld.L, tools.bld.n, tools.bld.K, tools.bld.S
     nL = n * L
     nLS = nL * S
     e = math.e
 
-    mu_over_e = (
-        (n**2 * S - 1)
-        * nLS / (nLS + 1)
-        * (1 - 1 / (nL**2 + n * S))
-        * (1 - 1 / (nL * B**2))
-        * (1 + e**2 * (S + 1) / (nL**2 * B**2 * S**2))
-    )
+    mu_e = tools.bld.mu_over_e(n, float(L), S, B)
 
     tau_over_mu = (
         2 * math.pi * e
@@ -87,62 +47,73 @@ def run_lepton_ratios() -> list[Prediction]:
         * (1 + 2 / nLS)
     )
 
+    obs_mu = tools.bld.MU_OVER_E
+    obs_tau = tools.bld.TAU_OVER_MU
     return [
-        Prediction("μ/e", mu_over_e, 206.7682827, 0.0000005),
-        Prediction("τ/μ", tau_over_mu, 16.8172, 0.0011),
+        tools.bld.Prediction("μ/e", mu_e, obs_mu.value, obs_mu.uncertainty),
+        tools.bld.Prediction("τ/μ", tau_over_mu, obs_tau.value, obs_tau.uncertainty),
     ]
 
 
-def run_nucleon_ratio() -> list[Prediction]:
-    mp_over_me = (S + n) * (B + n * S) + K / S
-    return [Prediction("m_p/m_e", mp_over_me, 1836.15267, 0.00085)]
+def run_nucleon_ratio() -> list[tools.bld.Prediction]:
+    mp_me = tools.bld.mp_over_me(tools.bld.S, tools.bld.n, tools.bld.B, tools.bld.K)
+    obs = tools.bld.MP_OVER_ME
+    return [tools.bld.Prediction("m_p/m_e", mp_me, obs.value, obs.uncertainty)]
 
 
-def run_neutrino_mixing() -> list[Prediction]:
+def run_neutrino_mixing() -> list[tools.bld.Prediction]:
+    B, L, n, K, S = tools.bld.B, tools.bld.L, tools.bld.n, tools.bld.K, tools.bld.S
+    obs12 = tools.bld.SIN2_THETA_12
+    obs13 = tools.bld.SIN2_THETA_13
+    obs23 = tools.bld.SIN2_THETA_23
     return [
-        Prediction("sin²θ₁₂", K**2 / S, 0.307, 0.012),
-        Prediction("sin²θ₁₃", n**2 / (n - 1) ** 6, 0.02195, 0.00058),
-        Prediction("sin²θ₂₃", (S + 1) / (L + n + 1), 0.561, 0.015),
+        tools.bld.Prediction("sin²θ₁₂", K**2 / S, obs12.value, obs12.uncertainty),
+        tools.bld.Prediction("sin²θ₁₃", n**2 / (n - 1) ** 6, obs13.value, obs13.uncertainty),
+        tools.bld.Prediction("sin²θ₂₃", (S + 1) / (L + n + 1), obs23.value, obs23.uncertainty),
     ]
 
 
-def run_muon_g2() -> list[Prediction]:
+def run_muon_g2() -> list[tools.bld.Prediction]:
+    B, L, n, K, S = tools.bld.B, tools.bld.L, tools.bld.n, tools.bld.K, tools.bld.S
     alpha = 1 / 137.036
     nL = n * L
     base = alpha**2 * K**2 / (nL**2 * S)
     detection = (B + L) / (B + L + K)
     delta_a_mu = base * detection * 1e11
-    return [Prediction("Δaμ(×10⁻¹¹)", delta_a_mu, 249, 17)]
+    obs = tools.bld.MUON_G2
+    return [tools.bld.Prediction("Δaμ(×10⁻¹¹)", delta_a_mu, obs.value, obs.uncertainty)]
 
 
-def run_neutron_lifetime() -> list[Prediction]:
-    tau_bottle = 877.8
-    tau_beam = tau_bottle * (1 + K / S**2)
-    return [Prediction("τ_beam(s)", tau_beam, 888.1, 2.0)]
+def run_neutron_lifetime() -> list[tools.bld.Prediction]:
+    K, S = tools.bld.K, tools.bld.S
+    tau_beam = tools.bld.TAU_BOTTLE * (1 + K / S**2)
+    obs = tools.bld.TAU_BEAM
+    return [tools.bld.Prediction("τ_beam(s)", tau_beam, obs.value, obs.uncertainty)]
 
 
-def run_planck_mass() -> list[Prediction]:
-    v = 246.2196
-    nL = n * L
-    base = v * LAMBDA ** (-26) * math.sqrt(5 / 14)
-    first_order = (nL - K + 1) / (nL - K)
-    second_order = 1 + K * 3 / (nL * B**2)
-    M_P = base * first_order * second_order
-    return [Prediction("M_P(GeV)", M_P, 1.22091e19, 1.22091e16)]
+def run_planck_mass() -> list[tools.bld.Prediction]:
+    v = tools.bld.V_EW
+    M_P = tools.bld.planck_mass(
+        v, tools.bld.LAMBDA**2, tools.bld.n, float(tools.bld.L),
+        tools.bld.K, tools.bld.B,
+    )
+    obs = tools.bld.PLANCK_MASS
+    return [tools.bld.Prediction("M_P(GeV)", M_P, obs.value, obs.uncertainty)]
 
 
-def run_higgs_mass() -> list[Prediction]:
-    v = 246.2196
-    m_H = (v / 2) * (1 + 1 / B) * (1 - 1 / (B * L))
-    return [Prediction("m_H(GeV)", m_H, 125.20, 0.11)]
+def run_higgs_mass() -> list[tools.bld.Prediction]:
+    v = tools.bld.V_EW
+    m_H = tools.bld.higgs_mass(v, tools.bld.B, tools.bld.L)
+    obs = tools.bld.HIGGS_MASS
+    return [tools.bld.Prediction("m_H(GeV)", m_H, obs.value, obs.uncertainty)]
 
 
-def run_constant_uniqueness() -> tuple[Prediction, list[Prediction]]:
+def run_constant_uniqueness() -> tuple[tools.bld.Prediction, list[tools.bld.Prediction]]:
     """Negative test: BLD constants (B=56, L=20, n=4, K=2, S=13) are unique.
 
     Five simultaneous identities over-determine the system.  Perturbing any
-    single constant by ±1 breaks at least one identity, proving the solution
-    is isolated — not one of many nearby integer tuples.
+    single constant by +/-1 breaks at least one identity, proving the solution
+    is isolated --- not one of many nearby integer tuples.
 
     Returns (true_result, perturbations) so the test can assert true passes
     and all perturbations fail.
@@ -157,33 +128,36 @@ def run_constant_uniqueness() -> tuple[Prediction, list[Prediction]]:
         ]
         return sum(checks)
 
-    base = (56, 20, 4, 2, 13)
+    base = (tools.bld.B, tools.bld.L, tools.bld.n, tools.bld.K, tools.bld.S)
     names = ["B", "L", "n", "K", "S"]
 
-    true_result = Prediction("true constants", float(_count_satisfied(*base)), 5.0, 0)
+    true_result = tools.bld.Prediction(
+        "true constants", float(_count_satisfied(*base)), 5.0, 0,
+    )
 
-    perturbations: list[Prediction] = []
+    perturbations: list[tools.bld.Prediction] = []
     for idx, name in enumerate(names):
         for delta in [-1, +1]:
             perturbed = list(base)
             perturbed[idx] += delta
             sat = _count_satisfied(*perturbed)
-            perturbations.append(Prediction(
+            perturbations.append(tools.bld.Prediction(
                 f"{name}{'+' if delta > 0 else '−'}1",
                 float(sat), 5.0, 0,
             ))
     return true_result, perturbations
 
 
-def run_wrong_integers() -> tuple[list[Prediction], list[Prediction]]:
+def run_wrong_integers() -> tuple[list[tools.bld.Prediction], list[tools.bld.Prediction]]:
     """Negative test: nearby integers don't match observed mass ratios.
 
-    BLD derives μ/e primordial integer as n²S−1 = 207.  Using 206 or 208
-    shifts the prediction by ~1 unit — thousands of σ from observation.
-    Same for m_p/m_e base (S+n)(B+nS) = 17×108 = 1836.
+    BLD derives mu/e primordial integer as n^2*S-1 = 207.  Using 206 or 208
+    shifts the prediction by ~1 unit --- thousands of sigma from observation.
+    Same for m_p/m_e base (S+n)(B+nS) = 17*108 = 1836.
 
     Returns (correct, wrong) so the test can assert correct pass and wrong fail.
     """
+    B, L, n, K, S = tools.bld.B, tools.bld.L, tools.bld.n, tools.bld.K, tools.bld.S
     nL = n * L
     nLS = nL * S
     e = math.e
@@ -200,15 +174,21 @@ def run_wrong_integers() -> tuple[list[Prediction], list[Prediction]]:
     def _mp_over_me(base_int: int) -> float:
         return base_int + K / S
 
-    correct: list[Prediction] = [
-        Prediction("μ/e n²S−1=207", _mu_over_e(207), 206.7682827, 0.0000005),
-        Prediction("m_p/m_e base=1836", _mp_over_me((S + n) * (B + n * S)), 1836.15267, 0.00085),
+    obs_mu = tools.bld.MU_OVER_E
+    obs_mp = tools.bld.MP_OVER_ME
+
+    correct: list[tools.bld.Prediction] = [
+        tools.bld.Prediction("μ/e n²S−1=207", _mu_over_e(207), obs_mu.value, obs_mu.uncertainty),
+        tools.bld.Prediction(
+            "m_p/m_e base=1836", _mp_over_me((S + n) * (B + n * S)),
+            obs_mp.value, obs_mp.uncertainty,
+        ),
     ]
-    wrong: list[Prediction] = [
-        Prediction(f"μ/e base={w}", _mu_over_e(w), 206.7682827, 0.0000005)
+    wrong: list[tools.bld.Prediction] = [
+        tools.bld.Prediction(f"μ/e base={w}", _mu_over_e(w), obs_mu.value, obs_mu.uncertainty)
         for w in [206, 208]
     ] + [
-        Prediction(f"m_p/m_e base={w}", _mp_over_me(w), 1836.15267, 0.00085)
+        tools.bld.Prediction(f"m_p/m_e base={w}", _mp_over_me(w), obs_mp.value, obs_mp.uncertainty)
         for w in [1835, 1837]
     ]
     return correct, wrong
