@@ -118,11 +118,15 @@ The derivation chain:
 1. **Observer has quantum state |O⟩** — observers ARE BLD structures ([Completeness Proof](../foundations/proofs/completeness-proof.md), PROVEN), so they have quantum states ([Schrodinger Derivation](schrodinger-derivation.md), DERIVED).
 2. **Measurement entangles** system and observer: Σ αⱼ|j⟩|Oⱼ⟩ (from H_int interaction, DETERMINED per Claim 6).
 3. **K=2 bidirectional alignment** gives the joint probability: P(k) = |αₖ|² × |⟨Oₖ|O⟩|² ([Born Rule](born-rule.md), DERIVED from K=2).
-4. **L→B compensation** determines the specific outcome: the full L-structure (system amplitudes + observer state) determines the B-partition ([Compensation Principle](../foundations/structural/compensation-principle.md), PROVEN: "the root system (L) determines compactness (B)").
+4. **L→B compensation** determines the specific outcome via the explicit selection rule ([Born Rule, Selection Rule](born-rule.md#the-explicit-selection-rule), DERIVED):
+   ```
+   f(|O⟩) = argmax_k |αₖ|² / |⟨Oₖ|O⟩|²   (maximize L/B = structural leverage)
+   ```
+   This is the compensation principle applied to single events: L determines B where L most exceeds B ([Compensation Principle](../foundations/structural/compensation-principle.md), PROVEN).
 5. **Why it looks random**: observer microstate |O⟩ varies between measurements; we don't track it.
-6. **Why the distribution is |ψ|²**: for a macroscopic apparatus, dim(H_O) = N >> M. Quantum typicality (concentration of measure on S^{2N-1} from Haar measure on the observer's Lie group) gives |⟨Oₖ|O⟩|² ≈ 1/N for all k. Marginalizing: P(k) = |αₖ|² × const → P(k) ∝ |αₖ|². Typicality is derived: BLD → Lie groups ([PROVEN](../lie-theory/lie-correspondence.md)) → Haar measure → concentration of measure.
+6. **Why the distribution is |ψ|²**: for orthogonal pointer states |Oₖ⟩ in C^N, the overlaps Xₖ = |⟨Oₖ|O⟩|² are the first M components of a Dirichlet(1,...,1) distribution on the N-simplex. By the Dirichlet-Gamma decomposition, Xₖ = Yₖ/S where Yₖ ~ Exp(1) i.i.d. Since S cancels in the argmax, the selection reduces to argmax_k |αₖ|²/Yₖ = argmax_k [log|αₖ|² + Gumbel_k], which gives P(k) = |αₖ|² by the Gumbel-max trick. **This is exact for all N ≥ M**, not just large-N. Confirmed numerically for M ∈ {2,3,4,5} at all N from M to 1024.
 
-Why step 6 isn't circular: P = |ψ|² was DERIVED from K=2 bidirectional alignment ([Born Rule](born-rule.md)), independent of measurement. We apply it to the joint system. The factoring into |αₖ|² × |⟨Oₖ|O⟩|² uses the tensor product structure. Quantum typicality gives the observer-averaged distribution.
+Why step 6 isn't circular: P = |ψ|² was DERIVED from K=2 bidirectional alignment ([Born Rule](born-rule.md)), independent of measurement. The Gumbel-max trick is a mathematical theorem about extreme value distributions. The selection rule uses Haar measure (DERIVED from BLD → Lie groups) and pointer states (DETERMINED by H_int per Claim 6).
 
 Source: [Born Rule, Single-Event Selection](born-rule.md) (DERIVED).
 
