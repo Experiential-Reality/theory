@@ -3,7 +3,8 @@
 Tests the claim: f(|O⟩) = argmax_k |αₖ|²/|⟨Oₖ|O⟩|² gives EXACT Born statistics
 for ALL N ≥ M via the Dirichlet-Gamma decomposition.
 
-9 tests covering all identified edge cases and deeper consequences:
+12 tests covering all identified edge cases, deeper consequences, and
+analytical derivations:
 
 1. Degenerate amplitudes (αₖ = 0)
 2. M = N boundary case
@@ -14,9 +15,14 @@ for ALL N ≥ M via the Dirichlet-Gamma decomposition.
 7. Temperature parameter τ uniqueness (only τ=1 gives Born)
 8. Joint measurement (Bell state + two observers)
 9. M=2 product/ratio symmetry (why product works for M=2 only)
+10. M=2 product/ratio analytical proof (exceedance identity + M≥3 counterexample)
+11. Factored observer analytical formula (closed form via Logistic convolution)
+12. Non-orthogonal analytical integral (exact N-independent 3-branch integrand)
 """
 
 import numpy as np
+from itertools import combinations
+from scipy.integrate import quad
 from scipy.stats import chi2, unitary_group
 
 
@@ -968,6 +974,403 @@ def test_m2_symmetry():
     return True
 
 
+# ---- Test 10: M=2 Product/Ratio Analytical Proof ----
+
+def test_m2_product_ratio_proof():
+    """Analytical proof that product and ratio rules are equivalent for M=2.
+
+    The proof:
+    1. Ratio: P(a₀/Y₀ > a₁/Y₁) = P(Y₁/Y₀ > a₁/a₀).
+       Product: P(a₀Y₀ > a₁Y₁) = P(Y₀/Y₁ > a₁/a₀).
+    2. T = Y₀/Y₁ where Y₀, Y₁ ~ Exp(1) has PDF f(t) = 1/(1+t)²,
+       giving P(T > s) = 1/(1+s).
+    3. P(1/T > s) = P(T < 1/s) = 1 - 1/(1+1/s) = 1/(1+s).
+       So P(T > s) = P(1/T > s) for all s > 0. ∎
+    4. Equivalently: D = G₀ - G₁ ~ Logistic(0,1) is symmetric about 0.
+
+    For M≥3: closed-form via inclusion-exclusion shows product ≠ Born.
+    """
+    print("\n" + "=" * 80)
+    print("TEST 10: M=2 PRODUCT/RATIO ANALYTICAL PROOF")
+    print("=" * 80)
+    print()
+
+    all_pass = True
+    n_samples = 200000
+
+    # ---- Step 1: Verify P(T > s) = P(1/T > s) = 1/(1+s) ----
+    print("  --- Verify exceedance identity P(T>s) = P(1/T>s) = 1/(1+s) ---")
+
+    Y0 = np.random.exponential(1.0, size=n_samples)
+    Y1 = np.random.exponential(1.0, size=n_samples)
+    T = Y0 / Y1
+
+    for s in [0.5, 1.0, 2.0, 5.0]:
+        p_T_gt_s = np.mean(T > s)
+        p_invT_gt_s = np.mean(1.0 / T > s)
+        p_exact = 1.0 / (1.0 + s)
+        tol = 3.0 / np.sqrt(n_samples)  # 3σ
+
+        ok_T = abs(p_T_gt_s - p_exact) < tol
+        ok_inv = abs(p_invT_gt_s - p_exact) < tol
+        ok_eq = abs(p_T_gt_s - p_invT_gt_s) < tol
+        ok = ok_T and ok_inv and ok_eq
+        if not ok:
+            all_pass = False
+
+        status = "PASS" if ok else "FAIL"
+        print(f"    s={s:.1f}: P(T>s)={p_T_gt_s:.4f}, P(1/T>s)={p_invT_gt_s:.4f}, "
+              f"exact={p_exact:.4f} [{status}]")
+
+    # ---- Step 2: Verify Logistic(0,1) symmetry ----
+    print("\n  --- Verify Logistic(0,1) symmetry: P(D>c) = P(-D>c) ---")
+
+    G0 = -np.log(np.random.exponential(1.0, size=n_samples))
+    G1 = -np.log(np.random.exponential(1.0, size=n_samples))
+    D = G0 - G1  # Logistic(0,1)
+
+    for c in [0.5, 1.0, 2.0]:
+        p_pos = np.mean(D > c)
+        p_neg = np.mean(-D > c)
+        p_exact_logistic = 1.0 / (1.0 + np.exp(c))
+        tol = 3.0 / np.sqrt(n_samples)
+
+        ok = abs(p_pos - p_neg) < tol and abs(p_pos - p_exact_logistic) < tol
+        if not ok:
+            all_pass = False
+
+        status = "PASS" if ok else "FAIL"
+        print(f"    c={c:.1f}: P(D>c)={p_pos:.4f}, P(-D>c)={p_neg:.4f}, "
+              f"exact={p_exact_logistic:.4f} [{status}]")
+
+    # ---- Step 3: M=3 closed-form counterexample ----
+    print("\n  --- M=3 closed-form: P_product(k) via inclusion-exclusion ---")
+
+    a3 = np.array([0.5, 0.3, 0.2])
+
+    def p_product_closed_form(a, k):
+        """P(Y_k is maximal for a_k * Y_k) via inclusion-exclusion.
+
+        P_product(k) = Σ_{S ⊆ {0,...,M-1}\\{k}} (-1)^|S| / (1 + Σ_{j∈S} a_k/a_j)
+        """
+        M = len(a)
+        others = [j for j in range(M) if j != k]
+        total = 0.0
+        for size in range(len(others) + 1):
+            for S in combinations(others, size):
+                sign = (-1) ** len(S)
+                denom = 1.0 + sum(a[k] / a[j] for j in S)
+                total += sign / denom
+        return total
+
+    # Analytical values
+    p_analytical = np.array([p_product_closed_form(a3, k) for k in range(3)])
+
+    # Monte Carlo comparison
+    n_mc = 200000
+    counts_mc = np.zeros(3)
+    for _ in range(n_mc):
+        Y = np.random.exponential(1.0, size=3)
+        k = int(np.argmax(a3 * Y))
+        counts_mc[k] += 1
+    p_mc = counts_mc / n_mc
+
+    tol = 0.006
+    for k in range(3):
+        ok = abs(p_analytical[k] - p_mc[k]) < tol
+        if not ok:
+            all_pass = False
+        status = "PASS" if ok else "FAIL"
+        print(f"    k={k}: P_analytical={p_analytical[k]:.4f}, "
+              f"P_MC={p_mc[k]:.4f}, Born={a3[k]:.4f} [{status}]")
+
+    # Verify product ≠ Born for M=3
+    max_dev_from_born = np.max(np.abs(p_analytical - a3))
+    product_differs = max_dev_from_born > 0.01
+    print(f"\n    Product ≠ Born: max|P_product - Born| = {max_dev_from_born:.4f} "
+          f"({'YES' if product_differs else 'NO'})")
+
+    print(f"\n  TEST 10 OVERALL: {'PASS' if all_pass else 'FAIL'}")
+    return all_pass
+
+
+# ---- Test 11: Factored Observer Analytical Formula ----
+
+def test_factored_observer_analytical():
+    """Closed-form error formula for factored (independent) observers.
+
+    For diagonal state √a₀₀|00⟩ + √a₁₁|11⟩ with independent observers:
+    P_factored(00) = (1 - r + r·log r) / (1 - r)²
+    where r = a₁₁/a₀₀.
+
+    Derivation: S_A, S_B cancel → comparison of raw Exp(1) → sum of two
+    i.i.d. Logistic(0,1) → CDF via convolution.
+    """
+    print("\n" + "=" * 80)
+    print("TEST 11: FACTORED OBSERVER ANALYTICAL FORMULA")
+    print("=" * 80)
+    print("  P_factored(00) = (1 - r + r·log r) / (1 - r)²")
+    print("  where r = a₁₁/a₀₀")
+    print()
+
+    def p_factored_analytical(r):
+        """Closed-form probability for factored observers."""
+        if abs(r - 1.0) < 1e-10:
+            return 0.5  # L'Hôpital limit
+        return (1.0 - r + r * np.log(r)) / (1.0 - r)**2
+
+    all_pass = True
+
+    # ---- Verify against Monte Carlo for multiple a₀₀ values ----
+    print("  --- Analytical vs Monte Carlo ---")
+    n_samples = 100000
+
+    for a00 in [0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90]:
+        a11 = 1.0 - a00
+        r = a11 / a00
+        p_anal = p_factored_analytical(r)
+
+        # Monte Carlo: two independent observers, each comparing Exp(1) ratios
+        count_00 = 0
+        for _ in range(n_samples):
+            # Each observer: Y ~ Exp(1) i.i.d.
+            YA0, YA1 = np.random.exponential(1.0, 2)
+            YB0, YB1 = np.random.exponential(1.0, 2)
+            # Factored selection: argmax a_{kj} / (Y_{Ak} * Y_{Bj})
+            # For diagonal state: compare a00/(YA0*YB0) vs a11/(YA1*YB1)
+            if a00 / (YA0 * YB0) > a11 / (YA1 * YB1):
+                count_00 += 1
+
+        p_mc = count_00 / n_samples
+        tol = 0.006
+        ok = abs(p_anal - p_mc) < tol
+        if not ok:
+            all_pass = False
+
+        status = "PASS" if ok else "FAIL"
+        print(f"    a₀₀={a00:.2f}: P_anal={p_anal:.4f}, P_MC={p_mc:.4f}, "
+              f"Born={a00:.2f}, error_vs_Born={p_anal - a00:+.4f} [{status}]")
+
+    # ---- Verify N-independence ----
+    print("\n  --- N-independence (S cancels) ---")
+    a00, a11 = 0.70, 0.30
+    r = a11 / a00
+    p_anal = p_factored_analytical(r)
+
+    for N in [4, 8, 16, 32]:
+        count_00 = 0
+        for _ in range(n_samples):
+            # Full Dirichlet with N dimensions per observer
+            YA = np.random.exponential(1.0, N)
+            YB = np.random.exponential(1.0, N)
+            # S cancels: argmax a_{kj}/(YAk * YBj) = argmax a_{kj} * SA * SB / (YAk * YBj)
+            # Only compare k=0,j=0 vs k=1,j=1 (diagonal)
+            ratio_00 = a00 / (YA[0] * YB[0])
+            ratio_11 = a11 / (YA[1] * YB[1])
+            if ratio_00 > ratio_11:
+                count_00 += 1
+
+        p_mc = count_00 / n_samples
+        ok = abs(p_anal - p_mc) < 0.006
+        if not ok:
+            all_pass = False
+        status = "PASS" if ok else "FAIL"
+        print(f"    N_A=N_B={N:2d}: P_MC={p_mc:.4f}, P_anal={p_anal:.4f} [{status}]")
+
+    # ---- Limiting cases ----
+    print("\n  --- Limiting cases ---")
+
+    # r → 0: P → 1 (convergence is slow: r·log r → 0 slowly)
+    p_r_small = p_factored_analytical(0.01)
+    ok1 = p_r_small > 0.95  # At r=0.01, P≈0.963; true limit is 1
+    print(f"    r=0.01: P={p_r_small:.4f} (expect →1 as r→0) "
+          f"[{'PASS' if ok1 else 'FAIL'}]")
+
+    # r = 1: P = 0.5
+    p_r_1 = p_factored_analytical(1.0)
+    ok2 = abs(p_r_1 - 0.5) < 1e-10
+    print(f"    r=1.00: P={p_r_1:.4f} (expect 0.5) "
+          f"[{'PASS' if ok2 else 'FAIL'}]")
+
+    if not (ok1 and ok2):
+        all_pass = False
+
+    print(f"\n  TEST 11 OVERALL: {'PASS' if all_pass else 'FAIL'}")
+    return all_pass
+
+
+# ---- Test 12: Non-Orthogonal Analytical Integral ----
+
+def test_nonorthogonal_analytical():
+    """Exact N-independent integral for non-orthogonal pointer deviation.
+
+    For M=2 with |O₁⟩ = √ε|O₀⟩ + √(1-ε)|O₀⊥⟩:
+
+    P(f=0) = (1/2π) ∫₀²π I(θ) dθ
+
+    where I(θ) depends on the quadratic Q(t) = At² + Bt + C with
+    A = 1-ε, B = 2√(ε(1-ε))·cos θ, C = ε - a₁/a₀.
+
+    Three cases (by discriminant and Vieta's formulas):
+    Case 1: disc < 0 → I = 1
+    Case 2: disc ≥ 0, C ≤ 0 → I = 1/(1 + t₊²)
+    Case 3: disc ≥ 0, C > 0 → both roots same sign (Vieta: product = C/A > 0)
+            If t₊ ≤ 0: I = 1. If t₊ > 0: I = t₋²/(1+t₋²) + 1/(1+t₊²)
+    """
+    print("\n" + "=" * 80)
+    print("TEST 12: NON-ORTHOGONAL ANALYTICAL INTEGRAL")
+    print("=" * 80)
+    print("  Exact N-independent integral for pointer deviation.")
+    print("  Three-branch integrand (Cases 1-3 via discriminant + Vieta).")
+    print()
+
+    def integrand(theta, a0, a1, eps):
+        """I(θ) = P(Q > 0 | θ) for the non-orthogonal quadratic."""
+        A = 1.0 - eps
+        C_val = eps - a1 / a0
+        B = 2.0 * np.sqrt(eps * (1.0 - eps)) * np.cos(theta)
+        disc = B**2 - 4.0 * A * C_val
+
+        if disc < 0:
+            # Case 1: no real roots, Q > 0 for all t (A > 0)
+            return 1.0
+
+        sqrt_d = np.sqrt(disc)
+        t_minus = (-B - sqrt_d) / (2.0 * A)
+        t_plus = (-B + sqrt_d) / (2.0 * A)
+
+        if C_val <= 0:
+            # Case 2: Vieta product C/A ≤ 0 → one root ≤ 0, one ≥ 0
+            if t_plus <= 0:
+                return 1.0
+            return 1.0 / (1.0 + t_plus**2)
+        else:
+            # Case 3: Vieta product C/A > 0 → both roots same sign
+            if t_plus <= 0:
+                # Both non-positive → Q > 0 for all t > 0
+                return 1.0
+            # Both positive: Q > 0 for t ∈ [0, t₋) ∪ (t₊, ∞)
+            return t_minus**2 / (1.0 + t_minus**2) + 1.0 / (1.0 + t_plus**2)
+
+    def p_nonorthogonal_integral(a0, a1, eps):
+        """Compute P(f=0) by integrating I(θ) over [0, 2π]."""
+        if eps < 1e-15:
+            return a0  # Born rule at ε=0
+        result, _ = quad(integrand, 0, 2 * np.pi, args=(a0, a1, eps),
+                         limit=100, epsabs=1e-10, epsrel=1e-10)
+        return result / (2.0 * np.pi)
+
+    all_pass = True
+    a0, a1 = 0.7, 0.3
+
+    # ---- Verify integral matches MC at multiple ε values ----
+    print("  --- Integral vs Monte Carlo (a₀=0.7, a₁=0.3) ---")
+    n_samples = 100000
+
+    eps_values = [0.0, 0.05, 0.10, 0.15, 0.20, 0.30, 0.40, 0.50, 0.70, 0.90]
+
+    for eps in eps_values:
+        p_int = p_nonorthogonal_integral(a0, a1, eps)
+
+        # Monte Carlo
+        N_obs = 32
+        if eps < 1e-10:
+            pointers = make_orthogonal_pointer_states(2, N_obs)
+        else:
+            pointers = make_nonorthogonal_pointer_states_m2(N_obs, eps)
+
+        count_0 = 0
+        for _ in range(n_samples):
+            O = haar_random_state(N_obs)
+            ovlp = overlaps(pointers, O)
+            k = selection_rule(np.array([a0, a1]), ovlp)
+            if k == 0:
+                count_0 += 1
+
+        p_mc = count_0 / n_samples
+        tol = 0.006
+        ok = abs(p_int - p_mc) < tol
+        if not ok:
+            all_pass = False
+
+        status = "PASS" if ok else "FAIL"
+        delta_int = p_int - a0
+        delta_mc = p_mc - a0
+        print(f"    ε={eps:.2f}: P_int={p_int:.4f}, P_MC={p_mc:.4f}, "
+              f"Δ_int={delta_int:+.4f}, Δ_MC={delta_mc:+.4f} [{status}]")
+
+    # ---- Verify N-independence ----
+    print("\n  --- N-independence (integral has no N parameter) ---")
+    eps_test = 0.20
+    p_int = p_nonorthogonal_integral(a0, a1, eps_test)
+
+    for N_obs in [4, 8, 32, 128]:
+        pointers = make_nonorthogonal_pointer_states_m2(N_obs, eps_test)
+        count_0 = 0
+        for _ in range(n_samples):
+            O = haar_random_state(N_obs)
+            ovlp = overlaps(pointers, O)
+            k = selection_rule(np.array([a0, a1]), ovlp)
+            if k == 0:
+                count_0 += 1
+
+        p_mc = count_0 / n_samples
+        ok = abs(p_int - p_mc) < 0.006
+        if not ok:
+            all_pass = False
+        status = "PASS" if ok else "FAIL"
+        print(f"    N={N_obs:3d}: P_MC={p_mc:.4f}, P_int={p_int:.4f} [{status}]")
+
+    # ---- Taylor coefficients via finite differences ----
+    print("\n  --- Taylor coefficient c₁ = a₀·a₁·(a₀-a₁) ---")
+
+    test_pairs = [
+        (0.7, 0.3),
+        (0.8, 0.2),
+        (0.6, 0.4),
+        (0.9, 0.1),
+        (0.5, 0.5),  # symmetric: c₁ should vanish
+    ]
+
+    h = 1e-5
+    for a0_t, a1_t in test_pairs:
+        # Finite difference: c₁ ≈ [P(h) - P(0)] / h
+        p_h = p_nonorthogonal_integral(a0_t, a1_t, h)
+        p_0 = a0_t  # P(0) = a₀ (Born rule)
+        c1_numerical = (p_h - p_0) / h
+
+        c1_formula = a0_t * a1_t * (a0_t - a1_t)
+
+        ok = abs(c1_numerical - c1_formula) < 0.001
+        if not ok:
+            all_pass = False
+        status = "PASS" if ok else "FAIL"
+        print(f"    (a₀,a₁)=({a0_t},{a1_t}): c₁_num={c1_numerical:.6f}, "
+              f"c₁_formula={c1_formula:.6f} [{status}]")
+
+    # ---- c₂ extraction ----
+    print("\n  --- c₂ extraction (a₀=0.7, a₁=0.3) ---")
+    # P(ε) ≈ a₀ + c₁ε + c₂ε², so c₂ = (P(h) - a₀ - c₁h) / h²
+    h2 = 1e-3
+    p_h2 = p_nonorthogonal_integral(0.7, 0.3, h2)
+    c1_exact = 0.7 * 0.3 * 0.4
+    c2_numerical = (p_h2 - 0.7 - c1_exact * h2) / h2**2
+    print(f"    c₂ ≈ {c2_numerical:.4f}")
+
+    # ---- Recovery of Born rule at ε=0 ----
+    print("\n  --- Born rule recovery at ε=0 ---")
+    for a0_t, a1_t in [(0.7, 0.3), (0.5, 0.5), (0.9, 0.1)]:
+        p_0 = p_nonorthogonal_integral(a0_t, a1_t, 0.0)
+        ok = abs(p_0 - a0_t) < 1e-10
+        if not ok:
+            all_pass = False
+        status = "PASS" if ok else "FAIL"
+        print(f"    (a₀,a₁)=({a0_t},{a1_t}): P(ε=0)={p_0:.6f}, Born={a0_t} [{status}]")
+
+    print(f"\n  TEST 12 OVERALL: {'PASS' if all_pass else 'FAIL'}")
+    return all_pass
+
+
 # ---- Main ----
 
 def main():
@@ -979,7 +1382,7 @@ def main():
     print("=" * 80)
     print()
     print("Verifying: Dirichlet-Gamma decomposition → exact Born statistics")
-    print("9 tests covering all identified edge cases and consequences")
+    print("12 tests covering all edge cases, consequences, and analytical derivations")
     print()
 
     results = {}
@@ -992,6 +1395,9 @@ def main():
     results['test7_tau'] = test_tau_uniqueness()
     results['test8_joint'] = test_joint_measurement()
     results['test9_m2_symmetry'] = test_m2_symmetry()
+    results['test10_m2_proof'] = test_m2_product_ratio_proof()
+    results['test11_factored_formula'] = test_factored_observer_analytical()
+    results['test12_nonorth_integral'] = test_nonorthogonal_analytical()
 
     # ---- Final Summary ----
     print("\n" + "=" * 80)
@@ -1000,11 +1406,12 @@ def main():
 
     for name, passed in results.items():
         status = "PASS" if passed else "FAIL/DATA"
-        print(f"  {name:30s}: {status}")
+        print(f"  {name:35s}: {status}")
 
     critical_pass = all(results[k] for k in [
         'test1_degenerate', 'test2_m_equals_n', 'test3_phases',
         'test5_large_m', 'test6_dirichlet', 'test8_joint',
+        'test10_m2_proof', 'test11_factored_formula', 'test12_nonorth_integral',
     ])
 
     print()
@@ -1012,15 +1419,18 @@ def main():
         print("  ALL CRITICAL TESTS PASS")
         print()
         print("  Verified:")
-        print("  1. Degenerate αₖ=0: outcome impossible (log(0)=-∞)")
-        print("  2. M=N boundary: Born exact even with no extra dimensions")
-        print("  3. Complex phases: irrelevant (|αₖ|² only)")
-        print("  4. Non-orthogonal pointers: deviation curve quantified")
-        print("  5. Large M (up to 50): Born holds")
-        print("  6. Dirichlet mechanism: argmax a_k/Y_k = Born (direct proof)")
-        print("  7. τ=1 unique: only temperature giving Born rule")
-        print("  8. Joint measurement: Bell correlations emerge correctly")
-        print("  9. M=2 symmetry: product=ratio for M=2, product fails M≥3")
+        print("   1. Degenerate αₖ=0: outcome impossible (log(0)=-∞)")
+        print("   2. M=N boundary: Born exact even with no extra dimensions")
+        print("   3. Complex phases: irrelevant (|αₖ|² only)")
+        print("   4. Non-orthogonal pointers: deviation curve quantified")
+        print("   5. Large M (up to 50): Born holds")
+        print("   6. Dirichlet mechanism: argmax a_k/Y_k = Born (direct proof)")
+        print("   7. τ=1 unique: only temperature giving Born rule")
+        print("   8. Joint measurement: Bell correlations emerge correctly")
+        print("   9. M=2 symmetry: product=ratio for M=2, product fails M≥3")
+        print("  10. M=2 proof: P(T>s) = P(1/T>s) = 1/(1+s) (exceedance identity)")
+        print("  11. Factored observer: P = (1-r+r·log r)/(1-r)² (analytical)")
+        print("  12. Non-orthogonal integral: exact 3-branch formula, c₁=a₀a₁(a₀-a₁)")
     else:
         failed = [k for k, v in results.items() if not v]
         print(f"  SOME TESTS FAILED: {failed}")

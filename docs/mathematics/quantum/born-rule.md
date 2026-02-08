@@ -472,7 +472,19 @@ L→B compensation selects the outcome with MAXIMUM L/B ratio.
 - **Joint measurement**: Bell state (|00⟩+|11⟩)/√2 with single joint observer |O⟩ ∈ C^{N_A⊗N_B} gives P(00)=P(11)=0.5, P(01)=P(10)=0 (exact). Non-maximal √0.7|00⟩+√0.3|11⟩ gives P(00)=0.698, P(11)=0.302 (Born exact). GHZ-like 3-party state confirmed. KEY: correlated measurements require a single joint observer in the tensor product space; factored independent observers give incorrect statistics for non-symmetric states.
 - **M = 2 product/ratio equivalence**: For M = 2, product and ratio rules give identical Born statistics (logistic symmetry of pairwise Gumbel comparison). For M ≥ 3, only ratio gives Born; product systematically over-selects dominant outcome by ~3%.
 
-**Why the product rule fails for M ≥ 3**: log|⟨Oₖ|O⟩|² follows Gumbel_min (not Gumbel_max). For M = 2, Gumbel_min and Gumbel_max give identical pairwise comparisons (logistic difference). For M ≥ 3, the distinction matters: the product rule gives P₁ = 925/1736 ≈ 0.533 for expected 0.500 at a = (0.5, 0.3, 0.2). The ratio (division, not multiplication) flips the sign to Gumbel_max.
+**Why the product rule fails for M ≥ 3** (analytical proof for M = 2 equivalence):
+
+For M = 2 with Y₀, Y₁ ~ Exp(1) i.i.d.:
+1. Ratio rule compares a₀/Y₀ vs a₁/Y₁, i.e. P(Y₁/Y₀ > a₁/a₀). Product rule compares a₀Y₀ vs a₁Y₁, i.e. P(Y₀/Y₁ > a₁/a₀).
+2. Let T = Y₀/Y₁. Then T has PDF f(t) = 1/(1+t)² for t > 0, giving P(T > s) = 1/(1+s).
+3. P(1/T > s) = P(T < 1/s) = 1 − 1/(1+1/s) = 1/(1+s). So P(T > s) = P(1/T > s) for all s > 0. ∎
+4. Equivalently: D = G₀ − G₁ ~ Logistic(0,1) is symmetric about 0. The ratio and product rules compare D to thresholds c and −c respectively, giving identical probabilities.
+
+For M ≥ 3, the product rule probabilities have a closed form via inclusion-exclusion:
+```
+P_product(k) = Σ_{S⊆{0,...,M-1}\{k}} (-1)^|S| / (1 + Σ_{j∈S} aₖ/aⱼ)
+```
+For a = (0.5, 0.3, 0.2): P_product(0) = 1 − 1/(1+5/3) − 1/(1+5/2) + 1/(1+5/3+5/2) ≈ 0.533 ≠ 0.500 = a₀. The symmetry is an M = 2 accident: for M = 2, the only comparison is pairwise, and T vs 1/T have identical exceedance. For M ≥ 3, the joint order statistics break this symmetry.
 
 **BLD interpretation**: L→B compensation selects the outcome with maximum structural leverage — the branch where system weight (L) most exceeds observer alignment (B). This is the compensation principle applied to single events: L determines B where L most exceeds B.
 
@@ -521,6 +533,25 @@ Verified numerically:
 
 **BLD interpretation**: Entanglement means the system's L-structure connects subsystems. The observation that resolves this L-structure must itself be a single structure in the product space — a joint observer, not two independent ones. This is the tensor product structure of quantum mechanics doing real work: correlated L requires correlated B-partition, which requires a single observation event in the joint space.
 
+### Factored Observer: Analytical Error Formula
+
+The systematic error from factored (independent) observers has a closed form. For diagonal state √a₀₀|00⟩ + √a₁₁|11⟩ with two independent observers:
+
+1. Each observer's Dirichlet normalizations S_A, S_B cancel in the argmax (positive constants), leaving a comparison of raw Exp(1) variables. The result is N-independent.
+2. Taking logs: the comparison becomes P(L_A + L_B > −c) where L_A = G_{A0} − G_{A1}, L_B = G_{B0} − G_{B1} are i.i.d. Logistic(0,1), and c = log(a₀₀/a₁₁).
+3. The CDF of L_A + L_B (sum of two i.i.d. Logistic distributions) is computed by convolution:
+
+```
+P_factored(00) = (1 − r + r·log r) / (1 − r)²
+where r = a₁₁/a₀₀
+```
+
+**Limiting cases**: r → 0 gives P → 1; r → 1 gives P → 1/2 (by L'Hôpital); r = 1 gives P = 1/2 exactly (symmetric case).
+
+**Verified**: For a₀₀ = 0.7, a₁₁ = 0.3: r = 3/7, P_factored ≈ 0.638 (vs Born 0.70). The error |P_factored − P_Born| grows with asymmetry, reaching ~0.09 at a₀₀ = 0.85 before declining. Matches Monte Carlo at all tested a₀₀ ∈ {0.55, 0.60, ..., 0.90} within 0.006.
+
+**Why factored observers produce this specific error**: A single Logistic comparison yields exact Born statistics (the Gumbel-max trick). But the sum of two i.i.d. Logistic(0,1) is NOT Logistic — convolution spreads the distribution, reducing its sensitivity to the threshold c. The result always biases toward P = 1/2 (the symmetric case), underestimating the dominant outcome's probability.
+
 ### Why Basin Measures Equal Born Rule Probabilities
 
 The selection rule above, combined with Haar measure, constrains basin measures:
@@ -552,13 +583,29 @@ Three levels of verification:
 
 **On pointer orthogonality** (quantified prediction): The Born rule is exact when pointer states are orthogonal (the Dirichlet-Gamma argument requires this). Pointer orthogonality follows from einselection: H_int eigenstates decohere non-eigenstates at rate > ΔE/ℏ (Claim 6 of [Wave Function Collapse](wave-function-collapse.md)). For macroscopic apparatus with strong decoherence, pointer states are highly orthogonal. For few-body systems with weak decoherence, pointer non-orthogonality produces measurable deviations from Born statistics:
 
-For M = 2 with pointer overlap ε = |⟨O₀|O₁⟩|² and amplitudes α² = (0.7, 0.3), the deviation from Born rule is:
-```
-Δ(ε) = P(f=0) - 0.7 ≈ 0.093ε² + 0.078ε
+For M = 2 with |O₁⟩ = √ε|O₀⟩ + √(1−ε)|O₀⊥⟩ and Haar-random |O⟩, the deviation has an exact N-independent integral formula. The Dirichlet normalization S cancels in the argmax (as in the orthogonal case), so the result depends only on the 2D subspace spanned by {|O₀⟩, |O₀⊥⟩}. Projecting onto this subspace with z₀ = ⟨O₀|O⟩, z₂ = ⟨O₀⊥|O⟩ (i.i.d. standard complex Gaussians), the selection rule reduces to a quadratic in t = |z₂/z₀|:
 
-Verified numerically: ε swept from 0 to 0.5 in steps of 0.02, N = 32, 100,000 samples each.
-Quadratic fit RMS residual = 0.0017 (better than linear fit RMS = 0.0025).
 ```
+Q(t,θ) = (1−ε)t² + 2√(ε(1−ε))·t·cos θ + ε − a₁/a₀ > 0
+
+P(f=0) = (1/2π) ∫₀²π I(θ) dθ       [EXACT, N-independent]
+```
+
+where I(θ) has three cases (A = 1−ε, B = 2√(ε(1−ε))·cos θ, C = ε − a₁/a₀, disc = B² − 4AC):
+- disc < 0: I(θ) = 1 (no real roots, Q > 0 always since A > 0)
+- disc ≥ 0, C ≤ 0: I(θ) = 1/(1 + t₊²) where t₊ = (−B + √disc)/(2A) (Vieta: roots have opposite signs)
+- disc ≥ 0, C > 0: Vieta gives roots with same sign. If t₊ ≤ 0: I(θ) = 1. If t₊ > 0: I(θ) = t₋²/(1+t₋²) + 1/(1+t₊²) where t₋ = (−B − √disc)/(2A).
+
+**At ε = 0**: C = −a₁/a₀ < 0, B = 0, t₊ = √(a₁/a₀), I(θ) = a₀ for all θ. So P(f=0) = a₀ (Born rule recovered).
+
+**Taylor expansion**: Δ(ε) = c₁·ε + c₂·ε² + O(ε³) where:
+```
+c₁ = a₀·a₁·(a₀ − a₁)
+```
+For α² = (0.7, 0.3): c₁ = 0.7 × 0.3 × 0.4 = 0.084. Confirmed by finite differences on the integral. The coefficient c₁ vanishes when a₀ = a₁ (no preferred direction to bias toward) and when either aₖ = 0 (trivial case). Approximate polynomial fit over [0, 0.5]: Δ(ε) ≈ 0.093ε² + 0.078ε (RMS = 0.0017). Exact integral verified against Monte Carlo for ε ∈ [0, 0.95].
+
+**Physical measurement simulation**: The formula is also verified against pointer states generated by physical interaction Hamiltonians H_int = σ_z ⊗ P (P = random Hermitian), where the overlap ε emerges from the coupling strength gτ rather than being constructed as a test parameter. 192 test points across 4 apparatus dimensions (N_A ∈ {4,8,16,32}), 36 random Hamiltonians, and 8 coupling strengths all match the integral formula within 3σ (max |P_MC − P_int| = 0.004). The formula depends only on ε, not on how pointer states were generated — confirmed for pointer states related by exp(2igτP), not just by the √ε construction.
+
 The deviation always biases toward the dominant outcome (the outcome with larger |αₖ|²). For M = 3 with pairwise overlap ε, Born rule fails chi-squared test at ε ≥ 0.10, with chi-squared growing rapidly (12.4 at ε=0.10, 214.6 at ε=0.30). This is testable in controlled quantum systems with weak decoherence — a falsifiable prediction unique to BLD.
 
 ### What This Resolves
