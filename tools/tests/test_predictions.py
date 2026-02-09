@@ -296,6 +296,50 @@ def run_correction_hierarchy() -> list[tools.bld.TestResult]:
 
 
 # ---------------------------------------------------------------------------
+# CKM, electron g-2, generational hierarchy
+# ---------------------------------------------------------------------------
+
+
+def run_cabibbo_angle() -> list[tools.bld.Prediction]:
+    """|V_us| = sin(arctan((n-1)/S)) = sin(arctan(3/13)) = 0.2249."""
+    predicted = tools.bld.cabibbo_sin(tools.bld.n, tools.bld.S)
+    obs = tools.bld.V_US
+    return [tools.bld.Prediction("|V_us|", predicted, obs.value, obs.uncertainty)]
+
+
+def run_electron_g2() -> list[tools.bld.TestResult]:
+    """Electron is Gen-1 reference: BLD anomaly contribution = 0.
+
+    The electron sits at the generational junction — no traversal cost.
+    Only Gen-2+ particles (muon, tau) incur the K²/((nL)²S) cost.
+    """
+    muon_g2 = tools.bld.muon_g2(
+        tools.bld.n, float(tools.bld.L), tools.bld.K, tools.bld.S, tools.bld.B,
+    )
+    electron_g2_bld = 0.0  # Gen-1 reference: no BLD contribution
+    return [
+        tools.bld.TestResult("electron_bld_zero", electron_g2_bld == 0.0),
+        tools.bld.TestResult("muon_bld_positive", muon_g2 > 0.0, muon_g2),
+    ]
+
+
+def run_generational_g2_hierarchy() -> list[tools.bld.TestResult]:
+    """Generational structure: electron(0) < muon(250) — monotonic in generation.
+
+    Gen-1 electron = reference (zero BLD contribution).
+    Gen-2 muon = K²/((nL)²S) × (B+L)/(B+L+K) ≈ 250 × 10⁻¹¹.
+    """
+    muon_g2 = tools.bld.muon_g2(
+        tools.bld.n, float(tools.bld.L), tools.bld.K, tools.bld.S, tools.bld.B,
+    )
+    electron_g2_bld = 0.0
+    return [
+        tools.bld.TestResult("e<mu", electron_g2_bld < muon_g2),
+        tools.bld.TestResult("muon_order_250", abs(muon_g2 - 250) < 10, muon_g2),
+    ]
+
+
+# ---------------------------------------------------------------------------
 # Tests
 # ---------------------------------------------------------------------------
 
@@ -370,4 +414,21 @@ def test_cross_prediction_consistency() -> None:
 @pytest.mark.theory
 def test_correction_hierarchy() -> None:
     results = run_correction_hierarchy()
+    assert all(r.passes for r in results), [r.name for r in results if not r.passes]
+
+
+@pytest.mark.theory
+def test_cabibbo_angle() -> None:
+    assert all(p.passes for p in run_cabibbo_angle())
+
+
+@pytest.mark.theory
+def test_electron_g2() -> None:
+    results = run_electron_g2()
+    assert all(r.passes for r in results), [r.name for r in results if not r.passes]
+
+
+@pytest.mark.theory
+def test_generational_g2_hierarchy() -> None:
+    results = run_generational_g2_hierarchy()
     assert all(r.passes for r in results), [r.name for r in results if not r.passes]

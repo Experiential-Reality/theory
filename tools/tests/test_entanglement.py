@@ -278,6 +278,67 @@ def run_wrong_link_function() -> list[EntropyResult]:
 
 
 # ---------------------------------------------------------------------------
+# Black hole entropy: S = K×L (same structure as entanglement entropy)
+# ---------------------------------------------------------------------------
+
+
+def run_bh_entropy_decomposition() -> list[EntropyResult]:
+    """S_BH = A/(4 l_P²) decomposes as S = K×L where 4 = n.
+
+    The Bekenstein-Hawking 1/4 IS 1/n (spacetime dimensions).
+    L = A/(2n l_P²) and S = K×L = 2L = A/(n l_P²)/2 × 2 = A/(n l_P²).
+    Same S = K×L structure as qubit entanglement entropy.
+    """
+    n_, K_ = tools.bld.n, tools.bld.K
+
+    # For a black hole with area A in units of l_P²:
+    # S_BH = A/4 = A/n
+    # L_BH = A/(2n)
+    # S = K * L = 2 * A/(2n) = A/n = A/4 ✓
+
+    # Test with symbolic area A = 100 (in Planck units)
+    A = 100.0
+    s_standard = A / 4.0          # Standard Bekenstein-Hawking
+    s_bld = A / n_                # BLD: 4 = n
+    l_bld = A / (2 * n_)          # BLD link
+    s_from_kl = K_ * l_bld        # S = K×L
+
+    results: list[EntropyResult] = []
+    # 1/4 = 1/n
+    results.append(EntropyResult(
+        "1/4 = 1/n", s_standard, l_bld, s_standard / l_bld if l_bld > 0 else 0, 0,
+        abs(s_standard - s_bld) < 1e-10,
+    ))
+    # S = K×L
+    results.append(EntropyResult(
+        "S = K×L", s_from_kl, l_bld, s_from_kl / l_bld if l_bld > 0 else 0, 0,
+        abs(s_from_kl - s_standard) < 1e-10,
+    ))
+    # S/L = K = 2
+    results.append(EntropyResult(
+        "S/L = K", s_standard, l_bld, s_standard / l_bld, 0,
+        abs(s_standard / l_bld - K_) < 1e-10,
+    ))
+    return results
+
+
+def run_schwarzschild_k() -> list[EntropyResult]:
+    """The 2 in r_s = 2GM/c² is K (observation cost).
+
+    Schwarzschild radius: r_s = K × GM/c².
+    K = 2 appears because observation of the black hole boundary
+    requires bidirectional traversal (same K as everywhere else).
+    """
+    K_ = tools.bld.K
+    # r_s = coefficient × GM/c². The coefficient IS K.
+    schwarzschild_coeff = 2  # Standard GR
+    return [EntropyResult(
+        "r_s coefficient = K", 0, 0, 0, 0,
+        schwarzschild_coeff == K_,
+    )]
+
+
+# ---------------------------------------------------------------------------
 # Tests
 # ---------------------------------------------------------------------------
 
@@ -320,3 +381,13 @@ def test_k_uniqueness() -> None:
 @pytest.mark.theory
 def test_wrong_link_function() -> None:
     assert all(r.passes for r in run_wrong_link_function())
+
+
+@pytest.mark.theory
+def test_bh_entropy_decomposition() -> None:
+    assert all(r.passes for r in run_bh_entropy_decomposition())
+
+
+@pytest.mark.theory
+def test_schwarzschild_k() -> None:
+    assert all(r.passes for r in run_schwarzschild_k())

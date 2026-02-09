@@ -28,6 +28,8 @@ S = 13                      # Structure: (B - n) / n
 LAMBDA = 1 / math.sqrt(L)   # Coupling scale
 V_EW = 246.2196             # Electroweak VEV (GeV)
 TAU_BOTTLE = 877.8          # Neutron bottle lifetime (s)
+N_COLORS = 3                # SU(3) color charges (octonion -> G2 -> SU(3))
+M_ELECTRON = 0.511          # Electron mass (MeV)
 
 
 # ---------------------------------------------------------------------------
@@ -105,6 +107,21 @@ H0_CMB = Measurement(67.4, 0.5)              # km/s/Mpc, Planck 2018
 H0_LOCAL = Measurement(73.0, 1.0)            # km/s/Mpc, SH0ES 2022
 SIGMA8_CMB = Measurement(0.811, 0.006)        # Planck 2018
 SIGMA8_LOCAL = Measurement(0.77, 0.02)        # weak lensing (DES, KiDS)
+
+# Quark masses (MS-bar, PDG 2024)
+M_UP = Measurement(2.16, 0.49)              # MeV
+M_DOWN = Measurement(4.67, 0.48)            # MeV
+M_STRANGE = Measurement(93.4, 8.6)          # MeV
+M_CHARM = Measurement(1270.0, 20.0)         # MeV (at m_c)
+M_BOTTOM = Measurement(4180.0, 30.0)        # MeV (at m_b)
+M_TOP = Measurement(172.69, 0.30)           # GeV (direct)
+
+# CKM matrix elements (PDG 2024)
+V_US = Measurement(0.2243, 0.0005)
+
+# Neutrino mass-squared differences (NuFIT 6.0, normal ordering)
+DM2_21 = Measurement(7.53e-5, 0.18e-5)      # eV^2
+DM2_32 = Measurement(2.453e-3, 0.033e-3)    # eV^2 (normal ordering)
 
 
 # ---------------------------------------------------------------------------
@@ -567,6 +584,101 @@ def sigma8_local(L_: int, n_: int, K_: int) -> float:
     Theory ref: sigma8-tension.md
     """
     return sigma8_cmb(L_, n_, K_) * (1.0 - K_ / (2 * L_))
+
+
+# ---------------------------------------------------------------------------
+# Quark mass formulas (quark-masses.md)
+# ---------------------------------------------------------------------------
+
+
+def ms_over_me(n_: int, S_: int, L_: int) -> float:
+    """Strange-to-electron mass ratio.
+
+    Structure: n²S (generational) - L (link cost) - L/n (confinement).
+    Theory ref: quark-masses.md
+    """
+    return n_**2 * S_ - L_ - L_ / n_
+
+
+def ms_over_md(L_: int, K_: int) -> float:
+    """Strange-to-down mass ratio.
+
+    Theory ref: quark-masses.md
+    """
+    return L_ + K_ / L_
+
+
+def md_over_mu_quark(K_: int, S_: int) -> float:
+    """Down-to-up quark mass ratio.
+
+    Theory ref: quark-masses.md
+    """
+    return K_ * S_ / (S_ - 1)
+
+
+def mc_over_ms(S_: int, K_: int, n_colors: int = N_COLORS) -> float:
+    """Charm-to-strange mass ratio.
+
+    Theory ref: quark-masses.md
+    """
+    return S_ + K_ / n_colors
+
+
+def mb_over_mc(K_: int, n_: int, n_colors: int = N_COLORS) -> float:
+    """Bottom-to-charm mass ratio.
+
+    Theory ref: quark-masses.md
+    """
+    return n_colors + K_ / (n_ + n_colors)
+
+
+def top_mass(v: float, K_: int, n_: int, S_: int) -> float:
+    """Top quark mass (GeV).
+
+    Theory ref: quark-masses.md
+    """
+    return v / math.sqrt(K_) * (1 - K_ / (n_**2 * S_))
+
+
+# ---------------------------------------------------------------------------
+# Neutrino mass formulas (neutrino-masses.md)
+# ---------------------------------------------------------------------------
+
+
+def neutrino_mass_e(
+    m_e: float, K_: int, B_: int, n_: int, L_: int,
+) -> float:
+    """Electron neutrino mass (same units as m_e input).
+
+    Formula: m_e * (K/B)^2 * K/(nL) * (1 + K/(nLB))
+
+    NOTE: With m_e in MeV, this gives 1.63e-5 MeV = 16.3 eV.
+    The theory doc (neutrino-masses.md) claims 16.3 meV — a unit error.
+    Theory ref: neutrino-masses.md
+    """
+    nL = n_ * L_
+    return m_e * (K_ / B_) ** 2 * K_ / nL * (1 + K_ / (nL * B_))
+
+
+def dm2_ratio(L_: int, S_: int) -> float:
+    """Ratio of neutrino mass-squared differences |Dm2_32|/|Dm2_21|.
+
+    Theory ref: neutrino-masses.md
+    """
+    return float(L_ + S_)
+
+
+# ---------------------------------------------------------------------------
+# CKM Cabibbo angle (neutrino-mixing.md)
+# ---------------------------------------------------------------------------
+
+
+def cabibbo_sin(n_: int, S_: int) -> float:
+    """|V_us| = sin(arctan((n-1)/S)).
+
+    Theory ref: neutrino-mixing.md
+    """
+    return math.sin(math.atan((n_ - 1) / S_))
 
 
 # ---------------------------------------------------------------------------
