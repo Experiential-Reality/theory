@@ -68,4 +68,25 @@ theorem ld_cannot_encode_sum (t : Ty) (h : IsLD t) (a b : Ty)
   simp [cardinality, ld_cardinality_one t h]
   omega
 
+-- ═══════════════════════════════════════════════════════════
+-- Formal encoding: cardinality-preserving type map
+-- ═══════════════════════════════════════════════════════════
+
+/-- A type-level encoding preserves cardinality.
+    Two types are encoding-equivalent if they have the same
+    number of distinct inhabitants. -/
+structure TypeEncoding (source target : Ty) where
+  card_eq : source.cardinality = target.cardinality
+
+/-- **No sum type can be encoded in the LD fragment.**
+    Sum types have cardinality ≥ 2 (cardinality_sum_ge_two),
+    LD types have cardinality exactly 1 (ld_cardinality_one).
+    No cardinality-preserving map exists. -/
+theorem no_sum_encoding_in_ld (a b : Ty) (t : Ty) (h : IsLD t) :
+    ¬ TypeEncoding (.sum a b) t := by
+  intro ⟨heq⟩
+  have hld := ld_cardinality_one t h
+  have hsum := cardinality_sum_ge_two a b
+  omega
+
 end Ty
