@@ -13,6 +13,7 @@ Three structural primitives — Boundary, Link, Dimension — that map exactly t
 | **Curious** | [Newcomer Path](docs/paths/newcomer.md) |
 | **Physicist** | [Fine Structure Derivation](docs/mathematics/particle-physics/fine-structure-consistency.md) |
 | **Mathematician** | [Irreducibility Proof](docs/mathematics/foundations/proofs/irreducibility-proof.md) |
+| **Skeptic** | [Lean 4 Formalization](lean/) — 2612 lines, machine-verified, 0 sorry |
 | **Programmer** | [Discovery Method](docs/meta/discovery-method.md) |
 
 ---
@@ -37,6 +38,25 @@ BLD identifies three irreducible structural operations: **Boundary** (partition)
 | Higgs self-coupling | κ_λ = 1.025 | **Testable** at HL-LHC ~2040 |
 
 See [Proof Status](docs/meta/proof-status.md) for complete accounting.
+
+---
+
+## Machine-Verified
+
+The mathematical derivation chain is formalized in **[Lean 4](lean/)** with Mathlib: 21 files, 2612 lines, **0 `sorry`**, 2 axioms (both well-known open Mathlib formalization problems). Every theorem is kernel-checked — the Lean proof assistant verifies each logical step, and `norm_num` performs exact rational arithmetic with no floating-point approximation.
+
+12 physics predictions are proved as exact rational fractions:
+
+| Quantity | BLD Formula | Fraction | Observed | Sigma |
+|----------|-------------|----------|----------|-------|
+| sin^2 theta\_13 | n^2/(n-1)^6 | 16/729 | 0.02195 +/- 0.00058 | **0.00** |
+| sin^2 theta\_12 | K^2/S | 4/13 | 0.307 +/- 0.012 | 0.06 |
+| sin^2 theta\_23 | (S+1)/(L+n+1) | 14/25 | 0.561 +/- 0.015 | 0.07 |
+| sin^2 theta\_W | 3/S + K/(nLB) | 6733/29120 | 0.23121 +/- 0.00004 | 0.14 |
+| alpha\_s | 48/407 | 48/407 | 0.1179 +/- 0.0010 | 0.04 |
+| **kappa\_lambda** | **1+K/(nL)** | **41/40** | **testable ~2040** | **HL-LHC** |
+
+All from 5 constants derived from one input: **K = 2**. See the [full formalization](lean/).
 
 ---
 
