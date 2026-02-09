@@ -54,4 +54,29 @@ theorem so8_decomp_L : so8_decomposition.structureConstantCount = BLD.L := by de
 /-- The so(8) decomposition has B = 56. -/
 theorem so8_decomp_B : so8_decomposition.boundaryCount = BLD.B := by decide
 
+/-- The so(8) decomposition's boundary count is 2 × finrank(so(8)).
+    This connects the abstract decomposition to the proved dimension theorem. -/
+theorem so8_decomp_B_from_finrank :
+    so8_decomposition.boundaryCount = 2 * Module.finrank ℚ (so8 ℚ) := by
+  rw [so8_finrank]; rfl
+
+/-- The full BLD constant system matches the so(8) decomposition.
+    rank = n, structureConstantCount = L, boundaryCount = B. -/
+theorem so8_matches_BLD :
+    so8_decomposition.rank = BLD.n ∧
+    so8_decomposition.structureConstantCount = BLD.L ∧
+    so8_decomposition.boundaryCount = BLD.B :=
+  ⟨so8_decomp_rank, so8_decomp_L, so8_decomp_B⟩
+
+/-- The complete BLD correspondence for so(8,ℚ):
+    the decomposition satisfies all three BLD constant constraints. -/
+noncomputable def so8_correspondence : BLDCorrespondence ℚ where
+  algebra := so8 ℚ
+  rank := 4
+  structureConstantCount := 20
+  boundaryCount := 56
+  rank_eq := by decide
+  struct_eq := by decide
+  boundary_eq := by decide
+
 end BLD.Lie
