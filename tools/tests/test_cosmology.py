@@ -10,6 +10,8 @@ Theory refs: dark-matter-mapping.md, hubble-tension.md, sigma8-tension.md
 
 import tools.bld
 
+from helpers import assert_all_pass
+
 TR = tools.bld.TestResult
 
 
@@ -247,10 +249,7 @@ def run_formula_consistency() -> list[TR]:
 
 
 def test_dark_matter_fractions() -> None:
-    preds = run_dark_matter_fractions()
-    assert all(p.passes for p in preds), [
-        (p.name, p.predicted, p.observed, p.sigma) for p in preds if not p.passes
-    ]
+    assert_all_pass(run_dark_matter_fractions())
 
 
 def test_hubble_tension() -> None:
@@ -259,15 +258,11 @@ def test_hubble_tension() -> None:
 
 
 def test_sigma8_tension() -> None:
-    preds = run_sigma8_tension()
-    assert all(p.passes for p in preds), [
-        (p.name, p.predicted, p.observed, p.sigma) for p in preds if not p.passes
-    ]
+    assert_all_pass(run_sigma8_tension())
 
 
 def test_exact_rational_fractions() -> None:
-    results = run_exact_rational_fractions()
-    assert all(r.passes for r in results), [r.name for r in results if not r.passes]
+    assert_all_pass(run_exact_rational_fractions())
 
 
 def test_hubble_x_uniqueness() -> None:
@@ -276,13 +271,11 @@ def test_hubble_x_uniqueness() -> None:
 
 
 def test_cross_domain_k() -> None:
-    results = run_cross_domain_k()
-    assert all(r.passes for r in results), [r.name for r in results if not r.passes]
+    assert_all_pass(run_cross_domain_k())
 
 
 def test_observer_correction_necessity() -> None:
-    results = run_observer_correction_necessity()
-    assert all(r.passes for r in results), [r.name for r in results if not r.passes]
+    assert_all_pass(run_observer_correction_necessity())
 
 
 def test_overconstrained() -> None:
@@ -291,10 +284,8 @@ def test_overconstrained() -> None:
 
 
 def test_wrong_constants() -> None:
-    results = run_wrong_constants()
-    assert all(r.passes for r in results), [r.name for r in results if not r.passes]
+    assert_all_pass(run_wrong_constants())
 
 
 def test_formula_consistency() -> None:
-    results = run_formula_consistency()
-    assert all(r.passes for r in results), [r.name for r in results if not r.passes]
+    assert_all_pass(run_formula_consistency())

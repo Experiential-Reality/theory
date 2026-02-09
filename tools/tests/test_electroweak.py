@@ -18,9 +18,10 @@ Theory refs:
 import math
 
 import numpy as np
-import pytest
 
 import tools.bld
+
+from helpers import assert_all_pass
 
 
 TR = tools.bld.TestResult
@@ -391,48 +392,33 @@ def run_electroweak_consistency() -> list[TR]:
 # ---------------------------------------------------------------------------
 
 
-@pytest.mark.theory
 def test_weak_mixing() -> None:
-    results = run_weak_mixing()
-    assert all(r.passes for r in results)
+    assert_all_pass(run_weak_mixing())
 
 
-@pytest.mark.theory
 def test_z_mass() -> None:
-    results = run_z_mass()
-    assert all(r.passes for r in results)
+    assert_all_pass(run_z_mass())
 
 
-@pytest.mark.theory
 def test_w_mass() -> None:
-    results = run_w_mass()
-    assert all(r.passes for r in results)
+    assert_all_pass(run_w_mass())
 
 
-@pytest.mark.theory
 def test_strong_coupling() -> None:
-    results = run_strong_coupling()
-    assert all(r.passes for r in results)
+    assert_all_pass(run_strong_coupling())
 
 
-@pytest.mark.theory
 def test_higgs_kappa_em() -> None:
-    results = run_higgs_kappa_em()
-    assert all(r.passes for r in results)
+    assert_all_pass(run_higgs_kappa_em())
 
 
-@pytest.mark.theory
 def test_higgs_kappa_hadronic() -> None:
-    results = run_higgs_kappa_hadronic()
-    assert all(r.passes for r in results)
+    assert_all_pass(run_higgs_kappa_hadronic())
 
 
-@pytest.mark.theory
 def test_higgs_kappa_mixed() -> None:
-    results = run_higgs_kappa_mixed()
-    assert all(r.passes for r in results)
+    assert_all_pass(run_higgs_kappa_mixed())
 
 
-@pytest.mark.theory
 def test_electroweak_consistency() -> None:
-    assert all(r.passes for r in run_electroweak_consistency())
+    assert_all_pass(run_electroweak_consistency())

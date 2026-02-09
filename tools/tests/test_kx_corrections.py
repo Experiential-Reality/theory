@@ -14,9 +14,9 @@ Theory refs:
 import dataclasses
 import math
 
-import pytest
-
 import tools.bld
+
+from helpers import assert_all_pass
 
 
 @dataclasses.dataclass(slots=True, frozen=True)
@@ -374,45 +374,37 @@ def run_kx_multiplicative() -> list[tools.bld.TestResult]:
 # ---------------------------------------------------------------------------
 
 
-@pytest.mark.theory
 def test_alpha_decomposition() -> None:
-    assert all(r.passes for r in run_alpha_decomposition())
+    assert_all_pass(run_alpha_decomposition())
 
 
-@pytest.mark.theory
 def test_alternative_x_values() -> None:
-    assert all(r.passes for r in run_alternative_x_values())
+    assert_all_pass(run_alternative_x_values())
 
 
-@pytest.mark.theory
 def test_cross_force_k() -> None:
     results = run_cross_force_k()
     # M_P has ~0.1% uncertainty -- K=1,3 may still pass within 3sigma.
     # The sharp tests are alpha_inv, mp_me, sin2_theta12.
     sharp = [r for r in results if "M_P" not in r.name]
-    assert all(r.passes for r in sharp)
+    assert_all_pass(sharp)
 
 
-@pytest.mark.theory
 def test_correction_convergence() -> None:
-    assert all(r.passes for r in run_correction_convergence())
+    assert_all_pass(run_correction_convergence())
 
 
-@pytest.mark.theory
 def test_sign_rule() -> None:
-    assert all(r.passes for r in run_sign_rule())
+    assert_all_pass(run_sign_rule())
 
 
-@pytest.mark.theory
 def test_accumulated_e2() -> None:
-    assert all(r.passes for r in run_accumulated_e2())
+    assert_all_pass(run_accumulated_e2())
 
 
-@pytest.mark.theory
 def test_correction_pattern() -> None:
-    assert all(r.passes for r in run_correction_pattern())
+    assert_all_pass(run_correction_pattern())
 
 
-@pytest.mark.theory
 def test_kx_multiplicative() -> None:
-    assert all(r.passes for r in run_kx_multiplicative())
+    assert_all_pass(run_kx_multiplicative())

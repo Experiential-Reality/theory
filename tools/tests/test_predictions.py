@@ -3,9 +3,10 @@
 import math
 
 import numpy as np
-import pytest
 
 import tools.bld
+
+from helpers import assert_all_pass, assert_none_pass
 
 
 # ---------------------------------------------------------------------------
@@ -344,91 +345,69 @@ def run_generational_g2_hierarchy() -> list[tools.bld.TestResult]:
 # ---------------------------------------------------------------------------
 
 
-@pytest.mark.theory
 def test_constant_identities() -> None:
-    assert all(p.passes for p in run_constant_identities())
+    assert_all_pass(run_constant_identities())
 
 
-@pytest.mark.theory
 def test_fine_structure() -> None:
-    assert all(p.passes for p in run_fine_structure())
+    assert_all_pass(run_fine_structure())
 
 
-@pytest.mark.theory
 def test_lepton_ratios() -> None:
-    assert all(p.passes for p in run_lepton_ratios())
+    assert_all_pass(run_lepton_ratios())
 
 
-@pytest.mark.theory
 def test_nucleon_ratio() -> None:
-    assert all(p.passes for p in run_nucleon_ratio())
+    assert_all_pass(run_nucleon_ratio())
 
 
-@pytest.mark.theory
 def test_neutrino_mixing() -> None:
-    assert all(p.passes for p in run_neutrino_mixing())
+    assert_all_pass(run_neutrino_mixing())
 
 
-@pytest.mark.theory
 def test_muon_g2() -> None:
-    assert all(p.passes for p in run_muon_g2())
+    assert_all_pass(run_muon_g2())
 
 
-@pytest.mark.theory
 def test_neutron_lifetime() -> None:
-    assert all(p.passes for p in run_neutron_lifetime())
+    assert_all_pass(run_neutron_lifetime())
 
 
-@pytest.mark.theory
 def test_planck_mass() -> None:
-    assert all(p.passes for p in run_planck_mass())
+    assert_all_pass(run_planck_mass())
 
 
-@pytest.mark.theory
 def test_higgs_mass() -> None:
-    assert all(p.passes for p in run_higgs_mass())
+    assert_all_pass(run_higgs_mass())
 
 
-@pytest.mark.theory
 def test_constant_uniqueness() -> None:
     true_result, perturbations = run_constant_uniqueness()
     assert true_result.passes
-    assert all(not p.passes for p in perturbations)
+    assert_none_pass(perturbations)
 
 
-@pytest.mark.theory
 def test_wrong_integers() -> None:
     correct, wrong = run_wrong_integers()
-    assert all(c.passes for c in correct)
-    assert all(not w.passes for w in wrong)
+    assert_all_pass(correct)
+    assert_none_pass(wrong)
 
 
-@pytest.mark.theory
 def test_cross_prediction_consistency() -> None:
-    results = run_cross_prediction_consistency()
-    assert all(r.passes for r in results), [
-        (r.name, r.value) for r in results if not r.passes
-    ]
+    assert_all_pass(run_cross_prediction_consistency())
 
 
-@pytest.mark.theory
 def test_correction_hierarchy() -> None:
-    results = run_correction_hierarchy()
-    assert all(r.passes for r in results), [r.name for r in results if not r.passes]
+    assert_all_pass(run_correction_hierarchy())
 
 
-@pytest.mark.theory
 def test_cabibbo_angle() -> None:
-    assert all(p.passes for p in run_cabibbo_angle())
+    assert_all_pass(run_cabibbo_angle())
 
 
-@pytest.mark.theory
 def test_electron_g2() -> None:
-    results = run_electron_g2()
-    assert all(r.passes for r in results), [r.name for r in results if not r.passes]
+    assert_all_pass(run_electron_g2())
 
 
-@pytest.mark.theory
 def test_generational_g2_hierarchy() -> None:
-    results = run_generational_g2_hierarchy()
-    assert all(r.passes for r in results), [r.name for r in results if not r.passes]
+    assert_all_pass(run_generational_g2_hierarchy())

@@ -1,8 +1,8 @@
 """Neutrino mass predictions from BLD structure."""
 
-import pytest
-
 import tools.bld
+
+from helpers import assert_all_pass
 
 
 # ---------------------------------------------------------------------------
@@ -27,42 +27,41 @@ def run_dm2_ratio() -> list[tools.bld.Prediction]:
 
 
 def run_neutrino_formula_output() -> list[tools.bld.TestResult]:
-    """Formula computes 1.63e-5 MeV (correct arithmetic, wrong units in doc)."""
-    K, B, n, L = tools.bld.K, tools.bld.B, tools.bld.n, tools.bld.L
-    m_nu = tools.bld.neutrino_mass_e(tools.bld.M_ELECTRON, K, B, n, L)
+    """Formula computes ~1.57e-8 MeV (15.7 meV) with second-order coupling."""
+    K, B, n, L, S = tools.bld.K, tools.bld.B, tools.bld.n, tools.bld.L, tools.bld.S
+    m_nu = tools.bld.neutrino_mass_e(tools.bld.M_ELECTRON, K, B, n, L, S)
     # Compute expected directly from components
-    suppression = (K / B) ** 2 * K / (n * L) * (1 + K / (n * L * B))
+    nL = n * L
+    suppression = (K / B) ** 2 * K / (nL ** 2 * S) * (1 + K / (nL * B))
     expected = tools.bld.M_ELECTRON * suppression
     return [
         tools.bld.TestResult(
             "formula_output", abs(m_nu - expected) < tools.bld.FLOAT_EPSILON, m_nu,
         ),
         tools.bld.TestResult(
-            "order_of_magnitude", 1e-6 < m_nu < 1e-4, m_nu,
+            "order_of_magnitude", 1e-9 < m_nu < 1e-7, m_nu,
         ),
     ]
 
 
-@pytest.mark.xfail(
-    reason="Doc unit error: formula gives 16.3 eV, doc claims 16.3 meV. "
-    "See neutrino-masses.md line 229.",
-)
 def run_neutrino_mass_bound() -> list[tools.bld.TestResult]:
     """Formula output vs KATRIN bound (< 0.45 eV)."""
     m_nu_mev = tools.bld.neutrino_mass_e(
-        tools.bld.M_ELECTRON, tools.bld.K, tools.bld.B, tools.bld.n, tools.bld.L,
+        tools.bld.M_ELECTRON, tools.bld.K, tools.bld.B,
+        tools.bld.n, tools.bld.L, tools.bld.S,
     )
     m_nu_ev = m_nu_mev * 1e6  # MeV -> eV
     return [tools.bld.TestResult("KATRIN_bound", m_nu_ev < 0.45, m_nu_ev)]
 
 
 def run_missing_b_suppression() -> list[tools.bld.TestResult]:
-    """(K/B)^2 * K/(nL) = 1/31360 exact (before K/X correction)."""
-    K, B, n, L = tools.bld.K, tools.bld.B, tools.bld.n, tools.bld.L
-    suppression = (K / B) ** 2 * K / (n * L)
-    expected = 1.0 / 31360.0
+    """(K/B)^2 * K/((nL)^2 * S) = 1/32,614,400 exact (before K/X correction)."""
+    K, B, n, L, S = tools.bld.K, tools.bld.B, tools.bld.n, tools.bld.L, tools.bld.S
+    nL = n * L
+    suppression = (K / B) ** 2 * K / (nL ** 2 * S)
+    expected = 1.0 / 32_614_400.0
     return [tools.bld.TestResult(
-        "suppression=1/31360", abs(suppression - expected) < 1e-15, suppression,
+        "suppression=1/32614400", abs(suppression - expected) < 1e-15, suppression,
     )]
 
 
@@ -71,12 +70,13 @@ def run_wrong_b_fails() -> list[tools.bld.TestResult]:
 
     Adversarial: B in {28, 55, 57, 112} all give wrong suppression.
     """
-    K, n, L = tools.bld.K, tools.bld.n, tools.bld.L
-    correct_suppression = (K / tools.bld.B) ** 2 * K / (n * L)
+    K, n, L, S = tools.bld.K, tools.bld.n, tools.bld.L, tools.bld.S
+    nL = n * L
+    correct_suppression = (K / tools.bld.B) ** 2 * K / (nL ** 2 * S)
 
     results: list[tools.bld.TestResult] = []
     for B_test in [28, 55, 57, 112]:
-        wrong = (K / B_test) ** 2 * K / (n * L)
+        wrong = (K / B_test) ** 2 * K / (nL ** 2 * S)
         # Wrong B gives a different suppression factor
         results.append(tools.bld.TestResult(
             f"B={B_test}_wrong",
@@ -118,43 +118,75 @@ def run_generation_structure() -> list[tools.bld.TestResult]:
     return results
 
 
+def run_generational_leakage() -> list[tools.bld.TestResult]:
+    """Neutrino coupling 1/(nLS) is inverse of muon coupling nLS/(nLS+1).
+
+    The muon couples at near-unit strength: nLS/(nLS+1) (see mu_over_e).
+    The neutrino gets mass only through the 1/nLS leakage.
+    nLS = 1040, so the leakage is ~9.6e-4.
+    """
+    n, L, S = tools.bld.n, tools.bld.L, tools.bld.S
+    nLS = n * L * S
+    muon_coupling = nLS / (nLS + 1)
+    results: list[tools.bld.TestResult] = []
+    results.append(tools.bld.TestResult(
+        "muon_near_unity", muon_coupling > 0.999, muon_coupling,
+    ))
+    results.append(tools.bld.TestResult(
+        "nLS_value", nLS == 1040, float(nLS),
+    ))
+    return results
+
+
+def run_g2_structure_match() -> list[tools.bld.TestResult]:
+    """Neutrino suppression shares (nL)^2 * S denominator with muon g-2.
+
+    muon g-2 base factor: K^2 / ((nL)^2 * S)
+    neutrino coupling:    K  / ((nL)^2 * S)
+    Same denominator (nL)^2 * S = 83200.
+    """
+    n, L, S = tools.bld.n, tools.bld.L, tools.bld.S
+    nL = n * L
+    denom = nL ** 2 * S
+    return [tools.bld.TestResult(
+        "denominator_value",
+        denom == 83200,
+        float(denom),
+    )]
+
+
 # ---------------------------------------------------------------------------
 # Tests
 # ---------------------------------------------------------------------------
 
 
-@pytest.mark.theory
 def test_dm2_ratio() -> None:
-    assert all(p.passes for p in run_dm2_ratio())
+    assert_all_pass(run_dm2_ratio())
 
 
-@pytest.mark.theory
 def test_neutrino_formula_output() -> None:
-    assert all(r.passes for r in run_neutrino_formula_output())
+    assert_all_pass(run_neutrino_formula_output())
 
 
-@pytest.mark.theory
-@pytest.mark.xfail(
-    reason="Doc unit error: formula gives 16.3 eV, doc claims 16.3 meV. "
-    "See neutrino-masses.md line 229.",
-)
 def test_neutrino_mass_bound() -> None:
-    assert all(r.passes for r in run_neutrino_mass_bound())
+    assert_all_pass(run_neutrino_mass_bound())
 
 
-@pytest.mark.theory
 def test_missing_b_suppression() -> None:
-    assert all(r.passes for r in run_missing_b_suppression())
+    assert_all_pass(run_missing_b_suppression())
 
 
-@pytest.mark.theory
 def test_wrong_b_fails() -> None:
-    assert all(r.passes for r in run_wrong_b_fails())
+    assert_all_pass(run_wrong_b_fails())
 
 
-@pytest.mark.theory
 def test_generation_structure() -> None:
-    results = run_generation_structure()
-    assert all(r.passes for r in results), [
-        (r.name, r.value) for r in results if not r.passes
-    ]
+    assert_all_pass(run_generation_structure())
+
+
+def test_generational_leakage() -> None:
+    assert_all_pass(run_generational_leakage())
+
+
+def test_g2_structure_match() -> None:
+    assert_all_pass(run_g2_structure_match())

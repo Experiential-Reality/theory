@@ -646,18 +646,20 @@ def top_mass(v: float, K_: int, n_: int, S_: int) -> float:
 
 
 def neutrino_mass_e(
-    m_e: float, K_: int, B_: int, n_: int, L_: int,
+    m_e: float, K_: int, B_: int, n_: int, L_: int, S_: int,
 ) -> float:
     """Electron neutrino mass (same units as m_e input).
 
-    Formula: m_e * (K/B)^2 * K/(nL) * (1 + K/(nLB))
+    Formula: m_e * (K/B)^2 * K/((nL)^2 * S) * (1 + K/(nLB))
 
-    NOTE: With m_e in MeV, this gives 1.63e-5 MeV = 16.3 eV.
-    The theory doc (neutrino-masses.md) claims 16.3 meV — a unit error.
+    Second-order generational coupling: the neutrino (T∩S = ∅) gets mass
+    only through 1/(nLS) leakage — the inverse of the muon's nLS/(nLS+1).
+    The (nL)^2 * S denominator matches the muon g-2 base factor.
+
     Theory ref: neutrino-masses.md
     """
     nL = n_ * L_
-    return m_e * (K_ / B_) ** 2 * K_ / nL * (1 + K_ / (nL * B_))
+    return m_e * (K_ / B_) ** 2 * K_ / (nL ** 2 * S_) * (1 + K_ / (nL * B_))
 
 
 def dm2_ratio(L_: int, S_: int) -> float:

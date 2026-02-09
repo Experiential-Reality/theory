@@ -14,9 +14,10 @@ import fractions
 import math
 
 import numpy as np
-import pytest
 
 import tools.bld
+
+from helpers import assert_all_pass
 
 
 TR = tools.bld.TestResult
@@ -397,45 +398,33 @@ def run_classical_wrong_constants() -> list[TR]:
 # ---------------------------------------------------------------------------
 
 
-@pytest.mark.theory
 def test_reynolds_pipe() -> None:
-    results = run_reynolds_pipe()
-    assert all(r.passes for r in results)
+    assert_all_pass(run_reynolds_pipe())
 
 
-@pytest.mark.theory
 def test_reynolds_geometries() -> None:
-    assert all(r.passes for r in run_reynolds_geometries())
+    assert_all_pass(run_reynolds_geometries())
 
 
-@pytest.mark.theory
 def test_kolmogorov_exponents() -> None:
-    assert all(r.passes for r in run_kolmogorov_exponents())
+    assert_all_pass(run_kolmogorov_exponents())
 
 
-@pytest.mark.theory
 def test_feigenbaum_delta() -> None:
-    results = run_feigenbaum_delta()
-    assert all(r.passes for r in results)
+    assert_all_pass(run_feigenbaum_delta())
 
 
-@pytest.mark.theory
 def test_feigenbaum_alpha() -> None:
-    results = run_feigenbaum_alpha()
-    assert all(r.passes for r in results)
+    assert_all_pass(run_feigenbaum_alpha())
 
 
-@pytest.mark.theory
 def test_she_leveque() -> None:
-    results = run_she_leveque()
-    assert all(r.passes for r in results)
+    assert_all_pass(run_she_leveque())
 
 
-@pytest.mark.theory
 def test_she_leveque_zeta3_forced() -> None:
-    assert all(r.passes for r in run_she_leveque_zeta3_forced())
+    assert_all_pass(run_she_leveque_zeta3_forced())
 
 
-@pytest.mark.theory
 def test_classical_wrong_constants() -> None:
-    assert all(r.passes for r in run_classical_wrong_constants())
+    assert_all_pass(run_classical_wrong_constants())

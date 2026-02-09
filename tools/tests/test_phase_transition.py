@@ -5,9 +5,10 @@ import dataclasses
 import os
 
 import numpy as np
-import pytest
 import scipy.sparse
 import scipy.sparse.csgraph
+
+from helpers import assert_all_pass
 
 # ---------------------------------------------------------------------------
 # Constants
@@ -519,49 +520,30 @@ def run_wrong_link_definition(
 # ---------------------------------------------------------------------------
 
 
-@pytest.mark.theory
 def test_finite_size_scaling(rng: np.random.Generator) -> None:
-    assert all(
-        r.passes for r in run_finite_size_scaling(rng)
-    )
+    assert_all_pass(run_finite_size_scaling(rng))
 
 
-@pytest.mark.theory
 def test_bld_link_divergence(rng: np.random.Generator) -> None:
-    assert all(
-        r.passes for r in run_bld_link_divergence(rng)
-    )
+    assert_all_pass(run_bld_link_divergence(rng))
 
 
-@pytest.mark.theory
 def test_binder_crossing(rng: np.random.Generator) -> None:
-    assert all(
-        r.passes for r in run_binder_crossing(rng)
-    )
+    assert_all_pass(run_binder_crossing(rng))
 
 
-@pytest.mark.theory
 def test_dl_interplay(rng: np.random.Generator) -> None:
-    assert all(
-        r.passes for r in run_dl_interplay(rng)
-    )
+    assert_all_pass(run_dl_interplay(rng))
 
 
-@pytest.mark.theory
 def test_nn_link_profile(rng: np.random.Generator) -> None:
-    assert all(
-        r.passes for r in run_nn_link_profile(rng)
-    )
+    assert_all_pass(run_nn_link_profile(rng))
 
 
-@pytest.mark.theory
 def test_3d_ising(rng: np.random.Generator) -> None:
-    assert all(
-        r.passes for r in run_3d_ising(rng)
-    )
+    assert_all_pass(run_3d_ising(rng))
 
 
-@pytest.mark.theory
 def test_wrong_link_definition(rng: np.random.Generator) -> None:
     results = run_wrong_link_definition(rng)
     assert all(r.passes for r in results), [

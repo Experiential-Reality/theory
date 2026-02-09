@@ -2,6 +2,8 @@
 
 import tools.bld
 
+from helpers import assert_all_pass
+
 
 # ---------------------------------------------------------------------------
 # Run functions
@@ -189,62 +191,41 @@ def run_kx_hierarchy() -> list[tools.bld.TestResult]:
 # Tests
 # ---------------------------------------------------------------------------
 
-import pytest
-
-
-@pytest.mark.theory
 def test_strange_mass() -> None:
-    assert all(p.passes for p in run_strange_mass())
+    assert_all_pass(run_strange_mass())
 
 
-@pytest.mark.theory
 def test_down_mass() -> None:
-    assert all(p.passes for p in run_down_mass())
+    assert_all_pass(run_down_mass())
 
 
-@pytest.mark.theory
 def test_up_mass() -> None:
-    assert all(p.passes for p in run_up_mass())
+    assert_all_pass(run_up_mass())
 
 
-@pytest.mark.theory
 def test_charm_mass() -> None:
-    assert all(p.passes for p in run_charm_mass())
+    assert_all_pass(run_charm_mass())
 
 
-@pytest.mark.theory
 def test_bottom_mass() -> None:
-    assert all(p.passes for p in run_bottom_mass())
+    assert_all_pass(run_bottom_mass())
 
 
-@pytest.mark.theory
 def test_top_mass() -> None:
-    assert all(p.passes for p in run_top_mass())
+    assert_all_pass(run_top_mass())
 
 
-@pytest.mark.theory
 def test_quark_chain() -> None:
-    results = run_quark_chain()
-    assert all(r.passes for r in results), [
-        (r.name, r.value) for r in results if not r.passes
-    ]
+    assert_all_pass(run_quark_chain())
 
 
-@pytest.mark.theory
 def test_wrong_constants() -> None:
-    results = run_wrong_constants()
-    assert all(r.passes for r in results), [
-        (r.name, r.value) for r in results if not r.passes
-    ]
+    assert_all_pass(run_wrong_constants())
 
 
-@pytest.mark.theory
 def test_confinement_cost() -> None:
-    results = run_confinement_cost()
-    assert all(r.passes for r in results), [r.name for r in results if not r.passes]
+    assert_all_pass(run_confinement_cost())
 
 
-@pytest.mark.theory
 def test_kx_hierarchy() -> None:
-    results = run_kx_hierarchy()
-    assert all(r.passes for r in results), [r.name for r in results if not r.passes]
+    assert_all_pass(run_kx_hierarchy())

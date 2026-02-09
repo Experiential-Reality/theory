@@ -29,12 +29,9 @@ dev = [
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["tests"]
 asyncio_mode = "auto"
 addopts = ["-n", "auto"]
-markers = [
-    "theory: BLD theory verification (selection rule, observer, math, physical)",
-    "project: project tooling tests (link checker)",
-]
 
 [tool.mypy]
 python_version = "3.11"

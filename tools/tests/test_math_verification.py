@@ -3,11 +3,12 @@
 import itertools
 
 import numpy as np
-import pytest
 import scipy.stats
 
 import tools.bld
 import tools.quantum
+
+from helpers import assert_all_pass
 
 
 def run_degenerate_amplitudes(rng: np.random.Generator) -> list[tools.quantum.StatTest]:
@@ -525,73 +526,57 @@ def run_non_reciprocal_selection_fails(
 # ---------------------------------------------------------------------------
 
 
-@pytest.mark.theory
 def test_degenerate_amplitudes(rng: np.random.Generator) -> None:
-    assert all(t.passes for t in run_degenerate_amplitudes(rng))
+    assert_all_pass(run_degenerate_amplitudes(rng))
 
 
-@pytest.mark.theory
 def test_m_equals_n(rng: np.random.Generator) -> None:
-    assert all(t.passes for t in run_m_equals_n(rng))
+    assert_all_pass(run_m_equals_n(rng))
 
 
-@pytest.mark.theory
 def test_complex_phases(rng: np.random.Generator) -> None:
-    assert all(t.passes for t in run_complex_phases(rng))
+    assert_all_pass(run_complex_phases(rng))
 
 
-@pytest.mark.theory
 def test_nonorthogonal_pointers(rng: np.random.Generator) -> None:
-    assert all(t.passes for t in run_nonorthogonal_pointers(rng))
+    assert_all_pass(run_nonorthogonal_pointers(rng))
 
 
-@pytest.mark.theory
 def test_large_m(rng: np.random.Generator) -> None:
-    assert all(t.passes for t in run_large_m(rng))
+    assert_all_pass(run_large_m(rng))
 
 
-@pytest.mark.theory
 def test_dirichlet_decomposition(rng: np.random.Generator) -> None:
-    assert all(t.passes for t in run_dirichlet_decomposition(rng))
+    assert_all_pass(run_dirichlet_decomposition(rng))
 
 
-@pytest.mark.theory
 def test_tau_uniqueness(rng: np.random.Generator) -> None:
-    assert all(t.passes for t in run_tau_uniqueness(rng))
+    assert_all_pass(run_tau_uniqueness(rng))
 
 
-@pytest.mark.theory
 def test_joint_measurement(rng: np.random.Generator) -> None:
-    assert all(t.passes for t in run_joint_measurement(rng))
+    assert_all_pass(run_joint_measurement(rng))
 
 
-@pytest.mark.theory
 def test_m2_symmetry(rng: np.random.Generator) -> None:
-    assert all(t.passes for t in run_m2_symmetry(rng))
+    assert_all_pass(run_m2_symmetry(rng))
 
 
-@pytest.mark.theory
 def test_m2_product_ratio_proof(rng: np.random.Generator) -> None:
-    assert all(t.passes for t in run_m2_product_ratio_proof(rng))
+    assert_all_pass(run_m2_product_ratio_proof(rng))
 
 
-@pytest.mark.theory
 def test_factored_observer_analytical(rng: np.random.Generator) -> None:
-    assert all(t.passes for t in run_factored_observer_analytical(rng))
+    assert_all_pass(run_factored_observer_analytical(rng))
 
 
-@pytest.mark.theory
 def test_nonorthogonal_analytical(rng: np.random.Generator) -> None:
-    assert all(t.passes for t in run_nonorthogonal_analytical(rng))
+    assert_all_pass(run_nonorthogonal_analytical(rng))
 
 
-@pytest.mark.theory
 def test_wrong_noise_distribution(rng: np.random.Generator) -> None:
-    results = run_wrong_noise_distribution(rng)
-    assert all(r.passes for r in results), [r.name for r in results if not r.passes]
+    assert_all_pass(run_wrong_noise_distribution(rng))
 
 
-@pytest.mark.theory
 def test_non_reciprocal_selection_fails(rng: np.random.Generator) -> None:
-    results = run_non_reciprocal_selection_fails(rng)
-    assert all(r.passes for r in results), [r.name for r in results if not r.passes]
+    assert_all_pass(run_non_reciprocal_selection_fails(rng))

@@ -13,7 +13,8 @@ import dataclasses
 import itertools
 
 import numpy as np
-import pytest
+
+from helpers import assert_all_pass
 
 
 @dataclasses.dataclass(slots=True, frozen=True)
@@ -295,68 +296,9 @@ def run_g2_dimension() -> list[AlgebraResult]:
     The derivation condition for all (i,j) pairs gives a linear system.
     The solution space dimension = dim(G2) = 14.
     """
-    # D is a 7x7 matrix: D[a,b] = coefficient of e_{b+1} in D(e_{a+1})
-    # We flatten to 49 unknowns.
-    n_unknowns = 49
-    equations = []
-
-    # For each pair (i,j) with i,j in 1..7:
-    # D(e_i * e_j) = D(e_i) * e_j + e_i * D(e_j)
-    # This gives a 8-component vector equation.
-    # Since D maps Im->Im and preserves Re (D(1)=0), we only need
-    # components 0..7 of the constraint.
-    for i in range(1, 8):
-        for j in range(1, 8):
-            # e_i * e_j = sum_k _STRUCT[i,j,k] * e_k
-            # LHS: D(e_i * e_j) = sum_k _STRUCT[i,j,k] * D(e_k)
-            # For k=0: D(e_0) = 0.  For k>=1: D(e_k) = sum_a D[k-1,a] * e_{a+1}
-            # RHS: D(e_i)*e_j + e_i*D(e_j)
-            # D(e_i) = sum_a D[i-1,a] * e_{a+1}
-            # D(e_i)*e_j = sum_a D[i-1,a] * _STRUCT[a+1,j,:]
-            # Similarly for e_i*D(e_j)
-
-            for out_comp in range(8):
-                # Coefficient of e_{out_comp} in the equation
-                row = np.zeros(n_unknowns)
-
-                # LHS: sum_k _STRUCT[i,j,k] * D(e_k)[out_comp]
-                for k in range(1, 8):
-                    coeff = _STRUCT[i, j, k]
-                    if abs(coeff) < 1e-15:
-                        continue
-                    # D(e_k)[out_comp]: if out_comp == 0, D maps to Im only, so 0
-                    # D(e_k) = sum_{a=0..6} D[k-1, a] * e_{a+1}
-                    # Component out_comp of D(e_k) = D[k-1, out_comp-1] if out_comp >= 1
-                    if out_comp >= 1:
-                        # D[k-1, out_comp-1] is unknowns[(k-1)*7 + (out_comp-1)]
-                        row[(k - 1) * 7 + (out_comp - 1)] += coeff
-
-                # RHS term 1: D(e_i) * e_j
-                # D(e_i) = sum_{a=0..6} D[i-1,a] * e_{a+1}
-                # D(e_i)*e_j = sum_a D[i-1,a] * (e_{a+1} * e_j)
-                # Component out_comp of (e_{a+1} * e_j) = _STRUCT[a+1, j, out_comp]
-                for a in range(7):
-                    sc = _STRUCT[a + 1, j, out_comp]
-                    if abs(sc) < 1e-15:
-                        continue
-                    row[(i - 1) * 7 + a] -= sc
-
-                # RHS term 2: e_i * D(e_j)
-                # D(e_j) = sum_{a=0..6} D[j-1,a] * e_{a+1}
-                # e_i * D(e_j) = sum_a D[j-1,a] * (e_i * e_{a+1})
-                for a in range(7):
-                    sc = _STRUCT[i, a + 1, out_comp]
-                    if abs(sc) < 1e-15:
-                        continue
-                    row[(j - 1) * 7 + a] -= sc
-
-                if np.any(np.abs(row) > 1e-15):
-                    equations.append(row)
-
-    A = np.array(equations)
-    # Nullity = 49 - rank(A)
+    A = _octonion_derivation_matrix()
     rank = int(np.linalg.matrix_rank(A, tol=1e-10))
-    nullity = n_unknowns - rank
+    nullity = 49 - rank
 
     return [AlgebraResult("dim_G2", float(nullity), nullity == 14)]
 
@@ -366,44 +308,16 @@ def run_su3_from_g2() -> list[AlgebraResult]:
 
     This is how color symmetry emerges: fixing a reference in G2 gives SU(3).
     """
-    n_unknowns = 49
-    equations = []
-
-    # Same derivation equations as G2
-    for i in range(1, 8):
-        for j in range(1, 8):
-            for out_comp in range(8):
-                row = np.zeros(n_unknowns)
-                for k in range(1, 8):
-                    coeff = _STRUCT[i, j, k]
-                    if abs(coeff) < 1e-15:
-                        continue
-                    if out_comp >= 1:
-                        row[(k - 1) * 7 + (out_comp - 1)] += coeff
-                for a in range(7):
-                    sc = _STRUCT[a + 1, j, out_comp]
-                    if abs(sc) < 1e-15:
-                        continue
-                    row[(i - 1) * 7 + a] -= sc
-                for a in range(7):
-                    sc = _STRUCT[i, a + 1, out_comp]
-                    if abs(sc) < 1e-15:
-                        continue
-                    row[(j - 1) * 7 + a] -= sc
-                if np.any(np.abs(row) > 1e-15):
-                    equations.append(row)
-
-    # Additional constraint: D(e_1) = 0
-    # D[0, a] = 0 for all a in 0..6
-    # That's unknowns[0*7+0], [0*7+1], ..., [0*7+6]
+    # Start with G2 derivation equations, then add stabiliser constraint
+    base_rows = _octonion_derivation_matrix()
+    # Additional constraint: D(e_1) = 0  =>  D[0, a] = 0 for a in 0..6
+    fix_rows = np.zeros((7, 49))
     for a in range(7):
-        row = np.zeros(n_unknowns)
-        row[a] = 1.0
-        equations.append(row)
+        fix_rows[a, a] = 1.0
 
-    A = np.array(equations)
+    A = np.vstack([base_rows, fix_rows])
     rank = int(np.linalg.matrix_rank(A, tol=1e-10))
-    nullity = n_unknowns - rank
+    nullity = 49 - rank
 
     return [AlgebraResult("dim_SU3_stabiliser", float(nullity), nullity == 8)]
 
@@ -681,46 +595,37 @@ def run_stabilizer_equivariance() -> list[AlgebraResult]:
 # ---------------------------------------------------------------------------
 
 
-@pytest.mark.theory
 def test_octonion_norm(rng: np.random.Generator) -> None:
-    assert all(r.passes for r in run_octonion_norm(rng))
+    assert_all_pass(run_octonion_norm(rng))
 
 
-@pytest.mark.theory
 def test_octonion_nonassociative(rng: np.random.Generator) -> None:
-    assert all(r.passes for r in run_octonion_nonassociative(rng))
+    assert_all_pass(run_octonion_nonassociative(rng))
 
 
-@pytest.mark.theory
 def test_division_algebra_boundary(rng: np.random.Generator) -> None:
-    assert all(r.passes for r in run_division_algebra_boundary(rng))
+    assert_all_pass(run_division_algebra_boundary(rng))
 
 
-@pytest.mark.theory
 def test_g2_dimension() -> None:
-    assert all(r.passes for r in run_g2_dimension())
+    assert_all_pass(run_g2_dimension())
 
 
-@pytest.mark.theory
 def test_su3_from_g2() -> None:
-    assert all(r.passes for r in run_su3_from_g2())
+    assert_all_pass(run_su3_from_g2())
 
 
-@pytest.mark.theory
 def test_d4_triality() -> None:
-    assert all(r.passes for r in run_d4_triality())
+    assert_all_pass(run_d4_triality())
 
 
-@pytest.mark.theory
 def test_spacetime_dimension() -> None:
-    assert all(r.passes for r in run_spacetime_dimension())
+    assert_all_pass(run_spacetime_dimension())
 
 
-@pytest.mark.theory
 def test_quaternion_insufficiency() -> None:
-    assert all(r.passes for r in run_quaternion_insufficiency())
+    assert_all_pass(run_quaternion_insufficiency())
 
 
-@pytest.mark.theory
 def test_stabilizer_equivariance() -> None:
-    assert all(r.passes for r in run_stabilizer_equivariance())
+    assert_all_pass(run_stabilizer_equivariance())

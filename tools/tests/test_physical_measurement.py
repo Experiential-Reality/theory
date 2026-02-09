@@ -5,11 +5,12 @@ import dataclasses
 import os
 
 import numpy as np
-import pytest
 import scipy.linalg
 
 import tools.bld
 import tools.quantum
+
+from helpers import assert_all_pass
 
 
 @dataclasses.dataclass(slots=True, frozen=True)
@@ -122,7 +123,5 @@ def run_simulation(rng: np.random.Generator) -> list[SimPoint]:
 # ---------------------------------------------------------------------------
 
 
-@pytest.mark.theory
 def test_physical_simulation(rng: np.random.Generator) -> None:
-    results = run_simulation(rng)
-    assert all(r.passes for r in results)
+    assert_all_pass(run_simulation(rng))

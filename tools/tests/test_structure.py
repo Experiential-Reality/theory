@@ -13,9 +13,9 @@ Theory refs:
 
 import math
 
-import pytest
-
 import tools.bld
+
+from helpers import assert_all_pass, assert_none_pass
 
 
 TR = tools.bld.TestResult
@@ -290,40 +290,32 @@ def run_lambda_uniqueness() -> list[tools.bld.Prediction]:
 # ---------------------------------------------------------------------------
 
 
-@pytest.mark.theory
 def test_mode_count() -> None:
-    assert all(r.passes for r in run_mode_count())
+    assert_all_pass(run_mode_count())
 
 
-@pytest.mark.theory
 def test_ld_cardinality_collapse() -> None:
     results = run_ld_cardinality_collapse()
     assert len(results) > 100  # enough types enumerated
-    assert all(r.passes for r in results)
+    assert_all_pass(results)
 
 
-@pytest.mark.theory
 def test_constant_rigidity() -> None:
-    assert all(r.passes for r in run_constant_rigidity())
+    assert_all_pass(run_constant_rigidity())
 
 
-@pytest.mark.theory
 def test_alternative_137() -> None:
-    assert all(r.passes for r in run_alternative_137())
+    assert_all_pass(run_alternative_137())
 
 
-@pytest.mark.theory
 def test_broken_k() -> None:
-    results = run_broken_k()
-    assert all(not p.passes for p in results)
+    assert_none_pass(run_broken_k())
 
 
-@pytest.mark.theory
 def test_broken_n() -> None:
-    assert all(not p.passes for p in run_broken_n())
+    assert_none_pass(run_broken_n())
 
 
-@pytest.mark.theory
 def test_lambda_uniqueness() -> None:
     results = run_lambda_uniqueness()
     for r in results:

@@ -8,11 +8,12 @@ disprove the claim.
 import dataclasses
 
 import numpy as np
-import pytest
 import scipy.linalg
 
 import tools.bld
 import tools.quantum
+
+from helpers import assert_all_pass
 
 
 # ---------------------------------------------------------------------------
@@ -553,51 +554,41 @@ def run_irreversibility_reconstruction(rng: np.random.Generator) -> list[Irrever
 # ---------------------------------------------------------------------------
 
 
-@pytest.mark.theory
 def test_no_cloning(rng: np.random.Generator) -> None:
-    assert all(r.passes for r in run_no_cloning(rng))
+    assert_all_pass(run_no_cloning(rng))
 
 
-@pytest.mark.theory
 def test_no_cloning_unitary(rng: np.random.Generator) -> None:
-    assert all(r.passes for r in run_no_cloning_unitary_test(rng))
+    assert_all_pass(run_no_cloning_unitary_test(rng))
 
 
-@pytest.mark.theory
 def test_no_communication(rng: np.random.Generator) -> None:
-    assert all(r.passes for r in run_no_communication(rng))
+    assert_all_pass(run_no_communication(rng))
 
 
-@pytest.mark.theory
 def test_no_communication_higher_dim(rng: np.random.Generator) -> None:
-    assert all(r.passes for r in run_no_communication_higher_dim(rng))
+    assert_all_pass(run_no_communication_higher_dim(rng))
 
 
-@pytest.mark.theory
 def test_trotter_free_particle() -> None:
-    assert all(r.passes for r in run_trotter_free_particle())
+    assert_all_pass(run_trotter_free_particle())
 
 
-@pytest.mark.theory
 def test_trotter_harmonic() -> None:
-    assert all(r.passes for r in run_trotter_harmonic())
+    assert_all_pass(run_trotter_harmonic())
 
 
-@pytest.mark.theory
 def test_trotter_wrong_phase() -> None:
-    assert all(r.passes for r in run_trotter_wrong_phase())
+    assert_all_pass(run_trotter_wrong_phase())
 
 
-@pytest.mark.theory
 def test_many_to_one(rng: np.random.Generator) -> None:
-    assert all(r.passes for r in run_many_to_one(rng))
+    assert_all_pass(run_many_to_one(rng))
 
 
-@pytest.mark.theory
 def test_info_loss(rng: np.random.Generator) -> None:
-    assert all(r.passes for r in run_info_loss(rng))
+    assert_all_pass(run_info_loss(rng))
 
 
-@pytest.mark.theory
 def test_irreversibility_reconstruction(rng: np.random.Generator) -> None:
-    assert all(r.passes for r in run_irreversibility_reconstruction(rng))
+    assert_all_pass(run_irreversibility_reconstruction(rng))

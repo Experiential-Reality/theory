@@ -4,11 +4,12 @@ import enum
 import typing
 
 import numpy as np
-import pytest
 import scipy.stats
 
 import tools.bld
 import tools.quantum
+
+from helpers import assert_all_pass
 
 
 # ---------------------------------------------------------------------------
@@ -169,21 +170,17 @@ def run_independence_test(
 # ---------------------------------------------------------------------------
 
 
-@pytest.mark.theory
 def test_ratio_rule_born(rng: np.random.Generator) -> None:
-    assert all(t.passes for t in run_born_tests(rng))
+    assert_all_pass(run_born_tests(rng))
 
 
-@pytest.mark.theory
 def test_product_rule(rng: np.random.Generator) -> None:
-    assert all(t.passes for t in run_product_tests(rng))
+    assert_all_pass(run_product_tests(rng))
 
 
-@pytest.mark.theory
 def test_overlap_distribution(rng: np.random.Generator) -> None:
     assert run_overlap_distribution_test(rng).passes
 
 
-@pytest.mark.theory
 def test_independence(rng: np.random.Generator) -> None:
     assert run_independence_test(rng).passes

@@ -2,11 +2,7 @@
 
 import pathlib
 
-import pytest
-
 import tools.check_links
-
-pytestmark = pytest.mark.project
 
 
 class TestValidateAnchor:

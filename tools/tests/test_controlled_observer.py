@@ -3,11 +3,12 @@
 import dataclasses
 
 import numpy as np
-import pytest
 import scipy.stats
 
 import tools.bld
 import tools.quantum
+
+from helpers import assert_all_pass
 
 
 # ---------------------------------------------------------------------------
@@ -328,49 +329,36 @@ def run_bias_monotonicity(rng: np.random.Generator) -> list[tools.bld.TestResult
 # ---------------------------------------------------------------------------
 
 
-@pytest.mark.theory
 def test_determinism(rng: np.random.Generator) -> None:
     result = run_determinism(rng)
     assert result.passes
 
 
-@pytest.mark.theory
 def test_controlled_bias_m2(rng: np.random.Generator) -> None:
-    results = run_controlled_bias_m2(rng)
-    assert all(r.passes for r in results)
+    assert_all_pass(run_controlled_bias_m2(rng))
 
 
-@pytest.mark.theory
 def test_controlled_bias_m3(rng: np.random.Generator) -> None:
     result = run_controlled_bias_m3(rng)
     assert result.passes
 
 
-@pytest.mark.theory
 def test_regime_transition(rng: np.random.Generator) -> None:
-    results = run_regime_transition(rng)
-    assert all(r.passes for r in results)
+    assert_all_pass(run_regime_transition(rng))
 
 
-@pytest.mark.theory
 def test_finite_n_corrections(rng: np.random.Generator) -> None:
     result = run_finite_n_corrections(rng)
     assert result.passes
 
 
-@pytest.mark.theory
 def test_independence_scaling(rng: np.random.Generator) -> None:
-    results = run_independence_scaling(rng)
-    assert all(r.passes for r in results)
+    assert_all_pass(run_independence_scaling(rng))
 
 
-@pytest.mark.theory
 def test_wrong_rule_fails(rng: np.random.Generator) -> None:
-    results = run_wrong_rule_fails(rng)
-    assert all(r.passes for r in results), [r.name for r in results if not r.passes]
+    assert_all_pass(run_wrong_rule_fails(rng))
 
 
-@pytest.mark.theory
 def test_bias_monotonicity(rng: np.random.Generator) -> None:
-    results = run_bias_monotonicity(rng)
-    assert all(r.passes for r in results), [r.name for r in results if not r.passes]
+    assert_all_pass(run_bias_monotonicity(rng))

@@ -3,9 +3,10 @@
 import dataclasses
 
 import numpy as np
-import pytest
 
 import tools.bld
+
+from helpers import assert_all_pass
 SQRT2 = np.sqrt(2)
 
 
@@ -343,51 +344,41 @@ def run_schwarzschild_k() -> list[EntropyResult]:
 # ---------------------------------------------------------------------------
 
 
-@pytest.mark.theory
 def test_bell_states() -> None:
-    assert all(r.passes for r in run_bell_states())
+    assert_all_pass(run_bell_states())
 
 
-@pytest.mark.theory
 def test_ghz_states() -> None:
-    assert all(r.passes for r in run_ghz_states())
+    assert_all_pass(run_ghz_states())
 
 
-@pytest.mark.theory
 def test_w_states() -> None:
-    assert all(r.passes for r in run_w_states())
+    assert_all_pass(run_w_states())
 
 
-@pytest.mark.theory
 def test_lambda_sweep() -> None:
-    assert all(r.passes for r in run_lambda_sweep())
+    assert_all_pass(run_lambda_sweep())
 
 
-@pytest.mark.theory
 def test_concurrence_connection() -> None:
-    assert all(r.passes for r in run_concurrence_connection())
+    assert_all_pass(run_concurrence_connection())
 
 
-@pytest.mark.theory
 def test_h_non_negative(rng: np.random.Generator) -> None:
-    assert all(r.passes for r in run_h_non_negative(rng))
+    assert_all_pass(run_h_non_negative(rng))
 
 
-@pytest.mark.theory
 def test_k_uniqueness() -> None:
-    assert all(r.passes for r in run_k_uniqueness())
+    assert_all_pass(run_k_uniqueness())
 
 
-@pytest.mark.theory
 def test_wrong_link_function() -> None:
-    assert all(r.passes for r in run_wrong_link_function())
+    assert_all_pass(run_wrong_link_function())
 
 
-@pytest.mark.theory
 def test_bh_entropy_decomposition() -> None:
-    assert all(r.passes for r in run_bh_entropy_decomposition())
+    assert_all_pass(run_bh_entropy_decomposition())
 
 
-@pytest.mark.theory
 def test_schwarzschild_k() -> None:
-    assert all(r.passes for r in run_schwarzschild_k())
+    assert_all_pass(run_schwarzschild_k())
