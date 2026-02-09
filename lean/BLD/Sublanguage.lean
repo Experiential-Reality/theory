@@ -160,4 +160,21 @@ theorem bl_not_prod {n : Nat} {t : Ty} : ¬ IsBL (.prod n t) := fun h => nomatch
 theorem unit_in_all : IsLD .unit ∧ IsBD .unit ∧ IsBL .unit :=
   ⟨.unit, .unit, .unit⟩
 
+-- ═══════════════════════════════════════════════════════════
+-- Sublanguage intersection
+-- ═══════════════════════════════════════════════════════════
+
+/-- The intersection of all three sublanguages is exactly unit.
+    LD excludes sum, BD excludes function, BL excludes product.
+    Only unit remains. -/
+theorem sublanguage_intersection (t : Ty) :
+    IsLD t ∧ IsBD t ∧ IsBL t ↔ t = .unit := by
+  constructor
+  · intro ⟨hld, hbd, hbl⟩
+    cases hld with
+    | unit => rfl
+    | fn _ _ => exact absurd hbd bd_not_fn
+    | prod _ => exact absurd hbl bl_not_prod
+  · intro h; subst h; exact unit_in_all
+
 end Ty

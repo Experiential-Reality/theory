@@ -89,4 +89,20 @@ theorem no_sum_encoding_in_ld (a b : Ty) (t : Ty) (h : IsLD t) :
   have hsum := cardinality_sum_ge_two a b
   omega
 
+-- ═══════════════════════════════════════════════════════════
+-- TypeEncoding is an equivalence relation
+-- ═══════════════════════════════════════════════════════════
+
+/-- TypeEncoding is reflexive. -/
+theorem TypeEncoding.refl (t : Ty) : TypeEncoding t t := ⟨Eq.refl _⟩
+
+/-- TypeEncoding is symmetric. -/
+theorem TypeEncoding.symm {s t : Ty} (h : TypeEncoding s t) : TypeEncoding t s :=
+  ⟨h.card_eq.symm⟩
+
+/-- TypeEncoding is transitive. -/
+theorem TypeEncoding.trans {s t u : Ty}
+    (h₁ : TypeEncoding s t) (h₂ : TypeEncoding t u) : TypeEncoding s u :=
+  ⟨h₁.card_eq.trans h₂.card_eq⟩
+
 end Ty
