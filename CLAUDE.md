@@ -302,3 +302,33 @@ e7-derivation.md → force-structure.md → [all particle physics]
 | Understand observer corrections | `cosmology/observer-correction.md` |
 | See how this applies to LLMs | `theory/llm-experiment.md` |
 | Visual dependency graph | `mathematics/STRUCTURE.md` |
+
+---
+
+## Test Infrastructure (`tools/`)
+
+```
+tools/src/tools/
+├── bld.py          # Single source of truth: constants, enums, types, prediction formulas
+├── quantum.py      # Selection rule engine: pointer sets, MC sampling, chi2
+├── check_links.py  # Markdown link checker
+```
+
+**bld.py owns all theory.** Constants (B=56, L=20, n=4, K=2, S=13), tolerance thresholds (SIGMA_THRESHOLD, FLOAT_EPSILON, ...), prediction formulas (alpha_inv, muon_g2, kappa_em, reynolds_pipe, ...), measured values, enums (CorrectionTerm, CorrectionSign), and shared types (Measurement, Prediction, TestResult).
+
+Tests call `tools.bld.*` — they never redefine constants or inline formulas.
+
+### Conventions
+
+- **No magic values**: `tools.bld.SIGMA_THRESHOLD`, not `3.0`
+- **One result type**: `tools.bld.TestResult(name, passes, value=0.0)`
+- **Formulas in bld.py**: `tools.bld.muon_g2(...)`, not inline math
+- **Named enums**: `tools.bld.CorrectionTerm.BOUNDARY_QUANTUM`
+- **Dispatch tables** for complex conditions (see `test_classical.py:_CLASSICAL_CHECKS`)
+- **Single import path**: `haar_random_state` lives in `bld.py`. `quantum.py` calls `bld.haar_random_states()`
+
+### Test structure
+
+Each theory test file: `run_*()` verification functions (pure, return TestResult) + thin `test_*()` pytest wrappers. Verification functions are callable outside pytest.
+
+Seed-deterministic: `conftest.py` provides `rng` fixture (seed=42).
