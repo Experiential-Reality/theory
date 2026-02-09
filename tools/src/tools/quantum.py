@@ -2,11 +2,15 @@
 import dataclasses
 import enum
 import typing
+
 import numpy as np
 import scipy.integrate
 import scipy.stats
 
+from . import bld
+
 SAFE_FLOOR = 1e-300
+
 
 class PointerKind(enum.Enum):
     ORTHOGONAL = "orthogonal"
@@ -32,13 +36,8 @@ class StatTest:
     p_value: float
     passes: bool
 
-def haar_random_state(dim: int, rng: np.random.Generator) -> np.ndarray:
-    z = rng.standard_normal(dim) + 1j * rng.standard_normal(dim)
-    return z / np.linalg.norm(z)
-
-def haar_random_states(dim: int, n: int, rng: np.random.Generator) -> np.ndarray:
-    z = rng.standard_normal((n, dim)) + 1j * rng.standard_normal((n, dim))
-    return z / np.linalg.norm(z, axis=1, keepdims=True)
+haar_random_state = bld.haar_random_state
+haar_random_states = bld.haar_random_states
 
 def overlaps_batch(
     pointer_matrix: np.ndarray, observers: np.ndarray,

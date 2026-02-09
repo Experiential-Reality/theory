@@ -13,6 +13,8 @@ import dataclasses
 import enum
 import math
 
+import numpy as np
+
 
 # ---------------------------------------------------------------------------
 # BLD fundamental constants
@@ -494,3 +496,20 @@ def reynolds_jet(re_pipe: float, K_: int) -> float:
     Theory ref: reynolds-derivation.md
     """
     return re_pipe / K_
+
+
+# ---------------------------------------------------------------------------
+# Quantum utilities
+# ---------------------------------------------------------------------------
+
+
+def haar_random_state(dim: int, rng: np.random.Generator) -> np.ndarray:
+    """Generate a single Haar-random quantum state."""
+    z = rng.standard_normal(dim) + 1j * rng.standard_normal(dim)
+    return z / np.linalg.norm(z)
+
+
+def haar_random_states(dim: int, n: int, rng: np.random.Generator) -> np.ndarray:
+    """Generate n Haar-random quantum states as rows of a matrix."""
+    z = rng.standard_normal((n, dim)) + 1j * rng.standard_normal((n, dim))
+    return z / np.linalg.norm(z, axis=1, keepdims=True)
