@@ -11,11 +11,6 @@ import tools.quantum
 from helpers import assert_all_pass
 
 
-# ---------------------------------------------------------------------------
-# Dataclasses
-# ---------------------------------------------------------------------------
-
-
 @dataclasses.dataclass(slots=True, frozen=True)
 class Result:
     passes: bool
@@ -57,12 +52,7 @@ class FiniteNResult:
     passes: bool
 
 
-# ---------------------------------------------------------------------------
-# Verification functions
-# ---------------------------------------------------------------------------
-
-
-def run_determinism(rng: np.random.Generator) -> Result:
+def test_determinism(rng: np.random.Generator) -> None:
     configs = [
         (2, [0.7, 0.3]),
         (3, [0.5, 0.3, 0.2]),
@@ -79,14 +69,10 @@ def run_determinism(rng: np.random.Generator) -> Result:
         safe = np.maximum(ovlps, tools.quantum.SAFE_FLOOR)
         choices1 = np.argmax(a[:, None] / safe, axis=0)
         choices2 = np.argmax(a[:, None] / safe, axis=0)
-        if not np.array_equal(choices1, choices2):
-            return Result(passes=False)
-    return Result(passes=True)
+        assert np.array_equal(choices1, choices2), f"determinism failed for M={M}"
 
 
-def run_controlled_bias_m2(
-    rng: np.random.Generator,
-) -> list[BiasResult]:
+def test_controlled_bias_m2(rng: np.random.Generator) -> None:
     results = []
     for alpha_sq in [0.5, 0.7, 0.9]:
         beta_sq = 1.0 - alpha_sq
@@ -120,12 +106,10 @@ def run_controlled_bias_m2(
             theta_star_empirical=float(theta_star_empirical) if theta_star_empirical is not None else None,
             passes=passes,
         ))
-    return results
+    assert_all_pass(results)
 
 
-def run_controlled_bias_m3(
-    rng: np.random.Generator,
-) -> BiasM3Result:
+def test_controlled_bias_m3(rng: np.random.Generator) -> None:
     alphas = np.array([0.5, 0.3, 0.2])
     N_obs = 32
     pointers = tools.quantum.make_orthogonal_pointers(3, N_obs, rng)
@@ -154,17 +138,16 @@ def run_controlled_bias_m3(
     counts = np.bincount(outcome_map.ravel(), minlength=3)
     fracs = counts / counts.sum()
 
-    return BiasM3Result(
+    result = BiasM3Result(
         unique_outcomes=unique_outcomes,
         fractions=fracs,
         expected=alphas,
         passes=unique_outcomes == 3,
     )
+    assert result.passes
 
 
-def run_regime_transition(
-    rng: np.random.Generator,
-) -> list[RegimePoint]:
+def test_regime_transition(rng: np.random.Generator) -> None:
     M = 3
     alphas = np.array([0.5, 0.3, 0.2])
     N_values = [3, 4, 6, 8, 12, 16, 24, 32, 64, 128, 256, 512, 1024]
@@ -181,12 +164,10 @@ def run_regime_transition(
         chi2_dof = stat.chi2_stat / dof if dof > 0 else 0
         results.append(RegimePoint(N_obs / M, chi2_dof, passes=chi2_dof < 5.0))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_finite_n_corrections(
-    rng: np.random.Generator,
-) -> FiniteNResult:
+def test_finite_n_corrections(rng: np.random.Generator) -> None:
     M = 3
     N_values = [4, 8, 16, 32, 64, 128, 256]
     alphas = np.array([0.5, 0.3, 0.2])
@@ -218,12 +199,11 @@ def run_finite_n_corrections(
         ks_p_values.append(p)
 
     min_ks_p = min(ks_p_values)
-    return FiniteNResult(min_ks_p=min_ks_p, passes=min_ks_p > 0.001)
+    result = FiniteNResult(min_ks_p=min_ks_p, passes=min_ks_p > 0.001)
+    assert result.passes
 
 
-def run_independence_scaling(
-    rng: np.random.Generator,
-) -> list[ScalingPoint]:
+def test_independence_scaling(rng: np.random.Generator) -> None:
     M = 3
     N_values = [4, 8, 16, 32, 64, 128, 256, 512]
     results = []
@@ -244,15 +224,13 @@ def run_independence_scaling(
         max_corr = float(np.max(np.abs(off_diag)))
         results.append(ScalingPoint(N_obs, max_corr, passes=max_corr < 0.5))
 
-    return results
+    assert_all_pass(results)
 
 
-# ---------------------------------------------------------------------------
-# Adversarial: wrong rules and mechanism tests
-# ---------------------------------------------------------------------------
+# Adversarial
 
 
-def run_wrong_rule_fails(rng: np.random.Generator) -> list[tools.bld.TestResult]:
+def test_wrong_rule_fails(rng: np.random.Generator) -> None:
     """Try to break Born recovery by using alternative selection rules.
 
     The ratio rule (α/overlap) recovers Born probabilities for M≥3.
@@ -295,10 +273,10 @@ def run_wrong_rule_fails(rng: np.random.Generator) -> list[tools.bld.TestResult]
     stat_max = tools.quantum.chi2_test(counts_max, alphas, n)
     results.append(tools.bld.TestResult("max_overlap_fails_born", not stat_max.passes))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_bias_monotonicity(rng: np.random.Generator) -> list[tools.bld.TestResult]:
+def test_bias_monotonicity(rng: np.random.Generator) -> None:
     """P(outcome=0) must be strictly monotonic in α₀ for M=2.
 
     The ratio rule's linearity in α is structural: P(k) = α_k (Born).
@@ -321,44 +299,4 @@ def run_bias_monotonicity(rng: np.random.Generator) -> list[tools.bld.TestResult
         p0_values[i] < p0_values[i + 1]
         for i in range(len(p0_values) - 1)
     )
-    return [tools.bld.TestResult("p0_strictly_monotonic", monotonic)]
-
-
-# ---------------------------------------------------------------------------
-# Tests
-# ---------------------------------------------------------------------------
-
-
-def test_determinism(rng: np.random.Generator) -> None:
-    result = run_determinism(rng)
-    assert result.passes
-
-
-def test_controlled_bias_m2(rng: np.random.Generator) -> None:
-    assert_all_pass(run_controlled_bias_m2(rng))
-
-
-def test_controlled_bias_m3(rng: np.random.Generator) -> None:
-    result = run_controlled_bias_m3(rng)
-    assert result.passes
-
-
-def test_regime_transition(rng: np.random.Generator) -> None:
-    assert_all_pass(run_regime_transition(rng))
-
-
-def test_finite_n_corrections(rng: np.random.Generator) -> None:
-    result = run_finite_n_corrections(rng)
-    assert result.passes
-
-
-def test_independence_scaling(rng: np.random.Generator) -> None:
-    assert_all_pass(run_independence_scaling(rng))
-
-
-def test_wrong_rule_fails(rng: np.random.Generator) -> None:
-    assert_all_pass(run_wrong_rule_fails(rng))
-
-
-def test_bias_monotonicity(rng: np.random.Generator) -> None:
-    assert_all_pass(run_bias_monotonicity(rng))
+    assert_all_pass([tools.bld.TestResult("p0_strictly_monotonic", monotonic)])

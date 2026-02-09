@@ -80,7 +80,7 @@ def _process_job(
     return results
 
 
-def run_simulation(rng: np.random.Generator) -> list[SimPoint]:
+def test_physical_simulation(rng: np.random.Generator) -> None:
     n_samples = 100000
     tol = 0.006
     g_tau_values = [0.1, 0.3, 0.5, 0.8, 1.0, 1.5, 2.0, 3.0]
@@ -115,13 +115,4 @@ def run_simulation(rng: np.random.Generator) -> list[SimPoint]:
         for f in futures:
             results.extend(f.result())
 
-    return results
-
-
-# ---------------------------------------------------------------------------
-# Tests
-# ---------------------------------------------------------------------------
-
-
-def test_physical_simulation(rng: np.random.Generator) -> None:
-    assert_all_pass(run_simulation(rng))
+    assert_all_pass(results)

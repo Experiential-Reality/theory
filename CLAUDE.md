@@ -329,6 +329,6 @@ Tests call `tools.bld.*` — they never redefine constants or inline formulas.
 
 ### Test structure
 
-Each theory test file: `run_*()` verification functions (pure, return TestResult) + thin `test_*()` pytest wrappers. Verification functions are callable outside pytest.
+Each theory test file has `test_*()` functions that compute predictions and assert results inline via `assert_all_pass(results)` (or `assert_none_pass` for negative tests). Shared assertion helpers live in `tests/helpers.py`.
 
 Seed-deterministic: `conftest.py` provides `rng` fixture (seed=42).

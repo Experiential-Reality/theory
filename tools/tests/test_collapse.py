@@ -48,7 +48,7 @@ class CloningResult:
     passes: bool
 
 
-def run_no_cloning(rng: np.random.Generator) -> list[CloningResult]:
+def test_no_cloning(rng: np.random.Generator) -> None:
     """For random state pairs, verify cloning constraint z = z^2.
 
     Positive: orthogonal (z~0) and identical (z=1) pairs satisfy z=z^2.
@@ -81,10 +81,10 @@ def run_no_cloning(rng: np.random.Generator) -> list[CloningResult]:
         is_clonable = residual < 1e-6
         results.append(CloningResult(z, z**2, residual, is_clonable, not is_clonable))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_no_cloning_unitary_test(rng: np.random.Generator) -> list[CloningResult]:
+def test_no_cloning_unitary(rng: np.random.Generator) -> None:
     """Attempt to construct an approximate cloner and verify it fails.
 
     For a set of non-orthogonal states, try to build a unitary that maps
@@ -116,7 +116,7 @@ def run_no_cloning_unitary_test(rng: np.random.Generator) -> list[CloningResult]
             is_clonable = residual < 1e-6
             results.append(CloningResult(z, z_sq, residual, is_clonable, not is_clonable))
 
-    return results
+    assert_all_pass(results)
 
 
 # ---------------------------------------------------------------------------
@@ -150,7 +150,7 @@ def _trace_distance(rho1: np.ndarray, rho2: np.ndarray) -> float:
     return 0.5 * float(np.sum(np.sqrt(np.maximum(ev, 0.0))))
 
 
-def run_no_communication(rng: np.random.Generator) -> list[NoCommunicationResult]:
+def test_no_communication(rng: np.random.Generator) -> None:
     """Verify Bob's reduced state is invariant under Alice's local unitaries.
 
     For entangled states and random local operations on Alice, compute
@@ -223,10 +223,10 @@ def run_no_communication(rng: np.random.Generator) -> list[NoCommunicationResult
                 state_name, f"proj_{basis_name}", td, td < 1e-10,
             ))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_no_communication_higher_dim(rng: np.random.Generator) -> list[NoCommunicationResult]:
+def test_no_communication_higher_dim(rng: np.random.Generator) -> None:
     """Same test in higher dimensions to stress-test."""
     results: list[NoCommunicationResult] = []
 
@@ -248,7 +248,7 @@ def run_no_communication_higher_dim(rng: np.random.Generator) -> list[NoCommunic
                 f"random_{dim_a}x{dim_b}", f"U_{i}", td, td < 1e-10,
             ))
 
-    return results
+    assert_all_pass(results)
 
 
 # ---------------------------------------------------------------------------
@@ -326,7 +326,7 @@ def _trotter_propagator(
     return U_exact, U_trotter
 
 
-def run_trotter_free_particle() -> list[TrotterResult]:
+def test_trotter_free_particle() -> None:
     """Free particle on a lattice: Trotter converges to exact propagator.
 
     H = T (kinetic only), V = 0.  The Trotter splitting is trivial here
@@ -349,10 +349,10 @@ def run_trotter_free_particle() -> list[TrotterResult]:
         # Free particle: T and V=0 commute, so Trotter is exact at all N
         results.append(TrotterResult("free_particle", N, err, err < 1e-10))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_trotter_harmonic() -> list[TrotterResult]:
+def test_trotter_harmonic() -> None:
     """Harmonic oscillator: Trotter error scales as O(dt) = O(t/N).
 
     H = T + V where V = ½mω²x².  [T,V] ≠ 0, so Trotter splitting
@@ -380,10 +380,10 @@ def run_trotter_harmonic() -> list[TrotterResult]:
         prev_err = err
         results.append(TrotterResult("harmonic", N, err, converging))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_trotter_wrong_phase() -> list[TrotterResult]:
+def test_trotter_wrong_phase() -> None:
     """Negative test: removing i from the phase breaks everything.
 
     BLD derives i as the observation unit (path-integral.md Step 2).
@@ -415,7 +415,7 @@ def run_trotter_wrong_phase() -> list[TrotterResult]:
     # Without i, this should be very wrong (not unitary, exponentially growing)
     results.append(TrotterResult("wrong_phase", 4, err, err > 1.0))
 
-    return results
+    assert_all_pass(results)
 
 
 # ---------------------------------------------------------------------------
@@ -434,7 +434,7 @@ class IrreversibilityResult:
     passes: bool
 
 
-def run_many_to_one(rng: np.random.Generator) -> list[IrreversibilityResult]:
+def test_many_to_one(rng: np.random.Generator) -> None:
     """Verify the many-to-one nature of measurement.
 
     Generate many distinct states |psi> that all have |alpha_k|^2 = p for
@@ -474,10 +474,10 @@ def run_many_to_one(rng: np.random.Generator) -> list[IrreversibilityResult]:
         same_outcome_count == n_states,
     ))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_info_loss(rng: np.random.Generator) -> list[IrreversibilityResult]:
+def test_info_loss(rng: np.random.Generator) -> None:
     """Quantify information loss: measurement outcome retains at most 1 bit
     from a continuous L-structure (amplitudes + phases).
 
@@ -515,10 +515,10 @@ def run_info_loss(rng: np.random.Generator) -> list[IrreversibilityResult]:
         True,  # structural fact: 1 bit < infinite continuous info
     ))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_irreversibility_reconstruction(rng: np.random.Generator) -> list[IrreversibilityResult]:
+def test_irreversibility_reconstruction(rng: np.random.Generator) -> None:
     """Attempt to reconstruct the original state from measurement outcomes.
 
     This is the operational test of B->L failure: given only outcome data,
@@ -546,49 +546,4 @@ def run_irreversibility_reconstruction(rng: np.random.Generator) -> list[Irrever
         True,  # structural: |alpha|^2 is phase-independent
     ))
 
-    return results
-
-
-# ---------------------------------------------------------------------------
-# Tests
-# ---------------------------------------------------------------------------
-
-
-def test_no_cloning(rng: np.random.Generator) -> None:
-    assert_all_pass(run_no_cloning(rng))
-
-
-def test_no_cloning_unitary(rng: np.random.Generator) -> None:
-    assert_all_pass(run_no_cloning_unitary_test(rng))
-
-
-def test_no_communication(rng: np.random.Generator) -> None:
-    assert_all_pass(run_no_communication(rng))
-
-
-def test_no_communication_higher_dim(rng: np.random.Generator) -> None:
-    assert_all_pass(run_no_communication_higher_dim(rng))
-
-
-def test_trotter_free_particle() -> None:
-    assert_all_pass(run_trotter_free_particle())
-
-
-def test_trotter_harmonic() -> None:
-    assert_all_pass(run_trotter_harmonic())
-
-
-def test_trotter_wrong_phase() -> None:
-    assert_all_pass(run_trotter_wrong_phase())
-
-
-def test_many_to_one(rng: np.random.Generator) -> None:
-    assert_all_pass(run_many_to_one(rng))
-
-
-def test_info_loss(rng: np.random.Generator) -> None:
-    assert_all_pass(run_info_loss(rng))
-
-
-def test_irreversibility_reconstruction(rng: np.random.Generator) -> None:
-    assert_all_pass(run_irreversibility_reconstruction(rng))
+    assert_all_pass(results)

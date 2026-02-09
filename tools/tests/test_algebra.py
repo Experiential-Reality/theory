@@ -83,11 +83,6 @@ def _octonion_norm(a: np.ndarray) -> float:
     return float(np.sqrt(np.dot(a, a)))
 
 
-# ---------------------------------------------------------------------------
-# Cayley-Dickson doubling
-# ---------------------------------------------------------------------------
-
-
 def _cayley_dickson_multiply(
     mult: np.ndarray, a: np.ndarray, b: np.ndarray,
 ) -> np.ndarray:
@@ -138,12 +133,40 @@ def _double_struct(mult: np.ndarray) -> np.ndarray:
     return new
 
 
-# ---------------------------------------------------------------------------
-# Run functions
-# ---------------------------------------------------------------------------
+def _octonion_derivation_matrix() -> np.ndarray:
+    """Build the G2 derivation constraint matrix for octonions.
+
+    A derivation D maps Im(O) -> Im(O) (7x7 matrix, 49 unknowns).
+    D(e_i * e_j) = D(e_i)*e_j + e_i*D(e_j) gives linear constraints.
+    """
+    n_unknowns = 49
+    equations = []
+    for i in range(1, 8):
+        for j in range(1, 8):
+            for out_comp in range(8):
+                row = np.zeros(n_unknowns)
+                for k in range(1, 8):
+                    coeff = _STRUCT[i, j, k]
+                    if abs(coeff) < 1e-15:
+                        continue
+                    if out_comp >= 1:
+                        row[(k - 1) * 7 + (out_comp - 1)] += coeff
+                for a in range(7):
+                    sc = _STRUCT[a + 1, j, out_comp]
+                    if abs(sc) < 1e-15:
+                        continue
+                    row[(i - 1) * 7 + a] -= sc
+                for a in range(7):
+                    sc = _STRUCT[i, a + 1, out_comp]
+                    if abs(sc) < 1e-15:
+                        continue
+                    row[(j - 1) * 7 + a] -= sc
+                if np.any(np.abs(row) > 1e-15):
+                    equations.append(row)
+    return np.array(equations)
 
 
-def run_octonion_norm(rng: np.random.Generator) -> list[AlgebraResult]:
+def test_octonion_norm(rng: np.random.Generator) -> None:
     """Verify |a*b| = |a|*|b| for random octonion pairs.
 
     The composition algebra property.  This is what makes octonions a
@@ -165,10 +188,10 @@ def run_octonion_norm(rng: np.random.Generator) -> list[AlgebraResult]:
     results.append(AlgebraResult(
         "norm_preserving", max_residual, max_residual < 1e-10,
     ))
-    return results
+    assert_all_pass(results)
 
 
-def run_octonion_nonassociative(rng: np.random.Generator) -> list[AlgebraResult]:
+def test_octonion_nonassociative(rng: np.random.Generator) -> None:
     """Verify octonions are alternative but NOT associative.
 
     If they were associative, quaternions would suffice and we wouldn't
@@ -217,10 +240,10 @@ def run_octonion_nonassociative(rng: np.random.Generator) -> list[AlgebraResult]
         "right_alternative", max_alt_right, max_alt_right < 1e-10,
     ))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_division_algebra_boundary(rng: np.random.Generator) -> list[AlgebraResult]:
+def test_division_algebra_boundary(rng: np.random.Generator) -> None:
     """Verify the Hurwitz theorem boundary via Cayley-Dickson doubling.
 
     R(1D), C(2D), H(4D), O(8D) have no zero divisors.
@@ -250,7 +273,7 @@ def run_division_algebra_boundary(rng: np.random.Generator) -> list[AlgebraResul
             ))
         else:
             # Sedenions (16D): find zero divisors by searching pairs
-            # (e_i + e_j) * (e_k ± e_l) = 0.
+            # (e_i + e_j) * (e_k +/- e_l) = 0.
             found = False
             for i in range(1, dim):
                 if found:
@@ -283,10 +306,10 @@ def run_division_algebra_boundary(rng: np.random.Generator) -> list[AlgebraResul
         if step < 4:
             mult = _double_struct(mult)
 
-    return results
+    assert_all_pass(results)
 
 
-def run_g2_dimension() -> list[AlgebraResult]:
+def test_g2_dimension() -> None:
     """Compute dim(Aut(O)) = dim(G2) = 14.
 
     A derivation D of the octonion algebra satisfies:
@@ -300,10 +323,10 @@ def run_g2_dimension() -> list[AlgebraResult]:
     rank = int(np.linalg.matrix_rank(A, tol=1e-10))
     nullity = 49 - rank
 
-    return [AlgebraResult("dim_G2", float(nullity), nullity == 14)]
+    assert_all_pass([AlgebraResult("dim_G2", float(nullity), nullity == 14)])
 
 
-def run_su3_from_g2() -> list[AlgebraResult]:
+def test_su3_from_g2() -> None:
     """Fix one imaginary unit (e1).  The stabiliser has dim = 8 = dim(SU(3)).
 
     This is how color symmetry emerges: fixing a reference in G2 gives SU(3).
@@ -319,10 +342,10 @@ def run_su3_from_g2() -> list[AlgebraResult]:
     rank = int(np.linalg.matrix_rank(A, tol=1e-10))
     nullity = 49 - rank
 
-    return [AlgebraResult("dim_SU3_stabiliser", float(nullity), nullity == 8)]
+    assert_all_pass([AlgebraResult("dim_SU3_stabiliser", float(nullity), nullity == 8)])
 
 
-def run_d4_triality() -> list[AlgebraResult]:
+def test_d4_triality() -> None:
     """D4 Dynkin diagram has S3 outer automorphism (triality).
 
     This is unique: for D_n with n != 4, |Out| = 2 (Z2 only).
@@ -385,10 +408,10 @@ def run_d4_triality() -> list[AlgebraResult]:
             f"D{rank}_Aut=Z2", float(aut), aut == 2,
         ))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_spacetime_dimension() -> list[AlgebraResult]:
+def test_spacetime_dimension() -> None:
     """Verify sl(2,C) ~ so(3,1) as real Lie algebras.
 
     sl(2,C) has 6 real generators (3 Pauli + 3 i*Pauli).
@@ -446,56 +469,18 @@ def run_spacetime_dimension() -> list[AlgebraResult]:
         "sl2c_dim=6", float(dim), dim == 6,
     ))
 
-    return results
+    assert_all_pass(results)
 
 
-# ---------------------------------------------------------------------------
-# Adversarial: quaternion insufficiency and stabilizer equivariance
-# ---------------------------------------------------------------------------
+def test_quaternion_insufficiency() -> None:
+    """Quaternions (H) give Aut(H) = SO(3), dim=3 -- not SU(3).
 
-
-def _octonion_derivation_matrix() -> np.ndarray:
-    """Build the G₂ derivation constraint matrix for octonions.
-
-    A derivation D maps Im(O) → Im(O) (7×7 matrix, 49 unknowns).
-    D(e_i * e_j) = D(e_i)*e_j + e_i*D(e_j) gives linear constraints.
-    """
-    n_unknowns = 49
-    equations = []
-    for i in range(1, 8):
-        for j in range(1, 8):
-            for out_comp in range(8):
-                row = np.zeros(n_unknowns)
-                for k in range(1, 8):
-                    coeff = _STRUCT[i, j, k]
-                    if abs(coeff) < 1e-15:
-                        continue
-                    if out_comp >= 1:
-                        row[(k - 1) * 7 + (out_comp - 1)] += coeff
-                for a in range(7):
-                    sc = _STRUCT[a + 1, j, out_comp]
-                    if abs(sc) < 1e-15:
-                        continue
-                    row[(i - 1) * 7 + a] -= sc
-                for a in range(7):
-                    sc = _STRUCT[i, a + 1, out_comp]
-                    if abs(sc) < 1e-15:
-                        continue
-                    row[(j - 1) * 7 + a] -= sc
-                if np.any(np.abs(row) > 1e-15):
-                    equations.append(row)
-    return np.array(equations)
-
-
-def run_quaternion_insufficiency() -> list[AlgebraResult]:
-    """Quaternions (ℍ) give Aut(ℍ) = SO(3), dim=3 — not SU(3).
-
-    Same derivation-equation method as run_g2_dimension, but for the
+    Same derivation-equation method as test_g2_dimension, but for the
     quaternion algebra (4D, 3 imaginary units i,j,k).  Derivations
-    D: Im(ℍ) → Im(ℍ) give a 3×3 matrix (9 unknowns).
+    D: Im(H) -> Im(H) give a 3x3 matrix (9 unknowns).
 
-    The nullity = dim(Aut(ℍ)) = 3 = dim(SO(3)).  Since 3 < 8 = dim(SU(3)),
-    quaternions cannot support color symmetry.  Octonions (dim(G₂)=14,
+    The nullity = dim(Aut(H)) = 3 = dim(SO(3)).  Since 3 < 8 = dim(SU(3)),
+    quaternions cannot support color symmetry.  Octonions (dim(G2)=14,
     stabiliser dim=8=SU(3)) are the ONLY division algebra that works.
     """
     # Quaternion structure constants: e_0=1, e_1=i, e_2=j, e_3=k
@@ -510,7 +495,7 @@ def run_quaternion_insufficiency() -> list[AlgebraResult]:
         struct_q[a, b, c] = 1.0
         struct_q[b, a, c] = -1.0
 
-    # Derivation equations: D maps Im(ℍ) → Im(ℍ), 3×3 matrix, 9 unknowns
+    # Derivation equations: D maps Im(H) -> Im(H), 3x3 matrix, 9 unknowns
     n_unknowns = 9
     equations = []
     for i in range(1, 4):
@@ -540,23 +525,23 @@ def run_quaternion_insufficiency() -> list[AlgebraResult]:
     rank = int(np.linalg.matrix_rank(A, tol=1e-10))
     nullity = n_unknowns - rank
 
-    return [
+    assert_all_pass([
         AlgebraResult("dim_Aut_H=3", float(nullity), nullity == 3),
         AlgebraResult("quaternions_lack_SU3", float(nullity), nullity < 8),
-    ]
+    ])
 
 
-def run_stabilizer_equivariance() -> list[AlgebraResult]:
+def test_stabilizer_equivariance() -> None:
     """Fixing ANY imaginary octonion unit gives stabiliser dim=8 (SU(3)).
 
-    G₂ acts transitively on the unit sphere S⁶ in Im(O), so every
+    G2 acts transitively on the unit sphere S6 in Im(O), so every
     reference direction is equivalent.  The orbit-stabiliser theorem gives
-    dim(stabiliser) = dim(G₂) - dim(S⁶) = 14 - 6 = 8 = dim(SU(3)).
+    dim(stabiliser) = dim(G2) - dim(S6) = 14 - 6 = 8 = dim(SU(3)).
 
-    Test all 7 imaginary units separately → all give dim=8.
-    Fix TWO units simultaneously → dim < 8 (over-constrains).
+    Test all 7 imaginary units separately -> all give dim=8.
+    Fix TWO units simultaneously -> dim < 8 (over-constrains).
 
-    If some unit gave dim ≠ 8, the G₂ → SU(3) reduction would be
+    If some unit gave dim != 8, the G2 -> SU(3) reduction would be
     direction-dependent (not equivariant), breaking gauge freedom.
     """
     A_base = _octonion_derivation_matrix()
@@ -587,45 +572,4 @@ def run_stabilizer_equivariance() -> list[AlgebraResult]:
         f"fix_e1_e2_dim={nullity_two}", float(nullity_two), nullity_two < 8,
     ))
 
-    return results
-
-
-# ---------------------------------------------------------------------------
-# Tests
-# ---------------------------------------------------------------------------
-
-
-def test_octonion_norm(rng: np.random.Generator) -> None:
-    assert_all_pass(run_octonion_norm(rng))
-
-
-def test_octonion_nonassociative(rng: np.random.Generator) -> None:
-    assert_all_pass(run_octonion_nonassociative(rng))
-
-
-def test_division_algebra_boundary(rng: np.random.Generator) -> None:
-    assert_all_pass(run_division_algebra_boundary(rng))
-
-
-def test_g2_dimension() -> None:
-    assert_all_pass(run_g2_dimension())
-
-
-def test_su3_from_g2() -> None:
-    assert_all_pass(run_su3_from_g2())
-
-
-def test_d4_triality() -> None:
-    assert_all_pass(run_d4_triality())
-
-
-def test_spacetime_dimension() -> None:
-    assert_all_pass(run_spacetime_dimension())
-
-
-def test_quaternion_insufficiency() -> None:
-    assert_all_pass(run_quaternion_insufficiency())
-
-
-def test_stabilizer_equivariance() -> None:
-    assert_all_pass(run_stabilizer_equivariance())
+    assert_all_pass(results)

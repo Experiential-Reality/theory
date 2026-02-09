@@ -217,14 +217,9 @@ def _temperatures_3d() -> np.ndarray:
     return np.sort(np.unique(np.concatenate([base, extra])))
 
 
-# ---------------------------------------------------------------------------
-# Run functions
-# ---------------------------------------------------------------------------
-
-
-def run_finite_size_scaling(
+def test_finite_size_scaling(
     rng: np.random.Generator,
-) -> list[ScalingResult]:
+) -> None:
     L_values = [8, 16, 32, 64]
     T_values = _temperatures_2d()
     shapes = [(L, L) for L in L_values]
@@ -260,12 +255,12 @@ def run_finite_size_scaling(
         r2_m > 0.90 and abs(-slope_m - BETA_NU_2D) < 0.3,
     ))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_bld_link_divergence(
+def test_bld_link_divergence(
     rng: np.random.Generator,
-) -> list[LinkResult | ScalingResult]:
+) -> None:
     L = 64
     T_values = _temperatures_2d()
     above_tc = T_values[T_values > T_C_2D]
@@ -305,12 +300,12 @@ def run_bld_link_divergence(
             abs(slope - NU_2D) < 0.2 and r2 > 0.90,
         ))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_binder_crossing(
+def test_binder_crossing(
     rng: np.random.Generator,
-) -> list[ScalingResult]:
+) -> None:
     T_values = _temperatures_2d()
     shapes = [(16, 16), (32, 32)]
     data = _run_grid(shapes, T_values, 200, 500, rng)
@@ -333,15 +328,15 @@ def run_binder_crossing(
             break
 
     err = abs(T_cross - T_C_2D)
-    return [ScalingResult(
+    assert_all_pass([ScalingResult(
         "T_c from Binder", T_cross, T_C_2D, 1.0 if found else 0.0,
         found and err < 0.05,
-    )]
+    )])
 
 
-def run_dl_interplay(
+def test_dl_interplay(
     rng: np.random.Generator,
-) -> list[ScalingResult]:
+) -> None:
     L_values = [8, 16, 32, 64]
     # Simulate at T_c for each L
     T_at_tc = np.array([T_C_2D])
@@ -353,15 +348,15 @@ def run_dl_interplay(
     y = np.array([np.log(max(xi_by_L[L], 1.0)) for L in L_values])
     slope, _, r2 = _linfit(x, y)
 
-    return [ScalingResult(
+    assert_all_pass([ScalingResult(
         "L_bld ~ ln(L_sys)", slope, 1.0, r2,
         0.5 < slope < 1.5 and r2 > 0.90,
-    )]
+    )])
 
 
-def run_nn_link_profile(
+def test_nn_link_profile(
     rng: np.random.Generator,
-) -> list[LinkResult]:
+) -> None:
     L = 64
     T_values = np.linspace(1.8, 3.5, 25)
     data = _run_grid([(L, L)], T_values, 200, 500, rng)
@@ -386,12 +381,12 @@ def run_nn_link_profile(
         slope < 0,
     ))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_3d_ising(
+def test_3d_ising(
     rng: np.random.Generator,
-) -> list[ScalingResult]:
+) -> None:
     L_sys = 20
     shape = (L_sys, L_sys, L_sys)
     # Temperatures above T_c
@@ -407,7 +402,8 @@ def run_3d_ising(
 
     if len(usable) < 3:
         results.append(ScalingResult("3D: insufficient data", 0, 0, 0, False))
-        return results
+        assert_all_pass(results)
+        return
 
     t_vals = np.array([(p.T - T_C_3D) / T_C_3D for p in usable])
     ln_inv_t = np.log(1.0 / t_vals)
@@ -443,17 +439,15 @@ def run_3d_ising(
         abs(slope_B - NU_3D * (1 - NU_3D)) < 0.15,
     ))
 
-    return results
+    assert_all_pass(results)
 
 
-# ---------------------------------------------------------------------------
 # Adversarial: wrong link definition
-# ---------------------------------------------------------------------------
 
 
-def run_wrong_link_definition(
+def test_wrong_link_definition(
     rng: np.random.Generator,
-) -> list[ScalingResult]:
+) -> None:
     """Only L=ln(ξ) gives the correct critical exponent ν for 2D Ising.
 
     Near criticality, ξ ~ |t|^{-ν} where t = (T-T_c)/T_c.  The BLD
@@ -480,7 +474,11 @@ def run_wrong_link_definition(
     # Filter: xi in reliable range
     usable = [p for p in data if 2.0 < p.xi < L_sys / 4]
     if len(usable) < 3:
-        return [ScalingResult("insufficient_data", 0, 0, 0, False)]
+        results = [ScalingResult("insufficient_data", 0, 0, 0, False)]
+        assert all(r.passes for r in results), [
+            (r.name, r.fitted, r.exact, r.r_squared) for r in results if not r.passes
+        ]
+        return
 
     t_vals = np.array([(p.T - T_C_2D) / T_C_2D for p in usable])
     ln_inv_t = np.log(1.0 / t_vals)
@@ -512,40 +510,6 @@ def run_wrong_link_definition(
         r2_sq < 0.90 or abs(slope_sq - NU_2D) > 0.3,
     ))
 
-    return results
-
-
-# ---------------------------------------------------------------------------
-# Tests
-# ---------------------------------------------------------------------------
-
-
-def test_finite_size_scaling(rng: np.random.Generator) -> None:
-    assert_all_pass(run_finite_size_scaling(rng))
-
-
-def test_bld_link_divergence(rng: np.random.Generator) -> None:
-    assert_all_pass(run_bld_link_divergence(rng))
-
-
-def test_binder_crossing(rng: np.random.Generator) -> None:
-    assert_all_pass(run_binder_crossing(rng))
-
-
-def test_dl_interplay(rng: np.random.Generator) -> None:
-    assert_all_pass(run_dl_interplay(rng))
-
-
-def test_nn_link_profile(rng: np.random.Generator) -> None:
-    assert_all_pass(run_nn_link_profile(rng))
-
-
-def test_3d_ising(rng: np.random.Generator) -> None:
-    assert_all_pass(run_3d_ising(rng))
-
-
-def test_wrong_link_definition(rng: np.random.Generator) -> None:
-    results = run_wrong_link_definition(rng)
     assert all(r.passes for r in results), [
         (r.name, r.fitted, r.exact, r.r_squared) for r in results if not r.passes
     ]

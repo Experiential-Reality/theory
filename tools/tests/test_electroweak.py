@@ -27,12 +27,7 @@ from helpers import assert_all_pass
 TR = tools.bld.TestResult
 
 
-# ---------------------------------------------------------------------------
-# Run functions
-# ---------------------------------------------------------------------------
-
-
-def run_weak_mixing() -> list[tools.bld.Prediction | TR]:
+def test_weak_mixing() -> None:
     """sin^2(theta_W) = 3/S + K/(nLB) = 0.23122.
 
     Prove: matches PDG 0.23121 +/- 0.00004.
@@ -68,10 +63,10 @@ def run_weak_mixing() -> list[tools.bld.Prediction | TR]:
         len(matching_names) == 1 and matching_names[0] == "nLB",
     ))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_z_mass() -> list[tools.bld.Prediction | TR]:
+def test_z_mass() -> None:
     """m_Z = (v/e)(137/136)(1 - K/B^2) = 91.187 GeV.
 
     Prove: matches PDG 91.1876 +/- 0.0021 GeV.
@@ -118,10 +113,10 @@ def run_z_mass() -> list[tools.bld.Prediction | TR]:
         n * L + B in matching_X,
     ))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_w_mass() -> list[tools.bld.Prediction | TR]:
+def test_w_mass() -> None:
     """m_W = m_Z * cos(theta_W) * (n^2*S+1)/(n^2*S) * (1+1/6452).
 
     Uses computed m_Z (not observed) to test internal consistency.
@@ -162,10 +157,10 @@ def run_w_mass() -> list[tools.bld.Prediction | TR]:
         len(matching_S) == 1 and matching_S[0] == S,
     ))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_strong_coupling() -> list[tools.bld.Prediction | TR]:
+def test_strong_coupling() -> None:
     """alpha_s^-1 = alpha^-1 / n^2 - K/(n+L) = 8.4814.
 
     Prove: alpha_s = 0.1179 matches PDG 0.1179 +/- 0.0010.
@@ -212,10 +207,10 @@ def run_strong_coupling() -> list[tools.bld.Prediction | TR]:
         "K/X_correction_improves", full_err < struct_err,
     ))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_higgs_kappa_em() -> list[tools.bld.Prediction | TR]:
+def test_higgs_kappa_em() -> None:
     """kappa_gamma = kappa_Z = 1 + K/B = 1.0357.
 
     EM detection: X = B = 56 (boundary structure).
@@ -249,10 +244,10 @@ def run_higgs_kappa_em() -> list[tools.bld.Prediction | TR]:
             f"K={K_}_gamma_sigma={g_sigma:.1f}", True,  # record, don't fail
         ))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_higgs_kappa_hadronic() -> list[tools.bld.Prediction | TR]:
+def test_higgs_kappa_hadronic() -> None:
     """kappa_b = kappa_c = 1 + K/(n+L) = 1.0833.
 
     Hadronic detection: X = n+L = 24 (geometric structure).
@@ -293,10 +288,10 @@ def run_higgs_kappa_hadronic() -> list[tools.bld.Prediction | TR]:
     # Strong force couples to geometry, not boundary topology
     results.append(TR("X_hadronic=n+L=24", n + L == 24))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_higgs_kappa_mixed() -> list[tools.bld.Prediction | TR]:
+def test_higgs_kappa_mixed() -> None:
     """kappa_W = 1 + K/(B+L) = 1.0263.  kappa_lambda = 1 + K/(nL) = 1.025.
 
     Combined detection: X = B+L = 76 (EM + neutrino escape).
@@ -331,10 +326,10 @@ def run_higgs_kappa_mixed() -> list[tools.bld.Prediction | TR]:
         "kappa_W<kappa_Z", kappa_w < kappa_z,
     ))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_electroweak_consistency() -> list[TR]:
+def test_electroweak_consistency() -> None:
     """Cross-checks across all electroweak predictions.
 
     Verify shared structural constants appear consistently:
@@ -384,41 +379,4 @@ def run_electroweak_consistency() -> list[TR]:
         alpha_kb2 < 0 and z_kb2 < 0,  # both negative corrections
     ))
 
-    return results
-
-
-# ---------------------------------------------------------------------------
-# Tests
-# ---------------------------------------------------------------------------
-
-
-def test_weak_mixing() -> None:
-    assert_all_pass(run_weak_mixing())
-
-
-def test_z_mass() -> None:
-    assert_all_pass(run_z_mass())
-
-
-def test_w_mass() -> None:
-    assert_all_pass(run_w_mass())
-
-
-def test_strong_coupling() -> None:
-    assert_all_pass(run_strong_coupling())
-
-
-def test_higgs_kappa_em() -> None:
-    assert_all_pass(run_higgs_kappa_em())
-
-
-def test_higgs_kappa_hadronic() -> None:
-    assert_all_pass(run_higgs_kappa_hadronic())
-
-
-def test_higgs_kappa_mixed() -> None:
-    assert_all_pass(run_higgs_kappa_mixed())
-
-
-def test_electroweak_consistency() -> None:
-    assert_all_pass(run_electroweak_consistency())
+    assert_all_pass(results)

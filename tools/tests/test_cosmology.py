@@ -15,17 +15,15 @@ from helpers import assert_all_pass
 TR = tools.bld.TestResult
 
 
-# ---------------------------------------------------------------------------
 # Positive: do BLD predictions match observations?
-# ---------------------------------------------------------------------------
 
 
-def run_dark_matter_fractions() -> list[tools.bld.Prediction]:
+def test_dark_matter_fractions() -> None:
     """BLD predicts cosmic composition from x = baryon fraction alone."""
     x = tools.bld.OMEGA_BARYON.value
     dm = tools.bld.dark_matter_fraction(x, tools.bld.n, tools.bld.L, tools.bld.K)
     de = tools.bld.dark_energy_fraction(x, tools.bld.n, tools.bld.L, tools.bld.K)
-    return [
+    results = [
         tools.bld.Prediction("dark_matter", dm,
                              tools.bld.OMEGA_DARK_MATTER.value,
                              tools.bld.OMEGA_DARK_MATTER.uncertainty),
@@ -33,23 +31,25 @@ def run_dark_matter_fractions() -> list[tools.bld.Prediction]:
                              tools.bld.OMEGA_DARK_ENERGY.value,
                              tools.bld.OMEGA_DARK_ENERGY.uncertainty),
     ]
+    assert_all_pass(results)
 
 
-def run_hubble_tension() -> tools.bld.Prediction:
+def test_hubble_tension() -> None:
     """BLD predicts H₀(local) = H₀(CMB) × 13/12."""
     h0 = tools.bld.hubble_local(
         tools.bld.H0_CMB.value, tools.bld.K, tools.bld.n, tools.bld.L,
     )
-    return tools.bld.Prediction("hubble_local", h0,
+    pred = tools.bld.Prediction("hubble_local", h0,
                                 tools.bld.H0_LOCAL.value,
                                 tools.bld.H0_LOCAL.uncertainty)
+    assert pred.passes, (pred.predicted, pred.observed, pred.sigma)
 
 
-def run_sigma8_tension() -> list[tools.bld.Prediction]:
+def test_sigma8_tension() -> None:
     """BLD predicts σ₈ at CMB and local scales."""
     s8_cmb = tools.bld.sigma8_cmb(tools.bld.L, tools.bld.n, tools.bld.K)
     s8_loc = tools.bld.sigma8_local(tools.bld.L, tools.bld.n, tools.bld.K)
-    return [
+    results = [
         tools.bld.Prediction("sigma8_cmb", s8_cmb,
                              tools.bld.SIGMA8_CMB.value,
                              tools.bld.SIGMA8_CMB.uncertainty),
@@ -57,14 +57,13 @@ def run_sigma8_tension() -> list[tools.bld.Prediction]:
                              tools.bld.SIGMA8_LOCAL.value,
                              tools.bld.SIGMA8_LOCAL.uncertainty),
     ]
+    assert_all_pass(results)
 
 
-# ---------------------------------------------------------------------------
 # Exact algebraic structure — falsifiable as measurements tighten
-# ---------------------------------------------------------------------------
 
 
-def run_exact_rational_fractions() -> list[TR]:
+def test_exact_rational_fractions() -> None:
     """BLD predictions are exact rational fractions, not fits.
 
     Hubble:    1 + K/(n+L) = 1 + 2/24 = 13/12
@@ -80,20 +79,19 @@ def run_exact_rational_fractions() -> list[TR]:
     s8p = tools.bld.sigma8_primordial(tools.bld.L, tools.bld.n)
     s8c = tools.bld.sigma8_cmb(tools.bld.L, tools.bld.n, tools.bld.K)
     s8l = tools.bld.sigma8_local(tools.bld.L, tools.bld.n, tools.bld.K)
-    return [
+    results = [
         TR("hubble_factor_13/12", abs(factor - 13 / 12) < eps, factor),
         TR("sigma8_primordial_5/6", abs(s8p - 5 / 6) < eps, s8p),
         TR("sigma8_cmb_13/16", abs(s8c - 13 / 16) < eps, s8c),
         TR("sigma8_local_247/320", abs(s8l - 247 / 320) < eps, s8l),
     ]
+    assert_all_pass(results)
 
 
-# ---------------------------------------------------------------------------
 # Negative: attempt to disprove by finding alternative constants that work
-# ---------------------------------------------------------------------------
 
 
-def run_hubble_x_uniqueness() -> TR:
+def test_hubble_x_uniqueness() -> None:
     """Try to break Hubble prediction by finding a better X among all composites.
 
     The theory says X = n+L.  Sweep every BLD composite: if any composite
@@ -112,11 +110,13 @@ def run_hubble_x_uniqueness() -> TR:
             continue
         err = abs(h0_cmb * (1.0 + tools.bld.K / x_val) - h0_obs)
         if err < best_err:
-            return TR(f"n+L_beaten_by_{name}({x_val})", False, err)
-    return TR("n+L_is_best", True, best_err)
+            result = TR(f"n+L_beaten_by_{name}({x_val})", False, err)
+            assert result.passes, result.name
+    result = TR("n+L_is_best", True, best_err)
+    assert result.passes, result.name
 
 
-def run_cross_domain_k() -> list[TR]:
+def test_cross_domain_k() -> None:
     """Try to break cross-domain consistency by varying K.
 
     K=2 must simultaneously satisfy:
@@ -142,10 +142,10 @@ def run_cross_domain_k() -> list[TR]:
         all_pass = alpha_ok and h0_ok and dm_ok
         expected = (k_test == 2)
         results.append(TR(f"K={k_test}", all_pass == expected))
-    return results
+    assert_all_pass(results)
 
 
-def run_observer_correction_necessity() -> list[TR]:
+def test_observer_correction_necessity() -> None:
     """Try to disprove the observer correction term K*n*x² in dark matter.
 
     Without it (linear model: dark_matter = 5x), the prediction is 0.245.
@@ -160,15 +160,16 @@ def run_observer_correction_necessity() -> list[TR]:
     )
     linear_err = abs(linear_only - obs)
     corrected_err = abs(with_correction - obs)
-    return [
+    results = [
         TR("linear_worse", linear_err > corrected_err, linear_err),
         TR("correction_improves",
            corrected_err < tools.bld.OMEGA_DARK_MATTER.uncertainty,
            corrected_err),
     ]
+    assert_all_pass(results)
 
 
-def run_overconstrained() -> TR:
+def test_overconstrained() -> None:
     """BLD is overconstrained: 7 predictions from 3 constants (n, L, K).
 
     dark_matter, dark_energy, H₀(local), σ₈(CMB), σ₈(local), Hubble
@@ -197,10 +198,11 @@ def run_overconstrained() -> TR:
         1 for _, pred, obs in checks
         if abs(pred - obs.value) < tools.bld.SIGMA_THRESHOLD * obs.uncertainty
     )
-    return TR("overconstrained_5_of_5", n_pass == len(checks), n_pass)
+    result = TR("overconstrained_5_of_5", n_pass == len(checks), n_pass)
+    assert result.passes, f"only {int(result.value)} of 5 predictions match"
 
 
-def run_wrong_constants() -> list[TR]:
+def test_wrong_constants() -> None:
     """Perturb each BLD constant ±1.  All perturbations must break something.
 
     If a perturbation still satisfies all cosmological predictions, the
@@ -224,10 +226,10 @@ def run_wrong_constants() -> list[TR]:
         h0_ok = abs(h0 - tools.bld.H0_LOCAL.value) < tools.bld.H0_LOCAL.uncertainty
         s8_ok = abs(s8 - tools.bld.SIGMA8_CMB.value) < tools.bld.SIGMA8_CMB.uncertainty
         results.append(TR(f"wrong_{name}", not (dm_ok and h0_ok and s8_ok)))
-    return results
+    assert_all_pass(results)
 
 
-def run_formula_consistency() -> list[TR]:
+def test_formula_consistency() -> None:
     """dark_energy must equal 1 - x - dark_matter for all x, not just observed.
 
     Tests algebraic consistency of the two formulas across a range of baryon
@@ -240,52 +242,4 @@ def run_formula_consistency() -> list[TR]:
         de = tools.bld.dark_energy_fraction(x, tools.bld.n, tools.bld.L, tools.bld.K)
         residual = abs(x + dm + de - 1.0)
         results.append(TR(f"partition_x={x}", residual < tools.bld.FLOAT_EPSILON, residual))
-    return results
-
-
-# ---------------------------------------------------------------------------
-# Tests
-# ---------------------------------------------------------------------------
-
-
-def test_dark_matter_fractions() -> None:
-    assert_all_pass(run_dark_matter_fractions())
-
-
-def test_hubble_tension() -> None:
-    pred = run_hubble_tension()
-    assert pred.passes, (pred.predicted, pred.observed, pred.sigma)
-
-
-def test_sigma8_tension() -> None:
-    assert_all_pass(run_sigma8_tension())
-
-
-def test_exact_rational_fractions() -> None:
-    assert_all_pass(run_exact_rational_fractions())
-
-
-def test_hubble_x_uniqueness() -> None:
-    result = run_hubble_x_uniqueness()
-    assert result.passes, result.name
-
-
-def test_cross_domain_k() -> None:
-    assert_all_pass(run_cross_domain_k())
-
-
-def test_observer_correction_necessity() -> None:
-    assert_all_pass(run_observer_correction_necessity())
-
-
-def test_overconstrained() -> None:
-    result = run_overconstrained()
-    assert result.passes, f"only {int(result.value)} of 5 predictions match"
-
-
-def test_wrong_constants() -> None:
-    assert_all_pass(run_wrong_constants())
-
-
-def test_formula_consistency() -> None:
-    assert_all_pass(run_formula_consistency())
+    assert_all_pass(results)

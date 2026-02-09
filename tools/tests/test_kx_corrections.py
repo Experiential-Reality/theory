@@ -38,12 +38,7 @@ class PatternEntry:
     passes: bool
 
 
-# ---------------------------------------------------------------------------
-# Run functions
-# ---------------------------------------------------------------------------
-
-
-def run_alpha_decomposition() -> list[tools.bld.TestResult]:
+def test_alpha_decomposition() -> None:
     """Decompose alpha^-1 into 6 terms.  Verify each matches the formula
     from test_predictions.py.  Then verify: zeroing ANY single correction
     breaks the total (moves it > 3sigma from CODATA)."""
@@ -83,10 +78,10 @@ def run_alpha_decomposition() -> list[tools.bld.TestResult]:
             f"drop_{drop_term.value}_breaks", abs(modified - target) > tol,
         ))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_alternative_x_values() -> list[tools.bld.TestResult]:
+def test_alternative_x_values() -> None:
     """For the leading correction K/X in alpha^-1: exhaustive sweep X = 1..10,000.
 
     Show only X = B = 56 gives correct alpha^-1 within 3sigma of CODATA.
@@ -115,10 +110,10 @@ def run_alternative_x_values() -> list[tools.bld.TestResult]:
         len(matching_X) == 1 and matching_X[0] == B,
     ))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_cross_force_k() -> list[tools.bld.TestResult]:
+def test_cross_force_k() -> None:
     """For each K-dependent prediction, evaluate with K=1 and K=3.
 
     Show K=2 is required for EVERY quantity, not just globally.
@@ -166,10 +161,13 @@ def run_cross_force_k() -> list[tools.bld.TestResult]:
                 f"{pred_name}_K={K_}_fails", sigma > tools.bld.SIGMA_THRESHOLD,
             ))
 
-    return results
+    # M_P has ~0.1% uncertainty -- K=1,3 may still pass within 3sigma.
+    # The sharp tests are alpha_inv, mp_me, sin2_theta12.
+    sharp = [r for r in results if "M_P" not in r.name]
+    assert_all_pass(sharp)
 
 
-def run_correction_convergence() -> list[tools.bld.TestResult]:
+def test_correction_convergence() -> None:
     """Extract correction orders for alpha^-1.  Verify monotone decrease."""
     B, L, n, K = tools.bld.B, tools.bld.L, tools.bld.n, tools.bld.K
     _, terms = tools.bld.alpha_inv_full(n, float(L), B, K)
@@ -199,10 +197,10 @@ def run_correction_convergence() -> list[tools.bld.TestResult]:
             ratio < tools.bld.CONVERGENCE_RATIO,
         ))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_sign_rule() -> list[tools.bld.TestResult]:
+def test_sign_rule() -> None:
     """Verify the sign rule for K/X corrections.
 
     From observer-correction.md:
@@ -230,10 +228,10 @@ def run_sign_rule() -> list[tools.bld.TestResult]:
             actual_sign is expected_sign,
         ))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_accumulated_e2() -> list[tools.bld.TestResult]:
+def test_accumulated_e2() -> None:
     """The accumulated correction uses e^2 (Euler's number squared).
 
     e^2 = bidirectional discrete accumulation (K=2: forward x return).
@@ -292,10 +290,10 @@ def run_accumulated_e2() -> list[tools.bld.TestResult]:
             f"e^2_1000x_better_than_{name}", ratio > tools.bld.TRANSCENDENTAL_UNIQUENESS,
         ))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_correction_pattern() -> list[PatternEntry]:
+def test_correction_pattern() -> None:
     """For each prediction with K/X corrections, extract X and verify it's
     a product of BLD primitives {B, L, n, K, S}."""
     results: list[PatternEntry] = []
@@ -331,10 +329,10 @@ def run_correction_pattern() -> list[PatternEntry]:
             passes=is_bld,
         ))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_kx_multiplicative() -> list[tools.bld.TestResult]:
+def test_kx_multiplicative() -> None:
     """Compare additive vs multiplicative correction forms.
 
     Additive: alpha^-1 = base + K/B + spatial + accumulated
@@ -366,45 +364,4 @@ def run_kx_multiplicative() -> list[tools.bld.TestResult]:
     results.append(tools.bld.TestResult("additive_matches", add_err < tol))
     results.append(tools.bld.TestResult("multiplicative_worse", mult_err > add_err))
 
-    return results
-
-
-# ---------------------------------------------------------------------------
-# Tests
-# ---------------------------------------------------------------------------
-
-
-def test_alpha_decomposition() -> None:
-    assert_all_pass(run_alpha_decomposition())
-
-
-def test_alternative_x_values() -> None:
-    assert_all_pass(run_alternative_x_values())
-
-
-def test_cross_force_k() -> None:
-    results = run_cross_force_k()
-    # M_P has ~0.1% uncertainty -- K=1,3 may still pass within 3sigma.
-    # The sharp tests are alpha_inv, mp_me, sin2_theta12.
-    sharp = [r for r in results if "M_P" not in r.name]
-    assert_all_pass(sharp)
-
-
-def test_correction_convergence() -> None:
-    assert_all_pass(run_correction_convergence())
-
-
-def test_sign_rule() -> None:
-    assert_all_pass(run_sign_rule())
-
-
-def test_accumulated_e2() -> None:
-    assert_all_pass(run_accumulated_e2())
-
-
-def test_correction_pattern() -> None:
-    assert_all_pass(run_correction_pattern())
-
-
-def test_kx_multiplicative() -> None:
-    assert_all_pass(run_kx_multiplicative())
+    assert_all_pass(results)

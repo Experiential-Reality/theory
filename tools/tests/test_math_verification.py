@@ -11,7 +11,7 @@ import tools.quantum
 from helpers import assert_all_pass
 
 
-def run_degenerate_amplitudes(rng: np.random.Generator) -> list[tools.quantum.StatTest]:
+def test_degenerate_amplitudes(rng: np.random.Generator) -> None:
     configs = [
         (3, [0.6, 0.4, 0.0]),
         (4, [0.5, 0.3, 0.2, 0.0]),
@@ -42,10 +42,10 @@ def run_degenerate_amplitudes(rng: np.random.Generator) -> list[tools.quantum.St
                 results.append(tools.quantum.StatTest(float("inf"), 0.0, False))
                 continue
             results.append(tools.quantum.chi2_test(counts[nonzero], a_renorm, n))
-    return results
+    assert_all_pass(results)
 
 
-def run_m_equals_n(rng: np.random.Generator) -> list[tools.quantum.StatTest]:
+def test_m_equals_n(rng: np.random.Generator) -> None:
     configs = [
         (2, [0.5, 0.5]),
         (2, [0.8, 0.2]),
@@ -66,10 +66,10 @@ def run_m_equals_n(rng: np.random.Generator) -> list[tools.quantum.StatTest]:
         pointers = tools.quantum.make_orthogonal_pointers(M, M, rng)
         outcome = tools.quantum.run_selection_mc(pointers, a, n, rng)
         results.append(tools.quantum.chi2_test(outcome.counts, a, n))
-    return results
+    assert_all_pass(results)
 
 
-def run_complex_phases(rng: np.random.Generator) -> list[tools.quantum.StatTest]:
+def test_complex_phases(rng: np.random.Generator) -> None:
     M = 3
     N_obs = 32
     n = 80000
@@ -111,10 +111,10 @@ def run_complex_phases(rng: np.random.Generator) -> list[tools.quantum.StatTest]
             identical = bool(np.array_equal(choices, reference_choices))
             results.append(tools.quantum.StatTest(0.0, 1.0, identical))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_nonorthogonal_pointers(rng: np.random.Generator) -> list[tools.quantum.StatTest]:
+def test_nonorthogonal_pointers(rng: np.random.Generator) -> None:
     N_obs = 32
     alpha_sq = np.array([0.7, 0.3])
     n = 100000
@@ -131,10 +131,10 @@ def run_nonorthogonal_pointers(rng: np.random.Generator) -> list[tools.quantum.S
 
         outcome = tools.quantum.run_selection_mc(pointers, alpha_sq, n, rng)
         results.append(tools.quantum.chi2_test(outcome.counts, expected, n))
-    return results
+    assert_all_pass(results)
 
 
-def run_large_m(rng: np.random.Generator) -> list[tools.quantum.StatTest]:
+def test_large_m(rng: np.random.Generator) -> None:
     configs = [
         (10, 20, np.ones(10) / 10),
         (10, 20, None),
@@ -152,10 +152,10 @@ def run_large_m(rng: np.random.Generator) -> list[tools.quantum.StatTest]:
         pointers = tools.quantum.make_orthogonal_pointers(M, N_obs, rng)
         outcome = tools.quantum.run_selection_mc(pointers, alphas, n, rng)
         results.append(tools.quantum.chi2_test(outcome.counts, alphas, n))
-    return results
+    assert_all_pass(results)
 
 
-def run_dirichlet_decomposition(rng: np.random.Generator) -> list[tools.quantum.StatTest]:
+def test_dirichlet_decomposition(rng: np.random.Generator) -> None:
     M = 3
     a = np.array([0.5, 0.3, 0.2])
     n = 100000
@@ -184,10 +184,10 @@ def run_dirichlet_decomposition(rng: np.random.Generator) -> list[tools.quantum.
     outcome = tools.quantum.run_selection_mc(pointers, a, n, rng)
     results.append(tools.quantum.chi2_test(outcome.counts, a, n))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_tau_uniqueness(rng: np.random.Generator) -> list[tools.quantum.StatTest]:
+def test_tau_uniqueness(rng: np.random.Generator) -> None:
     M = 3
     N_obs = 64
     a = np.array([0.5, 0.3, 0.2])
@@ -214,10 +214,10 @@ def run_tau_uniqueness(rng: np.random.Generator) -> list[tools.quantum.StatTest]
             results.append(tools.quantum.StatTest(
                 born_test.chi2_stat, born_test.p_value, not born_test.passes,
             ))
-    return results
+    assert_all_pass(results)
 
 
-def run_joint_measurement(rng: np.random.Generator) -> list[tools.quantum.StatTest]:
+def test_joint_measurement(rng: np.random.Generator) -> None:
     M_A, M_B = 2, 2
     N_A, N_B = 8, 8
     n = 100000
@@ -280,10 +280,10 @@ def run_joint_measurement(rng: np.random.Generator) -> list[tools.quantum.StatTe
     a_nz = ghz_a[nonzero] / ghz_a[nonzero].sum()
     results.append(tools.quantum.chi2_test(outcome.counts[nonzero], a_nz, 50000))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_m2_symmetry(rng: np.random.Generator) -> list[tools.quantum.StatTest]:
+def test_m2_symmetry(rng: np.random.Generator) -> None:
     n = 80000
     results = []
 
@@ -305,10 +305,10 @@ def run_m2_symmetry(rng: np.random.Generator) -> list[tools.quantum.StatTest]:
             results.append(tools.quantum.chi2_test(counts_ratio, a, n))
             results.append(tools.quantum.chi2_test(counts_product, a, n))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_m2_product_ratio_proof(rng: np.random.Generator) -> list[tools.quantum.StatTest]:
+def test_m2_product_ratio_proof(rng: np.random.Generator) -> None:
     n = 200000
     results = []
 
@@ -348,10 +348,10 @@ def run_m2_product_ratio_proof(rng: np.random.Generator) -> list[tools.quantum.S
         ok = abs(p_analytical[k] - p_mc[k]) < 0.006
         results.append(tools.quantum.StatTest(abs(p_analytical[k] - p_mc[k]), p_mc[k], ok))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_factored_observer_analytical(rng: np.random.Generator) -> list[tools.quantum.StatTest]:
+def test_factored_observer_analytical(rng: np.random.Generator) -> None:
     n = 100000
     results = []
 
@@ -373,10 +373,10 @@ def run_factored_observer_analytical(rng: np.random.Generator) -> list[tools.qua
         ok = abs(p_anal - p_mc) < 0.006
         results.append(tools.quantum.StatTest(abs(p_anal - p_mc), p_mc, ok))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_nonorthogonal_analytical(rng: np.random.Generator) -> list[tools.quantum.StatTest]:
+def test_nonorthogonal_analytical(rng: np.random.Generator) -> None:
     a0, a1 = 0.7, 0.3
     alpha_sq = np.array([a0, a1])
     n = 100000
@@ -416,7 +416,7 @@ def run_nonorthogonal_analytical(rng: np.random.Generator) -> list[tools.quantum
         ok = abs(c1_num - c1_formula) < 0.001
         results.append(tools.quantum.StatTest(abs(c1_num - c1_formula), c1_formula, ok))
 
-    return results
+    assert_all_pass(results)
 
 
 # ---------------------------------------------------------------------------
@@ -424,9 +424,7 @@ def run_nonorthogonal_analytical(rng: np.random.Generator) -> list[tools.quantum
 # ---------------------------------------------------------------------------
 
 
-def run_wrong_noise_distribution(
-    rng: np.random.Generator,
-) -> list[tools.bld.TestResult]:
+def test_wrong_noise_distribution(rng: np.random.Generator) -> None:
     """The ratio rule ≡ argmax(log α + Gumbel).  Wrong noise breaks Born.
 
     Haar-random overlaps are exponentially distributed (from unitary
@@ -473,12 +471,10 @@ def run_wrong_noise_distribution(
     stat_l = tools.quantum.chi2_test(counts_l, alphas, n)
     results.append(tools.bld.TestResult("laplace_fails_born", not stat_l.passes))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_non_reciprocal_selection_fails(
-    rng: np.random.Generator,
-) -> list[tools.bld.TestResult]:
+def test_non_reciprocal_selection_fails(rng: np.random.Generator) -> None:
     """The selection rule uses α/overlap¹.  Power p≠1 must break Born.
 
     The 1/overlap (p=1) power comes from the exponential distribution of
@@ -518,65 +514,4 @@ def run_non_reciprocal_selection_fails(
     stat_2 = tools.quantum.chi2_test(counts_2, alphas, n)
     results.append(tools.bld.TestResult("p=2_fails_born", not stat_2.passes))
 
-    return results
-
-
-# ---------------------------------------------------------------------------
-# Test functions
-# ---------------------------------------------------------------------------
-
-
-def test_degenerate_amplitudes(rng: np.random.Generator) -> None:
-    assert_all_pass(run_degenerate_amplitudes(rng))
-
-
-def test_m_equals_n(rng: np.random.Generator) -> None:
-    assert_all_pass(run_m_equals_n(rng))
-
-
-def test_complex_phases(rng: np.random.Generator) -> None:
-    assert_all_pass(run_complex_phases(rng))
-
-
-def test_nonorthogonal_pointers(rng: np.random.Generator) -> None:
-    assert_all_pass(run_nonorthogonal_pointers(rng))
-
-
-def test_large_m(rng: np.random.Generator) -> None:
-    assert_all_pass(run_large_m(rng))
-
-
-def test_dirichlet_decomposition(rng: np.random.Generator) -> None:
-    assert_all_pass(run_dirichlet_decomposition(rng))
-
-
-def test_tau_uniqueness(rng: np.random.Generator) -> None:
-    assert_all_pass(run_tau_uniqueness(rng))
-
-
-def test_joint_measurement(rng: np.random.Generator) -> None:
-    assert_all_pass(run_joint_measurement(rng))
-
-
-def test_m2_symmetry(rng: np.random.Generator) -> None:
-    assert_all_pass(run_m2_symmetry(rng))
-
-
-def test_m2_product_ratio_proof(rng: np.random.Generator) -> None:
-    assert_all_pass(run_m2_product_ratio_proof(rng))
-
-
-def test_factored_observer_analytical(rng: np.random.Generator) -> None:
-    assert_all_pass(run_factored_observer_analytical(rng))
-
-
-def test_nonorthogonal_analytical(rng: np.random.Generator) -> None:
-    assert_all_pass(run_nonorthogonal_analytical(rng))
-
-
-def test_wrong_noise_distribution(rng: np.random.Generator) -> None:
-    assert_all_pass(run_wrong_noise_distribution(rng))
-
-
-def test_non_reciprocal_selection_fails(rng: np.random.Generator) -> None:
-    assert_all_pass(run_non_reciprocal_selection_fails(rng))
+    assert_all_pass(results)

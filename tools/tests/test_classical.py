@@ -23,12 +23,7 @@ from helpers import assert_all_pass
 TR = tools.bld.TestResult
 
 
-# ---------------------------------------------------------------------------
-# Run functions
-# ---------------------------------------------------------------------------
-
-
-def run_reynolds_pipe() -> list[tools.bld.Prediction | TR]:
+def test_reynolds_pipe() -> None:
     """Re_c(pipe) = (nLB/K)(38/37) = 2300.5.
 
     Net confinement X = B - L + 1 = 37.
@@ -67,10 +62,10 @@ def run_reynolds_pipe() -> list[tools.bld.Prediction | TR]:
             f"({n_},{L_},{B_},{K_})_fails", not matches,
         ))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_reynolds_geometries() -> list[tools.bld.Prediction]:
+def test_reynolds_geometries() -> None:
     """Geometry-dependent Re_c from T cap S detection structure.
 
     Flat plate: Re_c * nB = 515,200 (observed ~5e5, 3% tolerance)
@@ -100,10 +95,10 @@ def run_reynolds_geometries() -> list[tools.bld.Prediction]:
         "Re_c_jet", re_jet, obs_jet.value, obs_jet.uncertainty,
     ))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_kolmogorov_exponents() -> list[TR]:
+def test_kolmogorov_exponents() -> None:
     """Exact rational identities from BLD.
 
     -5/3 = -L/(n(n-1)) = -20/12  (Kolmogorov energy spectrum)
@@ -147,10 +142,10 @@ def run_kolmogorov_exponents() -> list[TR]:
             f"n={n_}_kolmogorov={alt}_not_-5/3", alt != F(-5, 3),
         ))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_feigenbaum_delta() -> list[tools.bld.Prediction | TR]:
+def test_feigenbaum_delta() -> None:
     """delta = sqrt(L + K - K^2/L + 1/e^X) where X = n + K + K/n + 1/L.
 
     Prove: matches delta = 4.6692016091 within 0.0003%.
@@ -178,10 +173,10 @@ def run_feigenbaum_delta() -> list[tools.bld.Prediction | TR]:
         improvement > tools.bld.IMPROVEMENT_THRESHOLD,
     ))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_feigenbaum_alpha() -> list[tools.bld.Prediction | TR]:
+def test_feigenbaum_alpha() -> None:
     """alpha = K + 1/K + 1/((n+K)B) - 1/(D*e^X).
 
     Prove: matches alpha = 2.5029078750 within 0.00001%.
@@ -226,10 +221,10 @@ def run_feigenbaum_alpha() -> list[tools.bld.Prediction | TR]:
         abs(product_bld - product_obs) / product_obs < 0.001,
     ))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_she_leveque() -> list[tools.bld.Prediction | TR]:
+def test_she_leveque() -> None:
     """zeta_p = p/9 + 2[1 - (2/3)^(p/3)] for p=1..8.
 
     Vectorized: evaluate all p values and K41 comparison in numpy broadcasts.
@@ -266,10 +261,10 @@ def run_she_leveque() -> list[tools.bld.Prediction | TR]:
             f"p={p}_BLD_beats_K41", bool(bld_err[i] < k41_err[i]),
         ))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_she_leveque_zeta3_forced() -> list[TR]:
+def test_she_leveque_zeta3_forced() -> None:
     """zeta_3 = 1 requires n = 4 (the 4/5 law constrains spacetime dimension).
 
     The log-Poisson tau_1 = 0 identity (when beta = 1 - gamma_inf/C_inf and
@@ -325,7 +320,7 @@ def run_she_leveque_zeta3_forced() -> list[TR]:
         abs(K / (n - 1) - 2 / 3) < tools.bld.FLOAT_EPSILON,
     ))
 
-    return results
+    assert_all_pass(results)
 
 
 # Dispatch table for classical wrong-constant checks.
@@ -353,7 +348,7 @@ def _check_classical_tuple(n_: int, L_: int, B_: int, K_: int) -> bool:
     return True
 
 
-def run_classical_wrong_constants() -> list[TR]:
+def test_classical_wrong_constants() -> None:
     """Wrong BLD constants -> wrong everything.
 
     Systematic grid: n in 2..8, K in 1..6, L from Riemann identity,
@@ -390,41 +385,4 @@ def run_classical_wrong_constants() -> list[TR]:
     n, L, B, K = tools.bld.n, tools.bld.L, tools.bld.B, tools.bld.K
     results.append(TR("BLD_matches_all_4", _check_classical_tuple(n, L, B, K)))
 
-    return results
-
-
-# ---------------------------------------------------------------------------
-# Tests
-# ---------------------------------------------------------------------------
-
-
-def test_reynolds_pipe() -> None:
-    assert_all_pass(run_reynolds_pipe())
-
-
-def test_reynolds_geometries() -> None:
-    assert_all_pass(run_reynolds_geometries())
-
-
-def test_kolmogorov_exponents() -> None:
-    assert_all_pass(run_kolmogorov_exponents())
-
-
-def test_feigenbaum_delta() -> None:
-    assert_all_pass(run_feigenbaum_delta())
-
-
-def test_feigenbaum_alpha() -> None:
-    assert_all_pass(run_feigenbaum_alpha())
-
-
-def test_she_leveque() -> None:
-    assert_all_pass(run_she_leveque())
-
-
-def test_she_leveque_zeta3_forced() -> None:
-    assert_all_pass(run_she_leveque_zeta3_forced())
-
-
-def test_classical_wrong_constants() -> None:
-    assert_all_pass(run_classical_wrong_constants())
+    assert_all_pass(results)

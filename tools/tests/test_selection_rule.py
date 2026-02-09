@@ -62,12 +62,12 @@ def _run_rule_tests(
     return results
 
 
-def run_born_tests(rng: np.random.Generator) -> list[tools.quantum.StatTest]:
-    return _run_rule_tests(rng)
+def test_ratio_rule_born(rng: np.random.Generator) -> None:
+    assert_all_pass(_run_rule_tests(rng))
 
 
-def run_product_tests(rng: np.random.Generator) -> list[tools.quantum.StatTest]:
-    return _run_rule_tests(rng, rule=tools.quantum.rule_product, m_filter=2)
+def test_product_rule(rng: np.random.Generator) -> None:
+    assert_all_pass(_run_rule_tests(rng, rule=tools.quantum.rule_product, m_filter=2))
 
 
 def run_all_rules(
@@ -121,9 +121,9 @@ def run_all_rules(
     return all_results
 
 
-def run_overlap_distribution_test(
+def test_overlap_distribution(
     rng: np.random.Generator,
-) -> tools.quantum.StatTest:
+) -> None:
     min_p = 1.0
     for N_obs in [8, 16, 32, 64, 128]:
         M_test = min(3, N_obs)
@@ -141,12 +141,13 @@ def run_overlap_distribution_test(
             )
             min_p = min(min_p, p)
 
-    return tools.quantum.StatTest(0.0, min_p, min_p > 0.01)
+    result = tools.quantum.StatTest(0.0, min_p, min_p > 0.01)
+    assert result.passes
 
 
-def run_independence_test(
+def test_independence(
     rng: np.random.Generator,
-) -> tools.quantum.StatTest:
+) -> None:
     max_corr = 0.0
     for N_obs in [8, 16, 32, 64]:
         M_test = min(3, N_obs)
@@ -162,25 +163,5 @@ def run_independence_test(
         off_diag = corr[np.triu_indices_from(corr, k=1)]
         max_corr = max(max_corr, float(np.max(np.abs(off_diag))))
 
-    return tools.quantum.StatTest(max_corr, 0.0, max_corr < 0.1)
-
-
-# ---------------------------------------------------------------------------
-# Tests
-# ---------------------------------------------------------------------------
-
-
-def test_ratio_rule_born(rng: np.random.Generator) -> None:
-    assert_all_pass(run_born_tests(rng))
-
-
-def test_product_rule(rng: np.random.Generator) -> None:
-    assert_all_pass(run_product_tests(rng))
-
-
-def test_overlap_distribution(rng: np.random.Generator) -> None:
-    assert run_overlap_distribution_test(rng).passes
-
-
-def test_independence(rng: np.random.Generator) -> None:
-    assert run_independence_test(rng).passes
+    result = tools.quantum.StatTest(max_corr, 0.0, max_corr < 0.1)
+    assert result.passes

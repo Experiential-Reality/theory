@@ -21,12 +21,7 @@ from helpers import assert_all_pass, assert_none_pass
 TR = tools.bld.TestResult
 
 
-# ---------------------------------------------------------------------------
-# Run functions
-# ---------------------------------------------------------------------------
-
-
-def run_mode_count() -> list[TR]:
+def test_mode_count() -> None:
     """Verify mode count: mu(Pi_4(Pi_20(1))) + mu(Sigma_56(1)) + mu(1) = 137.
 
     bld-calculus.md Definition 8.3:
@@ -43,10 +38,11 @@ def run_mode_count() -> list[TR]:
     mu_bound = B * mu_unit           # Sigma_56(1) = 56 * 1 = 56
     mu_trav = mu_unit                # 1 (traverser type)
     total = mu_geom + mu_bound + mu_trav
-    return [TR("mode_count", total == 137, float(total))]
+    results = [TR("mode_count", total == 137, float(total))]
+    assert_all_pass(results)
 
 
-def run_ld_cardinality_collapse() -> list[TR]:
+def test_ld_cardinality_collapse() -> None:
     """Enumerate LD-calculus types and verify cardinality = 1.
 
     bld-calculus.md Lemma 7.3: In the LD-calculus (no Sum type), every
@@ -90,10 +86,11 @@ def run_ld_cardinality_collapse() -> list[TR]:
             float(card),
         ))
 
-    return results
+    assert len(results) > 100
+    assert_all_pass(results)
 
 
-def run_constant_rigidity() -> list[TR]:
+def test_constant_rigidity() -> None:
     """The five identities form a 1D family parameterised by K.
 
     Identity 3 (lambda^2 * nL = K^2 with lambda^2 = 1/L) gives n = K^2.
@@ -144,10 +141,10 @@ def run_constant_rigidity() -> list[TR]:
         else:
             results.append(TR(f"K={K_}_fails", not all_match, 0.0))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_alternative_137() -> list[TR]:
+def test_alternative_137() -> None:
     """Try all (a,b,c) with a*b + c + 1 = 137, a,b,c > 0.
 
     Vectorized: meshgrid over (a, b), compute c = 136 - a*b, then evaluate
@@ -210,10 +207,10 @@ def run_alternative_137() -> list[TR]:
         float(alpha[within][0]) if n_matches else 0.0,
     ))
 
-    return results
+    assert_all_pass(results)
 
 
-def run_broken_k() -> list[tools.bld.Prediction]:
+def test_broken_k() -> None:
     """Compute K-dependent predictions with K=1 and K=3.
 
     Keep all other constants at BLD values (including S=13).
@@ -244,10 +241,10 @@ def run_broken_k() -> list[tools.bld.Prediction]:
             obs_s12.value, obs_s12.uncertainty,
         ))
 
-    return results
+    assert_none_pass(results)
 
 
-def run_broken_n() -> list[tools.bld.Prediction]:
+def test_broken_n() -> None:
     """For n in {2,3,5,6}: compute L, then alpha^-1.  All should fail."""
     results: list[tools.bld.Prediction] = []
     obs = tools.bld.ALPHA_INV
@@ -264,10 +261,10 @@ def run_broken_n() -> list[tools.bld.Prediction]:
             f"alpha_inv_n={n_}", alpha, obs.value, obs.uncertainty,
         ))
 
-    return results
+    assert_none_pass(results)
 
 
-def run_lambda_uniqueness() -> list[tools.bld.Prediction]:
+def test_lambda_uniqueness() -> None:
     """Perturb lambda^2.  Only 1/20 should match M_P and m_H."""
     results: list[tools.bld.Prediction] = []
     v = tools.bld.V_EW
@@ -282,42 +279,6 @@ def run_lambda_uniqueness() -> list[tools.bld.Prediction]:
             f"M_P_lambda2=1/{denom}", M_P, obs.value, obs.uncertainty,
         ))
 
-    return results
-
-
-# ---------------------------------------------------------------------------
-# Tests
-# ---------------------------------------------------------------------------
-
-
-def test_mode_count() -> None:
-    assert_all_pass(run_mode_count())
-
-
-def test_ld_cardinality_collapse() -> None:
-    results = run_ld_cardinality_collapse()
-    assert len(results) > 100  # enough types enumerated
-    assert_all_pass(results)
-
-
-def test_constant_rigidity() -> None:
-    assert_all_pass(run_constant_rigidity())
-
-
-def test_alternative_137() -> None:
-    assert_all_pass(run_alternative_137())
-
-
-def test_broken_k() -> None:
-    assert_none_pass(run_broken_k())
-
-
-def test_broken_n() -> None:
-    assert_none_pass(run_broken_n())
-
-
-def test_lambda_uniqueness() -> None:
-    results = run_lambda_uniqueness()
     for r in results:
         if "1/20" in r.name:
             assert r.passes
