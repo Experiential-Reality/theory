@@ -11,15 +11,12 @@ import numpy as np
 import pytest
 import scipy.linalg
 
+import tools.quantum
+
 
 # ---------------------------------------------------------------------------
 # Shared helpers
 # ---------------------------------------------------------------------------
-
-
-def _haar_random_state(dim: int, rng: np.random.Generator) -> np.ndarray:
-    z = rng.standard_normal(dim) + 1j * rng.standard_normal(dim)
-    return z / np.linalg.norm(z)
 
 
 def _partial_trace_a(rho_ab: np.ndarray, dim_a: int, dim_b: int) -> np.ndarray:
@@ -59,7 +56,7 @@ def run_no_cloning(rng: np.random.Generator) -> list[CloningResult]:
     dim = 8
 
     # Identical states: z = 1, z^2 = 1  =>  clonable
-    psi = _haar_random_state(dim, rng)
+    psi = tools.quantum.haar_random_state(dim, rng)
     z = np.vdot(psi, psi)
     results.append(CloningResult(z, z**2, abs(z - z**2), True, abs(z - z**2) < 1e-12))
 
@@ -73,8 +70,8 @@ def run_no_cloning(rng: np.random.Generator) -> list[CloningResult]:
 
     # Random pairs: z should NOT satisfy z = z^2
     for _ in range(200):
-        s1 = _haar_random_state(dim, rng)
-        s2 = _haar_random_state(dim, rng)
+        s1 = tools.quantum.haar_random_state(dim, rng)
+        s2 = tools.quantum.haar_random_state(dim, rng)
         z = np.vdot(s1, s2)
         residual = abs(z - z**2)
         # With overwhelming probability, random states have 0 < |z| < 1
@@ -97,7 +94,7 @@ def run_no_cloning_unitary_test(rng: np.random.Generator) -> list[CloningResult]
     results: list[CloningResult] = []
 
     # Generate non-orthogonal states
-    states = [_haar_random_state(dim, rng) for _ in range(n_states)]
+    states = [tools.quantum.haar_random_state(dim, rng) for _ in range(n_states)]
 
     # Input Gram matrix: G_in[j,k] = <psi_j, 0 | psi_k, 0> = <psi_j|psi_k>
     G_in = np.array([[np.vdot(states[j], states[k])
@@ -233,7 +230,7 @@ def run_no_communication_higher_dim(rng: np.random.Generator) -> list[NoCommunic
 
     for dim_a, dim_b in [(3, 3), (2, 4), (4, 2)]:
         dim_ab = dim_a * dim_b
-        psi = _haar_random_state(dim_ab, rng)
+        psi = tools.quantum.haar_random_state(dim_ab, rng)
         rho_ab = np.outer(psi, psi.conj())
         rho_b_original = _partial_trace_a(rho_ab, dim_a, dim_b)
 

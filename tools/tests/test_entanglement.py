@@ -5,8 +5,7 @@ import dataclasses
 import numpy as np
 import pytest
 
-
-K_KILLING = 2
+import tools.bld
 SQRT2 = np.sqrt(2)
 
 
@@ -51,7 +50,7 @@ def run_bell_states() -> list[EntropyResult]:
         rho_sq = 2 * lambda_val * (1 - lambda_val)
         link = _bld_link(rho_sq)
         s_over_l = s / link
-        h = s - K_KILLING * link
+        h = s - tools.bld.K * link
         results.append(EntropyResult(
             f"Bell {name}", s, link, s_over_l, h,
             abs(s_over_l - 2.0) < 1e-10 and abs(h) < 1e-10,
@@ -72,7 +71,7 @@ def run_ghz_states() -> list[EntropyResult]:
         rho_sq = 2 * 0.5 * 0.5
         link = _bld_link(rho_sq)
         s_over_l = s / link
-        h = s - K_KILLING * link
+        h = s - tools.bld.K * link
         results.append(EntropyResult(
             f"GHZ_{num_qubits}", s, link, s_over_l, h,
             abs(s_over_l - 2.0) < 1e-10 and abs(h) < 1e-10,
@@ -95,7 +94,7 @@ def run_w_states() -> list[EntropyResult]:
         rho_sq = 2 * lambda_val * (1 - lambda_val)
         link = _bld_link(rho_sq)
         s_over_l = s / link
-        h = s - K_KILLING * link
+        h = s - tools.bld.K * link
         results.append(EntropyResult(
             f"W_{num_qubits}", s, link, s_over_l, h,
             h > 0 and s_over_l > 2.0,
@@ -114,7 +113,7 @@ def run_lambda_sweep() -> list[EntropyResult]:
         rho_sq = 2 * lambda_val * (1 - lambda_val)
         link = _bld_link(rho_sq)
         s_over_l = s / link if link > 1e-15 else float("inf")
-        h = s - K_KILLING * link
+        h = s - tools.bld.K * link
 
         if abs(lambda_val - 0.5) < 1e-10:
             passes = abs(s_over_l - 2.0) < 1e-10 and abs(h) < 1e-10
@@ -174,7 +173,7 @@ def run_h_non_negative(rng: np.random.Generator) -> list[EntropyResult]:
     rho_sq = 2 * lam * (1 - lam)
     entangled = rho_sq > 1e-15
     L_bld = np.where(entangled, -0.5 * np.log(np.clip(1 - rho_sq, 1e-15, None)), 0.0)
-    H = S - K_KILLING * L_bld
+    H = S - tools.bld.K * L_bld
 
     violations = np.where(entangled & (H < -1e-10))[0]
     results: list[EntropyResult] = []

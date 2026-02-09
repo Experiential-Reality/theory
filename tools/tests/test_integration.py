@@ -4,7 +4,7 @@ import pathlib
 
 import pytest
 
-from tools.check_links import check, process_file
+import tools.check_links
 
 pytestmark = pytest.mark.project
 
@@ -12,7 +12,7 @@ pytestmark = pytest.mark.project
 class TestProcessFile:
     def test_extracts_anchors_and_links(self, all_link_types_md: pathlib.Path):
         content = all_link_types_md.read_text()
-        file_data, errors = process_file(str(all_link_types_md), content)
+        file_data, errors = tools.check_links.process_file(str(all_link_types_md), content)
 
         # Should extract headers as anchors
         assert "valid-links" in file_data.anchors
@@ -25,7 +25,7 @@ class TestProcessFile:
 
     def test_validates_intra_file_anchors(self, all_link_types_md: pathlib.Path):
         content = all_link_types_md.read_text()
-        file_data, errors = process_file(str(all_link_types_md), content)
+        file_data, errors = tools.check_links.process_file(str(all_link_types_md), content)
 
         # Self anchor #valid-links should be valid (no error)
         error_anchors = [e.link for e in errors if e.link.startswith("#")]
@@ -35,12 +35,12 @@ class TestProcessFile:
 class TestCheck:
     @pytest.mark.asyncio
     async def test_finds_all_fixture_files(self, fixtures_dir: pathlib.Path):
-        file_count, errors = await check(fixtures_dir)
+        file_count, errors = await tools.check_links.check(fixtures_dir)
         assert file_count == 2
 
     @pytest.mark.asyncio
     async def test_detects_broken_links(self, fixtures_dir: pathlib.Path):
-        file_count, errors = await check(fixtures_dir)
+        file_count, errors = await tools.check_links.check(fixtures_dir)
         all_errors = list(errors)
 
         # Should find broken inline link
@@ -53,7 +53,7 @@ class TestCheck:
 
     @pytest.mark.asyncio
     async def test_valid_links_no_errors(self, fixtures_dir: pathlib.Path):
-        file_count, errors = await check(fixtures_dir)
+        file_count, errors = await tools.check_links.check(fixtures_dir)
         all_errors = list(errors)
 
         # Valid links should not appear in errors

@@ -10,7 +10,6 @@ Theory refs:
   - she-leveque-derivation.md (zeta_p structure functions)
 """
 
-import dataclasses
 import fractions
 import math
 
@@ -20,10 +19,7 @@ import pytest
 import tools.bld
 
 
-@dataclasses.dataclass(slots=True, frozen=True)
-class ClassicalResult:
-    name: str
-    passes: bool
+TR = tools.bld.TestResult
 
 
 # ---------------------------------------------------------------------------
@@ -31,7 +27,7 @@ class ClassicalResult:
 # ---------------------------------------------------------------------------
 
 
-def run_reynolds_pipe() -> list[tools.bld.Prediction | ClassicalResult]:
+def run_reynolds_pipe() -> list[tools.bld.Prediction | TR]:
     """Re_c(pipe) = (nLB/K)(38/37) = 2300.5.
 
     Net confinement X = B - L + 1 = 37.
@@ -41,31 +37,32 @@ def run_reynolds_pipe() -> list[tools.bld.Prediction | ClassicalResult]:
     Disprove: wrong (n,L,B) tuples.
     """
     B, L, n, K = tools.bld.B, tools.bld.L, tools.bld.n, tools.bld.K
-    results: list[tools.bld.Prediction | ClassicalResult] = []
+    obs = tools.bld.RE_PIPE_OBSERVED
+    results: list[tools.bld.Prediction | TR] = []
 
     # Prove: BLD prediction matches
     predicted = tools.bld.reynolds_pipe(n, L, B, K)
     results.append(tools.bld.Prediction(
-        "Re_c_pipe", predicted, 2300.0, 1.0,
+        "Re_c_pipe", predicted, obs.value, obs.uncertainty,
     ))
 
     # Verify internal structure
     X = B - L + 1
-    results.append(ClassicalResult("X=B-L+1=37", X == 37))
-    results.append(ClassicalResult(
+    results.append(TR("X=B-L+1=37", X == 37))
+    results.append(TR(
         "correction=38/37",
-        abs((X + 1) / X - 38 / 37) < 1e-15,
+        abs((X + 1) / X - 38 / 37) < tools.bld.FLOAT_EPSILON,
     ))
 
     # Disprove: wrong BLD constants
     # B+-1 changes Re_c by only ~2% (within empirical tolerance), so test
-    # tuples that change n or L — the structurally independent quantities.
-    # Theory ref: reynolds-derivation.md — B = n(S+1) is derived, not free.
+    # tuples that change n or L -- the structurally independent quantities.
+    # Theory ref: reynolds-derivation.md -- B = n(S+1) is derived, not free.
     wrong_tuples = [(3, 10, 30, 1), (5, 25, 70, 3), (3, 20, 56, 2), (6, 10, 60, 4)]
     for n_, L_, B_, K_ in wrong_tuples:
         alt = tools.bld.reynolds_pipe(n_, L_, B_, K_)
-        matches = abs(alt - 2300) < 50
-        results.append(ClassicalResult(
+        matches = abs(alt - obs.value) < 50
+        results.append(TR(
             f"({n_},{L_},{B_},{K_})_fails", not matches,
         ))
 
@@ -83,28 +80,29 @@ def run_reynolds_geometries() -> list[tools.bld.Prediction]:
     re_pipe = tools.bld.reynolds_pipe(n, L, B, K)
     results: list[tools.bld.Prediction] = []
 
-    # Flat plate: B-escape (boundary escapes detection)
-    re_flat = re_pipe * n * B
+    obs_flat = tools.bld.RE_FLAT_PLATE
+    obs_sphere = tools.bld.RE_SPHERE
+    obs_jet = tools.bld.RE_JET
+
+    re_flat = tools.bld.reynolds_flat_plate(re_pipe, n, B)
     results.append(tools.bld.Prediction(
-        "Re_c_flat_plate", re_flat, 5e5, 1.5e4,
+        "Re_c_flat_plate", re_flat, obs_flat.value, obs_flat.uncertainty,
     ))
 
-    # Sphere: L-escape (link/geometry partially escapes)
-    re_sphere = re_pipe * (n * (L + K) - 1)
+    re_sphere = tools.bld.reynolds_sphere(re_pipe, n, L, K)
     results.append(tools.bld.Prediction(
-        "Re_c_sphere", re_sphere, 2e5, 1e3,
+        "Re_c_sphere", re_sphere, obs_sphere.value, obs_sphere.uncertainty,
     ))
 
-    # Jet: destabilizing (K reduces stability)
-    re_jet = re_pipe / K
+    re_jet = tools.bld.reynolds_jet(re_pipe, K)
     results.append(tools.bld.Prediction(
-        "Re_c_jet", re_jet, 2000.0, 1000.0,
+        "Re_c_jet", re_jet, obs_jet.value, obs_jet.uncertainty,
     ))
 
     return results
 
 
-def run_kolmogorov_exponents() -> list[ClassicalResult]:
+def run_kolmogorov_exponents() -> list[TR]:
     """Exact rational identities from BLD.
 
     -5/3 = -L/(n(n-1)) = -20/12  (Kolmogorov energy spectrum)
@@ -115,26 +113,26 @@ def run_kolmogorov_exponents() -> list[ClassicalResult]:
     Disprove: wrong n in {3, 5, 6}.
     """
     B, L, n, K = tools.bld.B, tools.bld.L, tools.bld.n, tools.bld.K
-    results: list[ClassicalResult] = []
+    results: list[TR] = []
 
     # Exact rational arithmetic
     F = fractions.Fraction
 
     # -5/3 = -L/(n(n-1))
     kolmogorov = -F(L, n * (n - 1))
-    results.append(ClassicalResult(
+    results.append(TR(
         "-L/(n(n-1))=-5/3", kolmogorov == F(-5, 3),
     ))
 
     # 2/3 = K/(n-1)
     dissipation = F(K, n - 1)
-    results.append(ClassicalResult(
+    results.append(TR(
         "K/(n-1)=2/3", dissipation == F(2, 3),
     ))
 
     # 1/25 = 1/(L+n+1)
     intermittency = F(1, L + n + 1)
-    results.append(ClassicalResult(
+    results.append(TR(
         "1/(L+n+1)=1/25", intermittency == F(1, 25),
     ))
 
@@ -144,14 +142,14 @@ def run_kolmogorov_exponents() -> list[ClassicalResult]:
         if L_ < 1:
             continue
         alt = -F(L_, n_ * (n_ - 1))
-        results.append(ClassicalResult(
+        results.append(TR(
             f"n={n_}_kolmogorov={alt}_not_-5/3", alt != F(-5, 3),
         ))
 
     return results
 
 
-def run_feigenbaum_delta() -> list[tools.bld.Prediction | ClassicalResult]:
+def run_feigenbaum_delta() -> list[tools.bld.Prediction | TR]:
     """delta = sqrt(L + K - K^2/L + 1/e^X) where X = n + K + K/n + 1/L.
 
     Prove: matches delta = 4.6692016091 within 0.0003%.
@@ -159,12 +157,12 @@ def run_feigenbaum_delta() -> list[tools.bld.Prediction | ClassicalResult]:
     """
     L, n, K = tools.bld.L, tools.bld.n, tools.bld.K
     obs = tools.bld.FEIGENBAUM_DELTA
-    results: list[tools.bld.Prediction | ClassicalResult] = []
+    results: list[tools.bld.Prediction | TR] = []
 
     # Full prediction with e-correction
     predicted = tools.bld.feigenbaum_delta(n, L, K)
     results.append(tools.bld.Prediction(
-        "delta", predicted, obs.value, 0.0001,  # 0.0003% of ~4.669
+        "delta", predicted, obs.value, tools.bld.FEIGENBAUM_DELTA_TOL,
     ))
 
     # First-order (no e-correction)
@@ -174,15 +172,15 @@ def run_feigenbaum_delta() -> list[tools.bld.Prediction | ClassicalResult]:
 
     # e-correction improves precision by ~100x
     improvement = err_first / err_full if err_full > 0 else float("inf")
-    results.append(ClassicalResult(
+    results.append(TR(
         f"e_correction_100x_better_{improvement:.0f}x",
-        improvement > 50,  # conservative: >50x
+        improvement > tools.bld.IMPROVEMENT_THRESHOLD,
     ))
 
     return results
 
 
-def run_feigenbaum_alpha() -> list[tools.bld.Prediction | ClassicalResult]:
+def run_feigenbaum_alpha() -> list[tools.bld.Prediction | TR]:
     """alpha = K + 1/K + 1/((n+K)B) - 1/(D*e^X).
 
     Prove: matches alpha = 2.5029078750 within 0.00001%.
@@ -192,12 +190,12 @@ def run_feigenbaum_alpha() -> list[tools.bld.Prediction | ClassicalResult]:
     B, L, n, K = tools.bld.B, tools.bld.L, tools.bld.n, tools.bld.K
     obs = tools.bld.FEIGENBAUM_ALPHA
     obs_delta = tools.bld.FEIGENBAUM_DELTA
-    results: list[tools.bld.Prediction | ClassicalResult] = []
+    results: list[tools.bld.Prediction | TR] = []
 
     # Full prediction
     predicted = tools.bld.feigenbaum_alpha(n, L, B, K)
     results.append(tools.bld.Prediction(
-        "alpha_feig", predicted, obs.value, 0.000001,
+        "alpha_feig", predicted, obs.value, tools.bld.FEIGENBAUM_ALPHA_TOL,
     ))
 
     # First-order (no e-correction)
@@ -205,15 +203,15 @@ def run_feigenbaum_alpha() -> list[tools.bld.Prediction | ClassicalResult]:
     err_first = abs(alpha_first - obs.value)
     err_full = abs(predicted - obs.value)
     improvement = err_first / err_full if err_full > 0 else float("inf")
-    results.append(ClassicalResult(
+    results.append(TR(
         f"e_correction_improves_{improvement:.0f}x",
-        improvement > 50,
+        improvement > tools.bld.IMPROVEMENT_THRESHOLD,
     ))
 
     # Cross-check: fractal dimension
     D_f_bld = math.log(2) / math.log(predicted)
     D_f_obs = math.log(2) / math.log(obs.value)
-    results.append(ClassicalResult(
+    results.append(TR(
         "fractal_dim_match",
         abs(D_f_bld - D_f_obs) < 1e-6,
     ))
@@ -222,7 +220,7 @@ def run_feigenbaum_alpha() -> list[tools.bld.Prediction | ClassicalResult]:
     delta_bld = tools.bld.feigenbaum_delta(n, L, K)
     product_bld = predicted * delta_bld
     product_obs = obs.value * obs_delta.value
-    results.append(ClassicalResult(
+    results.append(TR(
         "alpha_delta_product",
         abs(product_bld - product_obs) / product_obs < 0.001,
     ))
@@ -230,7 +228,7 @@ def run_feigenbaum_alpha() -> list[tools.bld.Prediction | ClassicalResult]:
     return results
 
 
-def run_she_leveque() -> list[tools.bld.Prediction | ClassicalResult]:
+def run_she_leveque() -> list[tools.bld.Prediction | TR]:
     """zeta_p = p/9 + 2[1 - (2/3)^(p/3)] for p=1..8.
 
     Vectorized: evaluate all p values and K41 comparison in numpy broadcasts.
@@ -238,12 +236,12 @@ def run_she_leveque() -> list[tools.bld.Prediction | ClassicalResult]:
     Disprove: K41 (p/3) diverges from DNS at high p.
     """
     n, K = tools.bld.n, tools.bld.K
-    results: list[tools.bld.Prediction | ClassicalResult] = []
+    results: list[tools.bld.Prediction | TR] = []
 
-    # DNS data: vectorized
+    # DNS data: from module constants
     p_vals = np.arange(1, 9, dtype=np.float64)
-    obs_vals = np.array([0.37, 0.70, 1.000, 1.28, 1.54, 1.78, 2.00, 2.21])
-    obs_uncs = np.array([0.01, 0.01, 0.001, 0.02, 0.03, 0.04, 0.05, 0.07])
+    obs_vals = np.array(tools.bld.SL_DNS_ZETA)
+    obs_uncs = np.array(tools.bld.SL_DNS_UNC)
 
     # Vectorized BLD She-Leveque: zeta_p = p/(n-1)^2 + K[1 - (K/(n-1))^(p/(n-1))]
     bld_zeta = p_vals / (n - 1)**2 + K * (1 - (K / (n - 1))**(p_vals / (n - 1)))
@@ -263,14 +261,14 @@ def run_she_leveque() -> list[tools.bld.Prediction | ClassicalResult]:
     bld_err = np.abs(bld_high - obs_vals[high_idx])
 
     for i, p in enumerate([6, 7, 8]):
-        results.append(ClassicalResult(
+        results.append(TR(
             f"p={p}_BLD_beats_K41", bool(bld_err[i] < k41_err[i]),
         ))
 
     return results
 
 
-def run_she_leveque_zeta3_forced() -> list[ClassicalResult]:
+def run_she_leveque_zeta3_forced() -> list[TR]:
     """zeta_3 = 1 requires n = 4 (the 4/5 law constrains spacetime dimension).
 
     The log-Poisson tau_1 = 0 identity (when beta = 1 - gamma_inf/C_inf and
@@ -278,13 +276,13 @@ def run_she_leveque_zeta3_forced() -> list[ClassicalResult]:
     4/5 law (zeta_3 = 1), the mapping p=3 -> q=3/(n-1) gives q=1 only
     when n=4.
 
-    Prove: zeta_{n-1} = 1 for all (n, K=n-2) — structural universality.
-    Prove: zeta_3 = 1 only for n=4 — constrains spacetime dimension.
+    Prove: zeta_{n-1} = 1 for all (n, K=n-2) -- structural universality.
+    Prove: zeta_3 = 1 only for n=4 -- constrains spacetime dimension.
     Disprove: for n != 4, zeta_3 != 1.
 
     Theory ref: she-leveque-derivation.md
     """
-    results: list[ClassicalResult] = []
+    results: list[TR] = []
 
     # Structural universality: zeta_{n-1} = 1 for ANY (n, K=n-2)
     # This is tau_1 = 0: the correction terms cancel at q=1
@@ -294,7 +292,7 @@ def run_she_leveque_zeta3_forced() -> list[ClassicalResult]:
             continue
         p = float(n_ - 1)
         zeta_nm1 = tools.bld.she_leveque_zeta(p, n_, K_)
-        results.append(ClassicalResult(
+        results.append(TR(
             f"zeta_{int(p)}_n={n_}_equals_1",
             abs(zeta_nm1 - 1.0) < 1e-12,
         ))
@@ -302,7 +300,7 @@ def run_she_leveque_zeta3_forced() -> list[ClassicalResult]:
     # n=4 gives zeta_3 = 1 exactly (the 4/5 law)
     n, K = tools.bld.n, tools.bld.K
     zeta3_bld = tools.bld.she_leveque_zeta(3.0, n, K)
-    results.append(ClassicalResult(
+    results.append(TR(
         "zeta3_n=4_K=2_equals_1",
         abs(zeta3_bld - 1.0) < 1e-12,
     ))
@@ -313,23 +311,48 @@ def run_she_leveque_zeta3_forced() -> list[ClassicalResult]:
         if K_ < 1:
             continue
         zeta3 = tools.bld.she_leveque_zeta(3.0, n_, K_)
-        results.append(ClassicalResult(
+        results.append(TR(
             f"zeta3_n={n_}_not_1",
             abs(zeta3 - 1.0) > 0.1,
         ))
 
     # SL parameter identities (n=4, K=2)
-    results.append(ClassicalResult("9=(n-1)^2", (n - 1)**2 == 9))
-    results.append(ClassicalResult("2=K", K == 2))
-    results.append(ClassicalResult(
+    results.append(TR("9=(n-1)^2", (n - 1)**2 == 9))
+    results.append(TR("2=K", K == 2))
+    results.append(TR(
         "2/3=K/(n-1)",
-        abs(K / (n - 1) - 2 / 3) < 1e-15,
+        abs(K / (n - 1) - 2 / 3) < tools.bld.FLOAT_EPSILON,
     ))
 
     return results
 
 
-def run_classical_wrong_constants() -> list[ClassicalResult]:
+# Dispatch table for classical wrong-constant checks.
+# Each entry: (name, formula(n_, L_, B_, K_) -> float, target, tolerance)
+_CLASSICAL_CHECKS: tuple[tuple[str, object, float, float], ...] = (
+    ("re_c", lambda n_, L_, B_, K_: tools.bld.reynolds_pipe(n_, L_, B_, K_),
+     tools.bld.RE_PIPE_OBSERVED.value, 50.0),
+    ("delta", lambda n_, L_, B_, K_: tools.bld.feigenbaum_delta(n_, L_, K_),
+     tools.bld.FEIGENBAUM_DELTA.value, 0.01),
+    ("alpha", lambda n_, L_, B_, K_: tools.bld.feigenbaum_alpha(n_, L_, B_, K_),
+     tools.bld.FEIGENBAUM_ALPHA.value, 0.01),
+    ("zeta6", lambda n_, L_, B_, K_: tools.bld.she_leveque_zeta(6.0, n_, K_),
+     tools.bld.SL_DNS_ZETA[5], tools.bld.SL_DNS_UNC[5]),
+)
+
+
+def _check_classical_tuple(n_: int, L_: int, B_: int, K_: int) -> bool:
+    """Check if a (n, L, B, K) tuple matches all 4 classical predictions."""
+    for _name, fn, target, tol in _CLASSICAL_CHECKS:
+        try:
+            if abs(fn(n_, L_, B_, K_) - target) >= tol:
+                return False
+        except (ZeroDivisionError, OverflowError, ValueError):
+            return False
+    return True
+
+
+def run_classical_wrong_constants() -> list[TR]:
     """Wrong BLD constants -> wrong everything.
 
     Systematic grid: n in 2..8, K in 1..6, L from Riemann identity,
@@ -339,17 +362,7 @@ def run_classical_wrong_constants() -> list[ClassicalResult]:
     Theory ref: feigenbaum/SL depend on (n,L,K) not B, so the grid must
     vary the structurally independent quantities.
     """
-    results: list[ClassicalResult] = []
-
-    # Observed targets
-    re_target = 2300.0
-    re_tol = 50.0
-    delta_target = tools.bld.FEIGENBAUM_DELTA.value
-    delta_tol = 0.01
-    alpha_target = tools.bld.FEIGENBAUM_ALPHA.value
-    alpha_tol = 0.01
-    zeta6_target = 1.78
-    zeta6_tol = 0.04
+    results: list[TR] = []
 
     # Systematic grid: derive (L, B) from (n, K) via BLD identities
     n_tested = 0
@@ -363,54 +376,18 @@ def run_classical_wrong_constants() -> list[ClassicalResult]:
             B_ = n_ * (S_ + 1)
 
             n_tested += 1
-            try:
-                re_c = tools.bld.reynolds_pipe(n_, L_, B_, K_)
-                re_ok = abs(re_c - re_target) < re_tol
-            except (ZeroDivisionError, OverflowError):
-                re_ok = False
-
-            try:
-                delta = tools.bld.feigenbaum_delta(n_, L_, K_)
-                delta_ok = abs(delta - delta_target) < delta_tol
-            except (ZeroDivisionError, OverflowError, ValueError):
-                delta_ok = False
-
-            try:
-                alpha = tools.bld.feigenbaum_alpha(n_, L_, B_, K_)
-                alpha_ok = abs(alpha - alpha_target) < alpha_tol
-            except (ZeroDivisionError, OverflowError):
-                alpha_ok = False
-
-            try:
-                zeta6 = tools.bld.she_leveque_zeta(6.0, n_, K_)
-                zeta6_ok = abs(zeta6 - zeta6_target) < zeta6_tol
-            except (ZeroDivisionError, OverflowError):
-                zeta6_ok = False
-
-            all_ok = re_ok and delta_ok and alpha_ok and zeta6_ok
-            if all_ok:
+            if _check_classical_tuple(n_, L_, B_, K_):
                 n_passed += 1
 
     # Exactly one tuple should pass: (4,20,56,2)
-    results.append(ClassicalResult(
+    results.append(TR(
         f"BLD_unique_in_{n_tested}_tuples({n_passed}_match)",
         n_passed == 1,
     ))
 
     # Verify BLD itself passes
     n, L, B, K = tools.bld.n, tools.bld.L, tools.bld.B, tools.bld.K
-    re_c = tools.bld.reynolds_pipe(n, L, B, K)
-    delta = tools.bld.feigenbaum_delta(n, L, K)
-    alpha = tools.bld.feigenbaum_alpha(n, L, B, K)
-    zeta6 = tools.bld.she_leveque_zeta(6.0, n, K)
-
-    bld_ok = (
-        abs(re_c - re_target) < re_tol
-        and abs(delta - delta_target) < delta_tol
-        and abs(alpha - alpha_target) < alpha_tol
-        and abs(zeta6 - zeta6_target) < zeta6_tol
-    )
-    results.append(ClassicalResult("BLD_matches_all_4", bld_ok))
+    results.append(TR("BLD_matches_all_4", _check_classical_tuple(n, L, B, K)))
 
     return results
 

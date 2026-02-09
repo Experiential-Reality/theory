@@ -11,7 +11,6 @@ Theory refs:
   - e7-derivation.md (correction formulas)
 """
 
-import dataclasses
 import math
 
 import pytest
@@ -19,11 +18,7 @@ import pytest
 import tools.bld
 
 
-@dataclasses.dataclass(slots=True, frozen=True)
-class StructureResult:
-    name: str
-    value: float
-    passes: bool
+TR = tools.bld.TestResult
 
 
 # ---------------------------------------------------------------------------
@@ -31,7 +26,7 @@ class StructureResult:
 # ---------------------------------------------------------------------------
 
 
-def run_mode_count() -> list[StructureResult]:
+def run_mode_count() -> list[TR]:
     """Verify mode count: mu(Pi_4(Pi_20(1))) + mu(Sigma_56(1)) + mu(1) = 137.
 
     bld-calculus.md Definition 8.3:
@@ -48,10 +43,10 @@ def run_mode_count() -> list[StructureResult]:
     mu_bound = B * mu_unit           # Sigma_56(1) = 56 * 1 = 56
     mu_trav = mu_unit                # 1 (traverser type)
     total = mu_geom + mu_bound + mu_trav
-    return [StructureResult("mode_count", total, total == 137)]
+    return [TR("mode_count", total == 137, float(total))]
 
 
-def run_ld_cardinality_collapse() -> list[StructureResult]:
+def run_ld_cardinality_collapse() -> list[TR]:
     """Enumerate LD-calculus types and verify cardinality = 1.
 
     bld-calculus.md Lemma 7.3: In the LD-calculus (no Sum type), every
@@ -69,7 +64,7 @@ def run_ld_cardinality_collapse() -> list[StructureResult]:
     We generate types at each depth from the PREVIOUS depth only (not all
     previous) to keep the count manageable: ~200 types at depth 3.
     """
-    results: list[StructureResult] = []
+    results: list[TR] = []
 
     # Types at each depth: (name, cardinality)
     depth_0: list[tuple[str, int]] = [("1", 1)]
@@ -89,16 +84,16 @@ def run_ld_cardinality_collapse() -> list[StructureResult]:
         prev = current
 
     for type_name, card in all_types:
-        results.append(StructureResult(
+        results.append(TR(
             f"LD|{type_name}|={card}",
-            float(card),
             card == 1,
+            float(card),
         ))
 
     return results
 
 
-def run_constant_rigidity() -> list[StructureResult]:
+def run_constant_rigidity() -> list[TR]:
     """The five identities form a 1D family parameterised by K.
 
     Identity 3 (lambda^2 * nL = K^2 with lambda^2 = 1/L) gives n = K^2.
@@ -109,7 +104,7 @@ def run_constant_rigidity() -> list[StructureResult]:
     For K in 1..10, compute the unique (n,L,S,B) and evaluate all physics
     predictions.  Show K=2 is the ONLY value matching experiment.
     """
-    results: list[StructureResult] = []
+    results: list[TR] = []
 
     for K_ in range(1, 11):
         n_ = K_**2
@@ -125,7 +120,7 @@ def run_constant_rigidity() -> list[StructureResult]:
         except (ZeroDivisionError, OverflowError):
             alpha = float("inf")
         obs = tools.bld.ALPHA_INV
-        alpha_ok = abs(alpha - obs.value) < 3 * obs.uncertainty
+        alpha_ok = abs(alpha - obs.value) < tools.bld.SIGMA_THRESHOLD * obs.uncertainty
 
         # Mu/e
         try:
@@ -133,7 +128,7 @@ def run_constant_rigidity() -> list[StructureResult]:
         except (ZeroDivisionError, OverflowError):
             mu_e = float("inf")
         obs_mu = tools.bld.MU_OVER_E
-        mu_e_ok = abs(mu_e - obs_mu.value) < 3 * obs_mu.uncertainty
+        mu_e_ok = abs(mu_e - obs_mu.value) < tools.bld.SIGMA_THRESHOLD * obs_mu.uncertainty
 
         # mp/me
         try:
@@ -141,18 +136,18 @@ def run_constant_rigidity() -> list[StructureResult]:
         except (ZeroDivisionError, OverflowError):
             mp_me = float("inf")
         obs_mp = tools.bld.MP_OVER_ME
-        mp_me_ok = abs(mp_me - obs_mp.value) < 3 * obs_mp.uncertainty
+        mp_me_ok = abs(mp_me - obs_mp.value) < tools.bld.SIGMA_THRESHOLD * obs_mp.uncertainty
 
         all_match = alpha_ok and mu_e_ok and mp_me_ok
         if K_ == 2:
-            results.append(StructureResult(f"K={K_}_matches", 1.0, all_match))
+            results.append(TR(f"K={K_}_matches", all_match, 1.0))
         else:
-            results.append(StructureResult(f"K={K_}_fails", 0.0, not all_match))
+            results.append(TR(f"K={K_}_fails", not all_match, 0.0))
 
     return results
 
 
-def run_alternative_137() -> list[StructureResult]:
+def run_alternative_137() -> list[TR]:
     """Try all (a,b,c) with a*b + c + 1 = 137, a,b,c > 0.
 
     Vectorized: meshgrid over (a, b), compute c = 136 - a*b, then evaluate
@@ -161,10 +156,10 @@ def run_alternative_137() -> list[StructureResult]:
     """
     import numpy as np
 
-    results: list[StructureResult] = []
+    results: list[TR] = []
     obs = tools.bld.ALPHA_INV
     target = obs.value
-    tol = 3 * obs.uncertainty
+    tol = tools.bld.SIGMA_THRESHOLD * obs.uncertainty
     K_ = tools.bld.K
     e2 = math.e ** 2
 
@@ -205,14 +200,14 @@ def run_alternative_137() -> list[StructureResult]:
         if a_i == tools.bld.n and b_i == tools.bld.L and c_i == tools.bld.B:
             bld_found = True
         else:
-            results.append(StructureResult(
-                f"({a_i},{b_i},{c_i})_unexpected", float(alpha[within][i]), False,
+            results.append(TR(
+                f"({a_i},{b_i},{c_i})_unexpected", False, float(alpha[within][i]),
             ))
 
-    results.append(StructureResult(
+    results.append(TR(
         f"BLD_unique_in_{n_tested}_triples({n_matches}_match)",
-        float(alpha[within][0]) if n_matches else 0.0,
         bld_found and n_matches == 1,
+        float(alpha[within][0]) if n_matches else 0.0,
     ))
 
     return results

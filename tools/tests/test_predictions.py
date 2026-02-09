@@ -33,25 +33,16 @@ def run_fine_structure() -> list[tools.bld.Prediction]:
 
 
 def run_lepton_ratios() -> list[tools.bld.Prediction]:
-    B, L, n, K, S = tools.bld.B, tools.bld.L, tools.bld.n, tools.bld.K, tools.bld.S
-    nL = n * L
-    nLS = nL * S
-    e = math.e
+    n, L, S, B = tools.bld.n, tools.bld.L, tools.bld.S, tools.bld.B
 
     mu_e = tools.bld.mu_over_e(n, float(L), S, B)
-
-    tau_over_mu = (
-        2 * math.pi * e
-        * (n**2 * S - 1) / (n**2 * S)
-        * (nL - 1) / nL
-        * (1 + 2 / nLS)
-    )
+    tau_mu = tools.bld.tau_over_mu(n, float(L), S)
 
     obs_mu = tools.bld.MU_OVER_E
     obs_tau = tools.bld.TAU_OVER_MU
     return [
         tools.bld.Prediction("μ/e", mu_e, obs_mu.value, obs_mu.uncertainty),
-        tools.bld.Prediction("τ/μ", tau_over_mu, obs_tau.value, obs_tau.uncertainty),
+        tools.bld.Prediction("τ/μ", tau_mu, obs_tau.value, obs_tau.uncertainty),
     ]
 
 
@@ -62,33 +53,29 @@ def run_nucleon_ratio() -> list[tools.bld.Prediction]:
 
 
 def run_neutrino_mixing() -> list[tools.bld.Prediction]:
-    B, L, n, K, S = tools.bld.B, tools.bld.L, tools.bld.n, tools.bld.K, tools.bld.S
+    n, L, K, S = tools.bld.n, tools.bld.L, tools.bld.K, tools.bld.S
     obs12 = tools.bld.SIN2_THETA_12
     obs13 = tools.bld.SIN2_THETA_13
     obs23 = tools.bld.SIN2_THETA_23
     return [
-        tools.bld.Prediction("sin²θ₁₂", K**2 / S, obs12.value, obs12.uncertainty),
-        tools.bld.Prediction("sin²θ₁₃", n**2 / (n - 1) ** 6, obs13.value, obs13.uncertainty),
-        tools.bld.Prediction("sin²θ₂₃", (S + 1) / (L + n + 1), obs23.value, obs23.uncertainty),
+        tools.bld.Prediction("sin²θ₁₂", tools.bld.sin2_theta_12(K, S), obs12.value, obs12.uncertainty),
+        tools.bld.Prediction("sin²θ₁₃", tools.bld.sin2_theta_13(n), obs13.value, obs13.uncertainty),
+        tools.bld.Prediction("sin²θ₂₃", tools.bld.sin2_theta_23(S, L, n), obs23.value, obs23.uncertainty),
     ]
 
 
 def run_muon_g2() -> list[tools.bld.Prediction]:
     B, L, n, K, S = tools.bld.B, tools.bld.L, tools.bld.n, tools.bld.K, tools.bld.S
-    alpha = 1 / 137.036
-    nL = n * L
-    base = alpha**2 * K**2 / (nL**2 * S)
-    detection = (B + L) / (B + L + K)
-    delta_a_mu = base * detection * 1e11
+    delta_a_mu = tools.bld.muon_g2(n, float(L), K, S, B)
     obs = tools.bld.MUON_G2
     return [tools.bld.Prediction("Δaμ(×10⁻¹¹)", delta_a_mu, obs.value, obs.uncertainty)]
 
 
 def run_neutron_lifetime() -> list[tools.bld.Prediction]:
     K, S = tools.bld.K, tools.bld.S
-    tau_beam = tools.bld.TAU_BOTTLE * (1 + K / S**2)
+    predicted = tools.bld.tau_beam(tools.bld.TAU_BOTTLE, K, S)
     obs = tools.bld.TAU_BEAM
-    return [tools.bld.Prediction("τ_beam(s)", tau_beam, obs.value, obs.uncertainty)]
+    return [tools.bld.Prediction("τ_beam(s)", predicted, obs.value, obs.uncertainty)]
 
 
 def run_planck_mass() -> list[tools.bld.Prediction]:
@@ -120,11 +107,11 @@ def run_constant_uniqueness() -> tuple[tools.bld.Prediction, list[tools.bld.Pred
     """
     def _count_satisfied(B_: int, L_: int, n_: int, K_: int, S_: int) -> int:
         checks = [
-            abs((B_ - n_) / n_ - S_) < 0.01,
-            abs(K_**2 + (n_ - 1) ** 2 - S_) < 0.01,
-            abs((1.0 / L_) * n_ * L_ - K_**2) < 0.01,
-            abs(S_ + 1 - B_ / n_) < 0.01,
-            abs(n_**2 * (n_**2 - 1) / 12 - L_) < 0.01,
+            abs((B_ - n_) / n_ - S_) < tools.bld.IDENTITY_TOLERANCE,
+            abs(K_**2 + (n_ - 1) ** 2 - S_) < tools.bld.IDENTITY_TOLERANCE,
+            abs((1.0 / L_) * n_ * L_ - K_**2) < tools.bld.IDENTITY_TOLERANCE,
+            abs(S_ + 1 - B_ / n_) < tools.bld.IDENTITY_TOLERANCE,
+            abs(n_**2 * (n_**2 - 1) / 12 - L_) < tools.bld.IDENTITY_TOLERANCE,
         ]
         return sum(checks)
 

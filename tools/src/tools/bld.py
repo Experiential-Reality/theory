@@ -10,6 +10,7 @@ can evaluate them with wrong constants for adversarial falsification.
 """
 
 import dataclasses
+import enum
 import math
 
 
@@ -80,6 +81,57 @@ KAPPA_B = Measurement(0.98, 0.13)
 FEIGENBAUM_DELTA = Measurement(4.6692016091, 0.0000000001)  # Molteni 2016
 FEIGENBAUM_ALPHA = Measurement(2.5029078750, 0.0000000001)  # Molteni 2016
 
+# Classical turbulence (empirical)
+RE_PIPE_OBSERVED = Measurement(2300.0, 1.0)
+RE_FLAT_PLATE = Measurement(5e5, 1.5e4)
+RE_SPHERE = Measurement(2e5, 1e3)
+RE_JET = Measurement(2000.0, 1000.0)
+
+# She-Leveque DNS data: zeta_p for p = 1..8
+SL_DNS_ZETA = (0.37, 0.70, 1.000, 1.28, 1.54, 1.78, 2.00, 2.21)
+SL_DNS_UNC = (0.01, 0.01, 0.001, 0.02, 0.03, 0.04, 0.05, 0.07)
+
+# Higgs self-coupling bounds (ATLAS Run 2)
+KAPPA_LAMBDA_LOWER = -1.6
+KAPPA_LAMBDA_UPPER = 6.6
+
+
+# ---------------------------------------------------------------------------
+# Tolerance constants
+# ---------------------------------------------------------------------------
+
+SIGMA_THRESHOLD = 3.0           # Standard sigma threshold for pass/fail
+FLOAT_EPSILON = 1e-15           # Floating-point zero threshold
+IDENTITY_TOLERANCE = 0.01       # Tolerance for integer identity checks
+CONVERGENCE_RATIO = 0.1         # Maximum ratio for convergence tests
+TRANSCENDENTAL_UNIQUENESS = 1000  # Minimum superiority ratio for e^2 test
+IMPROVEMENT_THRESHOLD = 50      # Minimum improvement factor for e-correction
+
+# Feigenbaum prediction tolerances (fraction of measured value)
+FEIGENBAUM_DELTA_TOL = 0.0001   # 0.0003% of ~4.669
+FEIGENBAUM_ALPHA_TOL = 0.000001  # 0.00001% of ~2.503
+
+
+# ---------------------------------------------------------------------------
+# Enumerations
+# ---------------------------------------------------------------------------
+
+
+class CorrectionTerm(enum.Enum):
+    """Alpha^-1 decomposition term names."""
+    BASE = "base"
+    BOUNDARY_QUANTUM = "boundary_quantum"
+    OUTBOUND_SPATIAL = "outbound_spatial"
+    RETURN_SPATIAL = "return_spatial"
+    RETURN_BOUNDARY = "return_boundary"
+    ACCUMULATED = "accumulated"
+
+
+class CorrectionSign(enum.Enum):
+    """K/X correction sign convention (observer-correction.md)."""
+    POSITIVE = "+"   # incomplete traversal (escapes detection)
+    NEGATIVE = "-"   # complete traversal (all products detected)
+
 
 # ---------------------------------------------------------------------------
 # Prediction type
@@ -97,12 +149,20 @@ class Prediction:
     @property
     def sigma(self) -> float:
         if self.uncertainty <= 0:
-            return 0.0 if abs(self.predicted - self.observed) < 1e-15 else float("inf")
+            return 0.0 if abs(self.predicted - self.observed) < FLOAT_EPSILON else float("inf")
         return abs(self.predicted - self.observed) / self.uncertainty
 
     @property
     def passes(self) -> bool:
-        return self.sigma < 3.0
+        return self.sigma < SIGMA_THRESHOLD
+
+
+@dataclasses.dataclass(slots=True, frozen=True)
+class TestResult:
+    """A boolean test result with optional diagnostic value."""
+    name: str
+    passes: bool
+    value: float = 0.0
 
 
 # ---------------------------------------------------------------------------
@@ -112,7 +172,7 @@ class Prediction:
 
 def alpha_inv_full(
     n_: int, L_: float, B_: int, K_: int,
-) -> tuple[float, dict[str, float]]:
+) -> tuple[float, dict[CorrectionTerm, float]]:
     """Fine structure constant inverse with decomposed correction terms.
 
     Theory ref: e7-derivation.md, observer-correction.md
@@ -133,12 +193,12 @@ def alpha_inv_full(
         + return_spatial + return_boundary + accumulated
     )
     terms = {
-        "base": base,
-        "boundary_quantum": boundary_quantum,
-        "outbound_spatial": outbound_spatial,
-        "return_spatial": return_spatial,
-        "return_boundary": return_boundary,
-        "accumulated": accumulated,
+        CorrectionTerm.BASE: base,
+        CorrectionTerm.BOUNDARY_QUANTUM: boundary_quantum,
+        CorrectionTerm.OUTBOUND_SPATIAL: outbound_spatial,
+        CorrectionTerm.RETURN_SPATIAL: return_spatial,
+        CorrectionTerm.RETURN_BOUNDARY: return_boundary,
+        CorrectionTerm.ACCUMULATED: accumulated,
     }
     return total, terms
 
@@ -199,6 +259,66 @@ def mp_over_me(S_: int, n_: int, B_: int, K_: int) -> float:
     return (S_ + n_) * (B_ + n_ * S_) + K_ / S_
 
 
+def tau_over_mu(n_: int, L_: float, S_: int) -> float:
+    """Tau to muon mass ratio.
+
+    Theory ref: e7-derivation.md
+    """
+    nL = n_ * L_
+    nLS = nL * S_
+    return (
+        2 * math.pi * math.e
+        * (n_**2 * S_ - 1) / (n_**2 * S_)
+        * (nL - 1) / nL
+        * (1 + 2 / nLS)
+    )
+
+
+def sin2_theta_12(K_: int, S_: int) -> float:
+    """Neutrino mixing angle sin^2(theta_12).
+
+    Theory ref: e7-derivation.md
+    """
+    return K_**2 / S_
+
+
+def sin2_theta_13(n_: int) -> float:
+    """Neutrino mixing angle sin^2(theta_13).
+
+    Theory ref: e7-derivation.md
+    """
+    return n_**2 / (n_ - 1) ** 6
+
+
+def sin2_theta_23(S_: int, L_: int, n_: int) -> float:
+    """Neutrino mixing angle sin^2(theta_23).
+
+    Theory ref: e7-derivation.md
+    """
+    return (S_ + 1) / (L_ + n_ + 1)
+
+
+def muon_g2(n_: int, L_: float, K_: int, S_: int, B_: int) -> float:
+    """Muon anomalous magnetic moment delta_a_mu (x10^-11).
+
+    Self-consistent: uses BLD alpha^-1 rather than empirical value.
+    Theory ref: e7-derivation.md
+    """
+    alpha = 1.0 / alpha_inv(n_, L_, B_, K_)
+    nL = n_ * L_
+    base = alpha**2 * K_**2 / (nL**2 * S_)
+    detection = (B_ + L_) / (B_ + L_ + K_)
+    return base * detection * 1e11
+
+
+def tau_beam(tau_bottle: float, K_: int, S_: int) -> float:
+    """Neutron beam lifetime (s).
+
+    Theory ref: e7-derivation.md
+    """
+    return tau_bottle * (1 + K_ / S_**2)
+
+
 # ---------------------------------------------------------------------------
 # Electroweak formulas (boson-masses.md, strong-coupling.md)
 # ---------------------------------------------------------------------------
@@ -237,6 +357,74 @@ def alpha_s_inv(alpha_inv_val: float, n_: int, L_: int, K_: int) -> float:
     Theory ref: strong-coupling.md
     """
     return alpha_inv_val / n_**2 - K_ / (n_ + L_)
+
+
+def kappa_em(K_: int, B_: int) -> float:
+    """Higgs coupling modifier for EM channels (kappa_gamma, kappa_Z).
+
+    Detection structure: X = B (boundary).
+    Theory ref: higgs-couplings.md
+    """
+    return 1 + K_ / B_
+
+
+def kappa_hadronic(K_: int, n_: int, L_: int) -> float:
+    """Higgs coupling modifier for hadronic channels (kappa_b, kappa_c).
+
+    Detection structure: X = n+L (geometry).
+    Theory ref: higgs-couplings.md
+    """
+    return 1 + K_ / (n_ + L_)
+
+
+def kappa_w_coupling(K_: int, B_: int, L_: int) -> float:
+    """Higgs coupling modifier for W channel.
+
+    Detection structure: X = B+L (EM + neutrino escape).
+    Theory ref: higgs-couplings.md
+    """
+    return 1 + K_ / (B_ + L_)
+
+
+def kappa_lambda_coupling(K_: int, n_: int, L_: int) -> float:
+    """Higgs self-coupling modifier.
+
+    Detection structure: X = nL (full observer geometry).
+    Theory ref: higgs-self-coupling.md
+    """
+    return 1 + K_ / (n_ * L_)
+
+
+def bld_composites(
+    B_: int, L_: int, n_: int, K_: int, S_: int,
+) -> dict[str, int]:
+    """All structurally meaningful BLD composites from theory documents.
+
+    Products, sums, differences, powers, and compound expressions
+    that appear in any BLD prediction formula.
+    """
+    nL = n_ * L_
+    return {
+        # Singles
+        "B": B_, "L": L_, "n": n_, "K": K_, "S": S_,
+        # Products
+        "nL": nL, "nS": n_ * S_, "nK": n_ * K_, "nB": n_ * B_,
+        "LS": L_ * S_, "KS": K_ * S_, "BL": B_ * L_,
+        "nLS": nL * S_, "nLK": nL * K_, "nLB": nL * B_,
+        "nBS": n_ * B_ * S_, "nBK": n_ * B_ * K_,
+        "nLBS": nL * B_ * S_, "nLBK": nL * B_ * K_,
+        # Sums
+        "n+L": n_ + L_, "n+K": n_ + K_, "B+L": B_ + L_, "B+K": B_ + K_,
+        "B+n+L": B_ + (n_ + L_), "nL+B": nL + B_, "nL+B+1": nL + B_ + 1,
+        "S+1": S_ + 1, "S+n": S_ + n_,
+        # Differences
+        "B-L": B_ - L_, "B-L+1": B_ - L_ + 1,
+        # Powers
+        "B2": B_**2, "L2": L_**2, "n2": n_**2, "K2": K_**2, "S2": S_**2,
+        "(nL)2": nL**2, "n2S": n_**2 * S_,
+        # Compound
+        "(nL)2+nS": nL**2 + n_ * S_,
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -279,3 +467,30 @@ def she_leveque_zeta(p: float, n_: int, K_: int) -> float:
     Theory ref: she-leveque-derivation.md
     """
     return p / (n_ - 1)**2 + K_ * (1 - (K_ / (n_ - 1))**(p / (n_ - 1)))
+
+
+def reynolds_flat_plate(re_pipe: float, n_: int, B_: int) -> float:
+    """Critical Reynolds number for flat plate flow.
+
+    B-escape: boundary escapes detection.
+    Theory ref: reynolds-derivation.md
+    """
+    return re_pipe * n_ * B_
+
+
+def reynolds_sphere(re_pipe: float, n_: int, L_: int, K_: int) -> float:
+    """Critical Reynolds number for sphere flow.
+
+    L-escape: link/geometry partially escapes.
+    Theory ref: reynolds-derivation.md
+    """
+    return re_pipe * (n_ * (L_ + K_) - 1)
+
+
+def reynolds_jet(re_pipe: float, K_: int) -> float:
+    """Critical Reynolds number for jet flow.
+
+    Destabilizing: K reduces stability.
+    Theory ref: reynolds-derivation.md
+    """
+    return re_pipe / K_
