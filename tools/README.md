@@ -1,6 +1,6 @@
 # BLD Theory Verification Tools
 
-Computational verification of BLD theory predictions against experimental measurements. 164 tests across 18 files.
+Computational verification of BLD theory predictions against experimental measurements. 185 tests across 20 files.
 
 ## Source modules
 
@@ -12,7 +12,7 @@ Computational verification of BLD theory predictions against experimental measur
 
 ## bld.py
 
-**Constants**: B=56, L=20, n=4, K=2, S=13, LAMBDA, V_EW, TAU_BOTTLE
+**Constants**: B=56, L=20, n=4, K=2, S=13, LAMBDA, V_EW, TAU_BOTTLE, N_COLORS, M_ELECTRON
 
 **Tolerances**: SIGMA_THRESHOLD, FLOAT_EPSILON, IDENTITY_TOLERANCE, CONVERGENCE_RATIO, TRANSCENDENTAL_UNIQUENESS, IMPROVEMENT_THRESHOLD, FEIGENBAUM_DELTA_TOL, FEIGENBAUM_ALPHA_TOL
 
@@ -20,7 +20,7 @@ Computational verification of BLD theory predictions against experimental measur
 
 **Types**: Measurement, Prediction (auto-computes sigma), TestResult
 
-**Formulas**: alpha_inv, higgs_mass, planck_mass, mu_over_e, mp_over_me, tau_over_mu, sin2_theta_12/13/23, muon_g2, tau_beam, sin2_theta_w, z_mass, w_mass, alpha_s_inv, kappa_em/hadronic/w_coupling/lambda_coupling, bld_composites, reynolds_pipe/flat_plate/sphere/jet, feigenbaum_delta/alpha, she_leveque_zeta, haar_random_state(s)
+**Formulas**: alpha_inv, higgs_mass, planck_mass, mu_over_e, mp_over_me, tau_over_mu, sin2_theta_12/13/23, muon_g2, tau_beam, sin2_theta_w, z_mass, w_mass, alpha_s_inv, kappa_em/hadronic/w_coupling/lambda_coupling, bld_composites, reynolds_pipe/flat_plate/sphere/jet, feigenbaum_delta/alpha, she_leveque_zeta, ms_over_me, ms_over_md, md_over_mu_quark, mc_over_ms, mb_over_mc, top_mass, neutrino_mass_e, dm2_ratio, cabibbo_sin, haar_random_state(s)
 
 ## quantum.py
 
@@ -35,7 +35,7 @@ Computational verification of BLD theory predictions against experimental measur
 | Domain | File | # | Verifies |
 |--------|------|---|----------|
 | Algebraic | test_algebra | 9 | Octonions, G2, SU(3), D4 triality, spacetime dim, quaternion insufficiency, stabilizer equivariance |
-| Fine structure | test_predictions | 13 | α⁻¹, leptons, nucleon, mixing, g-2, lifetimes, masses, cross-prediction consistency, correction hierarchy |
+| Fine structure | test_predictions | 16 | α⁻¹, leptons, nucleon, mixing, g-2, lifetimes, masses, Cabibbo, electron g-2, generational hierarchy, cross-prediction consistency, correction hierarchy |
 | Electroweak | test_electroweak | 8 | sin²θ_W, Z/W, α_s, Higgs κ, consistency |
 | K/X corrections | test_kx_corrections | 8 | Decomposition, convergence, signs, patterns |
 | Structure | test_structure | 7 | 137 modes, L·D collapse, rigidity, uniqueness |
@@ -46,7 +46,9 @@ Computational verification of BLD theory predictions against experimental measur
 | Math verification | test_math_verification | 14 | Edge cases, analytical proofs, symmetry, wrong noise, non-reciprocal power |
 | Physical measurement | test_physical_measurement | 1 | Non-orthogonal MC vs analytical (192 configs) |
 | Collapse | test_collapse | 10 | No-cloning, no-communication, Trotter, irreversibility |
-| Entanglement | test_entanglement | 8 | Bell/GHZ/W, concurrence, K uniqueness, wrong link function |
+| Entanglement | test_entanglement | 10 | Bell/GHZ/W, concurrence, K uniqueness, wrong link function, BH entropy, Schwarzschild K |
 | Phase transition | test_phase_transition | 7 | Scaling, Binder crossing, 3D Ising, wrong link definition |
 | Quantum infra | test_quantum | 8 | Haar states, overlaps, chi2, pointers |
+| Quark masses | test_quark_masses | 10 | All 6 quarks, chain, wrong constants, confinement cost, K/X hierarchy |
+| Neutrino masses | test_neutrino_masses | 6 | Δm² ratio, formula output, KATRIN bound (xfail), suppression, generation structure |
 | Link checker | test_extraction/validation/integration | 31 | Link extraction, anchor validation, resolution |
