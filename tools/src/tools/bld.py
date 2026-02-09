@@ -97,6 +97,15 @@ SL_DNS_UNC = (0.01, 0.01, 0.001, 0.02, 0.03, 0.04, 0.05, 0.07)
 KAPPA_LAMBDA_LOWER = -1.6
 KAPPA_LAMBDA_UPPER = 6.6
 
+# Cosmological parameters (Planck 2018)
+OMEGA_BARYON = Measurement(0.049, 0.001)
+OMEGA_DARK_MATTER = Measurement(0.27, 0.01)
+OMEGA_DARK_ENERGY = Measurement(0.68, 0.01)
+H0_CMB = Measurement(67.4, 0.5)              # km/s/Mpc, Planck 2018
+H0_LOCAL = Measurement(73.0, 1.0)            # km/s/Mpc, SH0ES 2022
+SIGMA8_CMB = Measurement(0.811, 0.006)        # Planck 2018
+SIGMA8_LOCAL = Measurement(0.77, 0.02)        # weak lensing (DES, KiDS)
+
 
 # ---------------------------------------------------------------------------
 # Tolerance constants
@@ -496,6 +505,68 @@ def reynolds_jet(re_pipe: float, K_: int) -> float:
     Theory ref: reynolds-derivation.md
     """
     return re_pipe / K_
+
+
+# ---------------------------------------------------------------------------
+# Cosmological formulas (dark-matter-mapping.md, hubble-tension.md,
+# sigma8-tension.md)
+# ---------------------------------------------------------------------------
+
+
+def dark_matter_fraction(x: float, n_: int, L_: int, K_: int) -> float:
+    """Dark matter fraction: (L/n)*x + K*n*x².
+
+    Primordial: L/n geometric DOF per dimensional DOF.
+    Observer correction: K*n*x² (cost of observing geometry).
+    Theory ref: dark-matter-mapping.md
+    """
+    return (L_ / n_) * x + K_ * n_ * x ** 2
+
+
+def dark_energy_fraction(x: float, n_: int, L_: int, K_: int) -> float:
+    """Dark energy fraction: 1 - (1 + L/n)*x - K*n*x².
+
+    Remainder after ordinary matter + dark matter.
+    Theory ref: dark-matter-mapping.md
+    """
+    return 1.0 - (1.0 + L_ / n_) * x - K_ * n_ * x ** 2
+
+
+def hubble_local(h0_cmb: float, K_: int, n_: int, L_: int) -> float:
+    """Local Hubble constant: H₀(CMB) × (1 + K/(n+L)).
+
+    Observer embedded in structure pays K/(n+L) traversal cost.
+    X = n+L = 24 (spacetime + Riemann curvature).
+    Theory ref: hubble-tension.md
+    """
+    return h0_cmb * (1.0 + K_ / (n_ + L_))
+
+
+def sigma8_primordial(L_: int, n_: int) -> float:
+    """Primordial clustering amplitude: L/(n+L).
+
+    Fraction of structure that is connections (clustering).
+    Theory ref: sigma8-tension.md
+    """
+    return L_ / (n_ + L_)
+
+
+def sigma8_cmb(L_: int, n_: int, K_: int) -> float:
+    """CMB clustering amplitude: σ₈(primordial) × (1 - K/(n×L)).
+
+    First observer correction: geometric smoothing.
+    Theory ref: sigma8-tension.md
+    """
+    return sigma8_primordial(L_, n_) * (1.0 - K_ / (n_ * L_))
+
+
+def sigma8_local(L_: int, n_: int, K_: int) -> float:
+    """Local clustering amplitude: σ₈(CMB) × (1 - K/(2L)).
+
+    Second observer correction: additional structure smoothing.
+    Theory ref: sigma8-tension.md
+    """
+    return sigma8_cmb(L_, n_, K_) * (1.0 - K_ / (2 * L_))
 
 
 # ---------------------------------------------------------------------------
