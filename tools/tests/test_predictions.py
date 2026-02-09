@@ -187,14 +187,17 @@ def test_wrong_integers() -> None:
 
 
 def test_cross_prediction_consistency() -> None:
-    """Only (n=4, K=2) simultaneously satisfies all 9 particle predictions.
+    """Only (n=4, K=2) simultaneously satisfies all 11 particle predictions.
 
     Sweep n∈{3,4,5}, K∈{1,2,3}.  For each tuple derive L=n²(n²-1)/12
     (Riemann tensor components) and S=⌊(B-n)/n⌋ (structure constant).
-    Evaluate all 9 predictions against observation.
+    Evaluate all 11 predictions against observation.
+
+    sin²θ_W and m_Z discriminate K (not just n): sin²θ_W fails at 5.4σ
+    for K=1 and 5.7σ for K=3; m_Z fails at 13.6σ and 14.2σ respectively.
 
     A curve-fitting model with 2 free parameters could match at most 2
-    observables.  BLD matches 9 from exactly one integer tuple — with
+    observables.  BLD matches 11 from exactly one integer tuple — with
     zero free parameters (all derived).
     """
     results: list[tools.bld.TestResult] = []
@@ -232,17 +235,107 @@ def test_cross_prediction_consistency() -> None:
                 abs(tools.bld.tau_beam(tools.bld.TAU_BOTTLE, K_, S_)
                     - tools.bld.TAU_BEAM.value)
                 < tools.bld.SIGMA_THRESHOLD * tools.bld.TAU_BEAM.uncertainty,
+                abs(tools.bld.sin2_theta_w(S_, K_, n_, L_, tools.bld.B)
+                    - tools.bld.SIN2_THETA_W.value)
+                < tools.bld.SIGMA_THRESHOLD * tools.bld.SIN2_THETA_W.uncertainty,
+                abs(tools.bld.z_mass(tools.bld.V_EW, n_, L_, tools.bld.B, K_)
+                    - tools.bld.Z_MASS.value)
+                < tools.bld.SIGMA_THRESHOLD * tools.bld.Z_MASS.uncertainty,
             ]
             n_pass = sum(checks)
             is_correct = (n_ == tools.bld.n and K_ == tools.bld.K)
             if is_correct:
                 results.append(tools.bld.TestResult(
-                    f"n={n_},K={K_}_all_pass", n_pass == 9, float(n_pass),
+                    f"n={n_},K={K_}_all_pass", n_pass == 11, float(n_pass),
                 ))
             else:
                 results.append(tools.bld.TestResult(
                     f"n={n_},K={K_}_fails_ge3", n_pass <= 6, float(n_pass),
                 ))
+    assert_all_pass(results)
+
+
+# Dispatch table for B-sweep checks.
+# Each entry: (name, formula(n_, L_, B_, K_, S_) -> float, target, tolerance)
+_B_CHECKS: tuple[tuple[str, object, float, float], ...] = (
+    ("alpha_inv",
+     lambda n_, L_, B_, K_, S_: tools.bld.alpha_inv(n_, float(L_), B_, K_),
+     tools.bld.ALPHA_INV.value,
+     tools.bld.SIGMA_THRESHOLD * tools.bld.ALPHA_INV.uncertainty),
+    ("mp_over_me",
+     lambda n_, L_, B_, K_, S_: tools.bld.mp_over_me(S_, n_, B_, K_),
+     tools.bld.MP_OVER_ME.value,
+     tools.bld.SIGMA_THRESHOLD * tools.bld.MP_OVER_ME.uncertainty),
+    ("mu_over_e",
+     lambda n_, L_, B_, K_, S_: tools.bld.mu_over_e(n_, float(L_), S_, B_),
+     tools.bld.MU_OVER_E.value,
+     tools.bld.SIGMA_THRESHOLD * tools.bld.MU_OVER_E.uncertainty),
+    ("sin2_theta_w",
+     lambda n_, L_, B_, K_, S_: tools.bld.sin2_theta_w(S_, K_, n_, L_, B_),
+     tools.bld.SIN2_THETA_W.value,
+     tools.bld.SIGMA_THRESHOLD * tools.bld.SIN2_THETA_W.uncertainty),
+    ("z_mass",
+     lambda n_, L_, B_, K_, S_: tools.bld.z_mass(tools.bld.V_EW, n_, L_, B_, K_),
+     tools.bld.Z_MASS.value,
+     tools.bld.SIGMA_THRESHOLD * tools.bld.Z_MASS.uncertainty),
+    ("w_mass",
+     lambda n_, L_, B_, K_, S_: tools.bld.w_mass(
+         tools.bld.z_mass(tools.bld.V_EW, n_, L_, B_, K_), n_, L_, S_),
+     tools.bld.W_MASS.value,
+     tools.bld.SIGMA_THRESHOLD * tools.bld.W_MASS.uncertainty),
+    ("higgs_mass",
+     lambda n_, L_, B_, K_, S_: tools.bld.higgs_mass(tools.bld.V_EW, B_, L_),
+     tools.bld.HIGGS_MASS.value,
+     tools.bld.SIGMA_THRESHOLD * tools.bld.HIGGS_MASS.uncertainty),
+    ("cabibbo_sin",
+     lambda n_, L_, B_, K_, S_: tools.bld.cabibbo_sin(n_, S_),
+     tools.bld.V_US.value,
+     tools.bld.SIGMA_THRESHOLD * tools.bld.V_US.uncertainty),
+)
+
+
+def _safe_b_check(
+    fn: object, n_: int, L_: int, B_: int, K_: int, S_: int,
+    target: float, tol: float,
+) -> bool:
+    try:
+        return abs(fn(n_, L_, B_, K_, S_) - target) < tol
+    except (ZeroDivisionError, OverflowError, ValueError):
+        return False
+
+
+def test_wrong_b() -> None:
+    """Only B=56 passes all 8 B-sensitive predictions simultaneously.
+
+    Existing adversarial sweeps vary (n, K) but hold B=56 fixed.
+    This test varies B while holding n=4, K=2, L=20 fixed.
+
+    B determines S = (B-n)/n and appears directly in:
+    - alpha_inv: base = nL + B + 1 (shifts by 1 per B)
+    - mp_over_me: (S+n)(B+nS) (shifts by S+n = 17 per B)
+    - mu_over_e: (1-1/(nLB^2)) (B^2 sensitivity)
+
+    Even B=57 (which gives same S=13) fails 3/8 checks at >50sigma.
+    """
+    n, L, K = tools.bld.n, tools.bld.L, tools.bld.K
+    results: list[tools.bld.TestResult] = []
+    for B_ in [28, 42, 55, 56, 57, 84, 112]:
+        S_ = (B_ - n) // n
+        if S_ <= 0:
+            continue
+        n_pass = sum(
+            1 for _, fn, target, tol in _B_CHECKS
+            if _safe_b_check(fn, n, L, B_, K, S_, target, tol)
+        )
+        is_correct = (B_ == tools.bld.B)
+        if is_correct:
+            results.append(tools.bld.TestResult(
+                f"B={B_}_all_pass", n_pass == len(_B_CHECKS), float(n_pass),
+            ))
+        else:
+            results.append(tools.bld.TestResult(
+                f"B={B_}_fails", n_pass < len(_B_CHECKS), float(n_pass),
+            ))
     assert_all_pass(results)
 
 
