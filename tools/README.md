@@ -1,6 +1,6 @@
 # BLD Theory Verification Tools
 
-Computational verification of BLD theory predictions against experimental measurements. 144 tests across 17 files.
+Computational verification of BLD theory predictions against experimental measurements. 164 tests across 18 files.
 
 ## Source modules
 
@@ -34,18 +34,19 @@ Computational verification of BLD theory predictions against experimental measur
 
 | Domain | File | # | Verifies |
 |--------|------|---|----------|
-| Algebraic | test_algebra | 7 | Octonions, G2, SU(3), D4 triality, spacetime dim |
-| Fine structure | test_predictions | 11 | α⁻¹, leptons, nucleon, mixing, g-2, lifetimes, masses |
+| Algebraic | test_algebra | 9 | Octonions, G2, SU(3), D4 triality, spacetime dim, quaternion insufficiency, stabilizer equivariance |
+| Fine structure | test_predictions | 13 | α⁻¹, leptons, nucleon, mixing, g-2, lifetimes, masses, cross-prediction consistency, correction hierarchy |
 | Electroweak | test_electroweak | 8 | sin²θ_W, Z/W, α_s, Higgs κ, consistency |
 | K/X corrections | test_kx_corrections | 8 | Decomposition, convergence, signs, patterns |
 | Structure | test_structure | 7 | 137 modes, L·D collapse, rigidity, uniqueness |
 | Classical | test_classical | 8 | Reynolds, Kolmogorov, Feigenbaum, She-Leveque |
+| Cosmology | test_cosmology | 10 | Dark matter, Hubble tension, σ₈, rational fractions, overconstrained |
 | Selection rule | test_selection_rule | 4 | Born recovery, product rule, overlap dist, independence |
-| Controlled observer | test_controlled_observer | 6 | Determinism, bias, regime transition, finite-N |
-| Math verification | test_math_verification | 12 | Edge cases, analytical proofs, symmetry |
+| Controlled observer | test_controlled_observer | 8 | Determinism, bias, regime transition, finite-N, wrong rules, monotonicity |
+| Math verification | test_math_verification | 14 | Edge cases, analytical proofs, symmetry, wrong noise, non-reciprocal power |
 | Physical measurement | test_physical_measurement | 1 | Non-orthogonal MC vs analytical (192 configs) |
 | Collapse | test_collapse | 10 | No-cloning, no-communication, Trotter, irreversibility |
-| Entanglement | test_entanglement | 7 | Bell/GHZ/W, concurrence, K uniqueness |
-| Phase transition | test_phase_transition | 6 | Scaling, Binder crossing, 3D Ising |
+| Entanglement | test_entanglement | 8 | Bell/GHZ/W, concurrence, K uniqueness, wrong link function |
+| Phase transition | test_phase_transition | 7 | Scaling, Binder crossing, 3D Ising, wrong link definition |
 | Quantum infra | test_quantum | 8 | Haar states, overlaps, chi2, pointers |
 | Link checker | test_extraction/validation/integration | 31 | Link extraction, anchor validation, resolution |

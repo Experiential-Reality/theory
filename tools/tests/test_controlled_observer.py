@@ -247,6 +247,83 @@ def run_independence_scaling(
 
 
 # ---------------------------------------------------------------------------
+# Adversarial: wrong rules and mechanism tests
+# ---------------------------------------------------------------------------
+
+
+def run_wrong_rule_fails(rng: np.random.Generator) -> list[tools.bld.TestResult]:
+    """Try to break Born recovery by using alternative selection rules.
+
+    The ratio rule (α/overlap) recovers Born probabilities for M≥3.
+    Product (α×overlap) and max-overlap are structurally different:
+    - Product reverses the overlap's role (amplify instead of suppress)
+    - Max overlap ignores amplitudes entirely
+
+    If these alternatives also recovered Born for M≥3, the ratio form
+    wouldn't be structurally determined by the Haar measure → Gumbel
+    connection.  For M=2, product and ratio are equivalent (proven in
+    test_math_verification); for M≥3 they diverge.
+    """
+    M = 3
+    N_obs = 64
+    n = 100000
+    alphas = np.array([0.5, 0.3, 0.2])
+    pointers = tools.quantum.make_orthogonal_pointers(M, N_obs, rng)
+    P = np.array(pointers.states)
+    observers = tools.bld.haar_random_states(N_obs, n, rng)
+    ovlps = tools.quantum.overlaps_batch(P, observers)
+    safe = np.maximum(ovlps, tools.quantum.SAFE_FLOOR)
+
+    results: list[tools.bld.TestResult] = []
+
+    # Ratio rule (correct): should pass chi2 vs Born
+    choices_ratio = np.argmax(alphas[:, None] / safe, axis=0)
+    counts_ratio = np.bincount(choices_ratio, minlength=M).astype(float)
+    stat_ratio = tools.quantum.chi2_test(counts_ratio, alphas, n)
+    results.append(tools.bld.TestResult("ratio_recovers_born", stat_ratio.passes))
+
+    # Product rule (wrong for M≥3): should FAIL chi2 vs Born
+    choices_prod = np.argmax(alphas[:, None] * ovlps, axis=0)
+    counts_prod = np.bincount(choices_prod, minlength=M).astype(float)
+    stat_prod = tools.quantum.chi2_test(counts_prod, alphas, n)
+    results.append(tools.bld.TestResult("product_fails_born", not stat_prod.passes))
+
+    # Max overlap (ignores alphas): should FAIL chi2 vs Born
+    choices_max = np.argmax(ovlps, axis=0)
+    counts_max = np.bincount(choices_max, minlength=M).astype(float)
+    stat_max = tools.quantum.chi2_test(counts_max, alphas, n)
+    results.append(tools.bld.TestResult("max_overlap_fails_born", not stat_max.passes))
+
+    return results
+
+
+def run_bias_monotonicity(rng: np.random.Generator) -> list[tools.bld.TestResult]:
+    """P(outcome=0) must be strictly monotonic in α₀ for M=2.
+
+    The ratio rule's linearity in α is structural: P(k) = α_k (Born).
+    A mechanism with threshold effects, saturation, or non-monotonic
+    response would fail this sweep.  Same pointers used throughout to
+    eliminate orientation noise.
+    """
+    N_obs = 64
+    n = 50000
+    alpha_values = np.linspace(0.55, 0.95, 9)
+    pointers = tools.quantum.make_orthogonal_pointers(2, N_obs, rng)
+    p0_values = []
+
+    for a0 in alpha_values:
+        alphas = np.array([a0, 1.0 - a0])
+        outcome = tools.quantum.run_selection_mc(pointers, alphas, n, rng)
+        p0_values.append(outcome.counts[0] / n)
+
+    monotonic = all(
+        p0_values[i] < p0_values[i + 1]
+        for i in range(len(p0_values) - 1)
+    )
+    return [tools.bld.TestResult("p0_strictly_monotonic", monotonic)]
+
+
+# ---------------------------------------------------------------------------
 # Tests
 # ---------------------------------------------------------------------------
 
@@ -285,3 +362,15 @@ def test_finite_n_corrections(rng: np.random.Generator) -> None:
 def test_independence_scaling(rng: np.random.Generator) -> None:
     results = run_independence_scaling(rng)
     assert all(r.passes for r in results)
+
+
+@pytest.mark.theory
+def test_wrong_rule_fails(rng: np.random.Generator) -> None:
+    results = run_wrong_rule_fails(rng)
+    assert all(r.passes for r in results), [r.name for r in results if not r.passes]
+
+
+@pytest.mark.theory
+def test_bias_monotonicity(rng: np.random.Generator) -> None:
+    results = run_bias_monotonicity(rng)
+    assert all(r.passes for r in results), [r.name for r in results if not r.passes]

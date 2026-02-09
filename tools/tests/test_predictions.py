@@ -182,6 +182,120 @@ def run_wrong_integers() -> tuple[list[tools.bld.Prediction], list[tools.bld.Pre
 
 
 # ---------------------------------------------------------------------------
+# Adversarial: cross-domain consistency and correction structure
+# ---------------------------------------------------------------------------
+
+
+def run_cross_prediction_consistency() -> list[tools.bld.TestResult]:
+    """Only (n=4, K=2) simultaneously satisfies all 9 particle predictions.
+
+    Sweep n∈{3,4,5}, K∈{1,2,3}.  For each tuple derive L=n²(n²-1)/12
+    (Riemann tensor components) and S=⌊(B-n)/n⌋ (structure constant).
+    Evaluate all 9 predictions against observation.
+
+    A curve-fitting model with 2 free parameters could match at most 2
+    observables.  BLD matches 9 from exactly one integer tuple — with
+    zero free parameters (all derived).
+    """
+    results: list[tools.bld.TestResult] = []
+    for n_ in [3, 4, 5]:
+        L_ = n_**2 * (n_**2 - 1) // 12
+        S_ = (tools.bld.B - n_) // n_
+        if L_ == 0 or S_ <= 0:
+            continue
+        for K_ in [1, 2, 3]:
+            checks = [
+                abs(tools.bld.alpha_inv(n_, float(L_), tools.bld.B, K_)
+                    - tools.bld.ALPHA_INV.value)
+                < tools.bld.SIGMA_THRESHOLD * tools.bld.ALPHA_INV.uncertainty,
+                abs(tools.bld.mu_over_e(n_, float(L_), S_, tools.bld.B)
+                    - tools.bld.MU_OVER_E.value)
+                < tools.bld.SIGMA_THRESHOLD * tools.bld.MU_OVER_E.uncertainty,
+                abs(tools.bld.tau_over_mu(n_, float(L_), S_)
+                    - tools.bld.TAU_OVER_MU.value)
+                < tools.bld.SIGMA_THRESHOLD * tools.bld.TAU_OVER_MU.uncertainty,
+                abs(tools.bld.mp_over_me(S_, n_, tools.bld.B, K_)
+                    - tools.bld.MP_OVER_ME.value)
+                < tools.bld.SIGMA_THRESHOLD * tools.bld.MP_OVER_ME.uncertainty,
+                abs(tools.bld.sin2_theta_12(K_, S_)
+                    - tools.bld.SIN2_THETA_12.value)
+                < tools.bld.SIGMA_THRESHOLD * tools.bld.SIN2_THETA_12.uncertainty,
+                abs(tools.bld.sin2_theta_13(n_)
+                    - tools.bld.SIN2_THETA_13.value)
+                < tools.bld.SIGMA_THRESHOLD * tools.bld.SIN2_THETA_13.uncertainty,
+                abs(tools.bld.sin2_theta_23(S_, L_, n_)
+                    - tools.bld.SIN2_THETA_23.value)
+                < tools.bld.SIGMA_THRESHOLD * tools.bld.SIN2_THETA_23.uncertainty,
+                abs(tools.bld.muon_g2(n_, float(L_), K_, S_, tools.bld.B)
+                    - tools.bld.MUON_G2.value)
+                < tools.bld.SIGMA_THRESHOLD * tools.bld.MUON_G2.uncertainty,
+                abs(tools.bld.tau_beam(tools.bld.TAU_BOTTLE, K_, S_)
+                    - tools.bld.TAU_BEAM.value)
+                < tools.bld.SIGMA_THRESHOLD * tools.bld.TAU_BEAM.uncertainty,
+            ]
+            n_pass = sum(checks)
+            is_correct = (n_ == tools.bld.n and K_ == tools.bld.K)
+            if is_correct:
+                results.append(tools.bld.TestResult(
+                    f"n={n_},K={K_}_all_pass", n_pass == 9, float(n_pass),
+                ))
+            else:
+                results.append(tools.bld.TestResult(
+                    f"n={n_},K={K_}_fails_ge3", n_pass <= 6, float(n_pass),
+                ))
+    return results
+
+
+def run_correction_hierarchy() -> list[tools.bld.TestResult]:
+    """Correction terms in α⁻¹ must form a strict hierarchy.
+
+    The K/X observer correction scheme produces terms from distinct physical
+    mechanisms: boundary quantum (K/B), outbound spatial geometry, return
+    spatial, return boundary, and accumulated transcendental.
+
+    Theory predicts:
+    - First two terms positive (incomplete traversal — escapes detection)
+    - Last three negative (complete traversal — all products detected)
+    - Magnitudes decrease: boundary_quantum > outbound_spatial > 0 and
+      |return_spatial| > |return_boundary| > |accumulated|
+    - Net correction positive (observation inflates the measured value)
+
+    If the corrections were ad hoc fitting terms, this structured hierarchy
+    from decreasing physical scales would be coincidental.
+    """
+    _, terms = tools.bld.alpha_inv_full(
+        tools.bld.n, float(tools.bld.L), tools.bld.B, tools.bld.K,
+    )
+    CT = tools.bld.CorrectionTerm
+    bq = terms[CT.BOUNDARY_QUANTUM]
+    os_ = terms[CT.OUTBOUND_SPATIAL]
+    rs = terms[CT.RETURN_SPATIAL]
+    rb = terms[CT.RETURN_BOUNDARY]
+    acc = terms[CT.ACCUMULATED]
+
+    results: list[tools.bld.TestResult] = []
+
+    # Positive terms: boundary_quantum > outbound_spatial > 0
+    results.append(tools.bld.TestResult("bq>os>0", bq > os_ > 0, bq))
+
+    # Negative terms: all negative (complete traversals detected)
+    results.append(tools.bld.TestResult(
+        "negative_returns", rs < 0 and rb < 0 and acc < 0,
+    ))
+
+    # Magnitude hierarchy: |return_spatial| > |return_boundary| > |accumulated|
+    results.append(tools.bld.TestResult(
+        "|rs|>|rb|>|acc|", abs(rs) > abs(rb) > abs(acc),
+    ))
+
+    # Net correction positive (observation inflates)
+    net = bq + os_ + rs + rb + acc
+    results.append(tools.bld.TestResult("net_positive", net > 0, net))
+
+    return results
+
+
+# ---------------------------------------------------------------------------
 # Tests
 # ---------------------------------------------------------------------------
 
@@ -243,3 +357,17 @@ def test_wrong_integers() -> None:
     correct, wrong = run_wrong_integers()
     assert all(c.passes for c in correct)
     assert all(not w.passes for w in wrong)
+
+
+@pytest.mark.theory
+def test_cross_prediction_consistency() -> None:
+    results = run_cross_prediction_consistency()
+    assert all(r.passes for r in results), [
+        (r.name, r.value) for r in results if not r.passes
+    ]
+
+
+@pytest.mark.theory
+def test_correction_hierarchy() -> None:
+    results = run_correction_hierarchy()
+    assert all(r.passes for r in results), [r.name for r in results if not r.passes]

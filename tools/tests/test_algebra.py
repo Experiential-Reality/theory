@@ -536,6 +536,147 @@ def run_spacetime_dimension() -> list[AlgebraResult]:
 
 
 # ---------------------------------------------------------------------------
+# Adversarial: quaternion insufficiency and stabilizer equivariance
+# ---------------------------------------------------------------------------
+
+
+def _octonion_derivation_matrix() -> np.ndarray:
+    """Build the G₂ derivation constraint matrix for octonions.
+
+    A derivation D maps Im(O) → Im(O) (7×7 matrix, 49 unknowns).
+    D(e_i * e_j) = D(e_i)*e_j + e_i*D(e_j) gives linear constraints.
+    """
+    n_unknowns = 49
+    equations = []
+    for i in range(1, 8):
+        for j in range(1, 8):
+            for out_comp in range(8):
+                row = np.zeros(n_unknowns)
+                for k in range(1, 8):
+                    coeff = _STRUCT[i, j, k]
+                    if abs(coeff) < 1e-15:
+                        continue
+                    if out_comp >= 1:
+                        row[(k - 1) * 7 + (out_comp - 1)] += coeff
+                for a in range(7):
+                    sc = _STRUCT[a + 1, j, out_comp]
+                    if abs(sc) < 1e-15:
+                        continue
+                    row[(i - 1) * 7 + a] -= sc
+                for a in range(7):
+                    sc = _STRUCT[i, a + 1, out_comp]
+                    if abs(sc) < 1e-15:
+                        continue
+                    row[(j - 1) * 7 + a] -= sc
+                if np.any(np.abs(row) > 1e-15):
+                    equations.append(row)
+    return np.array(equations)
+
+
+def run_quaternion_insufficiency() -> list[AlgebraResult]:
+    """Quaternions (ℍ) give Aut(ℍ) = SO(3), dim=3 — not SU(3).
+
+    Same derivation-equation method as run_g2_dimension, but for the
+    quaternion algebra (4D, 3 imaginary units i,j,k).  Derivations
+    D: Im(ℍ) → Im(ℍ) give a 3×3 matrix (9 unknowns).
+
+    The nullity = dim(Aut(ℍ)) = 3 = dim(SO(3)).  Since 3 < 8 = dim(SU(3)),
+    quaternions cannot support color symmetry.  Octonions (dim(G₂)=14,
+    stabiliser dim=8=SU(3)) are the ONLY division algebra that works.
+    """
+    # Quaternion structure constants: e_0=1, e_1=i, e_2=j, e_3=k
+    struct_q = np.zeros((4, 4, 4), dtype=np.float64)
+    for i in range(4):
+        struct_q[0, i, i] = 1.0
+        struct_q[i, 0, i] = 1.0
+    for i in range(1, 4):
+        struct_q[i, i, 0] = -1.0
+    # ij=k, jk=i, ki=j (and antisymmetry)
+    for a, b, c in [(1, 2, 3), (2, 3, 1), (3, 1, 2)]:
+        struct_q[a, b, c] = 1.0
+        struct_q[b, a, c] = -1.0
+
+    # Derivation equations: D maps Im(ℍ) → Im(ℍ), 3×3 matrix, 9 unknowns
+    n_unknowns = 9
+    equations = []
+    for i in range(1, 4):
+        for j in range(1, 4):
+            for out_comp in range(4):
+                row = np.zeros(n_unknowns)
+                for k in range(1, 4):
+                    coeff = struct_q[i, j, k]
+                    if abs(coeff) < 1e-15:
+                        continue
+                    if out_comp >= 1:
+                        row[(k - 1) * 3 + (out_comp - 1)] += coeff
+                for a in range(3):
+                    sc = struct_q[a + 1, j, out_comp]
+                    if abs(sc) < 1e-15:
+                        continue
+                    row[(i - 1) * 3 + a] -= sc
+                for a in range(3):
+                    sc = struct_q[i, a + 1, out_comp]
+                    if abs(sc) < 1e-15:
+                        continue
+                    row[(j - 1) * 3 + a] -= sc
+                if np.any(np.abs(row) > 1e-15):
+                    equations.append(row)
+
+    A = np.array(equations)
+    rank = int(np.linalg.matrix_rank(A, tol=1e-10))
+    nullity = n_unknowns - rank
+
+    return [
+        AlgebraResult("dim_Aut_H=3", float(nullity), nullity == 3),
+        AlgebraResult("quaternions_lack_SU3", float(nullity), nullity < 8),
+    ]
+
+
+def run_stabilizer_equivariance() -> list[AlgebraResult]:
+    """Fixing ANY imaginary octonion unit gives stabiliser dim=8 (SU(3)).
+
+    G₂ acts transitively on the unit sphere S⁶ in Im(O), so every
+    reference direction is equivalent.  The orbit-stabiliser theorem gives
+    dim(stabiliser) = dim(G₂) - dim(S⁶) = 14 - 6 = 8 = dim(SU(3)).
+
+    Test all 7 imaginary units separately → all give dim=8.
+    Fix TWO units simultaneously → dim < 8 (over-constrains).
+
+    If some unit gave dim ≠ 8, the G₂ → SU(3) reduction would be
+    direction-dependent (not equivariant), breaking gauge freedom.
+    """
+    A_base = _octonion_derivation_matrix()
+
+    results: list[AlgebraResult] = []
+
+    # Fix each imaginary unit separately: D(e_unit) = 0
+    for unit in range(1, 8):
+        extra = np.zeros((7, 49))
+        for a in range(7):
+            extra[a, (unit - 1) * 7 + a] = 1.0
+        A = np.vstack([A_base, extra])
+        rank = int(np.linalg.matrix_rank(A, tol=1e-10))
+        nullity = 49 - rank
+        results.append(AlgebraResult(
+            f"fix_e{unit}_dim={nullity}", float(nullity), nullity == 8,
+        ))
+
+    # Fix two units simultaneously: D(e_1) = D(e_2) = 0
+    extra_two = np.zeros((14, 49))
+    for unit_idx, unit in enumerate([1, 2]):
+        for a in range(7):
+            extra_two[unit_idx * 7 + a, (unit - 1) * 7 + a] = 1.0
+    A_two = np.vstack([A_base, extra_two])
+    rank_two = int(np.linalg.matrix_rank(A_two, tol=1e-10))
+    nullity_two = 49 - rank_two
+    results.append(AlgebraResult(
+        f"fix_e1_e2_dim={nullity_two}", float(nullity_two), nullity_two < 8,
+    ))
+
+    return results
+
+
+# ---------------------------------------------------------------------------
 # Tests
 # ---------------------------------------------------------------------------
 
@@ -573,3 +714,13 @@ def test_d4_triality() -> None:
 @pytest.mark.theory
 def test_spacetime_dimension() -> None:
     assert all(r.passes for r in run_spacetime_dimension())
+
+
+@pytest.mark.theory
+def test_quaternion_insufficiency() -> None:
+    assert all(r.passes for r in run_quaternion_insufficiency())
+
+
+@pytest.mark.theory
+def test_stabilizer_equivariance() -> None:
+    assert all(r.passes for r in run_stabilizer_equivariance())

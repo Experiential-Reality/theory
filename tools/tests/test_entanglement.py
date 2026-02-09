@@ -227,6 +227,57 @@ def run_k_uniqueness() -> list[EntropyResult]:
 
 
 # ---------------------------------------------------------------------------
+# Adversarial: wrong link function
+# ---------------------------------------------------------------------------
+
+
+def run_wrong_link_function() -> list[EntropyResult]:
+    """Only L = -½ln(1-ρ²) gives H=0 for maximally entangled states.
+
+    The BLD link function's ½ factor comes from K=2: the bidirectional
+    observation cost divides the information-theoretic log.  For Bell
+    states (ρ²=0.5), S = ln(2) and L = ½ln(2), so S = 2L = K×L exactly.
+
+    Test alternatives:
+    - L = ρ²/2   (linear Taylor approximation — misses log structure)
+    - L = -ln(1-ρ²)  (missing ½ factor — wrong K)
+    - L = arctanh(ρ)  (different functional form entirely)
+
+    All wrong links give H = S - K×L ≠ 0 for Bell states: the specific
+    logarithmic form with the ½ factor is structurally determined.
+    """
+    psi = np.array([1, 0, 0, 1], dtype=complex) / SQRT2
+    ev = _reduced_density_eigenvalues(psi, 2)
+    s = _von_neumann_entropy(ev)
+    lambda_val = float(min(ev.max(), 1 - ev.min()))
+    rho_sq = 2 * lambda_val * (1 - lambda_val)
+    rho = np.sqrt(rho_sq)
+
+    link_correct = _bld_link(rho_sq)       # -0.5 * ln(1 - rho_sq)
+    link_linear = rho_sq / 2               # Taylor: misses log
+    link_no_half = -np.log(1 - rho_sq)     # wrong K (effectively K=1)
+    link_arctanh = float(np.arctanh(rho))  # different function
+
+    results: list[EntropyResult] = []
+    for name, link_val in [
+        ("correct: -½ln(1-ρ²)", link_correct),
+        ("linear: ρ²/2", link_linear),
+        ("no_half: -ln(1-ρ²)", link_no_half),
+        ("arctanh: arctanh(ρ)", link_arctanh),
+    ]:
+        h = s - tools.bld.K * link_val
+        is_correct = name.startswith("correct")
+        if is_correct:
+            passes = abs(h) < 1e-10
+        else:
+            passes = abs(h) > 0.01  # wrong link gives H ≠ 0
+        s_over_l = s / link_val if link_val > 1e-15 else float("inf")
+        results.append(EntropyResult(name, s, link_val, s_over_l, h, passes))
+
+    return results
+
+
+# ---------------------------------------------------------------------------
 # Tests
 # ---------------------------------------------------------------------------
 
@@ -264,3 +315,8 @@ def test_h_non_negative(rng: np.random.Generator) -> None:
 @pytest.mark.theory
 def test_k_uniqueness() -> None:
     assert all(r.passes for r in run_k_uniqueness())
+
+
+@pytest.mark.theory
+def test_wrong_link_function() -> None:
+    assert all(r.passes for r in run_wrong_link_function())

@@ -419,6 +419,108 @@ def run_nonorthogonal_analytical(rng: np.random.Generator) -> list[tools.quantum
 
 
 # ---------------------------------------------------------------------------
+# Adversarial: noise distribution and power uniqueness
+# ---------------------------------------------------------------------------
+
+
+def run_wrong_noise_distribution(
+    rng: np.random.Generator,
+) -> list[tools.bld.TestResult]:
+    """The ratio rule ≡ argmax(log α + Gumbel).  Wrong noise breaks Born.
+
+    Haar-random overlaps are exponentially distributed (from unitary
+    invariance).  The ratio argmax(α/overlap) is equivalent to
+    argmax(log α + Gumbel) via the Gumbel max trick.  This Gumbel
+    structure is what makes the rule recover Born probabilities.
+
+    Replace Gumbel with Gaussian, uniform, or Laplace noise.  For M=3,
+    the resulting probabilities are NOT Born — the noise distribution
+    matters structurally.
+    """
+    M = 3
+    n = 100000
+    alphas = np.array([0.5, 0.3, 0.2])
+    log_alphas = np.log(alphas)
+
+    results: list[tools.bld.TestResult] = []
+
+    # Gumbel (correct): should recover Born
+    gumbel = rng.gumbel(0, 1, size=(n, M))
+    choices_g = np.argmax(log_alphas[None, :] + gumbel, axis=1)
+    counts_g = np.bincount(choices_g, minlength=M).astype(float)
+    stat_g = tools.quantum.chi2_test(counts_g, alphas, n)
+    results.append(tools.bld.TestResult("gumbel_recovers_born", stat_g.passes))
+
+    # Gaussian (wrong): lighter tails bias toward max α
+    gaussian = rng.standard_normal((n, M))
+    choices_n = np.argmax(log_alphas[None, :] + gaussian, axis=1)
+    counts_n = np.bincount(choices_n, minlength=M).astype(float)
+    stat_n = tools.quantum.chi2_test(counts_n, alphas, n)
+    results.append(tools.bld.TestResult("gaussian_fails_born", not stat_n.passes))
+
+    # Uniform (wrong): bounded support, no tail structure
+    uniform = rng.uniform(-2, 2, size=(n, M))
+    choices_u = np.argmax(log_alphas[None, :] + uniform, axis=1)
+    counts_u = np.bincount(choices_u, minlength=M).astype(float)
+    stat_u = tools.quantum.chi2_test(counts_u, alphas, n)
+    results.append(tools.bld.TestResult("uniform_fails_born", not stat_u.passes))
+
+    # Laplace (wrong): different tail decay rate
+    laplace = rng.laplace(0, 1, size=(n, M))
+    choices_l = np.argmax(log_alphas[None, :] + laplace, axis=1)
+    counts_l = np.bincount(choices_l, minlength=M).astype(float)
+    stat_l = tools.quantum.chi2_test(counts_l, alphas, n)
+    results.append(tools.bld.TestResult("laplace_fails_born", not stat_l.passes))
+
+    return results
+
+
+def run_non_reciprocal_selection_fails(
+    rng: np.random.Generator,
+) -> list[tools.bld.TestResult]:
+    """The selection rule uses α/overlap¹.  Power p≠1 must break Born.
+
+    The 1/overlap (p=1) power comes from the exponential distribution of
+    Haar-random overlaps.  Using α/overlap^p for p≠1 changes the effective
+    noise distribution and breaks the Gumbel max trick equivalence.
+
+    If α/overlap^p worked for any p, the specific reciprocal relationship
+    (p=1) wouldn't be structurally determined by the Haar measure.
+    """
+    M = 3
+    N_obs = 64
+    n = 100000
+    alphas = np.array([0.5, 0.3, 0.2])
+    pointers = tools.quantum.make_orthogonal_pointers(M, N_obs, rng)
+    P = np.array(pointers.states)
+    observers = tools.bld.haar_random_states(N_obs, n, rng)
+    ovlps = tools.quantum.overlaps_batch(P, observers)
+    safe = np.maximum(ovlps, tools.quantum.SAFE_FLOOR)
+
+    results: list[tools.bld.TestResult] = []
+
+    # p=1 (correct): should recover Born
+    choices_1 = np.argmax(alphas[:, None] / safe, axis=0)
+    counts_1 = np.bincount(choices_1, minlength=M).astype(float)
+    stat_1 = tools.quantum.chi2_test(counts_1, alphas, n)
+    results.append(tools.bld.TestResult("p=1_recovers_born", stat_1.passes))
+
+    # p=0.5 (wrong): sub-reciprocal, more overlap influence
+    choices_05 = np.argmax(alphas[:, None] / safe ** 0.5, axis=0)
+    counts_05 = np.bincount(choices_05, minlength=M).astype(float)
+    stat_05 = tools.quantum.chi2_test(counts_05, alphas, n)
+    results.append(tools.bld.TestResult("p=0.5_fails_born", not stat_05.passes))
+
+    # p=2 (wrong): super-reciprocal, less overlap influence
+    choices_2 = np.argmax(alphas[:, None] / safe ** 2, axis=0)
+    counts_2 = np.bincount(choices_2, minlength=M).astype(float)
+    stat_2 = tools.quantum.chi2_test(counts_2, alphas, n)
+    results.append(tools.bld.TestResult("p=2_fails_born", not stat_2.passes))
+
+    return results
+
+
+# ---------------------------------------------------------------------------
 # Test functions
 # ---------------------------------------------------------------------------
 
@@ -481,3 +583,15 @@ def test_factored_observer_analytical(rng: np.random.Generator) -> None:
 @pytest.mark.theory
 def test_nonorthogonal_analytical(rng: np.random.Generator) -> None:
     assert all(t.passes for t in run_nonorthogonal_analytical(rng))
+
+
+@pytest.mark.theory
+def test_wrong_noise_distribution(rng: np.random.Generator) -> None:
+    results = run_wrong_noise_distribution(rng)
+    assert all(r.passes for r in results), [r.name for r in results if not r.passes]
+
+
+@pytest.mark.theory
+def test_non_reciprocal_selection_fails(rng: np.random.Generator) -> None:
+    results = run_non_reciprocal_selection_fails(rng)
+    assert all(r.passes for r in results), [r.name for r in results if not r.passes]

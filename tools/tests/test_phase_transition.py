@@ -446,6 +446,75 @@ def run_3d_ising(
 
 
 # ---------------------------------------------------------------------------
+# Adversarial: wrong link definition
+# ---------------------------------------------------------------------------
+
+
+def run_wrong_link_definition(
+    rng: np.random.Generator,
+) -> list[ScalingResult]:
+    """Only L=ln(ξ) gives the correct critical exponent ν for 2D Ising.
+
+    Near criticality, ξ ~ |t|^{-ν} where t = (T-T_c)/T_c.  The BLD
+    identification L = ln(ξ) means:
+
+        L = ln(ξ) = ν × ln(1/|t|)
+
+    so L is LINEAR in ln(1/|t|) with slope = ν ≈ 1.0 (Onsager exact).
+
+    Test three link definitions fitted against ln(1/|t|):
+    - L = ln(ξ)  — BLD logarithmic: linear fit gives slope ≈ 1.0, r² > 0.9
+    - L = ξ      — linear: exponential in ln(1/|t|), bad linear fit
+    - L = √ξ     — power: still exponential, wrong slope
+
+    If alternative link definitions worked equally well, the logarithmic
+    identification wouldn't be structurally necessary.
+    """
+    L_sys = 64
+    T_values = _temperatures_2d()
+    above_tc = T_values[T_values > T_C_2D]
+    data = _run_grid([(L_sys, L_sys)], above_tc, 200, 500, rng)
+    data.sort(key=lambda p: p.T)
+
+    # Filter: xi in reliable range
+    usable = [p for p in data if 2.0 < p.xi < L_sys / 4]
+    if len(usable) < 3:
+        return [ScalingResult("insufficient_data", 0, 0, 0, False)]
+
+    t_vals = np.array([(p.T - T_C_2D) / T_C_2D for p in usable])
+    ln_inv_t = np.log(1.0 / t_vals)
+    xi_arr = np.array([p.xi for p in usable])
+
+    results: list[ScalingResult] = []
+
+    # BLD logarithmic: L = ln(ξ) → linear in ln(1/|t|), slope = ν
+    y_log = np.log(xi_arr)
+    slope_log, _, r2_log = _linfit(ln_inv_t, y_log)
+    results.append(ScalingResult(
+        "L=ln(ξ) correct", slope_log, NU_2D, r2_log,
+        abs(slope_log - NU_2D) < 0.2 and r2_log > 0.90,
+    ))
+
+    # Linear: L = ξ → exponential in ln(1/|t|), poor linear fit
+    y_lin = xi_arr
+    slope_lin, _, r2_lin = _linfit(ln_inv_t, y_lin)
+    results.append(ScalingResult(
+        "L=ξ wrong", slope_lin, NU_2D, r2_lin,
+        r2_lin < 0.90 or abs(slope_lin - NU_2D) > 0.3,
+    ))
+
+    # Quadratic: L = ξ² → steep exponential growth, wildly wrong slope
+    y_sq = xi_arr ** 2
+    slope_sq, _, r2_sq = _linfit(ln_inv_t, y_sq)
+    results.append(ScalingResult(
+        "L=ξ² wrong", slope_sq, NU_2D, r2_sq,
+        r2_sq < 0.90 or abs(slope_sq - NU_2D) > 0.3,
+    ))
+
+    return results
+
+
+# ---------------------------------------------------------------------------
 # Tests
 # ---------------------------------------------------------------------------
 
@@ -490,3 +559,11 @@ def test_3d_ising(rng: np.random.Generator) -> None:
     assert all(
         r.passes for r in run_3d_ising(rng)
     )
+
+
+@pytest.mark.theory
+def test_wrong_link_definition(rng: np.random.Generator) -> None:
+    results = run_wrong_link_definition(rng)
+    assert all(r.passes for r in results), [
+        (r.name, r.fitted, r.exact, r.r_squared) for r in results if not r.passes
+    ]
