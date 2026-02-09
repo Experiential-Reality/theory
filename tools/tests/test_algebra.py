@@ -11,8 +11,11 @@ Theory refs:
 
 import dataclasses
 import itertools
+import math
 
 import numpy as np
+
+import tools.bld
 
 from helpers import assert_all_pass
 
@@ -161,6 +164,50 @@ def _octonion_derivation_matrix() -> np.ndarray:
                     if abs(sc) < 1e-15:
                         continue
                     row[(j - 1) * 7 + a] -= sc
+                if np.any(np.abs(row) > 1e-15):
+                    equations.append(row)
+    return np.array(equations)
+
+
+_STRUCT_Q = np.zeros((4, 4, 4), dtype=np.float64)
+for _i in range(4):
+    _STRUCT_Q[0, _i, _i] = 1.0
+    _STRUCT_Q[_i, 0, _i] = 1.0
+for _i in range(1, 4):
+    _STRUCT_Q[_i, _i, 0] = -1.0
+for _a, _b, _c in [(1, 2, 3), (2, 3, 1), (3, 1, 2)]:
+    _STRUCT_Q[_a, _b, _c] = 1.0
+    _STRUCT_Q[_b, _a, _c] = -1.0
+
+
+def _quaternion_derivation_matrix() -> np.ndarray:
+    """Build the derivation constraint matrix for quaternions.
+
+    A derivation D maps Im(H) -> Im(H) (3x3 matrix, 9 unknowns).
+    D(e_i * e_j) = D(e_i)*e_j + e_i*D(e_j) gives linear constraints.
+    """
+    n_unknowns = 9
+    equations = []
+    for i in range(1, 4):
+        for j in range(1, 4):
+            for out_comp in range(4):
+                row = np.zeros(n_unknowns)
+                for k in range(1, 4):
+                    coeff = _STRUCT_Q[i, j, k]
+                    if abs(coeff) < 1e-15:
+                        continue
+                    if out_comp >= 1:
+                        row[(k - 1) * 3 + (out_comp - 1)] += coeff
+                for a in range(3):
+                    sc = _STRUCT_Q[a + 1, j, out_comp]
+                    if abs(sc) < 1e-15:
+                        continue
+                    row[(i - 1) * 3 + a] -= sc
+                for a in range(3):
+                    sc = _STRUCT_Q[i, a + 1, out_comp]
+                    if abs(sc) < 1e-15:
+                        continue
+                    row[(j - 1) * 3 + a] -= sc
                 if np.any(np.abs(row) > 1e-15):
                     equations.append(row)
     return np.array(equations)
@@ -483,47 +530,9 @@ def test_quaternion_insufficiency() -> None:
     quaternions cannot support color symmetry.  Octonions (dim(G2)=14,
     stabiliser dim=8=SU(3)) are the ONLY division algebra that works.
     """
-    # Quaternion structure constants: e_0=1, e_1=i, e_2=j, e_3=k
-    struct_q = np.zeros((4, 4, 4), dtype=np.float64)
-    for i in range(4):
-        struct_q[0, i, i] = 1.0
-        struct_q[i, 0, i] = 1.0
-    for i in range(1, 4):
-        struct_q[i, i, 0] = -1.0
-    # ij=k, jk=i, ki=j (and antisymmetry)
-    for a, b, c in [(1, 2, 3), (2, 3, 1), (3, 1, 2)]:
-        struct_q[a, b, c] = 1.0
-        struct_q[b, a, c] = -1.0
-
-    # Derivation equations: D maps Im(H) -> Im(H), 3x3 matrix, 9 unknowns
-    n_unknowns = 9
-    equations = []
-    for i in range(1, 4):
-        for j in range(1, 4):
-            for out_comp in range(4):
-                row = np.zeros(n_unknowns)
-                for k in range(1, 4):
-                    coeff = struct_q[i, j, k]
-                    if abs(coeff) < 1e-15:
-                        continue
-                    if out_comp >= 1:
-                        row[(k - 1) * 3 + (out_comp - 1)] += coeff
-                for a in range(3):
-                    sc = struct_q[a + 1, j, out_comp]
-                    if abs(sc) < 1e-15:
-                        continue
-                    row[(i - 1) * 3 + a] -= sc
-                for a in range(3):
-                    sc = struct_q[i, a + 1, out_comp]
-                    if abs(sc) < 1e-15:
-                        continue
-                    row[(j - 1) * 3 + a] -= sc
-                if np.any(np.abs(row) > 1e-15):
-                    equations.append(row)
-
-    A = np.array(equations)
+    A = _quaternion_derivation_matrix()
     rank = int(np.linalg.matrix_rank(A, tol=1e-10))
-    nullity = n_unknowns - rank
+    nullity = 9 - rank
 
     assert_all_pass([
         AlgebraResult("dim_Aut_H=3", float(nullity), nullity == 3),
@@ -571,5 +580,135 @@ def test_stabilizer_equivariance() -> None:
     results.append(AlgebraResult(
         f"fix_e1_e2_dim={nullity_two}", float(nullity_two), nullity_two < 8,
     ))
+
+    assert_all_pass(results)
+
+
+def test_exceptional_dimensions_bld() -> None:
+    """All five exceptional Lie algebra dimensions are BLD constant expressions.
+
+    Theory ref: exceptional-algebras.md lines 24-28
+    G₂ = K×7, F₄ = B-n, E₆ = F₄+26, E₇ = 3+F₄+3×26, E₈ = n(B+n+K).
+    fund(E₇) = 56 = B.
+
+    Division algebra ↔ BLD mapping (constants.md):
+    dim(ℂ)=K=2, dim(ℍ)=n=4, dim(𝕆)=2n=8.
+    Hurwitz tower {1, K, n, 2n} = {1, 2, 4, 8}.
+    """
+    B, n, K = tools.bld.B, tools.bld.n, tools.bld.K
+
+    f4 = B - n  # 52
+    results: list[AlgebraResult] = [
+        # Exceptional algebra dimensions
+        AlgebraResult("G₂=K×7=14", float(K * 7), K * 7 == 14),
+        AlgebraResult("F₄=B-n=52", float(f4), f4 == 52),
+        AlgebraResult("E₆=F₄+26=78", float(f4 + 26), f4 + 26 == 78),
+        AlgebraResult("E₇=3+F₄+3×26=133", float(3 + f4 + 3 * 26), 3 + f4 + 3 * 26 == 133),
+        AlgebraResult("E₈=n(B+n+K)=248", float(n * (B + n + K)), n * (B + n + K) == 248),
+        AlgebraResult("fund(E₇)=B=56", float(B), B == 56),
+        # Division algebra ↔ BLD
+        AlgebraResult("dim(ℂ)=K=2", float(K), K == 2),
+        AlgebraResult("dim(ℍ)=n=4", float(n), n == 4),
+        AlgebraResult("dim(𝕆)=2n=8", float(2 * n), 2 * n == 8),
+    ]
+    assert_all_pass(results)
+
+
+def test_exceptional_uniqueness() -> None:
+    """Only (n=4, K=2, B=56) produces all five exceptional dimensions.
+
+    Adversarial sweep over n∈{1,...,100}, K∈{1,...,9}.
+    Three simultaneous constraints:
+      G₂ = K×7 = 14  → forces K=2
+      F₄ = B-n = 52  → B = n+52
+      E₈ = n(B+n+K) = 248  → with K=2, B=n+52: n²+27n-124=0
+
+    The discriminant 729+496 = 1225 = 35² is a perfect square,
+    giving n = (-27+35)/2 = 4.  Only one positive integer root.
+    """
+    results: list[AlgebraResult] = []
+    solutions = []
+
+    for K_ in range(1, 10):
+        if K_ * 7 != 14:
+            continue
+        for n_ in range(1, 101):
+            B_ = n_ + 52  # from F₄ = B-n = 52
+            if n_ * (B_ + n_ + K_) != 248:
+                continue
+            # Also verify E₆ and E₇
+            f4 = B_ - n_
+            e6_ok = f4 + 26 == 78
+            e7_ok = 3 + f4 + 3 * 26 == 133
+            if e6_ok and e7_ok:
+                solutions.append((n_, K_, B_))
+
+    results.append(AlgebraResult(
+        "unique_solution_count=1", float(len(solutions)), len(solutions) == 1,
+    ))
+    if solutions:
+        n_, K_, B_ = solutions[0]
+        results.append(AlgebraResult(
+            f"solution=({n_},{K_},{B_})", float(n_),
+            n_ == tools.bld.n and K_ == tools.bld.K and B_ == tools.bld.B,
+        ))
+
+    # Verify discriminant is a perfect square (algebraic proof n=4 is forced)
+    # n² + 27n - 124 = 0 → disc = 27² + 4×124 = 729 + 496 = 1225
+    disc = 27**2 + 4 * 124
+    sqrt_disc = int(math.isqrt(disc))
+    results.append(AlgebraResult(
+        f"disc={disc}={sqrt_disc}²", float(disc), sqrt_disc**2 == disc,
+    ))
+    n_root = (-27 + sqrt_disc) // 2
+    results.append(AlgebraResult(
+        f"n=(-27+{sqrt_disc})/2={n_root}", float(n_root), n_root == 4,
+    ))
+
+    assert_all_pass(results)
+
+
+def test_tits_construction() -> None:
+    """Freudenthal magic square: L(A,O) = der(A) + 52 + dim(Im(A))×26.
+
+    Uses COMPUTED derivation dimensions (not hardcoded):
+      der(O) = 14 from _octonion_derivation_matrix()
+      der(H) = 3  from _quaternion_derivation_matrix()
+      der(ℂ) = 0, der(ℝ) = 0 (trivial)
+
+    Theory ref: exceptional-algebras.md, Tits construction
+    """
+    # Compute der(O) = dim(G₂) = 14
+    A_oct = _octonion_derivation_matrix()
+    rank_oct = int(np.linalg.matrix_rank(A_oct, tol=1e-10))
+    der_O = 49 - rank_oct
+
+    # Compute der(H) = dim(SO(3)) = 3
+    A_quat = _quaternion_derivation_matrix()
+    rank_quat = int(np.linalg.matrix_rank(A_quat, tol=1e-10))
+    der_H = 9 - rank_quat
+
+    der_C = 0  # ℂ has no non-trivial derivations
+    der_R = 0  # ℝ has no non-trivial derivations
+
+    # Division algebras: (name, der, dim_imaginary)
+    algebras = [
+        ("R", der_R, 0),
+        ("C", der_C, 1),
+        ("H", der_H, 3),
+        ("O", der_O, 7),
+    ]
+    expected_dims = {"R": 52, "C": 78, "H": 133, "O": 248}
+    expected_names = {"R": "F₄", "C": "E₆", "H": "E₇", "O": "E₈"}
+
+    results: list[AlgebraResult] = []
+    for name, der, dim_im in algebras:
+        tits_dim = der + 52 + dim_im * 26
+        exp = expected_dims[name]
+        results.append(AlgebraResult(
+            f"L({name},O)={tits_dim}={expected_names[name]}",
+            float(tits_dim),
+            tits_dim == exp,
+        ))
 
     assert_all_pass(results)

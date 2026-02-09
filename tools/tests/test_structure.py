@@ -284,3 +284,80 @@ def test_lambda_uniqueness() -> None:
             assert r.passes
         else:
             assert not r.passes
+
+
+def test_spin8_boundary() -> None:
+    """B = 2×dim(so(8)) and B-K = K(n-1)³.
+
+    Theory ref: constants.md, e7-derivation.md
+    dim(so(8)) = 8×7/2 = 28.
+    B = 2×28 = 56 (bidirectional Spin(8) boundary).
+    B - K = K(n-1)³ = 2×27 = 54 (usable boundary capacity).
+    """
+    B, n, K = tools.bld.B, tools.bld.n, tools.bld.K
+    dim_so8 = 8 * 7 // 2  # 28
+
+    assert_all_pass([
+        TR("dim(so(8))=28", dim_so8 == 28, float(dim_so8)),
+        TR("B=2×dim(so(8))", B == 2 * dim_so8, float(B)),
+        TR("B-K=K(n-1)³=54", B - K == K * (n - 1) ** 3, float(B - K)),
+    ])
+
+
+def test_spin8_boundary_uniqueness() -> None:
+    """Only (n=4, K=2, B=56) satisfies B-K=K(n-1)³ AND B/2=28.
+
+    B-K = K(n-1)³ alone is NOT unique: for n=4 it reduces to
+    K²-7K+10=0 giving K∈{2,5}.  But K=5→B=140, B/2=70≠28.
+
+    Adding B/2=28=dim(so(8)) forces exactly one solution.
+    """
+    B, n, K, S = tools.bld.B, tools.bld.n, tools.bld.K, tools.bld.S
+
+    # Phase 1: B-K = K(n-1)³ has multiple solutions
+    bk_solutions = []
+    for n_ in range(2, 21):
+        for K_ in range(1, 11):
+            B_ = n_ * (K_**2 + (n_ - 1) ** 2 + 1)
+            if B_ - K_ == K_ * (n_ - 1) ** 3:
+                bk_solutions.append((n_, K_, B_))
+
+    results: list[TR] = [
+        TR("B-K=K(n-1)³_multiple", len(bk_solutions) > 1, float(len(bk_solutions))),
+    ]
+
+    # Phase 2: adding B/2=28 forces unique solution
+    spin8_solutions = [(n_, K_, B_) for n_, K_, B_ in bk_solutions if B_ // 2 == 28]
+    results.append(TR(
+        "with_so(8)_unique", len(spin8_solutions) == 1, float(len(spin8_solutions)),
+    ))
+    if spin8_solutions:
+        n_, K_, B_ = spin8_solutions[0]
+        results.append(TR(
+            f"solution=({n_},{K_},{B_})", n_ == n and K_ == K and B_ == B,
+            float(n_),
+        ))
+
+    assert_all_pass(results)
+
+
+def test_planck_structure() -> None:
+    """Planck mass formula constants are BLD expressions, not magic numbers.
+
+    Theory ref: planck-derivation.md
+    bld.py planck_mass() uses: lambda_sq**(-13), sqrt(5/14), (79/78).
+    These are:
+      -13 = -S               (exponent = negative structure constant)
+      5/14 = L/B = 20/56     (geometric factor)
+      79/78 = (nL-K+1)/(nL-K) (first-order correction)
+      B/2-K = 2S = 26        (cascade exponent n_c)
+    """
+    B, L, n, K, S = tools.bld.B, tools.bld.L, tools.bld.n, tools.bld.K, tools.bld.S
+
+    assert_all_pass([
+        TR("exponent_-13=-S", S == 13, float(S)),
+        TR("5/14=L/B", abs(5 / 14 - L / B) < 1e-15, L / B),
+        TR("79=nL-K+1", n * L - K + 1 == 79, float(n * L - K + 1)),
+        TR("78=nL-K", n * L - K == 78, float(n * L - K)),
+        TR("cascade_B/2-K=2S=26", B // 2 - K == 2 * S, float(B // 2 - K)),
+    ])
