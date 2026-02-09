@@ -36,9 +36,6 @@ class StatTest:
     p_value: float
     passes: bool
 
-haar_random_state = bld.haar_random_state
-haar_random_states = bld.haar_random_states
-
 def overlaps_batch(
     pointer_matrix: np.ndarray, observers: np.ndarray,
 ) -> np.ndarray:
@@ -196,7 +193,7 @@ def run_selection_mc(
     dim = len(pointers.states[0])
     M = len(pointers.states)
     P = np.array(pointers.states)
-    observers = haar_random_states(dim, n_samples, rng)
+    observers = bld.haar_random_states(dim, n_samples, rng)
     ovlps = overlaps_batch(P, observers)
 
     vec = _VECTORIZED_RULES.get(rule)

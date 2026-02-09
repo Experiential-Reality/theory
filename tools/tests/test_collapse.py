@@ -441,8 +441,6 @@ def run_many_to_one(rng: np.random.Generator) -> list[IrreversibilityResult]:
     selection rule outcome despite being different L-structures.
     This demonstrates information loss: B (outcome) doesn't determine L (state).
     """
-    import tools.quantum
-
     results: list[IrreversibilityResult] = []
     M = 2
     N_obs = 32
@@ -485,8 +483,6 @@ def run_info_loss(rng: np.random.Generator) -> list[IrreversibilityResult]:
     For M=2 with |alpha_0|^2 in [0.5, 0.95], a single measurement outcome
     (0 or 1) cannot distinguish the specific alpha values.
     """
-    import tools.quantum
-
     results: list[IrreversibilityResult] = []
     M = 2
     N_obs = 32

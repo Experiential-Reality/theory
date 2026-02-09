@@ -8,6 +8,7 @@ import numpy as np
 import pytest
 import scipy.linalg
 
+import tools.bld
 import tools.quantum
 
 
@@ -94,7 +95,7 @@ def run_simulation(rng: np.random.Generator) -> list[SimPoint]:
         for N_A in N_A_values:
             for _ in range(n_hamiltonians):
                 P = random_hermitian(N_A, rng)
-                A0 = tools.quantum.haar_random_state(N_A, rng)
+                A0 = tools.bld.haar_random_state(N_A, rng)
                 jobs.append((alphas_sq, P, A0))
 
     children = rng.bit_generator.seed_seq.spawn(len(jobs))

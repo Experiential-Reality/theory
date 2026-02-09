@@ -6,6 +6,7 @@ import numpy as np
 import pytest
 import scipy.stats
 
+import tools.bld
 import tools.quantum
 
 
@@ -72,7 +73,7 @@ def run_determinism(rng: np.random.Generator) -> Result:
         pointers = tools.quantum.make_orthogonal_pointers(M, N_obs, rng)
         P = np.array(pointers.states)
 
-        observers = tools.quantum.haar_random_states(N_obs, 5000, rng)
+        observers = tools.bld.haar_random_states(N_obs, 5000, rng)
         ovlps = tools.quantum.overlaps_batch(P, observers)
         safe = np.maximum(ovlps, tools.quantum.SAFE_FLOOR)
         choices1 = np.argmax(a[:, None] / safe, axis=0)
@@ -197,7 +198,7 @@ def run_finite_n_corrections(
         P = np.array(pointers.states)
         n = 50000
 
-        observers = tools.quantum.haar_random_states(N_obs, n, rng)
+        observers = tools.bld.haar_random_states(N_obs, n, rng)
         ovlps = tools.quantum.overlaps_batch(P, observers)
         safe = np.maximum(ovlps, tools.quantum.SAFE_FLOOR)
         choices_haar = np.argmax(alphas[:, None] / safe, axis=0)
@@ -233,7 +234,7 @@ def run_independence_scaling(
         P = np.array(pointers.states)
         n_samples = 10000
 
-        observers = tools.quantum.haar_random_states(N_obs, n_samples, rng)
+        observers = tools.bld.haar_random_states(N_obs, n_samples, rng)
         ovlps = tools.quantum.overlaps_batch(P, observers)
         G = -np.log(np.maximum(ovlps, tools.quantum.SAFE_FLOOR)).T
 

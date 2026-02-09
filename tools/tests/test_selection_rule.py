@@ -7,6 +7,7 @@ import numpy as np
 import pytest
 import scipy.stats
 
+import tools.bld
 import tools.quantum
 
 
@@ -82,7 +83,7 @@ def run_all_rules(
             pointers = tools.quantum.make_orthogonal_pointers(M, N_obs, rng)
             P = np.array(pointers.states)
 
-            observers = tools.quantum.haar_random_states(N_obs, n, rng)
+            observers = tools.bld.haar_random_states(N_obs, n, rng)
             ovlps = tools.quantum.overlaps_batch(P, observers)
             safe = np.maximum(ovlps, tools.quantum.SAFE_FLOOR)
 
@@ -128,7 +129,7 @@ def run_overlap_distribution_test(
         pointers = tools.quantum.make_orthogonal_pointers(M_test, N_obs, rng)
         P = np.array(pointers.states)
 
-        observers = tools.quantum.haar_random_states(N_obs, 20000, rng)
+        observers = tools.bld.haar_random_states(N_obs, 20000, rng)
         ovlps = tools.quantum.overlaps_batch(P, observers)
 
         b = N_obs - 1
@@ -152,7 +153,7 @@ def run_independence_test(
         P = np.array(pointers.states)
         n_samples = 10000
 
-        observers = tools.quantum.haar_random_states(N_obs, n_samples, rng)
+        observers = tools.bld.haar_random_states(N_obs, n_samples, rng)
         ovlps = tools.quantum.overlaps_batch(P, observers)
         G = -np.log(np.maximum(ovlps, tools.quantum.SAFE_FLOOR)).T
 

@@ -2,18 +2,19 @@
 
 import numpy as np
 
+import tools.bld
 import tools.quantum
 
 
 def test_haar_random_state_normalized(rng: np.random.Generator) -> None:
     for dim in [2, 8, 32]:
-        state = tools.quantum.haar_random_state(dim, rng)
+        state = tools.bld.haar_random_state(dim, rng)
         assert abs(np.linalg.norm(state) - 1.0) < 1e-12
 
 
 def test_haar_random_state_dimension(rng: np.random.Generator) -> None:
     for dim in [2, 8, 32]:
-        state = tools.quantum.haar_random_state(dim, rng)
+        state = tools.bld.haar_random_state(dim, rng)
         assert state.shape == (dim,)
         assert np.iscomplexobj(state)
 
@@ -21,7 +22,7 @@ def test_haar_random_state_dimension(rng: np.random.Generator) -> None:
 def test_overlaps_orthogonal_sum(rng: np.random.Generator) -> None:
     M = 4
     pointers = tools.quantum.make_orthogonal_pointers(M, M, rng)
-    O = tools.quantum.haar_random_state(M, rng)
+    O = tools.bld.haar_random_state(M, rng)
     ovlps = tools.quantum.overlaps(pointers.states, O)
     assert abs(ovlps.sum() - 1.0) < 1e-10
 

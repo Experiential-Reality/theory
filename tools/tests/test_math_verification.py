@@ -6,6 +6,7 @@ import numpy as np
 import pytest
 import scipy.stats
 
+import tools.bld
 import tools.quantum
 
 
@@ -29,7 +30,7 @@ def run_degenerate_amplitudes(rng: np.random.Generator) -> list[tools.quantum.St
             n = 100000
             pointers = tools.quantum.make_orthogonal_pointers(M, N_obs, rng)
             P = np.array(pointers.states)
-            observers = tools.quantum.haar_random_states(N_obs, n, rng)
+            observers = tools.bld.haar_random_states(N_obs, n, rng)
             ovlps = tools.quantum.overlaps_batch(P, observers)
             safe = np.maximum(ovlps, tools.quantum.SAFE_FLOOR)
             choices = np.argmax(a[:, None] / safe, axis=0)
@@ -91,7 +92,7 @@ def run_complex_phases(rng: np.random.Generator) -> list[tools.quantum.StatTest]
     pointers = tools.quantum.make_orthogonal_pointers(M, N_obs, rng)
     P = np.array(pointers.states)
     fixed_rng = np.random.default_rng(12345)
-    observers = tools.quantum.haar_random_states(N_obs, n, fixed_rng)
+    observers = tools.bld.haar_random_states(N_obs, n, fixed_rng)
     ovlps = tools.quantum.overlaps_batch(P, observers)
 
     results = []
@@ -192,7 +193,7 @@ def run_tau_uniqueness(rng: np.random.Generator) -> list[tools.quantum.StatTest]
     n = 50000
     pointers = tools.quantum.make_orthogonal_pointers(M, N_obs, rng)
     P = np.array(pointers.states)
-    observers = tools.quantum.haar_random_states(N_obs, n, rng)
+    observers = tools.bld.haar_random_states(N_obs, n, rng)
     ovlps = tools.quantum.overlaps_batch(P, observers)
     results = []
 
@@ -290,7 +291,7 @@ def run_m2_symmetry(rng: np.random.Generator) -> list[tools.quantum.StatTest]:
         for N_obs in [4, 16, 64]:
             pointers = tools.quantum.make_orthogonal_pointers(2, N_obs, rng)
             P = np.array(pointers.states)
-            observers = tools.quantum.haar_random_states(N_obs, n, rng)
+            observers = tools.bld.haar_random_states(N_obs, n, rng)
             ovlps = tools.quantum.overlaps_batch(P, observers)
 
             safe = np.maximum(ovlps, tools.quantum.SAFE_FLOOR)
