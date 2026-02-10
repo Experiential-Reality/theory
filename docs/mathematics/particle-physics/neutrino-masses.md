@@ -24,11 +24,13 @@ used_by:
 4. Δm² ratio = L + S = 33 (exact match) — [Generation Structure](#5-generation-structure)
 5. Σm_ν ≈ 80 meV < 120 meV bound (consistent) — [Sum of Masses](#53-sum-of-neutrino-masses)
 6. Always "+" corrections (EM can't see ν) — [Sign Rule](#43-the-sign-rule-why--corrections)
+7. **Normal ordering (m₁ < m₂ < m₃)** — νe is the structural base → lightest. Binary test, JUNO ~2026-2027. — [Mass Ordering](#93-mass-ordering-prediction)
 
 | Neutrino | Formula | Predicted | Bound | Status |
 |----------|---------|-----------|-------|--------|
 | m_νe | m_e × (K/B)² × (K/(n×L)) | ~16 meV | < 0.8 eV | **DERIVED** |
 | Σm_ν | ~5 × m_νe | ~80 meV | < 0.12 eV | **CONSISTENT** |
+| Mass ordering | νe = base generation → m₁ < m₂ < m₃ | **Normal** | JUNO ~2027 | **PREDICTED** |
 
 ---
 
@@ -435,14 +437,29 @@ The (K/B)² factor could be reinterpreted as the seesaw suppression: the "heavy 
 | Σm_ν | ~80 meV | < 120 meV | ✓ |
 | Δm²₃₂/Δm²₂₁ | L+S = 33 | 33.3 | ✓ |
 | m_e/m_νe | ~31,000 | ~10⁴-10⁵ | ✓ |
+| Mass ordering | Normal (m₁ < m₂ < m₃) | Favored (NuFIT 6.0) | **PREDICTED** |
+| θ₂₃ octant | Upper (sin²θ₂₃ = 14/25 > 1/2) | 0.561 ± 0.015 (IC19) | ✓ |
 
 ### 9.2 Future Tests
 
-1. **KATRIN**: Direct m_νe measurement approaching ~0.2 eV sensitivity
-2. **Cosmology**: Σm_ν bounds improving with CMB-S4, DESI
-3. **0νββ decay**: If observed, confirms Majorana nature
+1. **JUNO**: Mass ordering determination (~2027) — binary test of normal vs inverted
+2. **KATRIN**: Direct m_νe measurement approaching ~0.2 eV sensitivity
+3. **Cosmology**: Σm_ν bounds improving with CMB-S4, DESI
+4. **0νββ decay**: If observed, confirms Majorana nature
 
-**BLD prediction**: Normal hierarchy (m₁ < m₂ < m₃) is favored by the structural argument that νe is the "base" with minimal structure.
+### 9.3 Mass Ordering Prediction
+
+**BLD predicts normal ordering (m₁ < m₂ < m₃).** This is a near-term binary test.
+
+**Structural argument**: The generation structure follows D (the dimension primitive). νe is the first generation — the structural base with minimal D-layering. Each subsequent generation adds D-structure (n²S = 208 modes, from [Lepton Masses](lepton-masses.md)). Minimal structure = minimal mass. Therefore m₁ (νe-dominated) < m₂ < m₃.
+
+This is the same logic that gives the charged lepton hierarchy m_e < m_μ < m_τ: the base generation is lightest, each D-layer adds mass. Neutrinos follow the same ordering because the generation mechanism (Spin(8) triality → 3 generations) is independent of B coupling.
+
+**Coupled prediction**: Normal ordering + upper octant (sin²θ₂₃ = 14/25 > 1/2, from [Neutrino Mixing](neutrino-mixing.md)). These are structurally linked — both follow from the same BLD generation structure. Current data (NuFIT 6.0 IC19 baseline) favors both: NO + upper octant.
+
+**Timeline**: JUNO (Jiangmen Underground Neutrino Observatory) is expected to determine mass ordering at >3σ by ~2027. DUNE and Hyper-K will independently confirm within ~5 years.
+
+**Falsification**: Inverted ordering (m₃ < m₁ < m₂) confirmed at >3σ → BLD generation structure is wrong. This would also tension the θ₂₃ octant prediction. A single experiment (JUNO) tests both predictions simultaneously.
 
 ---
 

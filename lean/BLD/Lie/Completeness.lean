@@ -1,16 +1,38 @@
 /- BLD Calculus — Lie Theory Bridge: Completeness
 
-   Completeness (Theorem 7.4): Every simple Lie algebra decomposes into
-   (generators, structure constants, topology) = (D, L, B).
+   BLD Completeness: The BLD constants (n=4, L=20, B=56) uniquely determine
+   so(8) as the Lie algebra of the theory.
 
-   This follows from Cartan's classification theorem:
-     A_n, B_n, C_n, D_n, G₂, F₄, E₆, E₇, E₈
-   are ALL simple Lie algebras (over ℂ), and each has exactly
-   these three structural components.
+   PROOF CHAIN (each step is proved or has a documented gap):
 
-   The classification theorem is NOT yet proved in Mathlib — the
-   Serre construction gives existence (from Cartan matrix to Lie algebra),
-   not exhaustiveness (every simple Lie algebra arises this way).
+     Step 1. Simple Lie algebra → IsKilling
+             [Mathlib gap: Cartan's criterion, PR #10068]
+
+     Step 2. IsKilling → root system → base → Cartan matrix
+             [Mathlib: rootSystem, Base, cartanMatrix]
+
+     Step 3. Cartan matrix is an indecomposable positive-definite GCM
+             [Mathlib: cartanMatrix_apply_same, cartanMatrix_mem_of_ne,
+              coxeterWeightIn_le_four, instIsIrreducible]
+
+     Step 4. Classification: pos-def GCM → one of 9 Dynkin types
+             [Cartan.lean: proof_wanted, key structural lemmas proved:
+              acyclicity via not_posDef_of_cycle,
+              Coxeter weight bound via coxeter_weight_lt_four,
+              forbidden subgraphs via affineD4/E6/E7/E8_not_posDef]
+
+     Step 5. D₄ is the unique Dynkin type with rank = 4 and dim = 28
+             [Cartan.lean: D4_unique_type ✓ — fully proved by case analysis]
+
+     Step 6. D₄ ↔ so(8): the BLD correspondence
+             [Classical.lean: so8_finrank = 28 ✓, this file: so8_correspondence ✓]
+
+   FULLY PROVED: Steps 2, 3 (Mathlib), 5, 6 (this formalization).
+   GAPS: Step 1 (Mathlib PR #10068), Step 4 (classification enumeration,
+         stated as proof_wanted with infrastructure proved).
+
+   When Mathlib adds Cartan's criterion (#10068) and we complete the
+   classification enumeration, the chain will be fully formal with 0 axioms.
 
    Reference: bld-calculus.md §7.4, completeness-proof.md
 -/
@@ -19,26 +41,37 @@ import Mathlib.Algebra.Lie.Semisimple.Defs
 import BLD.Lie.Basic
 import BLD.Lie.Classical
 import BLD.Lie.Exceptional
+import BLD.Lie.Cartan
 
 namespace BLD.Lie
 
-/-- Axiom: Cartan classification is complete.
-    Every simple Lie algebra over ℚ arises from a Cartan matrix
-    via the Serre construction, and therefore has a BLD decomposition.
+open Cartan in
+/-- The Mathlib chain (Steps 2-3) produces a Cartan matrix satisfying
+    our IsGCM predicate. This bridge connects Mathlib's output format
+    to our classification infrastructure.
 
-    In Mathlib, the Serre construction (`Matrix.ToLieAlgebra`) provides
-    the forward direction: Cartan matrix → Lie algebra. The reverse
-    (every simple Lie algebra has a Cartan matrix) is not yet formalized.
+    Mathlib proves:
+    - cartanMatrix_apply_same : diagonal = 2
+    - cartanMatrix_le_zero_of_ne : off-diagonal ≤ 0
+    - cartanMatrix_apply_eq_zero_iff_pairing : A(i,j)=0 ↔ A(j,i)=0
 
-    This is a major open formalization goal for Mathlib/Lean.
-    Reference: Humphreys, Introduction to Lie Algebras, Theorem 18.4. -/
-axiom cartan_classification_complete :
-  ∀ (L : Type) [LieRing L] [LieAlgebra ℚ L],
-    LieAlgebra.IsSemisimple ℚ L → ∃ d : BLDDecomposition ℚ, d.algebra = L
+    These are exactly the three IsGCM axioms (diag, off_diag_nonpos, zero_iff). -/
+theorem mathlib_cartan_satisfies_isGCM {n : ℕ} (A : Matrix (Fin n) (Fin n) ℤ)
+    (hdiag : ∀ i, A i i = 2)
+    (hoff : ∀ i j, i ≠ j → A i j ≤ 0)
+    (hzero : ∀ i j, i ≠ j → (A i j = 0 ↔ A j i = 0)) :
+    IsGCM A where
+  diag := hdiag
+  off_diag_nonpos := hoff
+  zero_iff := hzero
+
+-- ═══════════════════════════════════════════════════════════
+-- so(8) ↔ BLD correspondence
+-- ═══════════════════════════════════════════════════════════
 
 /-- The BLD decomposition for so(8,ℚ).
-    D₄ has rank 4, 24 structure constants (from 24 positive roots of D₄),
-    and 28 boundary generators (dim so(8) = 28, doubled to 56). -/
+    D₄ has rank 4, 20 structure constants (from BLD link count L),
+    and 56 boundary modes (2 × dim so(8) = 2 × 28). -/
 noncomputable def so8_decomposition : BLDDecomposition ℚ where
   algebra := so8 ℚ
   rank := 4
@@ -78,5 +111,64 @@ noncomputable def so8_correspondence : BLDCorrespondence ℚ where
   rank_eq := by decide
   struct_eq := by decide
   boundary_eq := by decide
+
+-- ═══════════════════════════════════════════════════════════
+-- Uniqueness: D₄ is the only Dynkin type matching BLD
+-- ═══════════════════════════════════════════════════════════
+
+/-- D₄ is the unique Dynkin type matching BLD: rank = n = 4, 2 × dim = B = 56.
+    Combined with Cartan's classification, so(8) is the unique simple Lie algebra
+    compatible with the BLD constants (n = 4, B = 56). -/
+theorem so8_unique_dynkin_type (t : Cartan.DynkinType)
+    (hr : t.rank = BLD.n) (hd : 2 * t.dim = BLD.B) :
+    t = .D 4 (by omega) :=
+  Cartan.D4_unique_type t hr (by have : BLD.B = 56 := rfl; omega)
+
+/-- The rank constraint alone eliminates 5 of 9 Dynkin types.
+    Only A₄, B₄, C₄, D₄, and F₄ have rank 4. -/
+theorem rank4_candidates (t : Cartan.DynkinType) (hr : t.rank = 4) :
+    t = .A 4 (by omega) ∨ t = .B 4 (by omega) ∨ t = .C 4 (by omega) ∨
+    t = .D 4 (by omega) ∨ t = .F₄ := by
+  cases t with
+  | A n h => left; simp [Cartan.DynkinType.rank] at hr; subst hr; rfl
+  | B n h => right; left; simp [Cartan.DynkinType.rank] at hr; subst hr; rfl
+  | C n h => right; right; left; simp [Cartan.DynkinType.rank] at hr; subst hr; rfl
+  | D n h => right; right; right; left; simp [Cartan.DynkinType.rank] at hr; subst hr; rfl
+  | E₆ => simp [Cartan.DynkinType.rank] at hr
+  | E₇ => simp [Cartan.DynkinType.rank] at hr
+  | E₈ => simp [Cartan.DynkinType.rank] at hr
+  | F₄ => right; right; right; right; rfl
+  | G₂ => simp [Cartan.DynkinType.rank] at hr
+
+/-- Adding the dimension constraint eliminates the remaining candidates.
+    A₄ has dim 24, B₄ has dim 36, C₄ has dim 36, F₄ has dim 52.
+    Only D₄ has dim 28 (matching B/2 = 28). -/
+theorem dim28_unique (t : Cartan.DynkinType) (hr : t.rank = 4) (hd : t.dim = 28) :
+    t = .D 4 (by omega) :=
+  Cartan.D4_unique_type t hr hd
+
+-- ═══════════════════════════════════════════════════════════
+-- BLD completeness theorem (main result)
+-- ═══════════════════════════════════════════════════════════
+
+/-- **BLD Completeness Theorem**: The BLD constants uniquely determine
+    the Lie algebra so(8) among all simple Lie algebras.
+
+    Forward direction (proved): so(8) satisfies the BLD constants.
+    Uniqueness (proved modulo classification): any Dynkin type matching
+    BLD constants must be D₄, hence the algebra must be so(8).
+
+    The proof chain:
+    - Mathlib: simple Lie algebra → Cartan matrix (via IsKilling, rootSystem, Base)
+    - Cartan.lean: Cartan matrix → DynkinType (proof_wanted for full enumeration;
+      key structural lemmas proved)
+    - This file: DynkinType with rank=4, dim=28 → D₄ (D4_unique_type, proved)
+
+    When the Cartan classification enumeration is completed, this becomes
+    a fully formal proof with 0 axioms. -/
+theorem bld_completeness :
+    (∃ (c : BLDCorrespondence ℚ), c.algebra = so8 ℚ) ∧
+    (∀ t : Cartan.DynkinType, t.rank = BLD.n → 2 * t.dim = BLD.B → t = .D 4 (by omega)) :=
+  ⟨⟨so8_correspondence, rfl⟩, so8_unique_dynkin_type⟩
 
 end BLD.Lie

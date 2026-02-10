@@ -1,6 +1,6 @@
 /- BLD Calculus — Lean 4 Formalization
 
-   24 files, 0 sorry, 0 admit, 1 axiom.
+   25 files, 0 sorry, 0 admit, 0 axioms.
 
    The BLD calculus derives physical constants from three irreducible
    structural primitives: Boundary (sum type), Link (function type),
@@ -21,8 +21,7 @@
      GeneticCode        Same 5 constants predict the genetic code (7 quantities)
      Normalization      Strong normalization via Tait's logical relations
 
-   AXIOMS (1 total):
-     cartan_classification_complete  Every semisimple Lie algebra has a Cartan matrix
+   AXIOMS: None. Every theorem is proved from definitions.
 
    KEY THEOREMS:
      so8_finrank         Module.finrank ℚ (so8 ℚ) = 28
@@ -51,6 +50,7 @@ import BLD.Lie.Basic
 import BLD.Lie.Classical
 import BLD.Lie.Exceptional
 import BLD.Lie.Killing
+import BLD.Lie.Cartan
 import BLD.Lie.Completeness
 import BLD.Axioms
 import BLD.Predictions

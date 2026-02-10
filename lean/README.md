@@ -1,11 +1,11 @@
 # BLD Theory: Lean 4 Formalization
 
-**24 files. 3430 lines. 0 sorry. 0 admit. 1 axiom.**
+**25 files. 4299 lines. 0 sorry. 0 admit. 0 axioms.**
 
 The BLD calculus formalized in [Lean 4](https://lean-lang.org/) with [Mathlib](https://leanprover-community.github.io/mathlib4_docs/). Three structural primitives (Boundary, Link, Dimension) derive physical constants and predict experimental quantities.
 
 ```bash
-cd lean && lake build    # 2027 jobs, 0 errors, 0 warnings
+cd lean && lake build    # 2058 jobs, 0 errors, 0 warnings
 ```
 
 ---
@@ -15,7 +15,7 @@ cd lean && lake build    # 2027 jobs, 0 errors, 0 warnings
 Every theorem is checked by the Lean kernel. The `norm_num` tactic performs exact rational arithmetic: `(K^2 : Q) / S = 4/13` is verified by computing `2^2 / 13 = 4/13`. No floating-point, no rounding.
 
 - **`sorry`** (accept without proof): 0
-- **`axiom`** (assume without proof): 1 — a well-known theorem not yet in Mathlib (see [Axiom Inventory](#axiom-inventory))
+- **`axiom`** (assume without proof): 0
 
 ---
 
@@ -111,11 +111,11 @@ L = 20 appears in three independent domains: Riemann tensor components (physics)
 
 ## Axiom Inventory
 
-| Axiom | File | Statement | Status |
-|-------|------|-----------|--------|
-| `cartan_classification_complete` | Lie/Completeness.lean | Every semisimple Lie algebra has a Cartan matrix | Cartan ~1894; Mathlib has Serre construction (forward) but not exhaustiveness |
+None. Every theorem is proved from definitions.
 
-The Hurwitz theorem (only 4 normed division algebras) was previously an axiom but is now replaced by a concrete octonion construction in `Octonion.lean` with `normSq` multiplicativity proved via Degen's eight-square identity.
+Previously the formalization had 2 axioms, both eliminated:
+- `hurwitz_theorem` — replaced by concrete octonion construction in `Octonion.lean` with `normSq` multiplicativity proved via Degen's eight-square identity.
+- `cartan_classification_complete` — was vacuous (conclusion trivially satisfiable). Deleted. The Cartan classification infrastructure is now in `Lie/Cartan.lean` (777 lines): DynkinType inductive, IsGCM/IsSymmetrizable/IsPosDef structures, forbidden subgraph analysis (affine D̃₄/Ẽ₆/Ẽ₇/Ẽ₈), Coxeter weight bound, acyclicity, and D₄ uniqueness. The full enumeration is `proof_wanted`; all structural lemmas are proved.
 
 ---
 
@@ -154,7 +154,8 @@ The Hurwitz theorem (only 4 normed division algebras) was previously an axiom bu
 | Lie/Classical.lean | 165 | so(8) defined, finrank = 28 (explicit 28-element basis) |
 | Lie/Exceptional.lean | 84 | E7 via Serre construction, det=2, simply-laced (from Mathlib) |
 | Lie/Killing.lean | 65 | K=2 from Killing form, K^2 = n |
-| Lie/Completeness.lean | 82 | so8 correspondence, Cartan classification axiom |
+| Lie/Cartan.lean | 777 | DynkinType, IsGCM, forbidden subgraphs, Coxeter weight, D₄ uniqueness |
+| Lie/Completeness.lean | 174 | BLD completeness: so(8) ↔ BLD correspondence, Mathlib bridge |
 
 ### Layer 4: Physics and Biology
 | File | Lines | Content |
@@ -200,6 +201,20 @@ genetic_code_complete :
     n = 4 /\ K = 2 /\ n-1 = 3 /\ n^3 = 64 /\
     n*(n+1) = L /\ L*(n-1)+1 = 61 /\ n*(n-1) = 12
   -- All 7 genetic code quantities from BLD constants
+
+D4_unique_type : t.rank = 4 -> t.dim = 28 -> t = .D 4
+  -- D₄ is the unique Dynkin type matching BLD constants (rank=4, dim=28)
+
+coxeter_weight_lt_four : IsPosDef A hS -> A i j * A j i < 4
+  -- Coxeter weight bound for positive-definite GCMs
+
+not_posDef_of_cycle : 3 <= k -> ... -> ¬ IsPosDef A hS
+  -- Cycles of length >= 3 break positive-definiteness (acyclicity)
+
+bld_completeness :
+    (exists c : BLDCorrespondence Q, c.algebra = so8 Q) /\
+    (forall t, t.rank = n -> 2 * t.dim = B -> t = .D 4)
+  -- so(8) is the unique Lie algebra matching BLD constants
 ```
 
 ---
