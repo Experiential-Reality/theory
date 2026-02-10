@@ -1,6 +1,6 @@
 /- BLD Calculus — Lean 4 Formalization
 
-   23 files, 3155 lines, 0 sorry, 0 admit, 2 axioms.
+   24 files, 0 sorry, 0 admit, 1 axiom.
 
    The BLD calculus derives physical constants from three irreducible
    structural primitives: Boundary (sum type), Link (function type),
@@ -14,20 +14,21 @@
      Constants          K=2 → n=4, L=20, S=13, B=56 → α⁻¹=137
      Lie/Classical      so(8) finrank = 28 (explicit basis, proved from scratch)
      Lie/Exceptional    E₇ Cartan matrix: det=2, simply-laced (Mathlib)
+     Octonion           Concrete 8-dimensional algebra, NonAssocRing, normSq multiplicative
      Octonions          B=56 uniquely selects octonions among division algebras
      Predictions        12 exact rational predictions matching experiment
      Observer           K/X correction principle, α⁻¹ decomposition
      GeneticCode        Same 5 constants predict the genetic code (7 quantities)
      Normalization      Strong normalization via Tait's logical relations
 
-   AXIOMS (2 total):
-     hurwitz_theorem              Only ℝ, ℂ, ℍ, 𝕆 are normed division algebras
+   AXIOMS (1 total):
      cartan_classification_complete  Every semisimple Lie algebra has a Cartan matrix
 
    KEY THEOREMS:
      so8_finrank         Module.finrank ℚ (so8 ℚ) = 28
      K2_unique           K=2 is the only value in {1,...,5} giving α⁻¹ = 137
      only_octonion_gives_B56  B=56 uniquely selects octonions
+     normSq_mul          Octonion norm is multiplicative (Degen's identity)
      progress            Every closed term can step or is a value
      irreducibility      B cannot be expressed in the LD fragment
      normalization       Every well-typed closed term reduces to a value
@@ -54,6 +55,7 @@ import BLD.Lie.Completeness
 import BLD.Axioms
 import BLD.Predictions
 import BLD.Observer
+import BLD.Octonion
 import BLD.Octonions
 import BLD.GeneticCode
 import BLD.Normalization

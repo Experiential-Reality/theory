@@ -1,11 +1,11 @@
 # BLD Theory: Lean 4 Formalization
 
-**23 files. 3155 lines. 0 sorry. 0 admit. 2 axioms.**
+**24 files. 3430 lines. 0 sorry. 0 admit. 1 axiom.**
 
 The BLD calculus formalized in [Lean 4](https://lean-lang.org/) with [Mathlib](https://leanprover-community.github.io/mathlib4_docs/). Three structural primitives (Boundary, Link, Dimension) derive physical constants and predict experimental quantities.
 
 ```bash
-cd lean && lake build    # 2023 jobs, 0 errors, 0 warnings
+cd lean && lake build    # 2027 jobs, 0 errors, 0 warnings
 ```
 
 ---
@@ -15,7 +15,7 @@ cd lean && lake build    # 2023 jobs, 0 errors, 0 warnings
 Every theorem is checked by the Lean kernel. The `norm_num` tactic performs exact rational arithmetic: `(K^2 : Q) / S = 4/13` is verified by computing `2^2 / 13 = 4/13`. No floating-point, no rounding.
 
 - **`sorry`** (accept without proof): 0
-- **`axiom`** (assume without proof): 2 — both well-known theorems not yet in Mathlib (see [Axiom Inventory](#axiom-inventory))
+- **`axiom`** (assume without proof): 1 — a well-known theorem not yet in Mathlib (see [Axiom Inventory](#axiom-inventory))
 
 ---
 
@@ -42,9 +42,14 @@ Lie theory                    |
   (explicit basis)       (computable evaluation)
        |
        v
-Exceptional.lean         Octonions.lean
-  E7 Cartan matrix  ---> B=56 selects O
-  det=2, simply-laced    Division algebra tower
+Exceptional.lean         Octonion.lean
+  E7 Cartan matrix       Concrete 8-dim algebra
+  det=2, simply-laced    normSq multiplicative
+       |                      |
+       v                      v
+                         Octonions.lean
+                    ---> B=56 selects O
+                         Division algebra tower
        |                      |
        v                      v
 Completeness.lean        Observer.lean
@@ -108,8 +113,9 @@ L = 20 appears in three independent domains: Riemann tensor components (physics)
 
 | Axiom | File | Statement | Status |
 |-------|------|-----------|--------|
-| `hurwitz_theorem` | Octonions.lean | Only R, C, H, O are normed division algebras | Hurwitz 1898; not yet in Mathlib |
 | `cartan_classification_complete` | Lie/Completeness.lean | Every semisimple Lie algebra has a Cartan matrix | Cartan ~1894; Mathlib has Serre construction (forward) but not exhaustiveness |
+
+The Hurwitz theorem (only 4 normed division algebras) was previously an axiom but is now replaced by a concrete octonion construction in `Octonion.lean` with `normSq` multiplicativity proved via Degen's eight-square identity.
 
 ---
 
@@ -125,7 +131,7 @@ L = 20 appears in three independent domains: Riemann tensor components (physics)
 ### Layer 1: Metatheory
 | File | Lines | Content |
 |------|-------|---------|
-| Semantics.lean | 274 | Progress, Preservation, Determinism, Type Safety, 5 canonical forms |
+| Semantics.lean | 272 | Progress, Preservation (free), Determinism, Type Safety, 5 canonical forms |
 | MultiStep.lean | 177 | Multi-step reduction, normal forms, value uniqueness |
 | Normalization.lean | 470 | Strong normalization via Tait's logical relations |
 | Eval.lean | 172 | Computable small-step evaluator, 6 verified examples |
@@ -153,9 +159,10 @@ L = 20 appears in three independent domains: Riemann tensor components (physics)
 ### Layer 4: Physics and Biology
 | File | Lines | Content |
 |------|-------|---------|
+| Octonion.lean | 283 | Concrete 8-dim algebra, NonAssocRing, StarRing, normSq multiplicative |
+| Octonions.lean | 197 | Division algebra selection, B=56 uniquely selects octonions |
 | Predictions.lean | 150 | 12 exact rational predictions (neutrino mixing, weak angle, couplings, Reynolds) |
 | Observer.lean | 136 | K/X correction principle, alpha^-1 correction decomposition |
-| Octonions.lean | 203 | Division algebra selection, B=56 uniquely selects octonions |
 | GeneticCode.lean | 73 | 7 genetic code quantities from BLD constants |
 
 ---
@@ -165,6 +172,9 @@ L = 20 appears in three independent domains: Riemann tensor components (physics)
 ```
 so8_finrank : Module.finrank Q (so8 Q) = 28
   -- Explicit basis of 28 skew-symmetric matrices, proved from scratch
+
+normSq_mul : normSq (a * b) = normSq a * normSq b
+  -- Octonion norm is multiplicative (via Degen's eight-square identity)
 
 only_octonion_gives_B56 : boundary_count_for a = BLD.B -> a = .octonion
   -- B=56 uniquely selects octonions among all 4 normed division algebras

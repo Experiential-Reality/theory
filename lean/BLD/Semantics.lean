@@ -149,13 +149,11 @@ theorem progress {a : Ty} (e : Term [] a) : Value e ∨ ∃ e', Step e e' := by
 -- Reference: bld-calculus.md §5.4
 -- ═══════════════════════════════════════════════════════════
 
-/-- **Theorem 5.4 (Preservation).** If Γ ⊢ e : τ and e ⟶ e', then Γ ⊢ e' : τ.
-
-    With intrinsic typing, this is trivially true: `Step` maps
-    `Term Γ a → Term Γ a → Prop`, so both sides have the same type
-    index `a` by construction. -/
-theorem preservation {Γ : Context} {a : Ty} {e e' : Term Γ a}
-    (_h : Step e e') : True := trivial
+/- **Theorem 5.4 (Preservation)** is free with intrinsic typing.
+    `Step` is typed as `Term Γ a → Term Γ a → Prop` — both sides
+    share the same type index `a` and context `Γ` by construction.
+    No separate theorem is needed; well-typedness is maintained
+    structurally by the definition of `Step`. -/
 
 -- ═══════════════════════════════════════════════════════════
 -- Type Safety (Corollary 5.5)

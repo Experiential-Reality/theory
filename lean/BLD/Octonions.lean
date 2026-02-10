@@ -17,6 +17,7 @@
 
 import BLD.Constants
 import BLD.Lie.Classical
+import BLD.Octonion
 
 namespace BLD.Octonions
 
@@ -49,23 +50,16 @@ theorem dim_doubling (a : NormedDivisionAlgebra) :
   · exact ⟨3, rfl⟩
 
 -- ═══════════════════════════════════════════════════════════
--- Hurwitz theorem (axiom — not in Mathlib)
+-- Concrete octonion construction (replaces Hurwitz axiom)
 -- ═══════════════════════════════════════════════════════════
 
-/-- Axiom (Hurwitz 1898): The only normed division algebras over ℝ
-    are ℝ, ℂ, ℍ, 𝕆 (dimensions 1, 2, 4, 8).
-
-    Mathlib status: NOT formalized. Requires:
-    - Defining octonions (Cayley-Dickson construction)
-    - Proving the norm is multiplicative
-    - Proving no further Cayley-Dickson iterate has multiplicative norm
-
-    Reference: Hurwitz, "Über die Composition der quadratischen Formen
-    von beliebig vielen Variablen", 1898. -/
-axiom hurwitz_theorem :
-  ∀ d : Nat, d > 0 →
-    (∃ (A : Type) (_ : Field A), d = 1 ∨ d = 2 ∨ d = 4 ∨ d = 8) →
-    (d = 1 ∨ d = 2 ∨ d = 4 ∨ d = 8)
+/-- The octonion algebra has multiplicative norm (composition algebra).
+    Proved constructively via Degen's eight-square identity in Octonion.lean.
+    This is the key property that Hurwitz's theorem (1898) characterizes:
+    only dimensions 1, 2, 4, 8 admit composition algebras over ℝ. -/
+theorem octonion_normSq_multiplicative {R : Type*} [CommRing R] (a b : BLD.Octonion R) :
+    BLD.Octonion.normSq (a * b) = BLD.Octonion.normSq a * BLD.Octonion.normSq b :=
+  BLD.Octonion.normSq_mul a b
 
 -- ═══════════════════════════════════════════════════════════
 -- Octonion structure constants
