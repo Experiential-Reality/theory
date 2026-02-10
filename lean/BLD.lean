@@ -1,6 +1,6 @@
 /- BLD Calculus — Lean 4 Formalization
 
-   21 files, 2612 lines, 0 sorry, 0 admit, 2 axioms.
+   23 files, 3155 lines, 0 sorry, 0 admit, 2 axioms.
 
    The BLD calculus derives physical constants from three irreducible
    structural primitives: Boundary (sum type), Link (function type),
@@ -17,6 +17,8 @@
      Octonions          B=56 uniquely selects octonions among division algebras
      Predictions        12 exact rational predictions matching experiment
      Observer           K/X correction principle, α⁻¹ decomposition
+     GeneticCode        Same 5 constants predict the genetic code (7 quantities)
+     Normalization      Strong normalization via Tait's logical relations
 
    AXIOMS (2 total):
      hurwitz_theorem              Only ℝ, ℂ, ℍ, 𝕆 are normed division algebras
@@ -28,6 +30,8 @@
      only_octonion_gives_B56  B=56 uniquely selects octonions
      progress            Every closed term can step or is a value
      irreducibility      B cannot be expressed in the LD fragment
+     normalization       Every well-typed closed term reduces to a value
+     genetic_code_complete  All 7 genetic code quantities from BLD constants
 -/
 
 import BLD.Basic
@@ -51,3 +55,5 @@ import BLD.Axioms
 import BLD.Predictions
 import BLD.Observer
 import BLD.Octonions
+import BLD.GeneticCode
+import BLD.Normalization

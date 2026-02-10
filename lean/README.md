@@ -1,8 +1,8 @@
 # BLD Theory: Lean 4 Formalization
 
-**21 files. 2612 lines. 0 sorry. 0 admit. 2 axioms. Every proof machine-checked.**
+**23 files. 3155 lines. 0 sorry. 0 admit. 2 axioms.**
 
-The BLD calculus — a theory deriving physical constants from three structural primitives — formalized in [Lean 4](https://lean-lang.org/) with [Mathlib](https://leanprover-community.github.io/mathlib4_docs/).
+The BLD calculus formalized in [Lean 4](https://lean-lang.org/) with [Mathlib](https://leanprover-community.github.io/mathlib4_docs/). Three structural primitives (Boundary, Link, Dimension) derive physical constants and predict experimental quantities.
 
 ```bash
 cd lean && lake build    # 2023 jobs, 0 errors, 0 warnings
@@ -12,11 +12,10 @@ cd lean && lake build    # 2023 jobs, 0 errors, 0 warnings
 
 ## What is machine-verified?
 
-Lean is a proof assistant. Unlike a paper proof that a reader must trust, every theorem here is checked by the Lean kernel — a small, trusted program that verifies each logical step. The `norm_num` tactic performs exact rational arithmetic: when we write `(K^2 : Q) / S = 4/13`, the kernel computes `2^2 / 13 = 4/13` and confirms it. There is no floating-point approximation, no rounding, no room for error.
+Every theorem is checked by the Lean kernel. The `norm_num` tactic performs exact rational arithmetic: `(K^2 : Q) / S = 4/13` is verified by computing `2^2 / 13 = 4/13`. No floating-point, no rounding.
 
-**`sorry`** is Lean's escape hatch — it accepts any claim without proof. We have zero.
-
-**`axiom`** declares an assumption without proof. We have exactly two, both well-known open formalization problems in Mathlib (see [Axiom Inventory](#axiom-inventory)).
+- **`sorry`** (accept without proof): 0
+- **`axiom`** (assume without proof): 2 — both well-known theorems not yet in Mathlib (see [Axiom Inventory](#axiom-inventory))
 
 ---
 
@@ -53,15 +52,20 @@ Completeness.lean        Observer.lean
   correspondence         alpha^-1 decomposition
        |
        v
-Predictions.lean
-  12 exact rational predictions
+Predictions.lean         GeneticCode.lean
+  12 exact rational        Same 5 constants
+  predictions              predict genetic code
+                                |
+Normalization.lean              v
+  Strong normalization     7 biology quantities
+  (Tait's method)          (bases, codons, amino acids)
 ```
 
 ---
 
-## Machine-Verified Predictions
+## Predictions
 
-Every prediction below is a Lean `theorem` proved by `norm_num` — exact rational arithmetic, kernel-checked.
+Each row is a Lean `theorem` proved by `norm_num` (exact rational arithmetic).
 
 | Quantity | BLD Formula | Exact Fraction | Decimal | Observed | Sigma |
 |----------|-------------|----------------|---------|----------|-------|
@@ -78,24 +82,34 @@ Every prediction below is a Lean `theorem` proved by `norm_num` — exact ration
 | alpha\_s^-1 | 137/n^2 - K/(n+L) | 407/48 | 8.47917 | 8.482 +/- 0.07 | 0.04 |
 | Re\_pipe | nLB/K * (X+1)/X | 85120/37 | 2300.5 | 2300 +/- 1 | 0.54 |
 
-**All 11 testable predictions fall within 1.4 sigma of measurement.**
+11 testable predictions fall within 1.4 sigma of measurement. The 12th (kappa\_lambda = 1.025, Higgs self-coupling) is testable at the HL-LHC (~2040).
 
-The 12th (kappa\_lambda = 1.025, Higgs self-coupling) is a novel prediction testable at the HL-LHC around 2040.
+All predictions derive from 5 constants: B=56, L=20, n=4, K=2, S=13 — themselves derived from K=2 (observation cost).
 
-All predictions derive from 5 constants: **B=56, L=20, n=4, K=2, S=13** — which are themselves derived from a single input: **K=2** (observation cost).
+### Cross-Domain: Genetic Code
+
+The same 5 constants determine the genetic code. Each theorem proved by `decide` (exact Nat arithmetic).
+
+| Quantity | BLD Formula | Value | Observed |
+|----------|-------------|-------|----------|
+| Nucleotide bases | n | 4 | A, U/T, G, C |
+| Base pairs | K | 2 | A-U, G-C |
+| Codon length | n-1 | 3 | Triplet code |
+| Total codons | n^3 | 64 | Complete codon table |
+| Amino acids | n(n+1) = L | 20 | Standard amino acid set |
+| Coding codons | L(n-1)+1 | 61 | 64 minus 3 stop codons |
+| Degeneracy modulus | n(n-1) | 12 | All observed degeneracies {1,2,3,4,6} divide 12 |
+
+L = 20 appears in three independent domains: Riemann tensor components (physics), amino acid count (biology), and BLD link count (Lie algebra structure constants).
 
 ---
 
 ## Axiom Inventory
 
-Only 2 axioms in the entire formalization:
-
-| Axiom | File | Why |
-|-------|------|-----|
-| `hurwitz_theorem` | Octonions.lean | Only R, C, H, O are normed division algebras. Mathlib does not define octonions. |
-| `cartan_classification_complete` | Lie/Completeness.lean | Every semisimple Lie algebra has a Cartan matrix. Mathlib has the Serre construction (forward direction) but not exhaustiveness. |
-
-Both are well-established mathematical theorems (Hurwitz 1898, Cartan ~1894). They are axioms here only because Mathlib's formalization hasn't reached them yet.
+| Axiom | File | Statement | Status |
+|-------|------|-----------|--------|
+| `hurwitz_theorem` | Octonions.lean | Only R, C, H, O are normed division algebras | Hurwitz 1898; not yet in Mathlib |
+| `cartan_classification_complete` | Lie/Completeness.lean | Every semisimple Lie algebra has a Cartan matrix | Cartan ~1894; Mathlib has Serre construction (forward) but not exhaustiveness |
 
 ---
 
@@ -113,6 +127,7 @@ Both are well-established mathematical theorems (Hurwitz 1898, Cartan ~1894). Th
 |------|-------|---------|
 | Semantics.lean | 274 | Progress, Preservation, Determinism, Type Safety, 5 canonical forms |
 | MultiStep.lean | 177 | Multi-step reduction, normal forms, value uniqueness |
+| Normalization.lean | 470 | Strong normalization via Tait's logical relations |
 | Eval.lean | 172 | Computable small-step evaluator, 6 verified examples |
 | Sublanguage.lean | 180 | IsBD, IsBL, IsLD predicates, intersection = unit |
 | Irreducibility.lean | 108 | B, L, D mutually irreducible (main structural theorem) |
@@ -130,17 +145,18 @@ Both are well-established mathematical theorems (Hurwitz 1898, Cartan ~1894). Th
 | File | Lines | Content |
 |------|-------|---------|
 | Lie/Basic.lean | 49 | BLDDecomposition, BLDCorrespondence structures |
-| Lie/Classical.lean | 165 | so(8) defined, **finrank = 28 proved** (explicit 28-element basis) |
+| Lie/Classical.lean | 165 | so(8) defined, finrank = 28 (explicit 28-element basis) |
 | Lie/Exceptional.lean | 84 | E7 via Serre construction, det=2, simply-laced (from Mathlib) |
 | Lie/Killing.lean | 65 | K=2 from Killing form, K^2 = n |
 | Lie/Completeness.lean | 82 | so8 correspondence, Cartan classification axiom |
 
-### Layer 4: Physics
+### Layer 4: Physics and Biology
 | File | Lines | Content |
 |------|-------|---------|
 | Predictions.lean | 150 | 12 exact rational predictions (neutrino mixing, weak angle, couplings, Reynolds) |
 | Observer.lean | 136 | K/X correction principle, alpha^-1 correction decomposition |
 | Octonions.lean | 203 | Division algebra selection, B=56 uniquely selects octonions |
+| GeneticCode.lean | 73 | 7 genetic code quantities from BLD constants |
 
 ---
 
@@ -166,6 +182,14 @@ progress : forall (e : Term [] a), Value e \/ exists e', Step e e'
 
 type_safety : forall (e : Term [] a), Value e \/ exists e', Step e e' /\ ...
   -- Well-typed programs don't go wrong
+
+normalization : forall (e : Term [] a), exists v, Steps e v /\ Value v
+  -- Every well-typed closed term reduces to a value (Tait's method)
+
+genetic_code_complete :
+    n = 4 /\ K = 2 /\ n-1 = 3 /\ n^3 = 64 /\
+    n*(n+1) = L /\ L*(n-1)+1 = 61 /\ n*(n-1) = 12
+  -- All 7 genetic code quantities from BLD constants
 ```
 
 ---
