@@ -107,6 +107,11 @@ H0_CMB = Measurement(67.4, 0.5)              # km/s/Mpc, Planck 2018
 H0_LOCAL = Measurement(73.0, 1.0)            # km/s/Mpc, SH0ES 2022
 SIGMA8_CMB = Measurement(0.811, 0.006)        # Planck 2018
 SIGMA8_LOCAL = Measurement(0.77, 0.02)        # weak lensing (DES, KiDS)
+ETA_BARYON = Measurement(6.104e-10, 0.058e-10)  # Planck 2018
+
+# Unit conversion constants
+HBAR_GEV_S = 6.582119569e-25    # ℏ in GeV·s (CODATA 2022)
+MPC_KM = 3.0857e19              # 1 Mpc in km
 
 # Quark masses (MS-bar, PDG 2024)
 M_UP = Measurement(2.16, 0.49)              # MeV
@@ -584,6 +589,46 @@ def sigma8_local(L_: int, n_: int, K_: int) -> float:
     Theory ref: sigma8-tension.md
     """
     return sigma8_cmb(L_, n_, K_) * (1.0 - K_ / (2 * L_))
+
+
+def baryon_asymmetry(K_: int, B_: int, L_: int, n_: int, S_: int) -> float:
+    """Baryon-to-photon ratio eta.
+
+    Formula: (K/B) × (1/L)^d × S/(S-1)
+    where d = n(n-1)/2 = dim(SO(3,1)) = 6 (Lorentz group dimension).
+
+    Theory ref: baryon-asymmetry.md
+    """
+    lorentz_dim = n_ * (n_ - 1) // 2
+    return (K_ / B_) * (1 / L_) ** lorentz_dim * S_ / (S_ - 1)
+
+
+def hubble_absolute(v: float, lambda_: float, B_: int, L_: int,
+                    n_: int, K_: int) -> float:
+    """Hubble constant absolute value in GeV.
+
+    Formula: H₀ = v × λ^(B+L-Kn)
+    where λ = 1/√L and the exponent 68 = B+L-Kn counts net cosmological
+    cascade modes (total structure minus dimensional observation cost).
+
+    Theory ref: hubble-absolute.md
+    """
+    cascade = B_ + L_ - K_ * n_
+    return v * lambda_ ** cascade
+
+
+def hubble_absolute_km_s_mpc(v: float, lambda_: float, B_: int, L_: int,
+                              n_: int, K_: int) -> float:
+    """Hubble constant in km/s/Mpc.
+
+    Converts from GeV: H₀[1/s] = H₀[GeV] / ℏ[GeV·s],
+    then H₀[km/s/Mpc] = H₀[1/s] × (1 Mpc in km).
+
+    Theory ref: hubble-absolute.md
+    """
+    h0_gev = hubble_absolute(v, lambda_, B_, L_, n_, K_)
+    h0_inv_s = h0_gev / HBAR_GEV_S
+    return h0_inv_s * MPC_KM
 
 
 # ---------------------------------------------------------------------------

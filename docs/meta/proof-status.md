@@ -76,7 +76,7 @@ Status labels exist on two orthogonal axes that can be composed.
 18. **Neutrino mixing θ₁₃ — DERIVED (0.00σ) — [Particle Physics](#neutrino-mixing-angles-pmns)**
 19. **Neutrino mixing θ₂₃ — DERIVED (0.07σ) — [Particle Physics](#neutrino-mixing-angles-pmns)**
 
-**Counts**: 26 PROVEN, 18 VALIDATED, 61 DERIVED, 3 PREDICTED, 1 HYPOTHESIZED, 0 OPEN
+**Counts**: 26 PROVEN, 18 VALIDATED, 64 DERIVED, 3 PREDICTED, 1 HYPOTHESIZED, 0 OPEN
 
 **Empirical inputs**: Structural constants (B, L, n, K) derived from genesis closure. Zero free parameters in all formulas. Reference scale v derived as fixed point (0.00014%).
 
@@ -403,6 +403,27 @@ Where X = n + K + K/n + 1/L = 6.55 and D = L + 1 - 1/n² = 20.9375
 | L/D = 20/4 = 5 | **DERIVED** | Riemann components / dimensions |
 | This gives dark matter ratio | **VALIDATED** | 5x = 25% |
 
+### Baryon Asymmetry
+
+| Claim | Status | Formula | Predicted | Observed | Error |
+|-------|--------|---------|-----------|----------|-------|
+| Baryon-to-photon ratio | **DERIVED** | (K/B)(1/L)⁶ × S/(S-1) | 6.045 × 10⁻¹⁰ | 6.104 ± 0.058 × 10⁻¹⁰ | **1.0σ** |
+
+**Note**: 6 = n(n-1)/2 = dim(SO(3,1)). S/(S-1) = 13/12 is the same generation correction as the Hubble tension.
+
+**Reference**: [Baryon Asymmetry](../mathematics/cosmology/baryon-asymmetry.md)
+
+### Hubble Absolute Value
+
+| Claim | Status | Formula | Predicted | Observed | Error |
+|-------|--------|---------|-----------|----------|-------|
+| H₀(CMB) | **DERIVED** | v × λ⁶⁸ | 67.2 km/s/Mpc | 67.4 ± 0.5 | **0.4σ** |
+| H₀(local) | **DERIVED** | 67.2 × 13/12 | 72.8 km/s/Mpc | 73.0 ± 1.0 | **0.2σ** |
+
+**Note**: 68 = B + L - Kn = 56 + 20 - 8 (cosmological cascade: total structure minus dimensional observation cost).
+
+**Reference**: [Hubble Absolute Value](../mathematics/cosmology/hubble-absolute.md)
+
 ---
 
 ## Killing Form
@@ -513,12 +534,12 @@ All are manifestations of bidirectional observation.
 | **Particles** | - | 4 | 15 | 3 | - | - |
 | **Chaos Theory** | - | - | 8 | - | - | - |
 | **Biology** | - | - | 8 | - | - | - |
-| **Cosmology** | - | 3 | 3 | - | - | - |
+| **Cosmology** | - | 3 | 6 | - | - | - |
 | **Killing Form** | 1 | 2 | 4 | - | - | - |
 | **Unified Entropy** | 1 | - | 5 | - | - | - |
 | **Scaling** | - | 5 | 1 | - | - | - |
 | **Foundational** | 4 | - | 1 | - | 1 | - |
-| **TOTAL** | **26** | **18** | **61** | **3** | **1** | **0** |
+| **TOTAL** | **26** | **18** | **64** | **3** | **1** | **0** |
 
 *Notes:*
 - *Core Claims includes BLD=Lie (4P), Irreducibility (5P), Two-Reference (6P), Division Algebras (3P + 3D)*

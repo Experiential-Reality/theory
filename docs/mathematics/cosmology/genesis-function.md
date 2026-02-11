@@ -214,6 +214,7 @@ The genesis function has a vivid geometric interpretation: the universe IS the m
    - Matter (+B) = forward = creates structure
    - Antimatter (-B) = backward = undoes structure
    - Annihilation = creation meets undoing → energy
+   - The baryon-to-photon ratio η = (K/B)(1/L)⁶ × S/(S-1) ≈ 6.05 × 10⁻¹⁰ is derived from this mechanism — see [Baryon Asymmetry](baryon-asymmetry.md)
 
 4. **The ring traverses the cloth's topology eternally** — cyclic cosmology, not "Big Bang then heat death."
 

@@ -199,6 +199,14 @@ See [σ₈ Tension](sigma8-tension.md) for the full derivation.
 
 ---
 
+## Related: H₀ Absolute Value
+
+The absolute value H₀(CMB) = 67.2 km/s/Mpc is now derived from BLD constants alone, via the cosmological cascade H₀ = v × λ⁶⁸ where 68 = B + L - Kn. Combined with the tension resolution above, H₀(local) = 67.2 × 13/12 = 72.8 km/s/Mpc (0.2σ from SH0ES).
+
+See [Hubble Absolute Value](hubble-absolute.md) for the full derivation.
+
+---
+
 ## References
 
 ### External Sources
