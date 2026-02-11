@@ -57,3 +57,33 @@ class TestCheck:
         # Valid links should not appear in errors
         error_urls = {e.link for e in all_errors}
         assert "./other.md#section-one" not in error_urls
+
+
+class TestExternalUrlIntegration:
+    """Integration: external URL validation via process_file + config."""
+
+    ORGS = frozenset({"Experiential-Reality", "rax-V", "leanprover-community"})
+
+    def test_process_file_catches_bad_github_org(self, all_link_types_md: pathlib.Path):
+        content = all_link_types_md.read_text()
+        _, errors = tools.check_links.process_file(
+            str(all_link_types_md), content, github_orgs=self.ORGS,
+        )
+        external_errors = [e for e in errors if e.kind == tools.check_links.ErrorKind.EXTERNAL_URL]
+        assert len(external_errors) == 1
+        assert "experiential-reality-org" in external_errors[0].message
+
+    def test_process_file_allows_valid_github_org(self, all_link_types_md: pathlib.Path):
+        content = all_link_types_md.read_text()
+        _, errors = tools.check_links.process_file(
+            str(all_link_types_md), content, github_orgs=self.ORGS,
+        )
+        external_errors = [e for e in errors if e.kind == tools.check_links.ErrorKind.EXTERNAL_URL]
+        bad_urls = [e.link for e in external_errors]
+        assert not any("Experiential-Reality" in u for u in bad_urls)
+
+    def test_no_external_validation_without_orgs(self, all_link_types_md: pathlib.Path):
+        content = all_link_types_md.read_text()
+        _, errors = tools.check_links.process_file(str(all_link_types_md), content)
+        external_errors = [e for e in errors if e.kind == tools.check_links.ErrorKind.EXTERNAL_URL]
+        assert external_errors == []

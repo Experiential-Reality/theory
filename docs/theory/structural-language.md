@@ -29,7 +29,7 @@ depends_on: []
 
 ---
 
-> **Implementation**: The self-hosted BLD compiler is being developed at [experiential-reality-org/bld](https://github.com/experiential-reality-org/bld).
+> **Implementation**: The self-hosted BLD compiler is being developed at [Experiential-Reality/bld](https://github.com/Experiential-Reality/bld).
 
 ---
 

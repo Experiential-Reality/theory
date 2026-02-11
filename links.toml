@@ -1,0 +1,7 @@
+[github]
+allowed_orgs = [
+    "Experiential-Reality",
+    "rax-V",
+    "leanprover-community",
+    "leanprover",
+]

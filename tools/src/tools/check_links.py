@@ -16,12 +16,15 @@ import enum
 import os
 import re
 import sys
+import tomllib
 import typing
 
 import anyio
 
 DOCS_ROOT = anyio.Path(__file__).parent.parent.parent.parent / "docs"
+CONFIG_PATH = anyio.Path(__file__).parent.parent.parent.parent / "links.toml"
 EXTERNAL_PREFIXES = ("http://", "https://", "mailto:")
+GITHUB_URL_PREFIX = "https://github.com/"
 SKIP_SUFFIXES = (".png", ".jpg", ".jpeg", ".gif", ".svg", ".pdf", "/")
 MAX_CONCURRENT_IO = 32
 
@@ -47,6 +50,7 @@ class ErrorKind(enum.Enum):
     UNDEFINED_REF = "undefined_ref"
     FILE_NOT_FOUND = "file_not_found"
     ANCHOR_NOT_FOUND = "anchor_not_found"
+    EXTERNAL_URL = "external_url"
 
 
 @dataclasses.dataclass(slots=True)
@@ -186,7 +190,61 @@ def validate_anchor(
     )
 
 
-def process_file(path: str, content: str) -> tuple[FileData, list[Error]]:
+def load_config(config_path: os.PathLike[str]) -> dict[str, typing.Any]:
+    """Load links.toml config. Returns empty dict if file not found."""
+    path = anyio.Path(config_path) if not isinstance(config_path, anyio.Path) else config_path
+    try:
+        with open(str(path), "rb") as f:
+            return tomllib.load(f)
+    except FileNotFoundError:
+        return {}
+
+
+def _extract_github_org(url: str) -> str | None:
+    """Extract GitHub org from a github.com URL, or None if not a GitHub URL."""
+    if not url.startswith(GITHUB_URL_PREFIX):
+        return None
+    path = url[len(GITHUB_URL_PREFIX):]
+    org = path.split("/")[0] if path else None
+    return org if org else None
+
+
+def validate_external_urls(
+    path: str,
+    content: str,
+    github_orgs: frozenset[str],
+) -> list[Error]:
+    """Validate external URLs in markdown content against allowed GitHub orgs."""
+    if not github_orgs:
+        return []
+
+    errors: list[Error] = []
+    blocks = _build_code_blocks(content)
+    line_starts = [0] + [m.end() for m in re.finditer(r"\n", content)]
+
+    for pattern in (INLINE_LINK_PATTERN, REF_LINK_PATTERN):
+        for m in pattern.finditer(content):
+            pos = m.start()
+            if _in_code_block(pos, blocks):
+                continue
+            url = m.group(2)
+            org = _extract_github_org(url)
+            if org is None:
+                continue
+            if org not in github_orgs:
+                line = bisect.bisect_right(line_starts, pos)
+                errors.append(Error(
+                    ErrorKind.EXTERNAL_URL,
+                    path,
+                    line,
+                    url,
+                    f"Unknown GitHub org '{org}'. Allowed: {sorted(github_orgs)}",
+                ))
+
+    return errors
+
+
+def process_file(path: str, content: str, github_orgs: frozenset[str] = frozenset()) -> tuple[FileData, list[Error]]:
     """Process file, return data and intra-file errors."""
     anchors = frozenset(extract_headers(content))
     inter_file: list[Link] = []
@@ -206,6 +264,8 @@ def process_file(path: str, content: str) -> tuple[FileData, list[Error]]:
                 errors.append(err)
         else:
             inter_file.append(link)
+
+    errors.extend(validate_external_urls(path, content, github_orgs))
 
     return FileData(anchors, tuple(inter_file)), errors
 
@@ -240,9 +300,14 @@ def validate_inter_file(files: Files, docs_root: anyio.Path) -> typing.Iterator[
                 yield err
 
 
-async def check(docs_root: os.PathLike[str]) -> tuple[int, typing.Iterator[Error]]:
+async def check(
+    docs_root: os.PathLike[str],
+    config_path: os.PathLike[str] | None = None,
+) -> tuple[int, typing.Iterator[Error]]:
     """Check all files, return (file_count, error_iterator)."""
     docs_root = anyio.Path(docs_root)
+    config = load_config(config_path) if config_path else {}
+    github_orgs = frozenset(config.get("github", {}).get("allowed_orgs", []))
     files: Files = {}
     intra_errors: list[Error] = []
     sem = anyio.Semaphore(MAX_CONCURRENT_IO)
@@ -251,7 +316,7 @@ async def check(docs_root: os.PathLike[str]) -> tuple[int, typing.Iterator[Error
         async with sem:
             content = await path.read_text()
         norm = await path.resolve()
-        data, errs = process_file(str(norm), content)
+        data, errs = process_file(str(norm), content, github_orgs)
         files[norm] = data
         intra_errors.extend(errs)
 
@@ -292,7 +357,8 @@ async def async_main() -> int:
         print(f"Error: docs root not found: {docs_root}", file=sys.stderr)
         return 2
 
-    file_count, errors = await check(docs_root)
+    config_path = await CONFIG_PATH.resolve()
+    file_count, errors = await check(docs_root, config_path)
     print(f"Checking {file_count} markdown files...\n", file=sys.stderr)
 
     errors_list = list(errors)

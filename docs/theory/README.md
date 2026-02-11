@@ -187,7 +187,7 @@ The BLD framework supports automatic misalignment detection:
 - `compute_alignment_score()` quantifies overall alignment
 - Cost multipliers emerge from specific misalignment types
 
-Implementation is in progress at [experiential-reality-org/bld](https://github.com/experiential-reality-org/bld).
+Implementation is in progress at [Experiential-Reality/bld](https://github.com/Experiential-Reality/bld).
 
 ### 8. Is this process the same process by which reality itself organizes? → **Appears so**
 

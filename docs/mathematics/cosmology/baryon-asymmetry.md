@@ -23,7 +23,7 @@ used_by:
 
 1. Formula: η = (K/B) × (1/L)⁶ × S/(S-1) — [The Formula](#the-formula)
 2. K/B = 2/56: observer-to-boundary ratio (standard BLD correction) — [K/B Component](#kb-observer-to-boundary-ratio)
-3. (1/L)⁶ where 6 = n(n-1)/2 = dim(SO(3,1)): Lorentz group dilution — [Lorentz Dilution](#lorentz-dilution-1l6)
+3. (1/L)⁶ where 6 = n(n-1)/2 = dim(SO(3,1)): Lorentz group dilution — [Lorentz Dilution](#lorentz-dilution-1l⁶)
 4. S/(S-1) = 13/12: generation structure correction — [Generation Correction](#generation-correction-ss-1)
 5. Genesis mechanism: traverse(-B,B) creates ±B partitions — [Genesis Mechanism](#genesis-mechanism)
 6. Sakharov conditions from BLD — [Sakharov Conditions](#sakharov-conditions-from-bld)

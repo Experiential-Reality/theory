@@ -92,7 +92,7 @@ These are **geometric**—they scale with input size.
 
 ## bld.bld: The Self-Referential Grammar
 
-> **Implementation**: The self-hosted BLD compiler is being developed at [experiential-reality-org/bld](https://github.com/experiential-reality-org/bld).
+> **Implementation**: The self-hosted BLD compiler is being developed at [Experiential-Reality/bld](https://github.com/Experiential-Reality/bld).
 
 The file `bld.bld` describes the BLD language using BLD itself:
 
@@ -253,5 +253,5 @@ The grammar structure enables:
 ## See Also
 
 - [Lie Correspondence](../mathematics/lie-theory/lie-correspondence.md) — Why B, L, D are fundamental
-- [BLD Implementation](https://github.com/experiential-reality-org/bld) — The self-hosted compiler (in development)
+- [BLD Implementation](https://github.com/Experiential-Reality/bld) — The self-hosted compiler (in development)
 - [Glossary](../glossary.md) — Central definitions

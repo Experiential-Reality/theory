@@ -44,6 +44,52 @@ class TestFindSimilar:
         assert len(similar) <= 3
 
 
+class TestValidateExternalUrls:
+    ORGS = frozenset({"Experiential-Reality", "rax-V", "leanprover-community"})
+
+    def test_valid_github_org(self):
+        content = "[repo](https://github.com/Experiential-Reality/theory)"
+        errors = tools.check_links.validate_external_urls("test.md", content, self.ORGS)
+        assert errors == []
+
+    def test_invalid_github_org(self):
+        content = "[repo](https://github.com/experiential-reality-org/bld)"
+        errors = tools.check_links.validate_external_urls("test.md", content, self.ORGS)
+        assert len(errors) == 1
+        assert errors[0].kind == tools.check_links.ErrorKind.EXTERNAL_URL
+        assert "experiential-reality-org" in errors[0].message
+
+    def test_case_sensitive(self):
+        content = "[repo](https://github.com/experiential-reality/theory)"
+        errors = tools.check_links.validate_external_urls("test.md", content, self.ORGS)
+        assert len(errors) == 1
+
+    def test_non_github_skipped(self):
+        content = "[site](https://example.com/some/path)"
+        errors = tools.check_links.validate_external_urls("test.md", content, self.ORGS)
+        assert errors == []
+
+    def test_empty_allowlist_skips_all(self):
+        content = "[repo](https://github.com/anything/repo)"
+        errors = tools.check_links.validate_external_urls("test.md", content, frozenset())
+        assert errors == []
+
+    def test_code_block_ignored(self):
+        content = "```\n[repo](https://github.com/bad-org/repo)\n```\n"
+        errors = tools.check_links.validate_external_urls("test.md", content, self.ORGS)
+        assert errors == []
+
+    def test_multiple_orgs(self):
+        content = (
+            "[a](https://github.com/Experiential-Reality/theory) "
+            "[b](https://github.com/rax-V/bld-circuits) "
+            "[c](https://github.com/bad-org/repo)"
+        )
+        errors = tools.check_links.validate_external_urls("test.md", content, self.ORGS)
+        assert len(errors) == 1
+        assert "bad-org" in errors[0].message
+
+
 class TestResolveTarget:
     def test_relative_path(self):
         link = tools.check_links.Link(kind=tools.check_links.LinkKind.INLINE, text="test", url="./other.md", line=1)

@@ -29,6 +29,11 @@
 
 [bad-ref]: ./nonexistent.md
 
+### External URLs
+- [Valid org](https://github.com/Experiential-Reality/theory)
+- [Bad org](https://github.com/experiential-reality-org/bld)
+- [Non-GitHub](https://example.com/some/path)
+
 ### Edge Cases
 - [Text only no url]
 - Links in `[inline code](ignored.md)`
