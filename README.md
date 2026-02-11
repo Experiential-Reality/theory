@@ -13,7 +13,7 @@ Three structural primitives — Boundary, Link, Dimension — that map exactly t
 | **Curious** | [Newcomer Path](docs/paths/newcomer.md) |
 | **Physicist** | [Fine Structure Derivation](docs/mathematics/particle-physics/fine-structure-consistency.md) |
 | **Mathematician** | [Irreducibility Proof](docs/mathematics/foundations/proofs/irreducibility-proof.md) |
-| **Skeptic** | [Lean 4 Formalization](lean/) — 2612 lines, machine-verified, 0 sorry |
+| **Skeptic** | [Lean 4 Formalization](lean/) — 5945 lines, machine-verified, 0 sorry on derivation chain |
 | **Programmer** | [Discovery Method](docs/meta/discovery-method.md) |
 
 ---
@@ -43,7 +43,7 @@ See [Proof Status](docs/meta/proof-status.md) for complete accounting.
 
 ## Machine-Verified
 
-The mathematical derivation chain is formalized in **[Lean 4](lean/)** with Mathlib: 21 files, 2612 lines, **0 `sorry`**, 2 axioms (both well-known open Mathlib formalization problems). Every theorem is kernel-checked — the Lean proof assistant verifies each logical step, and `norm_num` performs exact rational arithmetic with no floating-point approximation.
+The mathematical derivation chain is formalized in **[Lean 4](lean/)** with Mathlib: 26 files, 5945 lines, **0 `sorry`** on the derivation chain, 0 axioms. Five `sorry` remain in the Cartan classification expansion (classical series A/B/C/D + E₆) — cases not used by the theory. All BLD-critical exceptionals (G₂, E₇, E₈, F₄) are fully proved. Every theorem is kernel-checked — the Lean proof assistant verifies each logical step, and `norm_num` performs exact rational arithmetic with no floating-point approximation.
 
 12 physics predictions are proved as exact rational fractions:
 

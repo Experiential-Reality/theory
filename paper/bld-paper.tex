@@ -63,7 +63,8 @@ quark masses ($<0.5\%$), three cosmological density fractions
 ($<0.5\sigma$), and the Born rule $P = |\psi|^2$ (derived from $K =
 2$, with an explicit deterministic selection rule exact for all Hilbert
 space dimensions).  The derivation chain is machine-verified in Lean~4
-with Mathlib (26 files, 4360 lines, zero \texttt{sorry}, zero axioms).
+with Mathlib (26 files, 5945 lines, zero \texttt{sorry} on the
+derivation chain, zero axioms).
 The theory makes falsifiable predictions: Higgs self-coupling
 $\kappa_\lambda = 41/40$ (HL-LHC), neutrino normal ordering (JUNO),
 and Born rule deviation at pointer non-orthogonality $\varepsilon \geq
@@ -110,9 +111,12 @@ five integers suffice to compute every physical constant we examine.
 
 All mathematics has been formalized and verified in Lean~4~\cite{Lean4}
 using the Mathlib library~\cite{Mathlib}.  The formalization comprises
-26 files totaling 4360 lines of proof, with zero uses of \texttt{sorry}
-(unproved assertion), zero uses of \texttt{admit} (axiom introduction),
-and zero custom axioms.  Every theorem is proved from definitions.
+26 files totaling 5945 lines of proof, with zero uses of \texttt{sorry}
+on the derivation chain, zero uses of \texttt{admit}, and zero custom
+axioms.  Five \texttt{sorry} remain in the Cartan classification
+expansion (classical series $A, B, C, D$ and $E_6$)---cases not used by
+the theory.  All BLD-critical exceptional types ($G_2$, $F_4$, $E_7$,
+$E_8$) are fully proved.
 
 The derivation chain proceeds as follows:
 
@@ -348,7 +352,8 @@ $\text{generations} = n - 1 = 3$.
 \text{all constants}
 \end{equation*}
 
-No step involves empirical input.  The chain is logically forced.
+No step involves empirical input.  Each step follows from the preceding
+structure.
 
 
 % ═══════════════════════════════════════════════════════════════════
@@ -568,7 +573,7 @@ Part~(1): Construct \texttt{so8\_correspondence}.  Part~(2): Apply Theorem~\ref{
 \label{sec:exceptional}
 
 The five exceptional Lie algebras all have dimensions expressible as
-BLD arithmetic, via the Freudenthal magic square and Tits construction:
+BLD arithmetic, via the Freudenthal magic square~\cite{Freudenthal1954}:
 
 \begin{center}
 \begin{tabular}{lccl}
@@ -607,10 +612,10 @@ $X$ is the structure being traversed.  The sign is $+1$ when something
 \emph{escapes} detection (the measurement link adds to the observed
 count) and $-1$ when the channel is \emph{fully captured}.
 
-This is not a phenomenological fitting parameter.  It follows from the
-BLD axiom of traversal closure (A5): observation requires participation,
-and participation creates structure.  The observer contributes the $+1$
-in $\alpha\inv = nL + B + \mathbf{1}$.
+This is not a phenomenological fitting parameter.  It follows from
+traversal closure: observation requires participation, and participation
+creates structure.  The observer contributes the $+1$ in $\alpha\inv =
+nL + B + \mathbf{1}$.
 
 \subsection{Detection Channels}
 
@@ -649,7 +654,6 @@ particles coupling to electromagnetism carry $B$; particles coupling to
 color carry $L$; all massive particles carry $D$.
 
 \begin{center}
-\label{tab:particle-structure}
 \begin{tabular}{lll}
 \toprule
 \textbf{Particle} & \textbf{$S$ (BLD structure)} & \textbf{Detected by EM ($T\!=\!\{B\}$)?} \\
@@ -728,11 +732,12 @@ $W \to \ell\nu$          & $\{B\}$    & $\nu \to L\!=\!20$ & 76  & $1 + K/(B\!+\
 
 No channel assignment is chosen per-prediction; all are determined by
 the $T \cap S$ rule with fixed particle structures.  The channels form
-a strict hierarchy ($B < n\!+\!L < B\!+\!L < nL$) with numerator $K =
-2$ universal.  A skeptic seeking to dismiss the $K/X$ framework as
-fitting must explain why the same five integers, combined through a
-single deterministic algorithm, reproduce exact rational fractions
-across electroweak, Higgs, and cosmological domains.
+a strict hierarchy ($n\!+\!L < B < B\!+\!L < nL$, i.e., $24 < 56 < 76
+< 80$) with numerator $K = 2$ universal.  The cross-domain consistency
+of the framework---the same five integers producing exact rational
+fractions across electroweak, Higgs, and cosmological domains via a
+single deterministic algorithm---constrains the hypothesis space for
+alternative explanations.
 
 \subsection{The $\alpha\inv$ Correction}
 
@@ -909,7 +914,7 @@ is a positive common factor, it cancels in the $\arg\max$:
 = \arg\max_k \bigl[\log|\alpha_k|^2 + G_k\bigr]
 \]
 where $G_k = -\log Y_k$ are i.i.d.\ $\mathrm{Gumbel}(0,1)$.  By the
-Gumbel-max theorem:
+Gumbel-max theorem~\cite{Luce1959}:
 \[
 P\!\bigl(\arg\max_k[\log a_k + G_k] = j\bigr)
 = \frac{a_j}{\sum_k a_k} = |\alpha_j|^2
@@ -969,7 +974,7 @@ maximum entanglement ($\lambda = 1/2$), $\rho^2 = 1/2$, giving
 $L = \tfrac{1}{2}\ln 2$ and $S = 2L = \ln 2$ exactly---the von
 Neumann entropy of a maximally entangled Bell state.
 
-For black holes: the Bekenstein--Hawking entropy $S = A/(4\ell_P^2)$
+For black holes: the Bekenstein--Hawking entropy $S = A/(4\ell_P^2)$~\cite{Bekenstein1973,Hawking1975}
 is $S = K \times L$ where the factor $1/4 = 1/n$ ($n = 4$ spacetime
 dimensions) and $K = 2$ enters through the bidirectional observation
 cost.  The Schwarzschild radius $r_s = 2GM/c^2 = K \cdot GM/c^2$:
@@ -1072,7 +1077,7 @@ All predictions use only the five derived constants $(B, L, n, K, S) =
 
 \subsection{Master Prediction Table}
 
-Table~\ref{tab:predictions} collects the 14 principal predictions.
+Table~\ref{tab:predictions} collects the principal predictions.
 The rational parts of each formula are verified in Lean~4 via \texttt{norm\_num}.
 
 \begin{table}[htbp]
@@ -1091,19 +1096,22 @@ $\sin^2\!\theta_{12}$ & $K^2/S$ & $\frac{4}{13}$ & 0.30769 & 0.307(12) & 0.06$\s
 $\sin^2\!\theta_{13}$ & $n^2/(n\!-\!1)^6$ & $\frac{16}{729}$ & 0.02195 & 0.02195(58) & 0.00$\sigma$ \\
 $\sin^2\!\theta_{23}$ & $(S\!+\!1)/(L\!+\!n\!+\!1)$ & $\frac{14}{25}$ & 0.560 & 0.561(15) & 0.07$\sigma$ \\
 $m_p/m_e$ & $(S\!+\!n)(B\!+\!nS) + K/S$ & $\frac{23870}{13}$ & 1836.154 & 1836.153 & 0.6\,ppm \\
-$m_H$ & $\frac{v}{2}(1\!+\!\frac{1}{B})(1\!-\!\frac{1}{BL})$$^\dagger$ & --- & 125.20\,GeV & 125.20\,GeV & 0.0$\sigma$ \\
+$m_H$\textsuperscript{\dag} & $\frac{v}{2}(1\!+\!\frac{1}{B})(1\!-\!\frac{1}{BL})$ & --- & 125.20\,GeV & 125.20\,GeV & 0.0$\sigma$ \\
 $\alpha_s\inv$ & $\frac{137}{n^2} - \frac{K}{n+L}$ & $\frac{407}{48}$ & 8.479 & 8.479 & 0.0$\sigma$ \\
-$\text{Re}_c(\text{pipe})$$^\ddagger$ & $\frac{nLB}{K} \cdot \frac{X\!+\!1}{X}$ & $\frac{85120}{37}$ & 2300.5 & 2300(1) & 0.0$\sigma$ \\
-$\delta$ (Feigenbaum)$^\ddagger$ & $\sqrt{L\!+\!K\!-\!K^2\!/L\!+\!e^{-X}}$ & --- & 4.66920 & 4.66920 & 0.0003\% \\
+$\text{Re}_c(\text{pipe})$\textsuperscript{\ddag} & $\frac{nLB}{K} \cdot \frac{X\!+\!1}{X}$ & $\frac{85120}{37}$ & 2300.5 & 2300(1) & 0.0$\sigma$ \\
+$\delta$ (Feigenbaum)\textsuperscript{\ddag} & $\sqrt{L\!+\!K\!-\!K^2\!/L\!+\!e^{-X}}$ & --- & 4.66920 & 4.66920 & 0.0003\% \\
 $\mu/e$ (mass ratio) & $n^2 S$ (corrected)$^*$ & --- & 206.768 & 206.768 & $<0.01\sigma$ \\
 \midrule
 \multicolumn{6}{l}{\textit{Additional predictions (see text):}} \\
-$\alpha_F$ (Feigenbaum)$^\ddagger$ & $K + 1/K + \text{corr.}$ & --- & 2.50291 & 2.50291 & 0.0\% \\
-$H_0(\text{local})$ & $H_0^{\text{CMB}} \!\times\! 13/12$ & --- & 73.0 & 73.0(10) & 0.0$\sigma$ \\
+$\alpha_F$ (Feigenbaum)\textsuperscript{\ddag} & $K + 1/K + \text{corr.}$ & --- & 2.50291 & 2.50291 & 0.0\% \\
+$H_0(\text{local})$ & $H_0^{\text{CMB}} \!\times\! 13/12$ & --- & 72.8 & 73.0(10) & 0.2$\sigma$ \\
 $\sigma_8(\text{CMB})$ & $\frac{L}{n+L}(1\!-\!\frac{K}{nL})$ & --- & 0.812 & 0.811(6) & 0.2$\sigma$ \\
 $v/M_P$ & $\lambda^{26}\!\times\!\text{corr.}$ & --- & $2.017\!\times\!10^{-17}$ & $2.017\!\times\!10^{-17}$ & 0.00014\% \\
 $\eta$ (baryon) & $(K/B)(1/L)^6 \!\cdot\! S/(S\!-\!1)$ & $\frac{13}{21.504\times 10^9}$ & $6.05\!\times\!10^{-10}$ & $6.10(6)\!\times\!10^{-10}$ & 1.0$\sigma$ \\
 $H_0$(CMB) & $v \cdot \lambda^{68}$ & --- & 67.2 & 67.4(5) & 0.4$\sigma$ \\
+$\delta_{\mathrm{CP}}$ & $3\pi/2$ & --- & $270^\circ$ & $274$--$285^\circ$ & within $3\sigma$ \\
+$|V_{us}|$ (Cabibbo) & $\sin(\arctan\frac{n-1}{S})$ & $\frac{3}{\sqrt{178}}$ & 0.2249 & 0.2243(5) & 1.2$\sigma$ \\
+$\Delta m^2_{32}/\Delta m^2_{21}$ & $L + S$ & 33 & 33 & $\approx 33.3$ & --- \\
 6 quark masses & See \S\ref{sec:quark-masses} & --- & --- & PDG 2024 & $<0.5\%$ each \\
 \bottomrule
 \end{tabular}
@@ -1112,11 +1120,11 @@ $H_0$(CMB) & $v \cdot \lambda^{68}$ & --- & 67.2 & 67.4(5) & 0.4$\sigma$ \\
 {\footnotesize $^*$Lepton mass ratios and Feigenbaum constants involve
 $K/X$ corrections with transcendental functions; the remaining
 predictions are exact rational arithmetic.\\
-$^\dagger$$v = 246.22$\,GeV (Higgs VEV) is itself derived from BLD
+\textsuperscript{\dag}$v = 246.22$\,GeV (Higgs VEV) is itself derived from BLD
 constants (\S\ref{sec:reference-scale}); here it enters the Higgs mass
 formula.  See Appendix~\ref{app:alpha} for the $\alpha\inv$ correction
 details.\\
-$^\ddagger$Cross-domain predictions; derivations in Appendix~\ref{app:turbulence}.}
+\textsuperscript{\ddag}Cross-domain predictions; derivations in Appendix~\ref{app:turbulence}.}
 \end{table}
 
 \subsection{Electroweak Sector}
@@ -1134,7 +1142,7 @@ The correction structure is given in Eq.~\eqref{eq:alpha-corrections}.
 \sin^2\!\theta_W = \frac{3}{S} + \frac{K}{nLB} = \frac{3}{13} + \frac{2}{4480} = \frac{6733}{29120} \approx 0.23122
 \end{equation}
 The tree-level value $3/S = 3/13 \approx 0.2308$ is corrected by the
-small term $K/(nLB) \approx 0.00045$.  The observed value is
+small term $K/(nLB) \approx 0.00045$.  The observed value at the $Z$ pole (on-shell scheme) is
 $0.23121 \pm 0.00004$~\cite{PDG2024}, a deviation of 0.03$\sigma$.
 
 Lean: \texttt{sin2\_theta\_w}.
@@ -1170,6 +1178,34 @@ placing $\theta_{23}$ in the \emph{upper octant}.  This is testable at
 Hyper-Kamiokande and DUNE (see \S\ref{sec:falsification}).
 \end{remark}
 
+The CP-violating phase is determined by the observation algebra
+($\mathbb{C}$, from $K = 2$): the unit $i$ introduces a $\pi/2$ phase
+per link, giving
+\begin{equation}
+\delta_{\mathrm{CP}} = \frac{3\pi}{2} = 270^\circ \quad
+(\sin\delta_{\mathrm{CP}} = -1, \text{ maximal CP violation})
+\end{equation}
+NuFIT~6.0 (inverted ordering): best fit $274$--$285^\circ$, $3\sigma$
+range includes $270^\circ$~\cite{NuFIT6}.
+
+The neutrino mass squared ratio is:
+\begin{equation}
+\frac{|\Delta m^2_{32}|}{|\Delta m^2_{21}|} = L + S = 33
+\end{equation}
+Observed: $\approx 33.3$ (NuFIT~6.0~\cite{NuFIT6}).  The absolute
+neutrino mass scale is not yet derived.
+
+\subsubsection{Cabibbo Angle}
+
+The quark mixing angle shares the structural ratio $(n-1)/S$ with the
+weak mixing angle:
+\begin{equation}
+\tan\theta_C = \frac{n - 1}{S} = \frac{3}{13}, \quad
+|V_{us}| = \sin\!\bigl(\arctan(3/13)\bigr) = 0.2249
+\end{equation}
+Observed: $0.2243 \pm 0.0005$~\cite{PDG2024} ($1.2\sigma$).  The full
+CKM matrix is not yet derived.
+
 \subsection{Mass Ratios}
 
 \subsubsection{Proton--Electron Mass Ratio}
@@ -1189,12 +1225,16 @@ $K/X$ corrections:
 \begin{equation}
 \frac{m_\mu}{m_e} = (n^2 S - 1) \cdot \frac{nLS}{nLS + 1} \cdot \left(1 - \frac{1}{6452}\right)\left(1 - \frac{1}{250880}\right) \approx 206.768
 \end{equation}
-The tau--muon ratio has integer primordial $S + n = 17$, refined by
-the continuous primordial $2\pi e \approx 17.079$ (the same structural
-constant in exponential form):
+The tau--muon ratio has integer primordial $S + n = 17$.  The factor
+$2\pi e \approx 17.079$ arises as the continuous limit: $\tau$ completes
+a full rotation ($2\pi$) through accumulated discrete structure
+($e = \lim_{m \to \infty}(1 + 1/m)^m$):
 \begin{equation}
-\frac{m_\tau}{m_\mu} = 2\pi e \cdot \frac{207}{208} \cdot \frac{79}{80} \cdot \frac{1042}{1040} \approx 16.817
+\frac{m_\tau}{m_\mu} = 2\pi e \cdot \frac{n^2 S - 1}{n^2 S} \cdot \frac{nL - 1}{nL} \cdot \frac{nLS + K}{nLS} = 2\pi e \cdot \frac{207}{208} \cdot \frac{79}{80} \cdot \frac{1042}{1040} \approx 16.817
 \end{equation}
+The three corrections are: phase mismatch between discrete and rotational
+structure ($207/208$), observer cost from the Killing form ($79/80$),
+and their coupling ($1042/1040$).
 Both lepton mass ratios match observed values to full precision.
 
 \subsubsection{Higgs Mass}
@@ -1361,7 +1401,7 @@ The $>5\sigma$ discrepancy between CMB and local measurements of
 $H_0$ is resolved by the $K/X$ framework:
 \begin{equation}
 H_0(\text{local}) = H_0(\text{CMB}) \times \left(1 + \frac{K}{n + L}\right)
-= 67.4 \times \frac{13}{12} = 73.0\;\text{km/s/Mpc}
+= H_0^{\text{CMB}} \times \frac{13}{12}
 \label{eq:hubble}
 \end{equation}
 where $X = n + L = 24$ is the observer structure (4 spacetime dimensions
@@ -1369,10 +1409,10 @@ $+$ 20 curvature components).  The CMB measures primordial structure
 directly (no observation cost); local measurements traverse through the
 observer structure, paying $K/(n+L) = 1/12 \approx 8.3\%$.
 
-The predicted local value $73.0\;\text{km/s/Mpc}$ matches the SH0ES
-measurement $73.0 \pm 1.0\;\text{km/s/Mpc}$~\cite{SH0ES2022}
-exactly.  Both measurements are correct---they measure different
-things.
+Using the derived $H_0^{\text{CMB}} = 67.2$, this gives
+$H_0(\text{local}) = 72.8\;\text{km/s/Mpc}$ ($0.2\sigma$ from the
+SH0ES measurement $73.0 \pm 1.0\;\text{km/s/Mpc}$~\cite{SH0ES2022}).
+Both measurements are correct---they measure different things.
 
 \subsubsection{$\sigma_8$ Tension}
 
@@ -1404,7 +1444,7 @@ where:
 \item $1/L^6$ with $6 = n(n-1)/2 = \dim\,\mathrm{SO}(3,1)$: Lorentz
       group dilution (baryogenesis involves Lorentz symmetry breaking),
 \item $S/(S-1) = 13/12$: generation structure correction (the same
-      factor as the Hubble tension, Eq.~\ref{eq:hubble}).
+      factor as the Hubble tension, Eq.~\eqref{eq:hubble}).
 \end{itemize}
 The observed value $\eta = (6.104 \pm 0.058) \times 10^{-10}$
 (Planck~2018~\cite{Planck2018}) agrees at $1.0\sigma$.
@@ -1431,7 +1471,7 @@ Numerically:
 $H_0 = 246.22\;\text{GeV} \times 20^{-34} = 1.433 \times
 10^{-42}\;\text{GeV}$, converting to $67.2\;\text{km/s/Mpc}$
 ($0.4\sigma$ from Planck~2018).  Combined with the tension
-(Eq.~\ref{eq:hubble}):
+(Eq.~\eqref{eq:hubble}):
 $H_0(\text{local}) = 67.2 \times 13/12 = 72.8\;\text{km/s/Mpc}$
 ($0.2\sigma$ from SH0ES).
 
@@ -1463,13 +1503,19 @@ tests.
 $\kappa_\lambda$ (Higgs self-coupling) & $41/40 = 1.025$ & HL-LHC & 2029--2035 & Novel \\
 Neutrino mass ordering & Normal & JUNO & $\sim$2027 & Predicted \\
 $\theta_{23}$ octant & Upper ($14/25$) & Hyper-K, DUNE & 2027--2030 & Predicted \\
+$\delta_{\mathrm{CP}}$ & $3\pi/2 = 270^\circ$ & Hyper-K, DUNE & 2027--2030 & Predicted \\
 Neutron beam lifetime & 888.2\,s & BL3/J-PARC & 2026--2027 & Predicted \\
-Muon $g-2$ (obs.) & $250 \times 10^{-11}$ & J-PARC & 2028+ & Predicted \\
+Muon $g-2$ (obs.)$^*$ & $250 \times 10^{-11}$ & J-PARC & 2028+ & Predicted \\
 $\sin^2\!\theta_W$ (precision) & $6733/29120$ & FCC-ee & 2040s & Predicted \\
 Born rule deviation & $\Delta(\varepsilon) = c_1\varepsilon$ & Few-body quantum & Near-term & Novel \\
-$H_0(\text{local})$ & 73.0\,km/s/Mpc & SH0ES/TDCOSMO & Ongoing & Confirmed \\
+$H_0(\text{local})$ & 72.8\,km/s/Mpc & SH0ES/TDCOSMO & Ongoing & Confirmed \\
 \bottomrule
 \end{tabular}
+
+\medskip
+{\footnotesize $^*$Primordial anomaly $= \alpha^2 K^2 / ((nL)^2 S) = 256
+\times 10^{-11}$; observed value includes detection correction
+$(B+L)/(B+L+K) = 76/78$, giving $250 \times 10^{-11}$.}
 \end{table}
 
 \subsection{Higgs Self-Coupling}
@@ -1517,11 +1563,12 @@ The Lean~4 formalization comprises:
 \textbf{Metric} & \textbf{Value} \\
 \midrule
 Files & 26 \\
-Lines of proof & 4360 \\
-\texttt{sorry} (unproved assertions) & 0 \\
+Lines of proof & 5945 \\
+\texttt{sorry} (derivation chain) & 0 \\
+\texttt{sorry} (Cartan expansion: $A, B, C, D, E_6$) & 5 \\
 \texttt{admit} (axiom introductions) & 0 \\
 Custom axioms & 0 \\
-\texttt{proof\_wanted} & 1 (Cartan classification enumeration) \\
+Cartan exceptionals proved & $G_2$, $F_4$, $E_7$, $E_8$ \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -1627,13 +1674,13 @@ to contain no errors.
 We identify the principal risks:
 
 \begin{enumerate}
-\item \textbf{Numerological coincidence}: Five integers could accidentally match several constants.  The predictions are not statistically independent (they share the same five constants), so a naive product of $p$-values overstates significance.  However, the predictions span \emph{distinct physical domains}---electroweak mixing, neutrino oscillations, mass ratios, turbulence, cosmology, and molecular biology---making cross-domain agreement difficult to attribute to overfitting.  A skeptic should focus on the upcoming falsification tests (Table~\ref{tab:falsification}), which provide clean, pre-registered predictions.
+\item \textbf{Numerological coincidence}: Five integers could accidentally match several constants.  The predictions are not statistically independent (they share the same five constants), so a naive product of $p$-values overstates significance.  However, the predictions span \emph{distinct physical domains}---electroweak mixing, neutrino oscillations, mass ratios, turbulence, cosmology, and molecular biology---making cross-domain agreement difficult to attribute to overfitting.  The upcoming falsification tests (Table~\ref{tab:falsification}) provide clean, pre-registered predictions independent of the original derivation.
 
-\item \textbf{Observer correction freedom}: The $K/X$ framework assigns detection channels ($X = B$, $B+L$, $n+L$, $nL$) based on physical arguments.  One could argue these assignments are chosen to fit data.  Counter: the channels form a strict hierarchy ($B < B+L < nL$), and the numerator $K = 2$ is universal.
+\item \textbf{Observer correction freedom}: The $K/X$ framework assigns detection channels ($X = B$, $B+L$, $n+L$, $nL$) based on physical arguments.  One could argue these assignments are chosen to fit data.  However, the channels form a strict hierarchy ($n\!+\!L < B < B\!+\!L < nL$, i.e., $24 < 56 < 76 < 80$), and the numerator $K = 2$ is universal.
 
 \item \textbf{Physical interpretation}: The mathematical derivation is verified, but the identification of type-theoretic structure with physical reality is a scientific hypothesis, not a mathematical theorem.  This is tested by experiment.
 
-\item \textbf{Incompleteness}: Some areas remain undeveloped ($L$ cosmological scaling assumption, Born rule deviation experimental test).  The baryon asymmetry is now derived (\S\ref{sec:tensions}, Eq.~\ref{eq:baryon}), the $H_0$ absolute value is derived (\S\ref{sec:tensions}, Eq.~\ref{eq:h0-abs}), and the quantum gravity relationship is addressed structurally (BLD = Lie theory = QM language, \S\ref{sec:quantum}), but future work may reveal disagreements in unexplored domains.
+\item \textbf{Incompleteness}: Some areas remain undeveloped ($L$ cosmological scaling assumption, Born rule deviation experimental test).  The baryon asymmetry is now derived (\S\ref{sec:tensions}, Eq.~\eqref{eq:baryon}), the $H_0$ absolute value is derived (\S\ref{sec:tensions}, Eq.~\eqref{eq:h0-abs}), and the quantum gravity relationship is addressed structurally (BLD = Lie theory = QM language, \S\ref{sec:quantum}), but future work may reveal disagreements in unexplored domains.
 \end{enumerate}
 
 \subsection{Comparison to the Standard Model}
@@ -1678,7 +1725,7 @@ $|\psi|^2$, $S = 2L$, and $r_s = 2GM/c^2$.
 \begin{enumerate}
 \item \textbf{$L$ scaling}: The cosmological evolution assumes $L \propto 1/a^3$ (same as matter).  Since $L$ is geometry rather than matter, alternative scalings ($L \propto 1/a^2$, etc.) should be investigated.
 
-\item \textbf{Born rule deviation}: The predicted deviation from the Born rule at pointer non-orthogonality $\varepsilon \geq 0.10$ (Eq.~\ref{eq:born-deviation}) has not yet been tested experimentally.  This is a falsifiable prediction unique to BLD.
+\item \textbf{Born rule deviation}: The predicted deviation from the Born rule at pointer non-orthogonality $\varepsilon \geq 0.10$ (Eq.~\eqref{eq:born-deviation}) has not yet been tested experimentally.  This is a falsifiable prediction unique to BLD.
 \end{enumerate}
 
 
@@ -1702,7 +1749,7 @@ scale $v$ is itself derived as the fixed point of self-observation,
 \item The Higgs mass, strong coupling, critical Reynolds number.
 \item The Higgs VEV $v = 246.22\;\text{GeV}$ to 0.00014\%.
 \item Three cosmological density fractions within $0.5\sigma$.
-\item The Hubble tension resolved: $H_0(\text{local}) = 73.0\;\text{km/s/Mpc}$.
+\item The Hubble tension resolved: $H_0(\text{local}) = 72.8\;\text{km/s/Mpc}$ ($0.2\sigma$).
 \item The baryon-to-photon ratio $\eta \approx 6.05 \times 10^{-10}$ ($1.0\sigma$).
 \item The $H_0$ absolute value $67.2\;\text{km/s/Mpc}$ from BLD alone ($0.4\sigma$).
 \item The Born rule $P = |\psi|^2$ from $K = 2$ bidirectional alignment.
@@ -1714,8 +1761,9 @@ genetic code (Appendix~\ref{app:genetic}) and the critical Reynolds
 number, Feigenbaum constants, and Kolmogorov exponents
 (Appendix~\ref{app:turbulence}).
 
-The mathematics is machine-verified: 26 Lean~4 files, 4360 lines, zero
-\texttt{sorry}, zero axioms.
+The mathematics is machine-verified: 26 Lean~4 files, 5945 lines, zero
+\texttt{sorry} on the derivation chain, zero axioms.  All BLD-critical
+exceptional Lie algebras ($G_2$, $F_4$, $E_7$, $E_8$) are fully proved.
 
 The theory makes specific falsifiable predictions---$\kappa_\lambda =
 41/40$ at the HL-LHC, normal neutrino mass ordering at JUNO, neutron
@@ -1737,8 +1785,7 @@ served as a research collaborator throughout this work---translating
 the author's type-theoretic intuitions into Lie theory, particle
 physics, and cosmology, formalizing proofs in Lean~4, and verifying
 predictions against experimental data across domains the author could
-not have navigated alone.  The author thanks his wife for tolerating
-the ranting.
+not have navigated alone.  The author thanks his wife for her patience and support.
 
 % ═══════════════════════════════════════════════════════════════════
 % APPENDICES
@@ -1894,9 +1941,9 @@ the same $L = 20$ that counts Riemann tensor components in 4D spacetime
 also counts amino acids.  The equation $n(n+1) = n^2(n^2-1)/12$
 simplifies to $12 = n(n-1)$, which has the unique positive solution
 $n = 4$.  That is: $n = 4$ is the \emph{only} spacetime dimension in
-which the Riemann component count equals the amino acid count.  This is
-not numerology---it is a structural constraint that selects $n = 4$
-independently of the Killing form argument.
+which the Riemann component count equals the amino acid count.  This
+structural constraint selects $n = 4$ independently of the Killing form
+argument.
 
 The degeneracy modulus $n(n-1) = 12$ correctly predicts that no amino
 acid has exactly 5 synonymous codons (since $5 \nmid 12$), matching
@@ -2104,6 +2151,26 @@ in \textit{ICLR} (2017). arXiv:1611.01144.
 C.J.~Maddison, A.~Mnih, and Y.W.~Teh,
 ``The Concrete distribution: A continuous relaxation of discrete random variables,''
 in \textit{ICLR} (2017). arXiv:1611.00712.
+
+\bibitem{Bekenstein1973}
+J.D.~Bekenstein,
+``Black holes and entropy,''
+\textit{Phys.\ Rev.\ D} \textbf{7}, 2333--2346 (1973).
+
+\bibitem{Hawking1975}
+S.W.~Hawking,
+``Particle creation by black holes,''
+\textit{Commun.\ Math.\ Phys.} \textbf{43}, 199--220 (1975).
+
+\bibitem{Luce1959}
+R.D.~Luce,
+\textit{Individual Choice Behavior: A Theoretical Analysis},
+Wiley, New York (1959).
+
+\bibitem{Freudenthal1954}
+H.~Freudenthal,
+``Beziehungen der $E_7$ und $E_8$ zur Oktavenebene,'' I--XI,
+\textit{Indag.\ Math.} (1954--1963).
 
 \end{thebibliography}
 
