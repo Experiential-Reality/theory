@@ -357,6 +357,26 @@ theorem not_posDef_of_submatrix_null {n m : ℕ}
   · left
     exact indicator_zero f v k (not_exists.mp hk)
 
+/-- Submatrix version of not_posDef_of_int_null: if a principal submatrix
+    A(f·,f·) has an integer null vector, then A is not positive definite. -/
+theorem not_posDef_of_submatrix_int_null {n m : ℕ}
+    {A : Matrix (Fin n) (Fin n) ℤ} (hS : IsSymmetrizable A)
+    (f : Fin m ↪ Fin n) (M : Matrix (Fin m) (Fin m) ℤ)
+    (hM : ∀ i j, A (f i) (f j) = M i j)
+    (v : Fin m → ℤ) (hv : v ≠ 0)
+    (hNull : M.mulVec v = 0) : ¬ IsPosDef A hS := by
+  apply not_posDef_of_submatrix_null hS f (fun i => (v i : ℚ))
+  · intro h; apply hv; ext i
+    have := congr_fun h i; simp only [Pi.zero_apply] at this
+    exact_mod_cast this
+  · intro i
+    have hi : (M.mulVec v) i = 0 := by rw [hNull]; rfl
+    simp only [mulVec, dotProduct] at hi
+    have hcast : (↑(∑ j, M i j * v j) : ℚ) = 0 := by exact_mod_cast hi
+    simp only [Int.cast_sum, Int.cast_mul] at hcast
+    convert hcast using 1
+    congr 1; ext j; rw [hM]
+
 -- ═══════════════════════════════════════════════════════════
 -- Affine Dynkin diagrams and their null vectors
 -- ═══════════════════════════════════════════════════════════
@@ -1074,6 +1094,36 @@ theorem E8_castSucc_eq_E7 : ∀ i j : Fin 7,
 /-- E₈ last row/column: vertex 7 connects only to vertex 6. -/
 theorem E8_last_row : ∀ i : Fin 7,
     CartanMatrix.E₈ 7 (Fin.castSucc i) = if i = 6 then -1 else 0 := by decide
+
+/-- E₇ weight-2 submatrix, case A(v,u)=-1, A(u,v)=-2.
+    Rows/cols 0-5 = E₇ vertices 1-6, row/col 6 = leaf v. -/
+private def e7w2c1 : Matrix (Fin 7) (Fin 7) ℤ :=
+  !![ 2,  0, -1,  0,  0,  0,  0;
+      0,  2, -1,  0,  0,  0,  0;
+     -1, -1,  2, -1,  0,  0,  0;
+      0,  0, -1,  2, -1,  0,  0;
+      0,  0,  0, -1,  2, -1,  0;
+      0,  0,  0,  0, -1,  2, -2;
+      0,  0,  0,  0,  0, -1,  2]
+
+private theorem e7w2c1_null : e7w2c1.mulVec ![1, 1, 2, 2, 2, 2, 1] = 0 := by decide
+
+/-- E₇ weight-2 submatrix, case A(v,u)=-2, A(u,v)=-1. -/
+private def e7w2c2 : Matrix (Fin 7) (Fin 7) ℤ :=
+  !![ 2,  0, -1,  0,  0,  0,  0;
+      0,  2, -1,  0,  0,  0,  0;
+     -1, -1,  2, -1,  0,  0,  0;
+      0,  0, -1,  2, -1,  0,  0;
+      0,  0,  0, -1,  2, -1,  0;
+      0,  0,  0,  0, -1,  2, -1;
+      0,  0,  0,  0,  0, -2,  2]
+
+private theorem e7w2c2_null : e7w2c2.mulVec ![1, 1, 2, 2, 2, 2, 2] = 0 := by decide
+
+/-- E₇ vertices 1-6 sub-block equals first 6×6 of e7w2c1 (= e7w2c2). -/
+private theorem E7_sub_eq : ∀ i j : Fin 6,
+    CartanMatrix.E₇ (Fin.succ i) (Fin.succ j) =
+    e7w2c1 (Fin.castSucc i) (Fin.castSucc j) := by decide
 
 /-- Weight 3 is impossible when rank ≥ 3: a 3-vertex path with Coxeter weight 3
     on one edge always has a non-positive-definite symmetrization. -/
@@ -1919,9 +1969,100 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                 (show A u v + 1 ≤ 0 by omega)]
             omega
           rcases this with h | h <;> [left; right] <;> constructor <;> [exact h; nlinarith; exact h; nlinarith]
-        -- Use null vector on 7-vertex submatrix (skip e'⁻¹(0))
-        -- The subgraph {e'⁻¹(1),...,e'⁻¹(5), u, v} with double bond has null vector
-        sorry
+        -- Embedding: φ(k) = v.succAbove(e'⁻¹(k+1)) for k<6, φ(6) = v
+        let g : Fin 6 → Fin 8 := fun k => v.succAbove (e'.symm (Fin.succ k))
+        let φ : Fin 7 → Fin 8 := fun i =>
+          if h : (i : ℕ) < 6 then g ⟨i, h⟩ else v
+        have hφ_lt : ∀ (i : Fin 7) (hi : (i : ℕ) < 6), φ i = g ⟨i, hi⟩ := by
+          intro i hi; simp only [φ, hi, ↓reduceDIte]
+        have hφ6 : ∀ (i : Fin 7), ¬ (i : ℕ) < 6 → φ i = v := by
+          intro i hi; simp only [φ, hi, ↓reduceDIte]
+        have he'symm6 : e'.symm 6 = u_idx := by rw [← h6, e'.symm_apply_apply]
+        -- φ is injective
+        have hφ_inj : Function.Injective φ := by
+          intro i j hij; simp only [φ] at hij
+          by_cases hi : (i : ℕ) < 6 <;> by_cases hj : (j : ℕ) < 6 <;>
+            simp only [hi, hj, ↓reduceDIte] at hij
+          · exact Fin.ext (show (i : ℕ) = j from by
+              have := Fin.ext_iff.mp (Fin.succ_injective _
+                (e'.symm.injective (Fin.succAbove_right_injective hij)))
+              simpa using this)
+          · exact absurd hij (Fin.succAbove_ne v _)
+          · exact absurd hij.symm (Fin.succAbove_ne v _)
+          · exact Fin.ext (by omega)
+        let φ_emb : Fin 7 ↪ Fin 8 := ⟨φ, hφ_inj⟩
+        -- Key: e'.symm (Fin.succ k) ≠ u_idx when k ≠ 5
+        have hk_ne_u : ∀ k : Fin 6, k ≠ 5 → e'.symm (Fin.succ k) ≠ u_idx := by
+          intro k hk heq; apply hk
+          have h1 := e'.symm.injective (heq.trans he'symm6.symm)
+          exact Fin.ext (by have := Fin.ext_iff.mp h1; simp at this; omega)
+        -- Entry proof helper: A(g k, v) and A(v, g k)
+        have hAg_v : ∀ k : Fin 6, k ≠ 5 → A (g k) v = 0 := by
+          intro k hk; show A (v.succAbove _) v = 0
+          have h0 := hAv0 _ (hk_ne_u k hk)
+          exact (hGCM.zero_iff v _ (Ne.symm (Fin.succAbove_ne v _))).mp h0
+        have hAv_g : ∀ k : Fin 6, k ≠ 5 → A v (g k) = 0 := by
+          intro k hk; show A v (v.succAbove _) = 0; exact hAv0 _ (hk_ne_u k hk)
+        have hsucc5_eq_6 : Fin.succ (5 : Fin 6) = (6 : Fin 7) := by decide
+        have hg5_eq : g 5 = u := by
+          show v.succAbove (e'.symm (Fin.succ 5)) = u
+          rw [hsucc5_eq_6, he'symm6, hu_idx]
+        -- Submatrix entries = E₇ subblock
+        have hgg : ∀ ki kj : Fin 6, A (g ki) (g kj) =
+            CartanMatrix.E₇ (Fin.succ ki) (Fin.succ kj) := by
+          intro ki kj; simp only [g]
+          rw [hsub, e'.apply_symm_apply, e'.apply_symm_apply]
+        -- Entry proof: A(φ i, φ j) = M i j (for given M, Avu, Auv)
+        -- 4 cases: (g-g) submatrix, (g-v)/(v-g) leaf, (v-v) diagonal
+        have hentry : ∀ (Avu Auv : ℤ) (hAvu : A v u = Avu) (hAuv : A u v = Auv)
+            (M : Matrix (Fin 7) (Fin 7) ℤ)
+            (hM1 : ∀ ki kj : Fin 6,
+              M (Fin.castSucc ki) (Fin.castSucc kj) =
+              CartanMatrix.E₇ (Fin.succ ki) (Fin.succ kj))
+            (hM2 : M 6 6 = 2) (hM3 : M 5 6 = Auv) (hM4 : M 6 5 = Avu)
+            (hM5 : ∀ k : Fin 6, k ≠ 5 → M (Fin.castSucc k) 6 = 0)
+            (hM6 : ∀ k : Fin 6, k ≠ 5 → M 6 (Fin.castSucc k) = 0),
+            ∀ i j : Fin 7, A (φ i) (φ j) = M i j := by
+          intro Avu Auv hAvu hAuv M hM1 hM2 hM3 hM4 hM5 hM6 i j
+          have hcs : ∀ (k : Fin 7) (hk : (k : ℕ) < 6),
+              Fin.castSucc (⟨k, hk⟩ : Fin 6) = k := fun _ _ => Fin.ext rfl
+          by_cases hi : (i : ℕ) < 6 <;> by_cases hj : (j : ℕ) < 6
+          · -- Both in submatrix
+            rw [hφ_lt i hi, hφ_lt j hj, hgg, ← hM1, hcs i hi, hcs j hj]
+          · -- i in submatrix, j = v
+            have hj6 : j = 6 := Fin.ext (by omega)
+            subst hj6; rw [hφ_lt i hi, hφ6 6 (by omega)]
+            by_cases hki5 : (⟨(i : ℕ), hi⟩ : Fin 6) = 5
+            · rw [show g ⟨i, hi⟩ = u from by
+                rw [show (⟨(i : ℕ), hi⟩ : Fin 6) = 5 from hki5]; exact hg5_eq]
+              rw [hAuv, ← hM3]; congr 1; exact Fin.ext (by simp [Fin.ext_iff] at hki5; omega)
+            · rw [hAg_v _ hki5, ← hM5 _ hki5, hcs i hi]
+          · -- i = v, j in submatrix
+            have hi6 : i = 6 := Fin.ext (by omega)
+            subst hi6; rw [hφ6 6 (by omega), hφ_lt j hj]
+            by_cases hkj5 : (⟨(j : ℕ), hj⟩ : Fin 6) = 5
+            · rw [show g ⟨j, hj⟩ = u from by
+                rw [show (⟨(j : ℕ), hj⟩ : Fin 6) = 5 from hkj5]; exact hg5_eq]
+              rw [hAvu, ← hM4]; congr 1; exact Fin.ext (by simp [Fin.ext_iff] at hkj5; omega)
+            · rw [hAv_g _ hkj5, ← hM6 _ hkj5, hcs j hj]
+          · -- Both = v
+            have hi6 : i = 6 := Fin.ext (by omega)
+            have hj6 : j = 6 := Fin.ext (by omega)
+            subst hi6; subst hj6
+            rw [hGCM.diag, ← hM2]
+        rcases hcases with ⟨hvu_eq, huv_eq⟩ | ⟨hvu_eq, huv_eq⟩
+        · apply absurd hPD
+          exact not_posDef_of_submatrix_int_null hSym φ_emb e7w2c1
+            (hentry (-1) (-2) hvu_eq huv_eq e7w2c1
+              (by decide) (by decide) (by decide) (by decide)
+              (by decide) (by decide))
+            _ (by decide) e7w2c1_null
+        · apply absurd hPD
+          exact not_posDef_of_submatrix_int_null hSym φ_emb e7w2c2
+            (hentry (-2) (-1) hvu_eq huv_eq e7w2c2
+              (by decide) (by decide) (by decide) (by decide)
+              (by decide) (by decide))
+            _ (by decide) e7w2c2_null
     · -- Attachment at E₇ vertex ≠ 6 (marks ≥ 2): contradiction
       exfalso
       -- Same marks approach as E₈/F₄
