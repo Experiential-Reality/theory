@@ -524,6 +524,69 @@ def affineE8 : Matrix (Fin 9) (Fin 9) ℤ :=
 
 theorem affineE8_null : affineE8.mulVec ![2, 4, 6, 5, 4, 3, 2, 1, 3] = 0 := by decide
 
+/-- Ẽ₇ restricted to first 7 vertices (the path) equals A_7. -/
+theorem affineE7_path : ∀ i j : Fin 7,
+    affineE7 (Fin.castSucc i) (Fin.castSucc j) = CartanMatrix.A 7 i j := by decide
+
+/-- Ẽ₇ last row: vertex 7 connects only to vertex 3. -/
+theorem affineE7_row_branch : ∀ j : Fin 7,
+    affineE7 (Fin.last 7) (Fin.castSucc j) = if j.val = 3 then -1 else 0 := by decide
+
+/-- Ẽ₇ last column: vertex 3 connects to vertex 7. -/
+theorem affineE7_col_branch : ∀ j : Fin 7,
+    affineE7 (Fin.castSucc j) (Fin.last 7) = if j.val = 3 then -1 else 0 := by decide
+
+/-- Ẽ₈ restricted to first 8 vertices (the path) equals A_8. -/
+theorem affineE8_path : ∀ i j : Fin 8,
+    affineE8 (Fin.castSucc i) (Fin.castSucc j) = CartanMatrix.A 8 i j := by decide
+
+/-- Ẽ₈ last row: vertex 8 connects only to vertex 2. -/
+theorem affineE8_row_branch : ∀ j : Fin 8,
+    affineE8 (Fin.last 8) (Fin.castSucc j) = if j.val = 2 then -1 else 0 := by decide
+
+/-- Ẽ₈ last column: vertex 2 connects to vertex 8. -/
+theorem affineE8_col_branch : ∀ j : Fin 8,
+    affineE8 (Fin.castSucc j) (Fin.last 8) = if j.val = 2 then -1 else 0 := by decide
+
+/-- E₆ with vertex 1 deleted (via succAbove) equals A_5. -/
+theorem E6_succAbove_one_eq_A : ∀ i j : Fin 5,
+    CartanMatrix.E₆ ((1 : Fin 6).succAbove i) ((1 : Fin 6).succAbove j) =
+    CartanMatrix.A 5 i j := by decide
+
+/-- E₆ row 1: vertex 1 connects only to vertex 3, i.e., succAbove(1,2). -/
+theorem E6_at_one_row : ∀ j : Fin 5,
+    CartanMatrix.E₆ 1 ((1 : Fin 6).succAbove j) = if j.val = 2 then -1 else 0 := by decide
+
+/-- E₆ column 1: vertex 3 connects to vertex 1. -/
+theorem E6_at_one_col : ∀ j : Fin 5,
+    CartanMatrix.E₆ ((1 : Fin 6).succAbove j) 1 = if j.val = 2 then -1 else 0 := by decide
+
+/-- E₇ with vertex 1 deleted equals A_6. -/
+theorem E7_succAbove_one_eq_A : ∀ i j : Fin 6,
+    CartanMatrix.E₇ ((1 : Fin 7).succAbove i) ((1 : Fin 7).succAbove j) =
+    CartanMatrix.A 6 i j := by decide
+
+/-- E₇ row 1: vertex 1 connects only to succAbove(1,2) = vertex 3. -/
+theorem E7_at_one_row : ∀ j : Fin 6,
+    CartanMatrix.E₇ 1 ((1 : Fin 7).succAbove j) = if j.val = 2 then -1 else 0 := by decide
+
+/-- E₇ column 1. -/
+theorem E7_at_one_col : ∀ j : Fin 6,
+    CartanMatrix.E₇ ((1 : Fin 7).succAbove j) 1 = if j.val = 2 then -1 else 0 := by decide
+
+/-- E₈ with vertex 1 deleted equals A_7. -/
+theorem E8_succAbove_one_eq_A : ∀ i j : Fin 7,
+    CartanMatrix.E₈ ((1 : Fin 8).succAbove i) ((1 : Fin 8).succAbove j) =
+    CartanMatrix.A 7 i j := by decide
+
+/-- E₈ row 1: vertex 1 connects only to succAbove(1,2) = vertex 3. -/
+theorem E8_at_one_row : ∀ j : Fin 7,
+    CartanMatrix.E₈ 1 ((1 : Fin 8).succAbove j) = if j.val = 2 then -1 else 0 := by decide
+
+/-- E₈ column 1. -/
+theorem E8_at_one_col : ∀ j : Fin 7,
+    CartanMatrix.E₈ ((1 : Fin 8).succAbove j) 1 = if j.val = 2 then -1 else 0 := by decide
+
 -- ═══════════════════════════════════════════════════════════
 -- Affine types are not positive definite
 -- ═══════════════════════════════════════════════════════════
@@ -595,6 +658,22 @@ private theorem sum_three {n : ℕ} {i j k : Fin n} (hij : i ≠ j) (hik : i ≠
   rw [Finset.sum_insert (show i ∉ ({j, k} : Finset _) by
     simp only [Finset.mem_insert, Finset.mem_singleton]; push_neg; exact ⟨hij, hik⟩)]
   rw [Finset.sum_pair hjk]; ring
+
+/-- Helper: a sum over Fin n with only 4 nonzero terms. -/
+private theorem sum_four {n : ℕ} {i j k l : Fin n}
+    (hij : i ≠ j) (hik : i ≠ k) (hil : i ≠ l)
+    (hjk : j ≠ k) (hjl : j ≠ l) (hkl : k ≠ l)
+    (f : Fin n → ℚ) (hf : ∀ m, m ≠ i → m ≠ j → m ≠ k → m ≠ l → f m = 0) :
+    ∑ m, f m = f i + f j + f k + f l := by
+  rw [show ∑ m, f m = ∑ m ∈ ({i, j, k, l} : Finset (Fin n)), f m from by
+    symm; apply Finset.sum_subset (Finset.subset_univ _)
+    intro m _ hm; simp only [Finset.mem_insert, Finset.mem_singleton] at hm
+    push_neg at hm; exact hf m hm.1 hm.2.1 hm.2.2.1 hm.2.2.2]
+  rw [Finset.sum_insert (show i ∉ ({j, k, l} : Finset _) by
+    simp only [Finset.mem_insert, Finset.mem_singleton]; push_neg; exact ⟨hij, hik, hil⟩)]
+  rw [Finset.sum_insert (show j ∉ ({k, l} : Finset _) by
+    simp only [Finset.mem_insert, Finset.mem_singleton]; push_neg; exact ⟨hjk, hjl⟩)]
+  rw [Finset.sum_pair hkl]; ring
 
 /-- In a positive definite GCM, A(i,j) * A(j,i) < 4 (Coxeter weight ≤ 3).
     Proof: the test vector v(i) = 1, v(j) = -A(j,i)/2 gives
@@ -1055,6 +1134,313 @@ private theorem exists_neighbor_of_connected {m : ℕ} {B : Matrix (Fin (m+2)) (
 -- ═══════════════════════════════════════════════════════════
 -- E₈ marks (dual Coxeter labels)
 -- ═══════════════════════════════════════════════════════════
+
+-- ═══════════════════════════════════════════════════════════
+-- Parametric Cartan matrix entry lemmas (A, B, C, D)
+-- ═══════════════════════════════════════════════════════════
+
+/-- Deleting the last vertex of A_{k+1} gives A_k. -/
+theorem A_castSucc_eq (k : ℕ) (i j : Fin k) :
+    CartanMatrix.A (k + 1) (Fin.castSucc i) (Fin.castSucc j) = CartanMatrix.A k i j := by
+  simp only [CartanMatrix.A, Matrix.of_apply, Fin.castSucc_inj, Fin.val_castSucc]
+
+/-- Deleting the first vertex of A_{k+1} gives A_k. -/
+theorem A_succ_eq (k : ℕ) (i j : Fin k) :
+    CartanMatrix.A (k + 1) (Fin.succ i) (Fin.succ j) = CartanMatrix.A k i j := by
+  simp only [CartanMatrix.A, Matrix.of_apply, Fin.succ_inj, Fin.val_succ]
+  split_ifs <;> omega
+
+/-- A_{k+1} first row: vertex 0 connects only to vertex 1. -/
+theorem A_first_row (k : ℕ) (j : Fin k) :
+    CartanMatrix.A (k + 1) 0 (Fin.succ j) = if j.val = 0 then -1 else 0 := by
+  simp only [CartanMatrix.A, Matrix.of_apply, Fin.ext_iff, Fin.val_succ,
+    show (0 : Fin (k+1)).val = 0 from rfl]
+  have hj := j.isLt
+  split_ifs <;> simp only [or_false, not_false_eq_true] at * <;> omega
+
+/-- A_{k+1} first column (A is symmetric). -/
+theorem A_first_col (k : ℕ) (i : Fin k) :
+    CartanMatrix.A (k + 1) (Fin.succ i) 0 = if i.val = 0 then -1 else 0 := by
+  rw [show CartanMatrix.A (k+1) (Fin.succ i) 0 =
+      CartanMatrix.A (k+1) 0 (Fin.succ i) from by
+    have := congr_fun (congr_fun (CartanMatrix.A_isSymm (n := k + 1)) 0) (Fin.succ i)
+    rwa [Matrix.transpose_apply] at this]
+  exact A_first_row k i
+
+/-- A_{k+1} last row: connects only to vertex k-1. -/
+theorem A_last_row (k : ℕ) (i : Fin k) :
+    CartanMatrix.A (k + 1) (Fin.last k) (Fin.castSucc i) =
+    if i.val = k - 1 then -1 else 0 := by
+  simp only [CartanMatrix.A, Matrix.of_apply, Fin.ext_iff, Fin.val_last, Fin.val_castSucc]
+  have hi := i.isLt
+  split_ifs <;> omega
+
+/-- A_{k+1} last column (A is symmetric). -/
+theorem A_last_col (k : ℕ) (i : Fin k) :
+    CartanMatrix.A (k + 1) (Fin.castSucc i) (Fin.last k) =
+    if i.val = k - 1 then -1 else 0 := by
+  rw [show CartanMatrix.A (k+1) (Fin.castSucc i) (Fin.last k) =
+      CartanMatrix.A (k+1) (Fin.last k) (Fin.castSucc i) from by
+    have := congr_fun (congr_fun (CartanMatrix.A_isSymm (n := k + 1)) (Fin.last k)) (Fin.castSucc i)
+    rwa [Matrix.transpose_apply] at this]
+  exact A_last_row k i
+
+/-- Adjacent entries in A-type Cartan matrix are -1. -/
+theorem A_adj (m : ℕ) (i j : Fin m) (hij : i ≠ j)
+    (hadj : i.val + 1 = j.val ∨ j.val + 1 = i.val) :
+    CartanMatrix.A m i j = -1 := by
+  simp only [CartanMatrix.A, Matrix.of_apply, if_neg hij, if_pos hadj]
+
+/-- Non-adjacent, non-diagonal entries in A-type Cartan matrix are 0. -/
+theorem A_nonadj (m : ℕ) (i j : Fin m) (hij : i ≠ j)
+    (hnadj : ¬(i.val + 1 = j.val ∨ j.val + 1 = i.val)) :
+    CartanMatrix.A m i j = 0 := by
+  simp only [CartanMatrix.A, Matrix.of_apply, if_neg hij, if_neg hnadj]
+
+/-- A sub-path of A_n starting at offset c gives A_k. -/
+theorem A_shift_submatrix (k n c : ℕ) (hc : c + k ≤ n) (i j : Fin k) :
+    CartanMatrix.A n ⟨i.val + c, by omega⟩ ⟨j.val + c, by omega⟩ = CartanMatrix.A k i j := by
+  simp only [CartanMatrix.A, Matrix.of_apply, Fin.ext_iff, Fin.val_mk]
+  split_ifs <;> omega
+
+/-- Deleting the last vertex of B_{k+1} gives A_k. -/
+theorem B_castSucc_eq_A (k : ℕ) (i j : Fin k) :
+    CartanMatrix.B (k + 1) (Fin.castSucc i) (Fin.castSucc j) = CartanMatrix.A k i j := by
+  simp only [CartanMatrix.B, CartanMatrix.A, Matrix.of_apply, Fin.castSucc_inj, Fin.val_castSucc]
+  have hi := i.isLt; have hj := j.isLt
+  split_ifs <;> omega
+
+/-- B_{k+1} last row: vertex k connects to vertex k-1 with weight -1. -/
+theorem B_last_row (k : ℕ) (i : Fin k) :
+    CartanMatrix.B (k + 1) (Fin.last k) (Fin.castSucc i) =
+    if i.val = k - 1 then -1 else 0 := by
+  simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_last, Fin.val_castSucc]
+  have hi := i.isLt
+  split_ifs <;> omega
+
+/-- B_{k+1} last column: vertex k-1 connects to k with weight -2. -/
+theorem B_last_col (k : ℕ) (i : Fin k) :
+    CartanMatrix.B (k + 1) (Fin.castSucc i) (Fin.last k) =
+    if i.val = k - 1 then -2 else 0 := by
+  simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_last, Fin.val_castSucc]
+  have hi := i.isLt
+  split_ifs <;> omega
+
+/-- Deleting the last vertex of C_{k+1} gives A_k. -/
+theorem C_castSucc_eq_A (k : ℕ) (i j : Fin k) :
+    CartanMatrix.C (k + 1) (Fin.castSucc i) (Fin.castSucc j) = CartanMatrix.A k i j := by
+  simp only [CartanMatrix.C, CartanMatrix.A, Matrix.of_apply, Fin.castSucc_inj, Fin.val_castSucc]
+  have hi := i.isLt; have hj := j.isLt
+  split_ifs <;> omega
+
+/-- C_{k+1} last row: vertex k connects to vertex k-1 with weight -2. -/
+theorem C_last_row (k : ℕ) (i : Fin k) :
+    CartanMatrix.C (k + 1) (Fin.last k) (Fin.castSucc i) =
+    if i.val = k - 1 then -2 else 0 := by
+  simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, Fin.val_last, Fin.val_castSucc]
+  have hi := i.isLt
+  split_ifs <;> omega
+
+/-- C_{k+1} last column: vertex k-1 connects to k with weight -1. -/
+theorem C_last_col (k : ℕ) (i : Fin k) :
+    CartanMatrix.C (k + 1) (Fin.castSucc i) (Fin.last k) =
+    if i.val = k - 1 then -1 else 0 := by
+  simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, Fin.val_last, Fin.val_castSucc]
+  have hi := i.isLt
+  split_ifs <;> omega
+
+/-- Deleting the last vertex of D_{k+1} gives A_k when k ≥ 3. -/
+theorem D_castSucc_eq_A (k : ℕ) (hk : 3 ≤ k) (i j : Fin k) :
+    CartanMatrix.D (k + 1) (Fin.castSucc i) (Fin.castSucc j) = CartanMatrix.A k i j := by
+  simp only [CartanMatrix.D, CartanMatrix.A, Matrix.of_apply, Fin.castSucc_inj, Fin.val_castSucc]
+  have hi := i.isLt; have hj := j.isLt
+  split_ifs <;> omega
+
+/-- D_{k+1} last row: vertex k connects to vertex k-2 (fork, k ≥ 3). -/
+theorem D_last_row (k : ℕ) (hk : 3 ≤ k) (i : Fin k) :
+    CartanMatrix.D (k + 1) (Fin.last k) (Fin.castSucc i) =
+    if i.val + 2 = k then -1 else 0 := by
+  simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff, Fin.val_last, Fin.val_castSucc]
+  have hi := i.isLt
+  split_ifs <;> simp_all <;> omega
+
+/-- D_{k+1} last column (D is symmetric). -/
+theorem D_last_col (k : ℕ) (hk : 3 ≤ k) (i : Fin k) :
+    CartanMatrix.D (k + 1) (Fin.castSucc i) (Fin.last k) =
+    if i.val + 2 = k then -1 else 0 := by
+  rw [show CartanMatrix.D (k+1) (Fin.castSucc i) (Fin.last k) =
+      CartanMatrix.D (k+1) (Fin.last k) (Fin.castSucc i) from by
+    have := congr_fun (congr_fun (CartanMatrix.D_isSymm (n := k + 1)) (Fin.last k)) (Fin.castSucc i)
+    rwa [Matrix.transpose_apply] at this]
+  exact D_last_row k hk i
+
+-- ═══════════════════════════════════════════════════════════
+-- Path reversal for A_n
+-- ═══════════════════════════════════════════════════════════
+
+/-- Reversal permutation on Fin (n+1): sends i to n-i. -/
+def finRev (n : ℕ) : Fin (n + 1) ≃ Fin (n + 1) where
+  toFun i := ⟨n - i.val, by omega⟩
+  invFun i := ⟨n - i.val, by omega⟩
+  left_inv i := by
+    apply Fin.ext; simp only [Fin.val_mk]
+    have := i.isLt; omega
+  right_inv i := by
+    apply Fin.ext; simp only [Fin.val_mk]
+    have := i.isLt; omega
+
+@[simp] theorem finRev_val (n : ℕ) (i : Fin (n + 1)) : (finRev n i).val = n - i.val := rfl
+
+/-- A_{n+1} is invariant under path reversal. -/
+theorem A_finRev_eq (n : ℕ) (i j : Fin (n + 1)) :
+    CartanMatrix.A (n + 1) (finRev n i) (finRev n j) = CartanMatrix.A (n + 1) i j := by
+  simp only [CartanMatrix.A, Matrix.of_apply, Fin.ext_iff, finRev_val]
+  have hi := i.isLt; have hj := j.isLt
+  split_ifs <;> omega
+
+-- ═══════════════════════════════════════════════════════════
+-- General "extend at last" helper
+-- ═══════════════════════════════════════════════════════════
+
+/-- Given a GCM A with leaf v, and a target matrix T whose castSucc-submatrix
+    matches A's submatrix and whose last row/column matches A's leaf, construct
+    a CartanEquiv A T. Reusable across A→A, A→B, A→C, B→B, D→D, etc. -/
+private theorem extend_at_last {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
+    (hGCM : IsGCM A) (v : Fin (n+3))
+    (e' : Fin (n+2) ≃ Fin (n+2))
+    (T : Matrix (Fin (n+3)) (Fin (n+3)) ℤ)
+    (hT_diag : T (Fin.last (n+2)) (Fin.last (n+2)) = 2)
+    (hT_sub : ∀ i j : Fin (n+2),
+        T (Fin.castSucc (e' i)) (Fin.castSucc (e' j)) = A (v.succAbove i) (v.succAbove j))
+    (hT_row : ∀ m : Fin (n+2),
+        T (Fin.last (n+2)) (Fin.castSucc (e' m)) = A v (v.succAbove m))
+    (hT_col : ∀ m : Fin (n+2),
+        T (Fin.castSucc (e' m)) (Fin.last (n+2)) = A (v.succAbove m) v)
+    : CartanEquiv A T := by
+  let f : Fin (n+3) → Fin (n+3) := fun i =>
+    if h : ∃ m : Fin (n+2), v.succAbove m = i then Fin.castSucc (e' h.choose)
+    else Fin.last (n+2)
+  have hf_v : f v = Fin.last (n+2) := by
+    simp only [f]; rw [dif_neg]; push_neg; exact fun k => Fin.succAbove_ne v k
+  have hf_sub : ∀ m : Fin (n+2), f (v.succAbove m) = Fin.castSucc (e' m) := by
+    intro m; simp only [f]
+    have hex : ∃ m' : Fin (n+2), v.succAbove m' = v.succAbove m := ⟨m, rfl⟩
+    rw [dif_pos hex, show hex.choose = m from Fin.succAbove_right_injective hex.choose_spec]
+  have hf_inj : Function.Injective f := by
+    intro i j hij
+    rcases Fin.eq_self_or_eq_succAbove v i with hi | ⟨ki, hi⟩
+    · rcases Fin.eq_self_or_eq_succAbove v j with hj | ⟨kj, hj⟩
+      · exact hi.trans hj.symm
+      · exfalso; rw [hi, hj, hf_v, hf_sub] at hij
+        exact absurd (congr_arg Fin.val hij) (by simp [Fin.val_castSucc]; omega)
+    · rcases Fin.eq_self_or_eq_succAbove v j with hj | ⟨kj, hj⟩
+      · exfalso; rw [hi, hj, hf_sub, hf_v] at hij
+        exact absurd (congr_arg Fin.val hij) (by simp [Fin.val_castSucc]; omega)
+      · rw [hi, hj]; congr 1; rw [hi, hj, hf_sub, hf_sub] at hij
+        exact e'.injective (Fin.castSucc_injective _ hij)
+  let σ := Equiv.ofBijective f hf_inj.bijective_of_finite
+  refine ⟨σ, fun i j => ?_⟩
+  show T (f i) (f j) = A i j
+  rcases Fin.eq_self_or_eq_succAbove v i with hi | ⟨ki, hi⟩
+  · rcases Fin.eq_self_or_eq_succAbove v j with hj | ⟨kj, hj⟩
+    · rw [hi, hj, hf_v]; exact hT_diag.trans (hGCM.diag v).symm
+    · rw [hi, hj, hf_v, hf_sub]; exact hT_row kj
+  · rcases Fin.eq_self_or_eq_succAbove v j with hj | ⟨kj, hj⟩
+    · rw [hi, hj, hf_sub, hf_v]; exact hT_col ki
+    · rw [hi, hj, hf_sub, hf_sub]; exact hT_sub ki kj
+
+/-- Given a GCM A with leaf v, and a target matrix T whose succ-submatrix
+    matches A's submatrix and whose first row/column matches A's leaf, construct
+    a CartanEquiv A T. Maps v → 0 and v.succAbove m → Fin.succ (e' m). -/
+private theorem extend_at_zero {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
+    (hGCM : IsGCM A) (v : Fin (n+3))
+    (e' : Fin (n+2) ≃ Fin (n+2))
+    (T : Matrix (Fin (n+3)) (Fin (n+3)) ℤ)
+    (hT_diag : T 0 0 = 2)
+    (hT_sub : ∀ i j : Fin (n+2),
+        T (Fin.succ (e' i)) (Fin.succ (e' j)) = A (v.succAbove i) (v.succAbove j))
+    (hT_row : ∀ m : Fin (n+2),
+        T 0 (Fin.succ (e' m)) = A v (v.succAbove m))
+    (hT_col : ∀ m : Fin (n+2),
+        T (Fin.succ (e' m)) 0 = A (v.succAbove m) v)
+    : CartanEquiv A T := by
+  let f : Fin (n+3) → Fin (n+3) := fun i =>
+    if h : ∃ m : Fin (n+2), v.succAbove m = i then Fin.succ (e' h.choose)
+    else 0
+  have hf_v : f v = 0 := by
+    simp only [f]; rw [dif_neg]; push_neg; exact fun k => Fin.succAbove_ne v k
+  have hf_sub : ∀ m : Fin (n+2), f (v.succAbove m) = Fin.succ (e' m) := by
+    intro m; simp only [f]
+    have hex : ∃ m' : Fin (n+2), v.succAbove m' = v.succAbove m := ⟨m, rfl⟩
+    rw [dif_pos hex, show hex.choose = m from Fin.succAbove_right_injective hex.choose_spec]
+  have hf_inj : Function.Injective f := by
+    intro i j hij
+    rcases Fin.eq_self_or_eq_succAbove v i with hi | ⟨ki, hi⟩
+    · rcases Fin.eq_self_or_eq_succAbove v j with hj | ⟨kj, hj⟩
+      · exact hi.trans hj.symm
+      · exfalso; rw [hi, hj, hf_v, hf_sub] at hij
+        exact absurd hij (Fin.succ_ne_zero (e' kj)).symm
+    · rcases Fin.eq_self_or_eq_succAbove v j with hj | ⟨kj, hj⟩
+      · exfalso; rw [hi, hj, hf_sub, hf_v] at hij
+        exact absurd hij (Fin.succ_ne_zero (e' ki))
+      · rw [hi, hj]; congr 1; rw [hi, hj, hf_sub, hf_sub] at hij
+        exact e'.injective (Fin.succ_inj.mp hij)
+  let σ := Equiv.ofBijective f hf_inj.bijective_of_finite
+  refine ⟨σ, fun i j => ?_⟩
+  show T (f i) (f j) = A i j
+  rcases Fin.eq_self_or_eq_succAbove v i with hi | ⟨ki, hi⟩
+  · rcases Fin.eq_self_or_eq_succAbove v j with hj | ⟨kj, hj⟩
+    · rw [hi, hj, hf_v]; exact hT_diag.trans (hGCM.diag v).symm
+    · rw [hi, hj, hf_v, hf_sub]; exact hT_row kj
+  · rcases Fin.eq_self_or_eq_succAbove v j with hj | ⟨kj, hj⟩
+    · rw [hi, hj, hf_sub, hf_v]; exact hT_col ki
+    · rw [hi, hj, hf_sub, hf_sub]; exact hT_sub ki kj
+
+/-- Generic extension: maps v to target position p, submatrix via p.succAbove ∘ e'. -/
+private theorem extend_at {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
+    (hGCM : IsGCM A) (v : Fin (n+3))
+    (e' : Fin (n+2) ≃ Fin (n+2))
+    (T : Matrix (Fin (n+3)) (Fin (n+3)) ℤ)
+    (p : Fin (n+3))
+    (hT_diag : T p p = 2)
+    (hT_sub : ∀ i j : Fin (n+2),
+        T (p.succAbove (e' i)) (p.succAbove (e' j)) = A (v.succAbove i) (v.succAbove j))
+    (hT_row : ∀ m : Fin (n+2),
+        T p (p.succAbove (e' m)) = A v (v.succAbove m))
+    (hT_col : ∀ m : Fin (n+2),
+        T (p.succAbove (e' m)) p = A (v.succAbove m) v)
+    : CartanEquiv A T := by
+  let f : Fin (n+3) → Fin (n+3) := fun i =>
+    if h : ∃ m : Fin (n+2), v.succAbove m = i then p.succAbove (e' h.choose)
+    else p
+  have hf_v : f v = p := by
+    simp only [f]; rw [dif_neg]; push_neg; exact fun k => Fin.succAbove_ne v k
+  have hf_sub : ∀ m : Fin (n+2), f (v.succAbove m) = p.succAbove (e' m) := by
+    intro m; simp only [f]
+    have hex : ∃ m' : Fin (n+2), v.succAbove m' = v.succAbove m := ⟨m, rfl⟩
+    rw [dif_pos hex, show hex.choose = m from Fin.succAbove_right_injective hex.choose_spec]
+  have hf_inj : Function.Injective f := by
+    intro i j hij
+    rcases Fin.eq_self_or_eq_succAbove v i with hi | ⟨ki, hi⟩
+    · rcases Fin.eq_self_or_eq_succAbove v j with hj | ⟨kj, hj⟩
+      · exact hi.trans hj.symm
+      · exfalso; rw [hi, hj, hf_v, hf_sub] at hij
+        exact absurd hij.symm (Fin.succAbove_ne p (e' kj))
+    · rcases Fin.eq_self_or_eq_succAbove v j with hj | ⟨kj, hj⟩
+      · exfalso; rw [hi, hj, hf_sub, hf_v] at hij
+        exact absurd hij (Fin.succAbove_ne p (e' ki))
+      · rw [hi, hj]; congr 1; rw [hi, hj, hf_sub, hf_sub] at hij
+        exact e'.injective (Fin.succAbove_right_injective hij)
+  let σ := Equiv.ofBijective f hf_inj.bijective_of_finite
+  refine ⟨σ, fun i j => ?_⟩
+  show T (f i) (f j) = A i j
+  rcases Fin.eq_self_or_eq_succAbove v i with hi | ⟨ki, hi⟩
+  · rcases Fin.eq_self_or_eq_succAbove v j with hj | ⟨kj, hj⟩
+    · rw [hi, hj, hf_v]; exact hT_diag.trans (hGCM.diag v).symm
+    · rw [hi, hj, hf_v, hf_sub]; exact hT_row kj
+  · rcases Fin.eq_self_or_eq_succAbove v j with hj | ⟨kj, hj⟩
+    · rw [hi, hj, hf_sub, hf_v]; exact hT_col ki
+    · rw [hi, hj, hf_sub, hf_sub]; exact hT_sub ki kj
 
 /-- The marks (dual Coxeter labels) of E₈: components of the null vector
     of the affine extension Ẽ₈. These satisfy E₈ · marks = (0,...,0,1)
@@ -2523,6 +2909,296 @@ private theorem f4_no_extension {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) �
     -- d₀ + d(u)*auv*avu*(1-mj) ≤ d₀ + d₀*(1-mj) = d₀*(2-mj) ≤ 0
     linarith [mul_nonneg (le_of_lt hd0) (show (0 : ℚ) ≤ (↑mj : ℚ) - 2 by linarith)]
 
+-- ═══════════════════════════════════════════════════════════
+-- A_k extension helper
+-- ═══════════════════════════════════════════════════════════
+
+set_option maxHeartbeats 800000 in
+/-- When the submatrix is type A_{n+2}, determine the full DynkinType. -/
+private theorem a_extension {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
+    (hGCM : IsGCM A) (hSym : IsSymmetrizable A) (hPD : IsPosDef A hSym)
+    (v u : Fin (n+3)) (huv : u ≠ v)
+    (hAvu : A v u ≠ 0) (hAuv : A u v ≠ 0)
+    (huniq : ∀ j, j ≠ v → A v j ≠ 0 → j = u)
+    (hcw_le2 : A v u * A u v ≤ 2)
+    (ht' : CartanEquiv (deleteVertex A v) (CartanMatrix.A (n+2))) :
+    ∃ t : DynkinType, CartanEquiv A t.cartanMatrix.2 := by
+  obtain ⟨e', he'⟩ := ht'
+  obtain ⟨u_idx, hu_idx⟩ := Fin.exists_succAbove_eq huv
+  have hsub : ∀ i j : Fin (n+2), A (v.succAbove i) (v.succAbove j) =
+      CartanMatrix.A (n+2) (e' i) (e' j) := fun i j => (he' i j).symm
+  have hAv0 : ∀ m : Fin (n+2), m ≠ u_idx → A v (v.succAbove m) = 0 := by
+    intro m hm; by_contra h
+    exact hm (Fin.succAbove_right_injective (hu_idx ▸ huniq _ (Fin.succAbove_ne v m) h))
+  have hAv0' : ∀ m : Fin (n+2), m ≠ u_idx → A (v.succAbove m) v = 0 := by
+    intro m hm
+    exact (hGCM.zero_iff v _ (Ne.symm (Fin.succAbove_ne v m))).mp (hAv0 m hm)
+  have hAvu_neg : A v u ≤ -1 := by
+    have := hGCM.off_diag_nonpos v u huv.symm; omega
+  have hAuv_neg : A u v ≤ -1 := by
+    have := hGCM.off_diag_nonpos u v huv; omega
+  have hcw_pos : 1 ≤ A v u * A u v := by nlinarith
+  -- Case: weight 1 (A v u = -1, A u v = -1)
+  by_cases hw1 : A v u * A u v = 1
+  · have hAvu_eq : A v u = -1 := by nlinarith
+    have hAuv_eq : A u v = -1 := by nlinarith
+    by_cases h_last : (e' u_idx).val = n + 1
+    · -- Endpoint at last vertex of A_{n+2}, weight 1 → A_{n+3}
+      refine ⟨DynkinType.A (n+3) (by omega), ?_⟩
+      simp only [DynkinType.cartanMatrix]
+      exact extend_at_last hGCM v e' (CartanMatrix.A (n+3))
+        (by simp [CartanMatrix.A])
+        (fun i j => by rw [A_castSucc_eq]; exact (hsub i j).symm)
+        (fun m => by
+          rw [A_last_row]; split_ifs with h
+          · have : e' m = e' u_idx := by
+              ext; simp only [Fin.val_castSucc] at h; omega
+            rw [show m = u_idx from e'.injective this, hu_idx, hAvu_eq]
+          · rw [hAv0 m (fun heq => h (by rw [heq]; exact h_last))])
+        (fun m => by
+          rw [A_last_col]; split_ifs with h
+          · have : e' m = e' u_idx := by ext; omega
+            rw [show m = u_idx from e'.injective this, hu_idx, hAuv_eq]
+          · rw [hAv0' m (fun heq => h (by rw [heq]; exact h_last))])
+    · by_cases h_first : (e' u_idx).val = 0
+      · -- Endpoint at first vertex of A_{n+2}, weight 1 → A_{n+3}
+        refine ⟨DynkinType.A (n+3) (by omega), ?_⟩
+        simp only [DynkinType.cartanMatrix]
+        exact extend_at_zero hGCM v e' (CartanMatrix.A (n+3))
+          (by simp [CartanMatrix.A])
+          (fun i j => by rw [A_succ_eq]; exact (hsub i j).symm)
+          (fun m => by
+            rw [A_first_row]; split_ifs with h
+            · have : e' m = e' u_idx := by
+                ext; simp only [Fin.val_succ] at h; omega
+              rw [show m = u_idx from e'.injective this, hu_idx, hAvu_eq]
+            · rw [hAv0 m (fun heq => h (by rw [heq]; exact h_first))])
+          (fun m => by
+            rw [A_first_col]; split_ifs with h
+            · have : e' m = e' u_idx := by ext; omega
+              rw [show m = u_idx from e'.injective this, hu_idx, hAuv_eq]
+            · rw [hAv0' m (fun heq => h (by rw [heq]; exact h_first))])
+      · -- Interior attachment, weight 1 → D or E type
+        sorry
+  · -- Weight 2
+    have hw2 : A v u * A u v = 2 := by omega
+    by_cases h_last : (e' u_idx).val = n + 1
+    · -- Endpoint at last vertex, weight 2 → B or C
+      -- Determine direction: (A v u, A u v) = (-1,-2) or (-2,-1)
+      have havu_ge : -2 ≤ A v u := by
+        have := le_mul_of_one_le_right (by omega : 0 ≤ -A v u) (by omega : 1 ≤ -A u v)
+        nlinarith [neg_mul_neg (A v u) (A u v)]
+      by_cases hvu1 : A v u = -1
+      · -- A(v,u) = -1, A(u,v) = -2 → B_{n+3}
+        have hAuv_eq : A u v = -2 := by nlinarith
+        refine ⟨DynkinType.B (n+3) (by omega), ?_⟩
+        simp only [DynkinType.cartanMatrix]
+        exact extend_at_last hGCM v e' (CartanMatrix.B (n+3))
+          (by simp [CartanMatrix.B])
+          (fun i j => by rw [B_castSucc_eq_A]; exact (hsub i j).symm)
+          (fun m => by
+            rw [B_last_row]; split_ifs with h
+            · have : e' m = e' u_idx := by ext; omega
+              rw [show m = u_idx from e'.injective this, hu_idx]; exact hvu1.symm
+            · rw [hAv0 m (fun heq => h (by rw [heq]; exact h_last))])
+          (fun m => by
+            rw [B_last_col]; split_ifs with h
+            · have : e' m = e' u_idx := by ext; omega
+              rw [show m = u_idx from e'.injective this, hu_idx]; exact hAuv_eq.symm
+            · rw [hAv0' m (fun heq => h (by rw [heq]; exact h_last))])
+      · -- A(v,u) = -2, A(u,v) = -1 → C_{n+3}
+        have hAvu_eq : A v u = -2 := by omega
+        have hAuv_eq : A u v = -1 := by nlinarith
+        refine ⟨DynkinType.C (n+3) (by omega), ?_⟩
+        simp only [DynkinType.cartanMatrix]
+        exact extend_at_last hGCM v e' (CartanMatrix.C (n+3))
+          (by simp [CartanMatrix.C])
+          (fun i j => by rw [C_castSucc_eq_A]; exact (hsub i j).symm)
+          (fun m => by
+            rw [C_last_row]; split_ifs with h
+            · have : e' m = e' u_idx := by ext; omega
+              rw [show m = u_idx from e'.injective this, hu_idx]; exact hAvu_eq.symm
+            · rw [hAv0 m (fun heq => h (by rw [heq]; exact h_last))])
+          (fun m => by
+            rw [C_last_col]; split_ifs with h
+            · have : e' m = e' u_idx := by ext; omega
+              rw [show m = u_idx from e'.injective this, hu_idx]; exact hAuv_eq.symm
+            · rw [hAv0' m (fun heq => h (by rw [heq]; exact h_last))])
+    · by_cases h_first : (e' u_idx).val = 0
+      · -- Endpoint at first vertex, weight 2 → B or C
+        -- Compose e' with path reversal to move u to last position
+        let e'' := e'.trans (finRev (n+1))
+        have hr_last : (e'' u_idx).val = n + 1 := by
+          show ((finRev (n+1)) (e' u_idx)).val = n + 1
+          simp only [finRev_val]; omega
+        have hsub'' : ∀ i j : Fin (n+2),
+            CartanMatrix.A (n+2) (e'' i) (e'' j) = A (v.succAbove i) (v.succAbove j) := by
+          intro i j
+          show CartanMatrix.A (n+2) ((finRev (n+1)) (e' i)) ((finRev (n+1)) (e' j)) = _
+          rw [A_finRev_eq]; exact he' i j
+        have havu_ge : -2 ≤ A v u := by
+          have := le_mul_of_one_le_right (by omega : 0 ≤ -A v u) (by omega : 1 ≤ -A u v)
+          nlinarith [neg_mul_neg (A v u) (A u v)]
+        by_cases hvu1 : A v u = -1
+        · -- A(v,u) = -1, A(u,v) = -2 → B_{n+3}
+          have hAuv_eq : A u v = -2 := by nlinarith
+          refine ⟨DynkinType.B (n+3) (by omega), ?_⟩
+          simp only [DynkinType.cartanMatrix]
+          exact extend_at_last hGCM v e'' (CartanMatrix.B (n+3))
+            (by simp [CartanMatrix.B])
+            (fun i j => by rw [B_castSucc_eq_A]; exact (hsub'' i j))
+            (fun m => by
+              rw [B_last_row]; split_ifs with h
+              · have : e'' m = e'' u_idx := by ext; omega
+                rw [show m = u_idx from e''.injective this, hu_idx]; exact hvu1.symm
+              · rw [hAv0 m (fun heq => h (by rw [heq]; exact hr_last))])
+            (fun m => by
+              rw [B_last_col]; split_ifs with h
+              · have : e'' m = e'' u_idx := by ext; omega
+                rw [show m = u_idx from e''.injective this, hu_idx]; exact hAuv_eq.symm
+              · rw [hAv0' m (fun heq => h (by rw [heq]; exact hr_last))])
+        · -- A(v,u) = -2, A(u,v) = -1 → C_{n+3}
+          have hAvu_eq : A v u = -2 := by omega
+          have hAuv_eq : A u v = -1 := by nlinarith
+          refine ⟨DynkinType.C (n+3) (by omega), ?_⟩
+          simp only [DynkinType.cartanMatrix]
+          exact extend_at_last hGCM v e'' (CartanMatrix.C (n+3))
+            (by simp [CartanMatrix.C])
+            (fun i j => by rw [C_castSucc_eq_A]; exact (hsub'' i j))
+            (fun m => by
+              rw [C_last_row]; split_ifs with h
+              · have : e'' m = e'' u_idx := by ext; omega
+                rw [show m = u_idx from e''.injective this, hu_idx]; exact hAvu_eq.symm
+              · rw [hAv0 m (fun heq => h (by rw [heq]; exact hr_last))])
+            (fun m => by
+              rw [C_last_col]; split_ifs with h
+              · have : e'' m = e'' u_idx := by ext; omega
+                rw [show m = u_idx from e''.injective this, hu_idx]; exact hAuv_eq.symm
+              · rw [hAv0' m (fun heq => h (by rw [heq]; exact hr_last))])
+      · -- Interior attachment, weight 2 → contradiction
+        -- u maps to interior of A_{n+2}: 1 ≤ p.val < n+1
+        exfalso
+        have hp_low : 1 ≤ (e' u_idx).val := by omega
+        have hp_high : (e' u_idx).val < n + 1 := by omega
+        -- Two A-type neighbors of u in the submatrix
+        let left_pos : Fin (n+2) := ⟨(e' u_idx).val - 1, by omega⟩
+        let right_pos : Fin (n+2) := ⟨(e' u_idx).val + 1, by omega⟩
+        let idx1 := e'.symm left_pos
+        let idx2 := e'.symm right_pos
+        let w1 := v.succAbove idx1
+        let w2 := v.succAbove idx2
+        -- Distinctness
+        have h_lr_ne : left_pos ≠ right_pos := by
+          intro h; have := congr_arg Fin.val h; dsimp [left_pos, right_pos] at this; omega
+        have h_u_ne_l : e' u_idx ≠ left_pos := by
+          intro h; have := congr_arg Fin.val h; dsimp [left_pos] at this; omega
+        have h_u_ne_r : e' u_idx ≠ right_pos := by
+          intro h; have := congr_arg Fin.val h; dsimp [right_pos] at this; omega
+        have h_idx1_ne : idx1 ≠ u_idx := by
+          intro h; apply h_u_ne_l; show e' u_idx = left_pos
+          rw [← h]; exact e'.apply_symm_apply left_pos
+        have h_idx2_ne : idx2 ≠ u_idx := by
+          intro h; apply h_u_ne_r; show e' u_idx = right_pos
+          rw [← h]; exact e'.apply_symm_apply right_pos
+        have h_idx12_ne : idx1 ≠ idx2 := by
+          intro h; exact h_lr_ne (e'.symm.injective h)
+        have hw1v : w1 ≠ v := Fin.succAbove_ne v idx1
+        have hw2v : w2 ≠ v := Fin.succAbove_ne v idx2
+        have hw1u : w1 ≠ u := fun h => h_idx1_ne
+          (Fin.succAbove_right_injective (hu_idx ▸ h))
+        have hw2u : w2 ≠ u := fun h => h_idx2_ne
+          (Fin.succAbove_right_injective (hu_idx ▸ h))
+        have hw12 : w1 ≠ w2 := fun h => h_idx12_ne
+          (Fin.succAbove_right_injective h)
+        -- A-type entry facts (use hu_idx to rewrite u = v.succAbove u_idx)
+        have hAuw1 : A u w1 = -1 := by
+          rw [← hu_idx]; show A (v.succAbove u_idx) (v.succAbove idx1) = -1
+          rw [hsub, show e' idx1 = left_pos from e'.apply_symm_apply left_pos]
+          exact A_adj _ _ _ h_u_ne_l (Or.inr (by dsimp [left_pos]; omega))
+        have hAuw2 : A u w2 = -1 := by
+          rw [← hu_idx]; show A (v.succAbove u_idx) (v.succAbove idx2) = -1
+          rw [hsub, show e' idx2 = right_pos from e'.apply_symm_apply right_pos]
+          exact A_adj _ _ _ h_u_ne_r (Or.inl (by dsimp [right_pos]))
+        have hAw1u : A w1 u = -1 := by
+          rw [← hu_idx]; show A (v.succAbove idx1) (v.succAbove u_idx) = -1
+          rw [hsub, show e' idx1 = left_pos from e'.apply_symm_apply left_pos]
+          exact A_adj _ _ _ (Ne.symm h_u_ne_l) (Or.inl (by dsimp [left_pos]; omega))
+        have hAw2u : A w2 u = -1 := by
+          rw [← hu_idx]; show A (v.succAbove idx2) (v.succAbove u_idx) = -1
+          rw [hsub, show e' idx2 = right_pos from e'.apply_symm_apply right_pos]
+          exact A_adj _ _ _ (Ne.symm h_u_ne_r) (Or.inr (by dsimp [right_pos]))
+        have hAw1w2 : A w1 w2 = 0 := by
+          show A (v.succAbove idx1) (v.succAbove idx2) = 0
+          rw [hsub, show e' idx1 = left_pos from e'.apply_symm_apply left_pos,
+            show e' idx2 = right_pos from e'.apply_symm_apply right_pos]
+          exact A_nonadj _ _ _ h_lr_ne (by push_neg; dsimp [left_pos, right_pos]; omega)
+        have hAw2w1 : A w2 w1 = 0 := by
+          show A (v.succAbove idx2) (v.succAbove idx1) = 0
+          rw [hsub, show e' idx2 = right_pos from e'.apply_symm_apply right_pos,
+            show e' idx1 = left_pos from e'.apply_symm_apply left_pos]
+          exact A_nonadj _ _ _ (Ne.symm h_lr_ne) (by push_neg; dsimp [left_pos, right_pos]; omega)
+        have hAvw1 : A v w1 = 0 := by
+          by_contra h; exact hw1u (huniq w1 hw1v h)
+        have hAvw2 : A v w2 = 0 := by
+          by_contra h; exact hw2u (huniq w2 hw2v h)
+        have hAw1v : A w1 v = 0 := (hGCM.zero_iff v w1 hw1v.symm).mp hAvw1
+        have hAw2v : A w2 v = 0 := (hGCM.zero_iff v w2 hw2v.symm).mp hAvw2
+        -- Test vector: x(v) = -A(v,u), x(u) = 2, x(w1) = 1, x(w2) = 1, rest = 0
+        set x : Fin (n+3) → ℚ := fun i =>
+          if i = v then -(↑(A v u : ℤ) : ℚ)
+          else if i = u then 2
+          else if i = w1 then 1
+          else if i = w2 then 1
+          else 0
+        have hx : x ≠ 0 := by
+          intro h; have := congr_fun h u
+          simp only [x, if_neg huv, ↓reduceIte, Pi.zero_apply] at this; norm_num at this
+        have x0 : ∀ k, k ≠ v → k ≠ u → k ≠ w1 → k ≠ w2 → x k = 0 :=
+          fun k h1 h2 h3 h4 => by simp [x, h1, h2, h3, h4]
+        -- The "rest is zero" fact for sum_four
+        have hrest : ∀ (r : Fin (n+3) → ℚ) (m : Fin (n+3)),
+            m ≠ v → m ≠ u → m ≠ w1 → m ≠ w2 → r m * x m = 0 := by
+          intro r m h1 h2 h3 h4; simp [x0 m h1 h2 h3 h4]
+        -- Inner sums all vanish (null vector on 4-vertex submatrix)
+        have inner_v : ∑ j, (↑(A v j) : ℚ) * x j = 0 := by
+          rw [sum_four huv.symm hw1v.symm hw2v.symm hw1u.symm hw2u.symm hw12
+            (fun m => (↑(A v m) : ℚ) * x m)
+            (fun m h1 h2 h3 h4 => hrest (fun j => ↑(A v j)) m h1 h2 h3 h4)]
+          simp only [x, ↓reduceIte, if_neg huv, if_neg hw1v, if_neg hw2v,
+            if_neg hw1u, if_neg hw2u, if_neg hw12, if_neg hw12.symm,
+            hGCM.diag v, hAvw1, hAvw2]; push_cast; ring
+        have inner_u : ∑ j, (↑(A u j) : ℚ) * x j = 0 := by
+          rw [sum_four huv.symm hw1v.symm hw2v.symm hw1u.symm hw2u.symm hw12
+            (fun m => (↑(A u m) : ℚ) * x m)
+            (fun m h1 h2 h3 h4 => hrest (fun j => ↑(A u j)) m h1 h2 h3 h4)]
+          simp only [x, ↓reduceIte, if_neg huv, if_neg hw1v, if_neg hw2v,
+            if_neg hw1u, if_neg hw2u, if_neg hw12.symm,
+            hGCM.diag u, hAuw1, hAuw2]; push_cast
+          have : (↑(A u v) : ℚ) * ↑(A v u) = 2 := by
+            rw [mul_comm]; exact_mod_cast hw2
+          linarith
+        have inner_w1 : ∑ j, (↑(A w1 j) : ℚ) * x j = 0 := by
+          rw [sum_four huv.symm hw1v.symm hw2v.symm hw1u.symm hw2u.symm hw12
+            (fun m => (↑(A w1 m) : ℚ) * x m)
+            (fun m h1 h2 h3 h4 => hrest (fun j => ↑(A w1 j)) m h1 h2 h3 h4)]
+          simp only [x, ↓reduceIte, if_neg hw1v, if_neg hw1u, if_neg hw12,
+            if_neg huv, hGCM.diag w1, hAw1v, hAw1u, hAw1w2]; push_cast; ring
+        have inner_w2 : ∑ j, (↑(A w2 j) : ℚ) * x j = 0 := by
+          rw [sum_four huv.symm hw1v.symm hw2v.symm hw1u.symm hw2u.symm hw12
+            (fun m => (↑(A w2 m) : ℚ) * x m)
+            (fun m h1 h2 h3 h4 => hrest (fun j => ↑(A w2 j)) m h1 h2 h3 h4)]
+          simp only [x, ↓reduceIte, if_neg hw2v, if_neg hw2u, if_neg hw12.symm,
+            if_neg huv, hGCM.diag w2, hAw2v, hAw2u, hAw2w1]; push_cast; ring
+        -- qform = 0: each term is 0 (either x(i)=0 or inner(i)=0)
+        have hq : qform hSym.d A x = 0 := by
+          rw [qform_eq_sum_mul]; apply Finset.sum_eq_zero; intro i _
+          by_cases hiv : i = v; · subst hiv; simp [inner_v]
+          by_cases hiu : i = u; · subst hiu; simp [inner_u]
+          by_cases hiw1 : i = w1; · subst hiw1; simp [inner_w1]
+          by_cases hiw2 : i = w2; · subst hiw2; simp [inner_w2]
+          simp [x0 i hiv hiu hiw1 hiw2]
+        exact absurd hPD (not_posDef_of_nonpos hSym x hx (le_of_eq hq))
+
 /-- Given a sub-matrix matching DynkinType t' and a leaf vertex v,
     determine the full DynkinType of the extended matrix.
     This is the combinatorial heart of the Cartan classification. -/
@@ -2626,7 +3302,10 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
     -- Apply weight3_impossible: w is leaf, u is neighbor, v is third vertex
     exact weight3_impossible hGCM hSym hPD w hleaf_w u (Ne.symm hwu) hAwu
       v (Ne.symm huv) (Ne.symm hwv) hAuv hw3
-  | A k hk => sorry
+  | A k hk =>
+    simp only [DynkinType.cartanMatrix] at hrank ht'
+    subst hrank -- k = n + 2
+    exact a_extension hGCM hSym hPD v u huv hAvu hAuv huniq hcw_le2 ht'
   | B k hk => sorry
   | C k hk => sorry
   | D k hk => sorry
