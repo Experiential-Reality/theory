@@ -341,6 +341,72 @@ theorem f4_no_extension {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
     linarith [mul_nonneg (le_of_lt hd0) (show (0 : ℚ) ≤ (↑mj : ℚ) - 2 by linarith)]
 
 -- ═══════════════════════════════════════════════════════════
+-- Affine subgraph contradictions for A_k interior extension
+-- ═══════════════════════════════════════════════════════════
+
+/-- Generic affine subgraph contradiction: given path vertices g and branch v,
+    with the submatrix matching an affine diagram M, derive ¬IsPosDef. -/
+private theorem affine_subgraph_contradiction {n m : ℕ}
+    {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
+    (hSym : IsSymmetrizable A)
+    (v : Fin (n+3))
+    (g : Fin m → Fin (n+2))
+    (hg_inj : Function.Injective g)
+    (M : Matrix (Fin (m+1)) (Fin (m+1)) ℤ)
+    (hpath : ∀ k l : Fin m,
+      A (v.succAbove (g k)) (v.succAbove (g l)) = M (Fin.castSucc k) (Fin.castSucc l))
+    (hrow : ∀ k : Fin m,
+      A v (v.succAbove (g k)) = M (Fin.last m) (Fin.castSucc k))
+    (hcol : ∀ k : Fin m,
+      A (v.succAbove (g k)) v = M (Fin.castSucc k) (Fin.last m))
+    (hdiag : A v v = M (Fin.last m) (Fin.last m))
+    (nullvec : Fin (m+1) → ℤ) (hnz : nullvec ≠ 0) (hnull : M.mulVec nullvec = 0)
+    : ¬ IsPosDef A hSym := by
+  let emb : Fin (m+1) → Fin (n+3) := fun i =>
+    if h : i.val < m then v.succAbove (g ⟨i.val, h⟩) else v
+  have emb_inj : Function.Injective emb := by
+    intro a b hab
+    simp only [emb] at hab
+    by_cases ha : a.val < m <;> by_cases hb : b.val < m
+    · rw [dif_pos ha, dif_pos hb] at hab
+      have h1 := hg_inj (Fin.succAbove_right_injective hab)
+      have h2 : a.val = b.val := by rw [Fin.ext_iff] at h1; exact h1
+      exact Fin.ext h2
+    · rw [dif_pos ha, dif_neg hb] at hab
+      exact absurd hab (Fin.succAbove_ne v _)
+    · rw [dif_neg ha, dif_pos hb] at hab
+      exact absurd hab.symm (Fin.succAbove_ne v _)
+    · have := Nat.le_of_not_lt ha; have := Nat.le_of_not_lt hb
+      exact Fin.ext (by have := a.isLt; have := b.isLt; omega)
+  apply not_posDef_of_submatrix_int_null hSym ⟨emb, emb_inj⟩ M
+  · intro i j
+    simp only [Function.Embedding.coeFn_mk, emb]
+    by_cases hi : i.val < m <;> by_cases hj : j.val < m
+    · rw [dif_pos hi, dif_pos hj]
+      rw [hpath]
+      congr 1 <;> exact Fin.ext rfl
+    · rw [dif_pos hi, dif_neg hj]
+      have : j = Fin.last m := by
+        apply Fin.ext; simp only [Fin.val_last]
+        have := Nat.le_of_not_lt hj; have := j.isLt; omega
+      subst this; rw [hcol]; congr 1
+    · rw [dif_neg hi, dif_pos hj]
+      have : i = Fin.last m := by
+        apply Fin.ext; simp only [Fin.val_last]
+        have := Nat.le_of_not_lt hi; have := i.isLt; omega
+      subst this; rw [hrow]; congr 1
+    · rw [dif_neg hi, dif_neg hj]
+      have : i = Fin.last m := by
+        apply Fin.ext; simp only [Fin.val_last]
+        have := Nat.le_of_not_lt hi; have := i.isLt; omega
+      have : j = Fin.last m := by
+        apply Fin.ext; simp only [Fin.val_last]
+        have := Nat.le_of_not_lt hj; have := j.isLt; omega
+      subst_vars; exact hdiag
+  · exact hnz
+  · exact hnull
+
+-- ═══════════════════════════════════════════════════════════
 -- A_k extension helper
 -- ═══════════════════════════════════════════════════════════
 
@@ -410,7 +476,203 @@ theorem a_extension {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
               rw [show m = u_idx from e'.injective this, hu_idx, hAuv_eq]
             · rw [hAv0' m (fun heq => h (by rw [heq]; exact h_first))])
       · -- Interior attachment, weight 1 → D or E type
-        sorry
+        have hp_ge : 1 ≤ (e' u_idx).val := by omega
+        have hp_le : (e' u_idx).val ≤ n := by
+          have := (e' u_idx).isLt; omega
+        by_cases hp1 : (e' u_idx).val = 1
+        · -- p = 1 → D_{n+3} via finRev
+          refine ⟨DynkinType.D (n+3) (by omega), ?_⟩
+          simp only [DynkinType.cartanMatrix]
+          exact extend_at_last hGCM v (e'.trans (finRev (n+1))) (CartanMatrix.D (n+3))
+            (by simp [CartanMatrix.D])
+            (fun i j => by
+              simp only [Equiv.trans_apply]
+              rw [D_castSucc_eq_A (n+2) (by omega), A_finRev_eq]
+              exact (hsub i j).symm)
+            (fun m => by
+              simp only [Equiv.trans_apply]
+              rw [D_last_row (n+2) (by omega), finRev_val]
+              split_ifs with h
+              · have : e' m = e' u_idx := by ext; have := (e' m).isLt; omega
+                rw [show m = u_idx from e'.injective this, hu_idx, hAvu_eq]
+              · rw [hAv0 m (fun heq => h (by subst heq; rw [hp1]; omega))])
+            (fun m => by
+              simp only [Equiv.trans_apply]
+              rw [D_last_col (n+2) (by omega), finRev_val]
+              split_ifs with h
+              · have : e' m = e' u_idx := by ext; have := (e' m).isLt; omega
+                rw [show m = u_idx from e'.injective this, hu_idx, hAuv_eq]
+              · rw [hAv0' m (fun heq => h (by subst heq; rw [hp1]; omega))])
+        · by_cases hpn : (e' u_idx).val = n
+          · -- p = n → D_{n+3}
+            refine ⟨DynkinType.D (n+3) (by omega), ?_⟩
+            simp only [DynkinType.cartanMatrix]
+            exact extend_at_last hGCM v e' (CartanMatrix.D (n+3))
+              (by simp [CartanMatrix.D])
+              (fun i j => by
+                rw [D_castSucc_eq_A (n+2) (by omega)]; exact (hsub i j).symm)
+              (fun m => by
+                rw [D_last_row (n+2) (by omega)]
+                split_ifs with h
+                · have : e' m = e' u_idx := by ext; omega
+                  rw [show m = u_idx from e'.injective this, hu_idx, hAvu_eq]
+                · rw [hAv0 m (fun heq => h (by subst heq; omega))])
+              (fun m => by
+                rw [D_last_col (n+2) (by omega)]
+                split_ifs with h
+                · have : e' m = e' u_idx := by ext; omega
+                  rw [show m = u_idx from e'.injective this, hu_idx, hAuv_eq]
+                · rw [hAv0' m (fun heq => h (by subst heq; omega))])
+          · -- 2 ≤ p ≤ n-1: E-type or contradiction
+            have hp2 : 2 ≤ (e' u_idx).val := by omega
+            have hpn1 : (e' u_idx).val + 1 ≤ n := by omega
+            -- Helper for E-type at position 2 (shared by p=2 and p=n-1 via finRev)
+            suffices hE : ∀ e'' : Fin (n+2) ≃ Fin (n+2),
+                (∀ i j, A (v.succAbove i) (v.succAbove j) =
+                  CartanMatrix.A (n+2) (e'' i) (e'' j)) →
+                (e'' u_idx).val = 2 →
+                ∃ t : DynkinType, CartanEquiv A t.cartanMatrix.2 by
+              by_cases hp2e : (e' u_idx).val = 2
+              · exact hE e' hsub hp2e
+              · by_cases hpn1e : (e' u_idx).val = n - 1
+                · -- p = n-1: compose with finRev to get position 2
+                  have hn3 : 3 ≤ n := by omega
+                  apply hE (e'.trans (finRev (n+1)))
+                  · intro i j
+                    simp only [Equiv.trans_apply]
+                    rw [A_finRev_eq]; exact hsub i j
+                  · simp only [Equiv.trans_apply, finRev_val]
+                    omega
+                · -- 3 ≤ p ≤ n-2: Ẽ₇ subgraph → contradiction
+                  exfalso
+                  let c := (e' u_idx).val - 3
+                  have hcp : 3 + c = (e' u_idx).val := by simp only [c]; omega
+                  let g : Fin 7 → Fin (n+2) := fun k => e'.symm ⟨k.val + c, by omega⟩
+                  have hg_eq : ∀ k : Fin 7, e' (g k) = ⟨k.val + c, by omega⟩ :=
+                    fun k => e'.apply_symm_apply _
+                  have hg_inj : Function.Injective g := by
+                    intro a b hab
+                    have := congr_arg (fun x => (e' x).val) hab
+                    simp only [hg_eq] at this; exact Fin.ext (by omega)
+                  have hgu : g ⟨3, by omega⟩ = u_idx :=
+                    e'.symm_apply_eq.mpr (Fin.ext hcp)
+                  have hg_ne : ∀ k : Fin 7, k.val ≠ 3 → g k ≠ u_idx := by
+                    intro k hk3 h
+                    have := congr_arg (fun x => (e' x).val) h
+                    simp only [hg_eq] at this; omega
+                  exact absurd hPD (affine_subgraph_contradiction hSym v g hg_inj affineE7
+                    (fun k l => by
+                      rw [hsub]; simp only [hg_eq]
+                      rw [A_shift_submatrix 7 (n+2) c (by omega)]
+                      exact (affineE7_path k l).symm)
+                    (fun k => by
+                      rw [affineE7_row_branch]; by_cases hk3 : k.val = 3
+                      · rw [if_pos hk3]
+                        have : g k = u_idx := by
+                          rw [show k = ⟨3, by omega⟩ from Fin.ext hk3]; exact hgu
+                        rw [this, hu_idx]; exact hAvu_eq
+                      · rw [if_neg hk3]; exact hAv0 _ (hg_ne k hk3))
+                    (fun k => by
+                      rw [affineE7_col_branch]; by_cases hk3 : k.val = 3
+                      · rw [if_pos hk3]
+                        have : g k = u_idx := by
+                          rw [show k = ⟨3, by omega⟩ from Fin.ext hk3]; exact hgu
+                        rw [this, hu_idx]; exact hAuv_eq
+                      · rw [if_neg hk3]; exact hAv0' _ (hg_ne k hk3))
+                    (by rw [hGCM.diag]; decide)
+                    ![1, 2, 3, 4, 3, 2, 1, 2] (by decide) affineE7_null)
+            -- Prove the suffices: E-type from position 2
+            intro e'' hsub'' hp2e
+            by_cases hn3 : n = 3
+            · -- E₆
+              subst hn3
+              refine ⟨DynkinType.E₆, ?_⟩
+              simp only [DynkinType.cartanMatrix]
+              exact extend_at hGCM v e'' CartanMatrix.E₆ 1
+                (by decide)
+                (fun i j => by rw [E6_succAbove_one_eq_A]; exact (hsub'' i j).symm)
+                (fun m => by
+                  rw [E6_at_one_row]; split_ifs with h
+                  · have : e'' m = e'' u_idx := by ext; omega
+                    rw [show m = u_idx from e''.injective this, hu_idx, hAvu_eq]
+                  · rw [hAv0 m (fun heq => h (by subst heq; omega))])
+                (fun m => by
+                  rw [E6_at_one_col]; split_ifs with h
+                  · have : e'' m = e'' u_idx := by ext; omega
+                    rw [show m = u_idx from e''.injective this, hu_idx, hAuv_eq]
+                  · rw [hAv0' m (fun heq => h (by subst heq; omega))])
+            · by_cases hn4 : n = 4
+              · -- E₇
+                subst hn4
+                refine ⟨DynkinType.E₇, ?_⟩
+                simp only [DynkinType.cartanMatrix]
+                exact extend_at hGCM v e'' CartanMatrix.E₇ 1
+                  (by decide)
+                  (fun i j => by rw [E7_succAbove_one_eq_A]; exact (hsub'' i j).symm)
+                  (fun m => by
+                    rw [E7_at_one_row]; split_ifs with h
+                    · have : e'' m = e'' u_idx := by ext; omega
+                      rw [show m = u_idx from e''.injective this, hu_idx, hAvu_eq]
+                    · rw [hAv0 m (fun heq => h (by subst heq; omega))])
+                  (fun m => by
+                    rw [E7_at_one_col]; split_ifs with h
+                    · have : e'' m = e'' u_idx := by ext; omega
+                      rw [show m = u_idx from e''.injective this, hu_idx, hAuv_eq]
+                    · rw [hAv0' m (fun heq => h (by subst heq; omega))])
+              · by_cases hn5 : n = 5
+                · -- E₈
+                  subst hn5
+                  refine ⟨DynkinType.E₈, ?_⟩
+                  simp only [DynkinType.cartanMatrix]
+                  exact extend_at hGCM v e'' CartanMatrix.E₈ 1
+                    (by decide)
+                    (fun i j => by rw [E8_succAbove_one_eq_A]; exact (hsub'' i j).symm)
+                    (fun m => by
+                      rw [E8_at_one_row]; split_ifs with h
+                      · have : e'' m = e'' u_idx := by ext; omega
+                        rw [show m = u_idx from e''.injective this, hu_idx, hAvu_eq]
+                      · rw [hAv0 m (fun heq => h (by subst heq; omega))])
+                    (fun m => by
+                      rw [E8_at_one_col]; split_ifs with h
+                      · have : e'' m = e'' u_idx := by ext; omega
+                        rw [show m = u_idx from e''.injective this, hu_idx, hAuv_eq]
+                      · rw [hAv0' m (fun heq => h (by subst heq; omega))])
+                · -- n ≥ 6: Ẽ₈ subgraph → contradiction
+                  exfalso
+                  let g : Fin 8 → Fin (n+2) := fun k => e''.symm ⟨k.val, by omega⟩
+                  have hg_eq : ∀ k : Fin 8, e'' (g k) = ⟨k.val, by omega⟩ :=
+                    fun k => e''.apply_symm_apply _
+                  have hg_inj : Function.Injective g := by
+                    intro a b hab
+                    have := congr_arg (fun x => (e'' x).val) hab
+                    simp only [hg_eq] at this; exact Fin.ext this
+                  have hgu : g ⟨2, by omega⟩ = u_idx :=
+                    e''.symm_apply_eq.mpr (Fin.ext hp2e.symm)
+                  have hg_ne : ∀ k : Fin 8, k.val ≠ 2 → g k ≠ u_idx := by
+                    intro k hk2 h
+                    have := congr_arg (fun x => (e'' x).val) h
+                    simp only [hg_eq] at this; omega
+                  exact absurd hPD (affine_subgraph_contradiction hSym v g hg_inj affineE8
+                    (fun k l => by
+                      rw [hsub'']; simp only [hg_eq]
+                      exact (A_shift_submatrix 8 (n+2) 0 (by omega) k l).trans
+                        (affineE8_path k l).symm)
+                    (fun k => by
+                      rw [affineE8_row_branch]; by_cases hk2 : k.val = 2
+                      · rw [if_pos hk2]
+                        have : g k = u_idx := by
+                          rw [show k = ⟨2, by omega⟩ from Fin.ext hk2]; exact hgu
+                        rw [this, hu_idx]; exact hAvu_eq
+                      · rw [if_neg hk2]; exact hAv0 _ (hg_ne k hk2))
+                    (fun k => by
+                      rw [affineE8_col_branch]; by_cases hk2 : k.val = 2
+                      · rw [if_pos hk2]
+                        have : g k = u_idx := by
+                          rw [show k = ⟨2, by omega⟩ from Fin.ext hk2]; exact hgu
+                        rw [this, hu_idx]; exact hAuv_eq
+                      · rw [if_neg hk2]; exact hAv0' _ (hg_ne k hk2))
+                    (by rw [hGCM.diag]; decide)
+                    ![2, 4, 6, 5, 4, 3, 2, 1, 3] (by decide) affineE8_null)
   · -- Weight 2
     have hw2 : A v u * A u v = 2 := by omega
     by_cases h_last : (e' u_idx).val = n + 1

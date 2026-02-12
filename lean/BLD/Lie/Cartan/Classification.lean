@@ -12,6 +12,7 @@ namespace BLD.Lie.Cartan
 
 open Matrix Finset
 
+set_option maxHeartbeats 1600000 in
 /-- Given a sub-matrix matching DynkinType t' and a leaf vertex v,
     determine the full DynkinType of the extended matrix.
     This is the combinatorial heart of the Cartan classification. -/
@@ -119,9 +120,129 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
     simp only [DynkinType.cartanMatrix] at hrank ht'
     subst hrank -- k = n + 2
     exact a_extension hGCM hSym hPD v u huv hAvu hAuv huniq hcw_le2 ht'
-  | B k hk => sorry
-  | C k hk => sorry
-  | D k hk => sorry
+  | B k hk =>
+    simp only [DynkinType.cartanMatrix] at hrank ht'
+    subst hrank -- k = n + 2
+    obtain ⟨e', he'⟩ := ht'
+    have hsub : ∀ i j : Fin (n+2), A (v.succAbove i) (v.succAbove j) =
+        CartanMatrix.B (n+2) (e' i) (e' j) := fun i j => (he' i j).symm
+    have hAv0 : ∀ m : Fin (n+2), m ≠ u_idx → A v (v.succAbove m) = 0 := by
+      intro m hm; by_contra h
+      exact hm (Fin.succAbove_right_injective (hu_idx ▸ huniq _ (Fin.succAbove_ne v m) h))
+    have hAv0' : ∀ m : Fin (n+2), m ≠ u_idx → A (v.succAbove m) v = 0 := by
+      intro m hm
+      exact (hGCM.zero_iff v _ (Ne.symm (Fin.succAbove_ne v m))).mp (hAv0 m hm)
+    by_cases h0 : e' u_idx = 0
+    · -- Attachment at vertex 0 (simply-laced end), weight must be 1
+      by_cases hw1 : A v u * A u v = 1
+      · -- Weight 1 → B_{k+1} = B_{n+3}
+        have hAvu_eq : A v u = -1 := by nlinarith
+        have hAuv_eq : A u v = -1 := by nlinarith
+        refine ⟨DynkinType.B (n+3) (by omega), ?_⟩
+        simp only [DynkinType.cartanMatrix]
+        exact extend_at_zero hGCM v e' (CartanMatrix.B (n+3))
+          (by simp [CartanMatrix.B])
+          (fun i j => by rw [B_succ_eq_B]; exact (hsub i j).symm)
+          (fun m => by
+            rw [B_first_row (n+2) (by omega)]
+            split_ifs with h
+            · have : e' m = e' u_idx := (Fin.ext h).trans h0.symm
+              rw [show m = u_idx from e'.injective this, hu_idx, hAvu_eq]
+            · rw [hAv0 m (fun heq => h (show (e' m).val = 0 from
+                heq ▸ (congrArg Fin.val h0)))])
+          (fun m => by
+            rw [B_first_col (n+2) (by omega)]
+            split_ifs with h
+            · have : e' m = e' u_idx := (Fin.ext h).trans h0.symm
+              rw [show m = u_idx from e'.injective this, hu_idx, hAuv_eq]
+            · rw [hAv0' m (fun heq => h (show (e' m).val = 0 from
+                heq ▸ (congrArg Fin.val h0)))])
+      · -- Weight 2 at vertex 0 → contradiction
+        exfalso; sorry
+    · -- Attachment at vertex ≠ 0 → contradiction (all such cases)
+      exfalso; sorry
+  | C k hk =>
+    simp only [DynkinType.cartanMatrix] at hrank ht'
+    subst hrank -- k = n + 2
+    obtain ⟨e', he'⟩ := ht'
+    have hsub : ∀ i j : Fin (n+2), A (v.succAbove i) (v.succAbove j) =
+        CartanMatrix.C (n+2) (e' i) (e' j) := fun i j => (he' i j).symm
+    have hAv0 : ∀ m : Fin (n+2), m ≠ u_idx → A v (v.succAbove m) = 0 := by
+      intro m hm; by_contra h
+      exact hm (Fin.succAbove_right_injective (hu_idx ▸ huniq _ (Fin.succAbove_ne v m) h))
+    have hAv0' : ∀ m : Fin (n+2), m ≠ u_idx → A (v.succAbove m) v = 0 := by
+      intro m hm
+      exact (hGCM.zero_iff v _ (Ne.symm (Fin.succAbove_ne v m))).mp (hAv0 m hm)
+    by_cases h0 : e' u_idx = 0
+    · -- Attachment at vertex 0 (simply-laced end), weight must be 1
+      by_cases hw1 : A v u * A u v = 1
+      · -- Weight 1 → C_{k+1} = C_{n+3}
+        have hAvu_eq : A v u = -1 := by nlinarith
+        have hAuv_eq : A u v = -1 := by nlinarith
+        refine ⟨DynkinType.C (n+3) (by omega), ?_⟩
+        simp only [DynkinType.cartanMatrix]
+        exact extend_at_zero hGCM v e' (CartanMatrix.C (n+3))
+          (by simp [CartanMatrix.C])
+          (fun i j => by rw [C_succ_eq_C]; exact (hsub i j).symm)
+          (fun m => by
+            rw [C_first_row (n+2) (by omega)]
+            split_ifs with h
+            · have : e' m = e' u_idx := (Fin.ext h).trans h0.symm
+              rw [show m = u_idx from e'.injective this, hu_idx, hAvu_eq]
+            · rw [hAv0 m (fun heq => h (show (e' m).val = 0 from
+                heq ▸ (congrArg Fin.val h0)))])
+          (fun m => by
+            rw [C_first_col (n+2) (by omega)]
+            split_ifs with h
+            · have : e' m = e' u_idx := (Fin.ext h).trans h0.symm
+              rw [show m = u_idx from e'.injective this, hu_idx, hAuv_eq]
+            · rw [hAv0' m (fun heq => h (show (e' m).val = 0 from
+                heq ▸ (congrArg Fin.val h0)))])
+      · -- Weight 2 at vertex 0 → contradiction
+        exfalso; sorry
+    · -- Attachment at vertex ≠ 0 → contradiction (all such cases)
+      exfalso; sorry
+  | D k hk =>
+    simp only [DynkinType.cartanMatrix] at hrank ht'
+    subst hrank -- k = n + 2
+    obtain ⟨e', he'⟩ := ht'
+    have hsub : ∀ i j : Fin (n+2), A (v.succAbove i) (v.succAbove j) =
+        CartanMatrix.D (n+2) (e' i) (e' j) := fun i j => (he' i j).symm
+    have hAv0 : ∀ m : Fin (n+2), m ≠ u_idx → A v (v.succAbove m) = 0 := by
+      intro m hm; by_contra h
+      exact hm (Fin.succAbove_right_injective (hu_idx ▸ huniq _ (Fin.succAbove_ne v m) h))
+    have hAv0' : ∀ m : Fin (n+2), m ≠ u_idx → A (v.succAbove m) v = 0 := by
+      intro m hm
+      exact (hGCM.zero_iff v _ (Ne.symm (Fin.succAbove_ne v m))).mp (hAv0 m hm)
+    by_cases h0 : (e' u_idx).val = 0
+    · -- Attachment at vertex 0 (path leaf), weight must be 1
+      by_cases hw1 : A v u * A u v = 1
+      · -- Weight 1 → D_{k+1} = D_{n+3}
+        have hAvu_eq : A v u = -1 := by nlinarith
+        have hAuv_eq : A u v = -1 := by nlinarith
+        refine ⟨DynkinType.D (n+3) (by omega), ?_⟩
+        simp only [DynkinType.cartanMatrix]
+        exact extend_at_zero hGCM v e' (CartanMatrix.D (n+3))
+          (by simp [CartanMatrix.D])
+          (fun i j => by rw [D_succ_eq_D (n+2) (by omega)]; exact (hsub i j).symm)
+          (fun m => by
+            rw [D_first_row (n+2) (by omega)]
+            split_ifs with h
+            · have : e' m = e' u_idx := by
+                ext; rw [show (e' m).val = 0 from h, show (e' u_idx).val = 0 from h0]
+              rw [show m = u_idx from e'.injective this, hu_idx, hAvu_eq]
+            · rw [hAv0 m (fun heq => h (show (e' m).val = 0 from heq ▸ h0))])
+          (fun m => by
+            rw [D_first_col (n+2) (by omega)]
+            split_ifs with h
+            · have : e' m = e' u_idx := by
+                ext; rw [show (e' m).val = 0 from h, show (e' u_idx).val = 0 from h0]
+              rw [show m = u_idx from e'.injective this, hu_idx, hAuv_eq]
+            · rw [hAv0' m (fun heq => h (show (e' m).val = 0 from heq ▸ h0))])
+      · -- Weight 2 at vertex 0 → contradiction
+        exfalso; sorry
+    · -- Attachment at vertex ≠ 0 → further case analysis needed
+      sorry
   | E₆ =>
     simp only [DynkinType.cartanMatrix] at hrank
     change CartanEquiv (deleteVertex A v) CartanMatrix.E₆ at ht'

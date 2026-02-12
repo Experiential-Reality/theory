@@ -107,6 +107,39 @@ theorem B_last_col (k : ℕ) (i : Fin k) :
   have hi := i.isLt
   split_ifs <;> omega
 
+/-- Deleting vertex 0 of B_{k+1} gives B_k. -/
+theorem B_succ_eq_B (k : ℕ) (i j : Fin k) :
+    CartanMatrix.B (k + 1) (Fin.succ i) (Fin.succ j) = CartanMatrix.B k i j := by
+  simp only [CartanMatrix.B, Matrix.of_apply, Fin.succ_inj, Fin.val_succ]
+  have hi := i.isLt; have hj := j.isLt
+  split_ifs <;> omega
+
+/-- B_{k+1} first row: vertex 0 connects only to vertex 1 with weight -1. -/
+theorem B_first_row (k : ℕ) (hk : 2 ≤ k) (j : Fin k) :
+    CartanMatrix.B (k + 1) 0 (Fin.succ j) =
+    if j.val = 0 then -1 else 0 := by
+  have hj := j.isLt
+  simp only [CartanMatrix.B, Matrix.of_apply, Fin.val_zero, Fin.val_succ]
+  rw [if_neg (by simp [Fin.ext_iff])]
+  by_cases hj0 : j.val = 0
+  · rw [if_pos (show 0 + 1 = j.val + 1 by omega),
+        if_neg (show ¬(j.val + 1 = k + 1 - 1) by omega),
+        if_pos hj0]
+  · rw [if_neg (show ¬(0 + 1 = j.val + 1) by omega),
+        if_neg (show ¬(j.val + 1 + 1 = 0) by omega),
+        if_neg hj0]
+
+/-- B_{k+1} first column: vertex 1 connects to vertex 0 with weight -1. -/
+theorem B_first_col (k : ℕ) (hk : 2 ≤ k) (j : Fin k) :
+    CartanMatrix.B (k + 1) (Fin.succ j) 0 =
+    if j.val = 0 then -1 else 0 := by
+  have hj := j.isLt
+  simp only [CartanMatrix.B, Matrix.of_apply, Fin.val_zero, Fin.val_succ]
+  rw [if_neg (by simp [Fin.ext_iff]), if_neg (show ¬(j.val + 1 + 1 = 0) by omega)]
+  by_cases hj0 : j.val = 0
+  · rw [if_pos (show 0 + 1 = j.val + 1 by omega), if_pos hj0]
+  · rw [if_neg (show ¬(0 + 1 = j.val + 1) by omega), if_neg hj0]
+
 /-- Deleting the last vertex of C_{k+1} gives A_k. -/
 theorem C_castSucc_eq_A (k : ℕ) (i j : Fin k) :
     CartanMatrix.C (k + 1) (Fin.castSucc i) (Fin.castSucc j) = CartanMatrix.A k i j := by
@@ -129,6 +162,39 @@ theorem C_last_col (k : ℕ) (i : Fin k) :
   simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, Fin.val_last, Fin.val_castSucc]
   have hi := i.isLt
   split_ifs <;> omega
+
+/-- Deleting vertex 0 of C_{k+1} gives C_k. -/
+theorem C_succ_eq_C (k : ℕ) (i j : Fin k) :
+    CartanMatrix.C (k + 1) (Fin.succ i) (Fin.succ j) = CartanMatrix.C k i j := by
+  simp only [CartanMatrix.C, Matrix.of_apply, Fin.succ_inj, Fin.val_succ]
+  have hi := i.isLt; have hj := j.isLt
+  split_ifs <;> omega
+
+/-- C_{k+1} first row: vertex 0 connects only to vertex 1 with weight -1. -/
+theorem C_first_row (k : ℕ) (hk : 2 ≤ k) (j : Fin k) :
+    CartanMatrix.C (k + 1) 0 (Fin.succ j) =
+    if j.val = 0 then -1 else 0 := by
+  have hj := j.isLt
+  simp only [CartanMatrix.C, Matrix.of_apply, Fin.val_zero, Fin.val_succ]
+  rw [if_neg (by simp [Fin.ext_iff])]
+  by_cases hj0 : j.val = 0
+  · rw [if_pos (show 0 + 1 = j.val + 1 by omega), if_pos hj0]
+  · rw [if_neg (show ¬(0 + 1 = j.val + 1) by omega),
+        if_neg (show ¬(j.val + 1 + 1 = 0) by omega),
+        if_neg hj0]
+
+/-- C_{k+1} first column: vertex 1 connects to vertex 0 with weight -1. -/
+theorem C_first_col (k : ℕ) (hk : 2 ≤ k) (j : Fin k) :
+    CartanMatrix.C (k + 1) (Fin.succ j) 0 =
+    if j.val = 0 then -1 else 0 := by
+  have hj := j.isLt
+  simp only [CartanMatrix.C, Matrix.of_apply, Fin.val_zero, Fin.val_succ]
+  rw [if_neg (by simp [Fin.ext_iff]), if_neg (show ¬(j.val + 1 + 1 = 0) by omega)]
+  by_cases hj0 : j.val = 0
+  · rw [if_pos (show 0 + 1 = j.val + 1 by omega),
+        if_neg (show ¬(j.val + 1 = k + 1 - 1) by omega),
+        if_pos hj0]
+  · rw [if_neg (show ¬(0 + 1 = j.val + 1) by omega), if_neg hj0]
 
 /-- Deleting the last vertex of D_{k+1} gives A_k when k ≥ 3. -/
 theorem D_castSucc_eq_A (k : ℕ) (hk : 3 ≤ k) (i j : Fin k) :
@@ -154,6 +220,39 @@ theorem D_last_col (k : ℕ) (hk : 3 ≤ k) (i : Fin k) :
     have := congr_fun (congr_fun (CartanMatrix.D_isSymm (n := k + 1)) (Fin.last k)) (Fin.castSucc i)
     rwa [Matrix.transpose_apply] at this]
   exact D_last_row k hk i
+
+/-- Deleting vertex 0 of D_{k+1} gives D_k when k ≥ 4. -/
+theorem D_succ_eq_D (k : ℕ) (hk : 4 ≤ k) (i j : Fin k) :
+    CartanMatrix.D (k + 1) (Fin.succ i) (Fin.succ j) = CartanMatrix.D k i j := by
+  simp only [CartanMatrix.D, Matrix.of_apply, Fin.succ_inj, Fin.val_succ]
+  have hi := i.isLt; have hj := j.isLt
+  split_ifs <;> omega
+
+/-- D_{k+1} first row: vertex 0 connects only to vertex 1 when k ≥ 4. -/
+theorem D_first_row (k : ℕ) (hk : 4 ≤ k) (j : Fin k) :
+    CartanMatrix.D (k + 1) 0 (Fin.succ j) =
+    if j.val = 0 then -1 else 0 := by
+  have hj := j.isLt
+  simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff, Fin.val_zero, Fin.val_succ]
+  rw [if_neg (by omega), if_neg (by omega)]
+  by_cases hj0 : j.val = 0
+  · rw [if_pos ⟨by omega, by omega⟩,
+        show (if j.val = 0 then (-1 : ℤ) else 0) = -1 from if_pos hj0]
+  · rw [if_neg (by push_neg; omega),
+        if_neg (by push_neg; omega),
+        if_neg (by push_neg; omega),
+        if_neg (fun ⟨_, h⟩ => by cases h with | inl h => omega | inr h => omega),
+        show (if j.val = 0 then (-1 : ℤ) else 0) = 0 from if_neg hj0]
+
+/-- D_{k+1} first column: vertex 0 connects only to vertex 1 when k ≥ 4. -/
+theorem D_first_col (k : ℕ) (hk : 4 ≤ k) (j : Fin k) :
+    CartanMatrix.D (k + 1) (Fin.succ j) 0 =
+    if j.val = 0 then -1 else 0 := by
+  rw [show CartanMatrix.D (k+1) (Fin.succ j) 0 =
+      CartanMatrix.D (k+1) 0 (Fin.succ j) from by
+    have := congr_fun (congr_fun (CartanMatrix.D_isSymm (n := k + 1)) 0) (Fin.succ j)
+    rwa [Matrix.transpose_apply] at this]
+  exact D_first_row k hk j
 
 -- ═══════════════════════════════════════════════════════════
 -- Path reversal for A_n
