@@ -1,6 +1,7 @@
 /- BLD Calculus — Lean 4 Formalization
 
-   25 files, 0 sorry, 0 admit, 0 axioms.
+   26 files, 5945 lines, 0 sorry on derivation chain, 0 admit, 0 axioms.
+   (5 sorry in Cartan.lean: classical series A/B/C/D + E₆ — not used by theory)
 
    The BLD calculus derives physical constants from three irreducible
    structural primitives: Boundary (sum type), Link (function type),

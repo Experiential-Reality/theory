@@ -1,6 +1,8 @@
 # BLD Theory: Lean 4 Formalization
 
-**25 files. 4299 lines. 0 sorry. 0 admit. 0 axioms.**
+**26 files. 5945 lines. 0 sorry on derivation chain. 0 admit. 0 axioms.**
+
+*5 sorry remain in Cartan classification expansion (classical series A/B/C/D + E₆) — cases not used by the theory. All BLD-critical exceptionals (G₂, E₇, E₈, F₄) are fully proved.*
 
 The BLD calculus formalized in [Lean 4](https://lean-lang.org/) with [Mathlib](https://leanprover-community.github.io/mathlib4_docs/). Three structural primitives (Boundary, Link, Dimension) derive physical constants and predict experimental quantities.
 
@@ -14,7 +16,7 @@ cd lean && lake build    # 2058 jobs, 0 errors, 0 warnings
 
 Every theorem is checked by the Lean kernel. The `norm_num` tactic performs exact rational arithmetic: `(K^2 : Q) / S = 4/13` is verified by computing `2^2 / 13 = 4/13`. No floating-point, no rounding.
 
-- **`sorry`** (accept without proof): 0
+- **`sorry`** (accept without proof): 0 on derivation chain (5 in Cartan expansion — see below)
 - **`axiom`** (assume without proof): 0
 
 ---
@@ -115,7 +117,7 @@ None. Every theorem is proved from definitions.
 
 Previously the formalization had 2 axioms, both eliminated:
 - `hurwitz_theorem` — replaced by concrete octonion construction in `Octonion.lean` with `normSq` multiplicativity proved via Degen's eight-square identity.
-- `cartan_classification_complete` — was vacuous (conclusion trivially satisfiable). Deleted. The Cartan classification infrastructure is now in `Lie/Cartan.lean` (777 lines): DynkinType inductive, IsGCM/IsSymmetrizable/IsPosDef structures, forbidden subgraph analysis (affine D̃₄/Ẽ₆/Ẽ₇/Ẽ₈), Coxeter weight bound, acyclicity, and D₄ uniqueness. The full enumeration is `proof_wanted`; all structural lemmas are proved.
+- `cartan_classification_complete` — was vacuous (conclusion trivially satisfiable). Deleted. The Cartan classification is now in `Lie/Cartan.lean` (2362 lines): DynkinType inductive, IsGCM/IsSymmetrizable/IsPosDef structures, forbidden subgraph analysis (affine D̃₄/Ẽ₆/Ẽ₇/Ẽ₈), Coxeter weight bound, acyclicity, D₄ uniqueness, and full proofs for exceptional types G₂, F₄, E₇, E₈. Five cases remain (A, B, C, D, E₆) — classical infinite families requiring rank induction, plus one exceptional not used by BLD.
 
 ---
 
@@ -154,7 +156,7 @@ Previously the formalization had 2 axioms, both eliminated:
 | Lie/Classical.lean | 165 | so(8) defined, finrank = 28 (explicit 28-element basis) |
 | Lie/Exceptional.lean | 84 | E7 via Serre construction, det=2, simply-laced (from Mathlib) |
 | Lie/Killing.lean | 65 | K=2 from Killing form, K^2 = n |
-| Lie/Cartan.lean | 777 | DynkinType, IsGCM, forbidden subgraphs, Coxeter weight, D₄ uniqueness |
+| Lie/Cartan.lean | 2362 | DynkinType, IsGCM, forbidden subgraphs, Coxeter weight, D₄ uniqueness, G₂/F₄/E₇/E₈ proved |
 | Lie/Completeness.lean | 174 | BLD completeness: so(8) ↔ BLD correspondence, Mathlib bridge |
 
 ### Layer 4: Physics and Biology
