@@ -60,6 +60,26 @@ theorem sum_four {n : ℕ} {i j k l : Fin n}
     simp only [Finset.mem_insert, Finset.mem_singleton]; push_neg; exact ⟨hjk, hjl⟩)]
   rw [Finset.sum_pair hkl]; ring
 
+/-- Helper: a sum over Fin n with only 5 nonzero terms. -/
+theorem sum_five {n : ℕ} {a b c d e : Fin n}
+    (hab : a ≠ b) (hac : a ≠ c) (had : a ≠ d) (hae : a ≠ e)
+    (hbc : b ≠ c) (hbd : b ≠ d) (hbe : b ≠ e)
+    (hcd : c ≠ d) (hce : c ≠ e)
+    (hde : d ≠ e)
+    (f : Fin n → ℚ) (hf : ∀ m, m ≠ a → m ≠ b → m ≠ c → m ≠ d → m ≠ e → f m = 0) :
+    ∑ m, f m = f a + f b + f c + f d + f e := by
+  rw [show ∑ m, f m = ∑ m ∈ ({a, b, c, d, e} : Finset (Fin n)), f m from by
+    symm; apply Finset.sum_subset (Finset.subset_univ _)
+    intro m _ hm; simp only [Finset.mem_insert, Finset.mem_singleton] at hm
+    push_neg at hm; exact hf m hm.1 hm.2.1 hm.2.2.1 hm.2.2.2.1 hm.2.2.2.2]
+  rw [Finset.sum_insert (show a ∉ ({b, c, d, e} : Finset _) by
+    simp only [Finset.mem_insert, Finset.mem_singleton]; push_neg; exact ⟨hab, hac, had, hae⟩)]
+  rw [Finset.sum_insert (show b ∉ ({c, d, e} : Finset _) by
+    simp only [Finset.mem_insert, Finset.mem_singleton]; push_neg; exact ⟨hbc, hbd, hbe⟩)]
+  rw [Finset.sum_insert (show c ∉ ({d, e} : Finset _) by
+    simp only [Finset.mem_insert, Finset.mem_singleton]; push_neg; exact ⟨hcd, hce⟩)]
+  rw [Finset.sum_pair hde]; ring
+
 /-- In a positive definite GCM, A(i,j) * A(j,i) < 4 (Coxeter weight ≤ 3).
     Proof: the test vector v(i) = 1, v(j) = -A(j,i)/2 gives
     qform = d_i · (4 - A(i,j)·A(j,i)) / 2, which is ≤ 0 when the product ≥ 4. -/

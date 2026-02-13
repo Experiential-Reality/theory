@@ -647,6 +647,13 @@ theorem B_shift (k c : ℕ) (hc : c + 2 ≤ k) (i j : Fin (k - c)) :
   simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_mk]
   split_ifs <;> omega
 
+/-- A sub-path of C_k starting at offset c gives C_m where m = k - c. -/
+theorem C_shift (k c : ℕ) (hc : c + 2 ≤ k) (i j : Fin (k - c)) :
+    CartanMatrix.C k ⟨i.val + c, by omega⟩ ⟨j.val + c, by omega⟩ =
+    CartanMatrix.C (k - c) i j := by
+  simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, Fin.val_mk]
+  split_ifs <;> omega
+
 /-- Column 0 of B_m: B_m(i, 0) = 2 if i=0, -1 if i=1, 0 otherwise. -/
 theorem B_col_zero (m : ℕ) (hm : 2 ≤ m) (i : Fin m) :
     CartanMatrix.B m i ⟨0, by omega⟩ = if i.val = 0 then 2 else if i.val = 1 then -1 else 0 := by
@@ -680,5 +687,27 @@ theorem B_mulVec_nullsub (m : ℕ) (hm : 3 ≤ m) (i : Fin m) :
     rw [show (⟨0, by omega⟩ : Fin m).val = 0 from rfl, if_pos rfl]
   rw [hcol, B_col_zero m (by omega)]
   split_ifs <;> omega
+
+-- ═══════════════════════════════════════════════════════════
+-- Sum reindexing helper
+-- ═══════════════════════════════════════════════════════════
+
+/-- Shifting a sum: terms below threshold p are zero, terms at or above are reindexed. -/
+theorem sum_shift {n p : ℕ} (hp : p ≤ n) (f : Fin (n - p) → ℚ) :
+    ∑ q : Fin n, (if h : p ≤ q.val then f ⟨q.val - p, by omega⟩ else (0 : ℚ)) =
+    ∑ j : Fin (n - p), f j := by
+  have hn : p + (n - p) = n := Nat.add_sub_cancel' hp
+  trans ∑ q : Fin (p + (n - p)),
+      (if h : p ≤ q.val then f ⟨q.val - p, by omega⟩ else (0 : ℚ))
+  · exact (Fintype.sum_equiv (finCongr hn) _ _ (fun x => by simp [finCongr])).symm
+  rw [Fin.sum_univ_add]
+  have hleft : ∑ i : Fin p, (if h : p ≤ (Fin.castAdd (n - p) i).val then
+      f ⟨(Fin.castAdd (n - p) i).val - p, by omega⟩ else (0 : ℚ)) = 0 := by
+    apply Finset.sum_eq_zero; intro i _
+    rw [dif_neg (by simp [Fin.val_castAdd])]
+  rw [hleft, zero_add]
+  congr 1; ext j
+  rw [dif_pos (by simp [Fin.val_natAdd])]
+  congr 1; ext; simp [Fin.val_natAdd]
 
 end BLD.Lie.Cartan
