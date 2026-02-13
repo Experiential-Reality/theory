@@ -1199,11 +1199,87 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
             push_neg at hn2
             rcases Nat.eq_zero_or_pos n with rfl | hn_pos
             · -- n = 0, k = 2 → C₂ + leaf at vertex 1 = B₃
-              sorry
+              refine ⟨DynkinType.B 3 (by omega), ?_⟩
+              simp only [DynkinType.cartanMatrix]
+              have he'u_val : (e' u_idx).val = 1 := by omega
+              have swap_zero_iff : ∀ x : Fin 2,
+                  (Equiv.swap (0 : Fin 2) 1 x).val = 0 ↔ x.val = 1 := by decide
+              exact extend_at_zero hGCM v (e'.trans (Equiv.swap (0 : Fin 2) 1))
+                (CartanMatrix.B 3)
+                (by decide)
+                (fun i j => by
+                  simp only [Equiv.trans_apply, B_succ_eq_B]
+                  have key : ∀ a b : Fin 2,
+                      CartanMatrix.B 2 (Equiv.swap (0 : Fin 2) 1 a)
+                        (Equiv.swap (0 : Fin 2) 1 b) =
+                      CartanMatrix.C 2 a b := by decide
+                  rw [key]; exact (hsub i j).symm)
+                (fun m => by
+                  simp only [Equiv.trans_apply, B_first_row 2 (by omega)]
+                  split_ifs with h
+                  · have hm_eq : m = u_idx := by
+                      apply e'.injective; ext
+                      exact ((swap_zero_iff _).mp h).trans he'u_val.symm
+                    rw [hm_eq, hu_idx, hAvu_eq]
+                  · have hm_ne : m ≠ u_idx := by
+                      intro heq; subst heq
+                      exact h ((swap_zero_iff _).mpr he'u_val)
+                    rw [hAv0 m hm_ne])
+                (fun m => by
+                  simp only [Equiv.trans_apply, B_first_col 2 (by omega)]
+                  split_ifs with h
+                  · have hm_eq : m = u_idx := by
+                      apply e'.injective; ext
+                      exact ((swap_zero_iff _).mp h).trans he'u_val.symm
+                    rw [hm_eq, hu_idx, hAuv_eq]
+                  · have hm_ne : m ≠ u_idx := by
+                      intro heq; subst heq
+                      exact h ((swap_zero_iff _).mpr he'u_val)
+                    rw [hAv0' m hm_ne])
             · -- n = 1, k = 3 → C₃ + leaf at vertex 2 = F₄
               have hn1 : n = 1 := by omega
               subst hn1
-              sorry
+              refine ⟨DynkinType.F₄, ?_⟩
+              simp only [DynkinType.cartanMatrix]
+              have he'u_val : (e' u_idx).val = 2 := by omega
+              have swap_zero_iff : ∀ x : Fin 3,
+                  (Equiv.swap (0 : Fin 3) 2 x).val = 0 ↔ x.val = 2 := by decide
+              exact extend_at_zero hGCM v (e'.trans (Equiv.swap (0 : Fin 3) 2))
+                CartanMatrix.F₄
+                (by decide)
+                (fun i j => by
+                  simp only [Equiv.trans_apply]
+                  have key : ∀ a b : Fin 3,
+                      CartanMatrix.F₄ (Fin.succ (Equiv.swap (0 : Fin 3) 2 a))
+                        (Fin.succ (Equiv.swap (0 : Fin 3) 2 b)) =
+                      CartanMatrix.C 3 a b := by decide
+                  rw [key]; exact (hsub i j).symm)
+                (fun m => by
+                  simp only [Equiv.trans_apply]
+                  have hF_row : ∀ j : Fin 3,
+                      CartanMatrix.F₄ 0 (Fin.succ (Equiv.swap (0 : Fin 3) 2 j)) =
+                      if j.val = 2 then -1 else 0 := by decide
+                  rw [hF_row]
+                  split_ifs with h
+                  · have hm_eq : m = u_idx :=
+                      e'.injective (Fin.ext (h.trans he'u_val.symm))
+                    rw [hm_eq, hu_idx, hAvu_eq]
+                  · have hm_ne : m ≠ u_idx := by
+                      intro heq; subst heq; exact h he'u_val
+                    rw [hAv0 m hm_ne])
+                (fun m => by
+                  simp only [Equiv.trans_apply]
+                  have hF_col : ∀ j : Fin 3,
+                      CartanMatrix.F₄ (Fin.succ (Equiv.swap (0 : Fin 3) 2 j)) 0 =
+                      if j.val = 2 then -1 else 0 := by decide
+                  rw [hF_col]
+                  split_ifs with h
+                  · have hm_eq : m = u_idx :=
+                      e'.injective (Fin.ext (h.trans he'u_val.symm))
+                    rw [hm_eq, hu_idx, hAuv_eq]
+                  · have hm_ne : m ≠ u_idx := by
+                      intro heq; subst heq; exact h he'u_val
+                    rw [hAv0' m hm_ne])
         · -- 1 ≤ p ≤ k-2 (interior) → contradiction via subgraph null vector
           exfalso
           push_neg at hpk1
