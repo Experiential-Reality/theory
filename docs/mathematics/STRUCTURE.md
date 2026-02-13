@@ -35,6 +35,7 @@ Layer 0: Axioms
 Layer 1: Core Derivations
          ├── Octonion necessity (closure requires 𝕆)
          ├── Killing form K=2 (bidirectional observation)
+         ├── Equation of motion (geodesics on SO(8), forces from curvature)
          ├── Integer machine (primordial structure is discrete)
          └── Two-reference principle (machine + structure → measurement)
 
@@ -178,6 +179,14 @@ Transcendentals (2πe) emerge from continuous observation of discrete structure.
                   │                               │
                   ▼                               │
         ┌───────────────────┐                     │
+        │ equation-of-      │◀── DYNAMICS          │
+        │ motion (derivs/)  │    (geodesics +      │
+        │ • free EoM        │     curvature →      │
+        │ • forces = K/X    │     forces)          │
+        └─────────┬─────────┘                     │
+                  │                               │
+                  ▼                               │
+        ┌───────────────────┐                     │
         │ observer-correct  │◀────────────────────┘
         │ (cosmology/)      │◀── TWO-REFERENCE PRINCIPLE
         └─────────┬─────────┘
@@ -208,6 +217,7 @@ These files are referenced by many others — understand them first:
 | `cosmology/observer-correction.md` | Two-reference framework | ALL predictions use this |
 | `lie-theory/lie-correspondence.md` | BLD = Lie equivalence | Physics connection |
 | `foundations/derivations/octonion-necessity.md` | Why 𝕆, n=4, B=56, 3 gen | Everything follows |
+| `foundations/derivations/equation-of-motion.md` | Geodesics + curvature → forces | Dynamics framework |
 | `cosmology/genesis-function.md` | traverse(-B,B) = existence | Why anything |
 
 ---
@@ -276,7 +286,23 @@ detection-structure (T ∩ S) → observer-correction → reynolds-derivation
                                         She-Leveque ζ_p = p/(n-1)² + K[1-(K/(n-1))^(p/(n-1))] (<0.5%)
 ```
 
-### 6. Neutrino Mixing Angles
+### 6. Equation of Motion
+```
+completeness-proof → killing-form (κ = 6·tr on so(8))
+                          ↓
+                     equation-of-motion
+                          ↓
+              ┌───────────┼──────────────┐
+              │           │              │
+         Free motion   Curvature    Force couplings
+     (∇_X Y = ½[X,Y])  (R = −¼[[,],])  (K/X = g_i)
+              │           │              │
+              ▼           ▼              ▼
+         geodesics    Yang-Mills    force-structure
+        (dΩ/dt = 0)  (gauge F)    (EM, weak, strong, gravity)
+```
+
+### 7. Neutrino Mixing Angles
 ```
 detection-structure (T ∩ S) → force-structure (K/X) → neutrino-mixing
     + killing-form (K=2)        + neutrino-masses          ↓
@@ -349,6 +375,9 @@ irreducibility ──► completeness ──► integer-machine ──► observ
      │                                                         │
      ▼                                                         │
 lie-correspondence ◄──── killing-form ─────────────────────────┘
+     │                        │
+     │                        ▼
+     │                  equation-of-motion ──► force-structure
      │                        │
      │         ┌──────────────┼──────────────┐
      │         │              │              │

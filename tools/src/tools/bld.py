@@ -166,6 +166,16 @@ class CorrectionSign(enum.Enum):
     NEGATIVE = "-"   # complete traversal (all products detected)
 
 
+class DetectionCompleteness(enum.Enum):
+    """K/X sign rule: detection completeness determines correction sign.
+
+    Theory ref: force-structure.md §8.3
+    """
+    COMPLETE = "-"      # all products detected → negative K/X
+    INCOMPLETE = "+"    # something escapes → positive K/X
+    EMBEDDED = "x"      # observer in geometry → multiplicative
+
+
 # ---------------------------------------------------------------------------
 # Prediction type
 # ---------------------------------------------------------------------------
@@ -196,6 +206,36 @@ class TestResult:
     name: str
     passes: bool
     value: float = 0.0
+
+
+@dataclasses.dataclass(slots=True, frozen=True)
+class ForceGeometry:
+    """Explicit state for one force's K/X geometry.
+
+    Each force is determined by: what gauge group, what the carrier
+    traverses (X), and whether detection is complete.
+    Thread-safe (frozen). Vectorizable (plain fields).
+
+    Theory ref: force-structure.md §8.1
+    """
+    name: str
+    carrier: str
+    x_expr: str          # human-readable: "B", "n+L", "nLB", "nL-K"
+    x_value: int         # evaluated at BLD constants
+    sign: DetectionCompleteness
+    kx: float            # K / x_value (or (x+1)/x for embedded)
+
+
+FORCE_GEOMETRY: tuple[ForceGeometry, ...] = (
+    ForceGeometry("EM", "photon", "B", B, DetectionCompleteness.INCOMPLETE,
+                  K / B),
+    ForceGeometry("Weak", "Z", "nLB", n * L * B, DetectionCompleteness.INCOMPLETE,
+                  K / (n * L * B)),
+    ForceGeometry("Strong", "gluon", "n+L", n + L, DetectionCompleteness.COMPLETE,
+                  K / (n + L)),
+    ForceGeometry("Gravity", "metric", "nL-K", n * L - K, DetectionCompleteness.EMBEDDED,
+                  (n * L - K + 1) / (n * L - K)),
+)
 
 
 # ---------------------------------------------------------------------------
@@ -458,6 +498,70 @@ def bld_composites(
         # Compound
         "(nL)2+nS": nL**2 + n_ * S_,
     }
+
+
+# ---------------------------------------------------------------------------
+# Equation of motion formulas (equation-of-motion.md, killing-form.md)
+# ---------------------------------------------------------------------------
+
+
+def so_dim(n_dim: int) -> int:
+    """Dimension of so(n): n(n-1)/2.
+
+    Theory ref: equation-of-motion.md
+    """
+    return n_dim * (n_dim - 1) // 2
+
+
+def killing_form_coeff(n_dim: int) -> int:
+    """Killing form coefficient for so(n): κ(X,Y) = (n-2)·tr(XY).
+
+    Theory ref: killing-form.md, equation-of-motion.md
+    """
+    return n_dim - 2
+
+
+def levi_civita_coeff() -> float:
+    """Levi-Civita connection on bi-invariant Lie group: ∇_X Y = c·[X,Y].
+
+    Returns c = 0.5.
+    Theory ref: equation-of-motion.md (Koszul formula)
+    """
+    return 0.5
+
+
+def riemann_coeff() -> float:
+    """Riemann curvature of bi-invariant metric: R(X,Y)Z = c·[[X,Y],Z].
+
+    Returns c = -0.25.
+    Theory ref: equation-of-motion.md (Step 7)
+    """
+    return -0.25
+
+
+def sectional_curvature_coeff() -> float:
+    """Sectional curvature: K(X,Y) = c·|[X,Y]|²/(|X|²|Y|²−⟨X,Y⟩²).
+
+    Returns c = 0.25.
+    Theory ref: equation-of-motion.md (Step 7)
+    """
+    return 0.25
+
+
+def alpha_inv_gut(n_: int, L_: int) -> int:
+    """α⁻¹ at GUT scale: B drops out, leaving n + L + 1.
+
+    Theory ref: equation-of-motion.md (Part IV), force-structure.md §9
+    """
+    return n_ + L_ + 1
+
+
+def force_kx(K_: int, x: int) -> float:
+    """K/X correction for a force with detection structure X.
+
+    Theory ref: force-structure.md §8
+    """
+    return K_ / x
 
 
 # ---------------------------------------------------------------------------
