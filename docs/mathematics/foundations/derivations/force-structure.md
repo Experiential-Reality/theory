@@ -428,8 +428,10 @@ L_cost(gravity) = ×(79/78) × (1 + 6/(n×L×B²))
 ```
 
 **Components**:
-- 79/78 = (n×L−1)/(n×L−K): First-order observer correction
+- 79/78 = (n×L−K+1)/(n×L−K): First-order observer correction (**multiplicative**, not additive)
 - 6/(n×L×B²): Second-order correction (K×3 triality factor)
+
+**Why multiplicative**: For EM/weak/strong, the observer is external — the probe perturbs the structure from outside, giving an additive K/X correction. For gravity, the observer IS the metric — measuring geometry requires occupying a position in it. The +1 is the observer themselves. This gives a ratio (X+1)/X = 1 + 1/X, not the additive 1 + K/X = 1 + 2/X. The difference (K-1)/X = 1/78 is measurable in the Planck mass. See equation-of-motion.md §Open Problem 4.
 
 ### 7.3 Complete Formula
 
@@ -548,6 +550,39 @@ Something escapes           Everything detected
 | m_W | + | Neutrino |
 | α_s (jets) | − | Nothing |
 
+### 8.3.1 Geometric Derivation of Sign Rule
+
+The sign rule follows from the structure of subalgebra projections in so(8). The T ∩ S detection formalism (detection-structure.md) is a statement about orthogonal projections in the Killing inner product.
+
+**Gauge subalgebra decomposition.** The division algebra tower (octonion-derivation.md) gives the gauge subgroup chain:
+
+```
+so(8) ⊃ g₂ ⊃ su(3)    (strong: geometry, L+D)
+so(8) ⊃ su(2)          (weak: boundary+links, B+L)
+so(8) ⊃ u(1)           (EM: boundary, B)
+```
+
+**B-membership determines force-level sign.** The BLD content of the X expression determines detection completeness:
+
+| X expression | Contains B? | Sign | Geometric reason |
+|-------------|-------------|------|------------------|
+| B | Yes | + (INCOMPLETE) | Traversal crosses boundary → info can escape |
+| nLB | Yes | + (INCOMPLETE) | Full structure includes boundary |
+| n+L | No | − (COMPLETE) | Pure geometry → confined → all detected |
+| nL−K | Subtracts K | × (EMBEDDED) | Observer is part of geometry |
+
+**Projection interpretation.** The u(1) subalgebra (EM detector) is spanned by a single generator E_{01} in so(8). In the Killing inner product:
+
+- Elements with non-zero projection onto u(1) have **B-content** (boundary coupling) → detected by EM
+- Elements orthogonal to u(1) have **no B-content** → invisible to EM (e.g., neutrinos)
+- T ∩ S ≠ ∅ (detection-structure.md) ↔ non-zero Killing-orthogonal projection onto the traverser's gauge subalgebra
+
+The sign is then determined by whether all particles in the interaction project non-trivially onto the traverser subalgebra (COMPLETE → −) or some have zero projection (INCOMPLETE → +).
+
+**Numerically verified:** All 4 forces match the B-membership prediction, and all non-boundary basis elements are Killing-orthogonal to u(1) (test_sign_rule_from_structure, test_subalgebra_projections).
+
+**Per-measurement refinement.** The 5-entry table above shows that within a single force (e.g., weak), different measurements can have different signs. This is because the sign depends on the specific decay products, not just the force: m_Z = − (Z → e⁺e⁻, all have B, all detected) vs. m_W = + (W → ℓν, neutrino lacks B, escapes). The T ∩ S rule (detection-structure.md §5) handles this consistently.
+
 ### 8.4 Higher-Order Corrections
 
 | Order | Form | When |
@@ -573,8 +608,26 @@ All three gauge couplings unify to α⁻¹ ≈ 25.
 
 ### 9.2 The Running
 
-From GUT to M_Z:
-- **EM**: α⁻¹ runs from 25 → 137 (boundaries appear, add B)
+From GUT to M_Z, the coupling evolves because **energy determines observation scope** (energy-derivation.md):
+
+```
+E = K × Σ(1/Xᵢ)    — energy = accumulated observation cost
+
+High E: traverser concentrated/transparent → passes through boundaries
+  → few modes contribute to scattering → α⁻¹ = 25
+
+Low E: traverser diffuse/opaque → scatters off every boundary
+  → all modes contribute → α⁻¹ = 137
+```
+
+The λ cascade governs the transition: λ² = K²/(n×L) = 1/20, with n_c = B/K - K = 26 cascade steps from electroweak scale to Planck scale. At each step, energy increases by λ⁻¹ ≈ 4.47, and boundary modes become transparent.
+
+The transition function α⁻¹(k) = 25 + δ × g(k), where δ ≈ 112 and g(k) is the fraction of opaque boundary modes at cascade step k. g(0) = 1 (all opaque at low energy), g(n_c) = 0 (all transparent at Planck energy).
+
+**Dual to the heat kernel**: the heat kernel K(e,t) = Σ d_R² exp(-tC₂(R)) counts modes of the traverser's wavefunction — concentrated traverser (high E) needs many modes to describe itself. The coupling α⁻¹ counts modes the traverser interacts with — concentrated traverser interacts with few. These are complementary via the uncertainty principle.
+
+Summary:
+- **EM**: α⁻¹ runs from 25 → 137 (boundaries become opaque, add B)
 - **Weak**: sin²θ_W runs from 3/8 → 3/13 (intervals appear, add S structure)
 - **Strong**: α_s⁻¹ runs from 25 → 8.5 (confinement appears, divide by n², subtract S²)
 

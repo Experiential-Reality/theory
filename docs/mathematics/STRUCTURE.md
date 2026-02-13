@@ -383,12 +383,16 @@ lie-correspondence ◄──── killing-form ──────────�
      │         │              │              │
      │         ▼              ▼              ▼
      │   particle-phys    cosmology     quantum/
-     │         │              │              │
-     │         ▼              ▼              ▼
-     └──► fine-structure  dark-matter   planck-deriv
-               │              │              │
-               ▼              ▼              ▼
-            α⁻¹=137.036    27%           ℏ exact
+     │         │              │         ▲    │
+     │         ▼              ▼         │    ▼
+     └──► fine-structure  dark-matter   │  planck-deriv
+               │              │         │    │
+               ▼              ▼         │    ▼
+            α⁻¹=137.036    27%         │  ℏ exact
+                                       │
+     equation-of-motion ──► schrodinger-derivation  (U(1) geodesic = free Schrödinger)
+     equation-of-motion ──► general-relativity      (Ric = ¼g → Einstein equations)
+     force-structure §8.3.1 ◄── sign rule geometry  (B-membership → detection completeness)
 ```
 
 ---

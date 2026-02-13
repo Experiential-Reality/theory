@@ -564,6 +564,238 @@ def force_kx(K_: int, x: int) -> float:
     return K_ / x
 
 
+def ricci_coeff_biinvariant() -> float:
+    """Ricci tensor on compact Lie group with bi-invariant metric: Ric(X,Y) = c·g(X,Y).
+
+    Returns c = 0.25.
+    Theory ref: equation-of-motion.md (Ricci curvature), Milnor 1976
+    """
+    return 0.25
+
+
+def scalar_curvature(dim_algebra: int) -> float:
+    """Scalar curvature R = dim(g)/4 for compact Lie group with bi-invariant metric.
+
+    For SO(8): R = 28/4 = 7.
+    Theory ref: equation-of-motion.md (Ricci curvature)
+    """
+    return dim_algebra / 4.0
+
+
+def einstein_coupling(K_: int, n_: int) -> float:
+    """Einstein coupling 8πG = K·n·π. For BLD: 2·4·π = 8π.
+
+    Theory ref: general-relativity.md, equation-of-motion.md
+    """
+    return K_ * n_ * math.pi
+
+
+def sign_from_x_expr(x_expr: str) -> DetectionCompleteness:
+    """Derive detection completeness from X expression structure.
+
+    The sign of K/X corrections is determined by what structure X
+    traverses, which maps to subalgebra projections in so(8):
+
+    - B in expression → INCOMPLETE (boundary crossing → info escapes)
+    - Pure geometry (n,L) → COMPLETE (confined → all detected)
+    - Subtract K → EMBEDDED (self-reference, observer in geometry)
+
+    Theory ref: force-structure.md §8.3, detection-structure.md §5
+    """
+    if "-K" in x_expr or "−K" in x_expr:
+        return DetectionCompleteness.EMBEDDED
+    if "B" in x_expr:
+        return DetectionCompleteness.INCOMPLETE
+    return DetectionCompleteness.COMPLETE
+
+
+def gauge_subalgebra_dims() -> tuple[int, int, int]:
+    """Dimensions of gauge subalgebras in so(8): (su3=8, su2=3, u1=1).
+
+    From division algebra tower:
+      𝕆 → G₂ → fix e₁ → SU(3) (8 generators)
+      ℍ → SU(2) (3 generators)
+      ℂ → U(1) (1 generator)
+
+    Theory ref: octonion-derivation.md, particle-classification.md
+    """
+    return (8, 3, 1)
+
+
+def adjoint_complementary_dim(so_dim_: int) -> int:
+    """Complementary generators in so(8) beyond gauge subalgebras.
+
+    28 - 8 - 3 - 1 = 16 (matter + gravity content).
+    Theory ref: equation-of-motion.md (Open Problem #1)
+    """
+    return so_dim_ - sum(gauge_subalgebra_dims())
+
+
+def dual_coxeter_number(n_dim: int) -> int:
+    """Dual Coxeter number h_v for so(n): h_v = n - 2.
+
+    For so(8): h_v = 6.
+    Theory ref: Helgason, Differential Geometry Ch. X
+    """
+    return n_dim - 2
+
+
+def casimir_adjoint(n_dim: int) -> int:
+    """Quadratic Casimir of adjoint rep of so(n): C₂(adj) = 2(n-2).
+
+    For so(8): C₂ = 12.
+    Theory ref: Humphreys, Introduction to Lie Algebras Ch. 8
+    """
+    return 2 * (n_dim - 2)
+
+
+def vol_sphere(k: int) -> float:
+    """Volume of the unit k-sphere S^k = 2π^{(k+1)/2} / Γ((k+1)/2).
+
+    Theory ref: do Carmo, Riemannian Geometry Ch. 3
+    """
+    return 2.0 * math.pi ** ((k + 1) / 2.0) / math.gamma((k + 1) / 2.0)
+
+
+def vol_so(n_dim: int) -> float:
+    """Volume of SO(n) with bi-invariant metric g = -κ.
+
+    Vol(SO(n)) = 2^{⌊n/2⌋} × ∏_{k=1}^{n-1} Vol(S^k).
+    Theory ref: Helgason, Differential Geometry Ch. X
+    """
+    result = 2.0 ** (n_dim // 2)
+    for k in range(1, n_dim):
+        result *= vol_sphere(k)
+    return result
+
+
+def _d4_hw_orthogonal(
+    a1: int, a2: int, a3: int, a4: int,
+) -> tuple[float, float, float, float]:
+    """Convert D4 Dynkin labels [a1,a2,a3,a4] to orthogonal basis.
+
+    Fundamental weights in orthogonal basis:
+      ω₁ = (1,0,0,0)
+      ω₂ = (1,1,0,0)
+      ω₃ = (½,½,½,-½)
+      ω₄ = (½,½,½,½)
+
+    Highest weight λ = a1·ω₁ + a2·ω₂ + a3·ω₃ + a4·ω₄.
+    Theory ref: Humphreys, Introduction to Lie Algebras Ch. 13
+    """
+    return (
+        a1 + a2 + 0.5 * a3 + 0.5 * a4,
+        a2 + 0.5 * a3 + 0.5 * a4,
+        0.5 * a3 + 0.5 * a4,
+        -0.5 * a3 + 0.5 * a4,
+    )
+
+
+def weyl_dimension_d4(a1: int, a2: int, a3: int, a4: int) -> int:
+    """Dimension of SO(8) irrep with Dynkin labels [a1,a2,a3,a4].
+
+    Weyl dimension formula: d = ∏_{α>0} (λ+ρ, α) / (ρ, α)
+    where ρ = (3,2,1,0) and positive roots are e_i ± e_j (i<j).
+
+    Known values:
+      (0,0,0,0) → 1    (trivial)
+      (1,0,0,0) → 8    (vector 8_v)
+      (0,1,0,0) → 28   (adjoint)
+      (0,0,1,0) → 8    (spinor 8_c)
+      (0,0,0,1) → 8    (spinor 8_s)
+
+    Theory ref: Humphreys Ch. 24
+    """
+    hw = _d4_hw_orthogonal(a1, a2, a3, a4)
+    rho = (3.0, 2.0, 1.0, 0.0)
+    lam_rho = tuple(hw[i] + rho[i] for i in range(4))
+
+    num = 1.0
+    den = 1.0
+    # Positive roots of D4: e_i - e_j and e_i + e_j for 0 <= i < j <= 3
+    for i in range(4):
+        for j in range(i + 1, 4):
+            # e_i - e_j
+            num *= lam_rho[i] - lam_rho[j]
+            den *= rho[i] - rho[j]
+            # e_i + e_j
+            num *= lam_rho[i] + lam_rho[j]
+            den *= rho[i] + rho[j]
+
+    result = num / den
+    return int(round(result))
+
+
+def casimir_d4(a1: int, a2: int, a3: int, a4: int) -> float:
+    """Quadratic Casimir C₂(R) = (λ, λ + 2ρ) for SO(8) irrep.
+
+    Convention: mathematical (longest root² = 2).
+
+    Cross-checks:
+      (0,0,0,0) → 0   (trivial)
+      (1,0,0,0) → 7   (vector)
+      (0,1,0,0) → 12  (adjoint)
+      (0,0,1,0) → 7   (spinor 8_c)
+      (0,0,0,1) → 7   (spinor 8_s)
+
+    Theory ref: Humphreys Ch. 23
+    """
+    hw = _d4_hw_orthogonal(a1, a2, a3, a4)
+    rho = (3.0, 2.0, 1.0, 0.0)
+    lam_plus_2rho = tuple(hw[i] + 2.0 * rho[i] for i in range(4))
+    return sum(hw[i] * lam_plus_2rho[i] for i in range(4))
+
+
+def spectral_zeta_so8(s: float, max_label_sum: int = 6) -> float:
+    """Spectral zeta function ζ(s) = Σ_{R≠trivial} d_R² × C₂(R)^{-s}.
+
+    Sums over SO(8) irreps with Dynkin labels a1+a2+a3+a4 ≤ max_label_sum,
+    excluding the trivial representation (C₂=0).
+
+    Used for one-loop determinant: det(Δ) = exp(-ζ'(0)).
+    Theory ref: Camporesi 1990, Spectral zeta functions on compact Lie groups
+    """
+    total = 0.0
+    for a1 in range(max_label_sum + 1):
+        for a2 in range(max_label_sum + 1 - a1):
+            for a3 in range(max_label_sum + 1 - a1 - a2):
+                for a4 in range(max_label_sum + 1 - a1 - a2 - a3):
+                    if a1 == a2 == a3 == a4 == 0:
+                        continue
+                    d = weyl_dimension_d4(a1, a2, a3, a4)
+                    c2 = casimir_d4(a1, a2, a3, a4)
+                    if c2 > 0:
+                        total += d * d * c2 ** (-s)
+    return total
+
+
+def cascade_energy(k: int, v: float = V_EW) -> float:
+    """Energy at cascade step k: μ(k) = v × λ^{-k}.
+
+    Each cascade step multiplies energy by λ⁻¹ ≈ 4.47.
+    k=0 → electroweak scale, k=n_c → GUT scale.
+
+    Theory ref: scale-derivation.md, equation-of-motion.md
+    """
+    return v * LAMBDA ** (-k)
+
+
+def sm_alpha_inv_em_1loop(
+    mu: float,
+    m_z: float = 91.1876,
+    alpha_inv_mz: float = 127.9,
+) -> float:
+    """SM 1-loop electromagnetic running (NOT BLD prediction, for comparison).
+
+    α⁻¹(μ) = α⁻¹(M_Z) - (b_EM / 2π) × ln(μ / M_Z)
+    b_EM = -80/9 (SM 1-loop coefficient for U(1)_Y + SU(2)_L combined EM).
+
+    This is standard SM, not derived from BLD. Used only for comparison.
+    """
+    b_em = -80.0 / 9.0
+    return alpha_inv_mz - (b_em / (2.0 * math.pi)) * math.log(mu / m_z)
+
+
 # ---------------------------------------------------------------------------
 # Classical / turbulence formulas
 # (reynolds-derivation.md, feigenbaum-derivation.md, she-leveque-derivation.md)

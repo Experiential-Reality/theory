@@ -5,6 +5,7 @@ depends_on:
   - ../foundations/derivations/octonion-derivation.md
   - quantum-mechanics.md
   - ../foundations/proofs/irreducibility-proof.md
+  - ../foundations/derivations/equation-of-motion.md
 ---
 
 # Schrödinger Equation from BLD Traversal
@@ -437,6 +438,28 @@ The Schrödinger equation is **FULLY DERIVED** from BLD principles:
 **Empirical inputs remaining**: v (Higgs VEV), c, G
 
 **Key insight**: Structural constants (λ, B, n) are pre-observation values. Observer corrections transform them into what we measure. See [Structural-Observer Framework](structural-observer-framework.md).
+
+---
+
+## Connection to Geodesic Derivation
+
+The Schrödinger equation has **two independent derivations** from BLD:
+
+1. **BLD-algebraic** (this document): i from ℂ ⊂ 𝕆, linearity from Lie algebra, ℏ from scale hierarchy.
+2. **BLD-geometric** (equation-of-motion.md, Part V): The geodesic equation on SO(8), restricted to a U(1) ⊂ SO(8) subgroup, IS the free Schrödinger equation. exp(tX) on U(1) gives exp(iωt) = the time evolution operator.
+
+These derivations are **parallel, not sequential**. Both derive the same equation from BLD structure:
+
+| Route | Starts From | Gets i From | Gets Linearity From |
+|-------|-------------|-------------|---------------------|
+| Algebraic | BLD traversal axioms | ℂ ⊂ 𝕆 isolation | Lie algebra structure |
+| Geometric | SO(8) geodesic equation | U(1) = SO(2) rotation | Bilinearity of Lie bracket |
+
+The geometric route gives the additional insight that quantum evolution is geodesic motion restricted to a one-parameter subgroup. The algebraic route gives the additional insight that ℏ comes from the scale hierarchy.
+
+Both routes converge: the Schrödinger equation is the unique evolution equation compatible with BLD structure, whether derived algebraically or geometrically.
+
+**Numerically verified**: exp(t E_{01}) traces SO(2) rotation to < 1e-10 precision over full period (test_schrodinger_from_geodesic in test_equation_of_motion.py).
 
 ---
 
