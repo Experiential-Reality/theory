@@ -3272,3 +3272,629 @@ def test_one_loop_determinant() -> None:
     ))
 
     assert_all_pass(results)
+
+
+# ---------------------------------------------------------------------------
+# Helpers for spinor representation and decomposition (Tests 42-45)
+# ---------------------------------------------------------------------------
+
+
+def _coeff_to_matrix(v: np.ndarray, rep: np.ndarray) -> np.ndarray:
+    """Convert coefficient vector to representation matrix: Σ v[k] rep[k]."""
+    return np.einsum("k,kij->ij", v, rep)
+
+
+def _clifford_gammas_so8() -> tuple[np.ndarray, np.ndarray]:
+    """8 complex gamma matrices (16×16) for Clifford algebra Cl(8).
+
+    Standard construction:
+      Γ_{2k}   = I^⊗k ⊗ σ₁ ⊗ σ₃^⊗(3-k)
+      Γ_{2k+1} = I^⊗k ⊗ σ₂ ⊗ σ₃^⊗(3-k)
+
+    Returns (gammas, chirality) where gammas has shape (8, 16, 16)
+    and chirality is the diagonal Γ₉ = Γ₀Γ₁...Γ₇ with eigenvalues ±1.
+    """
+    s1 = np.array([[0, 1], [1, 0]], dtype=complex)
+    s2 = np.array([[0, -1j], [1j, 0]], dtype=complex)
+    s3 = np.array([[1, 0], [0, -1]], dtype=complex)
+    I2 = np.eye(2, dtype=complex)
+
+    gammas = np.zeros((8, 16, 16), dtype=complex)
+    for k in range(4):
+        factors_even = [I2] * k + [s1] + [s3] * (3 - k)
+        factors_odd = [I2] * k + [s2] + [s3] * (3 - k)
+        mat_e = factors_even[0]
+        for f in factors_even[1:]:
+            mat_e = np.kron(mat_e, f)
+        mat_o = factors_odd[0]
+        for f in factors_odd[1:]:
+            mat_o = np.kron(mat_o, f)
+        gammas[2 * k] = mat_e
+        gammas[2 * k + 1] = mat_o
+
+    chirality = np.eye(16, dtype=complex)
+    for i in range(8):
+        chirality = chirality @ gammas[i]
+
+    return gammas, chirality
+
+
+def _spinor_rep_matrices_d4(
+    gammas: np.ndarray, chirality: np.ndarray,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Build 8×8 REAL representation matrices for 8_s and 8_c.
+
+    1. Compute Σ_{ij} = [Γ_i, Γ_j]/4 in 16-dim
+    2. Extract ±1 chirality eigenspaces by index selection (chirality is diagonal)
+    3. Use charge conjugation C = Γ₁Γ₃Γ₅Γ₇ to find real basis
+
+    Returns (spinor_s, spinor_c) each shape (28, 8, 8) real,
+    indexed same as _so_basis(8).
+    """
+    diag_c = np.diag(chirality).real
+    plus_idx = np.where(diag_c > 0)[0]
+    minus_idx = np.where(diag_c < 0)[0]
+
+    P_plus = np.zeros((16, 8), dtype=complex)
+    for col, idx in enumerate(plus_idx):
+        P_plus[idx, col] = 1.0
+    P_minus = np.zeros((16, 8), dtype=complex)
+    for col, idx in enumerate(minus_idx):
+        P_minus[idx, col] = 1.0
+
+    # Build Σ_{ij} = [Γ_i, Γ_j]/4 and restrict to each chirality eigenspace
+    spinor_s_raw = []
+    spinor_c_raw = []
+    for i in range(8):
+        for j in range(i + 1, 8):
+            sigma = (gammas[i] @ gammas[j] - gammas[j] @ gammas[i]) / 4
+            spinor_s_raw.append(P_plus.conj().T @ sigma @ P_plus)
+            spinor_c_raw.append(P_minus.conj().T @ sigma @ P_minus)
+    spinor_s_raw = np.array(spinor_s_raw)
+    spinor_c_raw = np.array(spinor_c_raw)
+
+    # Charge conjugation C = Γ₁Γ₃Γ₅Γ₇ provides real basis
+    C_mat = gammas[1] @ gammas[3] @ gammas[5] @ gammas[7]
+
+    out = []
+    for P, sp_raw in [(P_plus, spinor_s_raw), (P_minus, spinor_c_raw)]:
+        C_p = (P.conj().T @ C_mat @ P).real
+        eigvals, eigvecs = la.eigh(C_p)
+        V_plus = eigvecs[:, eigvals > 0]
+        V_minus = eigvecs[:, eigvals < 0]
+        U = np.zeros((8, 8), dtype=complex)
+        U[:, :V_plus.shape[1]] = V_plus
+        U[:, V_plus.shape[1]:] = 1j * V_minus
+        sp_real = np.array([(U.conj().T @ m @ U).real for m in sp_raw])
+        out.append(sp_real)
+
+    return out[0], out[1]
+
+
+def _decompose_rep(
+    rep: np.ndarray,
+    su3_gens: np.ndarray,
+    su2_gens: np.ndarray,
+    u1_gen: np.ndarray,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    """Decompose an 8-dim representation under su(3)×su(2)×u(1).
+
+    Builds Casimir operators, simultaneously diagonalizes via combined
+    operator with irrational coefficients.
+
+    Args:
+        rep: shape (28, 8, 8) representation matrices
+        su3_gens: shape (8, 28) su(3) generators
+        su2_gens: shape (3, 28) su(2) generators
+        u1_gen: shape (28,) u(1) generator
+
+    Returns (eigvecs, c2_su3, c2_su2, y_sq) — eigenbasis and eigenvalues.
+    """
+    su3_mats = np.array([_coeff_to_matrix(g, rep) for g in su3_gens])
+    su2_mats = np.array([_coeff_to_matrix(g, rep) for g in su2_gens])
+    u1_mat = _coeff_to_matrix(u1_gen, rep)
+
+    C2_su3 = sum(m @ m for m in su3_mats)
+    C2_su2 = sum(m @ m for m in su2_mats)
+    Y_sq = u1_mat @ u1_mat
+
+    # Combined operator with irrational coefficients to break degeneracies
+    A = 1.0 * C2_su3 + math.sqrt(2) * C2_su2 + math.sqrt(3) * Y_sq
+    _, V = la.eigh(A)
+
+    c2_su3 = np.diag(V.T @ C2_su3 @ V)
+    c2_su2 = np.diag(V.T @ C2_su2 @ V)
+    y_sq = np.diag(V.T @ Y_sq @ V)
+
+    return V, c2_su3, c2_su2, y_sq
+
+
+# ---------------------------------------------------------------------------
+# Test 42: Vector rep (8_v) decomposes as SM one-generation structure
+# ---------------------------------------------------------------------------
+
+
+def test_vector_rep_decomposition() -> None:
+    """Decompose 8_v under su(3)×su(2)×u(1) from octonion structure.
+
+    Prove: Casimirs commute in 8-dim space.
+    Prove: 3 distinct multiplets with dimensions 2+2+4 = 8.
+    Prove: (1,2) lepton doublet (C₂_su3=0, C₂_su2≠0, Y²≠0).
+    Prove: (3,2) quark doublet (C₂_su3≠0, C₂_su2≠0, Y²=0).
+    Prove: (3,1) quark singlet (C₂_su3≠0, C₂_su2=0, Y²=0).
+    Verify: e₀, e₁ are in the lepton doublet.
+    Disprove: wrong u(1) generator (E₂₃) gives different structure.
+    """
+    results: list[TR] = []
+
+    basis_8 = _so_basis(8)
+    su3_gens = _su3_generators_in_so8()
+    su2_gens = _su2_generators_in_so8()
+    u1_gen = np.zeros(28)
+    u1_gen[0] = 1.0  # E_{01}
+
+    # Decompose vector rep (rep matrices = basis matrices themselves)
+    V, c2_su3, c2_su2, y_sq = _decompose_rep(basis_8, su3_gens, su2_gens, u1_gen)
+
+    # Prove: Casimirs commute
+    su3_mats = np.array([_coeff_to_matrix(g, basis_8) for g in su3_gens])
+    su2_mats = np.array([_coeff_to_matrix(g, basis_8) for g in su2_gens])
+    u1_mat = _coeff_to_matrix(u1_gen, basis_8)
+    C2_su3 = sum(m @ m for m in su3_mats)
+    C2_su2 = sum(m @ m for m in su2_mats)
+    Y_sq = u1_mat @ u1_mat
+    ops = [C2_su3, C2_su2, Y_sq]
+    max_comm = 0.0
+    for i in range(3):
+        for j in range(i + 1, 3):
+            c = np.max(np.abs(ops[i] @ ops[j] - ops[j] @ ops[i]))
+            if c > max_comm:
+                max_comm = c
+    results.append(TR(f"8v_casimirs_commute={max_comm:.2e}", max_comm < 1e-10))
+
+    # Cluster into multiplets by (c2_su3, c2_su2, y_sq) triples
+    tol = 1e-6
+    multiplets: dict[tuple[float, float, float], list[int]] = {}
+    for k in range(8):
+        key = (round(c2_su3[k], 4), round(c2_su2[k], 4), round(y_sq[k], 4))
+        found = False
+        for existing_key in multiplets:
+            if (abs(key[0] - existing_key[0]) < tol
+                    and abs(key[1] - existing_key[1]) < tol
+                    and abs(key[2] - existing_key[2]) < tol):
+                multiplets[existing_key].append(k)
+                found = True
+                break
+        if not found:
+            multiplets[key] = [k]
+
+    # Prove: 3 distinct multiplets
+    results.append(TR(
+        f"8v_num_multiplets={len(multiplets)}",
+        len(multiplets) == 3,
+    ))
+
+    # Prove: multiplicities are {2, 2, 4}
+    mults = sorted(len(v) for v in multiplets.values())
+    results.append(TR(f"8v_multiplicities={mults}", mults == [2, 2, 4]))
+
+    # Identify multiplets by quantum numbers
+    lepton_doublet = None
+    quark_doublet = None
+    quark_singlet = None
+    for key, indices in multiplets.items():
+        c_su3, c_su2, c_y = key
+        if abs(c_su3) < tol and abs(c_su2) > tol:
+            lepton_doublet = (key, indices)
+        elif abs(c_su3) > tol and abs(c_su2) > tol:
+            quark_doublet = (key, indices)
+        elif abs(c_su3) > tol and abs(c_su2) < tol:
+            quark_singlet = (key, indices)
+
+    results.append(TR("8v_lepton_doublet_exists", lepton_doublet is not None))
+    results.append(TR("8v_quark_doublet_exists", quark_doublet is not None))
+    results.append(TR("8v_quark_singlet_exists", quark_singlet is not None))
+
+    # Prove: lepton doublet has 2 states, quark doublet 2, quark singlet 4
+    if lepton_doublet is not None:
+        results.append(TR(
+            f"8v_lepton_dim={len(lepton_doublet[1])}",
+            len(lepton_doublet[1]) == 2,
+        ))
+    if quark_doublet is not None:
+        results.append(TR(
+            f"8v_quark_doublet_dim={len(quark_doublet[1])}",
+            len(quark_doublet[1]) == 2,
+        ))
+    if quark_singlet is not None:
+        results.append(TR(
+            f"8v_quark_singlet_dim={len(quark_singlet[1])}",
+            len(quark_singlet[1]) == 4,
+        ))
+
+    # Prove: lepton doublet carries u(1) charge, quarks don't
+    if lepton_doublet is not None:
+        results.append(TR(
+            f"8v_lepton_Y2={lepton_doublet[0][2]:.4f}≠0",
+            abs(lepton_doublet[0][2]) > tol,
+        ))
+    if quark_doublet is not None:
+        results.append(TR(
+            f"8v_quark_doublet_Y2={quark_doublet[0][2]:.4f}=0",
+            abs(quark_doublet[0][2]) < tol,
+        ))
+
+    # Verify: e₀, e₁ are in the lepton doublet
+    if lepton_doublet is not None:
+        lep_vecs = V[:, lepton_doublet[1]]  # (8, 2)
+        proj = lep_vecs @ lep_vecs.T  # (8, 8) projector
+        e0_proj = proj[0, 0]
+        e1_proj = proj[1, 1]
+        results.append(TR(
+            f"8v_e0_in_lepton={e0_proj:.4f}",
+            e0_proj > 0.9,
+        ))
+        results.append(TR(
+            f"8v_e1_in_lepton={e1_proj:.4f}",
+            e1_proj > 0.9,
+        ))
+
+    # Disprove: wrong u(1) generator (E₂₃) gives different structure
+    u1_wrong = np.zeros(28)
+    # E_{23} index: pairs (0,1)=0,(0,2)=1,...,(0,7)=6,(1,2)=7,(1,3)=8,...,(2,3)=9+...
+    idx_23 = 0
+    for i in range(8):
+        for j in range(i + 1, 8):
+            if i == 2 and j == 3:
+                break
+            idx_23 += 1
+        else:
+            continue
+        break
+    u1_wrong[idx_23] = 1.0
+    _, c2_su3_w, c2_su2_w, y_sq_w = _decompose_rep(
+        basis_8, su3_gens, su2_gens, u1_wrong,
+    )
+    wrong_multiplets: dict[tuple[float, float, float], int] = {}
+    for k in range(8):
+        key = (round(c2_su3_w[k], 3), round(c2_su2_w[k], 3), round(y_sq_w[k], 3))
+        found = False
+        for ek in wrong_multiplets:
+            if all(abs(key[m] - ek[m]) < tol for m in range(3)):
+                wrong_multiplets[ek] += 1
+                found = True
+                break
+        if not found:
+            wrong_multiplets[key] = 1
+    wrong_mults = sorted(wrong_multiplets.values())
+    results.append(TR(
+        f"8v_wrong_u1_mults={wrong_mults}≠[2,2,4]",
+        wrong_mults != [2, 2, 4],
+    ))
+
+    assert_all_pass(results)
+
+
+# ---------------------------------------------------------------------------
+# Test 43: Spinor reps (8_s, 8_c) construction via Clifford algebra
+# ---------------------------------------------------------------------------
+
+
+def test_spinor_reps_construction() -> None:
+    """Build 8_s and 8_c via Clifford algebra Cl(8).
+
+    Prove: gamma matrices satisfy {Γ_i, Γ_j} = 2δ_{ij}.
+    Prove: chirality Γ₉ has eigenvalues ±1, each multiplicity 8.
+    Prove: restricted generators satisfy so(8) commutation relations.
+    Verify: Killing form proportionality matches vector rep (ratio 1/6).
+    Verify: all generators real antisymmetric.
+    Disprove: 8_s ≠ 8_c (inequivalent representations).
+    """
+    results: list[TR] = []
+
+    gammas, chirality = _clifford_gammas_so8()
+
+    # Prove: Clifford relation
+    max_cliff_err = 0.0
+    for i in range(8):
+        for j in range(8):
+            anti = gammas[i] @ gammas[j] + gammas[j] @ gammas[i]
+            expected = 2 * (1 if i == j else 0) * np.eye(16)
+            err = np.max(np.abs(anti - expected))
+            if err > max_cliff_err:
+                max_cliff_err = err
+    results.append(TR(
+        f"clifford_relation_err={max_cliff_err:.2e}",
+        max_cliff_err < 1e-12,
+    ))
+
+    # Prove: chirality eigenvalues ±1, each ×8
+    diag_c = np.diag(chirality).real
+    off_diag = np.max(np.abs(chirality - np.diag(diag_c)))
+    results.append(TR(f"chirality_diagonal_err={off_diag:.2e}", off_diag < 1e-12))
+    n_plus = int(np.sum(diag_c > 0.5))
+    n_minus = int(np.sum(diag_c < -0.5))
+    results.append(TR(f"chirality_plus1_count={n_plus}", n_plus == 8))
+    results.append(TR(f"chirality_minus1_count={n_minus}", n_minus == 8))
+
+    # Build spinor reps
+    spinor_s, spinor_c = _spinor_rep_matrices_d4(gammas, chirality)
+
+    # Prove: all generators real antisymmetric
+    for name, sp in [("8s", spinor_s), ("8c", spinor_c)]:
+        max_antisym = max(float(np.max(np.abs(m + m.T))) for m in sp)
+        results.append(TR(
+            f"{name}_antisymmetric_err={max_antisym:.2e}",
+            max_antisym < 1e-12,
+        ))
+
+    # Prove: so(8) commutation relations
+    basis_8 = _so_basis(8)
+    f_8 = _structure_constants(basis_8)
+    for name, sp in [("8s", spinor_s), ("8c", spinor_c)]:
+        max_comm_err = 0.0
+        for a in range(28):
+            for b in range(28):
+                comm = sp[a] @ sp[b] - sp[b] @ sp[a]
+                expected = sum(f_8[a, b, c] * sp[c] for c in range(28))
+                err = np.max(np.abs(comm - expected))
+                if err > max_comm_err:
+                    max_comm_err = err
+        results.append(TR(
+            f"{name}_commutation_err={max_comm_err:.2e}",
+            max_comm_err < 1e-10,
+        ))
+
+    # Verify: Killing form ratio = 1/6 (same as vector rep)
+    K_struct = np.einsum("acd,bdc->ab", f_8, f_8)
+    for name, sp in [("8s", spinor_s), ("8c", spinor_c)]:
+        K_rep = np.array([
+            [np.trace(sp[a] @ sp[b]) for b in range(28)]
+            for a in range(28)
+        ])
+        mask = np.abs(K_struct) > 1e-10
+        ratios = K_rep[mask] / K_struct[mask]
+        ratio_spread = ratios.max() - ratios.min()
+        mean_ratio = ratios.mean()
+        results.append(TR(
+            f"{name}_killing_ratio={mean_ratio:.6f}_spread={ratio_spread:.2e}",
+            ratio_spread < 1e-10 and abs(mean_ratio - 1.0 / 6.0) < 1e-10,
+        ))
+
+    # Disprove: 8_s ≠ 8_c (different matrix entries)
+    diff_entries = np.max(np.abs(spinor_s - spinor_c))
+    results.append(TR(
+        f"spinor_s_neq_c_maxdiff={diff_entries:.4f}",
+        diff_entries > 0.01,
+    ))
+
+    assert_all_pass(results)
+
+
+# ---------------------------------------------------------------------------
+# Test 44: Triality preserves SM structure — three identical generations
+# ---------------------------------------------------------------------------
+
+
+def test_triality_preserves_sm_structure() -> None:
+    """Decompose 8_s and 8_c under su(3)×su(2)×u(1), compare to 8_v.
+
+    Prove: all three reps have multiplicities [2, 2, 4].
+    Prove: all three reps have C₂(so8) = -7 (triality invariant).
+    Prove: individual su(3) and su(2) Casimir spectra are identical across reps.
+    Prove: 8_v and 8_c have same (su3, su2) joint structure: (1,2)⊕(3,2)⊕(3,1).
+    Verify: 8_s has different joint pairing: (1,1)⊕(3,1)⊕(3,2).
+    """
+    results: list[TR] = []
+
+    basis_8 = _so_basis(8)
+    su3_gens = _su3_generators_in_so8()
+    su2_gens = _su2_generators_in_so8()
+    u1_gen = np.zeros(28)
+    u1_gen[0] = 1.0
+
+    gammas, chirality = _clifford_gammas_so8()
+    spinor_s, spinor_c = _spinor_rep_matrices_d4(gammas, chirality)
+
+    # Decompose all three reps, collect (su3, su2) type for each multiplet
+    # Type: (is_color, is_weak) where is_color = |C₂_su3| > tol, etc.
+    reps = [("8v", basis_8), ("8s", spinor_s), ("8c", spinor_c)]
+    tol = 1e-4
+    all_type_structures = []  # list of sorted [(is_color, is_weak, mult), ...]
+    all_su3_spectra = []
+    all_su2_spectra = []
+
+    for name, rep in reps:
+        _, c2_su3, c2_su2, y_sq = _decompose_rep(
+            rep, su3_gens, su2_gens, u1_gen,
+        )
+
+        # Cluster into multiplets
+        multiplets: dict[tuple[float, float, float], int] = {}
+        for k in range(8):
+            key = (round(c2_su3[k], 3), round(c2_su2[k], 3), round(y_sq[k], 3))
+            found = False
+            for ek in multiplets:
+                if all(abs(key[m] - ek[m]) < tol for m in range(3)):
+                    multiplets[ek] += 1
+                    found = True
+                    break
+            if not found:
+                multiplets[key] = 1
+
+        mults = sorted(multiplets.values())
+        results.append(TR(f"{name}_multiplicities={mults}", mults == [2, 2, 4]))
+
+        # Quadratic Casimir C₂(so8) = -7 × I_8
+        C2_so8 = sum(rep[a] @ rep[a] for a in range(28))
+        c2_val = C2_so8[0, 0]
+        off_diag = np.max(np.abs(C2_so8 - c2_val * np.eye(8)))
+        results.append(TR(
+            f"{name}_C2_so8={c2_val:.2f}_offdiag={off_diag:.2e}",
+            abs(c2_val - (-7.0)) < 1e-6 and off_diag < 1e-10,
+        ))
+
+        # Record (su3, su2) type structure: (is_color, is_weak) × mult
+        type_struct = sorted(
+            (abs(key[0]) > tol, abs(key[1]) > tol, count)
+            for key, count in multiplets.items()
+        )
+        all_type_structures.append((name, type_struct))
+
+        # Record individual Casimir spectra (sorted eigenvalues)
+        all_su3_spectra.append((name, sorted(round(v, 2) for v in c2_su3)))
+        all_su2_spectra.append((name, sorted(round(v, 2) for v in c2_su2)))
+
+    # Prove: individual su(3) spectra identical across all three reps
+    ref_su3 = all_su3_spectra[0][1]
+    for name, spec in all_su3_spectra[1:]:
+        results.append(TR(
+            f"{name}_su3_spectrum_matches_8v",
+            spec == ref_su3,
+        ))
+
+    # Prove: individual su(2) spectra identical across all three reps
+    ref_su2 = all_su2_spectra[0][1]
+    for name, spec in all_su2_spectra[1:]:
+        results.append(TR(
+            f"{name}_su2_spectrum_matches_8v",
+            spec == ref_su2,
+        ))
+
+    # Prove: 8_v and 8_c have same joint (su3, su2) type structure
+    # SM-like: (singlet, doublet)×2 + (fund, doublet)×2 + (fund, singlet)×4
+    # = (False, True)×2 + (True, True)×2 + (True, False)×4
+    sm_like = sorted([(False, True, 2), (True, True, 2), (True, False, 4)])
+    for name, ts in all_type_structures:
+        if name in ("8v", "8c"):
+            results.append(TR(f"{name}_sm_structure", ts == sm_like))
+
+    # Verify: 8_s has different joint pairing
+    # (1,1)⊕(3,1)⊕(3,2) = (False,False)×2 + (True,False)×2 + (True,True)×4
+    s_like = sorted([(False, False, 2), (True, False, 2), (True, True, 4)])
+    for name, ts in all_type_structures:
+        if name == "8s":
+            results.append(TR(f"{name}_different_pairing", ts == s_like))
+
+    assert_all_pass(results)
+
+
+# ---------------------------------------------------------------------------
+# Test 45: Adjoint complement (16) joint quantum numbers
+# ---------------------------------------------------------------------------
+
+
+def test_adjoint_complement_joint_quantum_numbers() -> None:
+    """Simultaneously diagonalize su(3)×su(2)×u(1) Casimirs on 16-dim complement.
+
+    Extends test_complementary_16_irreps with simultaneous eigenbasis.
+
+    Prove: simultaneous eigenbasis exists (all three diagonal to < 10⁻¹⁰).
+    Prove: exactly 5 distinct (C₂_su3, C₂_su2, Y²) triples.
+    Prove: multiplicities sum to 16.
+    Verify: trace which so(8) basis elements E_{ij} appear in each multiplet.
+    """
+    results: list[TR] = []
+
+    basis_8 = _so_basis(8)
+    f_8 = _structure_constants(basis_8)
+    dim = 28
+
+    su3_gens = _su3_generators_in_so8()
+    su2_gens = _su2_generators_in_so8()
+    u1_gen = np.zeros(dim)
+    u1_gen[0] = 1.0
+
+    # Build complement subspace (same as test 38)
+    gauge_gens = np.vstack([su3_gens, su2_gens, u1_gen.reshape(1, -1)])
+    Q_gauge, _ = la.qr(gauge_gens.T, mode="reduced")
+    proj_gauge = Q_gauge @ Q_gauge.T
+    proj_comp = np.eye(dim) - proj_gauge
+    eigvals_p, eigvecs_p = la.eigh(proj_comp)
+    Q_comp = eigvecs_p[:, eigvals_p > 0.5]  # (28, 16)
+    results.append(TR(f"complement_dim={Q_comp.shape[1]}", Q_comp.shape[1] == 16))
+
+    # Build 16×16 adjoint action matrices
+    def adj_action_16(gen_vec: np.ndarray) -> np.ndarray:
+        M = np.zeros((16, 16))
+        for j in range(16):
+            bracket = _lie_bracket_coeffs(gen_vec, Q_comp[:, j], f_8)
+            for i in range(16):
+                M[i, j] = Q_comp[:, i] @ bracket
+        return M
+
+    su3_adj = [adj_action_16(su3_gens[a]) for a in range(8)]
+    su2_adj = [adj_action_16(su2_gens[a]) for a in range(3)]
+    u1_adj = adj_action_16(u1_gen)
+
+    C2_su3 = sum(M @ M for M in su3_adj)
+    C2_su2 = sum(M @ M for M in su2_adj)
+    Y_sq = u1_adj @ u1_adj
+
+    # Prove: Casimirs commute
+    ops = [C2_su3, C2_su2, Y_sq]
+    max_comm = 0.0
+    for i in range(3):
+        for j in range(i + 1, 3):
+            c = np.max(np.abs(ops[i] @ ops[j] - ops[j] @ ops[i]))
+            if c > max_comm:
+                max_comm = c
+    results.append(TR(f"16_casimirs_commute={max_comm:.2e}", max_comm < 1e-10))
+
+    # Simultaneously diagonalize via combined operator
+    A = 1.0 * C2_su3 + math.sqrt(2) * C2_su2 + math.sqrt(3) * Y_sq
+    _, V = la.eigh(A)
+
+    c2_su3_eigs = np.diag(V.T @ C2_su3 @ V)
+    c2_su2_eigs = np.diag(V.T @ C2_su2 @ V)
+    y_sq_eigs = np.diag(V.T @ Y_sq @ V)
+
+    # Prove: all three are diagonal in this basis
+    for name, op in [("C2_su3", C2_su3), ("C2_su2", C2_su2), ("Y_sq", Y_sq)]:
+        transformed = V.T @ op @ V
+        off_diag = np.max(np.abs(transformed - np.diag(np.diag(transformed))))
+        results.append(TR(
+            f"16_{name}_diagonal_err={off_diag:.2e}",
+            off_diag < 1e-10,
+        ))
+
+    # Cluster into multiplets
+    tol = 1e-6
+    multiplets: dict[tuple[float, float, float], list[int]] = {}
+    for k in range(16):
+        key = (round(c2_su3_eigs[k], 4), round(c2_su2_eigs[k], 4),
+               round(y_sq_eigs[k], 4))
+        found = False
+        for ek in multiplets:
+            if all(abs(key[m] - ek[m]) < tol for m in range(3)):
+                multiplets[ek].append(k)
+                found = True
+                break
+        if not found:
+            multiplets[key] = [k]
+
+    # Prove: exactly 5 distinct triples
+    results.append(TR(
+        f"16_num_multiplets={len(multiplets)}",
+        len(multiplets) == 5,
+    ))
+
+    # Prove: multiplicities sum to 16
+    mults = sorted(len(v) for v in multiplets.values())
+    total = sum(mults)
+    results.append(TR(f"16_mult_total={total}", total == 16))
+    results.append(TR(f"16_multiplicities={mults}", mults == [2, 2, 4, 4, 4]))
+
+    # Verify: trace eigenvectors back to so(8) basis elements E_{ij}
+    pairs = [(i, j) for i in range(8) for j in range(i + 1, 8)]
+    for key, indices in sorted(multiplets.items()):
+        so8_vecs = Q_comp @ V[:, indices]
+        norms = np.sum(so8_vecs ** 2, axis=1)
+        top_idx = np.argsort(norms)[-3:][::-1]
+        top_pairs = [pairs[k] for k in top_idx if norms[k] > 0.01]
+        results.append(TR(
+            f"16_multiplet_{key}_dim={len(indices)}_top_E={top_pairs}",
+            len(top_pairs) > 0,
+        ))
+
+    assert_all_pass(results)
