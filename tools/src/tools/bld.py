@@ -14,6 +14,7 @@ import enum
 import math
 
 import numpy as np
+import numpy.linalg as la
 
 
 # ---------------------------------------------------------------------------
@@ -649,6 +650,16 @@ def casimir_adjoint(n_dim: int) -> int:
     return 2 * (n_dim - 2)
 
 
+def casimir_vector_so(n_dim: int) -> int:
+    """Quadratic Casimir of vector rep of so(n): C₂(vector) = n-1.
+
+    For so(8): C₂ = 7 = scalar curvature R = dim(so(8))/4.
+    This equality C₂ = R is unique to so(8) among all so(n).
+    Theory ref: Humphreys, Introduction to Lie Algebras Ch. 8
+    """
+    return n_dim - 1
+
+
 def vol_sphere(k: int) -> float:
     """Volume of the unit k-sphere S^k = 2π^{(k+1)/2} / Γ((k+1)/2).
 
@@ -769,6 +780,28 @@ def spectral_zeta_so8(s: float, max_label_sum: int = 6) -> float:
     return total
 
 
+def heat_kernel_trace(t: float, max_label_sum: int = 6) -> float:
+    """Heat kernel trace Z(t) = Σ_R d_R² exp(-t C₂(R)) on SO(8).
+
+    Sums over all D₄ irreps with Dynkin labels a1+a2+a3+a4 ≤ max_label_sum.
+    Includes trivial representation (d=1, C₂=0), so Z(0) = Σ d_R² and Z(∞) → 1.
+
+    Theory ref: Camporesi 1990, equation-of-motion.md (heat kernel on Lie groups)
+    """
+    total = 1.0  # trivial rep: d=1, C₂=0, exp(0)=1
+    for a1 in range(max_label_sum + 1):
+        for a2 in range(max_label_sum + 1 - a1):
+            for a3 in range(max_label_sum + 1 - a1 - a2):
+                for a4 in range(max_label_sum + 1 - a1 - a2 - a3):
+                    if a1 == a2 == a3 == a4 == 0:
+                        continue
+                    d = weyl_dimension_d4(a1, a2, a3, a4)
+                    c2 = casimir_d4(a1, a2, a3, a4)
+                    if c2 > 0:
+                        total += d * d * math.exp(-t * c2)
+    return total
+
+
 def cascade_energy(k: int, v: float = V_EW) -> float:
     """Energy at cascade step k: μ(k) = v × λ^{-k}.
 
@@ -794,6 +827,705 @@ def sm_alpha_inv_em_1loop(
     """
     b_em = -80.0 / 9.0
     return alpha_inv_mz - (b_em / (2.0 * math.pi)) * math.log(mu / m_z)
+
+
+# ---------------------------------------------------------------------------
+# Numerical Lie algebra infrastructure
+# (reusable computation for equation-of-motion tests and future theory work)
+# ---------------------------------------------------------------------------
+
+
+def so_basis(n_dim: int) -> np.ndarray:
+    """Construct canonical basis of so(n) as skew-symmetric matrices.
+
+    Returns shape (dim_algebra, n_dim, n_dim) where dim_algebra = n(n-1)/2.
+    """
+    dim = so_dim(n_dim)
+    basis = np.zeros((dim, n_dim, n_dim), dtype=np.float64)
+    k = 0
+    for i in range(n_dim):
+        for j in range(i + 1, n_dim):
+            basis[k, i, j] = 1.0
+            basis[k, j, i] = -1.0
+            k += 1
+    return basis
+
+
+def structure_constants(basis: np.ndarray) -> np.ndarray:
+    """Compute structure constants: [E_a, E_b] = f^c_{ab} E_c.
+
+    Returns shape (dim, dim, dim) where f[a, b, c] is the coefficient of E_c
+    in [E_a, E_b].
+    """
+    dim, n_dim, _ = basis.shape
+    f = np.zeros((dim, dim, dim), dtype=np.float64)
+    norms = np.array([np.trace(basis[c].T @ basis[c]) for c in range(dim)])
+    for a in range(dim):
+        for b in range(dim):
+            bracket = basis[a] @ basis[b] - basis[b] @ basis[a]
+            for c in range(dim):
+                f[a, b, c] = np.trace(bracket @ basis[c].T) / norms[c]
+    return f
+
+
+def killing_form_numerical(f: np.ndarray) -> np.ndarray:
+    """Compute Killing form matrix: κ_{ab} = tr(ad_a @ ad_b^T).
+
+    Returns shape (dim, dim).
+    """
+    return np.einsum("acd,bdc->ab", f, f)
+
+
+def lie_bracket(
+    v1: np.ndarray, v2: np.ndarray, f: np.ndarray,
+) -> np.ndarray:
+    """Lie bracket in coefficient space: [v1, v2]^c = v1^d v2^e f[d,e,c]."""
+    return np.einsum("d,e,dec->c", v1, v2, f)
+
+
+def coeff_to_matrix(v: np.ndarray, rep: np.ndarray) -> np.ndarray:
+    """Convert coefficient vector to representation matrix: sum v[k] rep[k]."""
+    return np.einsum("k,kij->ij", v, rep)
+
+
+def matrix_exp(A: np.ndarray, terms: int = 50) -> np.ndarray:
+    """Matrix exponential via Taylor series. Avoids scipy dependency."""
+    result = np.eye(A.shape[0], dtype=A.dtype)
+    power = np.eye(A.shape[0], dtype=A.dtype)
+    for k in range(1, terms + 1):
+        power = power @ A / k
+        result = result + power
+    return result
+
+
+def ricci_tensor(f: np.ndarray) -> np.ndarray:
+    """Ricci tensor on compact Lie group with bi-invariant metric.
+
+    Ric_{ab} = -1/4 f^{cd}_a f_{cdb} = 1/4 g_{ab}.
+    Returns shape (dim, dim).
+    """
+    return -0.25 * np.einsum("abe,eda->bd", f, f)
+
+
+# ---------------------------------------------------------------------------
+# Octonion algebra
+# ---------------------------------------------------------------------------
+
+FANO_TRIPLES: list[tuple[int, int, int]] = [
+    (1, 2, 4), (2, 3, 5), (3, 4, 6), (4, 5, 7),
+    (5, 6, 1), (6, 7, 2), (7, 1, 3),
+]
+
+
+def octonion_struct() -> np.ndarray:
+    """Octonion multiplication table: C[a,b,c] = component of e_a*e_b along e_c."""
+    C = np.zeros((8, 8, 8))
+    for i in range(8):
+        C[0, i, i] = 1.0
+        C[i, 0, i] = 1.0
+    for i in range(1, 8):
+        C[i, i, 0] = -1.0
+    for a, b, c in FANO_TRIPLES:
+        C[a, b, c] = 1.0
+        C[b, a, c] = -1.0
+        C[b, c, a] = 1.0
+        C[c, b, a] = -1.0
+        C[c, a, b] = 1.0
+        C[a, c, b] = -1.0
+    return C
+
+
+def octonion_multiply(a: np.ndarray, b: np.ndarray,
+                      struct: np.ndarray) -> np.ndarray:
+    """Multiply two octonions represented as 8-vectors."""
+    return np.einsum("ijk,i,j->k", struct, a, b)
+
+
+def octonion_conjugate(a: np.ndarray) -> np.ndarray:
+    """Conjugate: negate imaginary parts."""
+    result = a.copy()
+    result[1:] = -result[1:]
+    return result
+
+
+def octonion_derivation_constraints(struct: np.ndarray) -> np.ndarray:
+    """Derivation constraint matrix for octonions. Null space = G2 Lie algebra.
+
+    Theory ref: octonion-derivation.md
+    """
+    n_unknowns = 49
+    equations = []
+    for i in range(1, 8):
+        for j in range(1, 8):
+            for out_comp in range(8):
+                row = np.zeros(n_unknowns)
+                for k in range(1, 8):
+                    coeff = struct[i, j, k]
+                    if abs(coeff) < 1e-15:
+                        continue
+                    if out_comp >= 1:
+                        row[(k - 1) * 7 + (out_comp - 1)] += coeff
+                for a in range(7):
+                    sc = struct[a + 1, j, out_comp]
+                    if abs(sc) < 1e-15:
+                        continue
+                    row[(i - 1) * 7 + a] -= sc
+                for a in range(7):
+                    sc = struct[i, a + 1, out_comp]
+                    if abs(sc) < 1e-15:
+                        continue
+                    row[(j - 1) * 7 + a] -= sc
+                if np.any(np.abs(row) > 1e-15):
+                    equations.append(row)
+    return np.array(equations)
+
+
+def octonion_left_mult(struct: np.ndarray, a: int) -> np.ndarray:
+    """8x8 matrix for left multiplication by e_a in octonions.
+
+    (L_a)_{c,b} = struct[a,b,c].
+    """
+    L = np.zeros((8, 8))
+    for b in range(8):
+        for c in range(8):
+            L[c, b] = struct[a, b, c]
+    return L
+
+
+# ---------------------------------------------------------------------------
+# Quaternion algebra
+# ---------------------------------------------------------------------------
+
+
+QUATERNION_TRIPLE: tuple[int, int, int] = (1, 2, 3)
+"""Cyclic triple for quaternion multiplication: e₁e₂ = e₃ (ij = k)."""
+
+
+def quaternion_struct() -> np.ndarray:
+    """Quaternion multiplication table: C[a,b,c] = component of e_a*e_b along e_c.
+
+    Basis: e₀=1, e₁=i, e₂=j, e₃=k.
+    One cyclic triple (1,2,3) vs seven Fano triples for octonions.
+    Theory ref: exceptional-algebras.md (der(H) = so(3))
+    """
+    C = np.zeros((4, 4, 4))
+    for i in range(4):
+        C[0, i, i] = 1.0
+        C[i, 0, i] = 1.0
+    for i in range(1, 4):
+        C[i, i, 0] = -1.0
+    a, b, c = QUATERNION_TRIPLE
+    C[a, b, c] = 1.0
+    C[b, a, c] = -1.0
+    C[b, c, a] = 1.0
+    C[c, b, a] = -1.0
+    C[c, a, b] = 1.0
+    C[a, c, b] = -1.0
+    return C
+
+
+def quaternion_derivation_constraints(struct: np.ndarray) -> np.ndarray:
+    """Derivation constraint matrix for quaternions. Null space = so(3).
+
+    D: Im(H) → Im(H) satisfying D(xy) = D(x)y + xD(y).
+    D(1)=0 is automatic, so unknowns are a 3×3 matrix (9 unknowns).
+    Theory ref: exceptional-algebras.md (der(H) = so(3))
+    """
+    n_unknowns = 9
+    equations = []
+    for i in range(1, 4):
+        for j in range(1, 4):
+            for out_comp in range(4):
+                row = np.zeros(n_unknowns)
+                for k in range(1, 4):
+                    coeff = struct[i, j, k]
+                    if abs(coeff) < 1e-15:
+                        continue
+                    if out_comp >= 1:
+                        row[(k - 1) * 3 + (out_comp - 1)] += coeff
+                for a in range(3):
+                    sc = struct[a + 1, j, out_comp]
+                    if abs(sc) < 1e-15:
+                        continue
+                    row[(i - 1) * 3 + a] -= sc
+                for a in range(3):
+                    sc = struct[i, a + 1, out_comp]
+                    if abs(sc) < 1e-15:
+                        continue
+                    row[(j - 1) * 3 + a] -= sc
+                if np.any(np.abs(row) > 1e-15):
+                    equations.append(row)
+    return np.array(equations)
+
+
+def division_algebra_derivation_dims() -> dict[str, int]:
+    """Derivation algebra dimensions for each division algebra.
+
+    Returns {"R": 0, "C": 0, "H": 3, "O": 14}.
+    der(R) = 0 (reals have no nontrivial automorphisms)
+    der(C) = 0 (complex conjugation is discrete, not continuous)
+    der(H) = so(3) = 3 (quaternion derivations = weak gauge)
+    der(O) = G₂ = 14 (octonion derivations = color source)
+    Theory ref: force-structure.md §2, exceptional-algebras.md
+    """
+    # H: compute via constraint matrix null space
+    h_struct = quaternion_struct()
+    h_mat = quaternion_derivation_constraints(h_struct)
+    h_rank = la.matrix_rank(h_mat, tol=1e-10)
+    h_der = 9 - h_rank
+
+    # O: compute via constraint matrix null space
+    o_struct = octonion_struct()
+    o_mat = octonion_derivation_constraints(o_struct)
+    o_rank = la.matrix_rank(o_mat, tol=1e-10)
+    o_der = 49 - o_rank
+
+    return {"R": 0, "C": 0, "H": h_der, "O": o_der}
+
+
+# ---------------------------------------------------------------------------
+# Gauge subalgebra construction
+# ---------------------------------------------------------------------------
+
+
+def su3_generators() -> np.ndarray:
+    """Extract 8 su(3) generators as vectors in so(8) basis (length 28).
+
+    Method: G2 derivation equations + D(e1)=0 -> 8-dim null space.
+    Returns shape (8, 28).
+
+    Theory ref: octonion-derivation.md
+    """
+    struct = octonion_struct()
+    base_rows = octonion_derivation_constraints(struct)
+
+    fix_rows = np.zeros((7, 49))
+    for a in range(7):
+        fix_rows[a, a] = 1.0
+    A = np.vstack([base_rows, fix_rows])
+
+    _, s, Vt = la.svd(A)
+    n_null = 49 - int(np.sum(s > 1e-10))
+    null_vecs = Vt[-n_null:]
+
+    assert null_vecs.shape[0] == 8, (
+        f"Expected 8 su(3) generators, got {null_vecs.shape[0]}"
+    )
+
+    dim = so_dim(8)
+    generators = np.zeros((8, dim))
+    for g_idx in range(8):
+        D7 = null_vecs[g_idx].reshape(7, 7)
+        D8 = np.zeros((8, 8))
+        D8[1:, 1:] = D7
+        k = 0
+        for i in range(8):
+            for j in range(i + 1, 8):
+                generators[g_idx, k] = D8[i, j]
+                k += 1
+
+    return generators
+
+
+def su2_generators() -> np.ndarray:
+    """Extract 3 su(2) generators from quaternionic left multiplication.
+
+    Uses the first Fano triple (1,2,4).
+    Returns shape (3, 28).
+
+    Theory ref: octonion-derivation.md
+    """
+    struct = octonion_struct()
+    quat_units = [1, 2, 4]
+    quat_indices = [0, 1, 2, 4]
+    dim = so_dim(8)
+    generators = np.zeros((3, dim))
+
+    for g_idx, a in enumerate(quat_units):
+        L_full = octonion_left_mult(struct, a)
+        L_restr = np.zeros((8, 8))
+        for r in quat_indices:
+            for c in quat_indices:
+                L_restr[r, c] = L_full[r, c]
+        A = 0.5 * (L_restr - L_restr.T)
+        k = 0
+        for i in range(8):
+            for j in range(i + 1, 8):
+                generators[g_idx, k] = A[i, j]
+                k += 1
+
+    return generators
+
+
+# ---------------------------------------------------------------------------
+# Gauge algebra structure: u(4) and hypercharge
+# ---------------------------------------------------------------------------
+
+
+def _ij_to_idx(i: int, j: int) -> int:
+    """Map (i, j) pair with i < j to canonical basis index in so(8)."""
+    idx = 0
+    for ii in range(8):
+        for jj in range(ii + 1, 8):
+            if ii == i and jj == j:
+                return idx
+            idx += 1
+    raise ValueError(f"Invalid pair ({i}, {j})")
+
+
+def complex_structure_j() -> np.ndarray:
+    """Complex structure J in centralizer of su(3) ⊂ so(8).
+
+    J = -(1/√3)(E₂₄ + E₃₇ + E₅₆)
+
+    The (2,4), (3,7), (5,6) pairs are the Fano triple complements of e₁:
+    removing 1 from triples (1,2,4), (1,3,7), (1,5,6).
+
+    J² = -(1/3)I₆ on {e₂,...,e₇}, J² = 0 on {e₀,e₁}.
+    J commutes with su(3) (derivations fixing e₁).
+
+    Returns shape (28,) coefficient vector.
+    """
+    J = np.zeros(so_dim(8))
+    c = -1.0 / math.sqrt(3)
+    J[_ij_to_idx(2, 4)] = c
+    J[_ij_to_idx(3, 7)] = c
+    J[_ij_to_idx(5, 6)] = c
+    return J
+
+
+def hypercharge_bl() -> np.ndarray:
+    """Baryon-minus-lepton charge Y_{B-L} in so(8).
+
+    Y_{B-L} = (√3/2) E₀₁ + (1/2) J
+
+    Eigenvalue magnitudes (from Y_{B-L}²):
+      - Leptons {e₀,e₁}: |q| = √3/2
+      - Quarks {e₂,...,e₇}: |q| = 1/(2√3)
+      - Ratio: 3 (exact, from algebra)
+
+    Commutes with su(3). Does NOT commute with su(2).
+
+    Returns shape (28,) coefficient vector (unit norm).
+    """
+    E01 = np.zeros(so_dim(8))
+    E01[0] = 1.0
+    J = complex_structure_j()
+    return (math.sqrt(3) / 2) * E01 + 0.5 * J
+
+
+def hypercharge_sm() -> np.ndarray:
+    """SM-normalized hypercharge Y_SM in so(8).
+
+    Y_SM = (1/2) E₀₁ - (1/6)(E₂₄ + E₃₇ + E₅₆)
+
+    Eigenvalue magnitudes (from Y_SM²):
+      8_v: |Y| = 1/2 (leptons) and 1/6 (quarks)
+      8_s: |Y| = 1/2 (leptons) and 1/6 (quarks)
+      8_c: |Y| = 1/3 and 0  (right-handed pattern)
+
+    This is Y_{B-L} / √3, normalized so |Y_lepton| = 1/2.
+
+    Returns shape (28,) coefficient vector.
+    """
+    return hypercharge_bl() / math.sqrt(3)
+
+
+def u4_center() -> np.ndarray:
+    """Center of the u(4) gauge algebra in so(8).
+
+    Y_c = -(1/2) E₀₁ + (1/2)(E₂₄ + E₃₇ + E₅₆)
+
+    This is the UNIQUE element (up to scale) commuting with all 12 gauge
+    generators (su(3) ∪ su(2) ∪ u(1)).  It generates the u(1) center
+    of u(4) = su(4) ⊕ u(1).
+
+    Eigenvalue magnitudes on all three 8-dim reps:
+      8_v: |Y_c| = 1/2 (all 8 states equal)
+
+    Returns shape (28,) coefficient vector (unit norm).
+    """
+    E01 = np.zeros(so_dim(8))
+    E01[0] = 1.0
+    J = complex_structure_j()
+    # Y_c = E01/2 + (√3/2) J = -(1/2) E₀₁ + (1/2)(E₂₄ + E₃₇ + E₅₆)
+    # in terms of the two orthogonal centralizer generators.
+    # From SVD: Y_c has components [-0.5, 0.5, 0.5, 0.5] at [E01, E24, E37, E56].
+    Yc = np.zeros(so_dim(8))
+    Yc[0] = -0.5
+    Yc[_ij_to_idx(2, 4)] = 0.5
+    Yc[_ij_to_idx(3, 7)] = 0.5
+    Yc[_ij_to_idx(5, 6)] = 0.5
+    return Yc
+
+
+def gauge_generated_dim() -> int:
+    """Dimension of the Lie algebra generated by su(3) ∪ su(2) ∪ u(1).
+
+    Returns 16 (= dim u(4) = dim su(4) + 1).
+
+    The 12 nominal gauge generators do NOT close: [su(3), su(2)] ≠ 0.
+    The brackets generate 4 additional directions, giving u(4) ⊂ so(8).
+    """
+    return 16
+
+
+def centralizer_su3_dim() -> int:
+    """Dimension of the centralizer of su(3) in so(8).
+
+    Returns 2.  The centralizer is span{E₀₁, J} and is ABELIAN:
+    [E₀₁, J] = 0.  This means NO su(2) inside so(8) commutes with su(3),
+    so the SM gauge group SU(3)×SU(2)×U(1) cannot embed as a direct product.
+    """
+    return 2
+
+
+def sym2_rep(rep: np.ndarray) -> np.ndarray:
+    """Build S²(V) representation matrices from a representation V.
+
+    Given rep of shape (n_gens, d, d), returns shape (n_gens, d*(d+1)/2, d*(d+1)/2).
+    Basis: {e_i⊗e_j + e_j⊗e_i}/√2 for i<j, and e_i⊗e_i for i=j.
+    """
+    n_gens, d, _ = rep.shape
+    pairs: list[tuple[int, int]] = []
+    for i in range(d):
+        for j in range(i, d):
+            pairs.append((i, j))
+    dim_s2 = len(pairs)
+    pair_idx = {p: k for k, p in enumerate(pairs)}
+
+    out = np.zeros((n_gens, dim_s2, dim_s2))
+    for g in range(n_gens):
+        M = rep[g]
+        for idx1, (i, j) in enumerate(pairs):
+            for k in range(d):
+                # M_{ki} contribution: acts on first index
+                ii, jj = min(k, j), max(k, j)
+                out[g, pair_idx[(ii, jj)], idx1] += M[k, i]
+                # M_{kj} contribution: acts on second index
+                ii, jj = min(i, k), max(i, k)
+                out[g, pair_idx[(ii, jj)], idx1] += M[k, j]
+    return out
+
+
+# ---------------------------------------------------------------------------
+# Representation theory (Clifford, spinor, decomposition)
+# ---------------------------------------------------------------------------
+
+
+def clifford_gammas(dim: int = 8) -> tuple[np.ndarray, np.ndarray]:
+    """Gamma matrices (16x16) for Clifford algebra Cl(dim).
+
+    Returns (gammas, chirality) where gammas has shape (dim, 16, 16).
+    """
+    s1 = np.array([[0, 1], [1, 0]], dtype=complex)
+    s2 = np.array([[0, -1j], [1j, 0]], dtype=complex)
+    s3 = np.array([[1, 0], [0, -1]], dtype=complex)
+    I2 = np.eye(2, dtype=complex)
+
+    gammas = np.zeros((dim, 16, 16), dtype=complex)
+    for k in range(4):
+        factors_even = [I2] * k + [s1] + [s3] * (3 - k)
+        factors_odd = [I2] * k + [s2] + [s3] * (3 - k)
+        mat_e = factors_even[0]
+        for f in factors_even[1:]:
+            mat_e = np.kron(mat_e, f)
+        mat_o = factors_odd[0]
+        for f in factors_odd[1:]:
+            mat_o = np.kron(mat_o, f)
+        gammas[2 * k] = mat_e
+        gammas[2 * k + 1] = mat_o
+
+    chirality = np.eye(16, dtype=complex)
+    for i in range(dim):
+        chirality = chirality @ gammas[i]
+
+    return gammas, chirality
+
+
+def spinor_reps_d4(
+    gammas: np.ndarray, chirality: np.ndarray,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Build 8x8 REAL representation matrices for 8_s and 8_c.
+
+    Returns (spinor_s, spinor_c) each shape (28, 8, 8) real.
+    """
+    diag_c = np.diag(chirality).real
+    plus_idx = np.where(diag_c > 0)[0]
+    minus_idx = np.where(diag_c < 0)[0]
+
+    P_plus = np.zeros((16, 8), dtype=complex)
+    for col, idx in enumerate(plus_idx):
+        P_plus[idx, col] = 1.0
+    P_minus = np.zeros((16, 8), dtype=complex)
+    for col, idx in enumerate(minus_idx):
+        P_minus[idx, col] = 1.0
+
+    spinor_s_raw = []
+    spinor_c_raw = []
+    for i in range(8):
+        for j in range(i + 1, 8):
+            sigma = (gammas[i] @ gammas[j] - gammas[j] @ gammas[i]) / 4
+            spinor_s_raw.append(P_plus.conj().T @ sigma @ P_plus)
+            spinor_c_raw.append(P_minus.conj().T @ sigma @ P_minus)
+    spinor_s_raw = np.array(spinor_s_raw)
+    spinor_c_raw = np.array(spinor_c_raw)
+
+    C_mat = gammas[1] @ gammas[3] @ gammas[5] @ gammas[7]
+
+    out = []
+    for P, sp_raw in [(P_plus, spinor_s_raw), (P_minus, spinor_c_raw)]:
+        C_p = (P.conj().T @ C_mat @ P).real
+        eigvals, eigvecs = la.eigh(C_p)
+        V_plus = eigvecs[:, eigvals > 0]
+        V_minus = eigvecs[:, eigvals < 0]
+        U = np.zeros((8, 8), dtype=complex)
+        U[:, :V_plus.shape[1]] = V_plus
+        U[:, V_plus.shape[1]:] = 1j * V_minus
+        sp_real = np.array([(U.conj().T @ m @ U).real for m in sp_raw])
+        out.append(sp_real)
+
+    return out[0], out[1]
+
+
+def decompose_rep_gauge(
+    rep: np.ndarray,
+    su3_gens: np.ndarray,
+    su2_gens: np.ndarray,
+    u1_gen: np.ndarray,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    """Decompose a representation under su(3)xsu(2)xu(1).
+
+    Returns (eigvecs, c2_su3, c2_su2, y_sq).
+    """
+    su3_mats = np.array([coeff_to_matrix(g, rep) for g in su3_gens])
+    su2_mats = np.array([coeff_to_matrix(g, rep) for g in su2_gens])
+    u1_mat = coeff_to_matrix(u1_gen, rep)
+
+    C2_su3 = sum(m @ m for m in su3_mats)
+    C2_su2 = sum(m @ m for m in su2_mats)
+    Y_sq = u1_mat @ u1_mat
+
+    A = 1.0 * C2_su3 + math.sqrt(2) * C2_su2 + math.sqrt(3) * Y_sq
+    _, V = la.eigh(A)
+
+    c2_su3 = np.diag(V.T @ C2_su3 @ V)
+    c2_su2 = np.diag(V.T @ C2_su2 @ V)
+    y_sq = np.diag(V.T @ Y_sq @ V)
+
+    return V, c2_su3, c2_su2, y_sq
+
+
+def adjoint_on_complement(
+    gen_vec: np.ndarray,
+    Q_comp: np.ndarray,
+    f: np.ndarray,
+) -> np.ndarray:
+    """Adjoint action of generator on complement subspace.
+
+    M[i,j] = Q_comp[:,i]^T @ [gen_vec, Q_comp[:,j]].
+    """
+    n_comp = Q_comp.shape[1]
+    M = np.zeros((n_comp, n_comp))
+    for j in range(n_comp):
+        bracket = lie_bracket(gen_vec, Q_comp[:, j], f)
+        for i in range(n_comp):
+            M[i, j] = Q_comp[:, i] @ bracket
+    return M
+
+
+# ---------------------------------------------------------------------------
+# Eigenvalue / multiplet clustering utilities
+# ---------------------------------------------------------------------------
+
+
+def cluster_eigenvalues(
+    eigs: np.ndarray, tol: float = 1e-8,
+) -> list[tuple[float, int]]:
+    """Group sorted eigenvalues into (value, multiplicity) clusters."""
+    clusters: list[tuple[float, int]] = []
+    i = 0
+    while i < len(eigs):
+        val = eigs[i]
+        count = 1
+        while i + count < len(eigs) and abs(eigs[i + count] - val) < tol:
+            count += 1
+        clusters.append((float(val), count))
+        i += count
+    return clusters
+
+
+def cluster_multiplets(
+    quantum_nums: np.ndarray, tol: float = 1e-4,
+) -> dict[tuple[float, ...], list[int]]:
+    """Cluster states by quantum number tuples.
+
+    Args:
+        quantum_nums: shape (n_states, n_operators)
+        tol: tolerance for matching
+
+    Returns dict mapping rounded quantum number tuple to list of state indices.
+    """
+    n_states, n_ops = quantum_nums.shape
+    multiplets: dict[tuple[float, ...], list[int]] = {}
+    for k in range(n_states):
+        key = tuple(round(float(quantum_nums[k, d]), 4) for d in range(n_ops))
+        found = False
+        for existing_key in multiplets:
+            if all(abs(key[d] - existing_key[d]) < tol for d in range(n_ops)):
+                multiplets[existing_key].append(k)
+                found = True
+                break
+        if not found:
+            multiplets[key] = [k]
+    return multiplets
+
+
+# ---------------------------------------------------------------------------
+# SO8 algebra state (frozen dataclass + builder)
+# ---------------------------------------------------------------------------
+
+
+@dataclasses.dataclass(slots=True, frozen=True)
+class SO8:
+    """The so(8) algebra with octonion-derived gauge structure.
+
+    All fields are numpy arrays. Frozen to prevent mutation across tests.
+    """
+    basis: np.ndarray   # (28, 8, 8) canonical E_{ij} basis
+    f: np.ndarray       # (28, 28, 28) structure constants
+    kf: np.ndarray      # (28, 28) Killing form (negative definite)
+    g: np.ndarray       # (28, 28) bi-invariant metric = -kf (positive definite)
+    su3: np.ndarray     # (8, 28) su(3) generators from G2 stabilizer
+    su2: np.ndarray     # (3, 28) su(2) generators from quaternionic left mult
+    u1: np.ndarray      # (28,) u(1) generator E_{01}
+    gauge: np.ndarray   # (12, 28) full gauge subalgebra
+    Q_comp: np.ndarray  # (28, 16) orthonormal basis of 16-dim complement
+
+
+def build_so8() -> SO8:
+    """Construct the full SO8 algebra state."""
+    basis = so_basis(8)
+    f = structure_constants(basis)
+    kf = killing_form_numerical(f)
+    g = -kf
+
+    su3 = su3_generators()
+    su2 = su2_generators()
+    u1 = np.zeros(28)
+    u1[0] = 1.0  # E_{01}
+    gauge = np.vstack([su3, su2, u1.reshape(1, -1)])
+
+    Q_gauge, _ = la.qr(gauge.T, mode="reduced")
+    proj_comp = np.eye(28) - Q_gauge @ Q_gauge.T
+    eigvals, eigvecs = la.eigh(proj_comp)
+    Q_comp = eigvecs[:, eigvals > 0.5]
+
+    return SO8(
+        basis=basis, f=f, kf=kf, g=g,
+        su3=su3, su2=su2, u1=u1, gauge=gauge,
+        Q_comp=Q_comp,
+    )
 
 
 # ---------------------------------------------------------------------------

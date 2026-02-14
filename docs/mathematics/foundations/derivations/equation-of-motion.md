@@ -1,7 +1,7 @@
 ---
 status: DERIVED
 layer: 1
-key_result: "BLD equation of motion: geodesics on SO(8) with Killing metric; forces = gauge curvature with K/X couplings"
+key_result: "BLD equation of motion: geodesics on SO(8) with Killing metric; forces = gauge curvature with K/X couplings; gauge structure, weak origin, and generation hierarchy in companion files"
 depends_on:
   - ../proofs/completeness-proof.md
   - ../../lie-theory/killing-form.md
@@ -14,25 +14,39 @@ used_by:
   - ../../derived/general-relativity.md
   - ../../derived/special-relativity.md
   - ../../../meta/proof-status.md
+  - gauge-structure.md
+  - weak-origin.md
+  - generation-hierarchy.md
 ---
 
 ## Summary
 
 **BLD equation of motion — from statics to dynamics:**
 
-1. BLD uniquely determines so(8) as the Lie algebra of the theory — [BLD to so(8)](#3-step-1-bld-to-so8-proven)
-2. The Killing form on so(8) defines a bi-invariant metric on SO(8) — [Killing Form and Bi-invariant Metric](#4-step-2-killing-form)
-3. The Levi-Civita connection is nabla_X Y = 1/2 [X,Y] — [Levi-Civita Connection](#5-step-3-levi-civita-connection)
-4. Free motion = geodesics on SO(8) = one-parameter subgroups — [Free Motion](#6-step-4-geodesics-and-free-motion)
-5. Curvature R(X,Y)Z = -1/4 [[X,Y],Z] gives forces — [Curvature and Forces](#7-step-5-curvature)
-6. K/X corrections are coupling constants from force-structure.md — [K/X as Coupling Constants](#9-kx-as-coupling-constants)
-7. GUT prediction: alpha^-1(GUT) = n + L + 1 = 25 — [RG Running and GUT Unification](#11-rg-running-and-gut-unification)
+1. BLD uniquely determines so(8) as the Lie algebra of the theory — [Part I](#part-i-free-equation-of-motion)
+2. The Killing form on so(8) defines a bi-invariant metric; Levi-Civita connection is nabla_X Y = 1/2 [X,Y] — [Part I](#part-i-free-equation-of-motion)
+3. Free motion = geodesics = one-parameter subgroups, dOmega/dt = 0 — [Part I](#part-i-free-equation-of-motion)
+4. Curvature R(X,Y)Z = -1/4 [[X,Y],Z] gives forces; Ric = 1/4 g (Einstein manifold) — [Part II](#part-ii-forces-from-curvature)
+5. K/X corrections are coupling constants; sign rule from detection completeness — [Part III](#part-iii-coupling-constants-and-action)
+6. GUT: alpha^-1 = n + L + 1 = 25; BK = 112; heat kernel spectral transition — [Part IV](#part-iv-rg-running-and-heat-kernel)
+7. U(1) geodesic restriction = free Schrodinger equation — [Part V](#part-v-specialization-to-schrodinger)
+8. Ric = 1/4 g = vacuum Einstein equations — [Part VI](#part-vi-einstein-from-geodesic-deviation)
+
+**Companion derivations**: [Gauge Structure](gauge-structure.md) (u(4) = su(4) + u(1), Pati-Salam, hypercharge, e_R), [Weak Origin](weak-origin.md) (der(H) = so(3), E7 Tits), [Generation Hierarchy](generation-hierarchy.md) (Casimir bridge, S3 breaking, n2S = 208).
+
+| Result | Formula | Value | Verified | Test File |
+|--------|---------|-------|----------|-----------|
+| Killing form | kappa = 6 tr on so(8) | 6 | < 10^-10 | test_eom_killing |
+| Einstein manifold | Ric = 1/4 g | lambda = 0.25 | < 10^-10 | test_eom_killing |
+| Scalar curvature | R = 28/4 | 7 | exact | test_eom_killing |
+| GUT coupling | alpha^-1(GUT) = n+L+1 | 25 | exact | test_eom_forces |
+| BK algebra | B x K = nL+B-n-L | 112 | exact | test_eom_rg |
 
 # BLD Equation of Motion
 
 ## Abstract
 
-We derive the equation of motion for BLD theory from the Lie algebra so(8), which is uniquely determined by the BLD constants (n=4, L=20, B=56). The derivation uses standard Riemannian geometry on Lie groups: the Killing form induces a bi-invariant metric on SO(8), whose geodesics are one-parameter subgroups exp(tX). Free motion satisfies dOmega/dt = 0 (constant body angular velocity). Forces arise from the Riemann curvature R(X,Y)Z = -1/4 [[X,Y],Z], and the K/X coupling constants from force-structure.md emerge as sectional curvatures of gauge subgroups. The framework predicts alpha^-1(GUT) = n + L + 1 = 25, matching SO(10) GUT calculations.
+We derive the equation of motion for BLD theory from the Lie algebra so(8), which is uniquely determined by the BLD constants (n=4, L=20, B=56). The derivation uses standard Riemannian geometry on Lie groups: the Killing form induces a bi-invariant metric on SO(8), whose geodesics are one-parameter subgroups exp(tX). Free motion satisfies dOmega/dt = 0 (constant body angular velocity). Forces arise from the Riemann curvature R(X,Y)Z = -1/4 [[X,Y],Z], and the K/X coupling constants from force-structure.md emerge as sectional curvatures of gauge subgroups. The framework predicts alpha^-1(GUT) = n + L + 1 = 25, matching SO(10) GUT calculations. Companion files derive the gauge structure ([gauge-structure.md](gauge-structure.md)), weak force origin ([weak-origin.md](weak-origin.md)), and generation hierarchy ([generation-hierarchy.md](generation-hierarchy.md)) from this equation of motion.
 
 ## 1. Introduction
 
@@ -56,15 +70,13 @@ The key insight: the BLD completeness theorem (Lean: `bld_completeness`) establi
 
 ## Part I: Free Equation of Motion
 
-### 3. Step 1: BLD to so(8) [PROVEN]
-
-The BLD completeness theorem states:
+### 3. BLD to so(8)
 
 **Theorem** (Lean: `bld_completeness`). Among all Dynkin types with rank = n = 4 and 2 * dim = B = 56, only D_4 (the Dynkin diagram of so(8)) satisfies both constraints. The Lie algebra so(8) is therefore the unique simple Lie algebra compatible with the BLD constants.
 
 Concretely: dim(so(8)) = 8*7/2 = 28 = B/2, and rank(D_4) = 4 = n.
 
-### 4. Step 2: Killing Form
+### 4. Killing Form
 
 **Definition.** The Killing form on a Lie algebra g is the symmetric bilinear form
 
@@ -85,7 +97,7 @@ Since kappa is negative definite, we define the **bi-invariant metric** g = -kap
 
 **BLD connection:** The eigenvalue structure kappa(J_i, J_i) = +/-2 on the Lorentz algebra so(3,1) gives K = 2 (killing-form.md). The Killing form coefficient for so(n) = n-2 evaluated at n=4 gives 2 = K.
 
-### 5. Step 3: Levi-Civita Connection
+### 5. Levi-Civita Connection
 
 **Theorem** (Koszul formula for bi-invariant metrics). For left-invariant vector fields X, Y on a Lie group with bi-invariant metric g, the Levi-Civita connection is:
 
@@ -124,7 +136,7 @@ Since g is non-degenerate, nabla_X Y = 1/2 [X,Y]. QED.
 
 *Reference: Milnor, "Curvatures of Left Invariant Metrics on Lie Groups" (1976), Section 7.*
 
-### 6. Step 4: Geodesics and Free Motion
+### 6. Geodesics and Free Motion
 
 **Theorem.** The geodesics of SO(8) with the bi-invariant metric are one-parameter subgroups: gamma(t) = exp(tX) for X in so(8).
 
@@ -150,7 +162,7 @@ This is the BLD equation of motion for free particles: the body angular velocity
 
 ## Part II: Forces from Curvature
 
-### 7. Step 5: Curvature
+### 7. Curvature
 
 **Theorem.** The Riemann curvature of the bi-invariant metric on SO(8) is:
 
@@ -173,7 +185,7 @@ Therefore R(X,Y)Z = 1/4 [[X,Y],Z] - 1/2 [[X,Y],Z] = **-1/4 [[X,Y],Z]**. QED.
 
 **Sign note.** The minus sign is critical and verified by the Jacobi identity. Some references use opposite Riemann tensor conventions; we follow the convention R(X,Y)Z = nabla_X nabla_Y Z - nabla_Y nabla_X Z - nabla_{[X,Y]} Z.
 
-### 8. Step 6: Sectional Curvature
+### 8. Sectional Curvature
 
 **Theorem.** The sectional curvature of the bi-invariant metric on SO(8) is non-negative:
 
@@ -195,7 +207,7 @@ Therefore K(X,Y) = 1/4 |[X,Y]|^2 / denom >= 0. QED.
 
 **Physical meaning.** Non-negative sectional curvature means nearby geodesics converge: free particles in BLD tend to come together, not fly apart. This is the geometric origin of attractive forces.
 
-### Step 7: Ricci Curvature and Einstein Manifold
+### 9. Ricci Curvature and Einstein Manifold
 
 **Theorem** (Milnor 1976, do Carmo Ch. 11). For a compact Lie group with bi-invariant metric g = -kappa:
 
@@ -229,7 +241,11 @@ R = g^{ab} Ric_{ab} = 1/4 g^{ab} g_{ab} = 1/4 dim(so(8)) = 28/4 = **7**
 
 **Numerically verified**: Ric_{ab} = 1/4 g_{ab} for all 28 x 28 basis pairs to precision < 1e-10 (test_ricci_curvature).
 
-### 9. K/X as Coupling Constants
+---
+
+## Part III: Coupling Constants and Action
+
+### 10. K/X as Coupling Constants
 
 The force structure (force-structure.md) derives all four coupling constants from K/X, where K = 2 (Killing form) and X = structure traversed by the measurement.
 
@@ -253,7 +269,29 @@ where F_i is the field strength (curvature of gauge connection) for force i, and
 - **Complete** (-): all products detected — the geodesic wraps the full gauge subgroup.
 - **Embedded** (x): the observer is part of the geometry — multiplicative correction.
 
-### 10. Unified Action
+### 11. Sign Rule from Geometry
+
+The +/- sign in K/X corrections maps to detection completeness, which has a geometric origin in the relationship between the observer's geodesic and the gauge subgroup:
+
+**Complete detection** (all products observed, sign = -): The observer's geodesic wraps the full gauge subgroup. The curvature correction has a definite sign determined by the subgroup's sectional curvature.
+
+**Incomplete detection** (something escapes, sign = +): The geodesic doesn't fully sample the gauge subgroup. The correction has the opposite sign because the unsampled structure contributes with reversed orientation.
+
+**Embedded observation** (gravity, sign = x): The observer IS part of the geometry, so the correction is multiplicative rather than additive.
+
+The sign rule is confirmed for all five measured couplings (force-structure.md, Section 8.3):
+
+| Measurement | Sign | What Escapes? |
+|-------------|------|---------------|
+| alpha (atomic) | + | Virtual photon |
+| sin^2 theta_W | + | Neutrino contamination |
+| m_Z | - | Nothing |
+| m_W | + | Neutrino |
+| alpha_s (jets) | - | Nothing |
+
+**Status**: DERIVED. The sign rule follows from B-membership in the X expression, which maps to subalgebra projection completeness in so(8). Verified numerically for all 4 forces and 5 measurements (test_sign_rule_from_structure, test_subalgebra_projections). See force-structure.md Section 8.3.1 for the full geometric derivation.
+
+### 12. Unified Action
 
 The complete BLD action functional combines free motion with gauge forces:
 
@@ -271,6 +309,85 @@ where:
 - **Schrodinger equation**: See Part V below.
 - **Yang-Mills equations**: The F_i sector alone gives D_mu F^{mu nu} = 0 (sourceless Yang-Mills). Coupling to the geodesic term adds the current.
 - **Einstein field equations**: See Part VI below.
+
+---
+
+## Part IV: RG Running and Heat Kernel
+
+### 13. GUT Unification
+
+**Prediction.** At the GUT scale, boundary effects (B) become irrelevant. The effective coupling unifies to:
+
+alpha^-1(GUT) = n + L + 1 = 4 + 20 + 1 = **25**
+
+**Derivation.** The full fine structure constant is alpha^-1 = nL + B + 1 + corrections (force-structure.md). At energies far above the electroweak scale:
+- The boundary modes (B = 56) decouple — they are the low-energy topology
+- The observer correction K/B becomes negligible (K/B -> 0 as effective B -> infinity)
+- What remains is the geometric structure: n + L + 1
+
+**Comparison with standard GUT predictions:**
+
+| Model | alpha^-1(GUT) | Source |
+|-------|--------------|--------|
+| SU(5) GUT | ~24.3 | One-loop running |
+| SO(10) GUT | ~25.0 +/- 1.5 | One-loop running |
+| **BLD** | **25** (exact) | n + L + 1 |
+
+The match with SO(10) is notable: SO(10) = Spin(10) is the universal cover of the rotation group in 10 dimensions, and BLD's so(8) embeds naturally in so(10) via the standard inclusion.
+
+**Physical interpretation.** RG "running" in BLD is not a property of the coupling itself — it's the energy-dependence of what structure the observer can resolve. At low energy (M_Z), the observer sees all 56 boundary modes, 20 link modes, and 4 dimensional modes. At high energy (GUT scale), the boundary modes blur out, leaving only geometry (n + L) plus the observer (+1).
+
+**Status**: PREDICTED. The exact value alpha^-1(GUT) = 25 is not directly testable with current experiments, but is consistent with indirect constraints from proton decay limits and gauge coupling unification analyses.
+
+### 14. Boundary Coupling Algebra
+
+**Theorem.** The boundary contribution to the coupling transition is:
+
+B x K = nL + B - n - L = 112
+
+*Proof.* B = (n-1)(L-1) - 1 = 3 x 19 - 1 = 56. Then BK = 56 x 2 = 112. Direct computation: nL + B - n - L = 80 + 56 - 4 - 20 = 112. QED.
+
+**Key consequence**: K = 2 is derived, not independent. Since nL - n - L = (n-1)(L-1) - 1 = B, the identity BK = nL + B - n - L becomes BK = B + B = 2B, hence K = 2. The observation cost is determined by geometry.
+
+The full coupling transition from GUT to low energy:
+
+alpha^-1(low) - alpha^-1(GUT) = BK + small corrections = 112.036
+
+The 0.036 comes from the K/B + spatial + return corrections derived in force-structure.md.
+
+**Numerically verified**: BK = 112 exact (test_bk_algebra).
+
+### 15. Heat Kernel on SO(8)
+
+The heat kernel trace on SO(8) is:
+
+Z(t) = Sum_R d_R^2 exp(-t C_2(R))
+
+where the sum runs over all irreducible representations R of so(8), d_R is the dimension, and C_2(R) is the quadratic Casimir.
+
+**Properties** (numerically verified, test_heat_kernel_spectral):
+- Z(t) > 0 for all t > 0 (positive definite)
+- Z(t) is monotonically decreasing
+- Z(t) -> 1 as t -> infinity (only trivial rep survives)
+- Spectral convergence at t = 1.0: the leading representations (three 8-dim triality reps + 28-dim adjoint) contribute 99.7%
+
+The heat kernel connects representation theory to geometry through the spectral decomposition of the Laplacian on SO(8). The function bld.heat_kernel_trace(t, max_label_sum) computes Z(t) from the Weyl dimension formula and Casimir values for D_4.
+
+### 16. Spectral Transition Shape
+
+The RG transition function derived from the heat kernel is:
+
+g_HK(k) = 1 - Z_red(t_k) / Z_red(0)
+
+where Z_red excludes the trivial representation and t_k = t_0 * lambda^(2k) with lambda^2 = K^2/(nL) = 1/20.
+
+**Properties** (numerically verified, test_spectral_transition):
+- Monotonic: g_HK(0) ~ 1 (all modes opaque), g_HK(n_c) ~ 0 (all transparent)
+- **Sharp transition**: width ~ 2-3 cascade steps, from C_2_min = 7 and step factor lambda^2 = 1/20
+- Sharper than all three phenomenological candidates (exp, linear, quadratic) at k = 5
+- Robust across t_0 values [0.1, 0.5, 2.0, 10.0]
+
+The sharpness arises because exp(-7/20) ~ 0.70 — the leading Casimir suppresses modes rapidly in just a few cascade steps.
 
 ---
 
@@ -304,7 +421,7 @@ The Lie bracket is bilinear: [X+Y, Z] = [X,Z] + [Y,Z]. The geodesic equation nab
 
 exp(t(X+Y)) = exp(tX) exp(tY) exp(-t^2/2 [X,Y]) ...
 
-To first order in t, superposition holds exactly: exp(t(X+Y)) ≈ exp(tX) exp(tY).
+To first order in t, superposition holds exactly: exp(t(X+Y)) ~ exp(tX) exp(tY).
 
 ### Step 5: With potential
 
@@ -344,7 +461,7 @@ This is the **tidal force equation**: nearby geodesics deviate according to the 
 
 ### Einstein manifold -> vacuum Einstein equations
 
-From Step 7 above: Ric = 1/4 g. This means SO(8) satisfies:
+From Section 9 above: Ric = 1/4 g. This means SO(8) satisfies:
 
 R_{mu nu} = Lambda g_{mu nu}    with Lambda = 1/4
 
@@ -374,62 +491,20 @@ The existing analysis in general-relativity.md (reverse-engineering K = 2 inside
 
 ---
 
-## Part III: Sign Rule from Geometry
+## Conclusion
 
-### Hypothesis
+The equation of motion on SO(8) with bi-invariant Killing metric provides the complete dynamical framework for BLD theory:
 
-The +/- sign in K/X corrections maps to detection completeness, which has a geometric origin in the relationship between the observer's geodesic and the gauge subgroup:
+- **Free motion** = geodesics = one-parameter subgroups (dOmega/dt = 0)
+- **Forces** = curvature R(X,Y)Z = -1/4 [[X,Y],Z], with K/X coupling constants
+- **RG running** = B x K = 112 boundary contribution; heat kernel spectral transition sharp at ~2-3 cascade steps
+- **Schrodinger equation** = exact restriction to U(1) geodesic
+- **Einstein equations** = Ric = 1/4 g (Einstein manifold with Lambda = 1/4)
 
-**Complete detection** (all products observed, sign = -): The observer's geodesic wraps the full gauge subgroup. The curvature correction has a definite sign determined by the subgroup's sectional curvature.
-
-**Incomplete detection** (something escapes, sign = +): The geodesic doesn't fully sample the gauge subgroup. The correction has the opposite sign because the unsampled structure contributes with reversed orientation.
-
-**Embedded observation** (gravity, sign = x): The observer IS part of the geometry, so the correction is multiplicative rather than additive.
-
-### Evidence
-
-The sign rule is confirmed for all five measured couplings (force-structure.md, Section 8.3):
-
-| Measurement | Sign | What Escapes? |
-|-------------|------|---------------|
-| alpha (atomic) | + | Virtual photon |
-| sin^2 theta_W | + | Neutrino contamination |
-| m_Z | - | Nothing |
-| m_W | + | Neutrino |
-| alpha_s (jets) | - | Nothing |
-
-The geometric interpretation connects detection completeness to the projection of the observer's trajectory onto gauge subgroup orbits. Full projection (complete detection) gives negative curvature correction; partial projection (incomplete) gives positive.
-
-**Status**: DERIVED. The sign rule follows from B-membership in the X expression, which maps to subalgebra projection completeness in so(8). Non-zero Killing-orthogonal projection onto the traverser's gauge subalgebra ↔ detection (T ∩ S ≠ ∅). Verified numerically for all 4 forces and 5 measurements (test_sign_rule_from_structure, test_subalgebra_projections). See force-structure.md §8.3.1 for the full geometric derivation.
-
----
-
-## Part IV: RG Running and GUT Unification
-
-### 11. RG Running and GUT Unification
-
-**Prediction.** At the GUT scale, boundary effects (B) become irrelevant. The effective coupling unifies to:
-
-alpha^-1(GUT) = n + L + 1 = 4 + 20 + 1 = **25**
-
-**Derivation.** The full fine structure constant is alpha^-1 = nL + B + 1 + corrections (force-structure.md). At energies far above the electroweak scale:
-- The boundary modes (B = 56) decouple — they are the low-energy topology
-- The observer correction K/B becomes negligible (K/B -> 0 as effective B -> infinity)
-- What remains is the geometric structure: n + L + 1
-
-**Comparison with standard GUT predictions:**
-
-| Model | alpha^-1(GUT) | Source |
-|-------|--------------|--------|
-| SU(5) GUT | ~24.3 | One-loop running |
-| SO(10) GUT | ~25.0 +/- 1.5 | One-loop running |
-| **BLD** | **25** (exact) | n + L + 1 |
-
-The match with SO(10) is notable: SO(10) = Spin(10) is the universal cover of the rotation group in 10 dimensions, and BLD's so(8) embeds naturally in so(10) via the standard inclusion.
-
-**Physical interpretation.** RG "running" in BLD is not a property of the coupling itself — it's the energy-dependence of what structure the observer can resolve. At low energy (M_Z), the observer sees all 56 boundary modes, 20 link modes, and 4 dimensional modes. At high energy (GUT scale), the boundary modes blur out, leaving only geometry (n + L) plus the observer (+1).
-
-**Status**: PREDICTED. The exact value alpha^-1(GUT) = 25 is not directly testable with current experiments, but is consistent with indirect constraints from proton decay limits and gauge coupling unification analyses.
+The companion files derive further structure from this framework:
+- [Gauge Structure](gauge-structure.md): u(4) = su(4) + u(1) (Pati-Salam), hypercharge, e_R in S^2(8_v)
+- [Weak Origin](weak-origin.md): der(H) = so(3) = weak gauge, E_7 Tits construction
+- [Generation Hierarchy](generation-hierarchy.md): C_2 = R uniquely for so(8), S_3 breaking, n^2 S = 208
 
 ---
 
@@ -449,24 +524,10 @@ The match with SO(10) is notable: SO(10) = Spin(10) is the universal cover of th
 | Sign rule | B-membership -> detection completeness | NUMERICALLY VERIFIED | test_sign_rule_from_structure |
 | K/X | Force couplings | STATED | Predictions.lean |
 | GUT | alpha^-1(GUT) = 25 | NOT YET | (needs new theorem) |
+| BK algebra | B x K = 112, K = 2 derived | NUMERICALLY VERIFIED | test_bk_algebra |
+| Heat kernel | Z(t) spectral convergence | NUMERICALLY VERIFIED | test_heat_kernel_spectral |
 
 Steps 3-6 require Lie group infrastructure not yet available in Mathlib. The key dependency is a Riemannian geometry library for Lie groups.
-
----
-
-## Open Problems
-
-1. **SO(8) → SM branching rules.** RESOLVED — explicit su(3) generators extracted from G₂ stabilizer (D(e₁)=0), su(2) from quaternionic left multiplication restricted to {e₀,e₁,e₂,e₄}, u(1) from E₀₁. All 12 generators linearly independent (rank 12 in R²⁸). The 16-dim complementary subspace branches into 5 multiplets under simultaneous diagonalization of commuting Casimirs C₂(su3), C₂(su2), Y² (all diagonal to <10⁻¹⁰ in joint eigenbasis): (-4/3,-3,-1)×4, (-4/3,-3,0)×4, (-4/3,0,-1)×2, (-4/3,0,0)×2, (-5/6,-1,-1)×4. The vector representation 8_v decomposes as (1,2)⊕(3,2)⊕(3,1) — matching SM one-generation structure: color-singlet weak-doublet (e₀,e₁ = leptons) + color-triplet weak-doublet (e₂,e₄ = quark doublet) + color-triplet weak-singlet (e₃,e₅,e₆,e₇ = quark singlets). See test_complementary_16_irreps, test_adjoint_branching, test_vector_rep_decomposition, test_adjoint_complement_joint_quantum_numbers.
-
-2. **Intermediate RG running.** PARTIALLY RESOLVED — the mechanism is energy-as-observation-scope (E = K×Σ(1/Xᵢ) from energy-derivation.md). At high energy, boundaries are transparent (traverser passes through → few modes contribute → α⁻¹ = 25). At low energy, boundaries are opaque (traverser scatters → all modes contribute → α⁻¹ = 137). The λ cascade (λ² = K²/(nL), n_c = 26 steps, μ(k) = V_EW × λ^{-k}) governs the transition, reaching Planck scale at k = n_c. Investigation: three candidate g(k) functions (exp/linear/quadratic) compared to SM 1-loop EM running in the 80–2000 GeV overlap window. SM EM running diverges from BLD unified coupling at high energy (α⁻¹_EM ≈ 174 at 10¹⁶ GeV vs BLD α⁻¹_GUT = 25) — expected since SM tracks individual gauge factors while BLD gives the unified coupling. Remaining: deriving g(k) from BLD principles (new research — requires understanding D×L cascade integration and energy thresholds from compensation-principle.md). See test_rg_comparison_sm, test_rg_endpoints, test_lambda_cascade_relations, test_rg_monotonic.
-
-3. **Sign rule geometry.** RESOLVED — B-membership in X determines the sign via subalgebra projection completeness. See Part III and force-structure.md §8.3.1.
-
-4. **Gravitational multiplicative correction.** RESOLVED — the observer IS the metric. For EM/weak/strong, correction is K/X (external observer, perturbative). For gravity, correction is (X+1)/X = 79/78 where X = nL-K = 78 (embedded observer, self-referential). The +1 is the observer themselves — you cannot measure geometry without occupying one position in it. This is NOT 1+K/X = 1+2/78 (additive); the difference is (K-1)/X = 1/78. The multiplicative form gives the correct Planck mass; the additive form is strictly worse. See test_gravity_multiplicative_structure.
-
-5. **Path integral on SO(8).** RESOLVED — one-loop structure verified via spectral zeta function ζ(s) = Σ_{R≠trivial} d_R² C₂(R)^{-s}. Weyl dimension formula for D₄ matches all known irrep dimensions (trivial→1, vector→8, adjoint→28, spinors→8, symmetric→35, etc.). Casimir C₂(R) = (λ, λ+2ρ) cross-checks: adjoint C₂=12 matches casimir_adjoint(8), triality reps all have C₂=7. Spectral zeta converges at s=2 (relative changes decrease with increasing truncation). ζ'(0) is finite (truncated series gives large but finite value; full analytic continuation regularizes). Heat kernel a₁ = 7/6 consistent. Remaining: Haar measure on path space connecting Vol(SO(8)) to rigorous path integral measure (standard but separate). See test_one_loop_determinant, test_casimir_adjoint, test_heat_kernel_coefficients, test_vol_so, test_stationary_phase_geodesic.
-
-6. **Three generations from triality.** RESOLVED — D₄ = so(8) uniquely has S₃ outer automorphism (triality), giving exactly 3 representations (8_v, 8_s, 8_c). All three constructed explicitly: 8_v from defining rep, 8_s and 8_c from Clifford algebra Cl(8) with charge conjugation providing real basis. All satisfy so(8) commutation relations to machine precision, Killing form ratio 1/6 uniformly, C₂(so8) = -7 (triality invariant). Decomposition under su(3)×su(2)×u(1): all three have multiplicities [2, 2, 4] and identical individual su(3)/su(2) Casimir spectra. The joint structure: 8_v and 8_c both decompose as (1,2)⊕(3,2)⊕(3,1) (SM-like), while 8_s decomposes as (1,1)⊕(3,1)⊕(3,2) — same ingredients, different pairing. This gives two SM-like generations and one with reshuffled quantum numbers. Mass formulas (μ/e ≈ 207, etc.) remain algebraic, not representation-theoretic. See test_triality_cartan_action, test_triality_three_generations, test_spinor_reps_construction, test_triality_preserves_sm_structure.
 
 ---
 

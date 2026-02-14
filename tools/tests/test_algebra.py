@@ -30,51 +30,19 @@ class AlgebraResult:
 # ---------------------------------------------------------------------------
 # Octonion multiplication infrastructure
 # ---------------------------------------------------------------------------
-#
-# Fano plane triples (i, j, k) mean e_i * e_j = e_k.
-# Indices 1..7 for imaginary units; 0 is the real unit.
-# Convention follows the standard Fano plane:
-#   (1,2,4), (2,3,5), (3,4,6), (4,5,7), (5,6,1), (6,7,2), (7,1,3)
 
-_FANO_TRIPLES = [
-    (1, 2, 4), (2, 3, 5), (3, 4, 6), (4, 5, 7),
-    (5, 6, 1), (6, 7, 2), (7, 1, 3),
-]
-
-# Build structure constants: C[i][j] = (sign, k) where e_i * e_j = sign * e_k
-# For i,j in 1..7.  e_0 is the identity.
-_STRUCT = np.zeros((8, 8, 8), dtype=np.float64)
-
-# e_0 * e_i = e_i, e_i * e_0 = e_i
-for i in range(8):
-    _STRUCT[0, i, i] = 1.0
-    _STRUCT[i, 0, i] = 1.0
-
-# e_i * e_i = -e_0 for i >= 1
-for i in range(1, 8):
-    _STRUCT[i, i, 0] = -1.0
-
-# Fano plane triples
-for a, b, c in _FANO_TRIPLES:
-    _STRUCT[a, b, c] = 1.0
-    _STRUCT[b, a, c] = -1.0    # antisymmetric
-    # Cyclic: (a,b,c) -> (b,c,a) -> (c,a,b)
-    _STRUCT[b, c, a] = 1.0
-    _STRUCT[c, b, a] = -1.0
-    _STRUCT[c, a, b] = 1.0
-    _STRUCT[a, c, b] = -1.0
+_FANO_TRIPLES = tools.bld.FANO_TRIPLES
+_STRUCT = tools.bld.octonion_struct()
 
 
 def _octonion_multiply(a: np.ndarray, b: np.ndarray) -> np.ndarray:
     """Multiply two octonions represented as 8-vectors."""
-    return np.einsum("ijk,i,j->k", _STRUCT, a, b)
+    return tools.bld.octonion_multiply(a, b, _STRUCT)
 
 
 def _octonion_conjugate(a: np.ndarray) -> np.ndarray:
     """Conjugate: negate imaginary parts."""
-    result = a.copy()
-    result[1:] = -result[1:]
-    return result
+    return tools.bld.octonion_conjugate(a)
 
 
 def _octonion_norm_sq(a: np.ndarray) -> float:
@@ -137,36 +105,8 @@ def _double_struct(mult: np.ndarray) -> np.ndarray:
 
 
 def _octonion_derivation_matrix() -> np.ndarray:
-    """Build the G2 derivation constraint matrix for octonions.
-
-    A derivation D maps Im(O) -> Im(O) (7x7 matrix, 49 unknowns).
-    D(e_i * e_j) = D(e_i)*e_j + e_i*D(e_j) gives linear constraints.
-    """
-    n_unknowns = 49
-    equations = []
-    for i in range(1, 8):
-        for j in range(1, 8):
-            for out_comp in range(8):
-                row = np.zeros(n_unknowns)
-                for k in range(1, 8):
-                    coeff = _STRUCT[i, j, k]
-                    if abs(coeff) < 1e-15:
-                        continue
-                    if out_comp >= 1:
-                        row[(k - 1) * 7 + (out_comp - 1)] += coeff
-                for a in range(7):
-                    sc = _STRUCT[a + 1, j, out_comp]
-                    if abs(sc) < 1e-15:
-                        continue
-                    row[(i - 1) * 7 + a] -= sc
-                for a in range(7):
-                    sc = _STRUCT[i, a + 1, out_comp]
-                    if abs(sc) < 1e-15:
-                        continue
-                    row[(j - 1) * 7 + a] -= sc
-                if np.any(np.abs(row) > 1e-15):
-                    equations.append(row)
-    return np.array(equations)
+    """Build the G2 derivation constraint matrix for octonions."""
+    return tools.bld.octonion_derivation_constraints(_STRUCT)
 
 
 _STRUCT_Q = np.zeros((4, 4, 4), dtype=np.float64)

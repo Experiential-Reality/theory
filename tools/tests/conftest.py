@@ -10,6 +10,14 @@ import pathlib
 import numpy as np
 import pytest
 
+import tools.bld
+
+
+@pytest.fixture(scope="session")
+def so8() -> tools.bld.SO8:
+    """Session-scoped: builds SO8 algebra state once for entire test suite."""
+    return tools.bld.build_so8()
+
 
 @pytest.fixture
 def fixtures_dir() -> pathlib.Path:
