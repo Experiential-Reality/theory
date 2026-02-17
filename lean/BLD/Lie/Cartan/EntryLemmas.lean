@@ -203,6 +203,34 @@ theorem D_castSucc_eq_A (k : ℕ) (hk : 3 ≤ k) (i j : Fin k) :
   have hi := i.isLt; have hj := j.isLt
   split_ifs <;> omega
 
+/-- A sub-path of D_{n+2} starting at offset c gives A_k, provided all indices
+    stay in the path portion (away from the fork). -/
+theorem D_path_shift_eq_A (k : ℕ) (n c : ℕ) (hn : 3 ≤ n + 2)
+    (hc : c + k ≤ n) (i j : Fin k) :
+    CartanMatrix.D (n + 2) ⟨i.val + c, by omega⟩ ⟨j.val + c, by omega⟩ =
+    CartanMatrix.A k i j := by
+  simp only [CartanMatrix.D, CartanMatrix.A, Matrix.of_apply, Fin.ext_iff, Fin.val_mk]
+  have hi := i.isLt; have hj := j.isLt
+  split_ifs <;> omega
+
+/-- Fork entries of D_{n+2}: the fork vertex n-1 connects to n-2, n, n+1 with entry -1. -/
+theorem D_fork_entry (n : ℕ) (hn : 2 ≤ n) (a b : ℕ) (ha : a < n + 2) (hb : b < n + 2)
+    (hab : a = n - 1 ∧ (b = n - 2 ∨ b = n ∨ b = n + 1) ∨
+           b = n - 1 ∧ (a = n - 2 ∨ a = n ∨ a = n + 1)) :
+    CartanMatrix.D (n + 2) ⟨a, ha⟩ ⟨b, hb⟩ = -1 := by
+  simp [CartanMatrix.D, Fin.ext_iff]; rcases hab with ⟨rfl, h⟩ | ⟨rfl, h⟩ <;>
+    rcases h with rfl | rfl | rfl <;> split_ifs <;> omega
+
+/-- Non-adjacent fork entries of D_{n+2}: pp↔fl1, pp↔fl2, fl1↔fl2 all give 0. -/
+theorem D_fork_zero (n : ℕ) (hn : 2 ≤ n) (a b : ℕ) (ha : a < n + 2) (hb : b < n + 2)
+    (hab : a = n - 2 ∧ (b = n ∨ b = n + 1) ∨
+           b = n - 2 ∧ (a = n ∨ a = n + 1) ∨
+           a = n ∧ b = n + 1 ∨ b = n ∧ a = n + 1) :
+    CartanMatrix.D (n + 2) ⟨a, ha⟩ ⟨b, hb⟩ = 0 := by
+  simp [CartanMatrix.D, Fin.ext_iff]
+  rcases hab with ⟨rfl, rfl | rfl⟩ | ⟨rfl, rfl | rfl⟩ | ⟨rfl, rfl⟩ | ⟨rfl, rfl⟩ <;>
+    split_ifs <;> omega
+
 /-- D_{k+1} last row: vertex k connects to vertex k-2 (fork, k ≥ 3). -/
 theorem D_last_row (k : ℕ) (hk : 3 ≤ k) (i : Fin k) :
     CartanMatrix.D (k + 1) (Fin.last k) (Fin.castSucc i) =
@@ -689,6 +717,14 @@ theorem B_mulVec_nullsub (m : ℕ) (hm : 3 ≤ m) (i : Fin m) :
   split_ifs <;> omega
 
 -- ═══════════════════════════════════════════════════════════
+/-- Shifting D: D_{k+c}(⟨i+c,_⟩, ⟨j+c,_⟩) = D_k(i, j) when k ≥ 4. -/
+theorem D_shift (k c : ℕ) (hk : 4 ≤ k) (i j : Fin k) :
+    CartanMatrix.D (k + c) ⟨i.val + c, by omega⟩ ⟨j.val + c, by omega⟩ =
+    CartanMatrix.D k i j := by
+  simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff, Fin.val_mk]
+  have hi := i.isLt; have hj := j.isLt
+  split_ifs <;> omega
+
 -- Sum reindexing helper
 -- ═══════════════════════════════════════════════════════════
 

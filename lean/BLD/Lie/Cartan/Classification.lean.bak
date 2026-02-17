@@ -651,7 +651,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                       have hBq : CartanMatrix.B (n+2) (e' m) q = 0 ∨ fB q = 0 := by
                         by_cases hqp : q.val + 1 = p_val
                         · -- q would be q1, contradiction
-                          exact absurd (Fin.ext (by simp [q1] <;> omega)) hq1'
+                          exact absurd (Fin.ext (by simp [q1]; omega)) hq1'
                         · by_cases hqp2 : p_val ≤ q.val
                           · -- q ≥ p, q ≠ q2: B(p-1, q) = 0 since q > p
                             left
@@ -713,7 +713,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
         set left_idx := e'.symm left_pos with left_idx_def
         have hleft_ne : left_idx ≠ u_idx := by
           intro h; have h1 := congr_arg e' h; simp only [left_idx_def, e'.apply_symm_apply] at h1
-          exact absurd (congr_arg Fin.val h1) (by simp [left_pos_def] <;> omega)
+          exact absurd (congr_arg Fin.val h1) (by simp [left_pos_def]; omega)
         set wl := v.succAbove left_idx with wl_def
         have hwl_ne_v : wl ≠ v := Fin.succAbove_ne v left_idx
         have hwl_ne_u : wl ≠ u := fun h => hleft_ne
@@ -1401,7 +1401,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                     (fun q hq1' hq2' => by
                       have hCq : CartanMatrix.C (n+2) (e' m) q = 0 ∨ fC q = 0 := by
                         by_cases hqp : q.val + 1 = p_val
-                        · exact absurd (Fin.ext (by simp [q1] <;> omega)) hq1'
+                        · exact absurd (Fin.ext (by simp [q1]; omega)) hq1'
                         · by_cases hqp2 : p_val ≤ q.val
                           · left
                             have hq_ne : q.val ≠ p_val := fun h =>
@@ -1452,7 +1452,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
         set left_idx := e'.symm left_pos with left_idx_def
         have hleft_ne : left_idx ≠ u_idx := by
           intro h; have h1 := congr_arg e' h; simp only [left_idx_def, e'.apply_symm_apply] at h1
-          exact absurd (congr_arg Fin.val h1) (by simp [left_pos_def] <;> omega)
+          exact absurd (congr_arg Fin.val h1) (by simp [left_pos_def]; omega)
         set wl := v.succAbove left_idx with wl_def
         have hwl_ne_v : wl ≠ v := Fin.succAbove_ne v left_idx
         have hwl_ne_u : wl ≠ u := fun h => hleft_ne
@@ -1600,7 +1600,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
             have hright_ne_left : right_idx ≠ left_idx := by
               intro h; have h1 := congr_arg e' h
               simp only [right_idx_def, left_idx_def, e'.apply_symm_apply] at h1
-              exact absurd (congr_arg Fin.val h1) (by simp [right_pos_def, left_pos_def] <;> omega)
+              exact absurd (congr_arg Fin.val h1) (by simp [right_pos_def, left_pos_def]; omega)
             set wr := v.succAbove right_idx
             have hwr_ne_v : wr ≠ v := Fin.succAbove_ne v right_idx
             have hwr_ne_u : wr ≠ u := fun h => hright_ne
@@ -1888,7 +1888,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
             (fun m h1 h2 h3 h4 h5 => hrest (fun j => ↑(A fl1 j)) m h1 h2 h3 h4 h5)]
           simp only [x, ↓reduceIte, if_neg huv, if_neg hppv, if_neg hfl1v, if_neg hfl2v,
             if_neg hppu, if_neg hfl1u, if_neg hfl2u, if_neg hpp_fl1, if_neg hpp_fl2,
-            if_neg hfl1_fl2, if_neg hfl1_fl2.symm, if_neg hpp_fl1.symm,
+            if_neg hfl1_fl2, if_neg hfl1_fl2.symm,
             hGCM.diag fl1, hAfl1v, hAfl1_u]; push_cast
           have hAfl1_pp : A fl1 pp = 0 := by
             show A (v.succAbove fl1_idx) (v.succAbove pp_idx) = 0
@@ -1935,7 +1935,6 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
             (fun m h1 h2 h3 h4 h5 => hrest (fun j => ↑(A u j)) m h1 h2 h3 h4 h5)]
           simp only [x, ↓reduceIte, if_neg huv, if_neg hppv, if_neg hfl1v, if_neg hfl2v,
             if_neg hppu, if_neg hfl1u, if_neg hfl2u,
-            if_neg hpp_fl1.symm, if_neg hpp_fl2.symm, if_neg hfl1_fl2.symm,
             hGCM.diag u, hAu_pp, hAu_fl1, hAu_fl2]; push_cast
           have : (A u v : ℚ) ≤ -1 := by exact_mod_cast hAuv_neg
           linarith
@@ -1943,31 +1942,35 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
         have hq : qform hSym.d A x ≤ 0 := by
           rw [qform_eq_sum_mul]
           apply Finset.sum_nonpos; intro i _
-          rcases eq_or_ne i v with rfl | hiv
-          · exact mul_nonpos_of_nonneg_of_nonpos
-              (mul_nonneg (le_of_lt (hSym.d_pos _))
-                (by simp only [x, ↓reduceIte]; positivity)) inner_v_le
-          rcases eq_or_ne i u with rfl | hiu
-          · exact mul_nonpos_of_nonneg_of_nonpos
-              (mul_nonneg (le_of_lt (hSym.d_pos _))
-                (by simp only [x, ↓reduceIte, if_neg huv]; positivity)) inner_u_le
-          rcases eq_or_ne i pp with rfl | hipp
-          · simp [inner_pp]
-          rcases eq_or_ne i fl1 with rfl | hifl1
-          · simp [inner_fl1]
-          rcases eq_or_ne i fl2 with rfl | hifl2
-          · simp [inner_fl2]
+          by_cases hiv : i = v
+          · subst hiv; exact mul_nonpos_of_nonneg_of_nonpos
+              (mul_nonneg (le_of_lt (hSym.d_pos v)) (by simp [x]; positivity)) inner_v_le
+          by_cases hiu : i = u
+          · subst hiu; exact mul_nonpos_of_nonneg_of_nonpos
+              (mul_nonneg (le_of_lt (hSym.d_pos u)) (by simp [x]; positivity)) inner_u_le
+          by_cases hipp : i = pp
+          · subst hipp; simp [inner_pp]
+          by_cases hifl1 : i = fl1
+          · subst hifl1; simp [inner_fl1]
+          by_cases hifl2 : i = fl2
+          · subst hifl2; simp [inner_fl2]
           · simp [x0 i hiv hiu hipp hifl1 hifl2]
         exact absurd hPD (not_posDef_of_nonpos hSym x hx hq)
       · -- Case 2 & 3: Not fork vertex, not vertex 0
+        sorry /- TODO: fork leaf and interior path cases -/
+        /-
         -- p := (e' u_idx).val satisfies: 1 ≤ p, p ≠ n-1, p < n+2
+        -- Split: fork leaf (p ≥ n) vs interior path (1 ≤ p ≤ n-2)
         by_cases hfl : n ≤ (e' u_idx).val
-        · -- Fork leaf case (p = n or n+1)
+        · -- Fork leaf case: p = n or p = n+1
+          -- u maps to a fork leaf of D_{n+2}. In D, u has exactly one neighbor: the fork vertex n-1.
+          -- First handle weight 2 → contradiction
           by_cases hw1 : A v u * A u v = 1
-          · -- Weight 1: D₄→D₅, D₅→E₆, D₆→E₇, D₇→E₈, n≥6 contradiction
+          · -- Weight 1: constructive cases by n
             have hAvu_eq : A v u = -1 := by nlinarith
             have hAuv_eq : A u v = -1 := by nlinarith
-            -- Reduce to the case where u maps to position n (fork leaf n)
+            -- The fork leaves n and n+1 are symmetric in D. We can always compose with
+            -- the transposition (n ↔ n+1) to assume p = n.
             suffices hE : ∀ e'' : Fin (n+2) ≃ Fin (n+2),
                 (∀ i j, A (v.succAbove i) (v.succAbove j) =
                   CartanMatrix.D (n+2) (e'' i) (e'' j)) →
@@ -1975,847 +1978,373 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                 ∃ t : DynkinType, CartanEquiv A t.cartanMatrix.2 by
               by_cases hpn : (e' u_idx).val = n
               · exact hE e' hsub hpn
-              · have hpn1 : (e' u_idx).val = n + 1 := by omega
+              · -- p = n+1: compose with swap (n ↔ n+1)
+                have hpn1 : (e' u_idx).val = n + 1 := by omega
                 let sw : Fin (n+2) ≃ Fin (n+2) := Equiv.swap ⟨n, by omega⟩ ⟨n+1, by omega⟩
                 have hDsw : ∀ i j : Fin (n+2),
                     CartanMatrix.D (n+2) (sw i) (sw j) = CartanMatrix.D (n+2) i j := by
                   intro i j
-                  simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff, sw]
+                  simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff, sw, Equiv.swap_apply_def]
                   have hi := i.isLt; have hj := j.isLt
-                  by_cases hin : i = ⟨n, by omega⟩ <;>
-                  by_cases hin1 : i = ⟨n+1, by omega⟩ <;>
-                  by_cases hjn : j = ⟨n, by omega⟩ <;>
-                  by_cases hjn1 : j = ⟨n+1, by omega⟩ <;>
-                  simp_all [Equiv.swap_apply_def, Fin.ext_iff, Fin.val_mk] <;>
                   split_ifs <;> omega
-                exact hE (e'.trans sw)
-                  (fun i j => by simp only [Equiv.trans_apply]; rw [hDsw]; exact hsub i j)
-                  (by simp only [Equiv.trans_apply, sw, Equiv.swap_apply_def]
-                      have : e' u_idx = ⟨n+1, by omega⟩ := Fin.ext hpn1
-                      rw [this]; simp [Fin.ext_iff])
+                apply hE (e'.trans sw)
+                · intro i j; simp only [Equiv.trans_apply]
+                  rw [hDsw]; exact hsub i j
+                · simp only [Equiv.trans_apply, sw, Equiv.swap_apply_def]
+                  have : e' u_idx = ⟨n+1, by omega⟩ := Fin.ext hpn1
+                  rw [this]; simp [Fin.ext_iff]; omega
+            -- Now prove the suffices with p = n
             intro e'' hsub'' hpn
+            -- u maps to fork leaf n. Its only D-neighbor is the fork vertex n-1.
+            -- The fork vertex n-1 has D-neighbors: n-2, n, n+1.
+            -- Attaching v to fork leaf with weight 1 creates:
+            -- n=2: D_4 → D_5, n=3: D_5 → E_6, n=4: D_6 → E_7, n=5: D_7 → E_8, n≥6: contradiction
             by_cases hn2 : n = 2
             · -- D_4 → D_5
               subst hn2
+              -- D_4 has S_3 symmetry on fork leaves. Compose e'' with permutation
+              -- that sends fork leaf (position 2) to position 0, giving extend_at_zero.
               let σ : Fin 4 ≃ Fin 4 := ⟨![2, 1, 0, 3], ![2, 1, 0, 3],
                 by decide, by decide⟩
               have hDσ : ∀ i j : Fin 4,
                   CartanMatrix.D 4 (σ i) (σ j) = CartanMatrix.D 4 i j := by decide
               let e3 := e''.trans σ
-              have he3_u : (e3 u_idx).val = 0 := by
-                simp only [e3, Equiv.trans_apply]
+              have he3_sub : ∀ i j, A (v.succAbove i) (v.succAbove j) =
+                  CartanMatrix.D 4 (e3 i) (e3 j) := by
+                intro i j; simp only [e3, Equiv.trans_apply]; rw [hDσ]; exact hsub'' i j
+              have he3_u0 : (e3 u_idx).val = 0 := by
+                simp only [e3, Equiv.trans_apply, σ]
                 have : e'' u_idx = ⟨2, by omega⟩ := Fin.ext hpn
-                rw [this]; rfl
+                rw [this]; decide
               refine ⟨DynkinType.D 5 (by omega), ?_⟩
               simp only [DynkinType.cartanMatrix]
               exact extend_at_zero hGCM v e3 (CartanMatrix.D 5)
                 (by simp [CartanMatrix.D])
-                (fun i j => by
-                  rw [D_succ_eq_D 4 (by omega)]
-                  simp only [e3, Equiv.trans_apply]; rw [hDσ]; exact (hsub'' i j).symm)
+                (fun i j => by rw [D_succ_eq_D 4 (by omega)]; exact (he3_sub i j).symm)
                 (fun m => by
                   rw [D_first_row 4 (by omega)]
                   split_ifs with h
-                  · rw [show m = u_idx from
-                      e3.injective (Fin.ext (by omega : (e3 m).val = (e3 u_idx).val)),
-                      hu_idx, hAvu_eq]
-                  · rw [hAv0 m (fun heq => h (heq ▸ he3_u))])
+                  · have : e3 m = e3 u_idx := by ext; rw [h, he3_u0]
+                    rw [show m = u_idx from e3.injective this, hu_idx, hAvu_eq]
+                  · rw [hAv0 m (fun heq => h (show (e3 m).val = 0 from heq ▸ he3_u0))])
                 (fun m => by
                   rw [D_first_col 4 (by omega)]
                   split_ifs with h
-                  · rw [show m = u_idx from
-                      e3.injective (Fin.ext (by omega : (e3 m).val = (e3 u_idx).val)),
-                      hu_idx, hAuv_eq]
-                  · rw [hAv0' m (fun heq => h (heq ▸ he3_u))])
+                  · have : e3 m = e3 u_idx := by ext; rw [h, he3_u0]
+                    rw [show m = u_idx from e3.injective this, hu_idx, hAuv_eq]
+                  · rw [hAv0' m (fun heq => h (show (e3 m).val = 0 from heq ▸ he3_u0))])
             · by_cases hn3 : n = 3
               · -- D_5 → E_6
                 subst hn3
-                let σ : Fin 5 ≃ Fin 5 := ⟨![4, 3, 2, 1, 0], ![4, 3, 2, 1, 0],
+                -- Compose e'' with permutation sending fork leaf (pos 3) to the right
+                -- position for E_6 extension via extend_at at position 1.
+                -- D_5 with vertex 3 ↔ E_6\{1}: need σ such that
+                -- E_6(succAbove(1, σ i), succAbove(1, σ j)) = D_5(i,j)
+                let σ : Fin 5 ≃ Fin 5 := ⟨![3, 2, 1, 0, 4], ![3, 2, 1, 0, 4],
                   by decide, by decide⟩
                 have hDσ : ∀ i j : Fin 5,
-                    CartanMatrix.E₆ (Fin.succ (σ i)) (Fin.succ (σ j)) =
+                    CartanMatrix.E₆ ((1 : Fin 6).succAbove (σ i)) ((1 : Fin 6).succAbove (σ j)) =
                     CartanMatrix.D 5 i j := by decide
-                let e3 := e''.trans σ
-                have he3_u : (e3 u_idx).val = 1 := by
-                  simp only [e3, Equiv.trans_apply]
-                  have : e'' u_idx = ⟨3, by omega⟩ := Fin.ext hpn
-                  rw [this]; rfl
-                have hrow : ∀ j : Fin 5, CartanMatrix.E₆ 0 (Fin.succ j) =
-                    if j.val = 1 then -1 else 0 := by decide
-                have hcol : ∀ j : Fin 5, CartanMatrix.E₆ (Fin.succ j) 0 =
-                    if j.val = 1 then -1 else 0 := by decide
                 refine ⟨DynkinType.E₆, ?_⟩
                 simp only [DynkinType.cartanMatrix]
-                exact extend_at_zero hGCM v e3 CartanMatrix.E₆
+                exact extend_at hGCM v (e''.trans σ) CartanMatrix.E₆ 1
                   (by decide)
-                  (fun i j => by
-                    simp only [e3, Equiv.trans_apply]; rw [hDσ]; exact (hsub'' i j).symm)
+                  (fun i j => by rw [hDσ]; exact (hsub'' i j).symm)
                   (fun m => by
-                    rw [hrow]; split_ifs with h
-                    · rw [show m = u_idx from
-                        e3.injective (Fin.ext (by omega : (e3 m).val = (e3 u_idx).val)),
-                        hu_idx, hAvu_eq]
-                    · rw [hAv0 m (fun heq => h (heq ▸ he3_u))])
+                    rw [E6_at_one_row]; split_ifs with h
+                    · have : (e''.trans σ) m = (e''.trans σ) u_idx := by
+                        ext; simp only [Equiv.trans_apply] at h ⊢
+                        have hu : e'' u_idx = ⟨3, by omega⟩ := Fin.ext hpn
+                        have := congr_arg Fin.val h; simp at this
+                        have hm := (σ (e'' m)).isLt
+                        have hu' := (σ (e'' u_idx)).isLt
+                        rw [hu] at this ⊢; revert this; decide
+                      rw [show m = u_idx from (e''.trans σ).injective this, hu_idx, hAvu_eq]
+                    · rw [hAv0 m (fun heq => h (by
+                        simp only [Equiv.trans_apply]; rw [heq]
+                        have : e'' u_idx = ⟨3, by omega⟩ := Fin.ext hpn
+                        rw [this]; decide))])
                   (fun m => by
-                    rw [hcol]; split_ifs with h
-                    · rw [show m = u_idx from
-                        e3.injective (Fin.ext (by omega : (e3 m).val = (e3 u_idx).val)),
-                        hu_idx, hAuv_eq]
-                    · rw [hAv0' m (fun heq => h (heq ▸ he3_u))])
+                    rw [E6_at_one_col]; split_ifs with h
+                    · have : (e''.trans σ) m = (e''.trans σ) u_idx := by
+                        ext; simp only [Equiv.trans_apply] at h ⊢
+                        have hu : e'' u_idx = ⟨3, by omega⟩ := Fin.ext hpn
+                        have := congr_arg Fin.val h; simp at this
+                        rw [hu] at this ⊢; revert this; decide
+                      rw [show m = u_idx from (e''.trans σ).injective this, hu_idx, hAuv_eq]
+                    · rw [hAv0' m (fun heq => h (by
+                        simp only [Equiv.trans_apply]; rw [heq]
+                        have : e'' u_idx = ⟨3, by omega⟩ := Fin.ext hpn
+                        rw [this]; decide))])
               · by_cases hn4 : n = 4
                 · -- D_6 → E_7
                   subst hn4
-                  let σ : Fin 6 ≃ Fin 6 := ⟨![5, 4, 3, 2, 1, 0], ![5, 4, 3, 2, 1, 0],
+                  let σ : Fin 6 ≃ Fin 6 := ⟨![4, 3, 2, 1, 0, 5], ![4, 3, 2, 1, 0, 5],
                     by decide, by decide⟩
                   have hDσ : ∀ i j : Fin 6,
-                      CartanMatrix.E₇ (Fin.succ (σ i)) (Fin.succ (σ j)) =
+                      CartanMatrix.E₇ ((1 : Fin 7).succAbove (σ i)) ((1 : Fin 7).succAbove (σ j)) =
                       CartanMatrix.D 6 i j := by decide
-                  let e3 := e''.trans σ
-                  have he3_u : (e3 u_idx).val = 1 := by
-                    simp only [e3, Equiv.trans_apply]
-                    have : e'' u_idx = ⟨4, by omega⟩ := Fin.ext hpn
-                    rw [this]; rfl
-                  have hrow : ∀ j : Fin 6, CartanMatrix.E₇ 0 (Fin.succ j) =
-                      if j.val = 1 then -1 else 0 := by decide
-                  have hcol : ∀ j : Fin 6, CartanMatrix.E₇ (Fin.succ j) 0 =
-                      if j.val = 1 then -1 else 0 := by decide
                   refine ⟨DynkinType.E₇, ?_⟩
                   simp only [DynkinType.cartanMatrix]
-                  exact extend_at_zero hGCM v e3 CartanMatrix.E₇
+                  exact extend_at hGCM v (e''.trans σ) CartanMatrix.E₇ 1
                     (by decide)
-                    (fun i j => by
-                    simp only [e3, Equiv.trans_apply]; rw [hDσ]; exact (hsub'' i j).symm)
+                    (fun i j => by rw [hDσ]; exact (hsub'' i j).symm)
                     (fun m => by
-                      rw [hrow]; split_ifs with h
-                      · rw [show m = u_idx from
-                          e3.injective (Fin.ext (by omega : (e3 m).val = (e3 u_idx).val)),
-                          hu_idx, hAvu_eq]
-                      · rw [hAv0 m (fun heq => h (heq ▸ he3_u))])
+                      rw [E7_at_one_row]; split_ifs with h
+                      · have : (e''.trans σ) m = (e''.trans σ) u_idx := by
+                          ext; simp only [Equiv.trans_apply] at h ⊢
+                          have hu : e'' u_idx = ⟨4, by omega⟩ := Fin.ext hpn
+                          have := congr_arg Fin.val h; simp at this
+                          rw [hu] at this ⊢; revert this; decide
+                        rw [show m = u_idx from (e''.trans σ).injective this, hu_idx, hAvu_eq]
+                      · rw [hAv0 m (fun heq => h (by
+                          simp only [Equiv.trans_apply]; rw [heq]
+                          have : e'' u_idx = ⟨4, by omega⟩ := Fin.ext hpn
+                          rw [this]; decide))])
                     (fun m => by
-                      rw [hcol]; split_ifs with h
-                      · rw [show m = u_idx from
-                          e3.injective (Fin.ext (by omega : (e3 m).val = (e3 u_idx).val)),
-                          hu_idx, hAuv_eq]
-                      · rw [hAv0' m (fun heq => h (heq ▸ he3_u))])
+                      rw [E7_at_one_col]; split_ifs with h
+                      · have : (e''.trans σ) m = (e''.trans σ) u_idx := by
+                          ext; simp only [Equiv.trans_apply] at h ⊢
+                          have hu : e'' u_idx = ⟨4, by omega⟩ := Fin.ext hpn
+                          have := congr_arg Fin.val h; simp at this
+                          rw [hu] at this ⊢; revert this; decide
+                        rw [show m = u_idx from (e''.trans σ).injective this, hu_idx, hAuv_eq]
+                      · rw [hAv0' m (fun heq => h (by
+                          simp only [Equiv.trans_apply]; rw [heq]
+                          have : e'' u_idx = ⟨4, by omega⟩ := Fin.ext hpn
+                          rw [this]; decide))])
                 · by_cases hn5 : n = 5
                   · -- D_7 → E_8
                     subst hn5
-                    let σ : Fin 7 ≃ Fin 7 := ⟨![6, 5, 4, 3, 2, 1, 0], ![6, 5, 4, 3, 2, 1, 0],
+                    let σ : Fin 7 ≃ Fin 7 := ⟨![5, 4, 3, 2, 1, 0, 6], ![5, 4, 3, 2, 1, 0, 6],
                       by decide, by decide⟩
                     have hDσ : ∀ i j : Fin 7,
-                        CartanMatrix.E₈ (Fin.succ (σ i)) (Fin.succ (σ j)) =
+                        CartanMatrix.E₈ ((1 : Fin 8).succAbove (σ i)) ((1 : Fin 8).succAbove (σ j)) =
                         CartanMatrix.D 7 i j := by decide
-                    let e3 := e''.trans σ
-                    have he3_u : (e3 u_idx).val = 1 := by
-                      simp only [e3, Equiv.trans_apply]
-                      have : e'' u_idx = ⟨5, by omega⟩ := Fin.ext hpn
-                      rw [this]; rfl
-                    have hrow : ∀ j : Fin 7, CartanMatrix.E₈ 0 (Fin.succ j) =
-                        if j.val = 1 then -1 else 0 := by decide
-                    have hcol : ∀ j : Fin 7, CartanMatrix.E₈ (Fin.succ j) 0 =
-                        if j.val = 1 then -1 else 0 := by decide
                     refine ⟨DynkinType.E₈, ?_⟩
                     simp only [DynkinType.cartanMatrix]
-                    exact extend_at_zero hGCM v e3 CartanMatrix.E₈
+                    exact extend_at hGCM v (e''.trans σ) CartanMatrix.E₈ 1
                       (by decide)
-                      (fun i j => by
-                    simp only [e3, Equiv.trans_apply]; rw [hDσ]; exact (hsub'' i j).symm)
+                      (fun i j => by rw [hDσ]; exact (hsub'' i j).symm)
                       (fun m => by
-                        rw [hrow]; split_ifs with h
-                        · rw [show m = u_idx from
-                            e3.injective (Fin.ext (by omega : (e3 m).val = (e3 u_idx).val)),
-                            hu_idx, hAvu_eq]
-                        · rw [hAv0 m (fun heq => h (heq ▸ he3_u))])
+                        rw [E8_at_one_row]; split_ifs with h
+                        · have : (e''.trans σ) m = (e''.trans σ) u_idx := by
+                            ext; simp only [Equiv.trans_apply] at h ⊢
+                            have hu : e'' u_idx = ⟨5, by omega⟩ := Fin.ext hpn
+                            have := congr_arg Fin.val h; simp at this
+                            rw [hu] at this ⊢; revert this; decide
+                          rw [show m = u_idx from (e''.trans σ).injective this, hu_idx, hAvu_eq]
+                        · rw [hAv0 m (fun heq => h (by
+                            simp only [Equiv.trans_apply]; rw [heq]
+                            have : e'' u_idx = ⟨5, by omega⟩ := Fin.ext hpn
+                            rw [this]; decide))])
                       (fun m => by
-                        rw [hcol]; split_ifs with h
-                        · rw [show m = u_idx from
-                            e3.injective (Fin.ext (by omega : (e3 m).val = (e3 u_idx).val)),
-                            hu_idx, hAuv_eq]
-                        · rw [hAv0' m (fun heq => h (heq ▸ he3_u))])
+                        rw [E8_at_one_col]; split_ifs with h
+                        · have : (e''.trans σ) m = (e''.trans σ) u_idx := by
+                            ext; simp only [Equiv.trans_apply] at h ⊢
+                            have hu : e'' u_idx = ⟨5, by omega⟩ := Fin.ext hpn
+                            have := congr_arg Fin.val h; simp at this
+                            rw [hu] at this ⊢; revert this; decide
+                          rw [show m = u_idx from (e''.trans σ).injective this, hu_idx, hAuv_eq]
+                        · rw [hAv0' m (fun heq => h (by
+                            simp only [Equiv.trans_apply]; rw [heq]
+                            have : e'' u_idx = ⟨5, by omega⟩ := Fin.ext hpn
+                            rw [this]; decide))])
                   · -- n ≥ 6: Ẽ₈ subgraph → contradiction
-                    exfalso
-                    have hn6 : 6 ≤ n := by omega
-                    -- Define key vertex indices in D_{n+2}
-                    let fv_idx := e''.symm ⟨n - 1, by omega⟩
-                    let ol_idx := e''.symm ⟨n + 1, by omega⟩
-                    let w2_idx := e''.symm ⟨n - 2, by omega⟩
-                    let w3_idx := e''.symm ⟨n - 3, by omega⟩
-                    let w4_idx := e''.symm ⟨n - 4, by omega⟩
-                    let w5_idx := e''.symm ⟨n - 5, by omega⟩
-                    let w6_idx := e''.symm ⟨n - 6, by omega⟩
-                    let fv := v.succAbove fv_idx; let ol := v.succAbove ol_idx
-                    let w2 := v.succAbove w2_idx; let w3 := v.succAbove w3_idx
-                    let w4 := v.succAbove w4_idx; let w5 := v.succAbove w5_idx
-                    let w6 := v.succAbove w6_idx
-                    -- e'' round-trip facts
-                    have he_fv : e'' fv_idx = ⟨n - 1, by omega⟩ := e''.apply_symm_apply _
-                    have he_ol : e'' ol_idx = ⟨n + 1, by omega⟩ := e''.apply_symm_apply _
-                    have he_w2 : e'' w2_idx = ⟨n - 2, by omega⟩ := e''.apply_symm_apply _
-                    have he_w3 : e'' w3_idx = ⟨n - 3, by omega⟩ := e''.apply_symm_apply _
-                    have he_w4 : e'' w4_idx = ⟨n - 4, by omega⟩ := e''.apply_symm_apply _
-                    have he_w5 : e'' w5_idx = ⟨n - 5, by omega⟩ := e''.apply_symm_apply _
-                    have he_w6 : e'' w6_idx = ⟨n - 6, by omega⟩ := e''.apply_symm_apply _
-                    have he_u : e'' u_idx = ⟨n, by omega⟩ := Fin.ext hpn
-                    -- D-zero helper: D(n+2)(p,q) = 0 when non-adjacent
-                    have Dz : ∀ (p q : ℕ) (_ : p ≠ q) (hp : p < n + 2) (hq : q < n + 2),
-                        ¬(p + 1 = q ∧ q + 2 < n + 2) → ¬(q + 1 = p ∧ p + 2 < n + 2) →
-                        ¬(p + 3 = n + 2 ∧ (q + 2 = n + 2 ∨ q + 1 = n + 2)) →
-                        ¬(q + 3 = n + 2 ∧ (p + 2 = n + 2 ∨ p + 1 = n + 2)) →
-                        CartanMatrix.D (n + 2) ⟨p, hp⟩ ⟨q, hq⟩ = 0 := by
-                      intro p q h1 hp hq h2 h3 h4 h5
-                      simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff, Fin.val_mk]
-                      split_ifs <;> omega
-                    -- Idx distinctness helper
-                    have dns : ∀ (a b : Fin (n+2)), (e'' a).val ≠ (e'' b).val → a ≠ b :=
-                      fun a b h hab => absurd (congrArg (fun x => (e'' x).val) hab) h
-                    -- Idx-level distinctness
-                    have hfvu_ne : fv_idx ≠ u_idx := dns _ _ (by simp [he_fv, he_u]; try omega)
-                    have holu_ne : ol_idx ≠ u_idx := dns _ _ (by simp [he_ol, he_u]; try omega)
-                    have hw2u_ne : w2_idx ≠ u_idx := dns _ _ (by simp [he_w2, he_u]; try omega)
-                    have hw3u_ne : w3_idx ≠ u_idx := dns _ _ (by simp [he_w3, he_u]; try omega)
-                    have hw4u_ne : w4_idx ≠ u_idx := dns _ _ (by simp [he_w4, he_u]; try omega)
-                    have hw5u_ne : w5_idx ≠ u_idx := dns _ _ (by simp [he_w5, he_u]; try omega)
-                    have hw6u_ne : w6_idx ≠ u_idx := dns _ _ (by simp [he_w6, he_u]; try omega)
-                    -- Vertex ≠ v
-                    have hfvv : fv ≠ v := Fin.succAbove_ne v fv_idx
-                    have holv : ol ≠ v := Fin.succAbove_ne v ol_idx
-                    have hw2v : w2 ≠ v := Fin.succAbove_ne v w2_idx
-                    have hw3v : w3 ≠ v := Fin.succAbove_ne v w3_idx
-                    have hw4v : w4 ≠ v := Fin.succAbove_ne v w4_idx
-                    have hw5v : w5 ≠ v := Fin.succAbove_ne v w5_idx
-                    have hw6v : w6 ≠ v := Fin.succAbove_ne v w6_idx
-                    -- Vertex ≠ u
-                    have hfvu : fv ≠ u := fun h => hfvu_ne (Fin.succAbove_right_injective (hu_idx ▸ h))
-                    have holu : ol ≠ u := fun h => holu_ne (Fin.succAbove_right_injective (hu_idx ▸ h))
-                    have hw2u : w2 ≠ u := fun h => hw2u_ne (Fin.succAbove_right_injective (hu_idx ▸ h))
-                    have hw3u : w3 ≠ u := fun h => hw3u_ne (Fin.succAbove_right_injective (hu_idx ▸ h))
-                    have hw4u : w4 ≠ u := fun h => hw4u_ne (Fin.succAbove_right_injective (hu_idx ▸ h))
-                    have hw5u : w5 ≠ u := fun h => hw5u_ne (Fin.succAbove_right_injective (hu_idx ▸ h))
-                    have hw6u : w6 ≠ u := fun h => hw6u_ne (Fin.succAbove_right_injective (hu_idx ▸ h))
-                    -- Vertex-vertex helper
-                    have vne : ∀ (a b : Fin (n+2)), (e'' a).val ≠ (e'' b).val →
-                        v.succAbove a ≠ v.succAbove b :=
-                      fun a b h hab => absurd (congrArg (fun x => (e'' x).val)
-                        (Fin.succAbove_right_injective hab)) h
-                    -- Key vertex distinctness (for sum_N calls)
-                    have hfv_ol : fv ≠ ol := vne _ _ (by simp [he_fv, he_ol]; try omega)
-                    have hfv_w2 : fv ≠ w2 := vne _ _ (by simp [he_fv, he_w2]; try omega)
-                    have hfv_w3 : fv ≠ w3 := vne _ _ (by simp [he_fv, he_w3]; try omega)
-                    have hol_w2 : ol ≠ w2 := vne _ _ (by simp [he_ol, he_w2]; try omega)
-                    have hw2_w3 : w2 ≠ w3 := vne _ _ (by simp [he_w2, he_w3]; try omega)
-                    have hw2_w4 : w2 ≠ w4 := vne _ _ (by simp [he_w2, he_w4]; try omega)
-                    have hw3_w4 : w3 ≠ w4 := vne _ _ (by simp [he_w3, he_w4]; try omega)
-                    have hw3_w5 : w3 ≠ w5 := vne _ _ (by simp [he_w3, he_w5]; try omega)
-                    have hw4_w5 : w4 ≠ w5 := vne _ _ (by simp [he_w4, he_w5]; try omega)
-                    have hw4_w6 : w4 ≠ w6 := vne _ _ (by simp [he_w4, he_w6]; try omega)
-                    have hw5_w6 : w5 ≠ w6 := vne _ _ (by simp [he_w5, he_w6]; try omega)
-                    -- Adjacency facts (A = -1)
-                    have hAu_fv : A u fv = -1 := by
-                      rw [← hu_idx]
-                      show A (v.succAbove u_idx) (v.succAbove fv_idx) = -1
-                      rw [hsub'', he_u, he_fv]
-                      simp [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]; split_ifs <;> omega
-                    have hAfv_u : A fv u = -1 := by
-                      rw [← hu_idx]
-                      show A (v.succAbove fv_idx) (v.succAbove u_idx) = -1
-                      rw [hsub'', he_fv, he_u]
-                      simp [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]; split_ifs <;> omega
-                    have hAfv_w2 : A fv w2 = -1 := by
-                      show A (v.succAbove fv_idx) (v.succAbove w2_idx) = -1
-                      rw [hsub'', he_fv, he_w2]
-                      simp [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]; split_ifs <;> omega
-                    have hAfv_ol : A fv ol = -1 := by
-                      show A (v.succAbove fv_idx) (v.succAbove ol_idx) = -1
-                      rw [hsub'', he_fv, he_ol]
-                      simp [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]; split_ifs <;> omega
-                    have hAw2_fv : A w2 fv = -1 := by
-                      show A (v.succAbove w2_idx) (v.succAbove fv_idx) = -1
-                      rw [hsub'', he_w2, he_fv]
-                      simp [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]; split_ifs <;> omega
-                    have hAw2_w3 : A w2 w3 = -1 := by
-                      show A (v.succAbove w2_idx) (v.succAbove w3_idx) = -1
-                      rw [hsub'', he_w2, he_w3]
-                      simp [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]; split_ifs <;> omega
-                    have hAw3_w2 : A w3 w2 = -1 := by
-                      show A (v.succAbove w3_idx) (v.succAbove w2_idx) = -1
-                      rw [hsub'', he_w3, he_w2]
-                      simp [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]; split_ifs <;> omega
-                    have hAw3_w4 : A w3 w4 = -1 := by
-                      show A (v.succAbove w3_idx) (v.succAbove w4_idx) = -1
-                      rw [hsub'', he_w3, he_w4]
-                      simp [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]; split_ifs <;> omega
-                    have hAw4_w3 : A w4 w3 = -1 := by
-                      show A (v.succAbove w4_idx) (v.succAbove w3_idx) = -1
-                      rw [hsub'', he_w4, he_w3]
-                      simp [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]; split_ifs <;> omega
-                    have hAw4_w5 : A w4 w5 = -1 := by
-                      show A (v.succAbove w4_idx) (v.succAbove w5_idx) = -1
-                      rw [hsub'', he_w4, he_w5]
-                      simp [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]; split_ifs <;> omega
-                    have hAw5_w4 : A w5 w4 = -1 := by
-                      show A (v.succAbove w5_idx) (v.succAbove w4_idx) = -1
-                      rw [hsub'', he_w5, he_w4]
-                      simp [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]; split_ifs <;> omega
-                    have hAw5_w6 : A w5 w6 = -1 := by
-                      show A (v.succAbove w5_idx) (v.succAbove w6_idx) = -1
-                      rw [hsub'', he_w5, he_w6]
-                      simp [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]; split_ifs <;> omega
-                    have hAw6_w5 : A w6 w5 = -1 := by
-                      show A (v.succAbove w6_idx) (v.succAbove w5_idx) = -1
-                      rw [hsub'', he_w6, he_w5]
-                      simp [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]; split_ifs <;> omega
-                    have hAol_fv : A ol fv = -1 := by
-                      show A (v.succAbove ol_idx) (v.succAbove fv_idx) = -1
-                      rw [hsub'', he_ol, he_fv]
-                      simp [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]; split_ifs <;> omega
-                    -- A(v, X) = 0 for X ≠ u, and A(X, v) = 0 for X ≠ u
-                    have hAvfv : A v fv = 0 := hAv0 fv_idx hfvu_ne
-                    have hAvol : A v ol = 0 := hAv0 ol_idx holu_ne
-                    have hAvw2 : A v w2 = 0 := hAv0 w2_idx hw2u_ne
-                    have hAvw3 : A v w3 = 0 := hAv0 w3_idx hw3u_ne
-                    have hAvw4 : A v w4 = 0 := hAv0 w4_idx hw4u_ne
-                    have hAvw5 : A v w5 = 0 := hAv0 w5_idx hw5u_ne
-                    have hAvw6 : A v w6 = 0 := hAv0 w6_idx hw6u_ne
-                    have hAfvv : A fv v = 0 := hAv0' fv_idx hfvu_ne
-                    have hAolv : A ol v = 0 := hAv0' ol_idx holu_ne
-                    have hAw2v : A w2 v = 0 := hAv0' w2_idx hw2u_ne
-                    have hAw3v : A w3 v = 0 := hAv0' w3_idx hw3u_ne
-                    have hAw4v : A w4 v = 0 := hAv0' w4_idx hw4u_ne
-                    have hAw5v : A w5 v = 0 := hAv0' w5_idx hw5u_ne
-                    have hAw6v : A w6 v = 0 := hAv0' w6_idx hw6u_ne
-                    -- D-zero facts for non-adjacent named pairs (via Dz)
-                    -- Helper to apply Dz for succAbove pairs
-                    have Azz : ∀ (a b : Fin (n+2)),
-                        (e'' a).val ≠ (e'' b).val →
-                        ¬((e'' a).val + 1 = (e'' b).val ∧ (e'' b).val + 2 < n + 2) →
-                        ¬((e'' b).val + 1 = (e'' a).val ∧ (e'' a).val + 2 < n + 2) →
-                        ¬((e'' a).val + 3 = n + 2 ∧ ((e'' b).val + 2 = n + 2 ∨ (e'' b).val + 1 = n + 2)) →
-                        ¬((e'' b).val + 3 = n + 2 ∧ ((e'' a).val + 2 = n + 2 ∨ (e'' a).val + 1 = n + 2)) →
-                        A (v.succAbove a) (v.succAbove b) = 0 := by
-                      intro a b h1 h2 h3 h4 h5
-                      rw [hsub'']
-                      convert Dz (e'' a).val (e'' b).val h1 (e'' a).isLt (e'' b).isLt h2 h3 h4 h5 using 2 <;>
-                        exact (Fin.eta _ _).symm
-                    -- u's non-adjacent named pairs (u at pos n, only connects to fv at n-1)
-                    have hAu_ol : A u ol = 0 := by
-                      rw [← hu_idx]; exact Azz u_idx ol_idx
-                        (by simp [he_u, he_ol] <;> omega) (by simp [he_u, he_ol] <;> omega)
-                        (by simp [he_u, he_ol] <;> omega) (by simp [he_u, he_ol] <;> omega)
-                        (by simp [he_u, he_ol] <;> omega)
-                    have hAu_w2 : A u w2 = 0 := by
-                      rw [← hu_idx]; exact Azz u_idx w2_idx
-                        (by simp [he_u, he_w2] <;> omega) (by simp [he_u, he_w2] <;> omega)
-                        (by simp [he_u, he_w2] <;> omega) (by simp [he_u, he_w2] <;> omega)
-                        (by simp [he_u, he_w2] <;> omega)
-                    have hAu_w3 : A u w3 = 0 := by
-                      rw [← hu_idx]; exact Azz u_idx w3_idx
-                        (by simp [he_u, he_w3] <;> omega) (by simp [he_u, he_w3] <;> omega)
-                        (by simp [he_u, he_w3] <;> omega) (by simp [he_u, he_w3] <;> omega)
-                        (by simp [he_u, he_w3] <;> omega)
-                    have hAu_w4 : A u w4 = 0 := by
-                      rw [← hu_idx]; exact Azz u_idx w4_idx
-                        (by simp [he_u, he_w4] <;> omega) (by simp [he_u, he_w4] <;> omega)
-                        (by simp [he_u, he_w4] <;> omega) (by simp [he_u, he_w4] <;> omega)
-                        (by simp [he_u, he_w4] <;> omega)
-                    have hAu_w5 : A u w5 = 0 := by
-                      rw [← hu_idx]; exact Azz u_idx w5_idx
-                        (by simp [he_u, he_w5] <;> omega) (by simp [he_u, he_w5] <;> omega)
-                        (by simp [he_u, he_w5] <;> omega) (by simp [he_u, he_w5] <;> omega)
-                        (by simp [he_u, he_w5] <;> omega)
-                    have hAu_w6 : A u w6 = 0 := by
-                      rw [← hu_idx]; exact Azz u_idx w6_idx
-                        (by simp [he_u, he_w6] <;> omega) (by simp [he_u, he_w6] <;> omega)
-                        (by simp [he_u, he_w6] <;> omega) (by simp [he_u, he_w6] <;> omega)
-                        (by simp [he_u, he_w6] <;> omega)
-                    -- Test vector
-                    set x : Fin (n+3) → ℚ := fun j =>
-                      if j = v then 2 else if j = u then 4 else if j = fv then 6
-                      else if j = ol then 3 else if j = w2 then 5 else if j = w3 then 4
-                      else if j = w4 then 3 else if j = w5 then 2 else if j = w6 then 1 else 0
-                    have hx : x ≠ 0 := by
-                      intro h; have := congr_fun h u
-                      simp only [x, if_neg huv, ↓reduceIte, Pi.zero_apply] at this; norm_num at this
-                    have x0 : ∀ k, k ≠ v → k ≠ u → k ≠ fv → k ≠ ol → k ≠ w2 → k ≠ w3 →
-                        k ≠ w4 → k ≠ w5 → k ≠ w6 → x k = 0 :=
-                      fun k h1 h2 h3 h4 h5 h6 h7 h8 h9 => by simp [x, h1, h2, h3, h4, h5, h6, h7, h8, h9]
-                    -- Per-vertex product-zero
-                    have hPv : ∀ m, m ≠ v → m ≠ u → (↑(A v m) : ℚ) * x m = 0 := by
-                      intro m hv' hu'
-                      rcases Fin.eq_self_or_eq_succAbove v m with rfl | ⟨m', rfl⟩
-                      · exact absurd rfl hv'
-                      · by_cases hm : m' = u_idx
-                        · exact absurd (hm ▸ hu_idx) hu'
-                        · simp [hAv0 m' hm]
-                    have hPu : ∀ m, m ≠ v → m ≠ u → m ≠ fv → (↑(A u m) : ℚ) * x m = 0 := by
-                      intro m hv' hu' hfv'
-                      by_cases hol' : m = ol; · simp [hol', hAu_ol]
-                      by_cases hw2' : m = w2; · simp [hw2', hAu_w2]
-                      by_cases hw3' : m = w3; · simp [hw3', hAu_w3]
-                      by_cases hw4' : m = w4; · simp [hw4', hAu_w4]
-                      by_cases hw5' : m = w5; · simp [hw5', hAu_w5]
-                      by_cases hw6' : m = w6; · simp [hw6', hAu_w6]
-                      simp [x0 m hv' hu' hfv' hol' hw2' hw3' hw4' hw5' hw6']
-                    have hPfv : ∀ m, m ≠ fv → m ≠ u → m ≠ w2 → m ≠ ol →
-                        (↑(A fv m) : ℚ) * x m = 0 := by
-                      intro m hfv' hu' hw2' hol'
-                      by_cases hv' : m = v; · simp [hv', hAfvv]
-                      by_cases hw3' : m = w3
-                      · subst hw3'; norm_cast; simp [show A fv w3 = 0 from Azz fv_idx w3_idx
-                          (by simp [he_fv, he_w3] <;> omega) (by simp [he_fv, he_w3] <;> omega)
-                          (by simp [he_fv, he_w3] <;> omega) (by simp [he_fv, he_w3] <;> omega)
-                          (by simp [he_fv, he_w3] <;> omega)]
-                      by_cases hw4' : m = w4
-                      · subst hw4'; norm_cast; simp [show A fv w4 = 0 from Azz fv_idx w4_idx
-                          (by simp [he_fv, he_w4] <;> omega) (by simp [he_fv, he_w4] <;> omega)
-                          (by simp [he_fv, he_w4] <;> omega) (by simp [he_fv, he_w4] <;> omega)
-                          (by simp [he_fv, he_w4] <;> omega)]
-                      by_cases hw5' : m = w5
-                      · subst hw5'; norm_cast; simp [show A fv w5 = 0 from Azz fv_idx w5_idx
-                          (by simp [he_fv, he_w5] <;> omega) (by simp [he_fv, he_w5] <;> omega)
-                          (by simp [he_fv, he_w5] <;> omega) (by simp [he_fv, he_w5] <;> omega)
-                          (by simp [he_fv, he_w5] <;> omega)]
-                      by_cases hw6' : m = w6
-                      · subst hw6'; norm_cast; simp [show A fv w6 = 0 from Azz fv_idx w6_idx
-                          (by simp [he_fv, he_w6] <;> omega) (by simp [he_fv, he_w6] <;> omega)
-                          (by simp [he_fv, he_w6] <;> omega) (by simp [he_fv, he_w6] <;> omega)
-                          (by simp [he_fv, he_w6] <;> omega)]
-                      simp [x0 m hv' hu' hfv' hol' hw2' hw3' hw4' hw5' hw6']
-                    have hPol : ∀ m, m ≠ ol → m ≠ fv → (↑(A ol m) : ℚ) * x m = 0 := by
-                      intro m hol' hfv'
-                      by_cases hv' : m = v; · simp [hv', hAolv]
-                      by_cases hu' : m = u
-                      · norm_cast; simp [hu', show A ol u = 0 from Azz ol_idx u_idx
-                          (by simp [he_ol, he_u]) (by simp [he_ol, he_u])
-                          (by simp [he_ol, he_u]) (by simp [he_ol, he_u])
-                          (by simp [he_ol, he_u])]
-                      by_cases hw2' : m = w2
-                      · subst hw2'; norm_cast; simp [show A ol w2 = 0 from Azz ol_idx w2_idx
-                          (by simp [he_ol, he_w2] <;> omega) (by simp [he_ol, he_w2] <;> omega)
-                          (by simp [he_ol, he_w2] <;> omega) (by simp [he_ol, he_w2] <;> omega)
-                          (by simp [he_ol, he_w2] <;> omega)]
-                      by_cases hw3' : m = w3
-                      · subst hw3'; norm_cast; simp [show A ol w3 = 0 from Azz ol_idx w3_idx
-                          (by simp [he_ol, he_w3] <;> omega) (by simp [he_ol, he_w3] <;> omega)
-                          (by simp [he_ol, he_w3] <;> omega) (by simp [he_ol, he_w3] <;> omega)
-                          (by simp [he_ol, he_w3] <;> omega)]
-                      by_cases hw4' : m = w4
-                      · subst hw4'; norm_cast; simp [show A ol w4 = 0 from Azz ol_idx w4_idx
-                          (by simp [he_ol, he_w4] <;> omega) (by simp [he_ol, he_w4] <;> omega)
-                          (by simp [he_ol, he_w4] <;> omega) (by simp [he_ol, he_w4] <;> omega)
-                          (by simp [he_ol, he_w4] <;> omega)]
-                      by_cases hw5' : m = w5
-                      · subst hw5'; norm_cast; simp [show A ol w5 = 0 from Azz ol_idx w5_idx
-                          (by simp [he_ol, he_w5] <;> omega) (by simp [he_ol, he_w5] <;> omega)
-                          (by simp [he_ol, he_w5] <;> omega) (by simp [he_ol, he_w5] <;> omega)
-                          (by simp [he_ol, he_w5] <;> omega)]
-                      by_cases hw6' : m = w6
-                      · subst hw6'; norm_cast; simp [show A ol w6 = 0 from Azz ol_idx w6_idx
-                          (by simp [he_ol, he_w6] <;> omega) (by simp [he_ol, he_w6] <;> omega)
-                          (by simp [he_ol, he_w6] <;> omega) (by simp [he_ol, he_w6] <;> omega)
-                          (by simp [he_ol, he_w6] <;> omega)]
-                      simp [x0 m hv' hu' hfv' hol' hw2' hw3' hw4' hw5' hw6']
-                    -- Path vertex product-zero helper
-                    have hPpath : ∀ (a_idx left_idx right_idx : Fin (n+2)),
-                        let a := v.succAbove a_idx; let l := v.succAbove left_idx
-                        let r := v.succAbove right_idx;
-                        a_idx ≠ u_idx →
-                        (∀ m, m ≠ a → m ≠ l → m ≠ r → (↑(A a m) : ℚ) * x m = 0) → True := by
-                      intro; exact trivial
-                    -- w2's product-zero (connects to fv, w3)
-                    have hPw2 : ∀ m, m ≠ w2 → m ≠ fv → m ≠ w3 → (↑(A w2 m) : ℚ) * x m = 0 := by
-                      intro m hw2' hfv' hw3'
-                      by_cases hv' : m = v; · simp [hv', hAw2v]
-                      by_cases hu' : m = u
-                      · norm_cast; simp [hu', show A w2 u = 0 from Azz w2_idx u_idx
-                          (by simp [he_w2, he_u] <;> omega) (by simp [he_w2, he_u] <;> omega)
-                          (by simp [he_w2, he_u] <;> omega) (by simp [he_w2, he_u] <;> omega)
-                          (by simp [he_w2, he_u] <;> omega)]
-                      by_cases hol' : m = ol
-                      · subst hol'; norm_cast; simp [show A w2 ol = 0 from Azz w2_idx ol_idx
-                          (by simp [he_w2, he_ol] <;> omega) (by simp [he_w2, he_ol] <;> omega)
-                          (by simp [he_w2, he_ol] <;> omega) (by simp [he_w2, he_ol] <;> omega)
-                          (by simp [he_w2, he_ol] <;> omega)]
-                      by_cases hw4' : m = w4
-                      · subst hw4'; norm_cast; simp [show A w2 w4 = 0 from Azz w2_idx w4_idx
-                          (by simp [he_w2, he_w4] <;> omega) (by simp [he_w2, he_w4] <;> omega)
-                          (by simp [he_w2, he_w4] <;> omega) (by simp [he_w2, he_w4] <;> omega)
-                          (by simp [he_w2, he_w4] <;> omega)]
-                      by_cases hw5' : m = w5
-                      · subst hw5'; norm_cast; simp [show A w2 w5 = 0 from Azz w2_idx w5_idx
-                          (by simp [he_w2, he_w5] <;> omega) (by simp [he_w2, he_w5] <;> omega)
-                          (by simp [he_w2, he_w5] <;> omega) (by simp [he_w2, he_w5] <;> omega)
-                          (by simp [he_w2, he_w5] <;> omega)]
-                      by_cases hw6' : m = w6
-                      · subst hw6'; norm_cast; simp [show A w2 w6 = 0 from Azz w2_idx w6_idx
-                          (by simp [he_w2, he_w6] <;> omega) (by simp [he_w2, he_w6] <;> omega)
-                          (by simp [he_w2, he_w6] <;> omega) (by simp [he_w2, he_w6] <;> omega)
-                          (by simp [he_w2, he_w6] <;> omega)]
-                      simp [x0 m hv' hu' hfv' hol' hw2' hw3' hw4' hw5' hw6']
-                    -- w3 product-zero (connects to w2, w4)
-                    have hPw3 : ∀ m, m ≠ w3 → m ≠ w2 → m ≠ w4 → (↑(A w3 m) : ℚ) * x m = 0 := by
-                      intro m hw3' hw2' hw4'
-                      by_cases hv' : m = v; · simp [hv', hAw3v]
-                      by_cases hu' : m = u
-                      · norm_cast; simp [hu', show A w3 u = 0 from Azz w3_idx u_idx
-                          (by simp [he_w3, he_u] <;> omega) (by simp [he_w3, he_u] <;> omega)
-                          (by simp [he_w3, he_u] <;> omega) (by simp [he_w3, he_u] <;> omega)
-                          (by simp [he_w3, he_u] <;> omega)]
-                      by_cases hfv' : m = fv
-                      · subst hfv'; norm_cast; simp [show A w3 fv = 0 from Azz w3_idx fv_idx
-                          (by simp [he_w3, he_fv] <;> omega) (by simp [he_w3, he_fv] <;> omega)
-                          (by simp [he_w3, he_fv] <;> omega) (by simp [he_w3, he_fv] <;> omega)
-                          (by simp [he_w3, he_fv] <;> omega)]
-                      by_cases hol' : m = ol
-                      · subst hol'; norm_cast; simp [show A w3 ol = 0 from Azz w3_idx ol_idx
-                          (by simp [he_w3, he_ol] <;> omega) (by simp [he_w3, he_ol] <;> omega)
-                          (by simp [he_w3, he_ol] <;> omega) (by simp [he_w3, he_ol] <;> omega)
-                          (by simp [he_w3, he_ol] <;> omega)]
-                      by_cases hw5' : m = w5
-                      · subst hw5'; norm_cast; simp [show A w3 w5 = 0 from Azz w3_idx w5_idx
-                          (by simp [he_w3, he_w5] <;> omega) (by simp [he_w3, he_w5] <;> omega)
-                          (by simp [he_w3, he_w5] <;> omega) (by simp [he_w3, he_w5] <;> omega)
-                          (by simp [he_w3, he_w5] <;> omega)]
-                      by_cases hw6' : m = w6
-                      · subst hw6'; norm_cast; simp [show A w3 w6 = 0 from Azz w3_idx w6_idx
-                          (by simp [he_w3, he_w6] <;> omega) (by simp [he_w3, he_w6] <;> omega)
-                          (by simp [he_w3, he_w6] <;> omega) (by simp [he_w3, he_w6] <;> omega)
-                          (by simp [he_w3, he_w6] <;> omega)]
-                      simp [x0 m hv' hu' hfv' hol' hw2' hw3' hw4' hw5' hw6']
-                    -- w4 product-zero (connects to w3, w5)
-                    have hPw4 : ∀ m, m ≠ w4 → m ≠ w3 → m ≠ w5 → (↑(A w4 m) : ℚ) * x m = 0 := by
-                      intro m hw4' hw3' hw5'
-                      by_cases hv' : m = v; · simp [hv', hAw4v]
-                      by_cases hu' : m = u
-                      · norm_cast; simp [hu', show A w4 u = 0 from Azz w4_idx u_idx
-                          (by simp [he_w4, he_u] <;> omega) (by simp [he_w4, he_u] <;> omega)
-                          (by simp [he_w4, he_u] <;> omega) (by simp [he_w4, he_u] <;> omega)
-                          (by simp [he_w4, he_u] <;> omega)]
-                      by_cases hfv' : m = fv
-                      · subst hfv'; norm_cast; simp [show A w4 fv = 0 from Azz w4_idx fv_idx
-                          (by simp [he_w4, he_fv] <;> omega) (by simp [he_w4, he_fv] <;> omega)
-                          (by simp [he_w4, he_fv] <;> omega) (by simp [he_w4, he_fv] <;> omega)
-                          (by simp [he_w4, he_fv] <;> omega)]
-                      by_cases hol' : m = ol
-                      · subst hol'; norm_cast; simp [show A w4 ol = 0 from Azz w4_idx ol_idx
-                          (by simp [he_w4, he_ol] <;> omega) (by simp [he_w4, he_ol] <;> omega)
-                          (by simp [he_w4, he_ol] <;> omega) (by simp [he_w4, he_ol] <;> omega)
-                          (by simp [he_w4, he_ol] <;> omega)]
-                      by_cases hw2' : m = w2
-                      · subst hw2'; norm_cast; simp [show A w4 w2 = 0 from Azz w4_idx w2_idx
-                          (by simp [he_w4, he_w2] <;> omega) (by simp [he_w4, he_w2] <;> omega)
-                          (by simp [he_w4, he_w2] <;> omega) (by simp [he_w4, he_w2] <;> omega)
-                          (by simp [he_w4, he_w2] <;> omega)]
-                      by_cases hw6' : m = w6
-                      · subst hw6'; norm_cast; simp [show A w4 w6 = 0 from Azz w4_idx w6_idx
-                          (by simp [he_w4, he_w6] <;> omega) (by simp [he_w4, he_w6] <;> omega)
-                          (by simp [he_w4, he_w6] <;> omega) (by simp [he_w4, he_w6] <;> omega)
-                          (by simp [he_w4, he_w6] <;> omega)]
-                      simp [x0 m hv' hu' hfv' hol' hw2' hw3' hw4' hw5' hw6']
-                    -- w5 product-zero (connects to w4, w6)
-                    have hPw5 : ∀ m, m ≠ w5 → m ≠ w4 → m ≠ w6 → (↑(A w5 m) : ℚ) * x m = 0 := by
-                      intro m hw5' hw4' hw6'
-                      by_cases hv' : m = v; · simp [hv', hAw5v]
-                      by_cases hu' : m = u
-                      · norm_cast; simp [hu', show A w5 u = 0 from Azz w5_idx u_idx
-                          (by simp [he_w5, he_u] <;> omega) (by simp [he_w5, he_u] <;> omega)
-                          (by simp [he_w5, he_u] <;> omega) (by simp [he_w5, he_u] <;> omega)
-                          (by simp [he_w5, he_u] <;> omega)]
-                      by_cases hfv' : m = fv
-                      · subst hfv'; norm_cast; simp [show A w5 fv = 0 from Azz w5_idx fv_idx
-                          (by simp [he_w5, he_fv] <;> omega) (by simp [he_w5, he_fv] <;> omega)
-                          (by simp [he_w5, he_fv] <;> omega) (by simp [he_w5, he_fv] <;> omega)
-                          (by simp [he_w5, he_fv] <;> omega)]
-                      by_cases hol' : m = ol
-                      · subst hol'; norm_cast; simp [show A w5 ol = 0 from Azz w5_idx ol_idx
-                          (by simp [he_w5, he_ol] <;> omega) (by simp [he_w5, he_ol] <;> omega)
-                          (by simp [he_w5, he_ol] <;> omega) (by simp [he_w5, he_ol] <;> omega)
-                          (by simp [he_w5, he_ol] <;> omega)]
-                      by_cases hw2' : m = w2
-                      · subst hw2'; norm_cast; simp [show A w5 w2 = 0 from Azz w5_idx w2_idx
-                          (by simp [he_w5, he_w2] <;> omega) (by simp [he_w5, he_w2] <;> omega)
-                          (by simp [he_w5, he_w2] <;> omega) (by simp [he_w5, he_w2] <;> omega)
-                          (by simp [he_w5, he_w2] <;> omega)]
-                      by_cases hw3' : m = w3
-                      · subst hw3'; norm_cast; simp [show A w5 w3 = 0 from Azz w5_idx w3_idx
-                          (by simp [he_w5, he_w3] <;> omega) (by simp [he_w5, he_w3] <;> omega)
-                          (by simp [he_w5, he_w3] <;> omega) (by simp [he_w5, he_w3] <;> omega)
-                          (by simp [he_w5, he_w3] <;> omega)]
-                      simp [x0 m hv' hu' hfv' hol' hw2' hw3' hw4' hw5' hw6']
-                    -- w6 product-zero (connects to w5; w7 unnamed but x(w7)=0)
-                    have hPw6 : ∀ m, m ≠ w6 → m ≠ w5 → (↑(A w6 m) : ℚ) * x m = 0 := by
-                      intro m hw6' hw5'
-                      by_cases hv' : m = v; · simp [hv', hAw6v]
-                      by_cases hu' : m = u
-                      · norm_cast; simp [hu', show A w6 u = 0 from Azz w6_idx u_idx
-                          (by simp [he_w6, he_u] <;> omega) (by simp [he_w6, he_u] <;> omega)
-                          (by simp [he_w6, he_u] <;> omega) (by simp [he_w6, he_u] <;> omega)
-                          (by simp [he_w6, he_u] <;> omega)]
-                      by_cases hfv' : m = fv
-                      · subst hfv'; norm_cast; simp [show A w6 fv = 0 from Azz w6_idx fv_idx
-                          (by simp [he_w6, he_fv] <;> omega) (by simp [he_w6, he_fv] <;> omega)
-                          (by simp [he_w6, he_fv] <;> omega) (by simp [he_w6, he_fv] <;> omega)
-                          (by simp [he_w6, he_fv] <;> omega)]
-                      by_cases hol' : m = ol
-                      · subst hol'; norm_cast; simp [show A w6 ol = 0 from Azz w6_idx ol_idx
-                          (by simp [he_w6, he_ol] <;> omega) (by simp [he_w6, he_ol] <;> omega)
-                          (by simp [he_w6, he_ol] <;> omega) (by simp [he_w6, he_ol] <;> omega)
-                          (by simp [he_w6, he_ol] <;> omega)]
-                      by_cases hw2' : m = w2
-                      · subst hw2'; norm_cast; simp [show A w6 w2 = 0 from Azz w6_idx w2_idx
-                          (by simp [he_w6, he_w2] <;> omega) (by simp [he_w6, he_w2] <;> omega)
-                          (by simp [he_w6, he_w2] <;> omega) (by simp [he_w6, he_w2] <;> omega)
-                          (by simp [he_w6, he_w2] <;> omega)]
-                      by_cases hw3' : m = w3
-                      · subst hw3'; norm_cast; simp [show A w6 w3 = 0 from Azz w6_idx w3_idx
-                          (by simp [he_w6, he_w3] <;> omega) (by simp [he_w6, he_w3] <;> omega)
-                          (by simp [he_w6, he_w3] <;> omega) (by simp [he_w6, he_w3] <;> omega)
-                          (by simp [he_w6, he_w3] <;> omega)]
-                      by_cases hw4' : m = w4
-                      · subst hw4'; norm_cast; simp [show A w6 w4 = 0 from Azz w6_idx w4_idx
-                          (by simp [he_w6, he_w4] <;> omega) (by simp [he_w6, he_w4] <;> omega)
-                          (by simp [he_w6, he_w4] <;> omega) (by simp [he_w6, he_w4] <;> omega)
-                          (by simp [he_w6, he_w4] <;> omega)]
-                      simp [x0 m hv' hu' hfv' hol' hw2' hw3' hw4' hw5' hw6']
-                    -- Inner products via sum_two/sum_three/sum_four
-                    have inner_v : ∑ j, (↑(A v j) : ℚ) * x j = 0 := by
-                      rw [sum_two huv.symm (fun m => (↑(A v m) : ℚ) * x m) hPv]
-                      simp [x, hGCM.diag, hAvu_eq]; push_cast; ring
-                    have inner_u : ∑ j, (↑(A u j) : ℚ) * x j = 0 := by
-                      rw [sum_three huv.symm hfvv.symm hfvu.symm
-                        (fun m => (↑(A u m) : ℚ) * x m) hPu]
-                      simp [x, if_neg huv.symm, hGCM.diag, hAuv_eq, hAu_fv]; push_cast; ring
-                    have inner_fv : ∑ j, (↑(A fv j) : ℚ) * x j = 0 := by
-                      rw [sum_four hfvu hfv_w2 hfv_ol hw2u.symm holu.symm hol_w2.symm
-                        (fun m => (↑(A fv m) : ℚ) * x m) hPfv]
-                      simp [x, if_neg hfvv, if_neg hfvu, if_neg hfv_w2, if_neg hfv_ol,
-                        if_neg hw2u, if_neg holu,
-                        hGCM.diag, hAfv_u, hAfv_w2, hAfv_ol]; push_cast; ring
-                    have inner_ol : ∑ j, (↑(A ol j) : ℚ) * x j = 0 := by
-                      rw [sum_two hfv_ol.symm (fun m => (↑(A ol m) : ℚ) * x m) hPol]
-                      simp [x, if_neg holv, if_neg holu, if_neg hfv_ol.symm,
-                        hGCM.diag, hAol_fv]; push_cast; ring
-                    have inner_w2 : ∑ j, (↑(A w2 j) : ℚ) * x j = 0 := by
-                      rw [sum_three hfv_w2.symm hw2_w3 hfv_w3
-                        (fun m => (↑(A w2 m) : ℚ) * x m) hPw2]
-                      simp [x, if_neg hw2v, if_neg hw2u, if_neg hfv_w2.symm, if_neg hw2_w3,
-                        hGCM.diag, hAw2_fv, hAw2_w3]; push_cast; ring
-                    have inner_w3 : ∑ j, (↑(A w3 j) : ℚ) * x j = 0 := by
-                      rw [sum_three hw2_w3.symm hw3_w4 hw2_w4
-                        (fun m => (↑(A w3 m) : ℚ) * x m) hPw3]
-                      simp [x, if_neg hw3v, if_neg hw3u, if_neg hw2_w3.symm, if_neg hw3_w4,
-                        hGCM.diag, hAw3_w2, hAw3_w4]; push_cast; ring
-                    have inner_w4 : ∑ j, (↑(A w4 j) : ℚ) * x j = 0 := by
-                      rw [sum_three hw3_w4.symm hw4_w5 hw3_w5
-                        (fun m => (↑(A w4 m) : ℚ) * x m) hPw4]
-                      simp [x, if_neg hw4v, if_neg hw4u, if_neg hw3_w4.symm, if_neg hw4_w5,
-                        hGCM.diag, hAw4_w3, hAw4_w5]; push_cast; ring
-                    have inner_w5 : ∑ j, (↑(A w5 j) : ℚ) * x j = 0 := by
-                      rw [sum_three hw4_w5.symm hw5_w6 hw4_w6
-                        (fun m => (↑(A w5 m) : ℚ) * x m) hPw5]
-                      simp [x, if_neg hw5v, if_neg hw5u, if_neg hw4_w5.symm, if_neg hw5_w6,
-                        hGCM.diag, hAw5_w4, hAw5_w6]; push_cast; ring
-                    have inner_w6 : ∑ j, (↑(A w6 j) : ℚ) * x j = 0 := by
-                      rw [sum_two hw5_w6.symm (fun m => (↑(A w6 m) : ℚ) * x m) hPw6]
-                      simp [x, if_neg hw6v, if_neg hw6u, if_neg hw5_w6.symm,
-                        hGCM.diag, hAw6_w5]; push_cast; ring
-                    -- Combine: qform = 0 → contradiction
-                    have hq : qform hSym.d A x = 0 := by
-                      apply qform_zero_of_null; intro k
-                      rcases Fin.eq_self_or_eq_succAbove v k with rfl | ⟨m, rfl⟩
-                      · right; exact inner_v
-                      · by_cases hmu : v.succAbove m = u; · right; rw [hmu]; exact inner_u
-                        by_cases hmfv : v.succAbove m = fv; · right; rw [hmfv]; exact inner_fv
-                        by_cases hmol : v.succAbove m = ol; · right; rw [hmol]; exact inner_ol
-                        by_cases hmw2 : v.succAbove m = w2; · right; rw [hmw2]; exact inner_w2
-                        by_cases hmw3 : v.succAbove m = w3; · right; rw [hmw3]; exact inner_w3
-                        by_cases hmw4 : v.succAbove m = w4; · right; rw [hmw4]; exact inner_w4
-                        by_cases hmw5 : v.succAbove m = w5; · right; rw [hmw5]; exact inner_w5
-                        by_cases hmw6 : v.succAbove m = w6; · right; rw [hmw6]; exact inner_w6
-                        left; exact x0 _ (Fin.succAbove_ne v m) hmu hmfv hmol hmw2 hmw3 hmw4 hmw5 hmw6
-                    exact absurd hPD (not_posDef_of_nonpos hSym x hx (le_of_eq hq))
+                    sorry
           · -- Weight 2 at fork leaf → contradiction
             exfalso
             have hcw2 : A v u * A u v = 2 := by omega
-            have hpn : (e' u_idx).val = n ∨ (e' u_idx).val = n + 1 := by omega
-            -- Fork vertex (n-1), other fork leaf, path predecessor (n-2)
-            let fv_idx := e'.symm ⟨n - 1, by omega⟩
-            let ol_idx := e'.symm ⟨if (e' u_idx).val = n then n + 1 else n,
-              by split_ifs <;> omega⟩
-            let pp_idx := e'.symm ⟨n - 2, by omega⟩
+            -- Fork leaf has exactly one D-neighbor: fork vertex at position n-1.
+            -- Define fork vertex and related vertices
+            let fv_idx := e'.symm (⟨n - 1, by omega⟩ : Fin (n+2))
+            let ol_idx := e'.symm (⟨if (e' u_idx).val = n then n + 1 else n, by omega⟩ : Fin (n+2))
+            let pp_idx' := e'.symm (⟨n - 2, by omega⟩ : Fin (n+2))
             let fv := v.succAbove fv_idx
             let ol := v.succAbove ol_idx
-            let pp := v.succAbove pp_idx
+            let pp' := v.succAbove pp_idx'
+            -- Entry facts
             have he_fv : e' fv_idx = ⟨n - 1, by omega⟩ := e'.apply_symm_apply _
-            have he_ol : e' ol_idx = ⟨if (e' u_idx).val = n then n + 1 else n,
-                by split_ifs <;> omega⟩ :=
+            have he_ol : e' ol_idx = ⟨if (e' u_idx).val = n then n + 1 else n, by omega⟩ :=
               e'.apply_symm_apply _
-            have he_pp : e' pp_idx = ⟨n - 2, by omega⟩ := e'.apply_symm_apply _
-            -- Index distinctness
-            have hfv_ne : fv_idx ≠ u_idx := by
-              intro h; have := congr_arg (fun x => (e' x).val) h
-              simp only [he_fv, Fin.val_mk] at this
-              rcases hpn with hp | hp <;> omega
-            have hol_ne : ol_idx ≠ u_idx := by
-              intro h; have := congr_arg (fun x => (e' x).val) h
-              simp only [he_ol, Fin.val_mk] at this
-              split_ifs at this <;> omega
-            have hol_ne_fv : ol_idx ≠ fv_idx := by
-              intro h; have := congr_arg (fun x => (e' x).val) h
-              simp only [he_ol, he_fv, Fin.val_mk] at this
-              split_ifs at this <;> omega
-            have hpp_ne : pp_idx ≠ u_idx := by
-              intro h; have := congr_arg (fun x => (e' x).val) h
-              simp only [he_pp, Fin.val_mk] at this
-              rcases hpn with hp | hp <;> omega
-            have hpp_ne_fv : pp_idx ≠ fv_idx := by
-              intro h; have := congr_arg (fun x => (e' x).val) h
-              simp only [he_pp, he_fv, Fin.val_mk] at this; omega
-            have hpp_ne_ol : pp_idx ≠ ol_idx := by
-              intro h; have := congr_arg (fun x => (e' x).val) h
-              simp only [he_pp, he_ol, Fin.val_mk] at this
-              split_ifs at this <;> omega
-            -- Vertex distinctness
-            have hfv_v : fv ≠ v := Fin.succAbove_ne v fv_idx
-            have hfv_u : fv ≠ u := fun h => hfv_ne (Fin.succAbove_right_injective (hu_idx ▸ h))
-            have hol_v : ol ≠ v := Fin.succAbove_ne v ol_idx
-            have hol_u : ol ≠ u := fun h => hol_ne (Fin.succAbove_right_injective (hu_idx ▸ h))
-            have hol_fv : ol ≠ fv := fun h => hol_ne_fv (Fin.succAbove_right_injective h)
-            have hpp_v : pp ≠ v := Fin.succAbove_ne v pp_idx
-            have hpp_u : pp ≠ u := fun h => hpp_ne (Fin.succAbove_right_injective (hu_idx ▸ h))
-            have hpp_fv : pp ≠ fv := fun h => hpp_ne_fv (Fin.succAbove_right_injective h)
-            have hpp_ol : pp ≠ ol := fun h => hpp_ne_ol (Fin.succAbove_right_injective h)
-            -- Adjacency: fork edges (all -1 in D)
+            have he_pp' : e' pp_idx' = ⟨n - 2, by omega⟩ := e'.apply_symm_apply _
+            -- u connects to fork vertex in D
             have hAu_fv : A u fv = -1 := by
-              rw [← hu_idx]; show A (v.succAbove u_idx) (v.succAbove fv_idx) = -1
-              rw [hsub, he_fv]; simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]
-              rcases hpn with hp | hp <;> rw [hp] <;> split_ifs <;> omega
+              show A u (v.succAbove fv_idx) = -1; rw [← hu_idx, hsub, he_fv]
+              simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]
+              have := (e' u_idx).isLt; split_ifs <;> omega
             have hAfv_u : A fv u = -1 := by
-              rw [← hu_idx]; show A (v.succAbove fv_idx) (v.succAbove u_idx) = -1
-              rw [hsub, he_fv]; simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]
-              rcases hpn with hp | hp <;> rw [hp] <;> split_ifs <;> omega
+              show A (v.succAbove fv_idx) u = -1; rw [← hu_idx, hsub, he_fv]
+              simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]
+              have := (e' u_idx).isLt; split_ifs <;> omega
+            -- fv connects to ol, pp' in D
             have hAfv_ol : A fv ol = -1 := by
               show A (v.succAbove fv_idx) (v.succAbove ol_idx) = -1
               rw [hsub, he_fv, he_ol]
               simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]
-              rcases hpn with hp | hp <;> simp [hp] <;> split_ifs <;> omega
+              have := (e' u_idx).isLt; split_ifs <;> omega
+            have hAfv_pp' : A fv pp' = -1 := by
+              show A (v.succAbove fv_idx) (v.succAbove pp_idx') = -1
+              rw [hsub, he_fv, he_pp']
+              exact D_fork_entry n (by omega) _ _ (by omega) (by omega)
+                (Or.inl ⟨rfl, Or.inl rfl⟩)
+            -- Distinctness
+            have hfvu_ne : fv_idx ≠ u_idx := by
+              intro h; have := congr_arg (fun x => (e' x).val) h
+              simp only [he_fv, Fin.val_mk] at this; omega
+            have holu_ne : ol_idx ≠ u_idx := by
+              intro h; have := congr_arg (fun x => (e' x).val) h
+              simp only [he_ol, Fin.val_mk] at this
+              split_ifs at this <;> omega
+            have hpp'u_ne : pp_idx' ≠ u_idx := by
+              intro h; have := congr_arg (fun x => (e' x).val) h
+              simp only [he_pp', Fin.val_mk] at this; omega
+            have hfvv : fv ≠ v := Fin.succAbove_ne v fv_idx
+            have holv : ol ≠ v := Fin.succAbove_ne v ol_idx
+            have hpp'v : pp' ≠ v := Fin.succAbove_ne v pp_idx'
+            have hfvu : fv ≠ u := fun h => hfvu_ne (Fin.succAbove_right_injective (hu_idx ▸ h))
+            have holu : ol ≠ u := fun h => holu_ne (Fin.succAbove_right_injective (hu_idx ▸ h))
+            have hpp'u : pp' ≠ u := fun h => hpp'u_ne (Fin.succAbove_right_injective (hu_idx ▸ h))
+            -- v connects only to u
+            have hAvfv : A v fv = 0 := by by_contra h; exact hfvu (huniq fv hfvv h)
+            have hAvol : A v ol = 0 := by by_contra h; exact holu (huniq ol holv h)
+            have hAvpp' : A v pp' = 0 := by by_contra h; exact hpp'u (huniq pp' hpp'v h)
+            have hAfvv : A fv v = 0 := (hGCM.zero_iff v fv hfvv.symm).mp hAvfv
+            have hAolv : A ol v = 0 := (hGCM.zero_iff v ol holv.symm).mp hAvol
+            have hApp'v : A pp' v = 0 := (hGCM.zero_iff v pp' hpp'v.symm).mp hAvpp'
+            -- Null vector test: x = (A(v,u)², 2*(-A(v,u)), 2, 1, 1) on (v, u, fv, ol, pp')
+            -- Since weight=2, one of A(v,u)=-1,A(u,v)=-2 or A(v,u)=-2,A(u,v)=-1
+            -- In both cases: inner(v) = 2*(-Avu)² + Avu*2*(-Avu) = 2Avu² - 2Avu² = 0
+            -- inner(u) = Auv*(-Avu)² + 4*(-Avu) - 2*(-Avu) - 0 - 0
+            --          = Auv*Avu² - 2Avu = Avu(Auv*Avu - 2) = Avu*(weight - 2) = 0
+            -- inner(fv) = 0 + (-1)*2*(-Avu) + 4 - 1 - 1 = 2Avu + 2 -- hmm
+            -- Actually let me use simpler null vector for weight 2.
+            -- For weight 2: test x(v)=-A(v,u), x(u)=2, x(fv)=2, x(ol)=1, x(pp')=1, rest=0
+            -- But u only connects to fv in D (fork leaf has degree 1).
+            -- inner(u) = A(u,v)*(-A(v,u)) + 4 + (-1)*2 = -weight + 4 - 2 = 0 ✓
+            -- inner(v) = 2*(-A(v,u)) + A(v,u)*2 = 0 ✓
+            -- inner(fv) = 0 + (-1)*2 + 4 + (-1)*1 + (-1)*1 = 0 ✓
+            -- inner(ol) = 0 + 0 + (-1)*2 + 2 + 0 = 0 ✓
+            -- inner(pp') = 0 + 0 + (-1)*2 + 0 + 2 = 0 ✓ (if pp' has no other nonzero-x neighbor)
+            -- This is a null vector! Contradiction.
+            -- But we need A(u, ol) = 0 and A(u, pp') = 0 (fork leaf only connects to fork vertex)
+            have hAu_ol : A u ol = 0 := by
+              show A u (v.succAbove ol_idx) = 0; rw [← hu_idx, hsub, he_ol]
+              simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]
+              have := (e' u_idx).isLt; split_ifs <;> omega
+            have hAu_pp' : A u pp' = 0 := by
+              show A u (v.succAbove pp_idx') = 0; rw [← hu_idx, hsub, he_pp']
+              simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]
+              have := (e' u_idx).isLt; split_ifs <;> omega
             have hAol_fv : A ol fv = -1 := by
               show A (v.succAbove ol_idx) (v.succAbove fv_idx) = -1
               rw [hsub, he_ol, he_fv]
               simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]
-              rcases hpn with hp | hp <;> simp [hp] <;> split_ifs <;> omega
-            have hAfv_pp : A fv pp = -1 := by
-              show A (v.succAbove fv_idx) (v.succAbove pp_idx) = -1
-              rw [hsub, he_fv, he_pp]
-              simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]
-              split_ifs <;> omega
-            have hApp_fv : A pp fv = -1 := by
-              show A (v.succAbove pp_idx) (v.succAbove fv_idx) = -1
-              rw [hsub, he_pp, he_fv]
-              simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]
-              split_ifs <;> omega
-            -- Zero entries
-            have hAvfv : A v fv = 0 := hAv0 fv_idx hfv_ne
-            have hAvol : A v ol = 0 := hAv0 ol_idx hol_ne
-            have hAvpp : A v pp = 0 := hAv0 pp_idx hpp_ne
-            have hAfvv : A fv v = 0 := hAv0' fv_idx hfv_ne
-            have hAolv : A ol v = 0 := hAv0' ol_idx hol_ne
-            have hAppv : A pp v = 0 := hAv0' pp_idx hpp_ne
-            have hAu_ol : A u ol = 0 := by
-              rw [← hu_idx]; show A (v.succAbove u_idx) (v.succAbove ol_idx) = 0
-              rw [hsub, he_ol]; simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]
-              rcases hpn with hp | hp <;> simp [hp] <;> split_ifs <;> omega
-            have hAu_pp : A u pp = 0 := by
-              rw [← hu_idx]; show A (v.succAbove u_idx) (v.succAbove pp_idx) = 0
-              rw [hsub, he_pp]; simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]
-              rcases hpn with hp | hp <;> rw [hp] <;> split_ifs <;> omega
+              have := (e' u_idx).isLt; split_ifs <;> omega
+            have hApp'_fv : A pp' fv = -1 := by
+              show A (v.succAbove pp_idx') (v.succAbove fv_idx) = -1
+              rw [hsub, he_pp', he_fv]
+              exact D_fork_entry n (by omega) _ _ (by omega) (by omega)
+                (Or.inr ⟨rfl, Or.inl rfl⟩)
+            -- ol and pp' don't connect to each other or to u in the relevant way
             have hAol_u : A ol u = 0 := by
-              rw [← hu_idx]; show A (v.succAbove ol_idx) (v.succAbove u_idx) = 0
-              rw [hsub, he_ol]; simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]
-              rcases hpn with hp | hp <;> simp [hp] <;> split_ifs <;> omega
-            have hAol_pp : A ol pp = 0 := by
-              show A (v.succAbove ol_idx) (v.succAbove pp_idx) = 0
-              rw [hsub, he_ol, he_pp]
+              rw [show A ol u = 0 from (hGCM.zero_iff u ol holu).mp hAu_ol]
+            have hApp'_u : A pp' u = 0 := by
+              rw [show A pp' u = 0 from (hGCM.zero_iff u pp' hpp'u).mp hAu_pp']
+            have hol_pp'_ne : ol_idx ≠ pp_idx' := by
+              intro h; have := congr_arg (fun x => (e' x).val) h
+              simp only [he_ol, he_pp', Fin.val_mk] at this
+              split_ifs at this <;> omega
+            have hol_fv_ne : ol_idx ≠ fv_idx := by
+              intro h; have := congr_arg (fun x => (e' x).val) h
+              simp only [he_ol, he_fv, Fin.val_mk] at this
+              split_ifs at this <;> omega
+            have hpp'_fv_ne : pp_idx' ≠ fv_idx := by
+              intro h; have := congr_arg (fun x => (e' x).val) h
+              simp only [he_pp', he_fv, Fin.val_mk] at this; omega
+            have hol_pp' : ol ≠ pp' := fun h => hol_pp'_ne (Fin.succAbove_right_injective h)
+            have hol_fv : ol ≠ fv := fun h => hol_fv_ne (Fin.succAbove_right_injective h)
+            have hpp'_fv : pp' ≠ fv := fun h => hpp'_fv_ne (Fin.succAbove_right_injective h)
+            have hAol_pp' : A ol pp' = 0 := by
+              show A (v.succAbove ol_idx) (v.succAbove pp_idx') = 0
+              rw [hsub, he_ol, he_pp']
               simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]
-              rcases hpn with hp | hp <;> simp [hp] <;> split_ifs <;> omega
-            have hApp_u : A pp u = 0 := by
-              rw [← hu_idx]; show A (v.succAbove pp_idx) (v.succAbove u_idx) = 0
-              rw [hsub, he_pp]; simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]
-              rcases hpn with hp | hp <;> rw [hp] <;> split_ifs <;> omega
-            have hApp_ol : A pp ol = 0 := by
-              show A (v.succAbove pp_idx) (v.succAbove ol_idx) = 0
-              rw [hsub, he_pp, he_ol]
-              simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]
-              rcases hpn with hp | hp <;> simp [hp] <;> split_ifs <;> omega
-            -- Test vector: [-A(v,u), 2, 2, 1, 1] on {v, u, fv, ol, pp}
+              have := (e' u_idx).isLt; split_ifs <;> omega
+            have hApp'_ol : A pp' ol = 0 := by
+              rw [(hGCM.zero_iff ol pp' hol_pp'.symm).mp hAol_pp']
             set x : Fin (n+3) → ℚ := fun i =>
-              if i = v then -(↑(A v u : ℤ) : ℚ) else if i = u then 2
-              else if i = fv then 2 else if i = ol then 1 else if i = pp then 1 else 0
+              if i = v then -A v u
+              else if i = u then 2
+              else if i = fv then 2
+              else if i = ol then 1
+              else if i = pp' then 1
+              else 0
             have hx : x ≠ 0 := by
               intro h; have := congr_fun h u
-              simp only [x, if_neg huv, ↓reduceIte, Pi.zero_apply] at this; norm_num at this
-            have x0 : ∀ k, k ≠ v → k ≠ u → k ≠ fv → k ≠ ol → k ≠ pp → x k = 0 :=
+              simp only [x, ↓reduceIte, if_neg huv.symm, Pi.zero_apply] at this; norm_num at this
+            have x0 : ∀ k, k ≠ v → k ≠ u → k ≠ fv → k ≠ ol → k ≠ pp' → x k = 0 :=
               fun k h1 h2 h3 h4 h5 => by simp [x, h1, h2, h3, h4, h5]
-            -- Inner products
+            have hrest : ∀ (r : Fin (n+3) → ℚ) (m : Fin (n+3)),
+                m ≠ v → m ≠ u → m ≠ fv → m ≠ ol → m ≠ pp' → r m * x m = 0 := by
+              intro r m h1 h2 h3 h4 h5; simp [x0 m h1 h2 h3 h4 h5]
             have inner_v : ∑ j, (↑(A v j) : ℚ) * x j = 0 := by
-              rw [sum_two huv.symm (fun m => (↑(A v m) : ℚ) * x m)
-                (fun m h1 h2 => by
-                  have : A v m = 0 := by
-                    obtain ⟨m_idx, hm_eq⟩ := Fin.exists_succAbove_eq h1
-                    rw [← hm_eq]; exact hAv0 m_idx (fun h => h2 (by rw [← hm_eq, h, hu_idx]))
-                  simp [this])]
-              simp only [x, ↓reduceIte, if_neg huv, hGCM.diag v]; push_cast; ring
+              rw [sum_five huv.symm hfvv.symm holv.symm hpp'v.symm hfvu.symm holu.symm hpp'u.symm
+                (hol_fv.symm) (hol_pp'.symm) (hpp'_fv.symm)
+                (fun m => (↑(A v m) : ℚ) * x m)
+                (fun m h1 h2 h3 h4 h5 => hrest (fun j => ↑(A v j)) m h1 h2 h3 h4 h5)]
+              simp only [x, ↓reduceIte, if_neg huv,
+                hGCM.diag v, hAvfv, hAvol, hAvpp']; push_cast; ring
             have inner_u : ∑ j, (↑(A u j) : ℚ) * x j = 0 := by
-              rw [sum_three huv.symm hfv_v.symm hfv_u.symm
+              rw [sum_five huv.symm hfvv.symm holv.symm hpp'v.symm hfvu.symm holu.symm hpp'u.symm
+                (hol_fv.symm) (hol_pp'.symm) (hpp'_fv.symm)
                 (fun m => (↑(A u m) : ℚ) * x m)
-                (fun m h1 h2 h3 => by
-                  by_cases hm4 : m = ol; · simp [hm4, hAu_ol]
-                  by_cases hm5 : m = pp; · simp [hm5, hAu_pp]
-                  simp [x0 m h1 h2 h3 hm4 hm5])]
-              simp only [x, ↓reduceIte, if_neg huv, if_neg hfv_v, if_neg hfv_u,
-                hGCM.diag u, hAu_fv]; push_cast
-              have : (↑(A u v) : ℚ) * ↑(A v u) = 2 := by rw [mul_comm]; exact_mod_cast hcw2
-              linarith
+                (fun m h1 h2 h3 h4 h5 => hrest (fun j => ↑(A u j)) m h1 h2 h3 h4 h5)]
+              simp only [x, ↓reduceIte, if_neg huv, if_neg hfvv, if_neg holv, if_neg hpp'v,
+                if_neg hfvu, if_neg holu, if_neg hpp'u,
+                hGCM.diag u, hAu_fv, hAu_ol, hAu_pp']; push_cast
+              have : (A v u : ℚ) * (A u v : ℚ) = 2 := by exact_mod_cast hcw2
+              nlinarith
             have inner_fv : ∑ j, (↑(A fv j) : ℚ) * x j = 0 := by
-              rw [sum_four hfv_u.symm hol_u.symm hpp_u.symm hol_fv.symm hpp_fv.symm hpp_ol.symm
+              rw [sum_five huv.symm hfvv.symm holv.symm hpp'v.symm hfvu.symm holu.symm hpp'u.symm
+                (hol_fv.symm) (hol_pp'.symm) (hpp'_fv.symm)
                 (fun m => (↑(A fv m) : ℚ) * x m)
-                (fun m h1 h2 h3 h4 => by
-                  by_cases hm : m = v; · simp [hm, hAfvv]
-                  simp [x0 m hm h1 h2 h3 h4])]
-              simp only [x, ↓reduceIte, if_neg huv, if_neg hfv_v, if_neg hfv_u,
-                if_neg hol_v, if_neg hol_u, if_neg hol_fv,
-                if_neg hpp_v, if_neg hpp_u, if_neg hpp_fv, if_neg hpp_ol,
-                hGCM.diag fv, hAfv_u, hAfv_ol, hAfv_pp]; push_cast; ring
+                (fun m h1 h2 h3 h4 h5 => hrest (fun j => ↑(A fv j)) m h1 h2 h3 h4 h5)]
+              simp only [x, ↓reduceIte, if_neg huv, if_neg hfvv, if_neg holv, if_neg hpp'v,
+                if_neg hfvu, if_neg holu, if_neg hpp'u,
+                if_neg hol_fv.symm, if_neg hol_pp'.symm, if_neg hpp'_fv.symm,
+                hGCM.diag fv, hAfvv, hAfv_u, hAfv_ol, hAfv_pp']; push_cast; ring
             have inner_ol : ∑ j, (↑(A ol j) : ℚ) * x j = 0 := by
-              rw [sum_two hol_fv.symm (fun m => (↑(A ol m) : ℚ) * x m)
-                (fun m h1 h2 => by
-                  by_cases hm : m = v; · simp [hm, hAolv]
-                  by_cases hm2 : m = u; · simp [hm2, hAol_u]
-                  by_cases hm3 : m = pp; · simp [hm3, hAol_pp]
-                  simp [x0 m hm hm2 h1 h2 hm3])]
-              simp only [x, ↓reduceIte, if_neg hfv_v, if_neg hfv_u,
-                if_neg hol_v, if_neg hol_u, if_neg hol_fv,
-                hGCM.diag ol, hAol_fv]; push_cast; ring
-            have inner_pp : ∑ j, (↑(A pp j) : ℚ) * x j = 0 := by
-              rw [sum_two hpp_fv.symm (fun m => (↑(A pp m) : ℚ) * x m)
-                (fun m h1 h2 => by
-                  by_cases hm : m = v; · simp [hm, hAppv]
-                  by_cases hm2 : m = u; · simp [hm2, hApp_u]
-                  by_cases hm3 : m = ol; · simp [hm3, hApp_ol]
-                  simp [x0 m hm hm2 h1 hm3 h2])]
-              simp only [x, ↓reduceIte, if_neg hfv_v, if_neg hfv_u,
-                if_neg hpp_v, if_neg hpp_u, if_neg hpp_fv, if_neg hpp_ol,
-                hGCM.diag pp, hApp_fv]; push_cast; ring
+              rw [sum_five huv.symm hfvv.symm holv.symm hpp'v.symm hfvu.symm holu.symm hpp'u.symm
+                (hol_fv.symm) (hol_pp'.symm) (hpp'_fv.symm)
+                (fun m => (↑(A ol m) : ℚ) * x m)
+                (fun m h1 h2 h3 h4 h5 => hrest (fun j => ↑(A ol j)) m h1 h2 h3 h4 h5)]
+              simp only [x, ↓reduceIte, if_neg huv, if_neg hfvv, if_neg holv, if_neg hpp'v,
+                if_neg hfvu, if_neg holu, if_neg hpp'u,
+                if_neg hol_fv.symm, if_neg hol_pp'.symm, if_neg hpp'_fv.symm,
+                if_neg hol_fv, if_neg hol_pp',
+                hGCM.diag ol, hAolv, hAol_u, hAol_fv, hAol_pp']; push_cast; ring
+            have inner_pp' : ∑ j, (↑(A pp' j) : ℚ) * x j = 0 := by
+              rw [sum_five huv.symm hfvv.symm holv.symm hpp'v.symm hfvu.symm holu.symm hpp'u.symm
+                (hol_fv.symm) (hol_pp'.symm) (hpp'_fv.symm)
+                (fun m => (↑(A pp' m) : ℚ) * x m)
+                (fun m h1 h2 h3 h4 h5 => hrest (fun j => ↑(A pp' j)) m h1 h2 h3 h4 h5)]
+              simp only [x, ↓reduceIte, if_neg huv, if_neg hfvv, if_neg holv, if_neg hpp'v,
+                if_neg hfvu, if_neg holu, if_neg hpp'u,
+                if_neg hol_fv.symm, if_neg hol_pp'.symm, if_neg hpp'_fv.symm,
+                if_neg hpp'_fv, if_neg hol_pp',
+                hGCM.diag pp', hApp'v, hApp'_u, hApp'_fv, hApp'_ol]; push_cast; ring
             have hq : qform hSym.d A x = 0 := by
               apply qform_zero_of_null; intro k
-              rcases Fin.eq_self_or_eq_succAbove v k with rfl | ⟨m, rfl⟩
-              · right; exact inner_v
-              · by_cases hmu : v.succAbove m = u; · right; rw [hmu]; exact inner_u
+              rcases Fin.eq_self_or_eq_succAbove v k with hkv | ⟨m, hkm⟩
+              · right; rw [hkv]; exact inner_v
+              · rw [hkm]
+                by_cases hmu : v.succAbove m = u; · right; rw [hmu]; exact inner_u
                 by_cases hmfv : v.succAbove m = fv; · right; rw [hmfv]; exact inner_fv
                 by_cases hmol : v.succAbove m = ol; · right; rw [hmol]; exact inner_ol
-                by_cases hmpp : v.succAbove m = pp; · right; rw [hmpp]; exact inner_pp
-                left; exact_mod_cast x0 (v.succAbove m) (Fin.succAbove_ne v m) hmu hmfv hmol hmpp
+                by_cases hmpp' : v.succAbove m = pp'; · right; rw [hmpp']; exact inner_pp'
+                left; simp [x0 _ (Fin.succAbove_ne v m) hmu hmfv hmol hmpp']
             exact absurd hPD (not_posDef_of_nonpos hSym x hx (le_of_eq hq))
-        · -- Interior path (1 ≤ p ≤ n-2) → contradiction
+        · -- Interior path case: 1 ≤ p ≤ n-2 (both weights → contradiction)
           exfalso
           push_neg at hfl
           -- p := (e' u_idx).val satisfies: 1 ≤ p (from h0), p ≤ n-2 (from hfl+hfork), p < n+2
@@ -2843,10 +2372,10 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
               (Fin.succAbove_right_injective hex.choose_spec)
           have hx_ne : x ≠ 0 := by
             intro h; have := congr_fun h v
-            simp only [hx_v, Pi.zero_apply] at this; norm_cast at this; omega
+            simp only [hx_v, Pi.zero_apply] at this; push_cast at this; omega
           have hfD_u : fD (e' u_idx) = 2 := by
             simp only [fD, D_marks]; rw [if_neg (by omega), if_pos (le_refl _)]
-            simp only [Fin.val_mk]; split_ifs <;> omega
+            simp; split_ifs <;> omega
           have hfD_marks : ∀ q : Fin (n+2), p_val ≤ q.val →
               fD q = D_marks rr ⟨q.val - p_val, by omega⟩ := by
             intro q hq; simp only [fD]; rw [if_neg (by omega), if_pos hq]
@@ -2874,7 +2403,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                 congr 1
                 · have hq_eq : q = ⟨(q.val - p_val) + p_val, by omega⟩ :=
                     Fin.ext (Nat.sub_add_cancel hqp).symm
-                  conv_lhs => rw [hq_eq, show (n + 2) = rr + p_val from by omega]
+                  conv_lhs => rw [hq_eq]
                   exact_mod_cast D_shift rr p_val hrr4 i_off ⟨q.val - p_val, by omega⟩
                 · exact_mod_cast hfD_marks q hqp
               · push_neg at hqp
@@ -2947,7 +2476,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                   rw [hsub_reindex]
                   have hpos : (e' m).val + 1 = p_val ∨ p_val ≤ (e' m).val := by
                     simp only [fD, D_marks] at hfm
-                    split_ifs at hfm <;> [left; right; right; exact absurd rfl hfm] <;> omega
+                    split_ifs at hfm <;> [left; right; exact absurd rfl hfm] <;> omega
                   rcases hpos with hpm1 | hpm
                   · -- Left neighbor (position p-1): inner = 0
                     have hm_ne_u : m ≠ u_idx := by intro heq; rw [heq] at hpm1; omega
@@ -2961,7 +2490,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                       (fun q hq1' hq2' => by
                         have hDq : CartanMatrix.D (n+2) (e' m) q = 0 ∨ fD q = 0 := by
                           by_cases hqp1 : q.val + 1 = p_val
-                          · exact absurd (Fin.ext (by simp [q1] <;> omega)) hq1'
+                          · exact absurd (Fin.ext (by simp [q1]; omega)) hq1'
                           · by_cases hqp2 : p_val ≤ q.val
                             · left
                               have hq_ne : q.val ≠ p_val := fun h =>
@@ -2982,7 +2511,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                     have hfq2 : fD q2 = 2 := by
                       simp only [fD, D_marks, q2]
                       rw [if_neg (by omega), if_pos (le_refl _)]
-                      simp only [Fin.val_mk]; split_ifs <;> omega
+                      simp; split_ifs <;> omega
                     rw [hDq1, hDq2, hfq1, hfq2]; push_cast; linarith
                   · -- D sub-path vertex (position ≥ p)
                     set i_off : Fin rr := ⟨(e' m).val - p_val, by omega⟩
@@ -3005,16 +2534,17 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                     by_cases hi0 : i_off.val = 0
                     · -- At position p (= u): inner(u) = A(u,v)*(-A(v,u)) + 2 - 1
                       --   = -weight + 1 ≤ 0 (weight ≥ 1)
-                      have : (e' m).val = p_val := by simp [i_off] at hi0; omega
+                      have : (e' m).val = p_val := by simp [i_off, Fin.ext_iff] at hi0; omega
                       simp [hi0, this]; push_cast
                       have : (A u v : ℚ) ≤ -1 := by exact_mod_cast hAuv_neg
                       have : (A v u : ℚ) ≤ -1 := by exact_mod_cast hAvu_neg
                       nlinarith
                     · -- At positions > p: inner = 0
                       have : (e' m).val ≠ p_val := by
-                        simp [i_off] at hi0; omega
+                        simp [i_off, Fin.ext_iff] at hi0; omega
                       simp [hi0, this]
           exact absurd hPD (not_posDef_of_nonpos hSym x hx_ne hq)
+        -/
   | E₆ =>
     simp only [DynkinType.cartanMatrix] at hrank
     change CartanEquiv (deleteVertex A v) CartanMatrix.E₆ at ht'
@@ -3062,10 +2592,10 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
           · rcases Fin.eq_self_or_eq_succAbove v j with hj | ⟨kj, hj⟩
             · exact hi.trans hj.symm
             · exfalso; rw [hi, hj, hf_v, hf_sub] at hij
-              exact absurd (congr_arg Fin.val hij) (by simp [Fin.val_castSucc] <;> omega)
+              exact absurd (congr_arg Fin.val hij) (by simp [Fin.val_castSucc]; omega)
           · rcases Fin.eq_self_or_eq_succAbove v j with hj | ⟨kj, hj⟩
             · exfalso; rw [hi, hj, hf_sub, hf_v] at hij
-              exact absurd (congr_arg Fin.val hij) (by simp [Fin.val_castSucc] <;> omega)
+              exact absurd (congr_arg Fin.val hij) (by simp [Fin.val_castSucc]; omega)
             · rw [hi, hj]; congr 1
               rw [hi, hj, hf_sub, hf_sub] at hij
               exact e'.injective (Fin.castSucc_injective _ hij)
@@ -3462,9 +2992,11 @@ theorem cartan_classification {n : ℕ} (A : Matrix (Fin n) (Fin n) ℤ)
           simp only [DynkinType.cartanMatrix, Equiv.refl_apply, CartanMatrix.B_two] <;>
           first | exact (hGCM.diag _).symm | exact ha.symm | exact hb.symm
       · -- A 0 1 = -1, A 1 0 = -2: this is B₂ with swapped indices
+        have s01 : (Equiv.swap (0 : Fin 2) 1) 0 = 1 := by decide
+        have s10 : (Equiv.swap (0 : Fin 2) 1) 1 = 0 := by decide
         refine ⟨.B 2 (by omega), Equiv.swap 0 1, fun i j => ?_⟩
         fin_cases i <;> fin_cases j <;>
-          simp only [DynkinType.cartanMatrix, CartanMatrix.B_two] <;>
+          simp only [DynkinType.cartanMatrix, CartanMatrix.B_two, s01, s10] <;>
           first | exact (hGCM.diag _).symm | exact ha.symm | exact hb.symm
     · -- weight 3: (a,b) ∈ {(-3,-1), (-1,-3)} → G₂
       have hab : (A 0 1 = -3 ∧ A 1 0 = -1) ∨ (A 0 1 = -1 ∧ A 1 0 = -3) := by
@@ -3485,8 +3017,10 @@ theorem cartan_classification {n : ℕ} (A : Matrix (Fin n) (Fin n) ℤ)
           simp only [DynkinType.cartanMatrix, Equiv.refl_apply, CartanMatrix.G₂] <;>
           first | exact (hGCM.diag _).symm | exact ha.symm | exact hb.symm
       · refine ⟨.G₂, Equiv.swap 0 1, fun i j => ?_⟩
+        have s01 : (Equiv.swap (0 : Fin 2) 1) 0 = 1 := by decide
+        have s10 : (Equiv.swap (0 : Fin 2) 1) 1 = 0 := by decide
         fin_cases i <;> fin_cases j <;>
-          simp only [DynkinType.cartanMatrix, CartanMatrix.G₂] <;>
+          simp only [DynkinType.cartanMatrix, CartanMatrix.G₂, s01, s10] <;>
           first | exact (hGCM.diag _).symm | exact ha.symm | exact hb.symm
   | n + 3 =>
     -- Find a leaf
