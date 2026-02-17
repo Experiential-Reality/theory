@@ -254,7 +254,7 @@ set_option maxHeartbeats 400000 in
 /-- E₆ vertex 5 case: weight 1 → E₇, weight 2 → contradiction via null vectors. -/
 private theorem e6_v5_case {A : Matrix (Fin 7) (Fin 7) ℤ}
     (hGCM : IsGCM A) (hSym : IsSymmetrizable A) (hPD : IsPosDef A hSym)
-    (v u : Fin 7) (huv : u ≠ v)
+    (v u : Fin 7) (_huv : u ≠ v)
     (hcw_le2 : A v u * A u v ≤ 2)
     (e' : Fin 6 ≃ Fin 6)
     (u_idx : Fin 6) (hu_idx : v.succAbove u_idx = u)
@@ -420,7 +420,7 @@ set_option maxHeartbeats 800000 in
     weight 2 → contradiction via null vectors. -/
 private theorem e6_v0_case {A : Matrix (Fin 7) (Fin 7) ℤ}
     (hGCM : IsGCM A) (hSym : IsSymmetrizable A) (hPD : IsPosDef A hSym)
-    (v u : Fin 7) (huv : u ≠ v)
+    (v u : Fin 7) (_huv : u ≠ v)
     (hcw_le2 : A v u * A u v ≤ 2)
     (e' : Fin 6 ≃ Fin 6)
     (u_idx : Fin 6) (hu_idx : v.succAbove u_idx = u)
@@ -592,14 +592,14 @@ set_option maxHeartbeats 400000 in
     qform ≤ 0 via d-equality and the customE6 test vector. -/
 private theorem e6_marks_case {A : Matrix (Fin 7) (Fin 7) ℤ}
     (hGCM : IsGCM A) (hSym : IsSymmetrizable A) (hPD : IsPosDef A hSym)
-    (v u : Fin 7) (huv : u ≠ v)
+    (v u : Fin 7) (_huv : u ≠ v)
     (e' : Fin 6 ≃ Fin 6)
     (u_idx : Fin 6) (hu_idx : v.succAbove u_idx = u)
     (hsub : ∀ i j : Fin 6, A (v.succAbove i) (v.succAbove j) =
         CartanMatrix.E₆ (e' i) (e' j))
     (hAv0 : ∀ k : Fin 6, k ≠ u_idx → A v (v.succAbove k) = 0)
     (hAvu_neg : A v u ≤ -1) (hAuv_neg : A u v ≤ -1)
-    (hcw_pos : 1 ≤ A v u * A u v)
+    (_hcw_pos : 1 ≤ A v u * A u v)
     (hMarks : customE6 (e' u_idx) = 2) : False := by
   -- D-equality on E₆ subgraph: E₆ is symmetric → edge d-values equal
   have hedge : ∀ p q : Fin 6, p ≠ q → CartanMatrix.E₆ p q ≠ 0 →

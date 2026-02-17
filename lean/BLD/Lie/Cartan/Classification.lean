@@ -225,7 +225,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
             have he'wl : e' wl_idx = wl_pos := e'.apply_symm_apply wl_pos
             have hwl_ne_u_idx : wl_idx ≠ u_idx := by
               intro h; have h1 := congr_arg e' h
-              simp only [he'wl, wl_pos_def, Fin.ext_iff, Fin.val_mk] at h1; omega
+              simp only [he'wl, wl_pos_def, Fin.ext_iff] at h1; omega
             set wl := v.succAbove wl_idx with wl_def
             have hwl_ne_v : wl ≠ v := Fin.succAbove_ne v wl_idx
             have hwl_ne_u : wl ≠ u := fun h => hwl_ne_u_idx
@@ -235,11 +235,11 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
             have he'wl2 : e' wl2_idx = wl2_pos := e'.apply_symm_apply wl2_pos
             have hwl2_ne_u_idx : wl2_idx ≠ u_idx := by
               intro h; have h1 := congr_arg e' h
-              simp only [he'wl2, wl2_pos_def, Fin.ext_iff, Fin.val_mk] at h1; omega
+              simp only [he'wl2, wl2_pos_def, Fin.ext_iff] at h1; omega
             have hwl2_ne_wl_idx : wl2_idx ≠ wl_idx := by
               intro h; have h1 := congr_arg e' h
               simp only [he'wl2, he'wl, wl2_pos_def, wl_pos_def,
-                Fin.ext_iff, Fin.val_mk] at h1; omega
+                Fin.ext_iff] at h1; omega
             set wl2 := v.succAbove wl2_idx with wl2_def
             have hwl2_ne_v : wl2 ≠ v := Fin.succAbove_ne v wl2_idx
             have hwl2_ne_u : wl2 ≠ u := fun h => hwl2_ne_u_idx
@@ -251,15 +251,15 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
             have he'wl3 : e' wl3_idx = wl3_pos := e'.apply_symm_apply wl3_pos
             have hwl3_ne_u_idx : wl3_idx ≠ u_idx := by
               intro h; have h1 := congr_arg e' h
-              simp only [he'wl3, wl3_pos_def, Fin.ext_iff, Fin.val_mk] at h1; omega
+              simp only [he'wl3, wl3_pos_def, Fin.ext_iff] at h1; omega
             have hwl3_ne_wl_idx : wl3_idx ≠ wl_idx := by
               intro h; have h1 := congr_arg e' h
               simp only [he'wl3, he'wl, wl3_pos_def, wl_pos_def,
-                Fin.ext_iff, Fin.val_mk] at h1; omega
+                Fin.ext_iff] at h1; omega
             have hwl3_ne_wl2_idx : wl3_idx ≠ wl2_idx := by
               intro h; have h1 := congr_arg e' h
               simp only [he'wl3, he'wl2, wl3_pos_def, wl2_pos_def,
-                Fin.ext_iff, Fin.val_mk] at h1; omega
+                Fin.ext_iff] at h1; omega
             set wl3 := v.succAbove wl3_idx with wl3_def
             have hwl3_ne_v : wl3 ≠ v := Fin.succAbove_ne v wl3_idx
             have hwl3_ne_u : wl3 ≠ u := fun h => hwl3_ne_u_idx
@@ -276,32 +276,32 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
             have hAu_wl : A u wl = -1 := by
               rw [← hu_idx]; show A (v.succAbove u_idx) (v.succAbove wl_idx) = -1
               rw [hsub, he'wl]
-              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_mk, wl_pos_def]
+              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff,  wl_pos_def]
               split_ifs <;> omega
             have hAwl_u : A wl u = -2 := by
               rw [← hu_idx]; show A (v.succAbove wl_idx) (v.succAbove u_idx) = -2
               rw [hsub, he'wl]
-              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_mk, wl_pos_def]
+              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff,  wl_pos_def]
               split_ifs <;> omega
             have hAwl_wl2 : A wl wl2 = -1 := by
               show A (v.succAbove wl_idx) (v.succAbove wl2_idx) = -1
               rw [hsub, he'wl, he'wl2]
-              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_mk,
+              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, 
                 wl_pos_def, wl2_pos_def]; split_ifs <;> omega
             have hAwl2_wl : A wl2 wl = -1 := by
               show A (v.succAbove wl2_idx) (v.succAbove wl_idx) = -1
               rw [hsub, he'wl2, he'wl]
-              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_mk,
+              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, 
                 wl2_pos_def, wl_pos_def]; split_ifs <;> omega
             have hAwl2_wl3 : A wl2 wl3 = -1 := by
               show A (v.succAbove wl2_idx) (v.succAbove wl3_idx) = -1
               rw [hsub, he'wl2, he'wl3]
-              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_mk,
+              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, 
                 wl2_pos_def, wl3_pos_def]; split_ifs <;> omega
             have hAwl3_wl2 : A wl3 wl2 = -1 := by
               show A (v.succAbove wl3_idx) (v.succAbove wl2_idx) = -1
               rw [hsub, he'wl3, he'wl2]
-              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_mk,
+              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, 
                 wl3_pos_def, wl2_pos_def]; split_ifs <;> omega
             -- Null vector x: {v↦1, u↦2, wl↦3, wl2↦2, wl3↦1}
             set x : Fin (n+3) → ℚ := fun i =>
@@ -319,32 +319,32 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
             have hAu_wl2 : A u wl2 = 0 := by
               rw [← hu_idx]; show A (v.succAbove u_idx) (v.succAbove wl2_idx) = 0
               rw [hsub, he'wl2]
-              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_mk,
+              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, 
                 wl2_pos_def]; split_ifs <;> omega
             have hAu_wl3 : A u wl3 = 0 := by
               rw [← hu_idx]; show A (v.succAbove u_idx) (v.succAbove wl3_idx) = 0
               rw [hsub, he'wl3]
-              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_mk,
+              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, 
                 wl3_pos_def]; split_ifs <;> omega
             have hAwl_wl3 : A wl wl3 = 0 := by
               show A (v.succAbove wl_idx) (v.succAbove wl3_idx) = 0
               rw [hsub, he'wl, he'wl3]
-              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_mk,
+              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, 
                 wl_pos_def, wl3_pos_def]; split_ifs <;> omega
             have hAwl3_u : A wl3 u = 0 := by
               rw [← hu_idx]; show A (v.succAbove wl3_idx) (v.succAbove u_idx) = 0
               rw [hsub, he'wl3]
-              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_mk,
+              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, 
                 wl3_pos_def]; split_ifs <;> omega
             have hAwl3_wl : A wl3 wl = 0 := by
               show A (v.succAbove wl3_idx) (v.succAbove wl_idx) = 0
               rw [hsub, he'wl3, he'wl]
-              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_mk,
+              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, 
                 wl3_pos_def, wl_pos_def]; split_ifs <;> omega
             have hAwl2_u : A wl2 u = 0 := by
               rw [← hu_idx]; show A (v.succAbove wl2_idx) (v.succAbove u_idx) = 0
               rw [hsub, he'wl2]
-              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_mk,
+              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, 
                 wl2_pos_def]; split_ifs <;> omega
             -- Inner products (each row of A·x restricted to support)
             -- Row v (leaf): only connects to u
@@ -530,7 +530,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
           have hfB_u : fB (e' u_idx) = B_marks rr ⟨0, by omega⟩ := by
             simp only [fB, p_val_def]
             rw [if_neg (by omega), if_pos (le_refl _)]
-            congr 1; ext; simp [Nat.sub_self]
+            congr 1; ext; simp
           have hfB_marks : ∀ q : Fin (n+2), p_val ≤ q.val →
               fB q = B_marks rr ⟨q.val - p_val, by omega⟩ := by
             intro q hq; simp only [fB]; rw [if_neg (by omega), if_pos hq]
@@ -579,7 +579,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                   -- B(i_off+p, p-1) = if i_off=0 then -1 else 0
                   have hBval : CartanMatrix.B (n+2) ⟨i_off.val + p_val, by omega⟩ q =
                       if i_off.val = 0 then -1 else 0 := by
-                    simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_mk]
+                    simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff]
                     have := q.isLt; have := i_off.isLt; split_ifs <;> omega
                   rw [hBval]; split_ifs <;> simp
                 · -- q < p-1: fB(q) = 0
@@ -600,7 +600,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
             · -- Left neighbor: single nonzero term at q = ⟨p-1, _⟩
               rw [Fintype.sum_eq_single ⟨p_val - 1, by omega⟩ (fun q hq => by
                 rw [if_neg (fun h => hq (Fin.ext (by simp at h ⊢; omega)))])]
-              simp only [Fin.val_mk]
+              simp
               rw [if_pos (by omega)]
           -- qform = 0 via qform_zero_of_null
           have hq : qform hSym.d A x = 0 := by
@@ -619,7 +619,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
               by_cases hfm : fB (e' m) = 0
               · left; simp [hfm]
               · right; rw [Fin.sum_univ_succAbove _ v]
-                simp only [hx_v, hx_sub, hGCM.diag (v.succAbove m)]
+                simp only [hx_v, hx_sub]
                 -- Reindex the sum
                 have hsub_reindex : ∑ l, (↑(A (v.succAbove m) (v.succAbove l)) : ℚ) * ↑(fB (e' l)) =
                     ∑ q, (↑(CartanMatrix.B (n+2) (e' m) q) : ℚ) * ↑(fB q) := by
@@ -657,7 +657,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                             left
                             have hq_ne : q.val ≠ p_val := fun h =>
                               hq2' (Fin.ext (by simp [q2]; exact h))
-                            simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_mk]
+                            simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff]
                             have := q.isLt; split_ifs <;> omega
                           · -- q < p-1: fB(q) = 0
                             right; show fB q = 0
@@ -666,16 +666,16 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                   -- Now: B(p-1,p-1)*fB(p-1) + B(p-1,p)*fB(p)
                   -- = 2*1 + (-1)*2 = 0
                   have hBq1 : CartanMatrix.B (n+2) (e' m) q1 = 2 := by
-                    simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_mk, q1]
+                    simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff,  q1]
                     have := hpm1; split_ifs <;> omega
                   have hBq2 : CartanMatrix.B (n+2) (e' m) q2 = -1 := by
-                    simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_mk, q2]
+                    simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff,  q2]
                     have := hpm1; split_ifs <;> omega
                   have hfq1 : fB q1 = 1 := by
                     simp only [fB, q1]; rw [if_pos (by omega)]
                   have hfq2 : fB q2 = B_marks rr ⟨0, by omega⟩ := by
                     simp only [fB, q2]; rw [if_neg (by omega), if_pos (le_refl _)]
-                    congr 1; ext; simp [Nat.sub_self]
+                    congr 1; ext; simp
                   rw [hBq1, hBq2, hfq1, hfq2, hBm0]; push_cast; ring
                 · -- (e' m).val ≥ p: B sub-path vertex
                   set i_off : Fin rr := ⟨(e' m).val - p_val, by omega⟩
@@ -698,11 +698,11 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                   -- Goal is now purely arithmetic with if-then-else on i_off.val = 0 and (e' m).val = p_val
                   by_cases hi0 : i_off.val = 0
                   · -- i_off = 0, so (e' m) = p, row = u
-                    have : (e' m).val = p_val := by simp [i_off, Fin.ext_iff] at hi0; omega
+                    have : (e' m).val = p_val := by simp [i_off] at hi0; omega
                     simp [hi0, this]; push_cast; ring
                   · -- i_off ≥ 1, row is interior B vertex
                     have : (e' m).val ≠ p_val := by
-                      simp [i_off, Fin.ext_iff] at hi0; omega
+                      simp [i_off] at hi0; omega
                     simp [hi0, this]
           exact absurd hPD (not_posDef_of_nonpos hSym x hx_ne (le_of_eq hq))
       · -- Weight 2 → contradiction for all subcases
@@ -724,14 +724,14 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
         have hAul : A u wl = -1 := by
           rw [← hu_idx]; show A (v.succAbove u_idx) (v.succAbove left_idx) = -1
           rw [hsub, he'l]
-          simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_mk, left_pos_def]
+          simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff,  left_pos_def]
           split_ifs <;> omega
         by_cases hpn1 : (e' u_idx).val + 1 = n + 2
         · -- p = n+1 (short root): 3-vertex {v, u, wl}, null vec [-Avu, 2, 2]
           have hAlu : A wl u = -2 := by
             rw [← hu_idx]; show A (v.succAbove left_idx) (v.succAbove u_idx) = -2
             rw [hsub, he'l]
-            simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_mk, left_pos_def]
+            simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff,  left_pos_def]
             split_ifs <;> omega
           -- 3-vertex null test via qform: x(v) = -Avu, x(u) = 2, x(wl) = 2
           set x : Fin (n+3) → ℚ := fun i =>
@@ -780,12 +780,11 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
           set right_idx := e'.symm right_pos with right_idx_def
           have hright_ne : right_idx ≠ u_idx := by
             intro h; have h1 := congr_arg e' h
-            simp only [right_idx_def, e'.apply_symm_apply, right_pos_def, Fin.ext_iff,
-              Fin.val_mk] at h1; omega
+            simp only [right_idx_def, e'.apply_symm_apply, right_pos_def, Fin.ext_iff] at h1; omega
           have hrl_ne : right_idx ≠ left_idx := by
             intro h; have h1 := congr_arg e' h
             simp only [right_idx_def, left_idx_def, e'.apply_symm_apply, right_pos_def,
-              left_pos_def, Fin.ext_iff, Fin.val_mk] at h1; omega
+              left_pos_def, Fin.ext_iff] at h1; omega
           set wr := v.succAbove right_idx with wr_def
           have hwr_ne_v : wr ≠ v := Fin.succAbove_ne v right_idx
           have hwr_ne_u : wr ≠ u := fun h => hright_ne
@@ -798,29 +797,29 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
           have hAru : A wr u = -1 := by
             rw [← hu_idx]; show A (v.succAbove right_idx) (v.succAbove u_idx) = -1
             rw [hsub, he'r]
-            simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_mk, right_pos_def]
+            simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff,  right_pos_def]
             split_ifs <;> omega
           have hAlr : A wl wr = 0 := by
             show A (v.succAbove left_idx) (v.succAbove right_idx) = 0
             rw [hsub, he'l, he'r]
-            simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_mk,
+            simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, 
               left_pos_def, right_pos_def]; split_ifs <;> omega
           have hArl : A wr wl = 0 := by
             show A (v.succAbove right_idx) (v.succAbove left_idx) = 0
             rw [hsub, he'r, he'l]
-            simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_mk,
+            simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, 
               right_pos_def, left_pos_def]; split_ifs <;> omega
           have hAlu : A wl u = -1 := by
             rw [← hu_idx]; show A (v.succAbove left_idx) (v.succAbove u_idx) = -1
             rw [hsub, he'l]
-            simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_mk, left_pos_def]
+            simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff,  left_pos_def]
             split_ifs <;> omega
           by_cases hpn : (e' u_idx).val = n
           · -- p = n: A(u,right) = -2, 3-vertex {v, u, wr}, null vec [-Avu, 2, 1]
             have hAur : A u wr = -2 := by
               rw [← hu_idx]; show A (v.succAbove u_idx) (v.succAbove right_idx) = -2
               rw [hsub, he'r]
-              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_mk, right_pos_def]
+              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff,  right_pos_def]
               split_ifs <;> omega
             -- 3-vertex null test via qform: x(v) = -Avu, x(u) = 2, x(wr) = 1
             set x : Fin (n+3) → ℚ := fun i =>
@@ -867,7 +866,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
             have hAur : A u wr = -1 := by
               rw [← hu_idx]; show A (v.succAbove u_idx) (v.succAbove right_idx) = -1
               rw [hsub, he'r]
-              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_mk, right_pos_def]
+              simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff,  right_pos_def]
               split_ifs <;> omega
             -- 4-vertex null test: x(v) = -Avu, x(u) = 2, x(wl) = 1, x(wr) = 1
             set x : Fin (n+3) → ℚ := fun i =>
@@ -896,7 +895,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                 hwr_ne_wl.symm (fun m => (↑(A u m) : ℚ) * x m)
                 (fun m h1 h2 h3 h4 => hrest (fun j => ↑(A u j)) m h1 h2 h3 h4)]
               simp only [x, ↓reduceIte, if_neg huv, if_neg hwl_ne_v, if_neg hwr_ne_v,
-                if_neg hwl_ne_u, if_neg hwr_ne_u, if_neg hwr_ne_wl, if_neg hwr_ne_wl.symm,
+                if_neg hwl_ne_u, if_neg hwr_ne_u, if_neg hwr_ne_wl, 
                 hGCM.diag u, hAul, hAur]; push_cast
               have : (↑(A u v) : ℚ) * ↑(A v u) = 2 := by rw [mul_comm]; exact_mod_cast hcw2
               linarith
@@ -905,14 +904,14 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                 hwr_ne_wl.symm (fun m => (↑(A wl m) : ℚ) * x m)
                 (fun m h1 h2 h3 h4 => hrest (fun j => ↑(A wl j)) m h1 h2 h3 h4)]
               simp only [x, ↓reduceIte, if_neg huv, if_neg hwl_ne_v, if_neg hwl_ne_u,
-                if_neg hwr_ne_v, if_neg hwr_ne_u, if_neg hwr_ne_wl, if_neg hwr_ne_wl.symm,
+                if_neg hwr_ne_v, if_neg hwr_ne_u, if_neg hwr_ne_wl, 
                 hGCM.diag wl, hAlv, hAlu, hAlr]; push_cast; ring
             have inner_wr : ∑ j, (↑(A wr j) : ℚ) * x j = 0 := by
               rw [sum_four huv.symm hwl_ne_v.symm hwr_ne_v.symm hwl_ne_u.symm hwr_ne_u.symm
                 hwr_ne_wl.symm (fun m => (↑(A wr m) : ℚ) * x m)
                 (fun m h1 h2 h3 h4 => hrest (fun j => ↑(A wr j)) m h1 h2 h3 h4)]
               simp only [x, ↓reduceIte, if_neg huv, if_neg hwl_ne_v, if_neg hwl_ne_u,
-                if_neg hwr_ne_v, if_neg hwr_ne_u, if_neg hwr_ne_wl, if_neg hwr_ne_wl.symm,
+                if_neg hwr_ne_v, if_neg hwr_ne_u, if_neg hwr_ne_wl, 
                 hGCM.diag wr, hArv, hAru, hArl]; push_cast; ring
             have hq : qform hSym.d A x = 0 := by
               rw [qform_eq_sum_mul]; apply Finset.sum_eq_zero; intro i _
@@ -1015,31 +1014,31 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
             have he'wl : e' wl_idx = wl_pos := e'.apply_symm_apply wl_pos
             have hwl_ne_u_idx : wl_idx ≠ u_idx := by
               intro h; have h1 := congr_arg e' h
-              simp only [he'wl, wl_pos_def, Fin.ext_iff, Fin.val_mk] at h1; omega
+              simp only [he'wl, wl_pos_def, Fin.ext_iff] at h1; omega
             set wl2_pos : Fin (n+2) := ⟨n-1, by omega⟩ with wl2_pos_def
             set wl2_idx := e'.symm wl2_pos with wl2_idx_def
             have he'wl2 : e' wl2_idx = wl2_pos := e'.apply_symm_apply wl2_pos
             have hwl2_ne_u_idx : wl2_idx ≠ u_idx := by
               intro h; have h1 := congr_arg e' h
-              simp only [he'wl2, wl2_pos_def, Fin.ext_iff, Fin.val_mk] at h1; omega
+              simp only [he'wl2, wl2_pos_def, Fin.ext_iff] at h1; omega
             have hwl2_ne_wl_idx : wl2_idx ≠ wl_idx := by
               intro h; have h1 := congr_arg e' h
               simp only [he'wl2, he'wl, wl2_pos_def, wl_pos_def,
-                Fin.ext_iff, Fin.val_mk] at h1; omega
+                Fin.ext_iff] at h1; omega
             set wl3_pos : Fin (n+2) := ⟨n-2, by omega⟩ with wl3_pos_def
             set wl3_idx := e'.symm wl3_pos with wl3_idx_def
             have he'wl3 : e' wl3_idx = wl3_pos := e'.apply_symm_apply wl3_pos
             have hwl3_ne_u_idx : wl3_idx ≠ u_idx := by
               intro h; have h1 := congr_arg e' h
-              simp only [he'wl3, wl3_pos_def, Fin.ext_iff, Fin.val_mk] at h1; omega
+              simp only [he'wl3, wl3_pos_def, Fin.ext_iff] at h1; omega
             have hwl3_ne_wl_idx : wl3_idx ≠ wl_idx := by
               intro h; have h1 := congr_arg e' h
               simp only [he'wl3, he'wl, wl3_pos_def, wl_pos_def,
-                Fin.ext_iff, Fin.val_mk] at h1; omega
+                Fin.ext_iff] at h1; omega
             have hwl3_ne_wl2_idx : wl3_idx ≠ wl2_idx := by
               intro h; have h1 := congr_arg e' h
               simp only [he'wl3, he'wl2, wl3_pos_def, wl2_pos_def,
-                Fin.ext_iff, Fin.val_mk] at h1; omega
+                Fin.ext_iff] at h1; omega
             -- A-entry proofs
             have hAvu : A v u = -1 := hAvu_eq
             have hAuv : A u v = -1 := hAuv_eq
@@ -1104,32 +1103,32 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
             have hAu_wl2 : A u wl2 = 0 := by
               rw [← hu_idx]; show A (v.succAbove u_idx) (v.succAbove wl2_idx) = 0
               rw [hsub, he'wl2]
-              simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, Fin.val_mk,
+              simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, 
                 wl2_pos_def]; split_ifs <;> omega
             have hAu_wl3 : A u wl3 = 0 := by
               rw [← hu_idx]; show A (v.succAbove u_idx) (v.succAbove wl3_idx) = 0
               rw [hsub, he'wl3]
-              simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, Fin.val_mk,
+              simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, 
                 wl3_pos_def]; split_ifs <;> omega
             have hAwl_wl3 : A wl wl3 = 0 := by
               show A (v.succAbove wl_idx) (v.succAbove wl3_idx) = 0
               rw [hsub, he'wl, he'wl3]
-              simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, Fin.val_mk,
+              simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, 
                 wl_pos_def, wl3_pos_def]; split_ifs <;> omega
             have hAwl3_u : A wl3 u = 0 := by
               rw [← hu_idx]; show A (v.succAbove wl3_idx) (v.succAbove u_idx) = 0
               rw [hsub, he'wl3]
-              simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, Fin.val_mk,
+              simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, 
                 wl3_pos_def]; split_ifs <;> omega
             have hAwl3_wl : A wl3 wl = 0 := by
               show A (v.succAbove wl3_idx) (v.succAbove wl_idx) = 0
               rw [hsub, he'wl3, he'wl]
-              simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, Fin.val_mk,
+              simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, 
                 wl3_pos_def, wl_pos_def]; split_ifs <;> omega
             have hAwl2_u : A wl2 u = 0 := by
               rw [← hu_idx]; show A (v.succAbove wl2_idx) (v.succAbove u_idx) = 0
               rw [hsub, he'wl2]
-              simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, Fin.val_mk,
+              simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, 
                 wl2_pos_def]; split_ifs <;> omega
             have x0 : ∀ k, k ≠ v → k ≠ u → k ≠ wl → k ≠ wl2 → k ≠ wl3 → x k = 0 :=
               fun k h1 h2 h3 h4 h5 => by simp [x, h1, h2, h3, h4, h5]
@@ -1340,7 +1339,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                   rw [hfq]; push_cast; simp only [mul_one]
                   have hCval : CartanMatrix.C (n+2) ⟨i_off.val + p_val, by omega⟩ q =
                       if i_off.val = 0 then -1 else 0 := by
-                    simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, Fin.val_mk]
+                    simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff]
                     have := q.isLt; have := i_off.isLt; split_ifs <;> omega
                   rw [hCval]; split_ifs <;> simp
                 · rw [if_neg hq1]
@@ -1361,7 +1360,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                 rw [this]; split_ifs <;> ring
             · rw [Fintype.sum_eq_single ⟨p_val - 1, by omega⟩ (fun q hq => by
                 rw [if_neg (fun h => hq (Fin.ext (by simp at h ⊢; omega)))])]
-              simp only [Fin.val_mk]
+              simp
               rw [if_pos (by omega)]
           -- qform = 0 via qform_zero_of_null
           have hq : qform hSym.d A x = 0 := by
@@ -1378,7 +1377,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
               by_cases hfm : fC (e' m) = 0
               · left; simp [hfm]
               · right; rw [Fin.sum_univ_succAbove _ v]
-                simp only [hx_v, hx_sub, hGCM.diag (v.succAbove m)]
+                simp only [hx_v, hx_sub]
                 have hsub_reindex : ∑ l, (↑(A (v.succAbove m) (v.succAbove l)) : ℚ) * ↑(fC (e' l)) =
                     ∑ q, (↑(CartanMatrix.C (n+2) (e' m) q) : ℚ) * ↑(fC q) := by
                   simp_rw [fun l => show A (v.succAbove m) (v.succAbove l) =
@@ -1406,16 +1405,16 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                           · left
                             have hq_ne : q.val ≠ p_val := fun h =>
                               hq2' (Fin.ext (by simp [q2]; exact h))
-                            simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, Fin.val_mk]
+                            simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff]
                             have := q.isLt; split_ifs <;> omega
                           · right; show fC q = 0
                             simp only [fC]; rw [if_neg (by omega), if_neg (by omega)]
                       rcases hCq with h | h <;> simp [h])]
                   have hCq1 : CartanMatrix.C (n+2) (e' m) q1 = 2 := by
-                    simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, Fin.val_mk, q1]
+                    simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff,  q1]
                     have := hpm1; split_ifs <;> omega
                   have hCq2 : CartanMatrix.C (n+2) (e' m) q2 = -1 := by
-                    simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, Fin.val_mk, q2]
+                    simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff,  q2]
                     have := hpm1; split_ifs <;> omega
                   have hfq1 : fC q1 = 1 := by simp only [fC, q1]; rw [if_pos (by omega)]
                   have hfq2 : fC q2 = 2 := hfC_marks q2 (le_refl _)
@@ -1439,10 +1438,10 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                     from by rw [he'm_eq]]
                   rw [hCpath_sum i_off]
                   by_cases hi0 : i_off.val = 0
-                  · have : (e' m).val = p_val := by simp [i_off, Fin.ext_iff] at hi0; omega
+                  · have : (e' m).val = p_val := by simp [i_off] at hi0; omega
                     simp [hi0, this]; push_cast; ring
                   · have : (e' m).val ≠ p_val := by
-                      simp [i_off, Fin.ext_iff] at hi0; omega
+                      simp [i_off] at hi0; omega
                     simp [hi0, this]
           exact absurd hPD (not_posDef_of_nonpos hSym x hx_ne (le_of_eq hq))
       · -- Weight 2 → contradiction for all subcases
@@ -1466,12 +1465,12 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
           have hAul : A u wl = -2 := by
             rw [← hu_idx]; show A (v.succAbove u_idx) (v.succAbove left_idx) = -2
             rw [hsub, he'l]
-            simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, Fin.val_mk, left_pos_def]
+            simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff,  left_pos_def]
             split_ifs <;> omega
           have hAlu : A wl u = -1 := by
             rw [← hu_idx]; show A (v.succAbove left_idx) (v.succAbove u_idx) = -1
             rw [hsub, he'l]
-            simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, Fin.val_mk, left_pos_def]
+            simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff,  left_pos_def]
             split_ifs <;> omega
           set x : Fin (n+3) → ℚ := fun i =>
             if i = v then -(↑(A v u : ℤ) : ℚ) else if i = u then 2 else if i = wl then 1 else 0
@@ -1515,12 +1514,12 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
           have hAul : A u wl = -1 := by
             rw [← hu_idx]; show A (v.succAbove u_idx) (v.succAbove left_idx) = -1
             rw [hsub, he'l]
-            simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, Fin.val_mk, left_pos_def]
+            simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff,  left_pos_def]
             split_ifs <;> omega
           have hAlu : A wl u = -1 := by
             rw [← hu_idx]; show A (v.succAbove left_idx) (v.succAbove u_idx) = -1
             rw [hsub, he'l]
-            simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, Fin.val_mk, left_pos_def]
+            simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff,  left_pos_def]
             split_ifs <;> omega
           by_cases hpk2 : (e' u_idx).val + 2 = n + 2
           · -- p = k-2 (next to double bond): {v, u, right(=k-1)}, vec [-Avu, 2, 2]
@@ -1529,7 +1528,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
             have hright_ne : right_idx ≠ u_idx := by
               intro h; have h1 := congr_arg e' h
               simp only [right_idx_def, e'.apply_symm_apply, right_pos_def,
-                Fin.ext_iff, Fin.val_mk] at h1; omega
+                Fin.ext_iff] at h1; omega
             set wr := v.succAbove right_idx
             have hwr_ne_v : wr ≠ v := Fin.succAbove_ne v right_idx
             have hwr_ne_u : wr ≠ u := fun h => hright_ne
@@ -1538,12 +1537,12 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
             have hAur : A u wr = -1 := by
               rw [← hu_idx]; show A (v.succAbove u_idx) (v.succAbove right_idx) = -1
               rw [hsub, he'r]
-              simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, Fin.val_mk, right_pos_def]
+              simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff,  right_pos_def]
               split_ifs <;> omega
             have hAru : A wr u = -2 := by
               rw [← hu_idx]; show A (v.succAbove right_idx) (v.succAbove u_idx) = -2
               rw [hsub, he'r]
-              simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, Fin.val_mk, right_pos_def]
+              simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff,  right_pos_def]
               split_ifs <;> omega
             have hAvr : A v wr = 0 := hAv0 right_idx hright_ne
             have hArv : A wr v = 0 := hAv0' right_idx hright_ne
@@ -1551,7 +1550,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
               (show right_idx ≠ left_idx from by
                 intro h'; have h1 := congr_arg e' h'
                 simp only [right_idx_def, left_idx_def, e'.apply_symm_apply, right_pos_def,
-                  left_pos_def, Fin.ext_iff, Fin.val_mk] at h1; omega)
+                  left_pos_def, Fin.ext_iff] at h1; omega)
               (Fin.succAbove_right_injective h)
             set x : Fin (n+3) → ℚ := fun i =>
               if i = v then -(↑(A v u : ℤ) : ℚ) else if i = u then 2 else if i = wr then 2 else 0
@@ -1596,7 +1595,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
             have hright_ne : right_idx ≠ u_idx := by
               intro h; have h1 := congr_arg e' h
               simp only [right_idx_def, e'.apply_symm_apply, right_pos_def,
-                Fin.ext_iff, Fin.val_mk] at h1; omega
+                Fin.ext_iff] at h1; omega
             have hright_ne_left : right_idx ≠ left_idx := by
               intro h; have h1 := congr_arg e' h
               simp only [right_idx_def, left_idx_def, e'.apply_symm_apply] at h1
@@ -1611,24 +1610,24 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
             have hAur : A u wr = -1 := by
               rw [← hu_idx]; show A (v.succAbove u_idx) (v.succAbove right_idx) = -1
               rw [hsub, he'r]
-              simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, Fin.val_mk, right_pos_def]
+              simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff,  right_pos_def]
               split_ifs <;> omega
             have hAru : A wr u = -1 := by
               rw [← hu_idx]; show A (v.succAbove right_idx) (v.succAbove u_idx) = -1
               rw [hsub, he'r]
-              simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, Fin.val_mk, right_pos_def]
+              simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff,  right_pos_def]
               split_ifs <;> omega
             have hAvr : A v wr = 0 := hAv0 right_idx hright_ne
             have hArv : A wr v = 0 := hAv0' right_idx hright_ne
             have hAlr : A wl wr = 0 := by
               show A (v.succAbove left_idx) (v.succAbove right_idx) = 0
               rw [hsub, he'l, he'r]
-              simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, Fin.val_mk,
+              simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, 
                 left_pos_def, right_pos_def]; split_ifs <;> omega
             have hArl : A wr wl = 0 := by
               show A (v.succAbove right_idx) (v.succAbove left_idx) = 0
               rw [hsub, he'r, he'l]
-              simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, Fin.val_mk,
+              simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, 
                 right_pos_def, left_pos_def]; split_ifs <;> omega
             set x : Fin (n+3) → ℚ := fun i =>
               if i = v then -(↑(A v u : ℤ) : ℚ) else if i = u then 2
@@ -1868,8 +1867,8 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
             (fun m => (↑(A pp m) : ℚ) * x m)
             (fun m h1 h2 h3 h4 h5 => hrest (fun j => ↑(A pp j)) m h1 h2 h3 h4 h5)]
           simp only [x, ↓reduceIte, if_neg huv, if_neg hppv, if_neg hfl1v, if_neg hfl2v,
-            if_neg hppu, if_neg hfl1u, if_neg hfl2u, if_neg hpp_fl1, if_neg hpp_fl2,
-            if_neg hfl1_fl2, hGCM.diag pp, hAppv, hApp_u]; push_cast
+            if_neg hppu, if_neg hfl1u, if_neg hfl2u,  
+             hGCM.diag pp, hAppv, hApp_u]; push_cast
           -- A(pp, fl1) and A(pp, fl2): pp is at position p-1, fl1 at n, fl2 at n+1
           -- Since p-1 = n-2 and n ≥ 2 (from hfork), pp is on path far from fork
           have hApp_fl1 : A pp fl1 = 0 := by
@@ -1887,8 +1886,8 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
             (fun m => (↑(A fl1 m) : ℚ) * x m)
             (fun m h1 h2 h3 h4 h5 => hrest (fun j => ↑(A fl1 j)) m h1 h2 h3 h4 h5)]
           simp only [x, ↓reduceIte, if_neg huv, if_neg hppv, if_neg hfl1v, if_neg hfl2v,
-            if_neg hppu, if_neg hfl1u, if_neg hfl2u, if_neg hpp_fl1, if_neg hpp_fl2,
-            if_neg hfl1_fl2, if_neg hfl1_fl2.symm, if_neg hpp_fl1.symm,
+            if_neg hppu, if_neg hfl1u, if_neg hfl2u,  
+             if_neg hfl1_fl2.symm, if_neg hpp_fl1.symm,
             hGCM.diag fl1, hAfl1v, hAfl1_u]; push_cast
           have hAfl1_pp : A fl1 pp = 0 := by
             show A (v.succAbove fl1_idx) (v.succAbove pp_idx) = 0
@@ -1905,8 +1904,8 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
             (fun m => (↑(A fl2 m) : ℚ) * x m)
             (fun m h1 h2 h3 h4 h5 => hrest (fun j => ↑(A fl2 j)) m h1 h2 h3 h4 h5)]
           simp only [x, ↓reduceIte, if_neg huv, if_neg hppv, if_neg hfl1v, if_neg hfl2v,
-            if_neg hppu, if_neg hfl1u, if_neg hfl2u, if_neg hpp_fl1, if_neg hpp_fl2,
-            if_neg hfl1_fl2, if_neg hpp_fl2.symm, if_neg hfl1_fl2.symm,
+            if_neg hppu, if_neg hfl1u, if_neg hfl2u,  
+             if_neg hpp_fl2.symm, if_neg hfl1_fl2.symm,
             hGCM.diag fl2, hAfl2v, hAfl2_u]; push_cast
           have hAfl2_pp : A fl2 pp = 0 := by
             show A (v.succAbove fl2_idx) (v.succAbove pp_idx) = 0
@@ -2163,7 +2162,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                         ¬(q + 3 = n + 2 ∧ (p + 2 = n + 2 ∨ p + 1 = n + 2)) →
                         CartanMatrix.D (n + 2) ⟨p, hp⟩ ⟨q, hq⟩ = 0 := by
                       intro p q h1 hp hq h2 h3 h4 h5
-                      simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff, Fin.val_mk]
+                      simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]
                       split_ifs <;> omega
                     -- Idx distinctness helper
                     have dns : ∀ (a b : Fin (n+2)), (e'' a).val ≠ (e'' b).val → a ≠ b :=
@@ -2209,6 +2208,16 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                     have hw4_w5 : w4 ≠ w5 := vne _ _ (by simp [he_w4, he_w5]; try omega)
                     have hw4_w6 : w4 ≠ w6 := vne _ _ (by simp [he_w4, he_w6]; try omega)
                     have hw5_w6 : w5 ≠ w6 := vne _ _ (by simp [he_w5, he_w6]; try omega)
+                    have hfv_w4 : fv ≠ w4 := vne _ _ (by simp [he_fv, he_w4]; try omega)
+                    have hfv_w5 : fv ≠ w5 := vne _ _ (by simp [he_fv, he_w5]; try omega)
+                    have hfv_w6 : fv ≠ w6 := vne _ _ (by simp [he_fv, he_w6]; try omega)
+                    have hol_w3 : ol ≠ w3 := vne _ _ (by simp [he_ol, he_w3]; try omega)
+                    have hol_w4 : ol ≠ w4 := vne _ _ (by simp [he_ol, he_w4]; try omega)
+                    have hol_w5 : ol ≠ w5 := vne _ _ (by simp [he_ol, he_w5]; try omega)
+                    have hol_w6 : ol ≠ w6 := vne _ _ (by simp [he_ol, he_w6]; try omega)
+                    have hw2_w5 : w2 ≠ w5 := vne _ _ (by simp [he_w2, he_w5]; try omega)
+                    have hw2_w6 : w2 ≠ w6 := vne _ _ (by simp [he_w2, he_w6]; try omega)
+                    have hw3_w6 : w3 ≠ w6 := vne _ _ (by simp [he_w3, he_w6]; try omega)
                     -- Adjacency facts (A = -1)
                     have hAu_fv : A u fv = -1 := by
                       rw [← hu_idx]
@@ -2384,7 +2393,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                       intro m hol' hfv'
                       by_cases hv' : m = v; · simp [hv', hAolv]
                       by_cases hu' : m = u
-                      · norm_cast; simp [hu', show A ol u = 0 from Azz ol_idx u_idx
+                      · norm_cast; simp [hu', show A ol u = 0 from hu_idx ▸ Azz ol_idx u_idx
                           (by simp [he_ol, he_u]) (by simp [he_ol, he_u])
                           (by simp [he_ol, he_u]) (by simp [he_ol, he_u])
                           (by simp [he_ol, he_u])]
@@ -2420,13 +2429,13 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                         let r := v.succAbove right_idx;
                         a_idx ≠ u_idx →
                         (∀ m, m ≠ a → m ≠ l → m ≠ r → (↑(A a m) : ℚ) * x m = 0) → True := by
-                      intro; exact trivial
+                      intros; exact trivial
                     -- w2's product-zero (connects to fv, w3)
                     have hPw2 : ∀ m, m ≠ w2 → m ≠ fv → m ≠ w3 → (↑(A w2 m) : ℚ) * x m = 0 := by
                       intro m hw2' hfv' hw3'
                       by_cases hv' : m = v; · simp [hv', hAw2v]
                       by_cases hu' : m = u
-                      · norm_cast; simp [hu', show A w2 u = 0 from Azz w2_idx u_idx
+                      · norm_cast; simp [hu', show A w2 u = 0 from hu_idx ▸ Azz w2_idx u_idx
                           (by simp [he_w2, he_u] <;> omega) (by simp [he_w2, he_u] <;> omega)
                           (by simp [he_w2, he_u] <;> omega) (by simp [he_w2, he_u] <;> omega)
                           (by simp [he_w2, he_u] <;> omega)]
@@ -2456,7 +2465,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                       intro m hw3' hw2' hw4'
                       by_cases hv' : m = v; · simp [hv', hAw3v]
                       by_cases hu' : m = u
-                      · norm_cast; simp [hu', show A w3 u = 0 from Azz w3_idx u_idx
+                      · norm_cast; simp [hu', show A w3 u = 0 from hu_idx ▸ Azz w3_idx u_idx
                           (by simp [he_w3, he_u] <;> omega) (by simp [he_w3, he_u] <;> omega)
                           (by simp [he_w3, he_u] <;> omega) (by simp [he_w3, he_u] <;> omega)
                           (by simp [he_w3, he_u] <;> omega)]
@@ -2486,7 +2495,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                       intro m hw4' hw3' hw5'
                       by_cases hv' : m = v; · simp [hv', hAw4v]
                       by_cases hu' : m = u
-                      · norm_cast; simp [hu', show A w4 u = 0 from Azz w4_idx u_idx
+                      · norm_cast; simp [hu', show A w4 u = 0 from hu_idx ▸ Azz w4_idx u_idx
                           (by simp [he_w4, he_u] <;> omega) (by simp [he_w4, he_u] <;> omega)
                           (by simp [he_w4, he_u] <;> omega) (by simp [he_w4, he_u] <;> omega)
                           (by simp [he_w4, he_u] <;> omega)]
@@ -2516,7 +2525,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                       intro m hw5' hw4' hw6'
                       by_cases hv' : m = v; · simp [hv', hAw5v]
                       by_cases hu' : m = u
-                      · norm_cast; simp [hu', show A w5 u = 0 from Azz w5_idx u_idx
+                      · norm_cast; simp [hu', show A w5 u = 0 from hu_idx ▸ Azz w5_idx u_idx
                           (by simp [he_w5, he_u] <;> omega) (by simp [he_w5, he_u] <;> omega)
                           (by simp [he_w5, he_u] <;> omega) (by simp [he_w5, he_u] <;> omega)
                           (by simp [he_w5, he_u] <;> omega)]
@@ -2546,7 +2555,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                       intro m hw6' hw5'
                       by_cases hv' : m = v; · simp [hv', hAw6v]
                       by_cases hu' : m = u
-                      · norm_cast; simp [hu', show A w6 u = 0 from Azz w6_idx u_idx
+                      · norm_cast; simp [hu', show A w6 u = 0 from hu_idx ▸ Azz w6_idx u_idx
                           (by simp [he_w6, he_u] <;> omega) (by simp [he_w6, he_u] <;> omega)
                           (by simp [he_w6, he_u] <;> omega) (by simp [he_w6, he_u] <;> omega)
                           (by simp [he_w6, he_u] <;> omega)]
@@ -2579,45 +2588,76 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                     -- Inner products via sum_two/sum_three/sum_four
                     have inner_v : ∑ j, (↑(A v j) : ℚ) * x j = 0 := by
                       rw [sum_two huv.symm (fun m => (↑(A v m) : ℚ) * x m) hPv]
-                      simp [x, hGCM.diag, hAvu_eq]; push_cast; ring
+                      simp [x, hGCM.diag, hAvu_eq, if_neg huv]; push_cast; ring
                     have inner_u : ∑ j, (↑(A u j) : ℚ) * x j = 0 := by
                       rw [sum_three huv.symm hfvv.symm hfvu.symm
                         (fun m => (↑(A u m) : ℚ) * x m) hPu]
-                      simp [x, if_neg huv.symm, hGCM.diag, hAuv_eq, hAu_fv]; push_cast; ring
+                      simp [x, hGCM.diag, hAuv_eq, hAu_fv,
+                        if_neg huv, if_neg hfvv, if_neg hfvu]; push_cast; ring
                     have inner_fv : ∑ j, (↑(A fv j) : ℚ) * x j = 0 := by
                       rw [sum_four hfvu hfv_w2 hfv_ol hw2u.symm holu.symm hol_w2.symm
                         (fun m => (↑(A fv m) : ℚ) * x m) hPfv]
-                      simp [x, if_neg hfvv, if_neg hfvu, if_neg hfv_w2, if_neg hfv_ol,
-                        if_neg hw2u, if_neg holu,
-                        hGCM.diag, hAfv_u, hAfv_w2, hAfv_ol]; push_cast; ring
+                      simp [x, hGCM.diag, hAfv_u, hAfv_w2, hAfv_ol,
+                        if_neg huv, if_neg hfvv, if_neg hfvu,
+                        if_neg holv, if_neg holu, if_neg hfv_ol.symm,
+                        if_neg hw2v, if_neg hw2u, if_neg hfv_w2.symm,
+                        if_neg hol_w2.symm]; push_cast; ring
                     have inner_ol : ∑ j, (↑(A ol j) : ℚ) * x j = 0 := by
                       rw [sum_two hfv_ol.symm (fun m => (↑(A ol m) : ℚ) * x m) hPol]
-                      simp [x, if_neg holv, if_neg holu, if_neg hfv_ol.symm,
-                        hGCM.diag, hAol_fv]; push_cast; ring
+                      simp [x, hGCM.diag, hAol_fv,
+                        if_neg holv, if_neg holu, if_neg hfv_ol.symm,
+                        if_neg hfvv, if_neg hfvu]; push_cast; ring
                     have inner_w2 : ∑ j, (↑(A w2 j) : ℚ) * x j = 0 := by
                       rw [sum_three hfv_w2.symm hw2_w3 hfv_w3
                         (fun m => (↑(A w2 m) : ℚ) * x m) hPw2]
-                      simp [x, if_neg hw2v, if_neg hw2u, if_neg hfv_w2.symm, if_neg hw2_w3,
-                        hGCM.diag, hAw2_fv, hAw2_w3]; push_cast; ring
+                      simp [x, hGCM.diag, hAw2_fv, hAw2_w3,
+                        if_neg hw2v, if_neg hw2u, if_neg hfv_w2.symm, if_neg hol_w2.symm,
+                        if_neg hfvv, if_neg hfvu,
+                        if_neg hw3v,  if_neg hfv_w3.symm,
+                        if_neg hol_w3.symm, if_neg hw2_w3.symm]; push_cast; ring
                     have inner_w3 : ∑ j, (↑(A w3 j) : ℚ) * x j = 0 := by
                       rw [sum_three hw2_w3.symm hw3_w4 hw2_w4
                         (fun m => (↑(A w3 m) : ℚ) * x m) hPw3]
-                      simp [x, if_neg hw3v, if_neg hw3u, if_neg hw2_w3.symm, if_neg hw3_w4,
-                        hGCM.diag, hAw3_w2, hAw3_w4]; push_cast; ring
+                      simp [x, hGCM.diag, hAw3_w2, hAw3_w4,
+                        if_neg hw3v,  if_neg hfv_w3.symm,
+                        if_neg hol_w3.symm, if_neg hw2_w3.symm,
+                        if_neg hw2v, if_neg hw2u, if_neg hfv_w2.symm, if_neg hol_w2.symm,
+                        if_neg hw4v, if_neg hw4u, if_neg hfv_w4.symm,
+                         if_neg hw2_w4.symm,
+                        if_neg hw3_w4.symm]; push_cast; ring
                     have inner_w4 : ∑ j, (↑(A w4 j) : ℚ) * x j = 0 := by
                       rw [sum_three hw3_w4.symm hw4_w5 hw3_w5
                         (fun m => (↑(A w4 m) : ℚ) * x m) hPw4]
-                      simp [x, if_neg hw4v, if_neg hw4u, if_neg hw3_w4.symm, if_neg hw4_w5,
-                        hGCM.diag, hAw4_w3, hAw4_w5]; push_cast; ring
+                      simp [x, hGCM.diag, hAw4_w3, hAw4_w5,
+                        if_neg hw4v, if_neg hw4u, if_neg hfv_w4.symm,
+                         if_neg hw2_w4.symm, if_neg hw3_w4.symm,
+                        if_neg hw3v,  if_neg hfv_w3.symm,
+                        if_neg hol_w3.symm, if_neg hw2_w3.symm,
+                        if_neg hw5v, if_neg hw5u, if_neg hfv_w5.symm,
+                        if_neg hol_w5.symm, if_neg hw2_w5.symm,
+                        if_neg hw3_w5.symm, if_neg hw4_w5.symm]; push_cast; ring
                     have inner_w5 : ∑ j, (↑(A w5 j) : ℚ) * x j = 0 := by
                       rw [sum_three hw4_w5.symm hw5_w6 hw4_w6
                         (fun m => (↑(A w5 m) : ℚ) * x m) hPw5]
-                      simp [x, if_neg hw5v, if_neg hw5u, if_neg hw4_w5.symm, if_neg hw5_w6,
-                        hGCM.diag, hAw5_w4, hAw5_w6]; push_cast; ring
+                      simp [x, hGCM.diag, hAw5_w4, hAw5_w6,
+                        if_neg hw5v, if_neg hw5u, if_neg hfv_w5.symm,
+                        if_neg hol_w5.symm, if_neg hw2_w5.symm,
+                        if_neg hw3_w5.symm, if_neg hw4_w5.symm,
+                        if_neg hw4v, if_neg hw4u, if_neg hfv_w4.symm,
+                         if_neg hw2_w4.symm, if_neg hw3_w4.symm,
+                        if_neg hw6v, if_neg hw6u, if_neg hfv_w6.symm,
+                        if_neg hol_w6.symm, if_neg hw2_w6.symm,
+                        if_neg hw3_w6.symm, if_neg hw4_w6.symm,
+                        if_neg hw5_w6.symm]; push_cast; ring
                     have inner_w6 : ∑ j, (↑(A w6 j) : ℚ) * x j = 0 := by
                       rw [sum_two hw5_w6.symm (fun m => (↑(A w6 m) : ℚ) * x m) hPw6]
-                      simp [x, if_neg hw6v, if_neg hw6u, if_neg hw5_w6.symm,
-                        hGCM.diag, hAw6_w5]; push_cast; ring
+                      simp [x, hGCM.diag, hAw6_w5,
+                        if_neg hw6v, if_neg hw6u, if_neg hfv_w6.symm,
+                        if_neg hol_w6.symm, if_neg hw2_w6.symm,
+                        if_neg hw3_w6.symm, if_neg hw4_w6.symm, if_neg hw5_w6.symm,
+                        if_neg hw5v, if_neg hw5u, if_neg hfv_w5.symm,
+                        if_neg hol_w5.symm, if_neg hw2_w5.symm,
+                        if_neg hw3_w5.symm, if_neg hw4_w5.symm]
                     -- Combine: qform = 0 → contradiction
                     have hq : qform hSym.d A x = 0 := by
                       apply qform_zero_of_null; intro k
@@ -2846,7 +2886,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
             simp only [hx_v, Pi.zero_apply] at this; norm_cast at this; omega
           have hfD_u : fD (e' u_idx) = 2 := by
             simp only [fD, D_marks]; rw [if_neg (by omega), if_pos (le_refl _)]
-            simp only [Fin.val_mk]; split_ifs <;> omega
+            split_ifs <;> omega
           have hfD_marks : ∀ q : Fin (n+2), p_val ≤ q.val →
               fD q = D_marks rr ⟨q.val - p_val, by omega⟩ := by
             intro q hq; simp only [fD]; rw [if_neg (by omega), if_pos hq]
@@ -2874,8 +2914,10 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                 congr 1
                 · have hq_eq : q = ⟨(q.val - p_val) + p_val, by omega⟩ :=
                     Fin.ext (Nat.sub_add_cancel hqp).symm
-                  conv_lhs => rw [hq_eq, show (n + 2) = rr + p_val from by omega]
-                  exact_mod_cast D_shift rr p_val hrr4 i_off ⟨q.val - p_val, by omega⟩
+                  conv_lhs => rw [hq_eq]
+                  norm_cast
+                  simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]
+                  split_ifs <;> omega
                 · exact_mod_cast hfD_marks q hqp
               · push_neg at hqp
                 rw [dif_neg (by omega)]
@@ -2886,7 +2928,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                   rw [hfq]; push_cast; simp only [mul_one]
                   have hDval : CartanMatrix.D (n+2) ⟨i_off.val + p_val, by omega⟩ q =
                       if i_off.val = 0 then -1 else 0 := by
-                    simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff, Fin.val_mk]
+                    simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]
                     have := q.isLt; have := i_off.isLt
                     split_ifs <;> omega
                   rw [hDval]; split_ifs <;> simp
@@ -2908,7 +2950,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                 rw [this]
             · rw [Fintype.sum_eq_single ⟨p_val - 1, by omega⟩ (fun q hq => by
                 rw [if_neg (fun h => hq (Fin.ext (by simp at h ⊢; omega)))])]
-              simp only [Fin.val_mk]
+              simp
               rw [if_pos (by omega)]
           -- Now prove qform ≤ 0
           have hq : qform hSym.d A x ≤ 0 := by
@@ -2916,7 +2958,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
             apply Finset.sum_nonpos; intro i _
             by_cases hiv : i = v
             · -- Term at v: d(v)*(-A(v,u))*inner(v) where inner(v) = 0
-              subst hiv
+              rw [show i = v from hiv]
               suffices inner_v : ∑ j, (↑(A v j) : ℚ) * x j = 0 by simp [inner_v]
               rw [Fin.sum_univ_succAbove _ v]
               simp only [hx_v, hx_sub, hGCM.diag v]
@@ -2966,23 +3008,23 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                             · left
                               have hq_ne : q.val ≠ p_val := fun h =>
                                 hq2' (Fin.ext (by simp [q2]; exact h))
-                              simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff, Fin.val_mk]
+                              simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]
                               have := q.isLt; have := hpm1
                               split_ifs <;> omega
                             · right; show fD q = 0
                               simp only [fD]; rw [if_neg (by omega), if_neg (by omega)]
                         rcases hDq with h | h <;> simp [h])]
                     have hDq1 : CartanMatrix.D (n+2) (e' m) q1 = 2 := by
-                      simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff, Fin.val_mk, q1]
+                      simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff,  q1]
                       have := hpm1; split_ifs <;> omega
                     have hDq2 : CartanMatrix.D (n+2) (e' m) q2 = -1 := by
-                      simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff, Fin.val_mk, q2]
+                      simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff,  q2]
                       have := hpm1; split_ifs <;> omega
                     have hfq1 : fD q1 = 1 := by simp only [fD, q1]; rw [if_pos (by omega)]
                     have hfq2 : fD q2 = 2 := by
                       simp only [fD, D_marks, q2]
                       rw [if_neg (by omega), if_pos (le_refl _)]
-                      simp only [Fin.val_mk]; split_ifs <;> omega
+                      split_ifs <;> omega
                     rw [hDq1, hDq2, hfq1, hfq2]; push_cast; linarith
                   · -- D sub-path vertex (position ≥ p)
                     set i_off : Fin rr := ⟨(e' m).val - p_val, by omega⟩

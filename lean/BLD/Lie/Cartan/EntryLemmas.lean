@@ -81,7 +81,7 @@ theorem A_nonadj (m : ℕ) (i j : Fin m) (hij : i ≠ j)
 /-- A sub-path of A_n starting at offset c gives A_k. -/
 theorem A_shift_submatrix (k n c : ℕ) (hc : c + k ≤ n) (i j : Fin k) :
     CartanMatrix.A n ⟨i.val + c, by omega⟩ ⟨j.val + c, by omega⟩ = CartanMatrix.A k i j := by
-  simp only [CartanMatrix.A, Matrix.of_apply, Fin.ext_iff, Fin.val_mk]
+  simp only [CartanMatrix.A, Matrix.of_apply, Fin.ext_iff]
   split_ifs <;> omega
 
 /-- Deleting the last vertex of B_{k+1} gives A_k. -/
@@ -130,7 +130,7 @@ theorem B_first_row (k : ℕ) (hk : 2 ≤ k) (j : Fin k) :
         if_neg hj0]
 
 /-- B_{k+1} first column: vertex 1 connects to vertex 0 with weight -1. -/
-theorem B_first_col (k : ℕ) (hk : 2 ≤ k) (j : Fin k) :
+theorem B_first_col (k : ℕ) (_hk : 2 ≤ k) (j : Fin k) :
     CartanMatrix.B (k + 1) (Fin.succ j) 0 =
     if j.val = 0 then -1 else 0 := by
   have hj := j.isLt
@@ -171,7 +171,7 @@ theorem C_succ_eq_C (k : ℕ) (i j : Fin k) :
   split_ifs <;> omega
 
 /-- C_{k+1} first row: vertex 0 connects only to vertex 1 with weight -1. -/
-theorem C_first_row (k : ℕ) (hk : 2 ≤ k) (j : Fin k) :
+theorem C_first_row (k : ℕ) (_hk : 2 ≤ k) (j : Fin k) :
     CartanMatrix.C (k + 1) 0 (Fin.succ j) =
     if j.val = 0 then -1 else 0 := by
   have hj := j.isLt
@@ -209,7 +209,7 @@ theorem D_path_shift_eq_A (k : ℕ) (n c : ℕ) (hn : 3 ≤ n + 2)
     (hc : c + k ≤ n) (i j : Fin k) :
     CartanMatrix.D (n + 2) ⟨i.val + c, by omega⟩ ⟨j.val + c, by omega⟩ =
     CartanMatrix.A k i j := by
-  simp only [CartanMatrix.D, CartanMatrix.A, Matrix.of_apply, Fin.ext_iff, Fin.val_mk]
+  simp only [CartanMatrix.D, CartanMatrix.A, Matrix.of_apply, Fin.ext_iff]
   have hi := i.isLt; have hj := j.isLt
   split_ifs <;> omega
 
@@ -291,10 +291,10 @@ def finRev (n : ℕ) : Fin (n + 1) ≃ Fin (n + 1) where
   toFun i := ⟨n - i.val, by omega⟩
   invFun i := ⟨n - i.val, by omega⟩
   left_inv i := by
-    apply Fin.ext; simp only [Fin.val_mk]
+    apply Fin.ext; dsimp
     have := i.isLt; omega
   right_inv i := by
-    apply Fin.ext; simp only [Fin.val_mk]
+    apply Fin.ext; dsimp
     have := i.isLt; omega
 
 @[simp] theorem finRev_val (n : ℕ) (i : Fin (n + 1)) : (finRev n i).val = n - i.val := rfl
@@ -540,7 +540,7 @@ theorem C_rowSum (k : ℕ) (hk : 2 ≤ k) (i : Fin k) :
     | ⟨0, hi0⟩ =>
       -- Row 0: C(0,0) + ∑_j C(0, succ j) = 1
       -- First evaluate ↑⟨0, ...⟩ = 0
-      simp only [show (⟨0, hi0⟩ : Fin (k+1)).val = 0 from rfl, ↓reduceIte]
+      simp only [↓reduceIte]
       -- C(0,0) = 2
       have h00 : CartanMatrix.C (k + 1) ⟨0, hi0⟩ 0 = 2 := by simp [CartanMatrix.C]
       rw [h00]
@@ -554,8 +554,7 @@ theorem C_rowSum (k : ℕ) (hk : 2 ≤ k) (i : Fin k) :
         intro j hj; rw [if_neg (show j.val ≠ 0 from fun h => hj (Fin.ext h))])]
       norm_num
     | ⟨i' + 1, hi'⟩ =>
-      simp only [show (⟨i' + 1, _⟩ : Fin (k + 1)).val = i' + 1 from rfl,
-        show i' + 1 ≠ 0 from by omega, ↓reduceIte]
+      simp only [show i' + 1 ≠ 0 from by omega, ↓reduceIte]
       have hfc : CartanMatrix.C (k + 1) ⟨i' + 1, hi'⟩ 0 =
           if (⟨i', by omega⟩ : Fin k).val = 0 then -1 else 0 := by
         rw [show (⟨i' + 1, hi'⟩ : Fin (k + 1)) = Fin.succ ⟨i', by omega⟩ from rfl]
@@ -591,7 +590,7 @@ theorem B_mulVec_marks (k : ℕ) (hk : 2 ≤ k) (i : Fin k) :
       split_ifs <;> omega
     match i with
     | ⟨0, hi0⟩ =>
-      simp only [show (⟨0, hi0⟩ : Fin (k+1)).val = 0 from rfl, ↓reduceIte]
+      simp only [↓reduceIte]
       have h00 : CartanMatrix.B (k + 1) ⟨0, hi0⟩ 0 = 2 := by simp [CartanMatrix.B]
       rw [h00, hf0]
       have hfr : ∀ j : Fin k, CartanMatrix.B (k + 1) ⟨0, hi0⟩ (Fin.succ j) =
@@ -600,13 +599,12 @@ theorem B_mulVec_marks (k : ℕ) (hk : 2 ≤ k) (i : Fin k) :
       simp_rw [hfr, hfs]
       rw [Fintype.sum_eq_single (⟨0, by omega⟩ : Fin k) (by
         intro j hj; rw [if_neg (show j.val ≠ 0 from fun h => hj (Fin.ext h))]; ring)]
-      simp only [show (⟨0, by omega⟩ : Fin k).val = 0 from rfl, ↓reduceIte]
+      simp only [↓reduceIte]
       have : B_marks k ⟨0, by omega⟩ = 2 := by
-        simp only [B_marks, show (⟨0, by omega⟩ : Fin k).val = 0 from rfl]; split_ifs <;> omega
+        simp only [B_marks]; split_ifs <;> omega
       linarith
     | ⟨i' + 1, hi'⟩ =>
-      simp only [show (⟨i' + 1, _⟩ : Fin (k + 1)).val = i' + 1 from rfl,
-        show i' + 1 ≠ 0 from by omega, ↓reduceIte]
+      simp only [show i' + 1 ≠ 0 from by omega, ↓reduceIte]
       have hfc : CartanMatrix.B (k + 1) ⟨i' + 1, hi'⟩ 0 =
           if (⟨i', by omega⟩ : Fin k).val = 0 then -1 else 0 := by
         rw [show (⟨i' + 1, hi'⟩ : Fin (k + 1)) = Fin.succ ⟨i', by omega⟩ from rfl]
@@ -640,7 +638,7 @@ theorem D_mulVec_marks (k : ℕ) (hk : 4 ≤ k) (i : Fin k) :
       intro j; simp only [D_marks, Fin.val_succ]; split_ifs <;> omega
     match i with
     | ⟨0, hi0⟩ =>
-      simp only [show (⟨0, hi0⟩ : Fin (k+1)).val = 0 from rfl, ↓reduceIte]
+      simp only [↓reduceIte]
       have h00 : CartanMatrix.D (k + 1) ⟨0, hi0⟩ 0 = 2 := by simp [CartanMatrix.D]
       rw [h00, hf0]
       have hfr : ∀ j : Fin k, CartanMatrix.D (k + 1) ⟨0, hi0⟩ (Fin.succ j) =
@@ -649,13 +647,12 @@ theorem D_mulVec_marks (k : ℕ) (hk : 4 ≤ k) (i : Fin k) :
       simp_rw [hfr, hfs]
       rw [Fintype.sum_eq_single (⟨0, by omega⟩ : Fin k) (by
         intro j hj; rw [if_neg (show j.val ≠ 0 from fun h => hj (Fin.ext h))]; ring)]
-      simp only [show (⟨0, by omega⟩ : Fin k).val = 0 from rfl, ↓reduceIte]
+      simp only [↓reduceIte]
       have : D_marks k ⟨0, by omega⟩ = 2 := by
-        simp only [D_marks, show (⟨0, by omega⟩ : Fin k).val = 0 from rfl]; split_ifs <;> omega
+        simp only [D_marks]; split_ifs <;> omega
       linarith
     | ⟨i' + 1, hi'⟩ =>
-      simp only [show (⟨i' + 1, _⟩ : Fin (k + 1)).val = i' + 1 from rfl,
-        show i' + 1 ≠ 0 from by omega, ↓reduceIte]
+      simp only [show i' + 1 ≠ 0 from by omega, ↓reduceIte]
       have hfc : CartanMatrix.D (k + 1) ⟨i' + 1, hi'⟩ 0 =
           if (⟨i', by omega⟩ : Fin k).val = 0 then -1 else 0 := by
         rw [show (⟨i' + 1, hi'⟩ : Fin (k + 1)) = Fin.succ ⟨i', by omega⟩ from rfl]
@@ -672,20 +669,20 @@ theorem D_mulVec_marks (k : ℕ) (hk : 4 ≤ k) (i : Fin k) :
 theorem B_shift (k c : ℕ) (hc : c + 2 ≤ k) (i j : Fin (k - c)) :
     CartanMatrix.B k ⟨i.val + c, by omega⟩ ⟨j.val + c, by omega⟩ =
     CartanMatrix.B (k - c) i j := by
-  simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_mk]
+  simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff]
   split_ifs <;> omega
 
 /-- A sub-path of C_k starting at offset c gives C_m where m = k - c. -/
 theorem C_shift (k c : ℕ) (hc : c + 2 ≤ k) (i j : Fin (k - c)) :
     CartanMatrix.C k ⟨i.val + c, by omega⟩ ⟨j.val + c, by omega⟩ =
     CartanMatrix.C (k - c) i j := by
-  simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff, Fin.val_mk]
+  simp only [CartanMatrix.C, Matrix.of_apply, Fin.ext_iff]
   split_ifs <;> omega
 
 /-- Column 0 of B_m: B_m(i, 0) = 2 if i=0, -1 if i=1, 0 otherwise. -/
 theorem B_col_zero (m : ℕ) (hm : 2 ≤ m) (i : Fin m) :
     CartanMatrix.B m i ⟨0, by omega⟩ = if i.val = 0 then 2 else if i.val = 1 then -1 else 0 := by
-  simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff, Fin.val_mk]
+  simp only [CartanMatrix.B, Matrix.of_apply, Fin.ext_iff]
   have := i.isLt; split_ifs <;> omega
 
 /-- B_m · (nullvec_sub) = e₁ where nullvec_sub(0) = 1, nullvec_sub(j≥1) = B_marks(m,j).
@@ -721,7 +718,7 @@ theorem B_mulVec_nullsub (m : ℕ) (hm : 3 ≤ m) (i : Fin m) :
 theorem D_shift (k c : ℕ) (hk : 4 ≤ k) (i j : Fin k) :
     CartanMatrix.D (k + c) ⟨i.val + c, by omega⟩ ⟨j.val + c, by omega⟩ =
     CartanMatrix.D k i j := by
-  simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff, Fin.val_mk]
+  simp only [CartanMatrix.D, Matrix.of_apply, Fin.ext_iff]
   have hi := i.isLt; have hj := j.isLt
   split_ifs <;> omega
 

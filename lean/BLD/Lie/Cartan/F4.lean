@@ -86,7 +86,7 @@ theorem f4_no_extension {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
             ↑(A v u) * ↑(affmarksF4 (e' u_idx)) := by rw [hu_idx]
         rw [← hval]
         exact Fintype.sum_eq_single u_idx (fun k hk => by rw [hAv0 k hk]; push_cast; ring)
-      rw [hsum, h3]; simp [affmarksF4]; push_cast; ring
+      rw [hsum, h3]; simp [affmarksF4]; ring
     -- Inner sum at u (vertex mapping to F₄-3):
     -- A(u,v)*1 + (F₄·affmarks)(3) = A(u,v) + 1
     have f4_affmarks_sum : ∀ k : Fin 4,
@@ -384,7 +384,7 @@ private theorem affine_subgraph_contradiction {n m : ℕ}
     by_cases hi : i.val < m <;> by_cases hj : j.val < m
     · rw [dif_pos hi, dif_pos hj]
       rw [hpath]
-      congr 1 <;> exact Fin.ext rfl
+      congr 1
     · rw [dif_pos hi, dif_neg hj]
       have : j = Fin.last m := by
         apply Fin.ext; simp only [Fin.val_last]
@@ -449,7 +449,7 @@ theorem a_extension {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
         (fun m => by
           rw [A_last_row]; split_ifs with h
           · have : e' m = e' u_idx := by
-              ext; simp only [Fin.val_castSucc] at h; omega
+              ext; omega
             rw [show m = u_idx from e'.injective this, hu_idx, hAvu_eq]
           · rw [hAv0 m (fun heq => h (by rw [heq]; exact h_last))])
         (fun m => by
@@ -467,7 +467,7 @@ theorem a_extension {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
           (fun m => by
             rw [A_first_row]; split_ifs with h
             · have : e' m = e' u_idx := by
-                ext; simp only [Fin.val_succ] at h; omega
+                ext; omega
               rw [show m = u_idx from e'.injective this, hu_idx, hAvu_eq]
             · rw [hAv0 m (fun heq => h (by rw [heq]; exact h_first))])
           (fun m => by
@@ -858,7 +858,7 @@ theorem a_extension {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
             (fun m => (↑(A v m) : ℚ) * x m)
             (fun m h1 h2 h3 h4 => hrest (fun j => ↑(A v j)) m h1 h2 h3 h4)]
           simp only [x, ↓reduceIte, if_neg huv, if_neg hw1v, if_neg hw2v,
-            if_neg hw1u, if_neg hw2u, if_neg hw12, if_neg hw12.symm,
+            if_neg hw1u, if_neg hw2u, if_neg hw12.symm,
             hGCM.diag v, hAvw1, hAvw2]; push_cast; ring
         have inner_u : ∑ j, (↑(A u j) : ℚ) * x j = 0 := by
           rw [sum_four huv.symm hw1v.symm hw2v.symm hw1u.symm hw2u.symm hw12
@@ -874,7 +874,7 @@ theorem a_extension {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
           rw [sum_four huv.symm hw1v.symm hw2v.symm hw1u.symm hw2u.symm hw12
             (fun m => (↑(A w1 m) : ℚ) * x m)
             (fun m h1 h2 h3 h4 => hrest (fun j => ↑(A w1 j)) m h1 h2 h3 h4)]
-          simp only [x, ↓reduceIte, if_neg hw1v, if_neg hw1u, if_neg hw12,
+          simp only [x, ↓reduceIte, if_neg hw1v, if_neg hw1u,
             if_neg huv, hGCM.diag w1, hAw1v, hAw1u, hAw1w2]; push_cast; ring
         have inner_w2 : ∑ j, (↑(A w2 j) : ℚ) * x j = 0 := by
           rw [sum_four huv.symm hw1v.symm hw2v.symm hw1u.symm hw2u.symm hw12
