@@ -570,7 +570,7 @@ All are manifestations of bidirectional observation.
 
 ### Medium Priority (Requires New Work)
 
-10. ~~**Machine-verified proofs**~~ — **RESOLVED**: 26 Lean 4 files, 5945 lines, 0 sorry on derivation chain, 0 axioms. G₂, F₄, E₇, E₈ fully proved in Cartan.lean (2362 lines). Five sorry remain in classical series A/B/C/D + E₆ (not used by theory).
+10. ~~**Machine-verified proofs**~~ — **RESOLVED**: 24 BLD files (3522 lines) + 12 Cartan files (7439 lines) = 36 files, 10961 lines, 0 sorry, 0 axioms. Cartan classification fully proved — all 9 Dynkin types (A, B, C, D, E₆, E₇, E₈, F₄, G₂) enumerated with 0 sorry.
 11. **Formal Lie isomorphism theorem** — BLD-Lie correspondence verified numerically for su(2) but a formal isomorphism theorem is not stated
 
 ### Empirical Inputs

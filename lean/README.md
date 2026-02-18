@@ -1,13 +1,13 @@
 # BLD Theory: Lean 4 Formalization
 
-**26 files. 5945 lines. 0 sorry on derivation chain. 0 admit. 0 axioms.**
+**24 BLD files (3522 lines) + 12 Cartan classification files (7439 lines) = 36 files, 10961 lines. 0 sorry. 0 admit. 0 axioms.**
 
-*5 sorry remain in Cartan classification expansion (classical series A/B/C/D + E₆) — cases not used by the theory. All BLD-critical exceptionals (G₂, E₇, E₈, F₄) are fully proved.*
+*Cartan classification fully proved: every indecomposable positive-definite GCM is one of 9 Dynkin types (A, B, C, D, E₆, E₇, E₈, F₄, G₂).*
 
 The BLD calculus formalized in [Lean 4](https://lean-lang.org/) with [Mathlib](https://leanprover-community.github.io/mathlib4_docs/). Three structural primitives (Boundary, Link, Dimension) derive physical constants and predict experimental quantities.
 
 ```bash
-cd lean && lake build    # 2058 jobs, 0 errors, 0 warnings
+cd lean && lake build    # 1446 jobs, 0 errors, 0 warnings
 ```
 
 ---
@@ -16,7 +16,7 @@ cd lean && lake build    # 2058 jobs, 0 errors, 0 warnings
 
 Every theorem is checked by the Lean kernel. The `norm_num` tactic performs exact rational arithmetic: `(K^2 : Q) / S = 4/13` is verified by computing `2^2 / 13 = 4/13`. No floating-point, no rounding.
 
-- **`sorry`** (accept without proof): 0 on derivation chain (5 in Cartan expansion — see below)
+- **`sorry`** (accept without proof): 0
 - **`axiom`** (assume without proof): 0
 
 ---
@@ -117,7 +117,7 @@ None. Every theorem is proved from definitions.
 
 Previously the formalization had 2 axioms, both eliminated:
 - `hurwitz_theorem` — replaced by concrete octonion construction in `Octonion.lean` with `normSq` multiplicativity proved via Degen's eight-square identity.
-- `cartan_classification_complete` — was vacuous (conclusion trivially satisfiable). Deleted. The Cartan classification is now in `Lie/Cartan.lean` (2362 lines): DynkinType inductive, IsGCM/IsSymmetrizable/IsPosDef structures, forbidden subgraph analysis (affine D̃₄/Ẽ₆/Ẽ₇/Ẽ₈), Coxeter weight bound, acyclicity, D₄ uniqueness, and full proofs for exceptional types G₂, F₄, E₇, E₈. Five cases remain (A, B, C, D, E₆) — classical infinite families requiring rank induction, plus one exceptional not used by BLD.
+- `cartan_classification_complete` — was vacuous (conclusion trivially satisfiable). Deleted. The Cartan classification is now fully proved in `Lie/Cartan/` (12 files, 7439 lines, 0 sorry): DynkinType inductive, IsGCM/IsSymmetrizable/IsPosDef structures, forbidden subgraph analysis, Coxeter weight bound, acyclicity, and full proofs for all 9 Dynkin types (A, B, C, D, E₆, E₇, E₈, F₄, G₂).
 
 ---
 
@@ -156,7 +156,19 @@ Previously the formalization had 2 axioms, both eliminated:
 | Lie/Classical.lean | 165 | so(8) defined, finrank = 28 (explicit 28-element basis) |
 | Lie/Exceptional.lean | 84 | E7 via Serre construction, det=2, simply-laced (from Mathlib) |
 | Lie/Killing.lean | 65 | K=2 from Killing form, K^2 = n |
-| Lie/Cartan.lean | 2362 | DynkinType, IsGCM, forbidden subgraphs, Coxeter weight, D₄ uniqueness, G₂/F₄/E₇/E₈ proved |
+| Lie/Cartan/ (12 files) | 7439 | Full Cartan classification: all 9 Dynkin types proved (0 sorry) |
+| — Cartan/Defs.lean | 226 | DynkinType, IsGCM, IsSymmetrizable, IsPosDef, CartanEquiv |
+| — Cartan/Structure.lean | 810 | Acyclicity, Coxeter weight bound, forbidden subgraphs |
+| — Cartan/Forbidden.lean | 672 | Affine D̃₄/Ẽ₆/Ẽ₇/Ẽ₈ not positive-definite |
+| — Cartan/EntryLemmas.lean | 746 | GCM entry constraints from positive-definiteness |
+| — Cartan/Exceptional.lean | 1247 | G₂, E₆, E₈ extension cases |
+| — Cartan/F4.lean | 1051 | F₄ extension case |
+| — Cartan/ClassificationB.lean | 815 | B series extension |
+| — Cartan/ClassificationC.lean | 775 | C series extension |
+| — Cartan/ClassificationD.lean | 1264 | D series extension |
+| — Cartan/ClassificationE7.lean | 373 | E₇ extension |
+| — Cartan/Classification.lean | 286 | Main theorem: dispatcher + A/G₂ inline cases |
+| — Cartan.lean | 23 | Module file importing all Cartan subfiles |
 | Lie/Completeness.lean | 174 | BLD completeness: so(8) ↔ BLD correspondence, Mathlib bridge |
 
 ### Layer 4: Physics and Biology

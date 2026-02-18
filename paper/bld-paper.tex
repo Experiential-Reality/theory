@@ -39,6 +39,9 @@
 \newcommand{\uu}{\mathfrak{u}}
 \newcommand{\Der}{\mathrm{Der}}
 
+% ─── Typesetting ─────────────────────────────────────────────────
+\emergencystretch=2em
+
 % ─── Document ─────────────────────────────────────────────────────
 \begin{document}
 
@@ -71,8 +74,8 @@ and a gauge algebra $\mathfrak{u}(4) = \mathfrak{su}(4) \oplus
 \mathfrak{u}(1)$ (Pati--Salam), with the weak $\mathrm{SU}(2)$
 originating from the derivation algebra of the quaternions in $E_7$.
 The derivation chain is machine-verified in Lean~4
-with Mathlib (26 files, 5945 lines, zero \texttt{sorry} on the
-derivation chain, zero axioms).
+with Mathlib (24 BLD files, 3522 lines, plus 12 Cartan classification
+files, 7439 lines; zero \texttt{sorry}, zero axioms).
 The theory makes falsifiable predictions: Higgs self-coupling
 $\kappa_\lambda = 41/40$ (HL-LHC), neutrino normal ordering (JUNO),
 and Born rule deviation at pointer non-orthogonality $\varepsilon \geq
@@ -94,10 +97,10 @@ $\Lambda$CDM cosmology adds further free parameters for the dark sector.
 No existing framework derives these numbers from first principles.
 
 This paper presents a derivation chain that begins with three
-type-theoretic constructors---the same \emph{sum}, \emph{function}, and
-\emph{product} that underlie every typed programming language and every
-categorical topos---and ends with exact rational predictions for
-physical constants.  The three constructors correspond to three
+type-theoretic constructors---the same \emph{sum}, \emph{function},
+and \emph{product} that underlie every typed programming language and
+every categorical topos---and ends with exact rational predictions
+for physical constants.  The three constructors correspond to three
 structural primitives:
 
 \begin{center}
@@ -114,17 +117,18 @@ $D$ (Dimension) & $\Pi_n(\tau)$ & Product & Repetition, extent \\
 
 The key result is that five integers---$B = 56$, $L = 20$, $n = 4$,
 $K = 2$, $S = 13$---are uniquely determined by requiring structural
-self-consistency (the closure of \texttt{traverse}($-B, B$)), and these
-five integers suffice to compute every physical constant we examine.
+self-consistency (the closure of \texttt{traverse}($-B,\allowbreak B$)),
+and these five integers suffice to compute every physical constant we
+examine.
 
 All mathematics has been formalized and verified in Lean~4~\cite{Lean4}
-using the Mathlib library~\cite{Mathlib}.  The formalization comprises
-26 files totaling 5945 lines of proof, with zero uses of \texttt{sorry}
-on the derivation chain, zero uses of \texttt{admit}, and zero custom
-axioms.  Five \texttt{sorry} remain in the Cartan classification
-expansion (classical series $A, B, C, D$ and $E_6$)---cases not used by
-the theory.  All BLD-critical exceptional types ($G_2$, $F_4$, $E_7$,
-$E_8$) are fully proved.
+using the Mathlib library~\cite{Mathlib}.  The BLD derivation chain
+comprises 24 files totaling 3522 lines, supplemented by a complete
+Lean formalization of the Cartan classification (12 files, 7439 lines)
+proving every indecomposable positive-definite generalized Cartan
+matrix is one of 9 Dynkin types.  The combined 36 files (10961 lines)
+contain zero uses of \texttt{sorry}, zero uses of \texttt{admit}, and
+zero custom axioms.
 
 The derivation chain proceeds as follows:
 
@@ -132,9 +136,9 @@ The derivation chain proceeds as follows:
 \item \textbf{Type system} (\S\ref{sec:type-system}): Define the BLD grammar and prove the three primitives are mutually irreducible.
 \item \textbf{Constants} (\S\ref{sec:constants}): Derive $K = 2$ from the Killing form; derive $B$, $n$, $L$, $S$ from genesis closure, octonion reference fixing, and Riemann geometry. Prove $K = 2$ is unique. Derive the reference scale $v = 246.22\;\text{GeV}$.
 \item \textbf{Lie theory} (\S\ref{sec:lie}): Establish $\so(8)$ with finrank~28. Prove $D_4$ uniqueness. Connect to octonions via $B = 56$. Derive all exceptional Lie algebras.
-\item \textbf{Dynamics} (\S\ref{sec:dynamics}): Derive the equation of motion (geodesics on $\mathrm{SO}(8)$), gauge structure $\uu(4) = \su(4) \oplus \uu(1)$ (Pati--Salam), the weak force from $\Der(\mathbb{H})$ in $E_7$, the Casimir--curvature generation bridge, energy as observation scope, and GUT unification at $\alpha\inv = 25$.
+\item \textbf{Dynamics} (\S\ref{sec:dynamics}): Derive the equation of motion (geodesics on $\mathrm{SO}(8)$), gauge structure $\uu(4) = \su(4) \oplus \uu(1)$ (Pati--Salam), the weak force from $\Der(\mathbb{H})$ in $E_7$, the Casimir--curvature generation bridge, energy as observation scope, and GUT unification at $\alpha\inv\! = 25$.
 \item \textbf{Observer corrections} (\S\ref{sec:observer}): Derive the $K/X$ correction principle: every measurement adds cost $K/X$ where $X$ is the detection channel.
-\item \textbf{Quantum foundations} (\S\ref{sec:quantum}): Derive the Born rule, wavefunction collapse, Schr\"{o}dinger equation, CPT symmetry, and general relativity from BLD structure.
+\item \textbf{Quantum foundations} (\S\ref{sec:quantum}): Derive the Born rule, wavefunction collapse, the Schr\"odinger equation, CPT symmetry, and general relativity from BLD\@.
 \item \textbf{Predictions} (\S\ref{sec:predictions}): Compute predictions for electroweak parameters, mass ratios, quark masses, turbulence, and chaos, comparing to experiment.
 \item \textbf{Cosmology} (\S\ref{sec:cosmology}): Derive cosmological density fractions, resolve the Hubble and $\sigma_8$ tensions, and derive the baryon asymmetry.  Cross-domain applications (genetic code, turbulence) appear in Appendices~\ref{app:genetic}--\ref{app:turbulence}.
 \item \textbf{Falsification} (\S\ref{sec:falsification}): State specific predictions testable within 5 years.
@@ -349,17 +353,17 @@ $\text{generations} = n - 1 = 3$.
 
 \subsubsection{Summary: the bootstrap}
 
-\begin{equation*}
+\begin{gather*}
 \text{Nothing self-contradictory}
 \xrightarrow{B\;\text{exists}}
 \text{partition direction}
 \xrightarrow{\text{closure}}
 \text{division algebra}
 \xrightarrow{\text{Hurwitz}}
-\mathbb{O}
+\mathbb{O} \\
 \xrightarrow{G_2 \to \mathrm{SU}(3)}
 \text{all constants}
-\end{equation*}
+\end{gather*}
 
 No step involves empirical input.  Each step follows from the preceding
 structure.
@@ -696,8 +700,8 @@ $\mathrm{SO}(8)$ with the bi-invariant metric satisfies
 Standard result for compact simple Lie groups with $g = -\kappa$
 (Milnor~\cite{Milnor1976}, do~Carmo~\cite{doCarmo1992}).  The Ricci
 contraction of~\eqref{eq:curvature} yields $\operatorname{Ric} =
-\tfrac{1}{4}g$.  The scalar curvature is
-$R = g^{ab}\operatorname{Ric}_{ab} = \tfrac{1}{4} \times 28 = 7$.
+\tfrac{1}{4}g$; the scalar curvature is $R =
+g^{ab}\operatorname{Ric}_{ab} = \tfrac{1}{4}\times 28 = 7$.
 \end{proof}
 
 The sectional curvature $K(X,Y) = \tfrac{1}{4}|[X,Y]|^2/(|X|^2|Y|^2
@@ -777,11 +781,11 @@ $\mathbf{8}_c$ & $0,\; 1/3$ & $1/3$ & --- \\
 \end{center}
 
 \paragraph{No Weak SU(2) Inside SO(8).}
-The centralizer of $\su(3)$ has dimension~2, but $\dim(\su(2)) = 3$.
-Therefore no $\su(2)$ subalgebra commutes with $\su(3)$ inside
-$\so(8)$: the Standard Model gauge group as a direct product cannot be
-embedded in $\mathrm{SO}(8)$.  The weak force must originate elsewhere
-(\S\ref{sec:weak}).
+The centralizer of $\su(3)$ has dimension~2, but
+$\dim(\su(2)) = 3$.  Therefore no $\su(2)$ subalgebra commutes with
+$\su(3)$ inside $\so(8)$: the Standard Model gauge group as a direct
+product cannot be embedded in $\mathrm{SO}(8)$.  The weak force must
+originate elsewhere (\S\ref{sec:weak}).
 
 \paragraph{Right-Handed Electron.}
 The right-handed electron ($|Y| = 1$) is absent from all fundamental
@@ -792,9 +796,9 @@ $\otimes$ lepton state, suggesting composite or higher-representation
 structure.
 
 \paragraph{Adjoint Decomposition.}
-The full adjoint~28 decomposes under $\uu(4)$ as:
-$28 = 16\;(\uu(4)) + 6\;(|Y| = 2/3) + 6\;(|Y| = 1/3)$,
-where the complement generators are color triplets and antitriplets
+The full adjoint~28 decomposes under $\uu(4)$ as
+$28 = 16\;(\uu(4)) + 6\;(|Y|\!=\!2/3) + 6\;(|Y|\!=\!1/3)$, where
+the complement generators are color triplets and antitriplets
 matching right-handed up and down quarks.
 
 
@@ -892,10 +896,10 @@ $d - 1 = d(d-1)/8$, giving $(d-1)(d-8) = 0$, with solutions $d = 1$
 is $d = 8$, i.e., $D_4 = \so(8)$.
 \end{proof}
 
-This bridge connects representation theory (Casimir $\to$ mass terms,
-selection rules) to Riemannian geometry (curvature $\to$ heat kernel
-$\to$ path integral $\to$ quantum amplitudes)---and it is unique to the
-triality algebra forced by BLD completeness.
+This bridge connects representation theory (Casimir $\to$ mass
+terms, selection rules) to Riemannian geometry (curvature $\to$ heat
+kernel $\to$ path integral $\to$ quantum amplitudes)---and it is
+unique to the triality algebra forced by BLD completeness.
 
 \paragraph{Generation Constant $S$.}
 From $C_2 = 7$:
@@ -1157,16 +1161,19 @@ corrections:
 
 \begin{align}
 \alpha\inv &= 137 + \underbrace{\frac{K}{B}}_{+1/28}
-+ \underbrace{\frac{n}{(n\!-\!1) \cdot nL \cdot B}}_{+1/3360}
-- \underbrace{\frac{n-1}{(nL)^2 B}}_{-3/358400}
++ \underbrace{\frac{n}{(n\!-\!1) \cdot nL \cdot B}}_{+1/3360} \notag \\
+&\quad - \underbrace{\frac{n-1}{(nL)^2 B}}_{-3/358400}
 - \underbrace{\frac{1}{nL \cdot B^2}}_{-1/250880}
 + \text{accumulated} \label{eq:alpha-corrections}
 \end{align}
 
-The sum of all four rational corrections is $\tfrac{270947}{7526400}
-\approx 0.036000$ (Lean: \texttt{alpha\_rational\_corrections}).  A
-fifth correction, the accumulated term
-$-e^2 \cdot (2B+n+K+2)/((2B+n+K+1)(nL)^2 B^2) \approx -3.7 \times 10^{-7}$,
+The sum of all four rational corrections is
+$\tfrac{270947}{7526400} \approx 0.036000$
+(Lean: \texttt{alpha\_rational\_\allowbreak corrections}).
+A fifth correction, the accumulated term
+\[
+-e^2 \cdot \frac{2B+n+K+2}{(2B+n+K+1)(nL)^2 B^2} \approx -3.7 \times 10^{-7},
+\]
 accounts for the self-interaction of the traversal path (the factor
 $(2B+n+K+2)/(2B+n+K+1) = 120/119$ counts all modes in the
 self-interaction loop).  The full result is $\alpha\inv =
@@ -1501,7 +1508,7 @@ The rational parts of each formula are verified in Lean~4 via \texttt{norm\_num}
 \centering
 \caption{BLD predictions vs.\ experiment.  All formulas use only $(B, L, n, K, S)$.}
 \label{tab:predictions}
-\small
+\scriptsize
 \begin{tabular}{@{}llllll@{}}
 \toprule
 \textbf{Quantity} & \textbf{BLD Formula} & \textbf{Fraction} & \textbf{Predicted} & \textbf{Observed} & \textbf{Dev.} \\
@@ -1885,13 +1892,12 @@ where $\lambda = 1/\sqrt{L} = 1/\sqrt{20}$ and the exponent
 $68 = B + L - Kn = 56 + 20 - 8$ counts net cosmological cascade
 modes (total structural modes minus dimensional observation cost).
 
-Numerically:
+Numerically,
 $H_0 = 246.22\;\text{GeV} \times 20^{-34} = 1.433 \times
 10^{-42}\;\text{GeV}$, converting to $67.2\;\text{km/s/Mpc}$
 ($0.4\sigma$ from Planck~2018).  Combined with the tension
-(Eq.~\eqref{eq:hubble}):
-$H_0(\text{local}) = 67.2 \times 13/12 = 72.8\;\text{km/s/Mpc}$
-($0.2\sigma$ from SH0ES).
+(Eq.~\eqref{eq:hubble}): $H_0(\text{local}) = 67.2 \times 13/12 =
+72.8\;\text{km/s/Mpc}$ ($0.2\sigma$ from SH0ES).
 
 The cascade exponent contrasts with the particle cascade
 ($n_c = B/2 - K = 26$ from $v$ to $M_P$): the Planck cascade uses
@@ -1914,7 +1920,8 @@ tests.
 \centering
 \caption{Falsifiable predictions with experimental timelines.}
 \label{tab:falsification}
-\begin{tabular}{lllll}
+\small
+\begin{tabular}{@{}lllll@{}}
 \toprule
 \textbf{Prediction} & \textbf{BLD Value} & \textbf{Experiment} & \textbf{Timeline} & \textbf{Status} \\
 \midrule
@@ -1977,17 +1984,15 @@ by 2026--2027.
 The Lean~4 formalization comprises:
 
 \begin{center}
-\begin{tabular}{ll}
+\begin{tabular}{lll}
 \toprule
-\textbf{Metric} & \textbf{Value} \\
+\textbf{Metric} & \textbf{BLD chain} & \textbf{Cartan classification} \\
 \midrule
-Files & 26 \\
-Lines of proof & 5945 \\
-\texttt{sorry} (derivation chain) & 0 \\
-\texttt{sorry} (Cartan expansion: $A, B, C, D, E_6$) & 5 \\
-\texttt{admit} (axiom introductions) & 0 \\
-Custom axioms & 0 \\
-Cartan exceptionals proved & $G_2$, $F_4$, $E_7$, $E_8$ \\
+Files & 24 & 12 \\
+Lines of proof & 3522 & 7439 \\
+\texttt{sorry} & 0 & 0 \\
+\texttt{admit} & 0 & 0 \\
+Custom axioms & 0 & 0 \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -2005,6 +2010,7 @@ definitions, the theorems follow.  Specifically:
 \item \textbf{Rational predictions}: All exact fractions ($4/13$, $6733/29120$, $23870/13$, etc.) are verified by \texttt{norm\_num}.
 \item \textbf{Algebraic structure}: The $\so(8)$ finrank is proved from an explicit basis construction.  The $D_4$ uniqueness is proved by case analysis over all Dynkin types.
 \item \textbf{Type theory}: Irreducibility and normalization are proved by structural induction and logical relations.
+\item \textbf{Cartan classification}: Every indecomposable positive-definite generalized Cartan matrix is one of 9 Dynkin types ($A_n$, $B_n$, $C_n$, $D_n$, $E_6$, $E_7$, $E_8$, $F_4$, $G_2$), proved by forbidden subgraph analysis, Coxeter weight bounds, and rank induction (12 files, 7439 lines, 0~\texttt{sorry}).
 \end{enumerate}
 
 \subsection{What Lean Does Not Prove}
@@ -2034,14 +2040,6 @@ precise:
 \item \textbf{Statistical claims}: The $\chi^2$ and $p$-values reported
   for neutrino mixing angles are computed externally, not by Lean.
 
-\item \textbf{Cartan classification}: The full enumeration of
-  positive-definite generalized Cartan matrices into exactly 9 Dynkin
-  types is stated as \texttt{proof\_wanted} with extensive
-  infrastructure proved (acyclicity, Coxeter weight bounds, forbidden
-  subgraph analysis, $D_4$ uniqueness).  This is a standard result
-  (Humphreys~\cite{Humphreys1972}, Theorem~11.4) whose full
-  formalization in Lean is in progress.
-
 \item \textbf{Dynamics (\S\ref{sec:dynamics})}: The Levi-Civita
   connection, geodesic equation, Riemann curvature tensor, and Einstein
   manifold property (Theorems~\ref{thm:levi-civita}--\ref{thm:einstein})
@@ -2051,10 +2049,10 @@ precise:
   across 65 independent Python tests.
 
 \item \textbf{Gauge and generation structure}: The $\uu(4)$ closure
-  (Theorem~\ref{thm:gauge}), hypercharge computation, $\Der(\mathbb{H})$
-  derivation (Theorem~\ref{thm:weak}), and Casimir--curvature bridge
-  (Theorem~\ref{thm:casimir}) are verified numerically but not yet
-  formalized in Lean.
+  (Theorem~\ref{thm:gauge}), hypercharge computation,
+  $\Der(\mathbb{H})$ derivation (Theorem~\ref{thm:weak}), and
+  Casimir--curvature bridge (Theorem~\ref{thm:casimir}) are verified
+  numerically but not yet formalized in Lean.
 \end{enumerate}
 
 \subsection{The Epistemic Argument}
@@ -2126,7 +2124,8 @@ differences.
 \centering
 \caption{Structural comparison.  ``SM'' denotes the Standard Model $+$ $\Lambda$CDM.}
 \label{tab:comparison}
-\begin{tabular}{lcc}
+\small
+\begin{tabular}{@{}lcc@{}}
 \toprule
 \textbf{Aspect} & \textbf{SM + $\Lambda$CDM} & \textbf{BLD} \\
 \midrule
@@ -2137,10 +2136,10 @@ Derives mass ratios? & No (experimental input) & Yes ($m_p/m_e$, $\mu/e$, $\tau/
 Dark matter & Various candidates & Geometric structure ($L$) \\
 Dark energy & Free parameter ($\Lambda$) & Boundary structure ($B$) \\
 Cosmological constant & Fine-tuning problem & Dissolved (finite structure) \\
-Measurement problem & Interpretation-dependent & Derived ($L \to B$ compensation) \\
+Measurement problem & Interpretation-dependent & Derived ($L \!\to\! B$ compensation) \\
 Born rule & Postulated & Derived ($K = 2$) \\
-Gauge structure & Assumed $\mathrm{SU}(3){\times}\mathrm{SU}(2){\times}\mathrm{U}(1)$ & Derived $\uu(4){=}\su(4){\oplus}\uu(1)$ \\
-Hubble tension & $>5\sigma$ discrepancy & Resolved ($K/(n+L) = 1/12$) \\
+Gauge structure & $\mathrm{SU}(3){\times}\mathrm{SU}(2){\times}\mathrm{U}(1)$ & $\uu(4){=}\su(4){\oplus}\uu(1)$ \\
+Hubble tension & $>5\sigma$ discrepancy & Resolved ($K/(n\!+\!L) = 1/12$) \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -2203,9 +2202,9 @@ genetic code (Appendix~\ref{app:genetic}) and the critical Reynolds
 number, Feigenbaum constants, and Kolmogorov exponents
 (Appendix~\ref{app:turbulence}).
 
-The mathematics is machine-verified: 26 Lean~4 files, 5945 lines, zero
-\texttt{sorry} on the derivation chain, zero axioms.  All BLD-critical
-exceptional Lie algebras ($G_2$, $F_4$, $E_7$, $E_8$) are fully proved.
+The mathematics is machine-verified: 24 BLD files (3522 lines) plus a
+complete Cartan classification (12 files, 7439 lines)---36 Lean~4 files,
+10961 lines, zero \texttt{sorry}, zero axioms.
 
 The theory makes specific falsifiable predictions---$\kappa_\lambda =
 41/40$ at the HL-LHC, normal neutrino mass ordering at JUNO, neutron

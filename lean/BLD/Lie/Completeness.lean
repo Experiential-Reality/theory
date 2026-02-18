@@ -16,10 +16,8 @@
               coxeterWeightIn_le_four, instIsIrreducible]
 
      Step 4. Classification: pos-def GCM → one of 9 Dynkin types
-             [Cartan.lean: proof_wanted, key structural lemmas proved:
-              acyclicity via not_posDef_of_cycle,
-              Coxeter weight bound via coxeter_weight_lt_four,
-              forbidden subgraphs via affineD4/E6/E7/E8_not_posDef]
+             [Cartan/: fully proved (cartan_classification theorem,
+              12 files, 7439 lines, 0 sorry)]
 
      Step 5. D₄ is the unique Dynkin type with rank = 4 and dim = 28
              [Cartan.lean: D4_unique_type ✓ — fully proved by case analysis]
@@ -27,12 +25,11 @@
      Step 6. D₄ ↔ so(8): the BLD correspondence
              [Classical.lean: so8_finrank = 28 ✓, this file: so8_correspondence ✓]
 
-   FULLY PROVED: Steps 2, 3 (Mathlib), 5, 6 (this formalization).
-   GAPS: Step 1 (Mathlib PR #10068), Step 4 (classification enumeration,
-         stated as proof_wanted with infrastructure proved).
+   FULLY PROVED: Steps 2, 3 (Mathlib), 4 (Cartan/), 5, 6 (this formalization).
+   GAPS: Step 1 (Mathlib PR #10068 — Cartan's criterion).
 
-   When Mathlib adds Cartan's criterion (#10068) and we complete the
-   classification enumeration, the chain will be fully formal with 0 axioms.
+   When Mathlib adds Cartan's criterion (#10068), the chain will be
+   fully formal end-to-end with 0 axioms.
 
    Reference: bld-calculus.md §7.4, completeness-proof.md
 -/
@@ -160,12 +157,11 @@ theorem dim28_unique (t : Cartan.DynkinType) (hr : t.rank = 4) (hd : t.dim = 28)
 
     The proof chain:
     - Mathlib: simple Lie algebra → Cartan matrix (via IsKilling, rootSystem, Base)
-    - Cartan.lean: Cartan matrix → DynkinType (proof_wanted for full enumeration;
-      key structural lemmas proved)
+    - Cartan/: Cartan matrix → DynkinType (cartan_classification, fully proved)
     - This file: DynkinType with rank=4, dim=28 → D₄ (D4_unique_type, proved)
 
-    When the Cartan classification enumeration is completed, this becomes
-    a fully formal proof with 0 axioms. -/
+    The classification step is fully proved. When Mathlib adds Cartan's
+    criterion (#10068), the chain will be fully formal end-to-end. -/
 theorem bld_completeness :
     (∃ (c : BLDCorrespondence ℚ), c.algebra = so8 ℚ) ∧
     (∀ t : Cartan.DynkinType, t.rank = BLD.n → 2 * t.dim = BLD.B → t = .D 4 (by omega)) :=
