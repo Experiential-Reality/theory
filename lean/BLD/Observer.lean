@@ -133,4 +133,26 @@ theorem correction_hierarchy :
     (1 : ℚ) / 28 > 1 / 38 ∧ (1 : ℚ) / 38 > 1 / 40 := by
   constructor <;> norm_num
 
+-- ═══════════════════════════════════════════════════════════
+-- Self-interaction loop factor (paper §1174-1178)
+-- ═══════════════════════════════════════════════════════════
+
+/-- Self-interaction numerator: 2B + n + K + 2 = 120. -/
+theorem self_interaction_numerator : 2 * BLD.B + BLD.n + BLD.K + 2 = 120 := by decide
+
+/-- Self-interaction denominator: 2B + n + K + 1 = 119. -/
+theorem self_interaction_denominator : 2 * BLD.B + BLD.n + BLD.K + 1 = 119 := by decide
+
+/-- Self-interaction loop factor: (2B+n+K+2)/(2B+n+K+1) = 120/119.
+    The observer's self-referential correction. -/
+theorem self_interaction_factor :
+    (2 * BLD.B + BLD.n + BLD.K + 2 : ℚ) / (2 * BLD.B + BLD.n + BLD.K + 1)
+    = 120 / 119 := by
+  norm_num [BLD.B, BLD.n, BLD.K]
+
+/-- σ₈ suppression: 1 - K/(nL) = 39/40.
+    Detection suppression factor for σ₈. -/
+theorem sigma8_suppression : 1 - (BLD.K : ℚ) / (BLD.n * BLD.L) = 39 / 40 := by
+  norm_num [BLD.K, BLD.n, BLD.L]
+
 end BLD.Observer

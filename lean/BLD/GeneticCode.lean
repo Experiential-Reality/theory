@@ -14,6 +14,7 @@
    Reference: applications/biology/genetic-code.md
 -/
 
+import Mathlib.Tactic.IntervalCases
 import BLD.Constants
 
 namespace BLD.GeneticCode
@@ -69,5 +70,26 @@ theorem genetic_code_complete :
     BLD.n * (BLD.n + 1) = BLD.L ∧       -- amino acids = L
     BLD.L * (BLD.n - 1) + 1 = 61 ∧      -- coding codons
     BLD.n * (BLD.n - 1) = 12 := by decide  -- degeneracy modulus
+
+-- ═══════════════════════════════════════════════════════════
+-- Structural uniqueness and degeneracy
+-- ═══════════════════════════════════════════════════════════
+
+/-- Riemann = amino acid uniqueness:
+    n(n+1) = n²(n²-1)/12 uniquely forces n = 4 in the range 1..20.
+    This is the unique dimension where the Riemann tensor component
+    count equals the amino acid count. -/
+theorem riemann_amino_acid_unique :
+    ∀ m : ℕ, 1 ≤ m → m ≤ 20 →
+    m * (m + 1) = m ^ 2 * (m ^ 2 - 1) / 12 → m = 4 := by
+  intro m hm1 hm2 h
+  interval_cases m <;> omega
+
+/-- All observed codon degeneracies divide n(n-1) = 12. -/
+theorem degeneracy_one : 1 ∣ BLD.n * (BLD.n - 1) := by decide
+theorem degeneracy_two : 2 ∣ BLD.n * (BLD.n - 1) := by decide
+theorem degeneracy_three : 3 ∣ BLD.n * (BLD.n - 1) := by decide
+theorem degeneracy_four : 4 ∣ BLD.n * (BLD.n - 1) := by decide
+theorem degeneracy_six : 6 ∣ BLD.n * (BLD.n - 1) := by decide
 
 end BLD.GeneticCode
