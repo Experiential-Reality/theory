@@ -60,4 +60,10 @@ theorem tau_correction_2 :
     (BLD.n * BLD.L * BLD.S + BLD.K : ℚ) / (BLD.n * BLD.L * BLD.S) = 521 / 520 := by
   norm_num [BLD.n, BLD.L, BLD.S, BLD.K]
 
+/-- Top quark K/X correction: K/(n²S) = 1/104.
+    The top quark receives only the weak correction. -/
+theorem top_quark_correction :
+    (BLD.K : ℚ) / (BLD.n ^ 2 * BLD.S) = 1 / 104 := by
+  norm_num [BLD.K, BLD.n, BLD.S]
+
 end BLD.QuarkMasses

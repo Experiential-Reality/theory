@@ -206,4 +206,9 @@ theorem tau_over_e_primordial :
 theorem strange_electron_primordial :
     BLD.n ^ 2 * BLD.S - BLD.L - BLD.L / BLD.n = 183 := by decide
 
+/-- Cabibbo tangent: tan(θ_C) = (n-1)/S = 3/13.
+    The pure angle structure before squaring. -/
+theorem cabibbo_tangent : (BLD.n - 1 : ℚ) / BLD.S = 3 / 13 := by
+  norm_num [BLD.n, BLD.S]
+
 end BLD.Predictions

@@ -29,4 +29,9 @@ theorem baryon_asymmetry_rational :
     = 13 / 21504000000 := by
   norm_num [BLD.K, BLD.B, BLD.L, BLD.S]
 
+/-- Lorentz dilution: (1/L)⁶ = 1/64000000.
+    Six powers of link suppression in the baryon asymmetry. -/
+theorem lorentz_dilution : (1 / BLD.L : ℚ) ^ 6 = 1 / 64000000 := by
+  norm_num [BLD.L]
+
 end BLD.Cosmology
