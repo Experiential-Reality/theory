@@ -12,6 +12,24 @@ namespace BLD.Lie.Cartan
 
 open Matrix Finset
 
+-- azz_zero: prove A(v.succAbove a)(v.succAbove b) = 0 for non-adjacent D_{n+2} positions.
+-- Uses Dz (proved once) via convert, then discharges numeric conditions with simp+omega.
+-- Expects `hu_idx`, `hsub''`, `Dz`, and `he_*` in local context.
+local syntax "azz_zero" ident ident : tactic
+set_option hygiene false in
+macro_rules
+  | `(tactic| azz_zero $a $b) => `(tactic| (
+      try rw [← hu_idx]
+      show A (v.succAbove $a) (v.succAbove $b) = 0
+      rw [hsub'']
+      convert Dz (e'' $a).val (e'' $b).val
+        (by simp only [he_fv, he_ol, he_u, he_w2, he_w3, he_w4, he_w5, he_w6]; omega)
+        (e'' $a).isLt (e'' $b).isLt
+        (by simp only [he_fv, he_ol, he_u, he_w2, he_w3, he_w4, he_w5, he_w6]; omega)
+        (by simp only [he_fv, he_ol, he_u, he_w2, he_w3, he_w4, he_w5, he_w6]; omega)
+        (by simp only [he_fv, he_ol, he_u, he_w2, he_w3, he_w4, he_w5, he_w6]; omega)
+        (by simp only [he_fv, he_ol, he_u, he_w2, he_w3, he_w4, he_w5, he_w6]; omega) using 2))
+
 set_option maxHeartbeats 6400000 in
 /-- Given a sub-matrix matching DynkinType t' and a leaf vertex v,
     determine the full DynkinType of the extended matrix.
@@ -2151,7 +2169,7 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                     have he_w5 : e'' w5_idx = ⟨n - 5, by omega⟩ := e''.apply_symm_apply _
                     have he_w6 : e'' w6_idx = ⟨n - 6, by omega⟩ := e''.apply_symm_apply _
                     have he_u : e'' u_idx = ⟨n, by omega⟩ := Fin.ext hpn
-                    -- D-zero helper: D(n+2)(p,q) = 0 when non-adjacent
+                    -- D-zero helper: D(n+2)(p,q) = 0 when non-adjacent (proved once)
                     have Dz : ∀ (p q : ℕ) (_ : p ≠ q) (hp : p < n + 2) (hq : q < n + 2),
                         ¬(p + 1 = q ∧ q + 2 < n + 2) → ¬(q + 1 = p ∧ p + 2 < n + 2) →
                         ¬(p + 3 = n + 2 ∧ (q + 2 = n + 2 ∨ q + 1 = n + 2)) →
@@ -2288,49 +2306,57 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                     have hAw4v : A w4 v = 0 := hAv0' w4_idx hw4u_ne
                     have hAw5v : A w5 v = 0 := hAv0' w5_idx hw5u_ne
                     have hAw6v : A w6 v = 0 := hAv0' w6_idx hw6u_ne
-                    -- D-zero facts for non-adjacent named pairs (via Dz)
-                    -- Helper to apply Dz for succAbove pairs
-                    have Azz : ∀ (a b : Fin (n+2)),
-                        (e'' a).val ≠ (e'' b).val →
-                        ¬((e'' a).val + 1 = (e'' b).val ∧ (e'' b).val + 2 < n + 2) →
-                        ¬((e'' b).val + 1 = (e'' a).val ∧ (e'' a).val + 2 < n + 2) →
-                        ¬((e'' a).val + 3 = n + 2 ∧ ((e'' b).val + 2 = n + 2 ∨ (e'' b).val + 1 = n + 2)) →
-                        ¬((e'' b).val + 3 = n + 2 ∧ ((e'' a).val + 2 = n + 2 ∨ (e'' a).val + 1 = n + 2)) →
-                        A (v.succAbove a) (v.succAbove b) = 0 := by
-                      intro a b h1 h2 h3 h4 h5
-                      rw [hsub'']
-                      convert Dz (e'' a).val (e'' b).val h1 (e'' a).isLt (e'' b).isLt h2 h3 h4 h5 using 2
-                    -- u's non-adjacent named pairs (u at pos n, only connects to fv at n-1)
-                    have hAu_ol : A u ol = 0 := by
-                      rw [← hu_idx]; exact Azz u_idx ol_idx
-                        (by simp [he_u, he_ol]) (by simp [he_u, he_ol])
-                        (by simp [he_u, he_ol]) (by simp [he_u, he_ol])
-                        (by simp [he_u, he_ol])
-                    have hAu_w2 : A u w2 = 0 := by
-                      rw [← hu_idx]; exact Azz u_idx w2_idx
-                        (by simp [he_u, he_w2] ; omega) (by simp [he_u, he_w2] ; omega)
-                        (by simp [he_u, he_w2]) (by simp [he_u, he_w2])
-                        (by simp [he_u, he_w2] ; omega)
-                    have hAu_w3 : A u w3 = 0 := by
-                      rw [← hu_idx]; exact Azz u_idx w3_idx
-                        (by simp [he_u, he_w3] ; omega) (by simp [he_u, he_w3] ; omega)
-                        (by simp [he_u, he_w3]) (by simp [he_u, he_w3])
-                        (by simp [he_u, he_w3] ; omega)
-                    have hAu_w4 : A u w4 = 0 := by
-                      rw [← hu_idx]; exact Azz u_idx w4_idx
-                        (by simp [he_u, he_w4] ; omega) (by simp [he_u, he_w4] ; omega)
-                        (by simp [he_u, he_w4]) (by simp [he_u, he_w4])
-                        (by simp [he_u, he_w4] ; omega)
-                    have hAu_w5 : A u w5 = 0 := by
-                      rw [← hu_idx]; exact Azz u_idx w5_idx
-                        (by simp [he_u, he_w5] ; omega) (by simp [he_u, he_w5] ; omega)
-                        (by simp [he_u, he_w5]) (by simp [he_u, he_w5])
-                        (by simp [he_u, he_w5] ; omega)
-                    have hAu_w6 : A u w6 = 0 := by
-                      rw [← hu_idx]; exact Azz u_idx w6_idx
-                        (by simp [he_u, he_w6] ; omega) (by simp [he_u, he_w6] ; omega)
-                        (by simp [he_u, he_w6]) (by simp [he_u, he_w6])
-                        (by simp [he_u, he_w6] ; omega)
+                    -- Non-adjacent zero entries (via azz_zero)
+                    -- u non-adjacent pairs (u at pos n, only connects to fv at n-1)
+                    have hAu_ol : A u ol = 0 := by azz_zero u_idx ol_idx
+                    have hAu_w2 : A u w2 = 0 := by azz_zero u_idx w2_idx
+                    have hAu_w3 : A u w3 = 0 := by azz_zero u_idx w3_idx
+                    have hAu_w4 : A u w4 = 0 := by azz_zero u_idx w4_idx
+                    have hAu_w5 : A u w5 = 0 := by azz_zero u_idx w5_idx
+                    have hAu_w6 : A u w6 = 0 := by azz_zero u_idx w6_idx
+                    -- fv non-adjacent pairs (fv at n-1, connects to u, w2, ol)
+                    have hAfv_w3 : A fv w3 = 0 := by azz_zero fv_idx w3_idx
+                    have hAfv_w4 : A fv w4 = 0 := by azz_zero fv_idx w4_idx
+                    have hAfv_w5 : A fv w5 = 0 := by azz_zero fv_idx w5_idx
+                    have hAfv_w6 : A fv w6 = 0 := by azz_zero fv_idx w6_idx
+                    -- ol non-adjacent pairs (ol at n+1, connects to fv)
+                    have hAol_u : A ol u = 0 := by azz_zero ol_idx u_idx
+                    have hAol_w2 : A ol w2 = 0 := by azz_zero ol_idx w2_idx
+                    have hAol_w3 : A ol w3 = 0 := by azz_zero ol_idx w3_idx
+                    have hAol_w4 : A ol w4 = 0 := by azz_zero ol_idx w4_idx
+                    have hAol_w5 : A ol w5 = 0 := by azz_zero ol_idx w5_idx
+                    have hAol_w6 : A ol w6 = 0 := by azz_zero ol_idx w6_idx
+                    -- w2 non-adjacent pairs (w2 at n-2, connects to fv, w3)
+                    have hAw2_u : A w2 u = 0 := by azz_zero w2_idx u_idx
+                    have hAw2_ol : A w2 ol = 0 := by azz_zero w2_idx ol_idx
+                    have hAw2_w4 : A w2 w4 = 0 := by azz_zero w2_idx w4_idx
+                    have hAw2_w5 : A w2 w5 = 0 := by azz_zero w2_idx w5_idx
+                    have hAw2_w6 : A w2 w6 = 0 := by azz_zero w2_idx w6_idx
+                    -- w3 non-adjacent pairs (w3 at n-3, connects to w2, w4)
+                    have hAw3_u : A w3 u = 0 := by azz_zero w3_idx u_idx
+                    have hAw3_fv : A w3 fv = 0 := by azz_zero w3_idx fv_idx
+                    have hAw3_ol : A w3 ol = 0 := by azz_zero w3_idx ol_idx
+                    have hAw3_w5 : A w3 w5 = 0 := by azz_zero w3_idx w5_idx
+                    have hAw3_w6 : A w3 w6 = 0 := by azz_zero w3_idx w6_idx
+                    -- w4 non-adjacent pairs (w4 at n-4, connects to w3, w5)
+                    have hAw4_u : A w4 u = 0 := by azz_zero w4_idx u_idx
+                    have hAw4_fv : A w4 fv = 0 := by azz_zero w4_idx fv_idx
+                    have hAw4_ol : A w4 ol = 0 := by azz_zero w4_idx ol_idx
+                    have hAw4_w2 : A w4 w2 = 0 := by azz_zero w4_idx w2_idx
+                    have hAw4_w6 : A w4 w6 = 0 := by azz_zero w4_idx w6_idx
+                    -- w5 non-adjacent pairs (w5 at n-5, connects to w4, w6)
+                    have hAw5_u : A w5 u = 0 := by azz_zero w5_idx u_idx
+                    have hAw5_fv : A w5 fv = 0 := by azz_zero w5_idx fv_idx
+                    have hAw5_ol : A w5 ol = 0 := by azz_zero w5_idx ol_idx
+                    have hAw5_w2 : A w5 w2 = 0 := by azz_zero w5_idx w2_idx
+                    have hAw5_w3 : A w5 w3 = 0 := by azz_zero w5_idx w3_idx
+                    -- w6 non-adjacent pairs (w6 at n-6, connects to w5)
+                    have hAw6_u : A w6 u = 0 := by azz_zero w6_idx u_idx
+                    have hAw6_fv : A w6 fv = 0 := by azz_zero w6_idx fv_idx
+                    have hAw6_ol : A w6 ol = 0 := by azz_zero w6_idx ol_idx
+                    have hAw6_w2 : A w6 w2 = 0 := by azz_zero w6_idx w2_idx
+                    have hAw6_w3 : A w6 w3 = 0 := by azz_zero w6_idx w3_idx
+                    have hAw6_w4 : A w6 w4 = 0 := by azz_zero w6_idx w4_idx
                     -- Test vector
                     set x : Fin (n+3) → ℚ := fun j =>
                       if j = v then 2 else if j = u then 4 else if j = fv then 6
@@ -2363,222 +2389,71 @@ theorem extend_dynkin_type {n : ℕ} {A : Matrix (Fin (n+3)) (Fin (n+3)) ℤ}
                         (↑(A fv m) : ℚ) * x m = 0 := by
                       intro m hfv' hu' hw2' hol'
                       by_cases hv' : m = v; · simp [hv', hAfvv]
-                      by_cases hw3' : m = w3
-                      · subst hw3'; norm_cast; simp [show A fv w3 = 0 from Azz fv_idx w3_idx
-                          (by simp [he_fv, he_w3] ; omega) (by simp [he_fv, he_w3] ; omega)
-                          (by simp [he_fv, he_w3] ; omega) (by simp [he_fv, he_w3] ; omega)
-                          (by simp [he_fv, he_w3] ; omega)]
-                      by_cases hw4' : m = w4
-                      · subst hw4'; norm_cast; simp [show A fv w4 = 0 from Azz fv_idx w4_idx
-                          (by simp [he_fv, he_w4] ; omega) (by simp [he_fv, he_w4] ; omega)
-                          (by simp [he_fv, he_w4] ; omega) (by simp [he_fv, he_w4] ; omega)
-                          (by simp [he_fv, he_w4] ; omega)]
-                      by_cases hw5' : m = w5
-                      · subst hw5'; norm_cast; simp [show A fv w5 = 0 from Azz fv_idx w5_idx
-                          (by simp [he_fv, he_w5] ; omega) (by simp [he_fv, he_w5] ; omega)
-                          (by simp [he_fv, he_w5] ; omega) (by simp [he_fv, he_w5] ; omega)
-                          (by simp [he_fv, he_w5] ; omega)]
-                      by_cases hw6' : m = w6
-                      · subst hw6'; norm_cast; simp [show A fv w6 = 0 from Azz fv_idx w6_idx
-                          (by simp [he_fv, he_w6] ; omega) (by simp [he_fv, he_w6] ; omega)
-                          (by simp [he_fv, he_w6] ; omega) (by simp [he_fv, he_w6] ; omega)
-                          (by simp [he_fv, he_w6] ; omega)]
+                      by_cases hw3' : m = w3; · simp [hw3', hAfv_w3]
+                      by_cases hw4' : m = w4; · simp [hw4', hAfv_w4]
+                      by_cases hw5' : m = w5; · simp [hw5', hAfv_w5]
+                      by_cases hw6' : m = w6; · simp [hw6', hAfv_w6]
                       simp [x0 m hv' hu' hfv' hol' hw2' hw3' hw4' hw5' hw6']
                     have hPol : ∀ m, m ≠ ol → m ≠ fv → (↑(A ol m) : ℚ) * x m = 0 := by
                       intro m hol' hfv'
                       by_cases hv' : m = v; · simp [hv', hAolv]
-                      by_cases hu' : m = u
-                      · norm_cast; simp [hu', show A ol u = 0 from hu_idx ▸ Azz ol_idx u_idx
-                          (by simp [he_ol, he_u]) (by simp [he_ol, he_u])
-                          (by simp [he_ol, he_u]) (by simp [he_ol, he_u])
-                          (by simp [he_ol, he_u])]
-                      by_cases hw2' : m = w2
-                      · subst hw2'; norm_cast; simp [show A ol w2 = 0 from Azz ol_idx w2_idx
-                          (by simp [he_ol, he_w2] ; omega) (by simp [he_ol, he_w2] ; omega)
-                          (by simp [he_ol, he_w2]) (by simp [he_ol, he_w2])
-                          (by simp [he_ol, he_w2] ; omega)]
-                      by_cases hw3' : m = w3
-                      · subst hw3'; norm_cast; simp [show A ol w3 = 0 from Azz ol_idx w3_idx
-                          (by simp [he_ol, he_w3] ; omega) (by simp [he_ol, he_w3] ; omega)
-                          (by simp [he_ol, he_w3]) (by simp [he_ol, he_w3])
-                          (by simp [he_ol, he_w3] ; omega)]
-                      by_cases hw4' : m = w4
-                      · subst hw4'; norm_cast; simp [show A ol w4 = 0 from Azz ol_idx w4_idx
-                          (by simp [he_ol, he_w4] ; omega) (by simp [he_ol, he_w4] ; omega)
-                          (by simp [he_ol, he_w4]) (by simp [he_ol, he_w4])
-                          (by simp [he_ol, he_w4] ; omega)]
-                      by_cases hw5' : m = w5
-                      · subst hw5'; norm_cast; simp [show A ol w5 = 0 from Azz ol_idx w5_idx
-                          (by simp [he_ol, he_w5] ; omega) (by simp [he_ol, he_w5] ; omega)
-                          (by simp [he_ol, he_w5]) (by simp [he_ol, he_w5])
-                          (by simp [he_ol, he_w5] ; omega)]
-                      by_cases hw6' : m = w6
-                      · subst hw6'; norm_cast; simp [show A ol w6 = 0 from Azz ol_idx w6_idx
-                          (by simp [he_ol, he_w6] ; omega) (by simp [he_ol, he_w6] ; omega)
-                          (by simp [he_ol, he_w6]) (by simp [he_ol, he_w6])
-                          (by simp [he_ol, he_w6] ; omega)]
+                      by_cases hu' : m = u; · simp [hu', hAol_u]
+                      by_cases hw2' : m = w2; · simp [hw2', hAol_w2]
+                      by_cases hw3' : m = w3; · simp [hw3', hAol_w3]
+                      by_cases hw4' : m = w4; · simp [hw4', hAol_w4]
+                      by_cases hw5' : m = w5; · simp [hw5', hAol_w5]
+                      by_cases hw6' : m = w6; · simp [hw6', hAol_w6]
                       simp [x0 m hv' hu' hfv' hol' hw2' hw3' hw4' hw5' hw6']
-                    -- Path vertex product-zero helper
-                    have hPpath : ∀ (a_idx left_idx right_idx : Fin (n+2)),
-                        let a := v.succAbove a_idx; let l := v.succAbove left_idx
-                        let r := v.succAbove right_idx;
-                        a_idx ≠ u_idx →
-                        (∀ m, m ≠ a → m ≠ l → m ≠ r → (↑(A a m) : ℚ) * x m = 0) → True := by
-                      intros; exact trivial
                     -- w2's product-zero (connects to fv, w3)
                     have hPw2 : ∀ m, m ≠ w2 → m ≠ fv → m ≠ w3 → (↑(A w2 m) : ℚ) * x m = 0 := by
                       intro m hw2' hfv' hw3'
                       by_cases hv' : m = v; · simp [hv', hAw2v]
-                      by_cases hu' : m = u
-                      · norm_cast; simp [hu', show A w2 u = 0 from hu_idx ▸ Azz w2_idx u_idx
-                          (by simp [he_w2, he_u] ; omega) (by simp [he_w2, he_u])
-                          (by simp [he_w2, he_u] ; omega) (by simp [he_w2, he_u] ; omega)
-                          (by simp [he_w2, he_u])]
-                      by_cases hol' : m = ol
-                      · subst hol'; norm_cast; simp [show A w2 ol = 0 from Azz w2_idx ol_idx
-                          (by simp [he_w2, he_ol] ; omega) (by simp [he_w2, he_ol])
-                          (by simp [he_w2, he_ol] ; omega) (by simp [he_w2, he_ol] ; omega)
-                          (by simp [he_w2, he_ol])]
-                      by_cases hw4' : m = w4
-                      · subst hw4'; norm_cast; simp [show A w2 w4 = 0 from Azz w2_idx w4_idx
-                          (by simp [he_w2, he_w4] ; omega) (by simp [he_w2, he_w4] ; omega)
-                          (by simp [he_w2, he_w4] ; omega) (by simp [he_w2, he_w4] ; omega)
-                          (by simp [he_w2, he_w4] ; omega)]
-                      by_cases hw5' : m = w5
-                      · subst hw5'; norm_cast; simp [show A w2 w5 = 0 from Azz w2_idx w5_idx
-                          (by simp [he_w2, he_w5] ; omega) (by simp [he_w2, he_w5] ; omega)
-                          (by simp [he_w2, he_w5] ; omega) (by simp [he_w2, he_w5] ; omega)
-                          (by simp [he_w2, he_w5] ; omega)]
-                      by_cases hw6' : m = w6
-                      · subst hw6'; norm_cast; simp [show A w2 w6 = 0 from Azz w2_idx w6_idx
-                          (by simp [he_w2, he_w6] ; omega) (by simp [he_w2, he_w6] ; omega)
-                          (by simp [he_w2, he_w6] ; omega) (by simp [he_w2, he_w6] ; omega)
-                          (by simp [he_w2, he_w6] ; omega)]
+                      by_cases hu' : m = u; · simp [hu', hAw2_u]
+                      by_cases hol' : m = ol; · simp [hol', hAw2_ol]
+                      by_cases hw4' : m = w4; · simp [hw4', hAw2_w4]
+                      by_cases hw5' : m = w5; · simp [hw5', hAw2_w5]
+                      by_cases hw6' : m = w6; · simp [hw6', hAw2_w6]
                       simp [x0 m hv' hu' hfv' hol' hw2' hw3' hw4' hw5' hw6']
                     -- w3 product-zero (connects to w2, w4)
                     have hPw3 : ∀ m, m ≠ w3 → m ≠ w2 → m ≠ w4 → (↑(A w3 m) : ℚ) * x m = 0 := by
                       intro m hw3' hw2' hw4'
                       by_cases hv' : m = v; · simp [hv', hAw3v]
-                      by_cases hu' : m = u
-                      · norm_cast; simp [hu', show A w3 u = 0 from hu_idx ▸ Azz w3_idx u_idx
-                          (by simp [he_w3, he_u] ; omega) (by simp [he_w3, he_u])
-                          (by simp [he_w3, he_u] ; omega) (by simp [he_w3, he_u] ; omega)
-                          (by simp [he_w3, he_u])]
-                      by_cases hfv' : m = fv
-                      · subst hfv'; norm_cast; simp [show A w3 fv = 0 from Azz w3_idx fv_idx
-                          (by simp [he_w3, he_fv] ; omega) (by simp [he_w3, he_fv] ; omega)
-                          (by simp [he_w3, he_fv] ; omega) (by simp [he_w3, he_fv] ; omega)
-                          (by simp [he_w3, he_fv] ; omega)]
-                      by_cases hol' : m = ol
-                      · subst hol'; norm_cast; simp [show A w3 ol = 0 from Azz w3_idx ol_idx
-                          (by simp [he_w3, he_ol] ; omega) (by simp [he_w3, he_ol])
-                          (by simp [he_w3, he_ol] ; omega) (by simp [he_w3, he_ol] ; omega)
-                          (by simp [he_w3, he_ol])]
-                      by_cases hw5' : m = w5
-                      · subst hw5'; norm_cast; simp [show A w3 w5 = 0 from Azz w3_idx w5_idx
-                          (by simp [he_w3, he_w5] ; omega) (by simp [he_w3, he_w5] ; omega)
-                          (by simp [he_w3, he_w5] ; omega) (by simp [he_w3, he_w5] ; omega)
-                          (by simp [he_w3, he_w5] ; omega)]
-                      by_cases hw6' : m = w6
-                      · subst hw6'; norm_cast; simp [show A w3 w6 = 0 from Azz w3_idx w6_idx
-                          (by simp [he_w3, he_w6] ; omega) (by simp [he_w3, he_w6] ; omega)
-                          (by simp [he_w3, he_w6] ; omega) (by simp [he_w3, he_w6] ; omega)
-                          (by simp [he_w3, he_w6] ; omega)]
+                      by_cases hu' : m = u; · simp [hu', hAw3_u]
+                      by_cases hfv' : m = fv; · simp [hfv', hAw3_fv]
+                      by_cases hol' : m = ol; · simp [hol', hAw3_ol]
+                      by_cases hw5' : m = w5; · simp [hw5', hAw3_w5]
+                      by_cases hw6' : m = w6; · simp [hw6', hAw3_w6]
                       simp [x0 m hv' hu' hfv' hol' hw2' hw3' hw4' hw5' hw6']
                     -- w4 product-zero (connects to w3, w5)
                     have hPw4 : ∀ m, m ≠ w4 → m ≠ w3 → m ≠ w5 → (↑(A w4 m) : ℚ) * x m = 0 := by
                       intro m hw4' hw3' hw5'
                       by_cases hv' : m = v; · simp [hv', hAw4v]
-                      by_cases hu' : m = u
-                      · norm_cast; simp [hu', show A w4 u = 0 from hu_idx ▸ Azz w4_idx u_idx
-                          (by simp [he_w4, he_u] ; omega) (by simp [he_w4, he_u])
-                          (by simp [he_w4, he_u] ; omega) (by simp [he_w4, he_u] ; omega)
-                          (by simp [he_w4, he_u])]
-                      by_cases hfv' : m = fv
-                      · subst hfv'; norm_cast; simp [show A w4 fv = 0 from Azz w4_idx fv_idx
-                          (by simp [he_w4, he_fv] ; omega) (by simp [he_w4, he_fv] ; omega)
-                          (by simp [he_w4, he_fv] ; omega) (by simp [he_w4, he_fv] ; omega)
-                          (by simp [he_w4, he_fv] ; omega)]
-                      by_cases hol' : m = ol
-                      · subst hol'; norm_cast; simp [show A w4 ol = 0 from Azz w4_idx ol_idx
-                          (by simp [he_w4, he_ol] ; omega) (by simp [he_w4, he_ol])
-                          (by simp [he_w4, he_ol] ; omega) (by simp [he_w4, he_ol] ; omega)
-                          (by simp [he_w4, he_ol])]
-                      by_cases hw2' : m = w2
-                      · subst hw2'; norm_cast; simp [show A w4 w2 = 0 from Azz w4_idx w2_idx
-                          (by simp [he_w4, he_w2] ; omega) (by simp [he_w4, he_w2] ; omega)
-                          (by simp [he_w4, he_w2] ; omega) (by simp [he_w4, he_w2] ; omega)
-                          (by simp [he_w4, he_w2] ; omega)]
-                      by_cases hw6' : m = w6
-                      · subst hw6'; norm_cast; simp [show A w4 w6 = 0 from Azz w4_idx w6_idx
-                          (by simp [he_w4, he_w6] ; omega) (by simp [he_w4, he_w6] ; omega)
-                          (by simp [he_w4, he_w6] ; omega) (by simp [he_w4, he_w6] ; omega)
-                          (by simp [he_w4, he_w6] ; omega)]
+                      by_cases hu' : m = u; · simp [hu', hAw4_u]
+                      by_cases hfv' : m = fv; · simp [hfv', hAw4_fv]
+                      by_cases hol' : m = ol; · simp [hol', hAw4_ol]
+                      by_cases hw2' : m = w2; · simp [hw2', hAw4_w2]
+                      by_cases hw6' : m = w6; · simp [hw6', hAw4_w6]
                       simp [x0 m hv' hu' hfv' hol' hw2' hw3' hw4' hw5' hw6']
                     -- w5 product-zero (connects to w4, w6)
                     have hPw5 : ∀ m, m ≠ w5 → m ≠ w4 → m ≠ w6 → (↑(A w5 m) : ℚ) * x m = 0 := by
                       intro m hw5' hw4' hw6'
                       by_cases hv' : m = v; · simp [hv', hAw5v]
-                      by_cases hu' : m = u
-                      · norm_cast; simp [hu', show A w5 u = 0 from hu_idx ▸ Azz w5_idx u_idx
-                          (by simp [he_w5, he_u] ; omega) (by simp [he_w5, he_u])
-                          (by simp [he_w5, he_u] ; omega) (by simp [he_w5, he_u] ; omega)
-                          (by simp [he_w5, he_u])]
-                      by_cases hfv' : m = fv
-                      · subst hfv'; norm_cast; simp [show A w5 fv = 0 from Azz w5_idx fv_idx
-                          (by simp [he_w5, he_fv] ; omega) (by simp [he_w5, he_fv] ; omega)
-                          (by simp [he_w5, he_fv] ; omega) (by simp [he_w5, he_fv] ; omega)
-                          (by simp [he_w5, he_fv] ; omega)]
-                      by_cases hol' : m = ol
-                      · subst hol'; norm_cast; simp [show A w5 ol = 0 from Azz w5_idx ol_idx
-                          (by simp [he_w5, he_ol] ; omega) (by simp [he_w5, he_ol])
-                          (by simp [he_w5, he_ol] ; omega) (by simp [he_w5, he_ol] ; omega)
-                          (by simp [he_w5, he_ol])]
-                      by_cases hw2' : m = w2
-                      · subst hw2'; norm_cast; simp [show A w5 w2 = 0 from Azz w5_idx w2_idx
-                          (by simp [he_w5, he_w2] ; omega) (by simp [he_w5, he_w2] ; omega)
-                          (by simp [he_w5, he_w2] ; omega) (by simp [he_w5, he_w2] ; omega)
-                          (by simp [he_w5, he_w2] ; omega)]
-                      by_cases hw3' : m = w3
-                      · subst hw3'; norm_cast; simp [show A w5 w3 = 0 from Azz w5_idx w3_idx
-                          (by simp [he_w5, he_w3] ; omega) (by simp [he_w5, he_w3] ; omega)
-                          (by simp [he_w5, he_w3] ; omega) (by simp [he_w5, he_w3] ; omega)
-                          (by simp [he_w5, he_w3] ; omega)]
+                      by_cases hu' : m = u; · simp [hu', hAw5_u]
+                      by_cases hfv' : m = fv; · simp [hfv', hAw5_fv]
+                      by_cases hol' : m = ol; · simp [hol', hAw5_ol]
+                      by_cases hw2' : m = w2; · simp [hw2', hAw5_w2]
+                      by_cases hw3' : m = w3; · simp [hw3', hAw5_w3]
                       simp [x0 m hv' hu' hfv' hol' hw2' hw3' hw4' hw5' hw6']
                     -- w6 product-zero (connects to w5; w7 unnamed but x(w7)=0)
                     have hPw6 : ∀ m, m ≠ w6 → m ≠ w5 → (↑(A w6 m) : ℚ) * x m = 0 := by
                       intro m hw6' hw5'
                       by_cases hv' : m = v; · simp [hv', hAw6v]
-                      by_cases hu' : m = u
-                      · norm_cast; simp [hu', show A w6 u = 0 from hu_idx ▸ Azz w6_idx u_idx
-                          (by simp [he_w6, he_u] ; omega) (by simp [he_w6, he_u])
-                          (by simp [he_w6, he_u] ; omega) (by simp [he_w6, he_u] ; omega)
-                          (by simp [he_w6, he_u])]
-                      by_cases hfv' : m = fv
-                      · subst hfv'; norm_cast; simp [show A w6 fv = 0 from Azz w6_idx fv_idx
-                          (by simp [he_w6, he_fv] ; omega) (by simp [he_w6, he_fv] ; omega)
-                          (by simp [he_w6, he_fv] ; omega) (by simp [he_w6, he_fv] ; omega)
-                          (by simp [he_w6, he_fv] ; omega)]
-                      by_cases hol' : m = ol
-                      · subst hol'; norm_cast; simp [show A w6 ol = 0 from Azz w6_idx ol_idx
-                          (by simp [he_w6, he_ol] ; omega) (by simp [he_w6, he_ol])
-                          (by simp [he_w6, he_ol] ; omega) (by simp [he_w6, he_ol] ; omega)
-                          (by simp [he_w6, he_ol])]
-                      by_cases hw2' : m = w2
-                      · subst hw2'; norm_cast; simp [show A w6 w2 = 0 from Azz w6_idx w2_idx
-                          (by simp [he_w6, he_w2] ; omega) (by simp [he_w6, he_w2] ; omega)
-                          (by simp [he_w6, he_w2] ; omega) (by simp [he_w6, he_w2] ; omega)
-                          (by simp [he_w6, he_w2] ; omega)]
-                      by_cases hw3' : m = w3
-                      · subst hw3'; norm_cast; simp [show A w6 w3 = 0 from Azz w6_idx w3_idx
-                          (by simp [he_w6, he_w3] ; omega) (by simp [he_w6, he_w3] ; omega)
-                          (by simp [he_w6, he_w3] ; omega) (by simp [he_w6, he_w3] ; omega)
-                          (by simp [he_w6, he_w3] ; omega)]
-                      by_cases hw4' : m = w4
-                      · subst hw4'; norm_cast; simp [show A w6 w4 = 0 from Azz w6_idx w4_idx
-                          (by simp [he_w6, he_w4] ; omega) (by simp [he_w6, he_w4] ; omega)
-                          (by simp [he_w6, he_w4] ; omega) (by simp [he_w6, he_w4] ; omega)
-                          (by simp [he_w6, he_w4] ; omega)]
+                      by_cases hu' : m = u; · simp [hu', hAw6_u]
+                      by_cases hfv' : m = fv; · simp [hfv', hAw6_fv]
+                      by_cases hol' : m = ol; · simp [hol', hAw6_ol]
+                      by_cases hw2' : m = w2; · simp [hw2', hAw6_w2]
+                      by_cases hw3' : m = w3; · simp [hw3', hAw6_w3]
+                      by_cases hw4' : m = w4; · simp [hw4', hAw6_w4]
                       simp [x0 m hv' hu' hfv' hol' hw2' hw3' hw4' hw5' hw6']
                     -- Inner products via sum_two/sum_three/sum_four
                     have inner_v : ∑ j, (↑(A v j) : ℚ) * x j = 0 := by
