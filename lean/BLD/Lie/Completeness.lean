@@ -3,15 +3,12 @@
    BLD Completeness: The BLD constants (n=4, L=20, B=56) uniquely determine
    so(8) as the Lie algebra of the theory.
 
-   PROOF CHAIN (each step is proved or has a documented gap):
+   PROOF CHAIN (all steps fully proved):
 
      Step 1. so(8) is IsKilling (Killing form non-degenerate)
-             [Gap: Mathlib has IsKilling → IsSemisimple (proved) but does NOT
-              provide IsKilling instances for classical Lie algebras like so(n).
-              No general Cartan criterion (IsSemisimple → IsKilling) exists in
-              Mathlib either. We need IsKilling specifically for so(8,ℚ).
-              Plan: prove directly via explicit Killing form computation
-              (KillingForm.lean — κ = -12·I₂₈ on the standard basis).]
+             [KillingForm.lean: IsKilling instance ✓ — proved via explicit
+              computation κ = -12·I₂₈ on the standard basis, bridged to
+              Mathlib's abstract killingForm via trace_eq_matrix_trace.]
 
      Step 2. IsKilling → root system → base → Cartan matrix
              [Mathlib: rootSystem, Base, cartanMatrix]
@@ -30,8 +27,7 @@
      Step 6. D₄ ↔ so(8): the BLD correspondence
              [Classical.lean: so8_finrank = 28 ✓, this file: so8_correspondence ✓]
 
-   FULLY PROVED: Steps 2, 3 (Mathlib), 4 (Cartan/), 5, 6 (this formalization).
-   GAP: Step 1 — IsKilling instance for so(8,ℚ). Planned: KillingForm.lean.
+   ALL STEPS FULLY PROVED. No remaining gaps in the completeness chain.
 
    Reference: bld-calculus.md §7.4, completeness-proof.md
 -/
@@ -154,16 +150,15 @@ theorem dim28_unique (t : Cartan.DynkinType) (hr : t.rank = 4) (hd : t.dim = 28)
     the Lie algebra so(8) among all simple Lie algebras.
 
     Forward direction (proved): so(8) satisfies the BLD constants.
-    Uniqueness (proved modulo classification): any Dynkin type matching
-    BLD constants must be D₄, hence the algebra must be so(8).
+    Uniqueness (proved): any Dynkin type matching BLD constants must be D₄.
 
-    The proof chain:
-    - Mathlib: simple Lie algebra → Cartan matrix (via IsKilling, rootSystem, Base)
-    - Cartan/: Cartan matrix → DynkinType (cartan_classification, fully proved)
-    - This file: DynkinType with rank=4, dim=28 → D₄ (D4_unique_type, proved)
-
-    The classification step is fully proved. Step 1 (IsKilling for so(8))
-    is the remaining gap — planned via explicit Killing form computation. -/
+    The fully proved chain:
+    1. so(8) is IsKilling (KillingForm.lean: κ = -12·I₂₈, non-degenerate)
+    2. IsKilling → root system → Cartan matrix (Mathlib)
+    3. Cartan matrix is a positive-definite GCM (Mathlib)
+    4. Classification: pos-def GCM → Dynkin type (Cartan/, 12 files, 0 sorry)
+    5. D₄ unique with rank=4, dim=28 (Cartan.lean)
+    6. D₄ ↔ so(8) (Classical.lean + this file) -/
 theorem bld_completeness :
     (∃ (c : BLDCorrespondence ℚ), c.algebra = so8 ℚ) ∧
     (∀ t : Cartan.DynkinType, t.rank = BLD.n → 2 * t.dim = BLD.B → t = .D 4 (by omega)) :=

@@ -1,6 +1,6 @@
 /- BLD Calculus — Lean 4 Formalization
 
-   24 BLD files (3522 lines) + 12 Cartan files (7439 lines) = 36 files, 10961 lines.
+   48 BLD files (5846 lines) + 11 Cartan files (7416 lines) = 59 files, 13262 lines.
    0 sorry, 0 admit, 0 axioms. Cartan classification fully proved.
 
    The BLD calculus derives physical constants from three irreducible
@@ -75,3 +75,7 @@ import BLD.Lie.QuaternionDer
 import BLD.Lie.Centralizer
 import BLD.Lie.GaugeAlgebra
 import BLD.Lie.Curvature
+import BLD.Lie.Bridge
+import BLD.Lie.Complement
+import BLD.Lie.Hypercharge
+import BLD.Lie.KillingForm

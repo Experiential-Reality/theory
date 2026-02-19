@@ -1,17 +1,18 @@
 /- BLD Calculus — Dynamics on SO(8)
 
    Arithmetic consequences of the bi-invariant geometry on SO(8).
-   The differential-geometric proofs require Mathlib's Riemannian
-   geometry infrastructure and are noted for future work.
 
-   FUTURE (hard — requires Mathlib Riemannian geometry):
-   - Levi-Civita connection: ∇_X Y = (1/2)[X,Y] for bi-invariant metric
-   - Geodesics = 1-parameter subgroups exp(tX)
-   - Curvature: R(X,Y)Z = -(1/4)[[X,Y],Z]
-   - Einstein equation: Ric = (1/4)g
-   - Sectional curvature ≥ 0
+   ALL ITEMS PROVED (Phase 5):
+   - Levi-Civita connection: ∇_X Y = (1/2)[X,Y] [Connection.lean]
+   - Geodesic equation: ∇_X X = 0 [Connection.lean: geodesic_equation]
+   - Curvature: R(X,Y)Z = -(1/4)[[X,Y],Z] [GeometricCurvature.lean: curvature_eq]
+   - Einstein manifold: Ric = (1/4)g [GeometricCurvature.lean: einstein_value]
+   - First Bianchi identity [GeometricCurvature.lean: first_bianchi]
+   - Free equation of motion [EquationOfMotion.lean: free_motion]
+   - Force coupling ratios [EquationOfMotion.lean]
+   - Sectional curvature > 0 on basis [EquationOfMotion.lean: sectional_curvature_sign]
 
-   Reference: lie-theory/dynamics.md
+   Reference: lie-theory/dynamics.md, equation-of-motion.md
 -/
 
 import BLD.Constants

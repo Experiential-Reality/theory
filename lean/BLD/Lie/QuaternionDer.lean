@@ -11,6 +11,7 @@
 -/
 
 import Mathlib.Algebra.Quaternion
+import Mathlib.LinearAlgebra.Dimension.Constructions
 import BLD.Constants
 
 open scoped Quaternion
@@ -245,6 +246,52 @@ theorem deriv_dim_exact :
     (∀ x : H, innerDer qi (innerDer qj x) - innerDer qj (innerDer qi x) =
       innerDer (qscalar 2 * qk) x) :=
   ⟨innerDer_independent, deriv_is_inner, deriv_bracket_ij⟩
+
+-- ═══════════════════════════════════════════════════════════
+-- Formal finrank: dim(Der(ℍ)) = 3 (matrix representation)
+-- ═══════════════════════════════════════════════════════════
+
+/-- Matrix representations of D_i, D_j, D_k on the quaternion coordinate
+    basis {1, i, j, k}. Entry (a,b) = component a of innerDer(generator)(basis_b).
+    D_i(j) = 2k, D_i(k) = -2j; D_j(i) = -2k, D_j(k) = 2i; D_k(i) = 2j, D_k(j) = -2i. -/
+private def der_vec : Fin 3 → Matrix (Fin 4) (Fin 4) ℚ
+  | ⟨0, _⟩ => fun i j => match i, j with | 2, 3 => -2 | 3, 2 => 2 | _, _ => 0  -- D_i
+  | ⟨1, _⟩ => fun i j => match i, j with | 1, 3 => 2 | 3, 1 => -2 | _, _ => 0  -- D_j
+  | ⟨2, _⟩ => fun i j => match i, j with | 1, 2 => -2 | 2, 1 => 2 | _, _ => 0  -- D_k
+  | ⟨n + 3, h⟩ => absurd h (by omega)
+
+/-- Primary entry positions: each derivation matrix has a unique nonzero entry. -/
+private def der_primary : Fin 3 → Fin 4 × Fin 4
+  | ⟨0, _⟩ => (2, 3)  -- D_i: entry (2,3) = -2
+  | ⟨1, _⟩ => (1, 3)  -- D_j: entry (1,3) = 2
+  | ⟨2, _⟩ => (1, 2)  -- D_k: entry (1,2) = -2
+  | ⟨n + 3, h⟩ => absurd h (by omega)
+
+private theorem der_primary_nonzero : ∀ i : Fin 3,
+    der_vec i (der_primary i).1 (der_primary i).2 ≠ 0 := by native_decide
+
+private theorem der_cross_zero : ∀ i j : Fin 3, j ≠ i →
+    der_vec j (der_primary i).1 (der_primary i).2 = 0 := by native_decide
+
+/-- The 3 derivation matrices are linearly independent.
+    Primary entry extraction: each has a unique nonzero matrix position. -/
+theorem der_vec_li : LinearIndependent ℚ der_vec := by
+  rw [Fintype.linearIndependent_iff]
+  intro g hg i
+  have h : (∑ j : Fin 3, g j • der_vec j) (der_primary i).1 (der_primary i).2 = 0 := by
+    rw [hg]; rfl
+  rw [Matrix.sum_apply, Finset.sum_eq_single i
+    (fun j _ hji => by rw [Matrix.smul_apply, smul_eq_mul, der_cross_zero i j hji, mul_zero])
+    (fun h' => absurd (Finset.mem_univ _) h'),
+    Matrix.smul_apply, smul_eq_mul] at h
+  exact (mul_eq_zero.mp h).resolve_right (der_primary_nonzero i)
+
+/-- The span of the 3 derivation matrices has finrank 3.
+    Combined with innerDer_independent and deriv_is_inner,
+    this gives dim(Der(ℍ)) = 3 = n - 1. -/
+theorem quaternion_der_finrank :
+    Module.finrank ℚ (Submodule.span ℚ (Set.range der_vec)) = 3 :=
+  finrank_span_eq_card der_vec_li
 
 -- ═══════════════════════════════════════════════════════════
 -- BLD connection: dim(Der(ℍ)) = 3 = n - 1
