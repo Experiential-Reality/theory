@@ -96,4 +96,17 @@ theorem sm_gauge_dim : 0 + 1 + 3 + 8 = 12 := by decide
 /-- Lorentz group dimension: n(n-1)/2 = 6. -/
 theorem lorentz_dim : BLD.n * (BLD.n - 1) / 2 = 6 := by decide
 
+/-- E₈ from BLD constants: n(B+n+K) = 4 × 62 = 248 = dim(E₈). -/
+theorem E8_from_BLD : BLD.n * (BLD.B + BLD.n + BLD.K) = DynkinType.E₈.dim := by decide
+
+/-- E₈ branching E₇ × SU(2): 133 + 3 + 2×56 = 248. -/
+theorem E8_branching_E7_SU2 :
+    DynkinType.E₇.dim + 3 + 2 * 56 = DynkinType.E₈.dim := by decide
+
+/-- Fund(E₇) = B: fundamental representation dimension equals boundary count. -/
+theorem fund_E7_eq_B : 56 = BLD.B := by decide
+
+/-- E₆ from BLD constants: B + L + K = 56 + 20 + 2 = 78 = dim(E₆). -/
+theorem E6_from_BLD : BLD.B + BLD.L + BLD.K = DynkinType.E₆.dim := by decide
+
 end BLD.Lie.LieDimensions

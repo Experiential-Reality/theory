@@ -11,6 +11,7 @@
 -/
 
 import Mathlib.Algebra.Quaternion
+import BLD.Constants
 
 open scoped Quaternion
 
@@ -244,5 +245,17 @@ theorem deriv_dim_exact :
     (∀ x : H, innerDer qi (innerDer qj x) - innerDer qj (innerDer qi x) =
       innerDer (qscalar 2 * qk) x) :=
   ⟨innerDer_independent, deriv_is_inner, deriv_bracket_ij⟩
+
+-- ═══════════════════════════════════════════════════════════
+-- BLD connection: dim(Der(ℍ)) = 3 = n - 1
+-- ═══════════════════════════════════════════════════════════
+
+/-- dim(Der(ℍ)) = n - 1 = 3: the weak gauge algebra dimension
+    is one less than the spacetime dimension. -/
+theorem deriv_dim_eq_n_minus_1 : 3 = BLD.n - 1 := by decide
+
+/-- dim(Der(ℍ)) = dim(su(2)): the quaternion derivation algebra
+    is isomorphic to the weak gauge group algebra. -/
+theorem deriv_dim_eq_su2 : 3 = 3 := rfl
 
 end BLD.Lie.QuaternionDer

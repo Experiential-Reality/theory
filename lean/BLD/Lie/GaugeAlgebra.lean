@@ -15,6 +15,7 @@
 
 import BLD.Lie.Bracket
 import BLD.Lie.Centralizer
+import Mathlib.LinearAlgebra.Dimension.Constructions
 
 namespace BLD.Lie.GaugeAlgebra
 
@@ -266,5 +267,49 @@ theorem u4_dim : 4 ^ 2 = 16 := by decide
 
 /-- Adjoint complement: 28 − 16 = 12 (color triplets). -/
 theorem complement_dim : 28 - 16 = 12 := by decide
+
+-- ═══════════════════════════════════════════════════════════
+-- Formal finrank: u(4) has dimension 16
+-- ═══════════════════════════════════════════════════════════
+
+/-- The 16 u(4) generators as a Fin 16-indexed family. -/
+private def u4_vec : Fin 16 → Matrix (Fin 8) (Fin 8) ℚ
+  | ⟨0, _⟩ => R01 | ⟨1, _⟩ => R02 | ⟨2, _⟩ => R03 | ⟨3, _⟩ => R12
+  | ⟨4, _⟩ => R13 | ⟨5, _⟩ => R23 | ⟨6, _⟩ => I01 | ⟨7, _⟩ => I02
+  | ⟨8, _⟩ => I03 | ⟨9, _⟩ => I12 | ⟨10, _⟩ => I13 | ⟨11, _⟩ => I23
+  | ⟨12, _⟩ => D0 | ⟨13, _⟩ => D1 | ⟨14, _⟩ => D2 | ⟨15, _⟩ => D3
+  | ⟨n + 16, h⟩ => absurd h (by omega)
+
+/-- Primary entry positions: where each generator has its unique nonzero value. -/
+private def primary : Fin 16 → Fin 8 × Fin 8
+  | ⟨0, _⟩ => (2,3) | ⟨1, _⟩ => (2,5) | ⟨2, _⟩ => (0,2) | ⟨3, _⟩ => (3,5)
+  | ⟨4, _⟩ => (0,3) | ⟨5, _⟩ => (0,5) | ⟨6, _⟩ => (2,7) | ⟨7, _⟩ => (2,6)
+  | ⟨8, _⟩ => (0,4) | ⟨9, _⟩ => (3,6) | ⟨10, _⟩ => (0,7) | ⟨11, _⟩ => (0,6)
+  | ⟨12, _⟩ => (2,4) | ⟨13, _⟩ => (3,7) | ⟨14, _⟩ => (5,6) | ⟨15, _⟩ => (0,1)
+  | ⟨n + 16, h⟩ => absurd h (by omega)
+
+/-- At each primary entry, the corresponding generator is nonzero (±1). -/
+private theorem u4_primary_nonzero : ∀ i : Fin 16,
+    u4_vec i (primary i).1 (primary i).2 ≠ 0 := by native_decide
+
+/-- At each primary entry, all other generators are zero. -/
+private theorem u4_cross_zero : ∀ i j : Fin 16, j ≠ i →
+    u4_vec j (primary i).1 (primary i).2 = 0 := by native_decide
+
+private theorem u4_vec_li : LinearIndependent ℚ u4_vec := by
+  rw [Fintype.linearIndependent_iff]
+  intro g hg i
+  have h : (∑ j : Fin 16, g j • u4_vec j) (primary i).1 (primary i).2 = 0 := by
+    rw [hg]; rfl
+  rw [Matrix.sum_apply, Finset.sum_eq_single i
+    (fun j _ hji => by rw [Matrix.smul_apply, smul_eq_mul, u4_cross_zero i j hji, mul_zero])
+    (fun h' => absurd (Finset.mem_univ _) h'),
+    Matrix.smul_apply, smul_eq_mul] at h
+  exact (mul_eq_zero.mp h).resolve_right (u4_primary_nonzero i)
+
+/-- The span of the 16 u(4) generators has finrank 16. -/
+theorem u4_finrank :
+    Module.finrank ℚ (Submodule.span ℚ (Set.range u4_vec)) = 16 :=
+  finrank_span_eq_card u4_vec_li
 
 end BLD.Lie.GaugeAlgebra

@@ -66,4 +66,35 @@ theorem top_quark_correction :
     (BLD.K : ℚ) / (BLD.n ^ 2 * BLD.S) = 1 / 104 := by
   norm_num [BLD.K, BLD.n, BLD.S]
 
+-- ═══════════════════════════════════════════════════════════
+-- K/X corrected quark mass ratios
+-- Primordial ratios above are integers; these include K/X corrections
+-- matching observed values more precisely.
+-- Reference: digest.md §7
+-- ═══════════════════════════════════════════════════════════
+
+/-- K/X corrected strange/down ratio: m_s/m_d = L + K/L = 201/10 ≈ 20.1.
+    Primordial = L = 20, correction = +K/L = +1/10.
+    (observed: ~20.0 ± 2.5). -/
+theorem ms_md_corrected : (BLD.L : ℚ) + BLD.K / BLD.L = 201 / 10 := by
+  norm_num [BLD.L, BLD.K]
+
+/-- K/X corrected down/up ratio: m_d/m_u = K·S/(S−1) = 13/6 ≈ 2.167.
+    Primordial = K = 2, correction via generation structure.
+    (observed: 2.16 ± 0.49). -/
+theorem md_mu_corrected : (BLD.K : ℚ) * BLD.S / (BLD.S - 1) = 13 / 6 := by
+  norm_num [BLD.K, BLD.S]
+
+/-- K/X corrected charm/strange ratio: m_c/m_s = S + K/3 = 41/3 ≈ 13.667.
+    Primordial = S = 13, correction = +K/3 = +2/3.
+    (observed: ~13.6). -/
+theorem mc_ms_corrected : (BLD.S : ℚ) + BLD.K / 3 = 41 / 3 := by
+  norm_num [BLD.S, BLD.K]
+
+/-- Bottom/charm K/X form: 3 + K/(n+3) = 23/7 ≈ 3.286.
+    Equivalent to mb_mc_ratio, expressed showing the K/X structure.
+    (observed: ~3.29). -/
+theorem mb_mc_kx_form : 3 + (BLD.K : ℚ) / (BLD.n + 3) = 23 / 7 := by
+  norm_num [BLD.K, BLD.n]
+
 end BLD.QuarkMasses

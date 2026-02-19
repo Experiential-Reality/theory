@@ -97,4 +97,11 @@ theorem K2_unique : ∀ k : Nat, 1 ≤ k → k ≤ 5 →
   have : k = 1 ∨ k = 2 ∨ k = 3 ∨ k = 4 ∨ k = 5 := by omega
   obtain rfl | rfl | rfl | rfl | rfl := this <;> decide
 
+/-- Planck cascade exponent as sum: n + L + K = 26.
+    Equals B/2 − K (particle_cascade in Hubble.lean). -/
+theorem planck_cascade_sum : n + L + K = 26 := by decide
+
+/-- Dual cascade identity: n + L + K = B/2 − K. -/
+theorem cascade_duality : n + L + K = B / 2 - K := by decide
+
 end BLD

@@ -211,4 +211,12 @@ theorem strange_electron_primordial :
 theorem cabibbo_tangent : (BLD.n - 1 : ℚ) / BLD.S = 3 / 13 := by
   norm_num [BLD.n, BLD.S]
 
+/-- Reynolds jet: Re(pipe)/K = 42560/37 ≈ 1150.
+    (observed: ~2000 ± 1000 — wide uncertainty). -/
+theorem reynolds_jet :
+    (BLD.n * BLD.L * BLD.B : ℚ) / BLD.K ^ 2
+    * ((BLD.B - BLD.L + 2) / (BLD.B - BLD.L + 1))
+    = 42560 / 37 := by
+  norm_num [BLD.n, BLD.L, BLD.B, BLD.K]
+
 end BLD.Predictions

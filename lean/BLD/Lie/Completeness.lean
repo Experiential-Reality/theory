@@ -5,8 +5,13 @@
 
    PROOF CHAIN (each step is proved or has a documented gap):
 
-     Step 1. Simple Lie algebra → IsKilling
-             [Mathlib gap: Cartan's criterion, PR #10068]
+     Step 1. so(8) is IsKilling (Killing form non-degenerate)
+             [Gap: Mathlib has IsKilling → IsSemisimple (proved) but does NOT
+              provide IsKilling instances for classical Lie algebras like so(n).
+              No general Cartan criterion (IsSemisimple → IsKilling) exists in
+              Mathlib either. We need IsKilling specifically for so(8,ℚ).
+              Plan: prove directly via explicit Killing form computation
+              (KillingForm.lean — κ = -12·I₂₈ on the standard basis).]
 
      Step 2. IsKilling → root system → base → Cartan matrix
              [Mathlib: rootSystem, Base, cartanMatrix]
@@ -26,10 +31,7 @@
              [Classical.lean: so8_finrank = 28 ✓, this file: so8_correspondence ✓]
 
    FULLY PROVED: Steps 2, 3 (Mathlib), 4 (Cartan/), 5, 6 (this formalization).
-   GAPS: Step 1 (Mathlib PR #10068 — Cartan's criterion).
-
-   When Mathlib adds Cartan's criterion (#10068), the chain will be
-   fully formal end-to-end with 0 axioms.
+   GAP: Step 1 — IsKilling instance for so(8,ℚ). Planned: KillingForm.lean.
 
    Reference: bld-calculus.md §7.4, completeness-proof.md
 -/
@@ -160,8 +162,8 @@ theorem dim28_unique (t : Cartan.DynkinType) (hr : t.rank = 4) (hd : t.dim = 28)
     - Cartan/: Cartan matrix → DynkinType (cartan_classification, fully proved)
     - This file: DynkinType with rank=4, dim=28 → D₄ (D4_unique_type, proved)
 
-    The classification step is fully proved. When Mathlib adds Cartan's
-    criterion (#10068), the chain will be fully formal end-to-end. -/
+    The classification step is fully proved. Step 1 (IsKilling for so(8))
+    is the remaining gap — planned via explicit Killing form computation. -/
 theorem bld_completeness :
     (∃ (c : BLDCorrespondence ℚ), c.algebra = so8 ℚ) ∧
     (∀ t : Cartan.DynkinType, t.rank = BLD.n → 2 * t.dim = BLD.B → t = .D 4 (by omega)) :=

@@ -13,6 +13,7 @@
 -/
 
 import BLD.Lie.Bracket
+import Mathlib.LinearAlgebra.Dimension.Constructions
 
 namespace BLD.Lie.Centralizer
 
@@ -372,5 +373,31 @@ theorem centralizer_exact (X : Matrix (Fin 8) (Fin 8) ℚ)
               hsk 3 2, hsk 4 2, hsk 5 2, hsk 6 2, hsk 7 2,
               hsk 4 3, hsk 5 3, hsk 6 3, hsk 7 3,
               hsk 5 4, hsk 6 4, hsk 7 4, hsk 6 5, hsk 7 5, hsk 7 6]
+
+-- ═══════════════════════════════════════════════════════════
+-- Formal finrank: centralizer has dimension 2
+-- ═══════════════════════════════════════════════════════════
+
+/-- The centralizer generators as a Fin 2-indexed family. -/
+private def centralizer_vec : Fin 2 → Matrix (Fin 8) (Fin 8) ℚ
+  | 0 => c₁
+  | 1 => c₂
+
+private theorem centralizer_vec_li : LinearIndependent ℚ centralizer_vec := by
+  rw [Fintype.linearIndependent_iff]
+  intro g hg i
+  have hsum : g 0 • c₁ + g 1 • c₂ = 0 := by
+    have h := hg
+    simp only [Fin.sum_univ_succ, Fin.sum_univ_zero, add_zero, centralizer_vec] at h
+    exact h
+  have ⟨h0, h1⟩ := c₁_c₂_independent (g 0) (g 1) hsum
+  fin_cases i <;> assumption
+
+/-- The span of {c₁, c₂} in matrix space has finrank 2.
+    Combined with centralizer_exact (spanning), this gives
+    dim(centralizer of su(3) in so(8)) = 2. -/
+theorem centralizer_finrank :
+    Module.finrank ℚ (Submodule.span ℚ (Set.range centralizer_vec)) = 2 :=
+  finrank_span_eq_card centralizer_vec_li
 
 end BLD.Lie.Centralizer
