@@ -181,4 +181,196 @@ theorem centralizer_dim_ge_2 :
 /-- su(2) cannot embed in the centralizer: dim(su(2)) = 3 > 2 ≥ dim(centralizer). -/
 theorem su2_cannot_embed_in_centralizer : 2 < 3 := by decide
 
+-- ═══════════════════════════════════════════════════════════
+-- Exact dimension: centralizer = span{c₁, c₂}
+-- ═══════════════════════════════════════════════════════════
+
+set_option maxHeartbeats 800000 in
+/-- The centralizer of su(3) in so(8) is exactly span{c₁, c₂}:
+    any skew-symmetric X commuting with all 8 generators is determined
+    by two free parameters X(0,1) and X(2,4). This proves dim = 2
+    (not just ≥ 2), which forces su(2) out of so(8). -/
+theorem centralizer_exact (X : Matrix (Fin 8) (Fin 8) ℚ)
+    (hskew : X.transpose = -X)
+    (h₁ : ⁅g₁, X⁆ = 0) (_ : ⁅g₂, X⁆ = 0) (_ : ⁅g₃, X⁆ = 0) (h₄ : ⁅g₄, X⁆ = 0)
+    (_ : ⁅g₅, X⁆ = 0) (_ : ⁅g₆, X⁆ = 0) (_ : ⁅g₇, X⁆ = 0) (_ : ⁅g₈, X⁆ = 0) :
+    X = X 0 1 • c₁ + X 2 4 • c₂ := by
+  have hsk : ∀ i j : Fin 8, X j i = -X i j := by
+    intro i j; have := congr_fun (congr_fun hskew j) i
+    simp [Matrix.transpose_apply] at this; linarith
+  -- 26 entry extractions via Gaussian elimination
+  -- Only g₁ and g₄ are needed (the other 6 are redundant)
+  -- g₁ direct extractions (12 entries = 0)
+  have e07 : X 0 7 = 0 := by
+    have := congr_fun (congr_fun h₁ 0) 2
+    simp only [Ring.lie_def, Matrix.sub_apply, Matrix.mul_apply, Matrix.zero_apply,
+      Fin.sum_univ_succ, Fin.sum_univ_zero, g₁, skewBasis8,
+      Matrix.neg_apply, Matrix.single_apply] at this
+    simp (config := { decide := true }) at this; linarith
+  have e03 : X 0 3 = 0 := by
+    have := congr_fun (congr_fun h₁ 0) 4
+    simp only [Ring.lie_def, Matrix.sub_apply, Matrix.mul_apply, Matrix.zero_apply,
+      Fin.sum_univ_succ, Fin.sum_univ_zero, g₁, skewBasis8,
+      Matrix.neg_apply, Matrix.single_apply] at this
+    simp (config := { decide := true }) at this; linarith
+  have e04 : X 0 4 = 0 := by
+    have := congr_fun (congr_fun h₁ 0) 3
+    simp only [Ring.lie_def, Matrix.sub_apply, Matrix.mul_apply, Matrix.zero_apply,
+      Fin.sum_univ_succ, Fin.sum_univ_zero, g₁, skewBasis8,
+      Matrix.neg_apply, Matrix.single_apply] at this
+    simp (config := { decide := true }) at this; linarith
+  have e02 : X 0 2 = 0 := by
+    have := congr_fun (congr_fun h₁ 0) 7
+    simp only [Ring.lie_def, Matrix.sub_apply, Matrix.mul_apply, Matrix.zero_apply,
+      Fin.sum_univ_succ, Fin.sum_univ_zero, g₁, skewBasis8,
+      Matrix.neg_apply, Matrix.single_apply] at this
+    simp (config := { decide := true }) at this; linarith
+  have e17 : X 1 7 = 0 := by
+    have := congr_fun (congr_fun h₁ 1) 2
+    simp only [Ring.lie_def, Matrix.sub_apply, Matrix.mul_apply, Matrix.zero_apply,
+      Fin.sum_univ_succ, Fin.sum_univ_zero, g₁, skewBasis8,
+      Matrix.neg_apply, Matrix.single_apply] at this
+    simp (config := { decide := true }) at this; linarith
+  have e13 : X 1 3 = 0 := by
+    have := congr_fun (congr_fun h₁ 1) 4
+    simp only [Ring.lie_def, Matrix.sub_apply, Matrix.mul_apply, Matrix.zero_apply,
+      Fin.sum_univ_succ, Fin.sum_univ_zero, g₁, skewBasis8,
+      Matrix.neg_apply, Matrix.single_apply] at this
+    simp (config := { decide := true }) at this; linarith
+  have e14 : X 1 4 = 0 := by
+    have := congr_fun (congr_fun h₁ 1) 3
+    simp only [Ring.lie_def, Matrix.sub_apply, Matrix.mul_apply, Matrix.zero_apply,
+      Fin.sum_univ_succ, Fin.sum_univ_zero, g₁, skewBasis8,
+      Matrix.neg_apply, Matrix.single_apply] at this
+    simp (config := { decide := true }) at this; linarith
+  have e12 : X 1 2 = 0 := by
+    have := congr_fun (congr_fun h₁ 1) 7
+    simp only [Ring.lie_def, Matrix.sub_apply, Matrix.mul_apply, Matrix.zero_apply,
+      Fin.sum_univ_succ, Fin.sum_univ_zero, g₁, skewBasis8,
+      Matrix.neg_apply, Matrix.single_apply] at this
+    simp (config := { decide := true }) at this; linarith
+  have e35 : X 3 5 = 0 := by
+    have := congr_fun (congr_fun h₁ 4) 5
+    simp only [Ring.lie_def, Matrix.sub_apply, Matrix.mul_apply, Matrix.zero_apply,
+      Fin.sum_univ_succ, Fin.sum_univ_zero, g₁, skewBasis8,
+      Matrix.neg_apply, Matrix.single_apply] at this
+    simp (config := { decide := true }) at this; linarith
+  have e36 : X 3 6 = 0 := by
+    have := congr_fun (congr_fun h₁ 4) 6
+    simp only [Ring.lie_def, Matrix.sub_apply, Matrix.mul_apply, Matrix.zero_apply,
+      Fin.sum_univ_succ, Fin.sum_univ_zero, g₁, skewBasis8,
+      Matrix.neg_apply, Matrix.single_apply] at this
+    simp (config := { decide := true }) at this; linarith
+  have e45 : X 4 5 = 0 := by
+    have := congr_fun (congr_fun h₁ 3) 5
+    simp only [Ring.lie_def, Matrix.sub_apply, Matrix.mul_apply, Matrix.zero_apply,
+      Fin.sum_univ_succ, Fin.sum_univ_zero, g₁, skewBasis8,
+      Matrix.neg_apply, Matrix.single_apply] at this
+    simp (config := { decide := true }) at this; linarith
+  have e46 : X 4 6 = 0 := by
+    have := congr_fun (congr_fun h₁ 3) 6
+    simp only [Ring.lie_def, Matrix.sub_apply, Matrix.mul_apply, Matrix.zero_apply,
+      Fin.sum_univ_succ, Fin.sum_univ_zero, g₁, skewBasis8,
+      Matrix.neg_apply, Matrix.single_apply] at this
+    simp (config := { decide := true }) at this; linarith
+  -- g₁ reversed-index extractions (5 entries, need skew-symmetry)
+  have e37 : X 3 7 = X 2 4 := by
+    have := congr_fun (congr_fun h₁ 2) 3
+    simp only [Ring.lie_def, Matrix.sub_apply, Matrix.mul_apply, Matrix.zero_apply,
+      Fin.sum_univ_succ, Fin.sum_univ_zero, g₁, skewBasis8,
+      Matrix.neg_apply, Matrix.single_apply] at this
+    simp (config := { decide := true }) at this; linarith [hsk 3 7]
+  have e57 : X 5 7 = 0 := by
+    have := congr_fun (congr_fun h₁ 2) 5
+    simp only [Ring.lie_def, Matrix.sub_apply, Matrix.mul_apply, Matrix.zero_apply,
+      Fin.sum_univ_succ, Fin.sum_univ_zero, g₁, skewBasis8,
+      Matrix.neg_apply, Matrix.single_apply] at this
+    simp (config := { decide := true }) at this; linarith [hsk 5 7]
+  have e67 : X 6 7 = 0 := by
+    have := congr_fun (congr_fun h₁ 2) 6
+    simp only [Ring.lie_def, Matrix.sub_apply, Matrix.mul_apply, Matrix.zero_apply,
+      Fin.sum_univ_succ, Fin.sum_univ_zero, g₁, skewBasis8,
+      Matrix.neg_apply, Matrix.single_apply] at this
+    simp (config := { decide := true }) at this; linarith [hsk 6 7]
+  have e25 : X 2 5 = 0 := by
+    have := congr_fun (congr_fun h₁ 5) 7
+    simp only [Ring.lie_def, Matrix.sub_apply, Matrix.mul_apply, Matrix.zero_apply,
+      Fin.sum_univ_succ, Fin.sum_univ_zero, g₁, skewBasis8,
+      Matrix.neg_apply, Matrix.single_apply] at this
+    simp (config := { decide := true }) at this; linarith [hsk 2 5]
+  have e26 : X 2 6 = 0 := by
+    have := congr_fun (congr_fun h₁ 6) 7
+    simp only [Ring.lie_def, Matrix.sub_apply, Matrix.mul_apply, Matrix.zero_apply,
+      Fin.sum_univ_succ, Fin.sum_univ_zero, g₁, skewBasis8,
+      Matrix.neg_apply, Matrix.single_apply] at this
+    simp (config := { decide := true }) at this; linarith [hsk 2 6]
+  -- g₄ direct extractions (7 entries)
+  have e05 : X 0 5 = 0 := by
+    have := congr_fun (congr_fun h₄ 0) 4
+    simp only [Ring.lie_def, Matrix.sub_apply, Matrix.mul_apply, Matrix.zero_apply,
+      Fin.sum_univ_succ, Fin.sum_univ_zero, g₄, skewBasis8, Matrix.add_apply,
+      Matrix.neg_apply, Matrix.single_apply] at this
+    simp (config := { decide := true }) at this; linarith
+  have e06 : X 0 6 = 0 := by
+    have := congr_fun (congr_fun h₄ 0) 2
+    simp only [Ring.lie_def, Matrix.sub_apply, Matrix.mul_apply, Matrix.zero_apply,
+      Fin.sum_univ_succ, Fin.sum_univ_zero, g₄, skewBasis8, Matrix.add_apply,
+      Matrix.neg_apply, Matrix.single_apply] at this
+    simp (config := { decide := true }) at this; linarith
+  have e15 : X 1 5 = 0 := by
+    have := congr_fun (congr_fun h₄ 1) 4
+    simp only [Ring.lie_def, Matrix.sub_apply, Matrix.mul_apply, Matrix.zero_apply,
+      Fin.sum_univ_succ, Fin.sum_univ_zero, g₄, skewBasis8, Matrix.add_apply,
+      Matrix.neg_apply, Matrix.single_apply] at this
+    simp (config := { decide := true }) at this; linarith
+  have e16 : X 1 6 = 0 := by
+    have := congr_fun (congr_fun h₄ 1) 2
+    simp only [Ring.lie_def, Matrix.sub_apply, Matrix.mul_apply, Matrix.zero_apply,
+      Fin.sum_univ_succ, Fin.sum_univ_zero, g₄, skewBasis8, Matrix.add_apply,
+      Matrix.neg_apply, Matrix.single_apply] at this
+    simp (config := { decide := true }) at this; linarith
+  have e27 : X 2 7 = 0 := by
+    have := congr_fun (congr_fun h₄ 6) 7
+    simp only [Ring.lie_def, Matrix.sub_apply, Matrix.mul_apply, Matrix.zero_apply,
+      Fin.sum_univ_succ, Fin.sum_univ_zero, g₄, skewBasis8, Matrix.add_apply,
+      Matrix.neg_apply, Matrix.single_apply] at this
+    simp (config := { decide := true }) at this; linarith
+  have e34 : X 3 4 = 0 := by
+    have := congr_fun (congr_fun h₄ 3) 5
+    simp only [Ring.lie_def, Matrix.sub_apply, Matrix.mul_apply, Matrix.zero_apply,
+      Fin.sum_univ_succ, Fin.sum_univ_zero, g₄, skewBasis8, Matrix.add_apply,
+      Matrix.neg_apply, Matrix.single_apply] at this
+    simp (config := { decide := true }) at this; linarith
+  have e47 : X 4 7 = 0 := by
+    have := congr_fun (congr_fun h₄ 5) 7
+    simp only [Ring.lie_def, Matrix.sub_apply, Matrix.mul_apply, Matrix.zero_apply,
+      Fin.sum_univ_succ, Fin.sum_univ_zero, g₄, skewBasis8, Matrix.add_apply,
+      Matrix.neg_apply, Matrix.single_apply] at this
+    simp (config := { decide := true }) at this; linarith
+  -- g₄ reversed-index extractions (2 entries, need skew-symmetry)
+  have e23 : X 2 3 = 0 := by
+    have := congr_fun (congr_fun h₄ 3) 6
+    simp only [Ring.lie_def, Matrix.sub_apply, Matrix.mul_apply, Matrix.zero_apply,
+      Fin.sum_univ_succ, Fin.sum_univ_zero, g₄, skewBasis8, Matrix.add_apply,
+      Matrix.neg_apply, Matrix.single_apply] at this
+    simp (config := { decide := true }) at this; linarith [hsk 2 3]
+  have e56 : X 5 6 = X 2 4 := by
+    have := congr_fun (congr_fun h₄ 2) 5
+    simp only [Ring.lie_def, Matrix.sub_apply, Matrix.mul_apply, Matrix.zero_apply,
+      Fin.sum_univ_succ, Fin.sum_univ_zero, g₄, skewBasis8, Matrix.add_apply,
+      Matrix.neg_apply, Matrix.single_apply] at this
+    simp (config := { decide := true }) at this; linarith [hsk 5 6]
+  -- Matrix equality: case-split over all 64 entries
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    simp only [Matrix.add_apply, Matrix.smul_apply, smul_eq_mul,
+      c₁, c₂, skewBasis8, Matrix.sub_apply, Matrix.single_apply] <;>
+    simp (config := { decide := true }) <;>
+    linarith [hsk 0 0, hsk 1 1, hsk 2 2, hsk 3 3, hsk 4 4, hsk 5 5, hsk 6 6, hsk 7 7,
+              hsk 1 0, hsk 2 0, hsk 3 0, hsk 4 0, hsk 5 0, hsk 6 0, hsk 7 0,
+              hsk 2 1, hsk 3 1, hsk 4 1, hsk 5 1, hsk 6 1, hsk 7 1,
+              hsk 3 2, hsk 4 2, hsk 5 2, hsk 6 2, hsk 7 2,
+              hsk 4 3, hsk 5 3, hsk 6 3, hsk 7 3,
+              hsk 5 4, hsk 6 4, hsk 7 4, hsk 6 5, hsk 7 5, hsk 7 6]
+
 end BLD.Lie.Centralizer

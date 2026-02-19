@@ -55,30 +55,143 @@ theorem R01_skew : R01.transpose = -R01 := by native_decide
 theorem D0_skew : D0.transpose = -D0 := by native_decide
 
 -- ═══════════════════════════════════════════════════════════
--- Bracket closure: representative identities showing u(4)
--- structure constants. All `native_decide`-verified.
+-- Complete bracket closure: all 120 pairwise brackets of
+-- 16 u(4) generators. Every bracket is a ℚ-linear combination
+-- of the 16 generators, proving u(4) is a Lie subalgebra of so(8).
+-- All verified by `native_decide` (kernel-checked).
 -- ═══════════════════════════════════════════════════════════
 
--- so(3) rotation structure among R generators
+-- R × R brackets (15)
 theorem bracket_R01_R02 : ⁅R01, R02⁆ = -R12 := by native_decide
+theorem bracket_R01_R03 : ⁅R01, R03⁆ = -R13 := by native_decide
 theorem bracket_R01_R12 : ⁅R01, R12⁆ = R02 := by native_decide
+theorem bracket_R01_R13 : ⁅R01, R13⁆ = R03 := by native_decide
+theorem bracket_R01_R23 : ⁅R01, R23⁆ = 0 := by native_decide
+theorem bracket_R02_R03 : ⁅R02, R03⁆ = -R23 := by native_decide
 theorem bracket_R02_R12 : ⁅R02, R12⁆ = -R01 := by native_decide
+theorem bracket_R02_R13 : ⁅R02, R13⁆ = 0 := by native_decide
+theorem bracket_R02_R23 : ⁅R02, R23⁆ = R03 := by native_decide
+theorem bracket_R03_R12 : ⁅R03, R12⁆ = 0 := by native_decide
+theorem bracket_R03_R13 : ⁅R03, R13⁆ = -R01 := by native_decide
+theorem bracket_R03_R23 : ⁅R03, R23⁆ = -R02 := by native_decide
+theorem bracket_R12_R13 : ⁅R12, R13⁆ = -R23 := by native_decide
+theorem bracket_R12_R23 : ⁅R12, R23⁆ = R13 := by native_decide
+theorem bracket_R13_R23 : ⁅R13, R23⁆ = -R12 := by native_decide
 
--- Cartan-root structure
-theorem bracket_D0_R01 : ⁅D0, R01⁆ = I01 := by native_decide
-theorem bracket_D0_I01 : ⁅D0, I01⁆ = -R01 := by native_decide
-theorem bracket_D1_R01 : ⁅D1, R01⁆ = -I01 := by native_decide
-theorem bracket_D1_I01 : ⁅D1, I01⁆ = R01 := by native_decide
-
--- Mixed color-lepton brackets
+-- R × I brackets (36)
+theorem bracket_R01_I01 : ⁅R01, I01⁆ = 2 • (D0 - D1) := by native_decide
+theorem bracket_R01_I02 : ⁅R01, I02⁆ = -I12 := by native_decide
+theorem bracket_R01_I03 : ⁅R01, I03⁆ = -I13 := by native_decide
+theorem bracket_R01_I12 : ⁅R01, I12⁆ = I02 := by native_decide
+theorem bracket_R01_I13 : ⁅R01, I13⁆ = I03 := by native_decide
+theorem bracket_R01_I23 : ⁅R01, I23⁆ = 0 := by native_decide
+theorem bracket_R02_I01 : ⁅R02, I01⁆ = -I12 := by native_decide
+theorem bracket_R02_I02 : ⁅R02, I02⁆ = 2 • (D0 - D2) := by native_decide
+theorem bracket_R02_I03 : ⁅R02, I03⁆ = -I23 := by native_decide
+theorem bracket_R02_I12 : ⁅R02, I12⁆ = I01 := by native_decide
+theorem bracket_R02_I13 : ⁅R02, I13⁆ = 0 := by native_decide
+theorem bracket_R02_I23 : ⁅R02, I23⁆ = I03 := by native_decide
+theorem bracket_R03_I01 : ⁅R03, I01⁆ = -I13 := by native_decide
+theorem bracket_R03_I02 : ⁅R03, I02⁆ = -I23 := by native_decide
 theorem bracket_R03_I03 : ⁅R03, I03⁆ = 2 • (D0 - D3) := by native_decide
+theorem bracket_R03_I12 : ⁅R03, I12⁆ = 0 := by native_decide
+theorem bracket_R03_I13 : ⁅R03, I13⁆ = I01 := by native_decide
+theorem bracket_R03_I23 : ⁅R03, I23⁆ = I02 := by native_decide
+theorem bracket_R12_I01 : ⁅R12, I01⁆ = -I02 := by native_decide
+theorem bracket_R12_I02 : ⁅R12, I02⁆ = I01 := by native_decide
+theorem bracket_R12_I03 : ⁅R12, I03⁆ = 0 := by native_decide
+theorem bracket_R12_I12 : ⁅R12, I12⁆ = 2 • (D1 - D2) := by native_decide
+theorem bracket_R12_I13 : ⁅R12, I13⁆ = -I23 := by native_decide
+theorem bracket_R12_I23 : ⁅R12, I23⁆ = I13 := by native_decide
+theorem bracket_R13_I01 : ⁅R13, I01⁆ = -I03 := by native_decide
+theorem bracket_R13_I02 : ⁅R13, I02⁆ = 0 := by native_decide
+theorem bracket_R13_I03 : ⁅R13, I03⁆ = I01 := by native_decide
+theorem bracket_R13_I12 : ⁅R13, I12⁆ = -I23 := by native_decide
 theorem bracket_R13_I13 : ⁅R13, I13⁆ = 2 • (D1 - D3) := by native_decide
+theorem bracket_R13_I23 : ⁅R13, I23⁆ = I12 := by native_decide
+theorem bracket_R23_I01 : ⁅R23, I01⁆ = 0 := by native_decide
+theorem bracket_R23_I02 : ⁅R23, I02⁆ = -I03 := by native_decide
+theorem bracket_R23_I03 : ⁅R23, I03⁆ = I02 := by native_decide
+theorem bracket_R23_I12 : ⁅R23, I12⁆ = -I13 := by native_decide
+theorem bracket_R23_I13 : ⁅R23, I13⁆ = I12 := by native_decide
 theorem bracket_R23_I23 : ⁅R23, I23⁆ = 2 • (D2 - D3) := by native_decide
 
--- Cross-type brackets
+-- I × I brackets (15)
 theorem bracket_I01_I02 : ⁅I01, I02⁆ = -R12 := by native_decide
-theorem bracket_R01_I02 : ⁅R01, I02⁆ = -I12 := by native_decide
-theorem bracket_R01_I01 : ⁅R01, I01⁆ = 2 • (D0 - D1) := by native_decide
+theorem bracket_I01_I03 : ⁅I01, I03⁆ = -R13 := by native_decide
+theorem bracket_I01_I12 : ⁅I01, I12⁆ = -R02 := by native_decide
+theorem bracket_I01_I13 : ⁅I01, I13⁆ = -R03 := by native_decide
+theorem bracket_I01_I23 : ⁅I01, I23⁆ = 0 := by native_decide
+theorem bracket_I02_I03 : ⁅I02, I03⁆ = -R23 := by native_decide
+theorem bracket_I02_I12 : ⁅I02, I12⁆ = -R01 := by native_decide
+theorem bracket_I02_I13 : ⁅I02, I13⁆ = 0 := by native_decide
+theorem bracket_I02_I23 : ⁅I02, I23⁆ = -R03 := by native_decide
+theorem bracket_I03_I12 : ⁅I03, I12⁆ = 0 := by native_decide
+theorem bracket_I03_I13 : ⁅I03, I13⁆ = -R01 := by native_decide
+theorem bracket_I03_I23 : ⁅I03, I23⁆ = -R02 := by native_decide
+theorem bracket_I12_I13 : ⁅I12, I13⁆ = -R23 := by native_decide
+theorem bracket_I12_I23 : ⁅I12, I23⁆ = -R13 := by native_decide
+theorem bracket_I13_I23 : ⁅I13, I23⁆ = -R12 := by native_decide
+
+-- R × D brackets (24)
+theorem bracket_R01_D0 : ⁅R01, D0⁆ = -I01 := by native_decide
+theorem bracket_R01_D1 : ⁅R01, D1⁆ = I01 := by native_decide
+theorem bracket_R01_D2 : ⁅R01, D2⁆ = 0 := by native_decide
+theorem bracket_R01_D3 : ⁅R01, D3⁆ = 0 := by native_decide
+theorem bracket_R02_D0 : ⁅R02, D0⁆ = -I02 := by native_decide
+theorem bracket_R02_D1 : ⁅R02, D1⁆ = 0 := by native_decide
+theorem bracket_R02_D2 : ⁅R02, D2⁆ = I02 := by native_decide
+theorem bracket_R02_D3 : ⁅R02, D3⁆ = 0 := by native_decide
+theorem bracket_R03_D0 : ⁅R03, D0⁆ = -I03 := by native_decide
+theorem bracket_R03_D1 : ⁅R03, D1⁆ = 0 := by native_decide
+theorem bracket_R03_D2 : ⁅R03, D2⁆ = 0 := by native_decide
+theorem bracket_R03_D3 : ⁅R03, D3⁆ = I03 := by native_decide
+theorem bracket_R12_D0 : ⁅R12, D0⁆ = 0 := by native_decide
+theorem bracket_R12_D1 : ⁅R12, D1⁆ = -I12 := by native_decide
+theorem bracket_R12_D2 : ⁅R12, D2⁆ = I12 := by native_decide
+theorem bracket_R12_D3 : ⁅R12, D3⁆ = 0 := by native_decide
+theorem bracket_R13_D0 : ⁅R13, D0⁆ = 0 := by native_decide
+theorem bracket_R13_D1 : ⁅R13, D1⁆ = -I13 := by native_decide
+theorem bracket_R13_D2 : ⁅R13, D2⁆ = 0 := by native_decide
+theorem bracket_R13_D3 : ⁅R13, D3⁆ = I13 := by native_decide
+theorem bracket_R23_D0 : ⁅R23, D0⁆ = 0 := by native_decide
+theorem bracket_R23_D1 : ⁅R23, D1⁆ = 0 := by native_decide
+theorem bracket_R23_D2 : ⁅R23, D2⁆ = -I23 := by native_decide
+theorem bracket_R23_D3 : ⁅R23, D3⁆ = I23 := by native_decide
+
+-- I × D brackets (24)
+theorem bracket_I01_D0 : ⁅I01, D0⁆ = R01 := by native_decide
+theorem bracket_I01_D1 : ⁅I01, D1⁆ = -R01 := by native_decide
+theorem bracket_I01_D2 : ⁅I01, D2⁆ = 0 := by native_decide
+theorem bracket_I01_D3 : ⁅I01, D3⁆ = 0 := by native_decide
+theorem bracket_I02_D0 : ⁅I02, D0⁆ = R02 := by native_decide
+theorem bracket_I02_D1 : ⁅I02, D1⁆ = 0 := by native_decide
+theorem bracket_I02_D2 : ⁅I02, D2⁆ = -R02 := by native_decide
+theorem bracket_I02_D3 : ⁅I02, D3⁆ = 0 := by native_decide
+theorem bracket_I03_D0 : ⁅I03, D0⁆ = R03 := by native_decide
+theorem bracket_I03_D1 : ⁅I03, D1⁆ = 0 := by native_decide
+theorem bracket_I03_D2 : ⁅I03, D2⁆ = 0 := by native_decide
+theorem bracket_I03_D3 : ⁅I03, D3⁆ = -R03 := by native_decide
+theorem bracket_I12_D0 : ⁅I12, D0⁆ = 0 := by native_decide
+theorem bracket_I12_D1 : ⁅I12, D1⁆ = R12 := by native_decide
+theorem bracket_I12_D2 : ⁅I12, D2⁆ = -R12 := by native_decide
+theorem bracket_I12_D3 : ⁅I12, D3⁆ = 0 := by native_decide
+theorem bracket_I13_D0 : ⁅I13, D0⁆ = 0 := by native_decide
+theorem bracket_I13_D1 : ⁅I13, D1⁆ = R13 := by native_decide
+theorem bracket_I13_D2 : ⁅I13, D2⁆ = 0 := by native_decide
+theorem bracket_I13_D3 : ⁅I13, D3⁆ = -R13 := by native_decide
+theorem bracket_I23_D0 : ⁅I23, D0⁆ = 0 := by native_decide
+theorem bracket_I23_D1 : ⁅I23, D1⁆ = 0 := by native_decide
+theorem bracket_I23_D2 : ⁅I23, D2⁆ = R23 := by native_decide
+theorem bracket_I23_D3 : ⁅I23, D3⁆ = -R23 := by native_decide
+
+-- D × D brackets (6) — all zero (abelian Cartan subalgebra)
+theorem bracket_D0_D1 : ⁅D0, D1⁆ = 0 := by native_decide
+theorem bracket_D0_D2 : ⁅D0, D2⁆ = 0 := by native_decide
+theorem bracket_D0_D3 : ⁅D0, D3⁆ = 0 := by native_decide
+theorem bracket_D1_D2 : ⁅D1, D2⁆ = 0 := by native_decide
+theorem bracket_D1_D3 : ⁅D1, D3⁆ = 0 := by native_decide
+theorem bracket_D2_D3 : ⁅D2, D3⁆ = 0 := by native_decide
 
 -- ═══════════════════════════════════════════════════════════
 -- Linear independence: each generator has a unique primary entry

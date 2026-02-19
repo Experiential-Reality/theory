@@ -181,4 +181,68 @@ theorem quaternion_derivation_dim :
    innerDer_leibniz qi, innerDer_leibniz qj, innerDer_leibniz qk,
    innerDer_independent⟩
 
+-- ═══════════════════════════════════════════════════════════
+-- so(3) bracket relations: [D_a, D_b] = D_{ab - ba}
+-- ═══════════════════════════════════════════════════════════
+
+/-- The bracket of inner derivations is the inner derivation of the commutator:
+    [D_a, D_b] = D_{ab - ba}. -/
+theorem bracket_innerDer (a b x : H) :
+    innerDer a (innerDer b x) - innerDer b (innerDer a x) =
+    innerDer (a * b - b * a) x := by
+  simp only [innerDer, mul_sub, sub_mul, ← mul_assoc]; abel
+
+-- Quaternion commutators (using qscalar to avoid nsmul typeclass issues)
+theorem comm_ij : qi * qj - qj * qi = qscalar 2 * qk := by
+  simp only [qi, qj, qk, qscalar]; ext <;> norm_num
+theorem comm_jk : qj * qk - qk * qj = qscalar 2 * qi := by
+  simp only [qj, qk, qi, qscalar]; ext <;> norm_num
+theorem comm_ki : qk * qi - qi * qk = qscalar 2 * qj := by
+  simp only [qk, qi, qj, qscalar]; ext <;> norm_num
+
+/-- [D_i, D_j] = D_{2k} — the so(3) structure constant. -/
+theorem deriv_bracket_ij (x : H) :
+    innerDer qi (innerDer qj x) - innerDer qj (innerDer qi x) =
+    innerDer (qscalar 2 * qk) x := by rw [bracket_innerDer, comm_ij]
+
+theorem deriv_bracket_jk (x : H) :
+    innerDer qj (innerDer qk x) - innerDer qk (innerDer qj x) =
+    innerDer (qscalar 2 * qi) x := by rw [bracket_innerDer, comm_jk]
+
+theorem deriv_bracket_ki (x : H) :
+    innerDer qk (innerDer qi x) - innerDer qi (innerDer qk x) =
+    innerDer (qscalar 2 * qj) x := by rw [bracket_innerDer, comm_ki]
+
+-- ═══════════════════════════════════════════════════════════
+-- Exact dimension: dim(Der(ℍ)) = 3 (independence + spanning)
+-- ═══════════════════════════════════════════════════════════
+
+/-- Der(ℍ) has dimension exactly 3: the three inner derivations D_i, D_j, D_k
+    are linearly independent, every derivation is in their span, and they
+    satisfy [D_i, D_j] = 2D_k (cyclic) — i.e., Der(ℍ) ≅ so(3) ≅ su(2).
+    This IS the weak gauge algebra (paper Theorem 3.7). -/
+theorem deriv_dim_exact :
+    -- Independence
+    (∀ c₁ c₂ c₃ : ℚ,
+      qscalar c₁ * innerDer qi qj + qscalar c₂ * innerDer qj qj +
+        qscalar c₃ * innerDer qk qj = 0 →
+      qscalar c₁ * innerDer qi qi + qscalar c₂ * innerDer qj qi +
+        qscalar c₃ * innerDer qk qi = 0 →
+      c₁ = 0 ∧ c₂ = 0 ∧ c₃ = 0) ∧
+    -- Spanning: every derivation is a linear combination of D_i, D_j, D_k
+    (∀ Di Dj Dk : H,
+      qi * Di + Di * qi = 0 → qj * Dj + Dj * qj = 0 →
+      qk * Dk + Dk * qk = 0 → qi * Dj + Di * qj = Dk →
+      ∃ a b c : ℚ,
+        Di = qscalar a * innerDer qi qi + qscalar b * innerDer qj qi +
+          qscalar c * innerDer qk qi ∧
+        Dj = qscalar a * innerDer qi qj + qscalar b * innerDer qj qj +
+          qscalar c * innerDer qk qj ∧
+        Dk = qscalar a * innerDer qi qk + qscalar b * innerDer qj qk +
+          qscalar c * innerDer qk qk) ∧
+    -- Bracket structure: so(3)
+    (∀ x : H, innerDer qi (innerDer qj x) - innerDer qj (innerDer qi x) =
+      innerDer (qscalar 2 * qk) x) :=
+  ⟨innerDer_independent, deriv_is_inner, deriv_bracket_ij⟩
+
 end BLD.Lie.QuaternionDer
