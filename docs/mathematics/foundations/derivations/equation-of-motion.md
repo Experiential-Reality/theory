@@ -514,20 +514,20 @@ The companion files derive further structure from this framework:
 |------|-----------|--------|------|
 | 1 | BLD -> so(8) | PROVEN | Completeness.lean |
 | 2 | Killing form kappa = 6 * tr | STATED | Killing.lean |
-| 3 | nabla_X Y = 1/2 [X,Y] | NOT YET | (needs Lie group infra) |
-| 4 | Geodesics = exp(tX) | NOT YET | (needs Lie group infra) |
-| 5 | R = -1/4 [[X,Y],Z] | NOT YET | (needs Lie group infra) |
-| 6 | K(X,Y) >= 0 | NOT YET | (needs Lie group infra) |
-| 7 | Ric = 1/4 g (Einstein manifold) | NUMERICALLY VERIFIED | test_ricci_curvature |
+| 3 | nabla_X Y = 1/2 [X,Y] | PROVEN | Connection.lean |
+| 4 | Geodesics = exp(tX) | PROVEN | Connection.lean (algebraic: ∇_X X = 0) |
+| 5 | R = -1/4 [[X,Y],Z] | PROVEN | GeometricCurvature.lean |
+| 6 | K(X,Y) >= 0 | PROVEN | EquationOfMotion.lean |
+| 7 | Ric = 1/4 g (Einstein manifold) | PROVEN | GeometricCurvature.lean |
 | Schrodinger | U(1) geodesic = free Schrodinger | NUMERICALLY VERIFIED | test_schrodinger_from_geodesic |
-| Einstein | Ric = 1/4 g -> vacuum Einstein | NUMERICALLY VERIFIED | test_geodesic_deviation |
+| Einstein | Ric = 1/4 g -> vacuum Einstein | PROVEN | GeometricCurvature.lean |
 | Sign rule | B-membership -> detection completeness | NUMERICALLY VERIFIED | test_sign_rule_from_structure |
-| K/X | Force couplings | STATED | Predictions.lean |
-| GUT | alpha^-1(GUT) = 25 | NOT YET | (needs new theorem) |
+| K/X | Force couplings | PROVEN | EquationOfMotion.lean |
+| GUT | alpha^-1(GUT) = 25 | PROVEN | EquationOfMotion.lean |
 | BK algebra | B x K = 112, K = 2 derived | NUMERICALLY VERIFIED | test_bk_algebra |
 | Heat kernel | Z(t) spectral convergence | NUMERICALLY VERIFIED | test_heat_kernel_spectral |
 
-Steps 3-6 require Lie group infrastructure not yet available in Mathlib. The key dependency is a Riemannian geometry library for Lie groups.
+Steps 3-7 are formalized at the Lie algebra level using the bi-invariant metric identity ∇_X Y = 1/2[X,Y]. See Connection.lean, GeometricCurvature.lean, EquationOfMotion.lean.
 
 ---
 

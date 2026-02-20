@@ -570,7 +570,7 @@ All are manifestations of bidirectional observation.
 
 ### Medium Priority (Requires New Work)
 
-10. ~~**Machine-verified proofs**~~ — **RESOLVED**: 24 BLD files (3522 lines) + 12 Cartan files (7439 lines) = 36 files, 10961 lines, 0 sorry, 0 axioms. Cartan classification fully proved — all 9 Dynkin types (A, B, C, D, E₆, E₇, E₈, F₄, G₂) enumerated with 0 sorry.
+10. ~~**Machine-verified proofs**~~ — **RESOLVED**: 52 BLD files (6905 lines) + 11 Cartan files (7416 lines) = 63 files, 14321 lines, 0 sorry, 0 axioms. Cartan classification fully proved — all 9 Dynkin types (A, B, C, D, E₆, E₇, E₈, F₄, G₂) enumerated with 0 sorry.
 11. **Formal Lie isomorphism theorem** — BLD-Lie correspondence verified numerically for su(2) but a formal isomorphism theorem is not stated
 
 ### Empirical Inputs

@@ -321,10 +321,6 @@ The strong coupling is not independent of EM — it's EM scaled by spacetime str
 
 **The universal K/X principle**: All force corrections follow K/X. For strong coupling, X = n+L = 24 because the measurement traverses geometric structure (spacetime + Riemann curvature).
 
-### 10.4 Deprecation Notice
-
-The earlier formula (B/n)/S² = 14/169 was numerically close but not derived from first principles. The K/(n+L) = 2/24 form is the principled result from the [Discovery Method](../foundations/discovery-method.md).
-
 ---
 
 ## References
