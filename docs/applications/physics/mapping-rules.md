@@ -2,12 +2,12 @@
 status: VALIDATED
 layer: application
 depends_on:
-  - validation-roadmap.md
+  - ../../meta/validation-roadmap.md
   - circuits.md
   - ../../meta/discovery-method.md
 used_by:
   - ../../meta/epistemic-honesty.md
-  - validation-roadmap.md
+  - ../../meta/validation-roadmap.md
 ---
 
 # BLD Mapping Rules for Physics
@@ -329,7 +329,7 @@ If tests give conflicting results:
 
 ## See Also
 
-- [Validation Roadmap](validation-roadmap.md) — Test status for all claims
+- [Validation Roadmap](../../meta/validation-roadmap.md) — Test status for all claims
 - [Circuits](circuits.md) — Validated B/L/D mappings
 - [Discovery Method](../../meta/discovery-method.md) — The three questions
 - [Glossary](../../glossary.md) — Central definitions

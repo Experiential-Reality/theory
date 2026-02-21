@@ -2,8 +2,8 @@
 status: VALIDATED
 layer: application
 depends_on:
-  - ../../mathematics/derived/thermodynamics.md
-  - ../../mathematics/derived/manifold-applications.md
+  - ../../mathematics/classical/thermodynamics.md
+  - ../../mathematics/geometry/manifold-applications.md
 used_by:
   - phase-transitions.md
   - fluids.md
@@ -150,7 +150,7 @@ Thermodynamic predictions (equipartition, fluctuation-dissipation) hold across d
 
 ## Connection to the BLD Framework
 
-The validation confirms the thermodynamics derivation in [thermodynamics.md](../../mathematics/derived/thermodynamics.md):
+The validation confirms the thermodynamics derivation in [thermodynamics.md](../../mathematics/classical/thermodynamics.md):
 
 | Thermodynamic Concept | B/L/D Interpretation | Validated |
 |----------------------|----------------------|-----------|
@@ -203,6 +203,6 @@ This elevates the thermodynamics derivation from "Derived (needs review)" to **V
 ## See Also
 
 - [Glossary](../../glossary.md) — Central definitions
-- [Thermodynamics](../../mathematics/derived/thermodynamics.md) — The derivation being validated
-- [Manifold Applications](../../mathematics/derived/manifold-applications.md) — The structural manifold
+- [Thermodynamics](../../mathematics/classical/thermodynamics.md) — The derivation being validated
+- [Manifold Applications](../../mathematics/geometry/manifold-applications.md) — The structural manifold
 - [Protein Folding](./protein-folding.md) — Free energy as alignment cost

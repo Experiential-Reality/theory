@@ -5,10 +5,10 @@ depends_on:
   - ../foundations/definitions/ubit.md
   - ../lie-theory/killing-form.md
   - entanglement-entropy.md
-  - ../derived/general-relativity.md
+  - ../relativity/general-relativity.md
 used_by:
   - ../../meta/proof-status.md
-  - ../../applications/physics/validation-roadmap.md
+  - ../../meta/validation-roadmap.md
 ---
 
 # Black Hole Entropy from BLD
@@ -163,7 +163,7 @@ Different domains, same S = K × L structure.
 
 ## Schwarzschild Radius and K
 
-From [General Relativity](../derived/general-relativity.md):
+From [General Relativity](../relativity/general-relativity.md):
 ```
 r_s = 2GM/c² = K × GM/c²
 ```
@@ -268,7 +268,7 @@ STATUS: DERIVED
 - [Ubit](../foundations/definitions/ubit.md) — n = 4 derivation, S = A/(n ℓ_P²)
 - [Killing Form](../lie-theory/killing-form.md) — K = 2 derivation
 - [Entanglement Entropy](entanglement-entropy.md) — S = K × L = 2L
-- [General Relativity](../derived/general-relativity.md) — r_s = K × GM/c², information conservation
+- [General Relativity](../relativity/general-relativity.md) — r_s = K × GM/c², information conservation
 
 ### External References
 - [Bekenstein-Hawking entropy (Wikipedia)](https://en.wikipedia.org/wiki/Bekenstein%E2%80%93Hawking_entropy)

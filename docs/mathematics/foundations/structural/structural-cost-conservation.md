@@ -4,12 +4,12 @@ layer: 1
 depends_on:
   - factorization-calculus.md
   - ../../lie-theory/lie-correspondence.md
-  - ../../derived/manifold-foundations.md
+  - ../../geometry/manifold-foundations.md
 used_by:
   - factorization-calculus.md
   - ../machine/universal-machine.md
-  - ../../derived/special-relativity.md
-  - ../../derived/general-relativity.md
+  - ../../relativity/special-relativity.md
+  - ../../relativity/general-relativity.md
   - ../../../applications/code/refactoring.md
   - ../machine/integer-factorization.md
 ---
@@ -78,7 +78,7 @@ Cost measures the **information content** of structure — how much a traverser 
 
 ### 1.2 Primitive Costs (Proven)
 
-From the manifold foundations ([manifold-foundations.md](../../derived/manifold-foundations.md)), the costs of irreducible primitives are:
+From the manifold foundations ([manifold-foundations.md](../../geometry/manifold-foundations.md)), the costs of irreducible primitives are:
 
 **Boundary Cost** (B):
 ```
@@ -254,7 +254,7 @@ GNFS             sub-exp      exp          k/2
 
 Each algorithm redistributes cost between visible probes and hidden structural pre-computation, but C_total = k/2 is invariant. GPU confirmation across bit sizes k = 20 to k = 44 shows each coprime probe contributes exactly 1 bit (K/X = 1), and k/2 probes always suffice.
 
-See [Integer Factorization: Cost Conservation](../machine/integer-factorization.md#cost-conservation-c_total--k2) for derivation and experimental data.
+See [Integer Factorization: Cost Conservation](../machine/integer-factorization.md#cost-conservation-c-total--k2) for derivation and experimental data.
 
 ---
 
@@ -336,7 +336,7 @@ But the **experience** of implicit structure is worse than explicit:
 
 ### 5.2 Alignment Cost as Structural Cost
 
-In the manifold ([manifold-applications.md](../../derived/manifold-applications.md)), cost is alignment cost:
+In the manifold ([manifold-applications.md](../../geometry/manifold-applications.md)), cost is alignment cost:
 
 ```
 φ_T(S) = cost(S, T)    [potential function]
@@ -346,7 +346,7 @@ The cost algebra here is compatible: C(S) = φ_T(S) for appropriate traverser T.
 
 ### 5.3 Conservation as Noether
 
-From BLD conservation ([bld-conservation.md](../../bld-conservation.md)):
+From BLD conservation ([bld-conservation.md](bld-conservation.md)):
 
 ```
 BLD conservation ←→ Noether's theorem
@@ -416,7 +416,7 @@ Track explicitness as a code quality metric.
 
 1. **Measurement**: How to precisely measure C_hidden in practice? (Currently requires factorization to discover)
 
-   *Partial answer*: For integer factoring, C_hidden = C_total − C_visible, where C_total = k/2 is known a priori (Shannon entropy) and C_visible is directly measurable as the number of explicit probes. Different algorithms make different fractions visible: trial division achieves full explicitness (C_hidden = 0), while GNFS hides exponential structure in the factor base. See [Integer Factorization](../machine/integer-factorization.md#cost-conservation-c_total--k2).
+   *Partial answer*: For integer factoring, C_hidden = C_total − C_visible, where C_total = k/2 is known a priori (Shannon entropy) and C_visible is directly measurable as the number of explicit probes. Different algorithms make different fractions visible: trial division achieves full explicitness (C_hidden = 0), while GNFS hides exponential structure in the factor base. See [Integer Factorization](../machine/integer-factorization.md#cost-conservation-c-total--k2).
 
 2. **Partial factorization value**: At what explicitness threshold do benefits plateau?
 
@@ -432,6 +432,6 @@ Track explicitness as a code quality metric.
 
 - [Glossary](../../../glossary.md) — Central definitions
 - [Factorization Calculus](./factorization-calculus.md) — The FACTOR operation
-- [Manifold Foundations](../../derived/manifold-foundations.md) — Primitive cost formulas
-- [BLD Conservation](../../bld-conservation.md) — Physical conservation laws
-- [Manifold Applications](../../derived/manifold-applications.md) — Alignment cost interpretation
+- [Manifold Foundations](../../geometry/manifold-foundations.md) — Primitive cost formulas
+- [BLD Conservation](bld-conservation.md) — Physical conservation laws
+- [Manifold Applications](../../geometry/manifold-applications.md) — Alignment cost interpretation

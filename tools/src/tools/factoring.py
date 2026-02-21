@@ -167,31 +167,6 @@ def get_carries(p: int, q: int, k: int) -> np.ndarray:
     return np.array(carries, dtype=np.int64)
 
 
-def get_carries_batch(
-    p_arr: np.ndarray, q_arr: np.ndarray, k: int
-) -> np.ndarray:
-    """Vectorized carry computation for arrays of factor pairs.
-
-    Returns carries[n_samples, 2*k] where carries[i, pos] is the carry
-    value at bit position pos for sample i.
-    """
-    n_samples = len(p_arr)
-    width = 2 * k
-
-    # Extract bits: shape (n_samples, k)
-    bits_p = ((p_arr[:, None] >> np.arange(k)) & 1).astype(np.int64)
-    bits_q = ((q_arr[:, None] >> np.arange(k)) & 1).astype(np.int64)
-
-    # Partial sums at each output position
-    partial_sums = np.zeros((n_samples, width), dtype=np.int64)
-    for i in range(k):
-        prods = bits_p[:, i : i + 1] * bits_q  # (n_samples, k) broadcast
-        for j in range(k):
-            partial_sums[:, i + j] += prods[:, j]
-
-    # Carries = partial_sums >> 1 (number of carries generated at each position)
-    return np.maximum(partial_sums - 1, 0)
-
 
 # ---------------------------------------------------------------------------
 # Fano plane / Hamming
@@ -258,66 +233,3 @@ def mutual_info_2x2(joint: np.ndarray) -> float:
     return mi
 
 
-# ---------------------------------------------------------------------------
-# Fano carry correlation (composite helper)
-# ---------------------------------------------------------------------------
-
-
-def fano_carry_correlation(
-    k: int, n_samples: int, seed: int = 42
-) -> tuple[float, float]:
-    """Compute mean carry correlation for Fano vs non-Fano position pairs.
-
-    Returns (fano_r, non_fano_r) where r is the Pearson correlation
-    between carry densities at position-class pairs.
-    """
-    rng = np.random.default_rng(seed)
-    half = k // 2
-
-    p_arr = rng.integers(1 << (half - 1), 1 << half, size=n_samples, dtype=np.int64)
-    q_arr = rng.integers(1 << (half - 1), 1 << half, size=n_samples, dtype=np.int64)
-    p_arr |= 1
-    q_arr |= 1
-
-    # Extract bits
-    bits_p = ((p_arr[:, None] >> np.arange(k)) & 1).astype(np.int64)
-    bits_q = ((q_arr[:, None] >> np.arange(k)) & 1).astype(np.int64)
-
-    width = 2 * k
-    partial_sums = np.zeros((n_samples, width), dtype=np.int64)
-    for i in range(k):
-        prods = bits_p[:, i : i + 1] * bits_q
-        for j in range(k):
-            partial_sums[:, i + j] += prods[:, j]
-
-    carry_mask = (partial_sums >= 2).astype(np.float64)
-
-    # Build Fano membership lookup for position-class pairs
-    fano_pairs: set[tuple[int, int]] = set()
-    for a, b, c in FANO_TRIPLES:
-        for x, y in [(a - 1, b - 1), (a - 1, c - 1), (b - 1, c - 1)]:
-            fano_pairs.add((min(x, y), max(x, y)))
-
-    fano_corrs: list[float] = []
-    other_corrs: list[float] = []
-
-    for a in range(7):
-        for b in range(a + 1, 7):
-            cols_a = [p for p in range(width) if p % 7 == a]
-            cols_b = [p for p in range(width) if p % 7 == b]
-            if not cols_a or not cols_b:
-                continue
-            ca = carry_mask[:, cols_a].mean(axis=1)
-            cb = carry_mask[:, cols_b].mean(axis=1)
-            if ca.std() > 0 and cb.std() > 0:
-                r = float(np.corrcoef(ca, cb)[0, 1])
-            else:
-                r = 0.0
-            if (a, b) in fano_pairs:
-                fano_corrs.append(r)
-            else:
-                other_corrs.append(r)
-
-    fano_r = float(np.mean(fano_corrs)) if fano_corrs else 0.0
-    non_fano_r = float(np.mean(np.abs(other_corrs))) if other_corrs else 0.0
-    return fano_r, non_fano_r

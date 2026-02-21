@@ -8,7 +8,7 @@ depends_on:
   - ../lie-theory/killing-form.md
   - schrodinger-derivation.md
   - ../../applications/physics/scale-hierarchy.md
-  - ../../applications/physics/epsilon2-origin.md
+  - ../foundations/derivations/epsilon2-origin.md
 used_by:
   - ../../meta/proof-status.md
   - ../foundations/machine/integer-machine.md
@@ -285,7 +285,7 @@ BLD counts structure (dimensionless). The cost formula `Cost = B + D×L` yields 
 
 ### Discovery
 
-From [Epsilon2 Origin](../../applications/physics/epsilon2-origin.md):
+From [Epsilon2 Origin](../foundations/derivations/epsilon2-origin.md):
 
 **λ = 1/√20 ≈ 0.2236** is the BLD structural scale parameter.
 
@@ -306,7 +306,7 @@ This is **DERIVED** from BLD structure:
 - Catalan number C₃ = 5 counts pathways
 - The factor of 4 comes from doublet structure
 
-**Reference**: [Epsilon2 Origin](../../applications/physics/epsilon2-origin.md) lines 76-88
+**Reference**: [Epsilon2 Origin](../foundations/derivations/epsilon2-origin.md) lines 76-88
 
 ---
 
@@ -682,5 +682,5 @@ For the complete integer machine framework, see [Integer Machine](../foundations
 - [Killing Form](../lie-theory/killing-form.md) — The factor of 2, K = 2 derivation
 - [E7 Derivation](../particle-physics/e7-derivation.md) — B=56, boundary quantum
 - [Scale Hierarchy](../../applications/physics/scale-hierarchy.md) — λ power relationships
-- [Epsilon2 Origin](../../applications/physics/epsilon2-origin.md) — λ = 1/√20 derivation
+- [Epsilon2 Origin](../foundations/derivations/epsilon2-origin.md) — λ = 1/√20 derivation
 - [Irreducibility Proof](../foundations/proofs/irreducibility-proof.md) — D-L coupling requirement, observer unavoidable

@@ -485,7 +485,7 @@ The same three primitives describe both what is traversed and what does the trav
 
 Both satisfy D×L scaling and B invariance. This is why documentation structured for human readers also works well for LLMs — they are both BLD traversers.
 
-See [Documentation Structure](examples/docs-structure.md) for the full human traverser model.
+See [Documentation Structure](meta/docs-structure.md) for the full human traverser model.
 
 ### Traverser as Causal Agent
 
@@ -595,7 +595,7 @@ Symmetry (Lie group G) → Conserved charges (one per generator)
 
 **BLD interpretation**: Conservation laws ARE BLD conservation. Each generator (D) yields one conserved charge. The structure constants (L) determine how charges interact. The topology (B) determines whether charges are quantized.
 
-See [BLD Conservation](mathematics/bld-conservation.md) for the full derivation.
+See [BLD Conservation](mathematics/foundations/structural/bld-conservation.md) for the full derivation.
 
 ---
 
@@ -713,7 +713,7 @@ The integrand is manifestly non-negative, proving entropy increase.
 
 **Equilibrium**: dS/dt = 0 when P ∝ e^{-E/k_B T} (Boltzmann distribution).
 
-See [Thermodynamics](mathematics/derived/thermodynamics.md#43-second-law-entropy-increase-rigorous-derivation) for the complete proof with boundary conditions.
+See [Thermodynamics](mathematics/classical/thermodynamics.md#43-second-law-entropy-increase-rigorous-derivation) for the complete proof with boundary conditions.
 
 ---
 
@@ -1223,5 +1223,5 @@ Documents in this project use three status levels:
 - [Lie Correspondence](mathematics/lie-theory/lie-correspondence.md) — BLD = Lie theory mapping
 - [Discovery Method](meta/discovery-method.md) — How to find structure in any system
 - [Structural Interest](theory/structural-interest.md) — Why rich structures produce rich behavior
-- [Documentation Structure](examples/docs-structure.md) — Human and LLM traverser models
+- [Documentation Structure](meta/docs-structure.md) — Human and LLM traverser models
 - [Physics Traverser](examples/physics-traverser.md) — Deriving the Standard Model via BLD

@@ -1,7 +1,7 @@
 ---
 status: FOUNDATIONAL
 depends_on:
-  - ../foundations/proofs/irreducibility-proof.md
+  - ../mathematics/foundations/proofs/irreducibility-proof.md
 ---
 
 # The BLD Discovery Algorithm
@@ -415,7 +415,7 @@ The discovery algorithm produces Lie structures because:
 
 The enumeration procedures are constructive methods for identifying these Lie algebra components without requiring prior knowledge of the symmetry group.
 
-See [Constructive Lie](../lie-theory/constructive-lie.md) for the mathematical connection.
+See [Constructive Lie](../mathematics/lie-theory/constructive-lie.md) for the mathematical connection.
 
 ---
 
@@ -463,8 +463,8 @@ See [Constructive Lie](../lie-theory/constructive-lie.md) for the mathematical c
 
 ## See Also
 
-- [Glossary](../../glossary.md) — Central definitions
-- [Discovery Method](../../meta/discovery-method.md) — The three questions (informal)
-- [Structural Language](../../theory/structural-language.md) — B/L/D definitions
-- [Constructive Lie](../lie-theory/constructive-lie.md) — Why this produces Lie structures
-- [Canonical Hardness](../foundations/structural/canonical-hardness.md) — Complexity of minimal BLD
+- [Glossary](../glossary.md) — Central definitions
+- [Discovery Method](discovery-method.md) — The three questions (informal)
+- [Structural Language](../theory/structural-language.md) — B/L/D definitions
+- [Constructive Lie](../mathematics/lie-theory/constructive-lie.md) — Why this produces Lie structures
+- [Canonical Hardness](../mathematics/foundations/structural/canonical-hardness.md) — Complexity of minimal BLD

@@ -1,8 +1,8 @@
 ---
 status: VALIDATED
 depends_on:
-  - ../foundations/proofs/irreducibility-proof.md
-  - manifold-applications.md
+  - ../../mathematics/foundations/proofs/irreducibility-proof.md
+  - ../../mathematics/geometry/manifold-applications.md
 ---
 
 # Performance Comparison Theorem
@@ -302,13 +302,13 @@ cost(S, T) = obstruction_D(S, T)  # Dimension mismatch
 
 When cost = 0, a perfect homomorphism exists. When cost > 0, there is no structure-preserving map, and the cost measures how much structure must be lost in translation.
 
-See [Constructive Lie](../lie-theory/constructive-lie.md) for the formal treatment.
+See [Constructive Lie](../../mathematics/lie-theory/constructive-lie.md) for the formal treatment.
 
 ---
 
 ## See Also
 
 - [Glossary](../../glossary.md) — Central definitions
-- [Constructive Lie](../lie-theory/constructive-lie.md) — Alignment as Lie homomorphism
-- [Manifold Foundations](./manifold-foundations.md) — The structural manifold
-- [GPU Calibration](../../applications/physics/gpu-calibration.md) — Performance validation
+- [Constructive Lie](../../mathematics/lie-theory/constructive-lie.md) — Alignment as Lie homomorphism
+- [Manifold Foundations](../../mathematics/geometry/manifold-foundations.md) — The structural manifold
+- [GPU Calibration](../physics/gpu-calibration.md) — Performance validation

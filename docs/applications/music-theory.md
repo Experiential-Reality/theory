@@ -2,12 +2,12 @@
 status: DERIVED
 layer: 2
 depends_on:
-  - ../foundations/discovery-method.md
-  - ../foundations/derivations/energy-derivation.md
-  - ../lie-theory/lie-correspondence.md
-  - ../../examples/pi-from-bld.md
+  - ../mathematics/foundations/discovery-method.md
+  - ../mathematics/foundations/derivations/energy-derivation.md
+  - ../mathematics/lie-theory/lie-correspondence.md
+  - ../examples/pi-from-bld.md
 used_by:
-  - ../../meta/research-directions.md
+  - ../meta/research-directions.md
 ---
 
 # Music Theory from BLD
@@ -37,7 +37,7 @@ used_by:
 
 ## The Three Questions Applied to Music
 
-From [Discovery Method](../foundations/discovery-method.md), we apply the three structural questions:
+From [Discovery Method](../mathematics/foundations/discovery-method.md), we apply the three structural questions:
 
 | Question | Music Domain | Answer |
 |----------|--------------|--------|
@@ -51,7 +51,7 @@ From [Discovery Method](../foundations/discovery-method.md), we apply the three 
 
 ### 1.1 The Octave as Closure
 
-From [π from BLD](../../examples/pi-from-bld.md), the closure principle is D×L = 2π×B.
+From [π from BLD](../examples/pi-from-bld.md), the closure principle is D×L = 2π×B.
 
 For pitch space:
 
@@ -140,7 +140,7 @@ This is a single cycle visiting all 12 tones before returning — the defining p
 
 ### 2.1 The Consonance Formula
 
-From [Energy Derivation](../foundations/derivations/energy-derivation.md), the observation cost is K/X where K = 2 (bidirectional observation) and X = structure size.
+From [Energy Derivation](../mathematics/foundations/derivations/energy-derivation.md), the observation cost is K/X where K = 2 (bidirectional observation) and X = structure size.
 
 For musical intervals, the "structure size" is the complexity of the frequency ratio:
 
@@ -427,7 +427,7 @@ All keys have identical interval structure
 
 ### 5.3 The Trade-off (Compensation Principle)
 
-From [Compensation Principle](../foundations/structural/compensation-principle.md):
+From [Compensation Principle](../mathematics/foundations/structural/compensation-principle.md):
 
 ```
 L compensates for B deficiency (not vice versa)
@@ -570,11 +570,11 @@ Music theory emerges from BLD structure:
 
 ### Internal BLD References
 
-- [π from BLD](../../examples/pi-from-bld.md) — Closure principle, Z₁₂ as discrete SO(2)
-- [Discovery Method](../foundations/discovery-method.md) — The three questions
-- [Energy Derivation](../foundations/derivations/energy-derivation.md) — K/X framework
-- [Lie Correspondence](../lie-theory/lie-correspondence.md) — BLD = Lie theory
-- [Compensation Principle](../foundations/structural/compensation-principle.md) — L compensates for B
+- [π from BLD](../examples/pi-from-bld.md) — Closure principle, Z₁₂ as discrete SO(2)
+- [Discovery Method](../mathematics/foundations/discovery-method.md) — The three questions
+- [Energy Derivation](../mathematics/foundations/derivations/energy-derivation.md) — K/X framework
+- [Lie Correspondence](../mathematics/lie-theory/lie-correspondence.md) — BLD = Lie theory
+- [Compensation Principle](../mathematics/foundations/structural/compensation-principle.md) — L compensates for B
 
 ### External Music Theory Sources
 

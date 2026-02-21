@@ -506,6 +506,6 @@ The framework was waiting. We just learned to see it.
 - [Glossary](../glossary.md) — Central definitions
 - [Structural Language](../theory/structural-language.md) — Formal definitions of B/L/D
 - [Lie Correspondence](../mathematics/lie-theory/lie-correspondence.md) — Why B/L/D = Lie theory
-- [Discovery Algorithm](../mathematics/derived/discovery-algorithm.md) — Formal algorithm specification
+- [Discovery Algorithm](discovery-algorithm.md) — Formal algorithm specification
 - [Neural Architectures](../applications/ml/neural-architectures.md) — Worked example on ML
 - [Lie Algebra Examples](../examples/lie-algebras.md) — Worked examples from physics

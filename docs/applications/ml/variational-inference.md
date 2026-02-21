@@ -4,7 +4,7 @@ layer: application
 depends_on:
   - ../../mathematics/foundations/structural/compensation-principle.md
   - ../../mathematics/lie-theory/lie-correspondence.md
-  - ../../mathematics/derived/manifold-foundations.md
+  - ../../mathematics/geometry/manifold-foundations.md
 used_by:
   - ../../theory/structural-interest.md
   - ../../theory/README.md
@@ -13,10 +13,10 @@ used_by:
   - neural-architectures.md
   - neural-network-experiments.md
   - ../../mathematics/lie-theory/boundary-derivation.md
-  - ../../mathematics/cross-domain-prediction.md
-  - ../../mathematics/derived/manifold-geometry.md
-  - ../../mathematics/derived/manifold-applications.md
-  - ../../mathematics/derived/manifold-foundations.md
+  - ../../meta/cross-domain-prediction.md
+  - ../../mathematics/geometry/manifold-geometry.md
+  - ../../mathematics/geometry/manifold-applications.md
+  - ../../mathematics/geometry/manifold-foundations.md
 ---
 
 # Variational Inference: Structural Mismatch Predicts ELBO Gaps
@@ -371,7 +371,7 @@ Full experiment code and results: [github.com/rax-V/bld-vi-experiment](https://g
 ## See Also
 
 - [Glossary](../../glossary.md) — Central definitions
-- [Manifold Foundations](../../mathematics/derived/manifold-foundations.md) — The structural manifold
+- [Manifold Foundations](../../mathematics/geometry/manifold-foundations.md) — The structural manifold
 - [Boundary Derivation](../../mathematics/lie-theory/boundary-derivation.md) — Exact B formula
 - [Neural Architectures](./neural-architectures.md) — Related ML application
 - [Neural Network Alignment](./neural-network-alignment.md) — Contrast: B/L independent here, B conditional on L there

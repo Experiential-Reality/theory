@@ -46,9 +46,10 @@ Layer 2: Physics Derivations
          └── Quantum mechanics (ℏ, uncertainty, Born rule)
 
 Layer 3: Derived Physics
-         ├── Special relativity (c, γ from K/X)
-         ├── General relativity (gravity = K/X at large scale)
-         └── Thermodynamics
+         ├── Special relativity (c, γ from K/X)         [relativity/]
+         ├── General relativity (gravity = K/X at large scale)  [relativity/]
+         ├── Thermodynamics + turbulence                [classical/]
+         └── Structural manifold                        [geometry/]
 ```
 
 ---
@@ -194,14 +195,14 @@ Transcendentals (2πe) emerge from continuous observation of discrete structure.
         ┌─────────┼─────────┬─────────────────────┐
         │         │         │                     │
         ▼         ▼         ▼                     ▼
-┌───────────┐ ┌───────────┐ ┌───────────┐ ┌───────────┐
-│ quantum/  │ │cosmology/ │ │particle-  │ │ derived/  │
-│           │ │           │ │physics/   │ │           │
-│• planck   │ │• dark-map │ │• fine-str │ │• SR, GR   │
-│• born     │ │• hubble   │ │• leptons  │ │• thermo   │
-│• schrödg  │ │• sigma8   │ │• quarks   │ │• manifold │
-│• chirality│ │• cyclic   │ │• bosons   │ │           │
-└───────────┘ └───────────┘ └───────────┘ └───────────┘
+┌───────────┐ ┌───────────┐ ┌───────────┐ ┌───────────┐ ┌───────────┐ ┌───────────┐
+│ quantum/  │ │cosmology/ │ │particle-  │ │relativity/│ │classical/ │ │ geometry/ │
+│           │ │           │ │physics/   │ │           │ │           │ │           │
+│• planck   │ │• dark-map │ │• fine-str │ │• SR       │ │• thermo   │ │• manifold │
+│• born     │ │• hubble   │ │• leptons  │ │• GR       │ │• reynolds │ │  found.   │
+│• schrödg  │ │• sigma8   │ │• quarks   │ │           │ │• feigenb  │ │• manifold │
+│• chirality│ │• cyclic   │ │• bosons   │ │           │ │• she-lev  │ │  geom.    │
+└───────────┘ └───────────┘ └───────────┘ └───────────┘ └───────────┘ └───────────┘
 ```
 
 ---
@@ -232,7 +233,7 @@ These files are referenced by many others — understand them first:
 | `particle-physics/boson-masses.md` | H, Z, W | **125.20**, 91.19, 80.38 GeV | **Exact** |
 | `quantum/planck-derivation.md` | ℏ, M_P | Exact | 0.00003% |
 | `cosmology/cosmology-structure.md` | Dark matter | 27% | **Exact** |
-| `derived/reynolds-derivation.md` | Re_c, Kolmogorov | 2300, -5/3 | **0.02%, Exact** |
+| `classical/reynolds-derivation.md` | Re_c, Kolmogorov | 2300, -5/3 | **0.02%, Exact** |
 | `particle-physics/neutrino-mixing.md` | PMNS angles θ₁₂, θ₁₃, θ₂₃ | 4/13, 16/729, 14/25 | **0.06σ, 0.00σ, 0.07σ** |
 
 ---

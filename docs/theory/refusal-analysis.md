@@ -2,10 +2,10 @@
 status: DERIVED
 layer: example
 depends_on:
-  - ../theory/human-language-structure.md
-  - ../theory/structural-language.md
+  - human-language-structure.md
+  - structural-language.md
 used_by:
-  - ../theory/human-language-structure.md
+  - human-language-structure.md
 ---
 
 # Refusal Analysis: "I don't want to" as Reversible BLD
@@ -163,5 +163,5 @@ The mapping is bijective when the encoding is well-formed. This is why:
 
 ## See Also
 
-- [Human Language Structure](../theory/human-language-structure.md) - Full framework
-- [Structural Language](../theory/structural-language.md) - B/L/D specification
+- [Human Language Structure](human-language-structure.md) - Full framework
+- [Structural Language](structural-language.md) - B/L/D specification

@@ -357,4 +357,4 @@ Spacetime curves until geometry aligns with matter distribution.
 - [Glossary](../glossary.md) — Central definitions
 - [Octonion Derivation](../mathematics/foundations/derivations/octonion-derivation.md) — Why n = 4 (derived)
 - [Lie Correspondence](../mathematics/lie-theory/lie-correspondence.md) — BLD = Lie theory
-- [Thermodynamics](../mathematics/derived/thermodynamics.md) — Another physics domain
+- [Thermodynamics](../mathematics/classical/thermodynamics.md) — Another physics domain

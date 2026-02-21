@@ -8,7 +8,7 @@ depends_on:
   - bld-is-quantum-code.md
 used_by:
   - ../../meta/proof-status.md
-  - ../../applications/physics/validation-roadmap.md
+  - ../../meta/validation-roadmap.md
   - black-hole-entropy.md
 ---
 

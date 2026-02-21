@@ -55,7 +55,7 @@ Formal proof that B/L/D are the minimal structural primitives:
 - Witness structures that require each primitive
 - Categorical correspondence (coproduct, morphism, product)
 
-### [The Structural Manifold](../mathematics/derived/manifold-foundations.md)
+### [The Structural Manifold](../mathematics/geometry/manifold-foundations.md)
 Mathematical formalization of the space where structures live (**Partially Proven**):
 - **Information Geometry ⊂ BLD**: BLD is a stratified extension of information geometry (**Proven**)
 - BLD = B × (L × D) where B indexes discrete strata, L × D is continuous
@@ -77,7 +77,7 @@ BLD = Lie Theory (**Verified**):
 - Curvature K(ρ) comes from Lie bracket: R(X,Y)Z = -[[X,Y],Z]
 - Explains why BLD works everywhere: Lie theory works everywhere
 
-### [Thermodynamics from Structural Alignment](../mathematics/derived/thermodynamics.md)
+### [Thermodynamics from Structural Alignment](../mathematics/classical/thermodynamics.md)
 Derivation of thermodynamics from B/L/D principles (**Empirically Validated**):
 - Energy = alignment cost with physics traverser
 - Entropy = k ln(manifold volume at energy E)
@@ -135,7 +135,7 @@ The LLM senses structure as computational flow—glide vs friction, direction vs
 
 Both are pointing at the same thing. Neither claims to have arrived.
 
-**For the full journey from GPU kernels to BLD, see [L: The Path](./discovery-path.md).**
+**For the full journey from GPU kernels to BLD, see [L: The Path](../meta/discovery-path.md).**
 
 ---
 
@@ -244,7 +244,7 @@ The funnel IS the alignment cost surface.
 
 9. ~~Can B/L/D be reduced further, or are they provably irreducible?~~ → **Proved**. See [Irreducibility Proof](../mathematics/foundations/proofs/irreducibility-proof.md). Type-theoretic proof shows sum, function, and product types are independent.
 
-10. ~~Can we derive thermodynamics from structural alignment principles?~~ → **Derived and validated**. See [Thermodynamics](../mathematics/derived/thermodynamics.md). 10/10 empirical tests pass.
+10. ~~Can we derive thermodynamics from structural alignment principles?~~ → **Derived and validated**. See [Thermodynamics](../mathematics/classical/thermodynamics.md). 10/10 empirical tests pass.
 
 11. ~~Is our metric the Fisher-Rao metric?~~ → **Proved**. On probability distributions, Hessian of alignment cost = Fisher information matrix.
 
@@ -293,6 +293,24 @@ The current framework handles **spatial/logical structure** well but has limited
 - Sequence point: A boundary that forces synchronization across dimensions
 
 This is the most significant gap in the current framework. Addressing it would substantially expand the domains where B/L/D provides insight.
+
+---
+
+## Implications
+
+If this framework is correct:
+
+1. **Structure is substrate-independent**: The same structural laws govern silicon, proteins, markets, and minds.
+
+2. **Cost is alignment**: Performance, energy, fitness, likelihood—all manifestations of structural alignment.
+
+3. **Complexity is structural**: P vs NP is a statement about what traversers physics permits, not about cleverness of algorithms.
+
+4. **Physics is a traverser**: The laws of physics are the traverser structure that reality uses to process configurations.
+
+5. **Experience is alignment**: What it feels like to be a structure aligning with itself and its environment.
+
+6. **Thermodynamics is geometric**: The second law is not a postulate—it's a theorem about manifold exploration. Entropy is the log of accessible structural volume. See [Thermodynamics](../mathematics/classical/thermodynamics.md).
 
 ---
 

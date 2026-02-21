@@ -201,7 +201,7 @@ Both are fractions of S. The Weinberg angle uses dim(SU(2)) = 3. The solar angle
 
 ### Cross-Domain Confirmation
 
-K/(n-1) = 2/3 independently appears in She-Leveque turbulence ([She-Leveque Derivation](../derived/she-leveque-derivation.md)) as the intermittency parameter β = (K/(n-1))^(p/(n-1)), and the asymptotic scaling γ∞ = K/(n-1) = 2/3. Two unrelated physical domains, same BLD ratio.
+K/(n-1) = 2/3 independently appears in She-Leveque turbulence ([She-Leveque Derivation](../classical/she-leveque-derivation.md)) as the intermittency parameter β = (K/(n-1))^(p/(n-1)), and the asymptotic scaling γ∞ = K/(n-1) = 2/3. Two unrelated physical domains, same BLD ratio.
 
 ### Comparison to Competing Models
 
@@ -293,7 +293,7 @@ The 2-3 mixing accesses the complete geometric-observer budget:
 - n = 4: spacetime dimensions (the stage on which mixing occurs)
 - +1: observer self-reference (same +1 as in α⁻¹ = nL + B + 1)
 
-**Pre-existing**: L+n+1 = 25 appears independently as the intermittency denominator ([Reynolds Derivation](../derived/reynolds-derivation.md) §3.3: 1/(L+n+1) = 1/25 = 0.04).
+**Pre-existing**: L+n+1 = 25 appears independently as the intermittency denominator ([Reynolds Derivation](../classical/reynolds-derivation.md) §3.3: 1/(L+n+1) = 1/25 = 0.04).
 
 **Structural assignment**: θ₁₂ operates in S-space (S = 13 structural intervals) because the 1-2 mixing probes the internal misalignment between observation (K) and propagation (n-1) — quantities that live within S. θ₂₃ operates in (L+n+1)-space because the 2-3 mixing probes the full link geometry that determines the mass hierarchy. This assignment is physically motivated by the mass scales involved.
 
@@ -606,8 +606,8 @@ All formulas use only pre-existing BLD constants. No free parameters. The distin
 - [Observer Corrections](../cosmology/observer-correction.md) — Two-reference framework
 - [Neutrino Masses](neutrino-masses.md) — Missing B structure, Δm² ratio
 - [Particle Classification](particle-classification.md) — Neutrino S = {L, D}
-- [Reynolds Derivation](../derived/reynolds-derivation.md) — L+n+1 = 25 (intermittency)
-- [She-Leveque Derivation](../derived/she-leveque-derivation.md) — K/(n-1) = 2/3 cross-confirmation
+- [Reynolds Derivation](../classical/reynolds-derivation.md) — L+n+1 = 25 (intermittency)
+- [She-Leveque Derivation](../classical/she-leveque-derivation.md) — K/(n-1) = 2/3 cross-confirmation
 - [E7 Derivation](e7-derivation.md) — B = 56, Spin(8) triality
 - [S₃ Vacuum Structure](../../applications/physics/s3-vacuum.md) — Competing δ_CP prediction (222.5°, application layer)
 - [Born Rule](../quantum/born-rule.md) — |ψ|² = forward × backward (K=2 → real)

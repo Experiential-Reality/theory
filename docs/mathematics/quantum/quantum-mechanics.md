@@ -475,7 +475,7 @@ B precision_choice: know_position | know_momentum
 | Question | Status | Why Open |
 |----------|--------|----------|
 | Wave function collapse | **DERIVED** | See [Wave Function Collapse](wave-function-collapse.md) |
-| Single-event outcomes | **DERIVED** | See [Born Rule](born-rule.md) — L→B + K=2 on joint system |
+| Single-event outcomes | **DERIVED** | See [Selection Rule](selection-rule.md) — L→B + K=2 on joint system |
 | Path integral formulation | **DERIVED** | See [Path Integral](path-integral.md) |
 
 ### The Honest Summary

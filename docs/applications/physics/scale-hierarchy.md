@@ -2,7 +2,7 @@
 status: PARTIAL
 layer: 2
 depends_on:
-  - epsilon2-origin.md
+  - ../../mathematics/foundations/derivations/epsilon2-origin.md
   - ../../mathematics/foundations/definitions/bld-calculus.md
 used_by:
   - ../../mathematics/quantum/planck-derivation.md
@@ -199,6 +199,6 @@ To move toward "perfectly aligned":
 
 ## References
 
-- [Validation Roadmap](validation-roadmap.md) — Status tracking
+- [Validation Roadmap](../../meta/validation-roadmap.md) — Status tracking
 - [Physics Traverser](../../examples/physics-traverser.md) — Full axiom list
 - [Mass Prediction](mass-prediction.md) — P11 details

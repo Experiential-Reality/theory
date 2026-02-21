@@ -7,7 +7,7 @@ used_by:
   - ../proofs/irreducibility-proof.md
   - ../../quantum/quantum-computing.md
   - ../../quantum/quantum-mechanics.md
-  - ../../derived/music-theory.md
+  - ../../../applications/music-theory.md
   - ../../../applications/ml/neural-network-alignment.md
   - ../../../applications/ml/variational-inference.md
   - ../../../applications/physics/circuits.md

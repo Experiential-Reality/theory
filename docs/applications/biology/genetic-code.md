@@ -6,7 +6,7 @@ depends_on:
   - ../../mathematics/foundations/axioms.md
   - ../../mathematics/foundations/constants.md
   - ../../mathematics/foundations/key-formulas.md
-  - ../../mathematics/derived/reynolds-derivation.md
+  - ../../mathematics/classical/reynolds-derivation.md
 used_by:
   - ../physics/protein-folding.md
 ---
@@ -429,7 +429,7 @@ This embeds the genetic code in K-dimensional binary structure.
 ### Internal BLD
 - [Constants](../../mathematics/foundations/constants.md) — n, L, B, K values
 - [Key Formulas](../../mathematics/foundations/key-formulas.md) — K/X pattern
-- [Reynolds Derivation](../../mathematics/derived/reynolds-derivation.md) — Kolmogorov -5/3 = -L/(n(n-1))
+- [Reynolds Derivation](../../mathematics/classical/reynolds-derivation.md) — Kolmogorov -5/3 = -L/(n(n-1))
 - [Detection Structure](../../mathematics/foundations/machine/detection-structure.md) — T ∩ S formalism
 - [Compensation Principle](../../mathematics/foundations/structural/compensation-principle.md) — L compensates for B
 

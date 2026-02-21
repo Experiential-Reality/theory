@@ -240,4 +240,4 @@ The BLD framework enables **predicting neural network behavior from VI costs**:
 - [Variational Inference](./variational-inference.md) — Related ML application (independent B/L)
 - [Discovery Method](../../meta/discovery-method.md) — The three questions
 - [Structural Language](../../theory/structural-language.md) — Formal B/L/D definitions
-- [Cross-Domain Prediction](../../mathematics/cross-domain-prediction.md) — VI to Neural translation
+- [Cross-Domain Prediction](../../meta/cross-domain-prediction.md) — VI to Neural translation

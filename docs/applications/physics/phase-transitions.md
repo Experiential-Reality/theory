@@ -3,7 +3,7 @@ status: DERIVED
 layer: application
 depends_on:
   - thermodynamics-validation.md
-  - ../../mathematics/derived/thermodynamics.md
+  - ../../mathematics/classical/thermodynamics.md
   - ../../mathematics/foundations/structural/compensation-principle.md
   - ../../mathematics/quantum/entanglement-entropy.md
 used_by:
@@ -12,7 +12,7 @@ used_by:
 
 # BLD for Phase Transitions
 
-> **Status**: Derived — follows from [Thermodynamics](../../mathematics/derived/thermodynamics.md) (VALIDATED, 10-test suite) and [Compensation Principle](../../mathematics/foundations/structural/compensation-principle.md) (PROVEN).
+> **Status**: Derived — follows from [Thermodynamics](../../mathematics/classical/thermodynamics.md) (VALIDATED, 10-test suite) and [Compensation Principle](../../mathematics/foundations/structural/compensation-principle.md) (PROVEN).
 
 ## Summary
 
@@ -40,7 +40,7 @@ Phase transitions are where **B changes** — the critical gap in current BLD ph
 
 | Finding | Status | Evidence |
 |---------|--------|----------|
-| Second law derived | **VALIDATED** | [Thermodynamics](../../mathematics/derived/thermodynamics.md) — 10-test suite |
+| Second law derived | **VALIDATED** | [Thermodynamics](../../mathematics/classical/thermodynamics.md) — 10-test suite |
 | Phase boundary as B | DERIVED | Partitions ordered/disordered |
 | Correlation length as L | DERIVED | Diverges at criticality |
 | L = -½ ln(1-ρ²) applies | DERIVED | Same formula as entanglement |
@@ -483,6 +483,6 @@ Compare systems with same (d, n) but different microscopic details:
 ## See Also
 
 - [Thermodynamics](thermodynamics-validation.md) — Entropy dynamics
-- [Thermodynamics (Math)](../../mathematics/derived/thermodynamics.md) — Energy landscape
+- [Thermodynamics (Math)](../../mathematics/classical/thermodynamics.md) — Energy landscape
 - [Physics Traverser](../../examples/physics-traverser.md) — Symmetry breaking (P11, P16)
 - [Compensation Principle](../../mathematics/foundations/structural/compensation-principle.md) — L→B compensation

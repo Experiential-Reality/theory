@@ -13,7 +13,7 @@ Physical systems analyzed through BLD structure.
 
 | File | Status | Description |
 |------|--------|-------------|
-| [epsilon2-origin.md](epsilon2-origin.md) | DERIVED | λ = 1/√20 from S₃ cascade |
+| [epsilon2-origin.md](../../mathematics/foundations/derivations/epsilon2-origin.md) | DERIVED | λ = 1/√20 from S₃ cascade |
 | [scale-hierarchy.md](scale-hierarchy.md) | DERIVED | v → M_P via λ⁻²⁶ |
 | [circuits.md](circuits.md) | VALIDATED | Electrical circuits as BLD |
 | [thermodynamics-validation.md](thermodynamics-validation.md) | VALIDATED | Thermodynamics validation |

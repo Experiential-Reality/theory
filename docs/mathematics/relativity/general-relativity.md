@@ -5,7 +5,7 @@ depends_on:
   - ../foundations/machine/universal-machine.md
   - ../foundations/structural/structural-cost-conservation.md
   - ../lie-theory/killing-form.md
-  - manifold-geometry.md
+  - ../geometry/manifold-geometry.md
   - ../foundations/derivations/equation-of-motion.md
 used_by:
   - ../cosmology/observer-correction.md
@@ -243,7 +243,7 @@ Where:
 
 ### Connection to BLD Conservation
 
-From [BLD Conservation](../bld-conservation.md):
+From [BLD Conservation](../foundations/structural/bld-conservation.md):
 ```
 BLD conservation = Noether's theorem = energy-momentum conservation
 ```
@@ -275,7 +275,7 @@ Free fall = following minimum-cost trajectory
 
 ### Why Objects Follow Geodesics
 
-From [Manifold Geometry](manifold-geometry.md):
+From [Manifold Geometry](../geometry/manifold-geometry.md):
 ```
 Free-falling objects have no external forces
 Their only "goal" is to traverse structure
@@ -600,6 +600,6 @@ GRAVITY = TRAVERSAL COST FROM MASS-INDUCED STACK DEPTH
 - [Universal Machine](../foundations/machine/universal-machine.md) — Stack depth hypothesis
 - [Structural Cost Conservation](../foundations/structural/structural-cost-conservation.md) — C_total = C_visible + C_hidden
 - [Killing Form](../lie-theory/killing-form.md) — K=2 derivation
-- [Manifold Geometry](manifold-geometry.md) — Metric structure, geodesics
+- [Manifold Geometry](../geometry/manifold-geometry.md) — Metric structure, geodesics
 - [Force Structure](../foundations/derivations/force-structure.md) — K/X for all forces
-- [BLD Conservation](../bld-conservation.md) — Conservation laws
+- [BLD Conservation](../foundations/structural/bld-conservation.md) — Conservation laws

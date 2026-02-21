@@ -107,7 +107,7 @@ The second law of thermodynamics becomes:
 
 This suggests thermodynamics might be derivable from structural alignment principles.
 
-**This has been derived and empirically validated** (10/10 tests pass; analytical proof sketched but incomplete). See [Thermodynamics from Structural Alignment](./thermodynamics.md).
+**This has been derived and empirically validated** (10/10 tests pass; analytical proof sketched but incomplete). See [Thermodynamics from Structural Alignment](../classical/thermodynamics.md).
 
 ---
 
@@ -176,7 +176,7 @@ Phase transitions correspond to changes in the dominant alignment minimum:
 - **Second-order**: Minimum changes shape continuously (curvature → 0 at critical point)
 - **Symmetry breaking**: Localization to one of multiple equivalent minima
 
-See [Thermodynamics from Structural Alignment](./thermodynamics.md) for the complete derivation.
+See [Thermodynamics from Structural Alignment](../classical/thermodynamics.md) for the complete derivation.
 
 ---
 
@@ -186,7 +186,7 @@ See [Thermodynamics from Structural Alignment](./thermodynamics.md) for the comp
 
 1. ~~**Irreducibility**: Can we prove B/L/D are the minimal generating set for structure description?~~ **Proved.** See [Irreducibility Proof](../foundations/proofs/irreducibility-proof.md). Type-theoretic proof shows sum, function, and product types are independent.
 
-2. ~~**Thermodynamics**: Can thermodynamics be derived from structural alignment?~~ **Derived and validated.** See [Thermodynamics](./thermodynamics.md). Energy = alignment cost, entropy = log manifold volume, second law from Fokker-Planck. 10/10 empirical tests pass.
+2. ~~**Thermodynamics**: Can thermodynamics be derived from structural alignment?~~ **Derived and validated.** See [Thermodynamics](../classical/thermodynamics.md). Energy = alignment cost, entropy = log manifold volume, second law from Fokker-Planck. 10/10 empirical tests pass.
 
 3. ~~**Information geometry connection**: Is our metric the Fisher-Rao metric?~~ **Proved.** On probability distribution submanifold, the Hessian of alignment cost (KL divergence) equals the Fisher information matrix. See Information-Geometric Foundation section in [Manifold Geometry](./manifold-geometry.md).
 
@@ -247,4 +247,4 @@ The cost prediction in `src/experiential_reality/model/predict.py` computes φ_T
 - [Lie Correspondence](../lie-theory/lie-correspondence.md) — BLD = Lie theory mapping
 - [Boundary Derivation](../lie-theory/boundary-derivation.md) — Exact B formula derivation
 - [Variational Inference](../../applications/ml/variational-inference.md) — Experimental validation
-- [Thermodynamics](./thermodynamics.md) — Statistical mechanics on the manifold
+- [Thermodynamics](../classical/thermodynamics.md) — Statistical mechanics on the manifold

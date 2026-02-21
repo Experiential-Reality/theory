@@ -52,7 +52,7 @@ The universal machine hypothesis (see [universal-machine.md](universal-machine.m
 | (M_P/m_e)² × 7 = integer | 2^51 × 5^31 × 137^4 (pure integer) |
 | Structural τ/μ = 17 | S + n = 13 + 4 (from [Lepton Masses](../../particle-physics/lepton-masses.md)) |
 | K = 2 = dim(ℂ) | i is the unit of observation |
-| Fano carries: 7-periodic correlated triples | r≈0.4 Fano, r=0 non-Fano ([Integer Factorization](integer-factorization.md#fano-structure-in-binary-carries)) |
+| K/X = 1 bit per coprime probe | Exact, across all k ([Integer Factorization](integer-factorization.md#the-probe-equation-kx--1)) |
 
 ## 2. Terminology
 
@@ -335,12 +335,6 @@ All other particle masses are related to m_e by BLD-integer ratios. The electron
 **Prediction**: The gap between bare (17) and observed (16.817) equals accumulated K/X corrections.
 
 **Test**: Compute K/X corrections and verify they account for the 17 → 16.817 reduction.
-
-### 6.5 Fano Structure in Binary Multiplication
-
-**Prediction**: The Fano carry correlation (r ≈ 0.4 at Fano-aligned bit positions, r = 0.0 at non-Fano positions) is a universal property of binary multiplication, not specific to factoring. It should persist across all operand sizes and multiplication contexts.
-
-**Test**: Measure carry correlations in base-8 arithmetic (base = dim(𝕆) = 8). The Fano structure should be especially pronounced. See [Integer Factorization: Fano Carries](integer-factorization.md#fano-structure-in-binary-carries).
 
 ---
 

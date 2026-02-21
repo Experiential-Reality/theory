@@ -155,7 +155,7 @@ Second-order = 1 + K×3/(n×L×B²)
 
 ### 4.1 λ = 1/√20 is Unique
 
-From [Epsilon2 Origin](../../applications/physics/epsilon2-origin.md):
+From [Epsilon2 Origin](../foundations/derivations/epsilon2-origin.md):
 
 ```
 S₃ cascade structure → C₃ pathways
@@ -386,5 +386,5 @@ Each prediction would test the framework: same structural values, correction det
 - [Killing Form](../lie-theory/killing-form.md) — K = 2 derivation
 - [Planck Derivation](planck-derivation.md) — ℏ derivation with observer corrections
 - [E7 Derivation](../particle-physics/e7-derivation.md) — B = 56, α⁻¹ derivation
-- [Epsilon2 Origin](../../applications/physics/epsilon2-origin.md) — λ = 1/√20 derivation
+- [Epsilon2 Origin](../foundations/derivations/epsilon2-origin.md) — λ = 1/√20 derivation
 - [Observer Correction](../cosmology/observer-correction.md) — Unified correction framework

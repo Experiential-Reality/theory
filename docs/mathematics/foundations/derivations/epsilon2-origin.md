@@ -2,11 +2,11 @@
 status: DERIVED
 layer: 2
 depends_on:
-  - ../../mathematics/foundations/definitions/bld-calculus.md
-  - ../../mathematics/lie-theory/lie-correspondence.md
+  - ../definitions/bld-calculus.md
+  - ../../lie-theory/lie-correspondence.md
 used_by:
-  - ../../mathematics/quantum/planck-derivation.md
-  - ../../mathematics/quantum/structural-observer-framework.md
+  - ../../quantum/planck-derivation.md
+  - ../../quantum/structural-observer-framework.md
 ---
 
 # Discovery: The Structural Origin of ε₂ = √λ
@@ -247,6 +247,6 @@ This is **structurally derived** from:
 
 ## References
 
-- [Mass Prediction](mass-prediction.md) — Up-quark anomaly details
-- [Validation Roadmap](validation-roadmap.md) — Status tracking
-- [Physics Traverser](../../examples/physics-traverser.md) — P11 axiom
+- [Mass Prediction](../../../applications/physics/mass-prediction.md) — Up-quark anomaly details
+- [Validation Roadmap](../../../meta/validation-roadmap.md) — Status tracking
+- [Physics Traverser](../../../examples/physics-traverser.md) — P11 axiom

@@ -85,29 +85,25 @@ The BLD = Lie theory correspondence.
 
 ---
 
-## Derived Results
+## Geometry
 
-Mathematical frameworks built on the foundations.
+Structural manifold theory.
 
-- [Manifold Foundations](./derived/manifold-foundations.md) — Structures as points, cost as divergence
-- [Manifold Geometry](./derived/manifold-geometry.md) — Metric structure, Fisher-Rao connection
-- [Manifold Applications](./derived/manifold-applications.md) — Domain interpretations
-- [Thermodynamics](./derived/thermodynamics.md) — Second law as geometric theorem
-- [Discovery Algorithm](./derived/discovery-algorithm.md) — Formal algorithm for finding BLD
-- [Performance Theorem](./derived/performance-theorem.md) — Traverser ordering from structure
-- [Special Relativity](./derived/special-relativity.md) — SR from BLD
-- [General Relativity](./derived/general-relativity.md) — GR from BLD
-- [Reynolds Derivation](./derived/reynolds-derivation.md) — **Re_c = 2300, Kolmogorov -5/3 from BLD**
-- [Feigenbaum Constants](./derived/feigenbaum-derivation.md) — **δ = 4.6692 (0.00003%), α = 2.5029 (0.0000005%)**
-- [She-Leveque Derivation](./derived/she-leveque-derivation.md) — **ζ_p = p/(n-1)² + K[1-(K/(n-1))^(p/(n-1))] from BLD**
+- [Manifold Foundations](./geometry/manifold-foundations.md) — Structures as points, cost as divergence
+- [Manifold Geometry](./geometry/manifold-geometry.md) — Metric structure, Fisher-Rao connection
+- [Manifold Applications](./geometry/manifold-applications.md) — Domain interpretations
 
----
+### Relativity
 
-## Standalone
+- [Special Relativity](./relativity/special-relativity.md) — SR from BLD
+- [General Relativity](./relativity/general-relativity.md) — GR from BLD
 
-- [BLD Conservation](./bld-conservation.md) — Noether's theorem in BLD
-- [Comparisons](./comparisons.md) — Relation to Roofline, Fisher-Rao, circuit complexity
-- [Cross-Domain Prediction](./cross-domain-prediction.md) — Cross-domain generalization
+### Classical Physics
+
+- [Thermodynamics](./classical/thermodynamics.md) — Second law as geometric theorem
+- [Reynolds Derivation](./classical/reynolds-derivation.md) — **Re_c = 2300, Kolmogorov -5/3 from BLD**
+- [Feigenbaum Constants](./classical/feigenbaum-derivation.md) — **δ = 4.6692 (0.00003%), α = 2.5029 (0.0000005%)**
+- [She-Leveque Derivation](./classical/she-leveque-derivation.md) — **ζ_p = p/(n-1)² + K[1-(K/(n-1))^(p/(n-1))] from BLD**
 
 ---
 

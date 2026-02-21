@@ -31,18 +31,6 @@ _PRIMES_200 = [m for m in tools.factoring.small_primes(200) if m > 2]
 _FANO_MATRIX = tools.factoring.build_fano_matrix()
 _FANO_SORTED = tools.factoring.FANO_SORTED
 
-# 0-indexed Fano set for carry analysis
-_FANO_0 = frozenset(
-    tuple(sorted([a - 1, b - 1, c - 1])) for a, b, c in tools.bld.FANO_TRIPLES
-)
-_NON_FANO_0 = frozenset(
-    (i, j, k)
-    for i in range(7)
-    for j in range(i + 1, 7)
-    for k in range(j + 1, 7)
-    if (i, j, k) not in _FANO_0
-)
-
 
 # =========================================================================
 # 1. Probe equation — K/X = 1 bit per coprime probe
@@ -419,51 +407,6 @@ class TestCostConservation:
         )
 
 
-# =========================================================================
-# 5. Fano carry correlation — r~0.4 Fano, r~0 non-Fano
-# =========================================================================
-
-
-class TestFanoCarryCorrelation:
-    """Fano-aligned position pairs have correlated carries (Claims 10, 21)."""
-
-    @pytest.mark.parametrize("k", [14, 21, 28])
-    def test_fano_correlation_positive(self, k: int) -> None:
-        """Fano triple carry correlation r > 0.15."""
-        fano_r, _ = tools.factoring.fano_carry_correlation(k, 2000, seed=42)
-        assert fano_r > 0.15, f"Fano r = {fano_r:.4f}, expected > 0.15"
-
-    @pytest.mark.parametrize("k", [14, 21, 28])
-    def test_non_fano_correlation_near_zero(self, k: int) -> None:
-        """Non-Fano triple carry correlation |r| < 0.1."""
-        _, non_fano_r = tools.factoring.fano_carry_correlation(k, 2000, seed=42)
-        assert non_fano_r < 0.1, f"Non-Fano |r| = {non_fano_r:.4f}, expected < 0.1"
-
-    @pytest.mark.parametrize("k", [14, 21, 28])
-    def test_fano_exceeds_non_fano(self, k: int) -> None:
-        """Fano r significantly exceeds non-Fano |r|."""
-        fano_r, non_fano_r = tools.factoring.fano_carry_correlation(k, 2000, seed=42)
-        assert fano_r > 3 * non_fano_r, (
-            f"Fano r={fano_r:.4f} not > 3× non-Fano |r|={non_fano_r:.4f}"
-        )
-
-    def test_fano_carry_percent_grows(self) -> None:
-        """Fano carry correlation increases with k.
-
-        Theory data: r goes from 0.36 (k=14) to 0.46 (k=35).
-        """
-        r_small, _ = tools.factoring.fano_carry_correlation(14, 2000, seed=42)
-        r_large, _ = tools.factoring.fano_carry_correlation(35, 2000, seed=42)
-        assert r_large > r_small, (
-            f"r(k=35)={r_large:.4f} not > r(k=14)={r_small:.4f}"
-        )
-
-    @pytest.mark.parametrize("k", [14, 21, 28])
-    def test_correlation_range(self, k: int) -> None:
-        """Fano r in expected range [0.15, 0.6]."""
-        fano_r, _ = tools.factoring.fano_carry_correlation(k, 2000, seed=42)
-        assert 0.15 < fano_r < 0.6, f"Fano r = {fano_r:.4f}, expected in (0.15, 0.6)"
-
 
 # =========================================================================
 # 6. Honest negatives — confirm failures
@@ -646,30 +589,3 @@ class TestHonestNegatives:
             )
 
 
-# =========================================================================
-# 7. Fano universality — predictions at larger k
-# =========================================================================
-
-
-class TestFanoUniversality:
-    """Fano carry structure persists at larger k (Prediction 6.5)."""
-
-    @pytest.mark.parametrize("k", [42, 56])
-    def test_fano_carries_large_k(self, k: int) -> None:
-        """Fano r > 0.1 at large k (extends beyond tested range)."""
-        fano_r, _ = tools.factoring.fano_carry_correlation(k, 1000, seed=42)
-        assert fano_r > 0.1, f"Fano r = {fano_r:.4f} at k={k}, expected > 0.1"
-
-    @pytest.mark.parametrize("k", [42, 56])
-    def test_non_fano_stays_zero_large_k(self, k: int) -> None:
-        """Non-Fano |r| < 0.1 at large k."""
-        _, non_fano_r = tools.factoring.fano_carry_correlation(k, 1000, seed=42)
-        assert non_fano_r < 0.1, f"Non-Fano |r| = {non_fano_r:.4f} at k={k}, expected < 0.1"
-
-    def test_non_multiple_of_7(self) -> None:
-        """Fano structure persists at k=30 (not a multiple of 7)."""
-        fano_r, non_fano_r = tools.factoring.fano_carry_correlation(30, 2000, seed=42)
-        assert fano_r > 0.1, f"Fano r = {fano_r:.4f} at k=30, expected > 0.1"
-        assert fano_r > 2 * non_fano_r, (
-            f"Fano r={fano_r:.4f} not > 2× non-Fano |r|={non_fano_r:.4f} at k=30"
-        )

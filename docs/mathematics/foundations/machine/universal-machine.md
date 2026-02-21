@@ -13,8 +13,8 @@ used_by:
   - ../derivations/force-structure.md
   - ../discovery-method.md
   - ../../cosmology/observer-correction.md
-  - ../../derived/special-relativity.md
-  - ../../derived/general-relativity.md
+  - ../../relativity/special-relativity.md
+  - ../../relativity/general-relativity.md
 ---
 
 ## Summary
@@ -240,8 +240,8 @@ At event horizon:
 ## 7. Relativity Derivations `[NOW COMPLETE]`
 
 The time dilation hypothesis is now rigorously derived. See:
-- [Special Relativity](../../derived/special-relativity.md) — c, γ, E=mc² from K/X
-- [General Relativity](../../derived/general-relativity.md) — Gravity as stack depth
+- [Special Relativity](../../relativity/special-relativity.md) — c, γ, E=mc² from K/X
+- [General Relativity](../../relativity/general-relativity.md) — Gravity as stack depth
 
 ### Key Results
 
@@ -321,12 +321,12 @@ The universal machine hypothesis interprets traverse(-B, B) as cosmic computatio
 
 ### Internal BLD References
 
-- [Special Relativity](../../derived/special-relativity.md) — c, γ, E=mc² from BLD
-- [General Relativity](../../derived/general-relativity.md) — Gravity as stack depth
+- [Special Relativity](../../relativity/special-relativity.md) — c, γ, E=mc² from BLD
+- [General Relativity](../../relativity/general-relativity.md) — Gravity as stack depth
 - [Genesis Function](../../cosmology/genesis-function.md) — traverse(-B, B) creates existence
 - [Discovery Method](../discovery-method.md) — How K/X was found
 - [Force Structure](../derivations/force-structure.md) — Complete force derivations
 - [Planck Derivation](../../quantum/planck-derivation.md) — M_P, l_P, t_P from BLD
 - [Structural Cost Conservation](../structural/structural-cost-conservation.md) — C_total = C_visible + C_hidden
-- [BLD Conservation](../../bld-conservation.md) — BLD conservation = Noether's theorem
+- [BLD Conservation](../structural/bld-conservation.md) — BLD conservation = Noether's theorem
 - [Killing Form](../../lie-theory/killing-form.md) — K = 2 derivation

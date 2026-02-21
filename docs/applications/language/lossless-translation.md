@@ -14,7 +14,7 @@ depends_on:
   - ../../mathematics/foundations/structural/factorization-calculus.md
   - ../../mathematics/foundations/structural/canonical-hardness.md
   - ../../mathematics/foundations/structural/compensation-principle.md
-  - ../../mathematics/derived/manifold-foundations.md
+  - ../../mathematics/geometry/manifold-foundations.md
   - ../../mathematics/lie-theory/boundary-derivation.md
 ---
 
@@ -397,7 +397,7 @@ The first layer is the homomorphism — perfect by construction. The second is w
 
 ### The Structural Manifold
 
-Translation lives on an information-geometric manifold ([Manifold Foundations](../../mathematics/derived/manifold-foundations.md)). The three primitives have distinct geometric character:
+Translation lives on an information-geometric manifold ([Manifold Foundations](../../mathematics/geometry/manifold-foundations.md)). The three primitives have distinct geometric character:
 
 | Primitive | Character | Scaling | In the Translator |
 |-----------|-----------|---------|-------------------|
@@ -608,6 +608,6 @@ This distinguishes the approach from neural machine translation:
 - [Factorization Calculus](../../mathematics/foundations/structural/factorization-calculus.md) — FACTOR = Levi decomposition
 - [Canonical Hardness](../../mathematics/foundations/structural/canonical-hardness.md) — NP-completeness of minimal BLD
 - [Compensation Principle](../../mathematics/foundations/structural/compensation-principle.md) — L compensates B, not vice versa
-- [Manifold Foundations](../../mathematics/derived/manifold-foundations.md) — Information-geometric manifold
+- [Manifold Foundations](../../mathematics/geometry/manifold-foundations.md) — Information-geometric manifold
 - [Boundary Derivation](../../mathematics/lie-theory/boundary-derivation.md) — Exact B cost formula with g(ρ,θ)
 - [Glossary](../../glossary.md) — Central definitions

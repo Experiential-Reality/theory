@@ -267,5 +267,5 @@ This connects BLD to a vast body of existing mathematics while providing an oper
 - [Glossary](../../glossary.md) — Central definitions
 - [Lie Correspondence](./lie-correspondence.md) — The basic BLD = Lie mapping
 - [Discovery Method](../../meta/discovery-method.md) — How to find BLD structure
-- [Discovery Algorithm](../derived/discovery-algorithm.md) — Formal algorithm specification
-- [Manifold Geometry](../derived/manifold-geometry.md) — The geometric structure where alignments live
+- [Discovery Algorithm](../../meta/discovery-algorithm.md) — Formal algorithm specification
+- [Manifold Geometry](../geometry/manifold-geometry.md) — The geometric structure where alignments live

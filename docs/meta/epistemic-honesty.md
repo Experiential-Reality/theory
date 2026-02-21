@@ -263,6 +263,6 @@ The goal is not to minimize claims, but to **accurately represent** what is know
 
 ## See Also
 
-- [Validation Roadmap](../applications/physics/validation-roadmap.md) — Status of all claims
+- [Validation Roadmap](validation-roadmap.md) — Status of all claims
 - [Mapping Rules](../applications/physics/mapping-rules.md) — How to assign B/L/D
 - [Discovery Method](discovery-method.md) — The three questions

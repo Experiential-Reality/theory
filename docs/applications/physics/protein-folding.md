@@ -2,7 +2,7 @@
 status: HYPOTHESIZED
 layer: application
 depends_on:
-  - ../../mathematics/derived/thermodynamics.md
+  - ../../mathematics/classical/thermodynamics.md
   - ../../mathematics/lie-theory/lie-correspondence.md
   - ../../theory/structural-language.md
   - ../../meta/epistemic-honesty.md
@@ -10,7 +10,7 @@ used_by:
   - ../../theory/structural-language.md
   - ../../theory/README.md
   - thermodynamics-validation.md
-  - ../../mathematics/derived/thermodynamics.md
+  - ../../mathematics/classical/thermodynamics.md
 ---
 
 # Protein Folding as Structural Alignment
@@ -546,8 +546,8 @@ This exploratory analysis requires the following tests before upgrading to valid
 
 - [Genetic Code](../biology/genetic-code.md) — Why 20 amino acids (L = n(n+1))
 - [Glossary](../../glossary.md) — Central definitions
-- [Thermodynamics](../../mathematics/derived/thermodynamics.md) — Free energy on the manifold
+- [Thermodynamics](../../mathematics/classical/thermodynamics.md) — Free energy on the manifold
 - [Lie Correspondence](../../mathematics/lie-theory/lie-correspondence.md) — Physics as Lie group
 - [Structural Language](../../theory/structural-language.md) — B/L/D specification
-- [Validation Roadmap](validation-roadmap.md) — Status of all physics claims
+- [Validation Roadmap](../../meta/validation-roadmap.md) — Status of all physics claims
 - [Epistemic Honesty](../../meta/epistemic-honesty.md) — Standards for claims

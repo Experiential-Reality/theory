@@ -3,7 +3,7 @@ status: VALIDATED
 layer: application
 depends_on:
   - ../../theory/structural-language.md
-  - ../../mathematics/derived/performance-theorem.md
+  - ../ml/performance-theorem.md
 used_by:
   - gpu-calibration.md
 ---
@@ -238,4 +238,4 @@ The framework remains: algorithm Structure meets hardware Traverser, alignment c
 - [Glossary](../../glossary.md) — Central definitions
 - [GPU Calibration](./gpu-calibration.md) — Hardware traverser measurement
 - [Structural Language](../../theory/structural-language.md) — TraverserLink definition
-- [Performance Theorem](../../mathematics/derived/performance-theorem.md) — Theoretical foundation
+- [Performance Theorem](../ml/performance-theorem.md) — Theoretical foundation

@@ -3,7 +3,7 @@ status: DERIVED
 layer: application
 depends_on:
   - ../../examples/physics-traverser.md
-  - validation-roadmap.md
+  - ../../meta/validation-roadmap.md
 used_by:
   - mass-prediction.md
 ---
@@ -402,4 +402,4 @@ python s3_potential_full.py
 
 - [Mass Prediction](mass-prediction.md) - Quantitative results
 - [Physics Traverser](../../examples/physics-traverser.md) - P11 and P12 axioms
-- [Validation Roadmap](validation-roadmap.md) - Status tracking
+- [Validation Roadmap](../../meta/validation-roadmap.md) - Status tracking

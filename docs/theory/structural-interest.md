@@ -52,10 +52,10 @@ Four metrics quantify structural interest, all derived from existing BLD theory:
 
 | Metric | Formula | Source | Interpretation |
 |--------|---------|--------|----------------|
-| **Structural entropy** | S = k ln Ω(E) | [Thermodynamics](../mathematics/derived/thermodynamics.md) | Configuration count at cost E |
+| **Structural entropy** | S = k ln Ω(E) | [Thermodynamics](../mathematics/classical/thermodynamics.md) | Configuration count at cost E |
 | **B×L synergy** | Synergy = Both - (B + L) | [Variational Inference](../applications/ml/variational-inference.md) | Non-additive coupling |
-| **Curvature** | K = ∂²cost/∂θ² | [Manifold Geometry](../mathematics/derived/manifold-geometry.md) | Sharpness of minimum |
-| **Phase proximity** | δB to transition | [Thermodynamics](../mathematics/derived/thermodynamics.md) | Distance to B change |
+| **Curvature** | K = ∂²cost/∂θ² | [Manifold Geometry](../mathematics/geometry/manifold-geometry.md) | Sharpness of minimum |
+| **Phase proximity** | δB to transition | [Thermodynamics](../mathematics/classical/thermodynamics.md) | Distance to B change |
 
 ### Structural Entropy
 
@@ -229,8 +229,8 @@ The interesting region is where alignment requires work—where the traverser mu
 ## See Also
 
 - [Glossary](../glossary.md) — Central definitions
-- [Thermodynamics](../mathematics/derived/thermodynamics.md) — Entropy, heat capacity, phase transitions
+- [Thermodynamics](../mathematics/classical/thermodynamics.md) — Entropy, heat capacity, phase transitions
 - [Variational Inference](../applications/ml/variational-inference.md) — B×L synergy validation
 - [Compensation Principle](../mathematics/foundations/structural/compensation-principle.md) — L compensating for B
-- [Manifold Geometry](../mathematics/derived/manifold-geometry.md) — Curvature on the structural manifold
-- [Documentation Structure](../examples/docs-structure.md) — Human traverser model
+- [Manifold Geometry](../mathematics/geometry/manifold-geometry.md) — Curvature on the structural manifold
+- [Documentation Structure](../meta/docs-structure.md) — Human traverser model

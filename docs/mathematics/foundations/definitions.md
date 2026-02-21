@@ -131,4 +131,4 @@ where penalty measures structural mismatch:
   - Misaligned: penalty = cost_multiplier × base_cost
 ```
 
-See [Performance Theorem](../derived/performance-theorem.md) for derivation.
+See [Performance Theorem](../../applications/ml/performance-theorem.md) for derivation.

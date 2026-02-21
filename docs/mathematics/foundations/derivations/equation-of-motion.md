@@ -11,8 +11,8 @@ depends_on:
 used_by:
   - ../../particle-physics/e7-derivation.md
   - ../../quantum/schrodinger-derivation.md
-  - ../../derived/general-relativity.md
-  - ../../derived/special-relativity.md
+  - ../../relativity/general-relativity.md
+  - ../../relativity/special-relativity.md
   - ../../../meta/proof-status.md
   - gauge-structure.md
   - weak-origin.md

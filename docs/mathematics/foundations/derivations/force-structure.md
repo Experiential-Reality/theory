@@ -13,8 +13,8 @@ used_by:
   - ../../particle-physics/e7-derivation.md
   - ../../particle-physics/fine-structure-consistency.md
   - ../../cosmology/observer-correction.md
-  - ../../derived/special-relativity.md
-  - ../../derived/general-relativity.md
+  - ../../relativity/special-relativity.md
+  - ../../relativity/general-relativity.md
   - ../../../meta/proof-status.md
 ---
 
@@ -456,7 +456,7 @@ This is fully derived since M_P and ℏ are both derived from BLD.
 
 ### 7.5 Gravity as K/X (Schwarzschild Connection)
 
-The gravitational K/X pattern extends to general relativity. See [General Relativity](../../derived/general-relativity.md) for full derivation.
+The gravitational K/X pattern extends to general relativity. See [General Relativity](../../relativity/general-relativity.md) for full derivation.
 
 **Key discovery**: The factor 2 in the Schwarzschild radius r_s = **2**GM/c² IS the Killing form K=2!
 
@@ -722,8 +722,8 @@ We have derived all four force coupling constants from the observation cost K/X 
 
 ### Internal BLD References
 
-- [Special Relativity](../../derived/special-relativity.md) — c, γ, E=mc² from K/X
-- [General Relativity](../../derived/general-relativity.md) — Gravity as K/X, Schwarzschild radius = K×GM/c²
+- [Special Relativity](../../relativity/special-relativity.md) — c, γ, E=mc² from K/X
+- [General Relativity](../../relativity/general-relativity.md) — Gravity as K/X, Schwarzschild radius = K×GM/c²
 - [Observation Cost](../discovery-method.md) — K/X principle and hidden structure
 - [Universal Machine](../machine/universal-machine.md) — K/X(universe) and remaining residuals
 - [BLD Calculus](../definitions/bld-calculus.md) — Foundational definitions

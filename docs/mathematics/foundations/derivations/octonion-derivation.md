@@ -363,9 +363,9 @@ String theory works in the full sl(2,𝕆) = so(9,1). BLD says that's the *pre-o
 
 See [Force Structure](force-structure.md) for the complete α⁻¹ derivation.
 
-### 9.5 Empirical Signature: Fano Carries in Binary Multiplication
+### 9.5 Fano Plane and Hamming Code
 
-The derivation of Im(𝕆) = 7 as minimum structure receives empirical support from an unexpected direction: binary multiplication. When bit positions of a product are grouped by index mod 7 and carry correlations measured, positions related by Fano plane triples (the multiplication table of the 7 imaginary octonions) show r ≈ 0.4 correlation, while non-Fano pairs show r = 0.0 exactly. The Fano incidence matrix has rank 4 over GF(2), giving 4 degrees of freedom per 7-block — numerically matching n = 4 spacetime dimensions derived in Section 6 above. This is the first empirical detection of octonion structure in elementary arithmetic. See [Integer Factorization: Fano Structure](../machine/integer-factorization.md#fano-structure-in-binary-carries).
+The Fano incidence matrix — encoding the multiplication table of Im(𝕆) — has rank 4 over GF(2), giving 4 data bits per 7-block. This makes it the parity-check matrix of the Hamming(7,4,3) code.
 
 ## 10. Related Work
 

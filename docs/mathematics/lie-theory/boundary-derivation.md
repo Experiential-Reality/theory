@@ -386,6 +386,6 @@ Repository: [github.com/rax-V/bld-vi-experiment](https://github.com/rax-V/bld-vi
 ## See Also
 
 - [Glossary](../../glossary.md) — Central definitions
-- [Manifold Geometry](../derived/manifold-geometry.md) — The structural manifold where B operates
+- [Manifold Geometry](../geometry/manifold-geometry.md) — The structural manifold where B operates
 - [Lie Correspondence](./lie-correspondence.md) — B = group topology
 - [Variational Inference](../../applications/ml/variational-inference.md) — Empirical validation

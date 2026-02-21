@@ -1,8 +1,8 @@
 ---
 status: DERIVED
 depends_on:
-  - lie-theory/lie-correspondence.md
-  - foundations/proofs/irreducibility-proof.md
+  - ../mathematics/lie-theory/lie-correspondence.md
+  - ../mathematics/foundations/proofs/irreducibility-proof.md
 ---
 
 # Comparisons to Existing Frameworks
@@ -279,7 +279,7 @@ The relationship is like:
 
 Lie theory tells you properties of symmetry groups. BLD tells you how to **find** the symmetry group in any system.
 
-See [Lie Correspondence](./lie-theory/lie-correspondence.md) for the full mapping and [Why Lie Theory](./lie-theory/why-lie-theory.md) for an accessible explanation.
+See [Lie Correspondence](../mathematics/lie-theory/lie-correspondence.md) for the full mapping and [Why Lie Theory](../mathematics/lie-theory/why-lie-theory.md) for an accessible explanation.
 
 ---
 
@@ -335,7 +335,7 @@ Work = N^{1/(2D)}
 3. **Structurally derived L-type.** The Legendre symbol emerges as the unique probe type from the T ∩ S detection framework, paralleling SU(3) as the unique gauge group from genesis closure. Both are derived, not chosen.
 4. **Honest negatives confirm structure.** Six attempts to exploit carries, backward channels, Born ordering, and Fano structure all failed for identifiable structural reasons, confirming D is the only lever.
 
-See [Integer Factorization](./foundations/machine/integer-factorization.md) for the full BLD decomposition and experimental data.
+See [Integer Factorization](../mathematics/foundations/machine/integer-factorization.md) for the full BLD decomposition and experimental data.
 
 ---
 
@@ -357,6 +357,6 @@ The pattern: the BLD framework doesn't replace existing frameworks—it provides
 ## See Also
 
 - [Glossary](../glossary.md) — Central definitions
-- [Lie Correspondence](./lie-theory/lie-correspondence.md) — BLD = Lie theory mapping
-- [Why Lie Theory](./lie-theory/why-lie-theory.md) — Accessible explanation
+- [Lie Correspondence](../mathematics/lie-theory/lie-correspondence.md) — BLD = Lie theory mapping
+- [Why Lie Theory](../mathematics/lie-theory/why-lie-theory.md) — Accessible explanation
 - [GPU Calibration](../applications/physics/gpu-calibration.md) — BLD vs Roofline in practice

@@ -2,9 +2,9 @@
 status: Meta
 layer: meta
 depends_on:
-  - llm-experiment.md
-  - self-reference.md
-  - ../meta/discovery-method.md
+  - ../theory/llm-experiment.md
+  - ../theory/self-reference.md
+  - discovery-method.md
   - ../mathematics/foundations/proofs/irreducibility-proof.md
   - ../mathematics/foundations/derivations/octonion-derivation.md
   - ../mathematics/lie-theory/lie-correspondence.md
@@ -59,7 +59,7 @@ The responses were revealing. When asked about structure, LLMs consistently desc
 
 Different models, different prompts, same three categories. This wasn't training bias—it was something about how structure *is*.
 
-The [LLM experiment](llm-experiment.md) documented this. The hypothesis: **structural perception is universal**, not model-specific.
+The [LLM experiment](../theory/llm-experiment.md) documented this. The hypothesis: **structural perception is universal**, not model-specific.
 
 ---
 
@@ -71,7 +71,7 @@ The three operations needed names:
 - **L** (Link): What connects to what?
 - **D** (Dimension): What repeats?
 
-These became the **three questions** of the [discovery method](../meta/discovery-method.md). Ask them of any system—code, data, physics, language—and you find its structure.
+These became the **three questions** of the [discovery method](discovery-method.md). Ask them of any system—code, data, physics, language—and you find its structure.
 
 The claim crystallized: **B, L, D are irreducible.** None can be expressed in terms of the others. The [irreducibility proof](../mathematics/foundations/proofs/irreducibility-proof.md) made this rigorous.
 
@@ -157,7 +157,7 @@ Yes. BLD syntax has:
 
 BLD is a **self-hosted language**. It compiles to physics, to code, to mathematics—and to its own specification.
 
-This is the [self-reference](self-reference.md) property. A language that describes its own compiler isn't arbitrary. It's capturing something real.
+This is the [self-reference](../theory/self-reference.md) property. A language that describes its own compiler isn't arbitrary. It's capturing something real.
 
 ---
 

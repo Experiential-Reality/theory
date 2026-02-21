@@ -123,7 +123,7 @@ THE THEORY CLOSES
 | B Must Exist | [nothing-instability.md](../cosmology/nothing-instability.md) | Follows from nothing-instability |
 | Genesis = traverse(-B, B) | [genesis-function.md](../cosmology/genesis-function.md) | Mutual observation = existence |
 | L/D = 5 | [cosmology-structure.md](../cosmology/cosmology-structure.md) | Links per dimension |
-| Thermodynamics | [thermodynamics.md](../derived/thermodynamics.md) | Second law from geometry |
+| Thermodynamics | [thermodynamics.md](../classical/thermodynamics.md) | Second law from geometry |
 | Tau mass ratio | [lepton-masses.md](../particle-physics/lepton-masses.md) | τ/μ = 16.817 (exact, three corrections) |
 
 ### DERIVED (Euler Connection)

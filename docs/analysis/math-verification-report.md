@@ -10,8 +10,8 @@ depends_on:
   - ../mathematics/particle-physics/muon-g2.md
   - ../mathematics/particle-physics/strong-coupling.md
   - ../mathematics/particle-physics/higgs-self-coupling.md
-  - ../mathematics/derived/feigenbaum-derivation.md
-  - ../mathematics/derived/reynolds-derivation.md
+  - ../mathematics/classical/feigenbaum-derivation.md
+  - ../mathematics/classical/reynolds-derivation.md
 used_by: []
 ---
 
@@ -341,7 +341,7 @@ See `particle-physics/boson-masses.md`.
 - δ = √(L + K − K²/L + 1/e^X) = 4.6692002
 - α = K + 1/K + 1/((n+K)B) − 1/(D·e^X) = 2.5029079
 
-**File**: `mathematics/derived/feigenbaum-derivation.md`
+**File**: `mathematics/classical/feigenbaum-derivation.md`
 **External Values**: δ = 4.6692016..., α = 2.5029078...
 **Errors**: δ at 0.00003%, α at 0.0000005%
 **Verdict**: ✅ **VERIFIED** — First derivation of Feigenbaum constants from first principles
@@ -351,7 +351,7 @@ See `particle-physics/boson-masses.md`.
 ### Reynolds Number (DERIVED)
 
 **BLD Claim**: Re_c(pipe) = (n×L×B/K) × (38/37) = 2300.5
-**File**: `mathematics/derived/reynolds-derivation.md`
+**File**: `mathematics/classical/reynolds-derivation.md`
 **External Value**: Re_c ≈ 2300 (engineering standard)
 **Error**: 0.02%
 **Verdict**: ✅ **VERIFIED** — Critical Reynolds number derived from structure

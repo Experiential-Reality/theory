@@ -12,6 +12,7 @@
 | [planck-derivation.md](planck-derivation.md) | DERIVED | ℏ magnitude (0.00003% accuracy) |
 | [structural-observer-framework.md](structural-observer-framework.md) | DERIVED | Observer correction algebra |
 | [born-rule.md](born-rule.md) | DERIVED | P = |ψ|² from bidirectional alignment |
+| [selection-rule.md](selection-rule.md) | DERIVED | Single-event selection: L→B on joint system+observer |
 | [wave-function-collapse.md](wave-function-collapse.md) | DERIVED | Collapse = L→B compensation; no-comm, no-cloning |
 | [schrodinger-derivation.md](schrodinger-derivation.md) | DERIVED | Complex numbers + linearity from BLD |
 | [theory-complete.md](theory-complete.md) | DERIVED | Complete BLD theory summary |

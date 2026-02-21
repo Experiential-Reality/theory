@@ -4,13 +4,13 @@ layer: application
 depends_on:
   - ../../mathematics/lie-theory/lie-correspondence.md
   - engine-temporal-scope.md
-  - ../../mathematics/derived/performance-theorem.md
+  - ../ml/performance-theorem.md
 used_by:
   - ../../theory/bld-as-language.md
   - engine-temporal-scope.md
   - ../../paths/practitioner.md
-  - ../../mathematics/derived/performance-theorem.md
-  - ../../mathematics/comparisons.md
+  - ../ml/performance-theorem.md
+  - ../../meta/comparisons.md
 ---
 
 # Calibration Analysis: Model Accuracy
@@ -237,5 +237,5 @@ See [Lie Correspondence](../../mathematics/lie-theory/lie-correspondence.md) for
 - [Glossary](../../glossary.md) — Central definitions
 - [Lie Correspondence](../../mathematics/lie-theory/lie-correspondence.md) — BLD = Lie theory
 - [Engine Temporal Scope](./engine-temporal-scope.md) — GPU engine parallelism
-- [Performance Theorem](../../mathematics/derived/performance-theorem.md) — Theoretical foundation
-- [Comparisons](../../mathematics/comparisons.md) — BLD vs Roofline model
+- [Performance Theorem](../ml/performance-theorem.md) — Theoretical foundation
+- [Comparisons](../../meta/comparisons.md) — BLD vs Roofline model

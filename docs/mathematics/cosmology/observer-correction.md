@@ -644,7 +644,7 @@ Every domain has the same structure: Machine + Structure → Solution.
 
 ### 6.4 Relativity
 
-Relativistic effects ARE K/X corrections applied to spacetime traversal. See [Special Relativity](../derived/special-relativity.md) and [General Relativity](../derived/general-relativity.md).
+Relativistic effects ARE K/X corrections applied to spacetime traversal. See [Special Relativity](../relativity/special-relativity.md) and [General Relativity](../relativity/general-relativity.md).
 
 | Quantity | Structure (Reference 1) | Machine (Reference 2) |
 |----------|------------------------|----------------------|
@@ -833,8 +833,8 @@ The same K = 2 (Killing form) that appears in observer corrections also governs 
 ## References
 
 - [Integer Machine](../foundations/machine/integer-machine.md) — Core framework: bare integers + K/X corrections
-- [Special Relativity](../derived/special-relativity.md) — c, γ, E=mc² from BLD
-- [General Relativity](../derived/general-relativity.md) — Gravity as K/X
+- [Special Relativity](../relativity/special-relativity.md) — c, γ, E=mc² from BLD
+- [General Relativity](../relativity/general-relativity.md) — Gravity as K/X
 - [Structural-Observer Framework](../quantum/structural-observer-framework.md) — Pre-observation structure
 - [Planck Derivation](../quantum/planck-derivation.md) — ℏ with observer corrections
 - [Killing Form](../lie-theory/killing-form.md) — K = 2 derivation

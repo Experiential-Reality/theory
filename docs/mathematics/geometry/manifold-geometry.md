@@ -306,4 +306,4 @@ Low curvature:  small structural changes → small cost changes (robust)
 - [Lie Correspondence](../lie-theory/lie-correspondence.md) — BLD = Lie theory mapping
 - [Boundary Derivation](../lie-theory/boundary-derivation.md) — Exact B formula derivation
 - [Variational Inference](../../applications/ml/variational-inference.md) — Experimental validation
-- [Thermodynamics](./thermodynamics.md) — Statistical mechanics on the manifold
+- [Thermodynamics](../classical/thermodynamics.md) — Statistical mechanics on the manifold

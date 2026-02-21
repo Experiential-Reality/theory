@@ -1,8 +1,8 @@
 ---
 status: VALIDATED
 depends_on:
-  - lie-theory/lie-correspondence.md
-  - derived/manifold-foundations.md
+  - ../mathematics/lie-theory/lie-correspondence.md
+  - ../mathematics/geometry/manifold-foundations.md
 ---
 
 # Cross-Domain Prediction Framework

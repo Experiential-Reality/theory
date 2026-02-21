@@ -3,8 +3,8 @@ status: DERIVED
 layer: application
 depends_on:
   - ../../mathematics/foundations/structural/compensation-principle.md
-  - ../../mathematics/derived/reynolds-derivation.md
-  - ../../mathematics/derived/she-leveque-derivation.md
+  - ../../mathematics/classical/reynolds-derivation.md
+  - ../../mathematics/classical/she-leveque-derivation.md
   - phase-transitions.md
   - thermodynamics-validation.md
 used_by:
@@ -25,7 +25,7 @@ used_by:
 3. Geometry multipliers via T ∩ S: n×B = 224 (flat plate), n(L+K)−1 = 87 (sphere) — [T ∩ S](#geometry-dependent-re-c-via-t--s)
 4. **Kolmogorov -5/3 = -L/(n(n-1)) (DERIVED)** — [Kolmogorov Exponents](#kolmogorov-exponents-derived)
 5. Intermittency = 1/(L+n+1) = 0.04 (DERIVED) — [Intermittency](#intermittency-correction)
-6. **She-Leveque ζ_p = p/(n-1)² + K[1-(K/(n-1))^(p/(n-1))] (DERIVED)** — [She-Leveque](../../mathematics/derived/she-leveque-derivation.md)
+6. **She-Leveque ζ_p = p/(n-1)² + K[1-(K/(n-1))^(p/(n-1))] (DERIVED)** — [She-Leveque](../../mathematics/classical/she-leveque-derivation.md)
 7. Navier-Stokes decomposes into BLD terms — [Navier-Stokes](#navier-stokes-as-bld-structure)
 8. Polymer drag reduction = B compensation — [Compensation](#compensation-in-turbulence)
 
@@ -380,7 +380,7 @@ escaped(geometry):
   - Destabilizing (jet): 1/K = 0.5
 ```
 
-See [Reynolds Derivation](../../mathematics/derived/reynolds-derivation.md) for full T ∩ S analysis.
+See [Reynolds Derivation](../../mathematics/classical/reynolds-derivation.md) for full T ∩ S analysis.
 
 ---
 
@@ -468,7 +468,7 @@ The laminar-turbulent transition is structurally similar to phase transitions:
 
 ## See Also
 
-- [Reynolds Derivation](../../mathematics/derived/reynolds-derivation.md) — Full Re_c derivation with T ∩ S analysis
+- [Reynolds Derivation](../../mathematics/classical/reynolds-derivation.md) — Full Re_c derivation with T ∩ S analysis
 - [Phase Transitions](phase-transitions.md) — Similar B change structure
 - [Thermodynamics](thermodynamics-validation.md) — Entropy production
 - [Circuits](circuits.md) — D×L scaling validation

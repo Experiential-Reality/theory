@@ -1,7 +1,7 @@
 ---
 status: VALIDATED
 depends_on:
-  - manifold-foundations.md
+  - ../geometry/manifold-foundations.md
   - ../foundations/derivations/energy-derivation.md
 ---
 
@@ -50,7 +50,7 @@ Let M be the space of all structures describable by B/L/D:
 M = {σ = (B, L, D) : valid structure}
 ```
 
-From the [manifold formalization](./manifold-applications.md):
+From the [manifold formalization](../geometry/manifold-applications.md):
 - M is stratified (discrete topology changes) and piecewise smooth (continuous within strata)
 - M has a natural measure dμ derived from the alignment metric
 - Each point σ ∈ M is a complete structural configuration
@@ -760,5 +760,5 @@ Test code: `~/src/bld-thermodynamics-test`
 
 - [Glossary](../../glossary.md) — Central definitions
 - [Thermodynamics Validation](../../applications/physics/thermodynamics-validation.md) — 10-test suite results
-- [Manifold Applications](./manifold-applications.md) — The structural manifold
+- [Manifold Applications](../geometry/manifold-applications.md) — The structural manifold
 - [Protein Folding](../../applications/physics/protein-folding.md) — Free energy as alignment cost

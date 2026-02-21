@@ -189,8 +189,8 @@ Both touch the same problem → solution emerges
 | ~~Derive Born rule form~~ | **DERIVED** | |ψ|² from bidirectional alignment (Killing form = 2). See [Born Rule](../mathematics/quantum/born-rule.md) |
 | ~~Entanglement entropy~~ | **DERIVED** | S = K × L = 2L at max entanglement. See [Entanglement Entropy](../mathematics/quantum/entanglement-entropy.md) |
 | ~~Black hole entropy~~ | **DERIVED** | S = K × L = A/(4ℓ_P²). Same formula as entanglement. See [Black Hole Entropy](../mathematics/quantum/black-hole-entropy.md) |
-| ~~Measurement collapse mechanism~~ | **DERIVED** | Collapse = L→B compensation. No-communication, no-cloning, irreversibility all derived. Ontology resolved: structural (physical/epistemic dichotomy dissolved). Explicit selection rule: f(\|O⟩) = argmax_k \|αₖ\|²/\|⟨Oₖ\|O⟩\|² (Dirichlet-Gamma decomposition + Gumbel-max trick). Born statistics EXACT for all N ≥ M with orthogonal pointer states, verified for M ∈ {2,...,50}, including degenerate amplitudes, complex phases, M = N boundary, and direct Dirichlet mechanism verification. τ = 1 (Born) is structurally unique — all other temperatures give \|αₖ\|^{2/τ}/Z. Joint measurement verified: Bell, non-maximal entangled, and GHZ states all exact with tensor product observer; factored independent observers fail for non-symmetric states. See [Wave Function Collapse](../mathematics/quantum/wave-function-collapse.md), [Born Rule](../mathematics/quantum/born-rule.md) |
-| Born rule deviation from pointer non-orthogonality | **PREDICTED** | Exact N-independent integral formula derived: P(f=0) = (1/2π) ∫₀²π I(θ) dθ, where I(θ) has three branches (via discriminant and Vieta's formulas on the quadratic At² + Bt + C). The Dirichlet normalization S cancels, making the result independent of observer dimension N. Taylor expansion: Δ(ε) = c₁ε + O(ε²) where c₁ = a₀a₁(a₀−a₁). For α² = (0.7, 0.3): c₁ = 0.084. Polynomial fit over [0, 0.5]: Δ(ε) ≈ 0.093ε² + 0.078ε. Integral verified against Monte Carlo for ε ∈ [0, 0.95]. Also verified via physical measurement simulation (H_int = σ_z ⊗ P, 192 test points, 36 random Hamiltonians, N_A ∈ {4,8,16,32}): formula matches physically-generated pointer states, confirming dependence on ε only. Deviation always biases toward dominant outcome; vanishes when a₀ = a₁. For M = 3, Born rule fails χ² at ε ≥ 0.10. Testable in controlled quantum systems with weak decoherence — falsifiable prediction unique to BLD. See [Born Rule, Testability](../mathematics/quantum/born-rule.md#testability). |
+| ~~Measurement collapse mechanism~~ | **DERIVED** | Collapse = L→B compensation. No-communication, no-cloning, irreversibility all derived. Ontology resolved: structural (physical/epistemic dichotomy dissolved). Explicit selection rule: f(\|O⟩) = argmax_k \|αₖ\|²/\|⟨Oₖ\|O⟩\|² (Dirichlet-Gamma decomposition + Gumbel-max trick). Born statistics EXACT for all N ≥ M with orthogonal pointer states, verified for M ∈ {2,...,50}, including degenerate amplitudes, complex phases, M = N boundary, and direct Dirichlet mechanism verification. τ = 1 (Born) is structurally unique — all other temperatures give \|αₖ\|^{2/τ}/Z. Joint measurement verified: Bell, non-maximal entangled, and GHZ states all exact with tensor product observer; factored independent observers fail for non-symmetric states. See [Wave Function Collapse](../mathematics/quantum/wave-function-collapse.md), [Selection Rule](../mathematics/quantum/selection-rule.md) |
+| Born rule deviation from pointer non-orthogonality | **PREDICTED** | Exact N-independent integral formula derived: P(f=0) = (1/2π) ∫₀²π I(θ) dθ, where I(θ) has three branches (via discriminant and Vieta's formulas on the quadratic At² + Bt + C). The Dirichlet normalization S cancels, making the result independent of observer dimension N. Taylor expansion: Δ(ε) = c₁ε + O(ε²) where c₁ = a₀a₁(a₀−a₁). For α² = (0.7, 0.3): c₁ = 0.084. Polynomial fit over [0, 0.5]: Δ(ε) ≈ 0.093ε² + 0.078ε. Integral verified against Monte Carlo for ε ∈ [0, 0.95]. Also verified via physical measurement simulation (H_int = σ_z ⊗ P, 192 test points, 36 random Hamiltonians, N_A ∈ {4,8,16,32}): formula matches physically-generated pointer states, confirming dependence on ε only. Deviation always biases toward dominant outcome; vanishes when a₀ = a₁. For M = 3, Born rule fails χ² at ε ≥ 0.10. Testable in controlled quantum systems with weak decoherence — falsifiable prediction unique to BLD. See [Selection Rule, Pointer Non-Orthogonality](../mathematics/quantum/selection-rule.md#pointer-non-orthogonality-testable-prediction). |
 | ~~Path integral formulation~~ | **DERIVED** | Forward and backward directions. See [Path Integral](../mathematics/quantum/path-integral.md) |
 | ~~Discrete symmetries (P, C, T)~~ | **DERIVED** | C=B (swap +B↔-B), P=D (reverse spatial), T=L (reverse temporal). CPT conservation from K=2 constancy. See [Chirality-CPT](../mathematics/quantum/chirality-cpt.md) |
 
@@ -329,7 +329,7 @@ Where X = n + K + K/n + 1/L = 6.55 and D = L + 1 - 1/n² = 20.9375
 
 **Universality**: Applies to r = K = 2 universality class (quadratic maxima). All physical systems have r = 2 due to Taylor expansion dominance. r = K = 2 is structural, not coincidence.
 
-**Reference**: [Feigenbaum Derivation](../mathematics/derived/feigenbaum-derivation.md)
+**Reference**: [Feigenbaum Derivation](../mathematics/classical/feigenbaum-derivation.md)
 
 ### Kolmogorov Exponents
 
@@ -339,7 +339,7 @@ Where X = n + K + K/n + 1/L = 6.55 and D = L + 1 - 1/n² = 20.9375
 | Dissipation | **DERIVED** | K/(n-1) | 2/3 | 2/3 | **exact** |
 | Intermittency | **DERIVED** | 1/(L+n+1) | 0.04 | ~0.04 | **exact** |
 
-**Reference**: [Reynolds Derivation](../mathematics/derived/reynolds-derivation.md)
+**Reference**: [Reynolds Derivation](../mathematics/classical/reynolds-derivation.md)
 
 ### She-Leveque Structure Functions
 
@@ -351,7 +351,7 @@ Where X = n + K + K/n + 1/L = 6.55 and D = L + 1 - 1/n² = 20.9375
 
 **Significance**: First derivation of She-Leveque parameters from first principles. All three "free parameters" (9, 2, 2/3) are BLD structural constants: (n-1)²=9, K=2, K/(n-1)=2/3. No e-correction (finite p, not continuous limit).
 
-**Reference**: [She-Leveque Derivation](../mathematics/derived/she-leveque-derivation.md)
+**Reference**: [She-Leveque Derivation](../mathematics/classical/she-leveque-derivation.md)
 
 ---
 

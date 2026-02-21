@@ -245,6 +245,7 @@ head -20 docs/mathematics/particle-physics/e7-derivation.md | grep -A10 "depends
 | **0** | Axioms, primitives, definitions | `foundations/axioms.md`, `definitions/`, `constants.md` |
 | **1** | Core proofs, Lie correspondence, octonions | `proofs/`, `lie-theory/`, `derivations/` |
 | **2** | Physics derivations | `particle-physics/`, `quantum/`, `cosmology/` |
+| **3** | Derived physics | `relativity/`, `classical/`, `geometry/` |
 | **app** | Applications | `applications/` |
 | **meta** | About the theory | `meta/`, `theory/` |
 
@@ -259,16 +260,20 @@ docs/
 │   │   ├── axioms.md           # START HERE for formal foundation
 │   │   ├── definitions/        # bld-calculus.md = the type system
 │   │   ├── proofs/             # irreducibility, completeness
-│   │   ├── derivations/        # octonions, force-structure
+│   │   ├── derivations/        # octonions, force-structure, epsilon2-origin
+│   │   ├── structural/         # compensation, conservation, cost, canonical
 │   │   └── machine/            # universal-machine, integer-machine
 │   ├── lie-theory/      # Layer 1: BLD = Lie theory correspondence
 │   ├── particle-physics/ # Layer 2: masses, couplings, predictions
-│   ├── quantum/         # Layer 2: Planck, Born rule, entropy
-│   └── cosmology/       # Layer 2: observer corrections, dark matter
+│   ├── quantum/         # Layer 2: Planck, Born rule, selection rule, entropy
+│   ├── cosmology/       # Layer 2: observer corrections, dark matter
+│   ├── relativity/      # Layer 3: SR, GR from BLD
+│   ├── classical/       # Layer 3: thermodynamics, turbulence (Reynolds, Feigenbaum, She-Leveque)
+│   └── geometry/        # Layer 3: structural manifold (foundations, geometry, applications)
 ├── theory/              # Meta: what BLD means, LLM experiments
 ├── applications/        # Code, ML, physics applications
 ├── examples/            # Worked examples (spacetime, zip, etc.)
-└── meta/                # Proof status, research directions
+└── meta/                # Proof status, methodology, comparisons, validation
 ```
 
 ### The derivation spine

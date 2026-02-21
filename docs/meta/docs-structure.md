@@ -3,7 +3,7 @@ status: FOUNDATIONAL
 layer: 1
 depends_on:
   - ../theory/structural-language.md
-  - ../meta/discovery-method.md
+  - discovery-method.md
   - ../glossary.md
 used_by:
   - ../theory/structural-interest.md
@@ -104,7 +104,9 @@ This documentation is itself a structure. Here is its BLD analysis.
 │       │   └── D₂: Subgroups (extent = 6)                                         │
 │       │       ├── foundations/      (6 docs)                                     │
 │       │       ├── lie-theory/       (5 docs)                                     │
-│       │       ├── derived/          (6 docs)                                     │
+│       │       ├── relativity/       (2 docs)                                     │
+│       │       ├── classical/        (4 docs)                                     │
+│       │       ├── geometry/         (3 docs)                                     │
 │       │       ├── quantum/          (8 docs)                                     │
 │       │       ├── cosmology/        (6 docs)                                     │
 │       │       └── particle-physics/ (6 docs)                                     │
@@ -138,7 +140,9 @@ By Section:
 │ mathematics/        │  41   │
 │   foundations/      │   6   │
 │   lie-theory/       │   5   │
-│   derived/          │   6   │
+│   relativity/       │   2   │
+│   classical/        │   4   │
+│   geometry/         │   3   │
 │   quantum/          │   8   │
 │   cosmology/        │   6   │
 │   particle-physics/ │   6   │
@@ -256,7 +260,7 @@ This validates D×L scaling: link count grows with dimension, boundaries don't.
 │                        META-STRUCTURE                           │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
-│  This document: docs/examples/docs-structure.md                 │
+│  This document: docs/meta/docs-structure.md                     │
 │                                                                 │
 │  Position in B: Foundational (example/specification)            │
 │  Position in D: examples/ section, document #8 of 8             │
@@ -283,6 +287,6 @@ This validates D×L scaling: link count grows with dimension, boundaries don't.
 ## See Also
 
 - [Glossary](../glossary.md) — The central L hub
-- [Discovery Method](../meta/discovery-method.md) — How to find structure
+- [Discovery Method](discovery-method.md) — How to find structure
 - [Structural Language](../theory/structural-language.md) — B/L/D specification
-- [BLD Conservation](../mathematics/bld-conservation.md) — Noether's theorem connection
+- [BLD Conservation](../mathematics/foundations/structural/bld-conservation.md) — Noether's theorem connection

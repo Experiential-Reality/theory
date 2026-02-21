@@ -118,7 +118,7 @@ The derivation chain:
 1. **Observer has quantum state |O⟩** — observers ARE BLD structures ([Completeness Proof](../foundations/proofs/completeness-proof.md), PROVEN), so they have quantum states ([Schrodinger Derivation](schrodinger-derivation.md), DERIVED).
 2. **Measurement entangles** system and observer: Σ αⱼ|j⟩|Oⱼ⟩ (from H_int interaction, DETERMINED per Claim 6).
 3. **K=2 bidirectional alignment** gives the joint probability: P(k) = |αₖ|² × |⟨Oₖ|O⟩|² ([Born Rule](born-rule.md), DERIVED from K=2).
-4. **L→B compensation** determines the specific outcome via the explicit selection rule ([Born Rule, Selection Rule](born-rule.md#the-explicit-selection-rule), DERIVED):
+4. **L→B compensation** determines the specific outcome via the explicit selection rule ([Selection Rule](selection-rule.md#the-explicit-selection-rule), DERIVED):
    ```
    f(|O⟩) = argmax_k |αₖ|² / |⟨Oₖ|O⟩|²   (maximize L/B = structural leverage)
    ```
@@ -128,7 +128,7 @@ The derivation chain:
 
 Why step 6 isn't circular: P = |ψ|² was DERIVED from K=2 bidirectional alignment ([Born Rule](born-rule.md)), independent of measurement. The Gumbel-max trick is a mathematical theorem about extreme value distributions. The selection rule uses Haar measure (DERIVED from BLD → Lie groups) and pointer states (DETERMINED by H_int per Claim 6).
 
-Source: [Born Rule, Single-Event Selection](born-rule.md) (DERIVED).
+Source: [Selection Rule](selection-rule.md) (DERIVED).
 
 **Step 5.** After measurement: state = |k⟩, B = {k} | {j≠k}.
 
@@ -146,7 +146,7 @@ This abstract principle has two specific mechanisms:
 
 Both are instances of "L constrains/determines B." Measurement L→B operates through alignment (K/X), not cascade approximation. But both inherit the asymmetry: the converse (B→L) fails in both cases. For measurement, this failure gives us irreversibility (Claim 4).
 
-**Extension to correlated measurements**: For entangled systems, the selection rule extends to the tensor product space. The observer must be a single joint state |O⟩ ∈ C^{N_A × N_B} with tensor product pointer states |O_{kj}⟩ = |O_{Ak}⟩ ⊗ |O_{Bj}⟩. The overlaps X_{kj} = |⟨O_{kj}|O⟩|² then form a Dirichlet distribution in the product space, and the Gumbel-max trick gives P(kj) = |α_{kj}|² exactly. Verified for Bell states, non-maximally entangled states, and GHZ-like 3-party states. Factored independent observers give incorrect statistics for non-symmetric entangled states — correlated L-structure (entanglement) requires a single joint observation event. See [Born Rule, Joint Measurement](born-rule.md#joint-measurement-tensor-product-observer).
+**Extension to correlated measurements**: For entangled systems, the selection rule extends to the tensor product space. The observer must be a single joint state |O⟩ ∈ C^{N_A × N_B} with tensor product pointer states |O_{kj}⟩ = |O_{Ak}⟩ ⊗ |O_{Bj}⟩. The overlaps X_{kj} = |⟨O_{kj}|O⟩|² then form a Dirichlet distribution in the product space, and the Gumbel-max trick gives P(kj) = |α_{kj}|² exactly. Verified for Bell states, non-maximally entangled states, and GHZ-like 3-party states. Factored independent observers give incorrect statistics for non-symmetric entangled states — correlated L-structure (entanglement) requires a single joint observation event. See [Selection Rule, Joint Measurement](selection-rule.md#joint-measurement-tensor-product-observer).
 
 ---
 
@@ -350,9 +350,9 @@ BLD's answer: The question assumes a false dichotomy.
 ### What Is Fully Answered
 
 - WHAT collapse is: L-structure determining B-creation (Claim 1)
-- WHY a specific outcome: L→B compensation on the joint system+observer state ([Born Rule](born-rule.md))
+- WHY a specific outcome: L→B compensation on the joint system+observer state ([Selection Rule](selection-rule.md))
 - WHY irreversible: B ≠ L (Claim 4)
-- WHY it looks random: observer microstate varies ([Born Rule](born-rule.md))
+- WHY it looks random: observer microstate varies ([Selection Rule](selection-rule.md))
 
 ### What Remains
 
@@ -439,7 +439,8 @@ Wave function collapse is **FULLY DERIVED** from BLD principles:
 ## References
 
 ### Internal BLD References
-- [Born Rule](born-rule.md) — Measurement as B-partition, P = |ψ|², single-event selection
+- [Born Rule](born-rule.md) — Measurement as B-partition, P = |ψ|²
+- [Selection Rule](selection-rule.md) — Single-event selection: L→B on joint system+observer
 - [Compensation Principle](../foundations/structural/compensation-principle.md) — L→B works, B→L fails (PROVEN)
 - [Irreducibility Proof](../foundations/proofs/irreducibility-proof.md) — B, L, D mutually irreducible (PROVEN)
 - [Killing Form](../lie-theory/killing-form.md) — K=2 bidirectional observation, T₂ ≤ 2T₁

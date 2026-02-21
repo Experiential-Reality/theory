@@ -77,7 +77,7 @@ Then optionally: [Categorical Proof](../mathematics/foundations/proofs/irreducib
 
 ## Step 5: The Structural Manifold
 
-**Read**: [The Structural Manifold](../mathematics/derived/manifold-foundations.md)
+**Read**: [The Structural Manifold](../mathematics/geometry/manifold-foundations.md)
 
 **Key takeaway**: Structures form a manifold. Alignment cost = divergence. Curvature comes from Lie bracket.
 
@@ -85,7 +85,7 @@ Then optionally: [Categorical Proof](../mathematics/foundations/proofs/irreducib
 
 ## Step 6: Conservation Laws
 
-**Read**: [BLD Conservation](../mathematics/bld-conservation.md)
+**Read**: [BLD Conservation](../mathematics/foundations/structural/bld-conservation.md)
 
 **Key takeaway**: Noether's theorem in BLD. Conservation laws ARE BLD conservation.
 
@@ -93,7 +93,7 @@ Then optionally: [Categorical Proof](../mathematics/foundations/proofs/irreducib
 
 ## Step 7: Thermodynamics
 
-**Read**: [Thermodynamics](../mathematics/derived/thermodynamics.md)
+**Read**: [Thermodynamics](../mathematics/classical/thermodynamics.md)
 
 **Key takeaway**: Second law as geometric theorem on the structural manifold.
 

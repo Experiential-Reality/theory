@@ -1,8 +1,8 @@
 ---
 status: FOUNDATIONAL
 depends_on:
-  - ../../examples/physics-traverser.md
-  - ../../meta/proof-status.md
+  - ../examples/physics-traverser.md
+  - proof-status.md
 ---
 
 # Physics Validation Roadmap
@@ -100,7 +100,7 @@ depends_on:
 **P11 Details (COMPLETE)**:
 - Claim: Mass hierarchy from S₃ → S₂ → {e} breaking cascade
 - Test: Compare mass ratios to S₃ representation structure
-- Status: **FULLY DERIVED** (see [s3-vacuum.md](s3-vacuum.md))
+- Status: **FULLY DERIVED** (see [s3-vacuum.md](../applications/physics/s3-vacuum.md))
 - **Key Results**:
   - Charge assignment: (3, 1, 0) for leptons and down-type quarks
   - Spurion ratio: ε = λ_Cabibbo = 0.225 (EXACT, not fitted)
@@ -187,7 +187,7 @@ where:
 - **Error**: 0.31% vs empirical √0.225 = 0.4743
 - **Physical origin**: 10×10 symmetric contraction couples to only ONE stage of S₃ → S₂ → {e} cascade
 - **BLD interpretation**: Up quarks see PARTIAL link (√λ), not full link (λ)
-- Full derivation: [epsilon2-origin.md](epsilon2-origin.md)
+- Full derivation: [epsilon2-origin.md](../mathematics/foundations/derivations/epsilon2-origin.md)
 
 **Status Summary**:
 | Sector | Status | Error | Notes |
@@ -265,13 +265,13 @@ where:
 | D×L scales entanglement | TESTABLE | N-qubit random states | Total S doesn't scale |
 | Measurement B is D-invariant | TESTABLE | Collapse vs system size | Collapse changes with N |
 
-**Entanglement entropy DERIVED** (see [entanglement-entropy.md](../../mathematics/quantum/entanglement-entropy.md)):
+**Entanglement entropy DERIVED** (see [entanglement-entropy.md](../mathematics/quantum/entanglement-entropy.md)):
 - ρ = C/√2 (BLD correlation = concurrence/√2)
 - S = K × L = 2L at maximum entanglement (exact)
 - S = 2L + H in general (H = basis-selection entropy)
 - Same √2 as Bell violation (SU(2) geometry)
 
-**Black hole entropy DERIVED** (see [black-hole-entropy.md](../../mathematics/quantum/black-hole-entropy.md)):
+**Black hole entropy DERIVED** (see [black-hole-entropy.md](../mathematics/quantum/black-hole-entropy.md)):
 - S = K × L = A/(4ℓ_P²) — same formula as entanglement
 - K = 2 (Killing form), L = A/(8ℓ_P²) = A/(2n ℓ_P²)
 - The 1/4 factor comes from n = 4 (spacetime dimensions)
@@ -325,9 +325,9 @@ where:
 
 1. **P9 (Triality)**: No 4th generation — already excluded, confirms prediction
 2. **P10 (θ = 0)**: Neutron EDM — ongoing experiments, θ < 10⁻¹⁰
-3. ~~**QM Entanglement**: L formula applicability~~ — **DERIVED**: S = K × L = 2L at max entanglement (exact). See [Entanglement Entropy](../../mathematics/quantum/entanglement-entropy.md)
-3b. ~~**Black Hole Entropy**: S = K × L~~ — **DERIVED**: Same formula as entanglement, 1/4 from n=4. See [Black Hole Entropy](../../mathematics/quantum/black-hole-entropy.md)
-4. ~~**Phase Transitions**: L formula at criticality~~ — **DERIVED**: L → ∞ as ρ → 1 at T_c. See [Phase Transitions](phase-transitions.md)
+3. ~~**QM Entanglement**: L formula applicability~~ — **DERIVED**: S = K × L = 2L at max entanglement (exact). See [Entanglement Entropy](../mathematics/quantum/entanglement-entropy.md)
+3b. ~~**Black Hole Entropy**: S = K × L~~ — **DERIVED**: Same formula as entanglement, 1/4 from n=4. See [Black Hole Entropy](../mathematics/quantum/black-hole-entropy.md)
+4. ~~**Phase Transitions**: L formula at criticality~~ — **DERIVED**: L → ∞ as ρ → 1 at T_c. See [Phase Transitions](../applications/physics/phase-transitions.md)
 4b. **Phase Transitions**: D×L critical scaling — numerical validation still needed
 
 ### Medium Priority (Mechanism Confirmation)
@@ -415,7 +415,7 @@ where:
 
 ## See Also
 
-- [Mapping Rules](mapping-rules.md) — How to assign B/L/D correctly
-- [Physics Traverser](../../examples/physics-traverser.md) — Full axiom derivations
-- [Circuits](circuits.md) — Validated reference
-- [Thermodynamics Validation](thermodynamics-validation.md) — Validated reference
+- [Mapping Rules](../applications/physics/mapping-rules.md) — How to assign B/L/D correctly
+- [Physics Traverser](../examples/physics-traverser.md) — Full axiom derivations
+- [Circuits](../applications/physics/circuits.md) — Validated reference
+- [Thermodynamics Validation](../applications/physics/thermodynamics-validation.md) — Validated reference

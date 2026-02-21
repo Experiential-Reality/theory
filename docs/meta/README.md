@@ -19,6 +19,18 @@ This directory contains documents about **how BLD theory is developed and mainta
 ### History
 
 - [Discovery History](discovery-history.md) — From JPEG decoder to fundamental physics: the actual discovery journey vs logical reconstruction
+- [Discovery Path](discovery-path.md) — The full journey from GPU kernels to BLD
+
+### Algorithms and Comparisons
+
+- [Discovery Algorithm](discovery-algorithm.md) — Formal algorithm for finding BLD structure
+- [Validation Roadmap](validation-roadmap.md) — Experimental validation tracking
+- [Comparisons](comparisons.md) — BLD vs Roofline, Fisher-Rao, circuit complexity
+- [Cross-Domain Prediction](cross-domain-prediction.md) — Cross-domain generalization framework
+
+### Documentation
+
+- [Docs Structure](docs-structure.md) — BLD structure of this documentation (self-referential)
 
 ---
 

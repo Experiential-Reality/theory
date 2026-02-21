@@ -16,7 +16,7 @@ depends_on:
   - ../particle-physics/particle-classification.md
   - ../particle-physics/boson-masses.md
   - ../particle-physics/higgs-self-coupling.md
-  - ../derived/general-relativity.md
+  - ../relativity/general-relativity.md
   - ../../examples/physics-traverser.md
   - planck-derivation.md
 used_by: []
@@ -439,7 +439,7 @@ The Higgs self-coupling prediction is particularly significant: BLD derives not 
 
 ### Gravity
 
-BLD derives n = 4 and the Einstein equations G_μν = (8πG/c⁴) T_μν ([General Relativity](../derived/general-relativity.md) §4, where 8π = K×n×π = 2×4×π). **Lovelock's theorem**: in 4D, the unique divergence-free symmetric 2-tensor from the metric and ≤2 derivatives is G_μν + Λg_μν. Therefore the gravitational action is uniquely:
+BLD derives n = 4 and the Einstein equations G_μν = (8πG/c⁴) T_μν ([General Relativity](../relativity/general-relativity.md) §4, where 8π = K×n×π = 2×4×π). **Lovelock's theorem**: in 4D, the unique divergence-free symmetric 2-tensor from the metric and ≤2 derivatives is G_μν + Λg_μν. Therefore the gravitational action is uniquely:
 
 ```
 S_gravity = (c⁴/16πG) ∫ (R - 2Λ) √(-g) d⁴x

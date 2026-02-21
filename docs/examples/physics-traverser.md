@@ -31,7 +31,7 @@ used_by:
 
 > **Status**: P1-P12 DERIVED; P13-P20 Mixed — see axiom-by-axiom status below
 
-> **Epistemic Note**: P1-P12 are now **FULLY DERIVED** from BLD primitives. P13-P20 remain hypothesis/mechanism level. Key recent advances: mass hierarchy (0% error with CG), CP phases (1.1% error), λ origin (0.3% error). See [Validation Roadmap](../applications/physics/validation-roadmap.md).
+> **Epistemic Note**: P1-P12 are now **FULLY DERIVED** from BLD primitives. P13-P20 remain hypothesis/mechanism level. Key recent advances: mass hierarchy (0% error with CG), CP phases (1.1% error), λ origin (0.3% error). See [Validation Roadmap](../meta/validation-roadmap.md).
 
 ## Axiom Status Summary
 
@@ -1597,7 +1597,7 @@ See [Research Directions](../meta/research-directions.md) for open problems and 
 - [e from BLD](./e-from-bld.md) — Validated discovery methodology
 - [π from BLD](./pi-from-bld.md) — Closure constant derivation
 - [Spacetime](./spacetime.md) — BLD analysis of spacetime structure
-- [BLD Conservation](../mathematics/bld-conservation.md) — Noether's theorem in BLD
+- [BLD Conservation](../mathematics/foundations/structural/bld-conservation.md) — Noether's theorem in BLD
 - [Lie Correspondence](../mathematics/lie-theory/lie-correspondence.md) — BLD = Lie theory
 - [E7 Derivation](../mathematics/particle-physics/e7-derivation.md) — B=56 from triality + Killing form
 - [Research Directions](../meta/research-directions.md) — Open problems

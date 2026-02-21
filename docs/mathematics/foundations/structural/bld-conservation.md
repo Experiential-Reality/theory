@@ -1,9 +1,9 @@
 ---
 status: DERIVED
 depends_on:
-  - lie-theory/lie-correspondence.md
+  - ../../lie-theory/lie-correspondence.md
 see_also:
-  - foundations/machine/integer-factorization.md
+  - ../machine/integer-factorization.md
 ---
 
 # BLD Conservation via Noether's Theorem
@@ -174,7 +174,7 @@ Noether's theorem: Rotational symmetry → angular momentum conservation.
 
 The constant **2π** appears because it measures the "size" of B—how much D×L is needed to traverse the closed boundary once.
 
-See [π from BLD](../examples/pi-from-bld.md) for the full derivation.
+See [π from BLD](../../../examples/pi-from-bld.md) for the full derivation.
 
 ---
 
@@ -203,7 +203,7 @@ For SO(2): exp(iθ) = cos(θ) + i·sin(θ) — this IS Euler's formula.
 
 The exponential map IS the mechanism by which symmetries generate conservation laws. Euler's formula shows the two types of conservation (quantized vs continuous) are aspects of a single structure.
 
-See [Euler's Formula in BLD](../glossary.md#eulers-formula-in-bld) and [Lie Correspondence](./lie-theory/lie-correspondence.md).
+See [Euler's Formula in BLD](../../../glossary.md#eulers-formula-in-bld) and [Lie Correspondence](../../lie-theory/lie-correspondence.md).
 
 ---
 
@@ -231,7 +231,7 @@ Conservation:
 
 **Example: Algorithm choice in factoring**
 
-C_total = k/2 bits is conserved across all factoring algorithms for a k-bit semiprime. Trial division makes all k/2 bits visible as sequential probes (C_hidden = 0). Pollard rho hides k/4 bits in the group structure of ℤ/pℤ. GNFS hides an exponential amount in the factor base. The symmetry is "algorithm choice" — any strategy is valid — and the conserved quantity is C_total. This extends BLD conservation from physics (where conserved quantities are charges and momenta) to computation (where the conserved quantity is information). See [Integer Factorization: Cost Conservation](foundations/machine/integer-factorization.md#cost-conservation-c_total--k2).
+C_total = k/2 bits is conserved across all factoring algorithms for a k-bit semiprime. Trial division makes all k/2 bits visible as sequential probes (C_hidden = 0). Pollard rho hides k/4 bits in the group structure of ℤ/pℤ. GNFS hides an exponential amount in the factor base. The symmetry is "algorithm choice" — any strategy is valid — and the conserved quantity is C_total. This extends BLD conservation from physics (where conserved quantities are charges and momenta) to computation (where the conserved quantity is information). See [Integer Factorization: Cost Conservation](../machine/integer-factorization.md#cost-conservation-c-total--k2).
 
 ---
 
@@ -281,8 +281,8 @@ The key insight: We don't need to prove BLD conservation separately—it follows
 
 ## See Also
 
-- [Glossary](../glossary.md) — Central definitions
-- [Lie Correspondence](./lie-theory/lie-correspondence.md) — BLD = Lie theory mapping
-- [π from BLD](../examples/pi-from-bld.md) — Why 2π appears in angular momentum
-- [Lie Algebra Examples](../examples/lie-algebras.md) — Worked examples (so(3), Heisenberg, Poincaré)
-- [Thermodynamics](./derived/thermodynamics.md) — Second law as geometric constraint
+- [Glossary](../../../glossary.md) — Central definitions
+- [Lie Correspondence](../../lie-theory/lie-correspondence.md) — BLD = Lie theory mapping
+- [π from BLD](../../../examples/pi-from-bld.md) — Why 2π appears in angular momentum
+- [Lie Algebra Examples](../../../examples/lie-algebras.md) — Worked examples (so(3), Heisenberg, Poincaré)
+- [Thermodynamics](../../classical/thermodynamics.md) — Second law as geometric constraint

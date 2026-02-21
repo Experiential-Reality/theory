@@ -384,7 +384,7 @@ Threshold value (~1%) may relate to:
   - Or code-specific geometric factors
 ```
 
-**Remark (Hamming structure in arithmetic).** The Fano incidence matrix — encoding the multiplication table of the 7 imaginary octonion units — is exactly the parity-check matrix of the Hamming(7,4,3) code: rank 4 over GF(2), 4 data bits, 3 parity bits per 7-block. This connects quantum error correction (syndrome measurement detects parity violations without collapsing data) to the carry structure of ordinary binary multiplication. In factoring, each 7-position carry block has only 4 degrees of freedom; the remaining 3 are determined by Fano parity constraints. See [Integer Factorization: Hamming Connection](../foundations/machine/integer-factorization.md#the-hamming-connection).
+**Remark (Hamming structure).** The Fano incidence matrix — encoding the multiplication table of the 7 imaginary octonion units — is exactly the parity-check matrix of the Hamming(7,4,3) code: rank 4 over GF(2), 4 data bits, 3 parity bits per 7-block. This connects quantum error correction (syndrome measurement detects parity violations without collapsing data) to the octonion algebra.
 
 ---
 

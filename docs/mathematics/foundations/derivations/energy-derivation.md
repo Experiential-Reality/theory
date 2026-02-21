@@ -10,7 +10,7 @@ depends_on:
 used_by:
   - ../../particle-physics/quark-masses.md
   - ../../particle-physics/boson-masses.md
-  - ../../derived/thermodynamics.md
+  - ../../classical/thermodynamics.md
 ---
 
 # Energy from BLD Structure
@@ -637,5 +637,5 @@ We have derived energy as accumulated observation cost E = K × Σ(1/Xᵢ), unif
 - [Observer Corrections](../../cosmology/observer-correction.md) — K/X framework
 - [Discovery Method](../discovery-method.md) — How this was derived
 - [Quark Masses](../../particle-physics/quark-masses.md) — Energy/scope explains top quark
-- [Thermodynamics](../../derived/thermodynamics.md) — Free energy and phase transitions
+- [Thermodynamics](../../classical/thermodynamics.md) — Free energy and phase transitions
 - [Force Structure](force-structure.md) — K/X applied to all four forces

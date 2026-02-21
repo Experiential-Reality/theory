@@ -741,5 +741,5 @@ See [Observer Corrections](../mathematics/cosmology/observer-correction.md) for 
 - [Lie Correspondence](../mathematics/lie-theory/lie-correspondence.md) — BLD = Lie theory mapping
 - [Compensation Principle](../mathematics/foundations/structural/compensation-principle.md) — The two mechanisms
 - [Traverser as Causal Agent](../glossary.md#traverser-as-causal-agent) — e as the do() operator
-- [BLD Conservation](../mathematics/bld-conservation.md) — Noether's theorem in BLD
+- [BLD Conservation](../mathematics/foundations/structural/bld-conservation.md) — Noether's theorem in BLD
 - [Research Directions](../meta/research-directions.md) — Next steps: physics traverser
