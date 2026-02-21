@@ -17,7 +17,7 @@ depends_on:
 1. i from ℂ ⊂ 𝕆 (octonion reference fixing) — [Deriving ℂ](#01-deriving-complex-numbers-from-bld)
 2. Linearity from Lie algebra structure (G is L-type) — [Deriving Linearity](#02-deriving-linearity-from-lie-algebra-structure)
 3. Unitarity from closed system (|ψ|² conserved → G anti-Hermitian) — [Conservation](#step-4-information-conservation)
-4. ℏ from scale hierarchy + K/(D×L) correction (0.00003%) — [ℏ Derivation](#open-problems)
+4. ℏ from scale hierarchy + K/(D×L) correction (0.00003%) — [ℏ Derivation](#resolved-problems)
 
 | Component | BLD Origin | Status |
 |-----------|------------|--------|
@@ -360,7 +360,7 @@ The BLD derivation goes further than all others: it derives WHY complex Hilbert 
 
 ---
 
-## Open Problems
+## Resolved Problems
 
 ### 1. Derive the Structure Constant Value (ℏ) — **RESOLVED**
 

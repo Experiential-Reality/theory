@@ -338,16 +338,7 @@ See also: [Discovery Method](../foundations/discovery-method.md) — How K/X was
 
 ### 2.5.1 Detection Structure Formalism (T ∩ S Rule)
 
-For the complete detection structure formalism, see [Detection Structure](../foundations/machine/detection-structure.md).
-
-**Quick reference:**
-- T = traverser (detector's BLD components)
-- S = particle structure (particle's BLD components)
-- Detection: T ∩ S ≠ ∅ → detected; T ∩ S = ∅ → escapes
-- X = X_traverser + X_escaped
-- Sign: "+" if something escapes, "−" if all detected
-
-This formalism reproduces all the "+" vs "−" assignments in the framework.
+For the complete detection structure formalism including sign determination, see [Detection Structure](../foundations/machine/detection-structure.md).
 
 ### 2.6 The Observation Cost Table
 

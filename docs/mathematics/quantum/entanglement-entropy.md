@@ -86,16 +86,6 @@ For a 2-qubit pure state, concurrence ranges from 0 (separable) to 1 (maximally 
 
 **Key observation**: At λ = 0.5 (maximum entanglement), S/L = 2.000 **exactly**.
 
-### Step 4: Verify the Arithmetic
-
-At λ = 0.5:
-```
-ρ² = 2 × 0.5 × 0.5 = 0.5
-L  = -½ ln(1 - 0.5) = -½ ln(0.5) = -½ × (-0.693) = 0.347
-S  = -0.5 ln(0.5) - 0.5 ln(0.5) = 0.693
-S/L = 0.693 / 0.347 = 2.000 ✓
-```
-
 ---
 
 ## The Complete Formula

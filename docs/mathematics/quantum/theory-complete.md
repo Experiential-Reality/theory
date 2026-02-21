@@ -251,9 +251,7 @@ BLD explains the form of existence. It does not explain why that form is *felt*.
 
 ### Specific Constants
 
-Why D=4 specifically? Why α⁻¹ ≈ 137?
-
-BLD constrains relationships between constants, but doesn't determine all values from first principles.
+BLD derives D=4 (from [octonion necessity](../foundations/derivations/octonion-derivation.md)) and α⁻¹ = 137 (from [constants](../foundations/constants.md)), but three empirical inputs remain: c, G, and v (the electroweak VEV).
 
 ### The Initial Conditions
 

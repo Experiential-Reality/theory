@@ -1304,729 +1304,97 @@ See `scripts/lepton_mass_predictor.py`:
 
 ## Dark Energy: De Sitter Boundary (P13)
 
-Dark energy (68% of the universe) may be fundamentally a **boundary structure (B)**, not a field or particle.
+**Problem**: Λ ≈ 10⁻⁵² m⁻² is 120 orders of magnitude smaller than naive QFT prediction. Why is Λ so small but non-zero?
 
-### The Problem: Dark Energy
+**BLD Hypothesis**: Dark energy is not a field energy density — it's a **topological boundary** of de Sitter spacetime. The de Sitter horizon at r_H = √(3/Λ) is a cosmological B (same structure as the light cone, P1). Holographic entropy S = A/(4ℓ_P²) provides the L structure. The universe's acceleration toward pure de Sitter is topological closure: D_cosmo × L_holographic = constant × B_horizon.
 
-The cosmological constant:
+**Axiom P13** (Holographic Cosmology): Dark energy is the topological boundary structure of de Sitter spacetime. Λ ∝ 1/A_horizon, where B_horizon = de Sitter causal boundary, L_holographic = horizon entropy, D_cosmo = observable universe extent. The "cosmological constant problem" may be misframed — dark energy is boundary (B), not field.
 
-```
-Observed: Λ ≈ 10⁻⁵² m⁻² (or ρ_Λ ≈ 10⁻⁴⁷ GeV⁴)
-
-This is 120 orders of magnitude smaller than naive QFT prediction.
-```
-
-Why is Λ so small but non-zero? The "cosmological constant problem" is unsolved.
-
-### BLD Analysis: Cosmological B Structure
-
-**Hypothesis**: Dark energy is NOT a field energy density — it's a **topological boundary** of de Sitter spacetime.
-
-```
-De Sitter spacetime:
-  - Has cosmological event horizon at r_H = √(3/Λ)
-  - Horizon area: A_dS = 4π r_H² = 12π/Λ
-  - Horizon entropy: S_dS = A_dS / (4 ℓ_P²) = 3π / (Λ ℓ_P²)
-```
-
-### Q1: Where does cosmological behavior partition? (Finding Hidden B)
-
-```
-De Sitter horizon is a BOUNDARY:
-  - Inside horizon: causally connected to observer
-  - Outside horizon: causally disconnected
-  - This is the same structure as the light cone (P1)!
-
-The de Sitter horizon IS a cosmological B.
-```
-
-**Hidden B Discovered**: The cosmological constant Λ parameterizes the **horizon boundary** of de Sitter spacetime.
-
-### Q2: What links across the horizon? (Finding Hidden L)
-
-```
-Holographic Principle:
-  - Information encoded on boundary
-  - Entropy scales with area, not volume
-  - S = A / (4 ℓ_P²)
-
-The holographic entropy IS the L structure:
-  L_holographic = information flow between bulk and boundary
-```
-
-### Q3: Closure in Cosmological D
-
-```
-De Sitter Closure:
-  - Universe accelerates toward de Sitter state
-  - Asymptotic future: pure de Sitter
-  - All observers see horizon
-
-This is topological closure at cosmological scale:
-  D_cosmo × L_holographic = constant × B_horizon
-```
-
-### What Falls Out: Dark Energy
-
-| Prediction | Status |
-|------------|--------|
-| Dark energy is B, not L or D | Hypothesis |
-| Λ from horizon area constraint | Hypothesis |
-| Doesn't interact with matter | ✓ Observed |
-| Causes accelerating expansion | ✓ Observed |
-| Uniform throughout space | ✓ Observed |
-
-### Proposed Axiom P13 (Holographic Cosmology)
-
-**Axiom P13**: Dark energy is the topological boundary structure of de Sitter spacetime.
-
-```
-P13: Holographic Cosmology
-
-The cosmological constant Λ arises from the
-topological boundary structure of de Sitter spacetime.
-
-  Λ ∝ 1/A_horizon
-
-where A_horizon is the de Sitter event horizon area.
-
-Structure:
-  B_horizon: De Sitter causal boundary
-  L_holographic: Horizon entropy / information
-  D_cosmo: Spatial extent of observable universe
-
-Consequence:
-  - Dark energy is boundary (B), not field
-  - Doesn't couple to matter (topological)
-  - Value determined by horizon constraint
-  - "Cosmological constant problem" may be misframed
-```
-
-### Connection to Other Closures
-
-This mirrors other topological closure arguments:
-
-| System | B Structure | Closure | Result |
-|--------|-------------|---------|--------|
-| Circles | Angular boundary | D×L = 2π×B | π |
-| θ-vacuum | Winding sectors | D×L = 2π×B | θ = 0 (P10) |
-| Cosmology | De Sitter horizon | D×L ~ B | Λ (P13) |
-
-The cosmological constant may be the closure constant for **cosmological-scale** topological structure.
+**Connections**: Same closure structure as circles (D×L = 2π×B → π) and θ-vacuum (D×L = 2π×B → θ = 0, P10).
 
 ---
 
 ## Coupling Constant Unification: Conformal Projection (P14)
 
-The three gauge coupling constants appear unrelated, but BLD analysis reveals they are projections of a single structure.
+**Problem**: At Z mass: α₁ ≈ 1/98, α₂ ≈ 1/29, α₃ ≈ 0.12. Why these values? In the Standard Model, they're independent parameters.
 
-### The Problem: Coupling Unification
+**BLD Hypothesis**: The three couplings are projections of a single conformal structure at different scales. B_GUT (GUT scale ~10¹⁶ GeV) is the partition boundary where α₁ ≈ α₂ ≈ α₃. Beta functions dα_i/d(ln E) = β_i(α) are the L structure connecting low and high energy. Energy scale D_energy = ln(E/E₀) is the single dimension along which all three run. Weinberg angle sin²θ_W = 3/8 at GUT scale follows from projection geometry.
 
-```
-Measured coupling constants (at Z mass scale):
-  α₁ ≈ 1/98   (U(1) hypercharge)
-  α₂ ≈ 1/29   (SU(2) weak)
-  α₃ ≈ 0.12   (SU(3) strong)
+**Axiom P14** (Conformal Unification): The gauge couplings α₁, α₂, α₃ are projections of a single abstract coupling: α_i(E) = projection_i(L_conformal, E). Low-energy values derive from single GUT coupling.
 
-Why these specific values? In the Standard Model, they're independent parameters.
-```
-
-### BLD Analysis: Couplings as Projections
-
-**Q1 Applied: Where do couplings partition? (Finding B)**
-
-```
-Couplings partition by energy scale:
-  - Low energy: α₁ < α₂ < α₃ (hierarchical)
-  - GUT scale (~10¹⁶ GeV): α₁ ≈ α₂ ≈ α₃ (unified)
-
-The partition boundary is the GUT scale itself.
-```
-
-**Q2 Applied: What connects the couplings? (Finding L)**
-
-```
-Beta functions are the L structure:
-  dα_i/d(ln E) = β_i(α)
-
-  β₀ coefficients from gauge group structure:
-    U(1): β₀ = 41/10
-    SU(2): β₀ = -19/6
-    SU(3): β₀ = -7
-
-The running IS the link — connecting low and high energy values.
-```
-
-**Q3 Applied: What repeats? (Finding D)**
-
-```
-Energy scale is the single dimension:
-  D_energy = ln(E/E₀)
-
-All three couplings run along the same D axis.
-They converge at GUT scale — unification point.
-```
-
-### What Falls Out: Coupling Unification
-
-| Prediction | Status |
-|------------|--------|
-| Couplings unify at high energy | ✓ Approximately (SUSY improves) |
-| Weinberg angle from projection geometry | ✓ sin²θ_W = 3/8 at GUT scale |
-| No arbitrary coupling values | ✓ All from one structure |
-
-### Axiom P14 (Conformal Unification)
-
-**Axiom P14**: The three gauge couplings are projections of a single conformal L structure.
-
-```
-P14: Conformal Unification
-
-The gauge couplings α₁, α₂, α₃ are projections of
-a single abstract coupling at different scales.
-
-  α_i(E) = projection_i(L_conformal, E)
-
-Structure:
-  B_GUT: Grand unification scale boundary
-  L_beta: Beta function running (structure constants)
-  D_energy: Logarithmic energy scale
-
-Consequences:
-  - Couplings reconverge at M_GUT
-  - Weinberg angle NOT independent — from projection
-  - Low-energy values derive from single GUT coupling
-```
+**Connections**: Unification scale connects to inflation (P19), S₃ breaking cascade (P16).
 
 ---
 
 ## Gravity as Diffeomorphism Boundary (P15)
 
-Gravity (spin-2) has fundamentally different BLD structure than gauge forces (spin-1).
+**Problem**: Gauge forces have SU(3)×SU(2)×U(1) with 12 generators. Gravity is spin-2, not part of gauge structure. Why is gravity different?
 
-### The Problem: Gravity
+**BLD Hypothesis**: Gravity doesn't just respect the light cone (P1) — it *defines* it: ds² = g_μν dx^μ dx^ν = 0. The metric g_μν determines where the causal boundary is at each point. This is B enforcement, not gauge L. The equivalence principle (G_μν = 8πG T_μν) is connection on spacetime itself, not internal space. Spin-2 has only 2 physical polarizations (boundary modes), not 12 like gauge.
 
-```
-Gauge forces: SU(3)×SU(2)×U(1) with 12 generators
-Gravity: Spin-2, not part of gauge structure
+**Axiom P15** (Diffeomorphism Boundary): Spin-2 gravity is the dynamical enforcement of the light-cone boundary (P1). B_lightcone = causality boundary at each point, L_metric = spacetime connection, D_gravity = 2 polarizations. Quantum gravity = quantum boundary dynamics.
 
-Why is gravity different? Why spin-2 specifically?
-```
-
-### BLD Analysis: Gravity as Boundary Enforcement
-
-**Q1 Applied: What boundary does gravity enforce?**
-
-```
-The light cone (P1) is the fundamental B of physics.
-
-Gravity doesn't just RESPECT this boundary — it DEFINES it:
-  ds² = g_μν dx^μ dx^ν = 0
-
-The metric g_μν determines WHERE the light cone is at each point.
-Gravity IS the dynamical enforcement of the causality boundary.
-```
-
-**Q2 Applied: What L structure does gravity have?**
-
-```
-Equivalence principle:
-  - No preferred frame
-  - Geometry determined by matter: G_μν = 8πG T_μν
-
-This is NOT gauge L (connection on internal space).
-This is B enforcement L (connection on spacetime itself).
-```
-
-**Q3 Applied: What D does gravity have?**
-
-```
-Spin-2 has 2 physical polarizations (not 12 like gauge):
-  2×2 - 2 = 2 modes (traceless, transverse)
-
-This is B structure, not gauge D:
-  - Gauge: D = number of generators = 12
-  - Gravity: D = 2 polarizations (boundary modes)
-```
-
-### What Falls Out: Gravity
-
-| Prediction | Status |
-|------------|--------|
-| Gravity is spin-2, not spin-1 | ✓ Boundary enforcement requires symmetric tensor |
-| Only 2 polarizations | ✓ Observed in gravitational waves |
-| Non-renormalizable | ✓ Topological structure doesn't fit QFT |
-| Universal coupling | ✓ Couples to stress-energy, not charge |
-
-### Axiom P15 (Diffeomorphism Boundary)
-
-**Axiom P15**: Spin-2 gravity is the dynamical enforcement of the light-cone boundary (P1).
-
-```
-P15: Diffeomorphism Boundary
-
-Gravity is boundary (B) enforcement made dynamical,
-not a gauge force with internal L structure.
-
-  G_μν = 8πG T_μν
-
-where:
-  G_μν = curvature (how B bends in spacetime)
-  T_μν = matter (source of B enforcement)
-
-Structure:
-  B_lightcone: Causality boundary at each point
-  L_metric: Spacetime connection (not internal)
-  D_gravity: 2 polarizations (boundary modes)
-
-Consequences:
-  - Gravity is topological (B), not geometric (L)
-  - Only 2 modes, not 12 — different from gauge
-  - Non-renormalizable by perturbative QFT
-  - Quantum gravity = quantum boundary dynamics
-```
+**Connections**: Depends on P1 (light cone). Non-renormalizability follows from topological (B) rather than geometric (L) character.
 
 ---
 
 ## Electroweak Scale: Triality-Breaking Threshold (P16)
 
-The Higgs vacuum expectation value v = 246 GeV is not arbitrary — it's determined by S₃ breaking structure.
+**Problem**: v = 246 GeV is 17 orders below M_Planck, 14 below M_GUT. Why? The hierarchy problem: v is a free parameter in the Standard Model.
 
-### The Problem: Electroweak Scale
+**BLD Hypothesis**: The S₃ breaking cascade creates a scale hierarchy with v as the second stage: Level 0: M_P (Planck cutoff) → Level 1: M_GUT (GUT breaking) → Level 2: v (Higgs vev, triality breaks here) → Level 3: m_f (fermion masses). The Higgs potential V(H) = λ(|H|² - v²)² links the scales, with v/M_GUT determined by S₃ representation ratios. v is structurally the second stage (S₃ → S₂ → {e}), not arbitrary.
 
-```
-Electroweak scale: v = 246 GeV
+**Axiom P16** (Triality-Breaking Scale): The electroweak scale v is determined by the second level of S₃ breaking cascade. B_EW = electroweak threshold, L_Higgs = potential connecting scales, D_cascade = breaking level 2. The hierarchy problem is reframed: v << M_P is natural second-stage suppression, not fine-tuning.
 
-Why this specific value? The hierarchy problem:
-  v << M_Planck by 17 orders of magnitude
-  v << M_GUT by 14 orders of magnitude
-
-Standard Model: v is a free parameter. Why so small?
-```
-
-### BLD Analysis: v as Second-Level S₃ Breaking
-
-**Q1 Applied: Where does scale behavior partition?**
-
-```
-S₃ Breaking Cascade creates scale hierarchy:
-  Level 0: M_P ≈ 10¹⁹ GeV  (Planck cutoff)
-  Level 1: M_GUT ≈ 10¹⁶ GeV (grand unification)
-  Level 2: v ≈ 246 GeV (electroweak breaking)
-  Level 3: m_f (individual fermion masses)
-
-Each level is a BOUNDARY in the S₃ cascade.
-```
-
-**Q2 Applied: What links the scales?**
-
-```
-Higgs potential creates the link:
-  V(H) = λ(|H|² - v²)²
-
-The vev v is determined by S₃ structure:
-  - v/M_GUT follows from S₃ representation ratios
-  - Specific ratio from spurion coupling strengths
-```
-
-**Q3 Applied: What dimension controls the cascade?**
-
-```
-D_scale = number of breaking steps
-
-  S₃ → S₂: First major breaking (GUT → EW)
-  S₂ → {e}: Second breaking (EW → fermion masses)
-
-v is structurally the SECOND stage, not arbitrary.
-```
-
-### What Falls Out: Electroweak Scale
-
-| Prediction | Status |
-|------------|--------|
-| v << M_GUT is natural | ✓ Second-stage breaking is suppressed |
-| Specific ratio v/M_GUT | Hypothesis — from S₃ representations |
-| Hierarchy problem reframed | ✓ Not fine-tuning, but cascade structure |
-
-### Axiom P16 (Triality-Breaking Scale)
-
-**Axiom P16**: The electroweak scale v is determined by the second level of S₃ breaking cascade.
-
-```
-P16: Triality-Breaking Scale
-
-The Higgs vev v = 246 GeV is determined by
-S₃ family symmetry breaking cascade structure.
-
-  S₃ Cascade:
-    Level 0: M_P (Planck cutoff)
-    Level 1: M_GUT (GUT breaking)
-    Level 2: v (Higgs vev) ← triality breaks here
-    Level 3: m_f (fermion masses)
-
-Structure:
-  B_EW: Electroweak symmetry breaking threshold
-  L_Higgs: Higgs potential connecting scales
-  D_cascade: Breaking level = 2
-
-Consequence:
-  - v/M_GUT from S₃ representation ratios
-  - Hierarchy problem: v << M_P is NATURAL second-stage
-  - No fine-tuning needed — structural cascade
-```
+**Connections**: Depends on P9 (triality/S₃), P11 (Yukawa/mass hierarchy), P14 (GUT scale).
 
 ---
 
 ## Neutrino Mass: Majorana Topological Boundary (P17)
 
-Neutrino masses are suppressed by a topological constraint: the Majorana boundary.
+**Problem**: m_ν < 0.1 eV — at least 6 orders of magnitude smaller than the electron mass. Why are neutrinos so much lighter than other fermions?
 
-### The Problem: Neutrino Mass
+**BLD Hypothesis**: Neutrino smallness is the geometric cost of Majorana character (ν = ν̄). The Majorana condition is a topological boundary: Dirac fermions have B separating particle from antiparticle; Majorana fermions lack this separation. The seesaw mechanism m_ν = m_Dirac²/M_R connects EW scale to GUT scale via L_seesaw, with M_R ~ M_GUT structurally determined. Three neutrinos from triality (P9) with same S₃ hierarchy as charged leptons, but suppressed by Majorana factor.
 
-```
-Neutrino masses: m_ν < 0.1 eV
+**Axiom P17** (Majorana Boundary): Neutrino mass suppression arises from the Majorana topological boundary. m_ν = m_Dirac²/M_R where B_Majorana = ν = ν̄ constraint, L_seesaw = link to heavy right-handed neutrinos, D_gen = 3 generations. Neutrinoless double beta decay required if Majorana.
 
-This is at least 6 orders of magnitude smaller than the electron mass.
-Why are neutrinos so much lighter than other fermions?
-```
-
-### BLD Analysis: Majorana Character as Boundary
-
-**Q1 Applied: What boundary constrains neutrino mass?**
-
-```
-Majorana vs Dirac partition:
-  Dirac fermion: particle ≠ antiparticle (B separates them)
-  Majorana fermion: particle = antiparticle (no B separation)
-
-Neutrinos may be Majorana — same as their antiparticle.
-This IS a topological boundary condition.
-```
-
-**Q2 Applied: What links neutrino mass to high scale?**
-
-```
-Seesaw mechanism:
-  m_ν = m_Dirac² / M_R
-
-where:
-  m_Dirac ~ v (electroweak scale)
-  M_R ~ M_GUT (right-handed neutrino mass)
-
-The link L_seesaw connects EW scale to GUT scale.
-```
-
-**Q3 Applied: What D structure?**
-
-```
-3 neutrinos from triality (P9):
-  - Same S₃ structure as charged leptons
-  - Mass hierarchy from same breaking cascade
-  - But suppressed by Majorana factor
-```
-
-### What Falls Out: Neutrino Mass
-
-| Prediction | Status |
-|------------|--------|
-| Neutrinos much lighter than charged fermions | ✓ Majorana seesaw suppression |
-| M_R ~ 10¹⁴-10¹⁵ GeV | Testable via leptogenesis |
-| Neutrinoless double beta decay | ✓ Required if Majorana |
-| 3 neutrino masses hierarchical | ✓ Same S₃ breaking as quarks/leptons |
-
-### Axiom P17 (Majorana Boundary)
-
-**Axiom P17**: Neutrino mass suppression arises from the Majorana topological boundary.
-
-```
-P17: Majorana Topological Boundary
-
-Neutrino smallness is geometric cost of Majorana character.
-
-  m_ν = m_Dirac² / M_R  (seesaw)
-
-where:
-  B_Majorana: ν ≈ ν̄ (particle = antiparticle boundary)
-  L_seesaw: Connection to right-handed sector
-  M_R ~ M_GUT (structurally determined)
-
-Structure:
-  B_Majorana: Topological constraint (ν = ν̄)
-  L_seesaw: Link to heavy right-handed neutrinos
-  D_gen: 3 generations (triality)
-
-Consequences:
-  - Small mass is structural necessity, not accident
-  - Neutrinoless ββ decay required if Majorana
-  - M_R ~ 10¹⁵ GeV connects to GUT scale
-  - Same S₃ structure for neutrino masses
-```
+**Connections**: Depends on P9 (triality), P16 (EW scale). M_R ~ 10¹⁵ GeV connects to GUT scale (P14). Feeds into leptogenesis (P18).
 
 ---
 
 ## Baryogenesis: S₃ Phase Compensation (P18)
 
-The matter-antimatter asymmetry arises from S₃ CP phases via compensation.
+**Problem**: n_B/n_γ ~ 10⁻¹⁰ (baryon-to-photon ratio). The universe has more matter than antimatter. Where does the asymmetry come from? (Sakharov conditions: baryon number violation, C/CP violation, departure from thermal equilibrium.)
 
-### The Problem: Baryogenesis
+**BLD Hypothesis**: CP symmetry creates the matter/antimatter partition (B_CP). S₃ breaking (P9, P11, P12) provides CP phases — CKM δ_CP ≈ 68°, PMNS phase — as the L structure. Strong CP is protected (P10: θ = 0), so only S₃ phases contribute. The asymmetry arises from L×D compensation: small L_CP (CP-violating phase) × large D_decay (heavy particle decay multiplicity) / B_equilibrium (departure from thermal equilibrium) = observable asymmetry ~ 10⁻¹⁰.
 
-```
-Observed: n_B/n_γ ~ 10⁻¹⁰ (baryon-to-photon ratio)
+**Axiom P18** (Baryogenesis Compensation): Matter asymmetry arises from S₃-breaking CP phase compensation. Asymmetry = L_CP × D_decay / B_equilibrium. Same S₃ structure creates mass hierarchy (P11), mixing angles (P12), and matter asymmetry (P18) — unified origin for all CP-related phenomena.
 
-The universe has more matter than antimatter.
-Where does this asymmetry come from?
-
-Sakharov conditions required:
-  1. Baryon number violation
-  2. C and CP violation
-  3. Departure from thermal equilibrium
-```
-
-### BLD Analysis: CP Violation from S₃ Breaking
-
-**Q1 Applied: What boundary separates matter/antimatter?**
-
-```
-CP symmetry creates the partition:
-  Matter: particles
-  Antimatter: antiparticles
-
-CP violation creates ASYMMETRY across this boundary.
-```
-
-**Q2 Applied: What L provides CP violation?**
-
-```
-S₃ breaking (P9, P11, P12) provides CP phases:
-  - CKM phase δ_CP ≈ 68°
-  - PMNS phase (not well measured)
-
-These phases ARE the L structure for baryogenesis.
-Strong CP is protected (P10: θ = 0), so only S₃ phases contribute.
-```
-
-**Q3 Applied: How does D compensate for small L?**
-
-```
-Compensation principle:
-  Small L_CP × Large D_decay = Observable asymmetry
-
-  L_CP: Small CP-violating phase from S₃ breaking
-  D_decay: Many heavy particle decays in early universe
-  B_eq: Departure from equilibrium at high temperature
-
-The asymmetry is L×D compensation.
-```
-
-### What Falls Out: Baryogenesis
-
-| Prediction | Status |
-|------------|--------|
-| CP violation from CKM/PMNS only | ✓ θ_QCD = 0 (P10) |
-| Asymmetry ~ 10⁻¹⁰ | ✓ L×D compensation |
-| Leptogenesis viable | ✓ Connects to neutrino seesaw (P17) |
-| Same source as mixing angles | ✓ S₃ breaking (P12) |
-
-### Axiom P18 (Baryogenesis Compensation)
-
-**Axiom P18**: Matter asymmetry arises from S₃-breaking CP phase compensation.
-
-```
-P18: Baryogenesis Compensation
-
-The baryon asymmetry n_B/n_γ ~ 10⁻¹⁰ arises from
-compensation of S₃-derived CP phases.
-
-  Asymmetry = L_CP × D_decay / B_equilibrium
-
-where:
-  L_CP: CP-violating phases (from CKM/PMNS via S₃ breaking)
-  D_decay: Heavy particle decay multiplicity
-  B_equilibrium: Departure from thermal equilibrium
-
-Structure:
-  B_CP: Matter/antimatter partition
-  L_phase: S₃-derived CP phases
-  D_decay: Decay multiplicity dimension
-
-Consequence:
-  - Same S₃ structure creates:
-    • Mass hierarchy (P11)
-    • Mixing angles (P12)
-    • Matter asymmetry (P18)
-  - Unified origin for all CP-related phenomena
-```
+**Connections**: Depends on P9 (S₃ triality), P10 (θ = 0), P11-P12 (S₃ breaking). Leptogenesis connects to neutrino seesaw (P17).
 
 ---
 
 ## Inflation: Symmetry Restoration Boundary (P19)
 
-Cosmic inflation is triggered by a phase transition boundary — symmetry restoration at GUT scale.
+**Problem**: The universe expanded exponentially (~60 e-folds) in early times, solving horizon and flatness problems. What triggered inflation? What ended it?
 
-### The Problem: Inflation
+**BLD Hypothesis**: Inflation is triggered by a phase transition boundary at T ~ M_GUT. B_restore = symmetry phase boundary (GUT ↔ SM); the inflaton sits at this B during slow roll. L_potential = slow-roll inflaton potential V(φ) with V' << V, acting as cosmological constant during inflation. D_efolds = ~60 e-folds, the repetition dimension with a(t) = e^(Ht). Inflation scale H ~ 10¹⁴ GeV (near M_GUT). Spectral index n_s ≈ 0.96 follows from slow-roll geometry.
 
-```
-The universe expanded exponentially in early times:
-  - ~60 e-folds of expansion
-  - Solves horizon problem (why CMB is uniform)
-  - Solves flatness problem (why Ω ≈ 1)
+**Axiom P19** (Symmetry Restoration Boundary): Inflation is triggered by the GUT symmetry restoration phase transition. Tensor modes (gravitational waves) are a testable consequence.
 
-What triggered inflation? What ended it?
-```
-
-### BLD Analysis: Phase Transition as B
-
-**Q1 Applied: What boundary triggers inflation?**
-
-```
-Phase transition boundary at T ~ M_GUT:
-  Below: Standard Model symmetry (broken GUT)
-  Above: GUT symmetry (restored, unified)
-
-The inflaton sits at this B during slow roll.
-```
-
-**Q2 Applied: What L drives expansion?**
-
-```
-Inflaton potential V(φ):
-  - Potential energy during transition
-  - Slow-roll condition: V' << V
-  - Acts as cosmological constant during inflation
-
-L_potential links inflaton field to expansion rate.
-```
-
-**Q3 Applied: What D characterizes inflation?**
-
-```
-Number of e-folds:
-  N = ∫ H dt ≈ 60
-
-This is the repetition dimension:
-  D_efold = 60 (required for observed flatness)
-
-Scale factor: a(t) = e^(Ht) — exponential in D.
-```
-
-### What Falls Out: Inflation
-
-| Prediction | Status |
-|------------|--------|
-| Inflation near GUT scale | ✓ H_inflation ~ 10¹⁴ GeV |
-| ~60 e-folds | ✓ Required by observations |
-| Spectral index n_s ≈ 0.96 | ✓ Observed |
-| Tensor modes (gravitational waves) | Testable |
-
-### Axiom P19 (Symmetry Restoration Boundary)
-
-**Axiom P19**: Inflation is triggered by the GUT symmetry restoration phase transition.
-
-```
-P19: Symmetry Restoration Boundary
-
-Inflation is triggered by the phase transition
-associated with GUT symmetry restoration.
-
-  V_inflaton during restoration → exponential expansion
-
-Structure:
-  B_restore: Symmetry phase boundary (GUT ↔ SM)
-  L_potential: Slow-roll inflaton potential
-  D_efolds: ~60 e-folds of expansion
-
-Consequences:
-  - Inflation scale H ~ 10¹⁴ GeV (near M_GUT)
-  - Connects to coupling unification (P14)
-  - Tensor modes (gravitational waves) detectable
-  - Spectral index from slow-roll geometry
-```
+**Connections**: Connects to coupling unification (P14) via GUT scale. Phase transition structure parallels EW breaking (P16).
 
 ---
 
 ## QFT Axioms: Cost Minimization (P20)
 
-Quantum field theory itself emerges as the minimum alignment cost framework.
+**Problem**: QFT has specific axioms — locality, unitarity, Lorentz invariance (P1), renormalizability. Why these axioms? Are they necessary or chosen?
 
-### The Problem: QFT Axioms
+**BLD Hypothesis**: QFT axioms minimize alignment cost between observable structure and theoretical structure. B_dispersion = on-shell/off-shell partition (E² = p² + m²). L_coupling = interaction vertices constrained by Lorentz invariance, locality (commutation), and unitarity (S†S = 1). D_modes = Fock space dimensions |n₁, n₂, ...⟩ where creation/annihilation repeat along each mode axis. Cost = B_misalignment + D_fields × L_interactions. Renormalizability follows from D×L scaling constraint.
 
-```
-QFT has specific axioms:
-  - Locality (fields at each point)
-  - Unitarity (probability conservation)
-  - Lorentz invariance (P1)
-  - Renormalizability (finite predictions)
+**Axiom P20** (QFT as Minimal Cost): QFT structure is alignment cost minimization between observables and theory. QFT isn't chosen — it's the unique minimal-cost framework. Non-renormalizable theories (gravity, P15) = higher cost structure.
 
-Why these axioms? Are they necessary or chosen?
-```
-
-### BLD Analysis: QFT as Minimal Cost Framework
-
-**Q1 Applied: What boundaries define QFT?**
-
-```
-Dispersion relation partitions spectrum:
-  E² = p² + m² for each particle
-
-This is a BOUNDARY in energy-momentum space:
-  - On-shell: E² - p² = m² (allowed modes)
-  - Off-shell: virtual particles (constrained)
-```
-
-**Q2 Applied: What L structures does QFT require?**
-
-```
-Lorentz invariance (P1) constrains operators.
-Locality requires operators at same point to commute/anticommute.
-Unitarity preserves probability (S†S = 1).
-
-These are L constraints from consistency.
-```
-
-**Q3 Applied: What D structure?**
-
-```
-Fock space is infinite-dimensional:
-  |n₁, n₂, ...⟩ = (a†₁)^n₁ (a†₂)^n₂ ... |0⟩
-
-Each mode is a D axis.
-Creation/annihilation repeat along these axes.
-```
-
-### What Falls Out: QFT Axioms
-
-| Prediction | Status |
-|------------|--------|
-| Locality required | ✓ From causality (P1) |
-| Unitarity required | ✓ From probability conservation |
-| Renormalizability preferred | ✓ From D×L scaling constraint |
-| Specific Lagrangian form | ✓ Minimal cost structure |
-
-### Axiom P20 (QFT as Minimal Cost)
-
-**Axiom P20**: QFT structure is alignment cost minimization between observables and theory.
-
-```
-P20: QFT as Minimal Cost Alignment
-
-QFT axioms (locality, unitarity, renormalizability)
-minimize alignment cost between:
-  - Observable structure (experiments)
-  - Theoretical structure (Lagrangian)
-
-  Cost = B_misalignment + D_fields × L_interactions
-
-Structure:
-  B_dispersion: On-shell/off-shell partition
-  L_coupling: Interaction vertices
-  D_modes: Fock space dimensions
-
-Consequences:
-  - Locality, unitarity EMERGE from minimization
-  - Renormalizability from D×L scaling constraint
-  - QFT isn't chosen — it's the unique minimal-cost framework
-  - Non-renormalizable theories (gravity) = higher cost structure
-```
+**Connections**: Depends on P1 (Lorentz invariance). Gravity's non-renormalizability (P15) is the exception that proves the rule.
 
 ---
 
@@ -2179,33 +1547,7 @@ P20:     ██████░░░░░░░░░░░░░░ (30% - Fra
 
 ## Research Directions
 
-### What Would Further Complete the Derivation?
-
-1. ✓ **Generation structure**: Triality explains N = 3 (P9)
-2. ✓ **Strong CP problem**: Topological closure explains θ ≈ 0 (P10)
-3. ✓ **Mass hierarchy**: S₃ breaking cascade mechanism (P11)
-4. ✓ **Mixing angles**: Tribimaximal as S₃ limit (P12)
-5. ✓ **Dark energy**: Holographic cosmology hypothesis (P13)
-6. **Gravity**: Include spin-2 graviton as gauge structure
-7. **Specific values**: Need S₃ breaking potential details
-
-### For Specific Mass Values
-
-- Identify spurion field representations
-- Compute S₃ potential minimization
-- Calculate RG flow effects on Yukawa couplings
-
-### For Mixing Angle Precision
-
-- Determine S₃ breaking potential for quarks vs leptons
-- Predict θ₁₃ from breaking strength
-- Connect CP phases to S₃ structure
-
-### For Dark Energy Value
-
-- Derive Λ from holographic principle constraints
-- Connect to anthropic bounds
-- Test observationally via horizon structure
+See [Research Directions](../meta/research-directions.md) for open problems and next steps.
 
 ---
 

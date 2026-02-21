@@ -324,39 +324,7 @@ Residuals (BLD_prediction - observed):
 
 The 110 MeV discrepancy in Higgs was exactly 1/(B×L) = 1/1120 of the predicted value. This led to the discovery of the second-order correction.
 
-### The B×L Discovery
-
-The old formula predicted 125.31 GeV but observed was 125.20 GeV (Δ = 110 MeV):
-```
-110 MeV / 125.31 GeV = 0.000878 ≈ 1/1139 ≈ 1/(B×L) = 1/1120
-```
-
-This wasn't an error — it was a missing correction. The Higgs IS the reference structure (B and L), so measuring m_H traverses B×L structure.
-
-### The Two-Sided Equation
-
-Every measurement equation has **two sides**, and both have BLD structure:
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    THE MEASUREMENT EQUATION                      │
-│                                                                  │
-│     OBSERVED VALUE          =          FORMULA VALUE             │
-│     (left side)                        (right side)              │
-│                                                                  │
-│   ┌─────────────────┐              ┌─────────────────┐          │
-│   │  Has BLD:       │              │  Has BLD:       │          │
-│   │  - B: boundary  │              │  - B: structure │          │
-│   │  - L: apparatus │      =       │  - L: formula   │          │
-│   │  - D: spacetime │              │  - D: constants │          │
-│   └─────────────────┘              └─────────────────┘          │
-│          ↑                                   ↑                   │
-│    TRAVERSER                           STRUCTURE                 │
-│    (pure observer)                     (pure observed)           │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-Our formulas account for **structure + observer corrections**. But the **traverser itself** also contributes.
+The 110 MeV Higgs discrepancy revealed the second-order correction: Δ/m_H ≈ 1/(B×L) = 1/1120. The Higgs IS the reference structure, so measuring m_H traverses B×L structure.
 
 ### Observer Corrections ARE Traversal Cost
 
@@ -517,64 +485,7 @@ All three electroweak boson masses are derived to within experimental measuremen
 
 ## Why Observer Corrections Exist
 
-The BLD values (v/2, v/e, etc.) are the **structural values** — what the octonions computed first. What we measure differs because **observation has a cost**. This isn't a flaw — it's fundamental to how observation works.
-
-### The Core Insight: You Can't Observe for Free
-
-From [Observer Corrections](../cosmology/observer-correction.md):
-
-> Every measurement requires **two points of reference**: the Machine (observer) and the Structure (observed). The solution is where they agree.
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    THE TWO-REFERENCE PRINCIPLE                   │
-│                                                                  │
-│   STRUCTURE (what exists)         MACHINE (what observes)        │
-│   ┌─────────────────────┐         ┌─────────────────────┐       │
-│   │                     │         │                     │       │
-│   │   v/2 = 123.11 GeV  │◄───────►│   (1+1/B)(1-1/BL)  │       │
-│   │   (Higgs base)      │         │   (observation cost)│       │
-│   │                     │         │                     │       │
-│   └─────────────────────┘         └─────────────────────┘       │
-│              │                              │                    │
-│              └──────────┬───────────────────┘                    │
-│                         │                                        │
-│                         ▼                                        │
-│              ┌─────────────────────┐                            │
-│              │  MEASUREMENT        │                            │
-│              │  = 125.20 GeV       │                            │
-│              │  (structure × cost) │                            │
-│              └─────────────────────┘                            │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-### Why K/X is the Universal Pattern
-
-The Killing form K = 2 represents **bidirectional observation** (see [Killing Form](../lie-theory/killing-form.md)):
-
-```
-To observe anything:
-  1. Send query:    Observer → Structure  (1 link)
-  2. Get response:  Structure → Observer  (1 link)
-  Total cost: K = 2 links (minimum for observation)
-```
-
-The observation cost K/X appears because:
-- **X** = the structure being traversed (B, n×L, n²S, etc.)
-- **K** = the observation cost (2 for bidirectional, 1 for ratios)
-- **K/X** = what fraction of the structure is "consumed" by observing
-
-### Why BLD Numbers Are "Real"
-
-The structural BLD values are what the octonions computed first:
-- v/2 = 123.11 GeV is the structural Higgs mass
-- v/e = 90.58 GeV is the structural Z mass (via continuous limit)
-
-What we **measure** includes observation cost:
-- m_H = (v/2) × (1 + 1/B) × (1 - 1/(B×L)) = 125.20 GeV
-- m_Z = (v/e) × corrections = 91.19 GeV
-
-The difference isn't error — it's the **irreducible cost of measurement**. You can't observe a structure without being part of it, and being part of it changes what you see by exactly K/X.
+Structural BLD values (v/2, v/e) differ from measured values by exactly K/X — the irreducible cost of bidirectional observation. See [Observer Corrections](../cosmology/observer-correction.md) for the two-reference framework and [Killing Form](../lie-theory/killing-form.md) for why K = 2.
 
 ### The "Zeroing" Principle
 

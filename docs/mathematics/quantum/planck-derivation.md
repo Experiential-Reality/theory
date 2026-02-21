@@ -310,72 +310,17 @@ This is **DERIVED** from BLD structure:
 
 ---
 
-## Scale Hierarchy Relationships
-
-From [Scale Hierarchy](../../applications/physics/scale-hierarchy.md):
-
-```
-M_P ≈ 1.22 × 10¹⁹ GeV    (Planck)
-    × λ⁸ ≈ 6.4 × 10⁻⁶
-M_GUT ≈ 2 × 10¹⁶ GeV     (GUT unification)
-    × λ²¹ ≈ 1.2 × 10⁻¹⁴   (mechanism under investigation)
-v ≈ 246 GeV              (electroweak / Higgs VEV)
-```
-
-### Numerical Check
-
-**M_P/M_GUT**:
-```
-M_P/M_GUT = (1.22 × 10¹⁹) / (2 × 10¹⁶) = 610
-
-λ⁻⁸ = 20⁴ = 160000
-
-Ratio: 610 / 160000 ≈ 0.004  → λ⁸ gives ~160000, actual ~610
-```
-
-The λ⁻⁸ relationship is approximate, not exact. The actual n needs refinement.
-
-**M_P/v**:
-```
-M_P/v = (1.22 × 10¹⁹) / (2.46 × 10²) = 4.96 × 10¹⁶
-
-If M_P = v × λ^(-n_c):
-  4.96 × 10¹⁶ = λ^(-n_c)
-  log(4.96 × 10¹⁶) = -n_c × log(λ)
-  16.7 = -n_c × (-0.65)
-  n_c ≈ 25.7
-```
-
-So M_P ≈ v × λ⁻²⁵·⁷ — not an integer, but close to n_c = 26.
-
 ---
 
-## The Derivation Hypothesis
+## ℏ From BLD
 
-### If M_P = v × λ^(-n_c) with n_c derived from BLD:
+Since M_P = v × λ^(-n_c) with n_c = B/2 − K = 26 (derived), and M_P = √(ℏc/G):
 
-From M_P = √(ℏc/G):
 ```
-M_P² = ℏc/G
-ℏ = M_P² × G/c
+ℏ = v² × λ^(-2×n_c) × G/c
 ```
 
-If M_P = v × λ^(-n_c):
-```
-ℏ = (v × λ^(-n_c))² × G/c
-  = v² × λ^(-2×n_c) × G/c
-```
-
-### What This Would Mean
-
-**Empirical inputs before**: {ℏ, c, G, v, m_e, "SU(3) exists"}
-
-**Empirical inputs after**: {c, G, v, m_e, "SU(3) exists"}
-
-We would **remove ℏ** from the empirical list — it would be derived from:
-- v (Higgs VEV) — empirical
-- λ (BLD structural parameter) — **DERIVED**
-- c, G — empirical (spacetime/gravity constants)
+This removes ℏ from the empirical input list. Remaining empirical inputs: {c, G, v}.
 
 ---
 
@@ -390,29 +335,9 @@ We would **remove ℏ** from the empirical list — it would be derived from:
 | n×L | 80 | 4 × 20 (dimensions × Riemann) | DERIVED |
 | α⁻¹ | 137.036 | B + n×L + 1 + 2/B | DERIVED |
 
-### Searching for Relationships
+### Key relationship
 
-**λ² × B**:
-```
-λ² × B = (1/20) × 56 = 56/20 = 2.8
-```
-
-**λ² × (n×L)**:
-```
-λ² × (n×L) = (1/20) × 80 = 4
-```
-
-**n×L / B**:
-```
-(n×L)/B = 80/56 = 10/7 ≈ 1.43
-```
-
-**α⁻¹ × λ²**:
-```
-α⁻¹ × λ² = 137 × (1/20) = 6.85
-```
-
-**Observation**: λ² × (n×L) = 4 exactly! This is 2² — could relate to Killing form.
+λ² × (n×L) = (1/20) × 80 = 4 = K² = n. Coupling × geometry = observation.
 
 ---
 

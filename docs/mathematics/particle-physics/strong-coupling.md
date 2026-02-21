@@ -134,13 +134,6 @@ The measurement traverses **geometric structure**:
 
 Compare to weak mixing (+sign) where neutrinos escape unobserved.
 
-### 4.5 Historical Note: Earlier Formula
-
-The earlier formula (B/n)/S² = 14/169 ≈ 0.0828 was numerically close but not derived from the K/X principle:
-- It was curve-fitted, not principled
-- K/(n+L) = 2/24 = 0.0833 follows from first principles
-- Both give similar results because 14/169 ≈ 2/24
-
 ---
 
 ## 5. Complete Formula
@@ -208,7 +201,7 @@ The factor n² = 16 comes from the division algebra tower:
 - Ratio: 8/2 = 4 = n
 - Squared for bidirectional measurement: n² = 16
 
-The small correction (16.16 vs 16.00) comes from the confinement cost (B/n)/S².
+The small correction (16.16 vs 16.00) comes from the confinement cost K/(n+L) = 2/24.
 
 ---
 

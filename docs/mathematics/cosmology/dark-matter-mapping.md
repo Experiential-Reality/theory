@@ -387,4 +387,4 @@ This occurs about **17 billion years from now** (universe age ~30 Gyr).
 ### Internal BLD References
 - [Cosmology Structure](cosmology-structure.md) — The L/D=5 derivation
 - [Observer Corrections](observer-correction.md) — The 2% correction
-- [E₇ Connection](../particle-physics/e7-connection.md) — B=56 speculation
+- [E₇ Derivation](../particle-physics/e7-derivation.md) — B=56 from triality + Killing form

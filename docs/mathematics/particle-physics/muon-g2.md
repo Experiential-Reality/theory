@@ -340,26 +340,7 @@ Or using structural ratio:
 
 ---
 
-## Alternative Derivation: From Second-Order Corrections
-
-### The General Form
-
-From [Observer Corrections](../cosmology/observer-correction.md), observer corrections follow K/X. For second-order effects (like loop diagrams), we get (K/X)²:
-
-```
-second-order correction = (K/X)² = K²/X²
-```
-
-For g-2, the muon's anomalous moment involves a loop correction at the geometric scale:
-
-```
-Δa_μ = α² × (K/(n×L))² × (1/S)
-     = α² × K² / ((n×L)² × S)
-```
-
-This is α² (two-photon coupling) times (K/(n×L))² (geometric traversal squared) times 1/S (generation factor).
-
-### Why Not e² Here?
+## Why Not e² Here?
 
 The fine structure accumulated term uses e²:
 ```

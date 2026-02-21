@@ -525,36 +525,17 @@ end_of_central_dir
 
 These are discovered by drawing, not by theorizing:
 
-### 1. Transformation ✓ Resolved
-Is `input → [process] → output` a structural concept, or behavioral?
-
-**Resolution:** A process IS structure—it's a dimension whose elements are intermediate structures, with links defining traversal order.
-
-```
-process: dimension[N]
-├── element[0]: input structure
-├── element[1]: intermediate structure
-├── ...
-└── element[N]: output structure
-
-links: element[i] → element[i+1]  (traversal order)
-```
-
-The "cost" of a process is the path length through this dimension. Short paths = low cost. Paths with cycles or backtracking = high cost.
-
-This is why well-structured code "glides" and poorly-structured code has "friction"—the traversal dimension is clean vs tangled.
-
-### 2. Invariants
+### 1. Invariants
 Where do constraints live? (e.g., "crc32 must match data")
 
 Current thinking: Invariants are cross-cutting assertions that reference structure. They might need separate treatment, or they might be metadata on links.
 
-### 3. Bidirectional Links
+### 2. Bidirectional Links
 Should `A ↔ B` be explicit, or always decomposed to `A → B` and `B → A`?
 
 Current thinking: Two links. Annotate as `bidirectional: true` if commonly paired.
 
-### 4. Order
+### 3. Order
 Is sequence implicit in medium, or explicit in dimension descriptor?
 
 Current thinking: Dimension descriptor (`ordered`, `unordered`, `sorted`).

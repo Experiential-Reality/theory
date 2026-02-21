@@ -51,13 +51,11 @@ used_by:
 
 ## Scope Note
 
-This document derives the **uncertainty principle** from BLD. It does NOT derive:
-- The Schrödinger equation
-- Wave function collapse
-- The Born rule
-- Path integrals
-
-These remain as future work.
+This document derives the **uncertainty principle** from BLD. For further derivations see:
+- [Schrödinger Derivation](schrodinger-derivation.md)
+- [Wave Function Collapse](wave-function-collapse.md)
+- [Born Rule](born-rule.md)
+- [Path Integral](path-integral.md)
 
 ---
 
@@ -477,7 +475,7 @@ B precision_choice: know_position | know_momentum
 | Question | Status | Why Open |
 |----------|--------|----------|
 | Wave function collapse | **DERIVED** | See [Wave Function Collapse](wave-function-collapse.md) |
-| Single-event outcomes | **OPEN** | Why THIS measurement result? |
+| Single-event outcomes | **DERIVED** | See [Born Rule](born-rule.md) — L→B + K=2 on joint system |
 | Path integral formulation | **DERIVED** | See [Path Integral](path-integral.md) |
 
 ### The Honest Summary

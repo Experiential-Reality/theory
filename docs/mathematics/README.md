@@ -78,7 +78,7 @@ The BLD = Lie theory correspondence.
 - [Boson Masses](./particle-physics/boson-masses.md) — **H, Z, W derived (0.05%, 0.001%, 0.005% errors)**
 - [Higgs Self-Coupling](./particle-physics/higgs-self-coupling.md) — **κ_λ = 1.025 predicted (novel, testable at HL-LHC)** `[PREDICTED]`
 - [Higgs Couplings](./particle-physics/higgs-couplings.md) — **All κ values from detection structure (κ_V validated)** `[PREDICTED]`
-- [E7 Connection](./particle-physics/e7-connection.md) — B=56 and exceptional Lie algebras `[DERIVED]`
+- [E7 Derivation](./particle-physics/e7-derivation.md) — B=56 from triality + Killing form `[DERIVED]`
 - [Muon g-2](./particle-physics/muon-g2.md) — **Δa_μ = 250×10⁻¹¹ predicted (J-PARC: same T∩S → same result)** `[PREDICTED]`
 - [Neutron Lifetime](./particle-physics/neutron-lifetime.md) — **Beam-bottle discrepancy = K/S² = 2/169 predicted** `[PREDICTED]`
 - [Neutrino Masses](./particle-physics/neutrino-masses.md) — Neutrino mass derivation

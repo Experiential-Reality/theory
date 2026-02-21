@@ -206,6 +206,13 @@ E7 is the unique exceptional Lie algebra that:
 
 The 56-representation branches to SO(8) as adjoint + conjugate adjoint. This is exactly the bidirectional observation structure required by BLD!
 
+### E₇ in Physics
+
+E₇ appears independently in several advanced physics contexts:
+- **N=8 Supergravity**: Black hole charges transform as the **56** of E₇; entropy involves E₇ invariants
+- **String Theory**: Certain compactifications (e.g., Type IIB on K3 × K3) have E₇ × E₇ symmetry
+- **Grand Unification**: Some GUT models use E₆ or E₇ gauge groups; the 56 appears in particle multiplets
+
 ---
 
 ## The Derivation Chain (Visual)
@@ -637,4 +644,3 @@ The complete derivation chain:
 - [Killing Form](../lie-theory/killing-form.md) — The K=2 bidirectional observation, appears in all observer corrections
 - [Physics Traverser](../../examples/physics-traverser.md) — P9 triality axiom
 - [Fine Structure Consistency](fine-structure-consistency.md) — Updated status
-- [E7 Connection](e7-connection.md) — E7 confirmation

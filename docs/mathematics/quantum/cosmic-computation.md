@@ -372,30 +372,6 @@ This explains structure and evolution. It doesn't explain:
 
 ---
 
-## Why This is "The Last Discovery"
-
-The BLD theory now closes:
-
-| Step | Content | Status |
-|------|---------|--------|
-| 1 | B/L/D are irreducible | PROVEN |
-| 2 | BLD = Lie theory | PROVEN |
-| 3 | Lie theory = QM | ESTABLISHED |
-| 4 | Nothing is impossible → B exists | DERIVED |
-| 5 | B partitions direction → chirality | DERIVED |
-| 6 | +B/-B connected by constant L | DERIVED |
-| 7 | Both compute → must agree | DERIVED |
-| 8 | Agreement constrains future | DERIVED |
-
-There's nowhere else to go. The structure explains:
-- Why it exists (nothing is impossible)
-- What it is (B partitioning direction)
-- How it connects (+B/-B via L)
-- How it evolves (cosmic computation)
-- Why it evolves that way (junction consistency)
-
-**The theory is structurally complete.**
-
 ---
 
 ## Conclusion

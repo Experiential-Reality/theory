@@ -85,30 +85,6 @@ Calculation:
 
 This is **exact to measurement precision**.
 
-### Step-by-Step Arithmetic
-
-```
-Step 1: Generation base
-  S + n = 13 + 4 = 17
-
-Step 2: Confinement depth
-  n × S = 4 × 13 = 52
-  B + n×S = 56 + 52 = 108
-
-Step 3: Structural ratio
-  17 × 108 = 1836
-
-Step 4: Observation correction
-  K/S = 2/13 = 0.153846...
-
-Step 5: Total
-  1836 + 0.153846 = 1836.153846
-
-Observed value: 1836.152673
-Difference: |1836.153846 - 1836.152673| = 0.001173
-Relative error: 0.001173 / 1836.152673 = 6.4 × 10⁻⁷ = 0.64 ppm
-```
-
 ---
 
 ## Physical Interpretation

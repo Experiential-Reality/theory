@@ -398,7 +398,7 @@ The entire particle physics chain is now genuinely predictive!
 ### Internal BLD References
 - [Octonion Derivation](../foundations/derivations/octonion-derivation.md) — Complete BLD → octonions → (n=4, SU(3), 3 gen) derivation
 - [E7 Derivation](e7-derivation.md) — Complete derivation of B=56 from triality + Killing form
-- [E₇ Connection](e7-connection.md) — E7 confirmation of the derivation
+- [E₇ Derivation](e7-derivation.md) — B=56 from triality + Killing form, E₇ confirmation
 - [Killing Form](../lie-theory/killing-form.md) — The L=2 bidirectional observation
 - [Observer Corrections](../cosmology/observer-correction.md) — Two-reference framework (2/B as discrete/continuous mismatch)
 - [Lie Correspondence](../lie-theory/lie-correspondence.md) — BLD = Lie theory background

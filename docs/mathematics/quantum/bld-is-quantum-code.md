@@ -238,22 +238,22 @@ See [Quantum Computing](quantum-computing.md) for the full treatment.
 | Bell violation = 2√2 | **VALIDATED** |
 | T₂ ≤ 2×T₁ | **VALIDATED** |
 
-### Open (Foundational)
+### Derived (Foundational)
 
-| Question | Status |
-|----------|--------|
-| Derive Schrödinger equation from BLD | Not shown |
-| Derive Born rule from BLD | Not shown |
-| Why does ℏ have its specific value? | Hypothesis only |
-| Measurement collapse mechanism | Operational, not derived |
-| Discrete symmetries (P, C, T) | Extension needed |
+| Question | Status | Reference |
+|----------|--------|-----------|
+| Schrödinger equation from BLD | **DERIVED** | [Schrödinger Derivation](schrodinger-derivation.md) |
+| Born rule from BLD | **DERIVED** | [Born Rule](born-rule.md) |
+| ℏ value from BLD constants | **DERIVED** | [Planck Derivation](planck-derivation.md) |
+| Measurement collapse mechanism | **DERIVED** | [Wave Function Collapse](wave-function-collapse.md) |
+| Discrete symmetries (P, C, T) | Extension needed | — |
 
 ### The Distinction
 
 **What we can say (proven):**
 > "BLD is mathematically equivalent to Lie theory. Lie theory is the established mathematical structure of quantum mechanics. Therefore BLD is the same structural language that quantum mechanics uses."
 
-**What we cannot yet say (open):**
+**What remains open:**
 > "Reality computes using BLD traversal, and quantum mechanics is the necessary consequence."
 
 The first is mathematical fact. The second is foundational physics — potentially transformative if proven, but currently speculative.

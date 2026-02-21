@@ -691,7 +691,7 @@ BLD's contribution is **complete structural derivation**:
 
 ---
 
-## Remaining Questions
+## Resolved Questions
 
 ### 1. Why Hilbert Space? — RESOLVED
 

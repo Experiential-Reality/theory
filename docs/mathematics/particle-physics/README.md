@@ -39,7 +39,7 @@ used_by:
 | [lepton-masses.md](lepton-masses.md) | DERIVED | Electron, muon, tau mass ratios (exact) |
 | [boson-masses.md](boson-masses.md) | DERIVED | Higgs, W, Z masses |
 | [quark-masses.md](quark-masses.md) | DERIVED | All 6 quark masses (<0.5% error) |
-| [e7-connection.md](e7-connection.md) | DERIVED | B=56 and exceptional Lie algebras |
+| [e7-derivation.md](e7-derivation.md) | DERIVED | B=56 from triality + Killing form, E₇ confirmation |
 | [neutrino-masses.md](neutrino-masses.md) | DERIVED | Neutrino masses from missing B coupling |
 | [higgs-self-coupling.md](higgs-self-coupling.md) | **PREDICTED** | κ_λ = 1.025 (testable at HL-LHC) |
 | [higgs-couplings.md](higgs-couplings.md) | **PREDICTED** | All κ values from detection structure |

@@ -269,13 +269,7 @@ It does NOT assume:
 
 ### 8.2 The Hypothetical Quaternionic Universe
 
-A universe based on quaternions would have:
-- Aut(ℍ) = SO(3) internal symmetry (only U(1) electromagnetic)
-- sl(2,ℍ) = so(5,1) Lorentz symmetry (6D spacetime)
-- No triality (1 generation)
-- No color force (no SU(3))
-
-Such a universe cannot sustain self-observation—it fails the richness test. "Color is the price of self-consistency."
+See [Octonion Derivation §9.2](octonion-derivation.md) for the detailed analysis. In brief: a quaternionic universe has Aut(ℍ) = SO(3) (no SU(3)), so(5,1) (6D spacetime), no triality (1 generation), and cannot sustain self-observation — it fails the richness test.
 
 ### 8.3 Reducing Empirical Content
 
