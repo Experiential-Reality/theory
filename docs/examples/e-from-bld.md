@@ -31,16 +31,16 @@ used_by:
 
 ## Late Emergence
 
-**e emerged late — it's how continuous traversal sees discrete primordial structure.**
+**e emerged late — it's how continuous traversal sees discrete structural values.**
 
-The primordial structure is integers: (1 + 1/n)^n for finite n. The transcendental e appears as the continuous limit:
+The structural values are integers: (1 + 1/n)^n for finite n. The transcendental e appears as the continuous limit:
 
-| Primordial | Observed | Why |
+| Structural | Observed | Why |
 |------------|----------|-----|
 | (1 + 1/B)^B = (1 + 1/56)^56 | e = 2.718... | Continuous limit of discrete compounding |
 | Integer K/X corrections | e-based corrections | Accumulated discrete→continuous cost |
 
-**e is not primordial.** It emerged when traversers became continuous enough to process infinitely many infinitesimal steps.
+**e is not structural.** It emerged when traversers became continuous enough to process infinitely many infinitesimal steps.
 
 The formula e = lim(1+1/n)^n shows this directly: e IS the limit of discrete compounding → continuous.
 

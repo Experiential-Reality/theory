@@ -16,7 +16,8 @@ depends_on:
 3. Statistics: BLD generalizes Fisher-Rao — [Information Theory](#information-theory-bld-vs-fisher-rao)
 4. Complexity: BLD characterizes P vs NP structurally — [Complexity Theory](#complexity-theory-bld-vs-circuit-complexity)
 5. Math: BLD = constructive Lie theory — [Mathematics](#mathematics-bld-vs-lie-theory)
-6. Pattern: BLD provides unifying perspective — [Summary](#summary)
+6. Number theory: BLD unifies complexity hierarchy — single D lever, conserved cost — [Number Theory](#number-theory-bld-vs-complexity-hierarchy)
+7. Pattern: BLD provides unifying perspective — [Summary](#summary)
 
 | Domain | Established | BLD Relationship |
 |--------|-------------|------------------|
@@ -25,6 +26,7 @@ depends_on:
 | Statistics | Fisher-Rao | Generalizes (distributions = structures) |
 | Complexity | Circuit Complexity | Orthogonal (structural vs computational) |
 | Math | Lie Theory | BLD is constructive Lie theory |
+| Number Theory | Complexity Hierarchy | Unifies + extends (D-hierarchy, same L-type) |
 
 > **Status**: Foundational
 
@@ -281,6 +283,62 @@ See [Lie Correspondence](./lie-theory/lie-correspondence.md) for the full mappin
 
 ---
 
+## Number Theory: B/L/D vs Complexity Hierarchy
+
+### The Complexity Hierarchy
+
+Standard complexity theory classifies factoring algorithms by asymptotic work:
+
+| Algorithm | Work | Class |
+|-----------|------|-------|
+| Trial division | O(N^{1/2}) | Exponential in bit length |
+| Pollard rho | O(N^{1/4}) | Sub-exponential |
+| GNFS | L_N[1/3, c] | Sub-exponential |
+| Shor (quantum) | O(k^3) | Polynomial |
+
+These are treated as separate algorithms with separate analyses, each discovered independently. No unifying principle explains why these particular complexities arise or what relates them.
+
+### BLD Approach
+
+BLD decomposes every factoring algorithm into the same structural components:
+
+- **Same L-type**: Legendre symbol (coprime modular test) — structurally the unique probe type
+- **Same K/X**: 1 bit per probe (K = 2 bidirectional, X = 2 binary partition)
+- **Same C_total**: k/2 bits (Shannon entropy of the answer)
+- **Only D varies**: Effective dimension of the probe space
+
+The master formula unifies all algorithms:
+
+```
+Work = N^{1/(2D)}
+
+  D = 1         → Trial division:  N^{1/2}
+  D = 2         → Pollard rho:     N^{1/4}
+  D = π(B)      → GNFS:            sub-exponential
+  D = 2^k       → Shor:            polynomial
+```
+
+### Correspondence
+
+| Standard Concept | BLD Concept | Insight |
+|------------------|-------------|---------|
+| Algorithm choice | D value | Only one free parameter |
+| Probe type | L-type (Legendre) | Universal, structurally derived |
+| Information per test | K/X = 1 bit | Exact, GPU-confirmed |
+| Total work budget | C_total = k/2 | Conserved across all algorithms |
+| Quantum speedup | D = 2^k (superposition) | Exponential dimension, same probe |
+
+### Where BLD Goes Further
+
+1. **One formula, one variable.** The entire complexity hierarchy is Work = N^{1/(2D)} with D as the sole parameter. Standard theory has no analogue.
+2. **Cost conservation.** C_total = k/2 is invariant under algorithm choice — a conservation law absent from classical complexity theory.
+3. **Structurally derived L-type.** The Legendre symbol emerges as the unique probe type from the T ∩ S detection framework, paralleling SU(3) as the unique gauge group from genesis closure. Both are derived, not chosen.
+4. **Honest negatives confirm structure.** Six attempts to exploit carries, backward channels, Born ordering, and Fano structure all failed for identifiable structural reasons, confirming D is the only lever.
+
+See [Integer Factorization](./foundations/machine/integer-factorization.md) for the full BLD decomposition and experimental data.
+
+---
+
 ## Conclusion
 
 | Domain | Established Framework | B/L/D Relationship |
@@ -290,6 +348,7 @@ See [Lie Correspondence](./lie-theory/lie-correspondence.md) for the full mappin
 | Statistics | Fisher-Rao / Info Geometry | BLD generalizes (distributions are one type of structure) |
 | Complexity | Circuit Complexity | Orthogonal characterization (structural vs computational) |
 | Mathematics | Lie Theory | BLD is constructive Lie theory (finds structure, doesn't just analyze it) |
+| Number Theory | Complexity Hierarchy | BLD unifies and extends (single D lever, conserved cost, structurally derived probe) |
 
 The pattern: the BLD framework doesn't replace existing frameworks—it provides a unifying perspective that shows why they work and where they connect.
 

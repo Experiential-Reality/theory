@@ -31,7 +31,7 @@ Auxiliary:
 | v | 246.2196 GeV | Electroweak VEV (reference scale) |
 | e | 2.71828... | Euler's number; emerges as lim(1+1/m)^m |
 
-**The primordial identity:** α⁻¹(integer) = n×L + B + 1 = 80 + 56 + 1 = **137**
+**The structural identity:** α⁻¹(integer) = n×L + B + 1 = 80 + 56 + 1 = **137**
 
 ---
 
@@ -55,19 +55,19 @@ All structurally meaningful BLD combinations. Matches `bld_composites()` in bld.
 | n×L+B | 136 | structure without observer |
 | n×L+B+1 | 137 | α⁻¹ integer part |
 | S+1 | 14 | = B/n = dim(G₂) |
-| S+n | 17 | τ/μ primordial, p/e generation base |
+| S+n | 17 | τ/μ structural, p/e generation base |
 | S−1 | 12 | d/u interval correction |
 | B−L | 36 | Reynolds base |
 | B−L+1 | 37 | Reynolds correction denominator |
 | B² | 3136 | Z mass correction |
 | n² | 16 | α_s scaling |
 | (n×L)² | 6400 | muon g-2 base, μ/e 2nd-order |
-| n²×S | 208 | μ/e primordial, generation structure |
-| n²×S−1 | 207 | μ/e phase-subtracted primordial |
+| n²×S | 208 | μ/e structural, generation structure |
+| n²×S−1 | 207 | μ/e phase-subtracted structural |
 | (n×L)²+n×S | 6452 | μ/e and W mass 2nd-order X |
 | L+n+1 | 25 | θ₂₃ denominator, intermittency |
 | B+n×S | 108 | proton confinement depth |
-| (S+n)(B+n×S) | 1836 | p/e primordial |
+| (S+n)(B+n×S) | 1836 | p/e structural |
 | n+L+K | 26 | = B/2−K, Planck cascade exponent |
 | B+L−K×n | 68 | Hubble cascade exponent |
 | n(n−1)/2 | 6 | Lorentz dim, baryon asymmetry exponent |
@@ -113,7 +113,7 @@ OCTONIONS REQUIRED
          ▼
     BLD Calculus + Lie Correspondence
          │
-         ├── Integer Machine (primordial structure = integers)
+         ├── Integer Machine (structural values = integers)
          ├── Two-Reference Principle (observed = integer + K/X)
          └── Equation of Motion (geodesics on SO(8))
               │
@@ -125,7 +125,7 @@ OCTONIONS REQUIRED
 
 ## 4. K/X Correction Framework
 
-**Universal pattern:** Observed = Primordial × ∏(1 ± K/Xᵢ)
+**Universal pattern:** Observed = Structural × ∏(1 ± K/Xᵢ)
 
 | Sign | Meaning | When |
 |------|---------|------|
@@ -202,9 +202,9 @@ Observed: 206.7682827 ± 0.0000005 (CODATA 2022). 0.5 ppb.
 
 Observed: 16.81709 ± 0.0012. 4 ppm.
 
-### Primordial integers
+### Structural Integers
 
-| Ratio | Primordial | Mode | Observed |
+| Ratio | Structural | Mode | Observed |
 |-------|------------|------|----------|
 | μ/e | n²S = 208 | Discrete (e-type) | 206.768 |
 | τ/μ | S+n = 17 | Rotational (π-type, 2πe ≈ 17.08) | 16.817 |
@@ -393,7 +393,7 @@ CMB observed: 67.4 ± 0.5. Local observed: 73.0 ± 1.0.
 ### σ₈ tension  [→ bld.py:1635–1659]
 
 ```
-σ₈(primordial) = L/(n+L)                    = 20/24 = 5/6 ≈ 0.833
+σ₈(structural) = L/(n+L)                    = 20/24 = 5/6 ≈ 0.833
 σ₈(CMB)        = σ₈(prim) · (1 − K/(nL))   = (5/6)(78/80) = 13/16 = 0.8125
 σ₈(local)      = σ₈(CMB) · (1 − K/(2L))    = (13/16)(19/20) = 247/320 ≈ 0.772
 ```
@@ -499,9 +499,9 @@ Intermediate: X = n + K + K/n + 1/L = 4 + 2 + 0.5 + 0.05 = 6.55
 
 ## 17. Integer Machine
 
-Primordial structure stores integers. Continuous values emerge from K/X observation.
+Structural values are integers. Continuous values emerge from K/X observation.
 
-| Quantity | Primordial Integer | Expression | Observed | Gap |
+| Quantity | Structural Integer | Expression | Observed | Gap |
 |----------|--------------------|------------|----------|-----|
 | α⁻¹ | 137 | nL + B + 1 | 137.036 | +K/B + spatial |
 | μ/e | 208 | n²S | 206.768 | −1 phase, K/X cascade |
@@ -592,8 +592,8 @@ S + 1 = B/n = dim(G₂)                   14 = 56/4 = 14
 B = n(S + 1)                            4 × 14 = 56
 n + L + K = B/2 − K = 26                26 = 26  (Planck cascade)
 B + L − Kn = 68                         (Hubble cascade)
-n²S − 1 = 207                           (μ/e primordial after phase)
-(S + n)(B + nS) = 1836                  (p/e primordial)
+n²S − 1 = 207                           (μ/e structural after phase)
+(S + n)(B + nS) = 1836                  (p/e structural)
 (B−L+2)/(B−L+1) = 38/37                (Reynolds correction)
 n(n−1)/2 = 6                            (Lorentz dim, baryon exponent)
 λ²·(nL) = (1/20)·80 = 4 = K² = n      (coupling × geometry = observation)

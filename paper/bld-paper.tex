@@ -134,12 +134,12 @@ The derivation chain proceeds as follows:
 
 \begin{enumerate}[label=\arabic*.]
 \item \textbf{Type system} (\S\ref{sec:type-system}): Define the BLD grammar and prove the three primitives are mutually irreducible.
-\item \textbf{Constants} (\S\ref{sec:constants}): Derive $K = 2$ from the Killing form; derive $B$, $n$, $L$, $S$ from genesis closure, octonion reference fixing, and Riemann geometry. Prove $K = 2$ is unique. Derive the reference scale $v = 246.22\;\text{GeV}$.
 \item \textbf{Lie theory} (\S\ref{sec:lie}): Establish $\so(8)$ with finrank~28. Prove $D_4$ uniqueness. Connect to octonions via $B = 56$. Derive all exceptional Lie algebras.
+\item \textbf{Constants} (\S\ref{sec:constants}): Derive $K = 2$ from the Killing form; derive $B$, $n$, $L$, $S$ from genesis closure, octonion reference fixing, and Riemann geometry. Prove $K = 2$ is unique. Derive the reference scale $v = 246.22\;\text{GeV}$.
 \item \textbf{Dynamics} (\S\ref{sec:dynamics}): Derive the equation of motion (geodesics on $\mathrm{SO}(8)$), gauge structure $\uu(4) = \su(4) \oplus \uu(1)$ (Pati--Salam), the weak force from $\Der(\mathbb{H})$ in $E_7$, the Casimir--curvature generation bridge, energy as observation scope, and GUT unification at $\alpha\inv\! = 25$.
 \item \textbf{Observer corrections} (\S\ref{sec:observer}): Derive the $K/X$ correction principle: every measurement adds cost $K/X$ where $X$ is the detection channel.
-\item \textbf{Quantum foundations} (\S\ref{sec:quantum}): Derive the Born rule, wavefunction collapse, the Schr\"odinger equation, CPT symmetry, and general relativity from BLD\@.
 \item \textbf{Predictions} (\S\ref{sec:predictions}): Compute predictions for electroweak parameters, mass ratios, quark masses, turbulence, and chaos, comparing to experiment.
+\item \textbf{Quantum foundations} (\S\ref{sec:quantum}): Derive the Born rule, wavefunction collapse, the Schr\"odinger equation, CPT symmetry, and general relativity from BLD\@.
 \item \textbf{Cosmology} (\S\ref{sec:cosmology}): Derive cosmological density fractions, resolve the Hubble and $\sigma_8$ tensions, and derive the baryon asymmetry.  Cross-domain applications (genetic code, turbulence) appear in Appendices~\ref{app:genetic}--\ref{app:turbulence}.
 \item \textbf{Falsification} (\S\ref{sec:falsification}): State specific predictions testable within 5 years.
 \end{enumerate}
@@ -246,6 +246,10 @@ By Tait's method of logical relations, formalized in Lean (\texttt{Normalization
 \subsection{\texorpdfstring{The Genesis Function: traverse(\(-B\), \(B\))}{The Genesis Function: traverse(-B, B)}}
 \label{sec:genesis}
 
+The genesis argument provides structural motivation; the formal
+mathematical content begins with the Hurwitz classification
+(\S\ref{sec:genesis}.4) and is verified by Lean.
+
 The operation $\texttt{traverse}(-B, B)$ is a self-referential
 traversal: starting from $-B$ (non-existence, the negation of
 boundary) and ending at $B$ (existence, boundary established).  This
@@ -306,9 +310,9 @@ finite-dimensional alternative division algebras.
 
 Bidirectional observation (Killing form, $K = 2$) of the algebra's
 rotation structure $\so(d)$ produces $B = K \times \dim(\so(d)) =
-d(d-1)$ boundary modes.  Closure of the genesis function requires $B =
-56$ modes (derived from triality and the Killing form in
-\S\ref{sec:lie}).  Setting $d(d-1) = 56$ gives $d = 8$ uniquely among
+d(d-1)$ boundary modes.  Closure of the genesis function requires a division algebra whose
+automorphism group contains $\mathrm{SU}(3)$; only octonions ($d = 8$)
+satisfy this, giving $B = K \times \dim(\so(8)) = 56$.  Setting $d(d-1) = 56$ gives $d = 8$ uniquely among
 positive integers.  Among the Hurwitz dimensions $\{1, 2, 4, 8\}$,
 only $d = 8$ (octonions) satisfies this constraint:
 
@@ -368,123 +372,15 @@ $\text{generations} = n - 1 = 3$.
 No step involves empirical input.  Each step follows from the preceding
 structure.
 
-
-% ═══════════════════════════════════════════════════════════════════
-\section{The Constant Derivation Chain}
-\label{sec:constants}
-% ═══════════════════════════════════════════════════════════════════
-
-All constants derive from a single integer: $K = 2$.
-
-\subsection{K = 2: The Killing Form}
-
-Observation requires bidirectional traversal: to observe a structure,
-you must link \emph{to} it (outbound) and receive a link \emph{back}
-(inbound).  This two-step composition is precisely the Killing form of
-Lie theory: $\kappa(X,Y) = \mathrm{tr}(\mathrm{ad}_X \circ
-\mathrm{ad}_Y)$, which composes two adjoint actions.  The Killing form
-is the unique (up to scalar) invariant bilinear form on a simple Lie
-algebra~\cite{Humphreys1972}, and its bilinearity forces $K = 2$.
-
-This is the single seed from which all constants grow.  The remainder of
-this section shows that $K = 2$ uniquely determines the full constant
-system, verified by exhaustive computation in Lean
-(Theorem~\ref{thm:K2-unique}).
-
-\subsection{The Derivation Chain}
-
-Each constant is \emph{derived} from the genesis closure requirement
-(\S\ref{sec:genesis}), not defined by algebraic identity.  The
-derivation path:
-
-\begin{enumerate}[label=(\roman*)]
-\item \textbf{$K = 2$}: The Killing form (bidirectional observation, \S\ref{sec:constants}).
-\item \textbf{$B = 56$}: From genesis closure, $B = K \times \dim(\so(8)) = 2 \times 28$.  The factor $\dim(\so(8)) = 28$ is forced by triality (\S\ref{sec:lie}).
-\item \textbf{$n = 4$}: Octonion reference fixing yields $\mathfrak{sl}(2,\mathbb{C}) \subset \mathfrak{sl}(2,\mathbb{O})$, the Lorentz algebra in 4D (\S\ref{sec:genesis}).
-\item \textbf{$L = 20$}: The independent components of the Riemann curvature tensor in $n$ dimensions: $L = n^2(n^2-1)/12 = 16 \times 15/12 = 20$.  This is the unique gauge-invariant measure of how links (connections) vary across structure.
-\item \textbf{$S = 13$}: Structural intervals: $S = (B - n)/n = (56 - 4)/4 = 13$.
-\item \textbf{$\alpha\inv = 137$}: Mode budget: $nL + B + 1 = 80 + 56 + 1 = 137$ (geometry $+$ boundary $+$ observer).
-\end{enumerate}
-
-\begin{table}[htbp]
-\centering
-\caption{The five BLD constants: derivation path and self-consistency checks.  All verified in Lean.}
-\label{tab:constants}
-\begin{tabular}{llllc}
-\toprule
-\textbf{Constant} & \textbf{Value} & \textbf{Derived From} & \textbf{Self-Consistency} & \textbf{Lean} \\
-\midrule
-$K$ & 2 & Killing form & --- & --- \\
-$B$ & 56 & $K \times \dim(\so(8))$ & $= n(S+1)$ & \texttt{B\_formula} \\
-$n$ & 4 & $\mathfrak{sl}(2,\mathbb{C}) \subset \mathfrak{sl}(2,\mathbb{O})$ & $= K^2$ & \texttt{K\_sq\_eq\_n} \\
-$L$ & 20 & $n^2(n^2-1)/12$ (Riemann) & $= n(n+1)$ & \texttt{L\_formula} \\
-$S$ & 13 & $(B-n)/n$ & $= K^2 + (n-1)^2$ & \texttt{S\_def} \\
-$\alpha\inv$ & 137 & $nL + B + 1$ & --- & \texttt{alpha\_inv} \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{remark}[Self-Consistency]
-The five independently derived constants satisfy non-trivial algebraic
-relations: $n = K^2$, $S = K^2 + (n-1)^2$, $B = n(S+1)$, and $B/n - 1
-= S$.  These are not the \emph{definitions} of the constants---they are
-\emph{checks} that independently derived quantities are mutually
-consistent.  For example, $S = 13$ is derived as $(B-n)/n$, and
-separately satisfies $K^2 + (n-1)^2 = 4 + 9 = 13$.
+\begin{remark}[Self-Consistency, Not Circularity]
+The genesis argument is a fixed-point argument: among all possible
+values of $(B, n, K)$, only $(56, 4, 2)$ is self-consistent.  The
+Hurwitz classification restricts $d \in \{1, 2, 4, 8\}$; the
+richness requirement ($\Aut(A) \supseteq \mathrm{SU}(3)$) eliminates
+$d \leq 4$; the Killing form gives $K = 2$; and $B = K \times
+\dim(\so(8)) = 56$ follows.  Lean verifies each step independently,
+with no theorem depending on its own conclusion.
 \end{remark}
-
-\subsection{K = 2 Uniqueness}
-
-\begin{theorem}[$K = 2$ Uniqueness]
-\label{thm:K2-unique}
-$K = 2$ is the unique integer in $\{1, 2, 3, 4, 5\}$ for which the identity chain produces $\alpha\inv = 137$.
-\end{theorem}
-\begin{proof}
-Define $\alpha\inv(K) = nL + B + 1$ where $n = K^2$, $L = n^2(n^2-1)/12$, $S = K^2 + (n-1)^2$, $B = n(S+1)$.  Then:
-\begin{align*}
-\alpha\inv(1) &= 3 \\
-\alpha\inv(2) &= 137 \\
-\alpha\inv(3) &= 5\,527 \\
-\alpha\inv(4) &= 90\,913 \\
-\alpha\inv(5) &= 827\,551
-\end{align*}
-Only $K = 2$ yields 137.  Lean: \texttt{K2\_unique}.
-\end{proof}
-
-
-
-\subsection{The Reference Scale}
-\label{sec:reference-scale}
-
-The Higgs vacuum expectation value $v = 246.22\;\text{GeV}$ is not an
-empirical input: it is derived as the unique fixed point of
-self-observation.
-
-The self-observation $\texttt{traverse}(-B, B)$ requires a reference
-scale.  At any scale, $B = 56$ modes must be resolved by $B$
-observers, each paying observation cost $K/B$.  The net capacity is
-$B(1 - K/B) = B - K = 54$ modes, leaving a gap of $K = 2$---the
-irreducible cost of self-observation.
-
-The cascade from the Planck scale $M_P$ down to $v$ proceeds in
-$n_c = B/2 - K = 28 - 2 = 26$ steps, each stepping by
-$\lambda^{-1} = \sqrt{L} = \sqrt{20}$:
-
-\begin{equation}
-\frac{v}{M_P} = \lambda^{26} \times \sqrt{\frac{S+1}{L/n}} \times \frac{nL - K}{nL - 1} \times \text{(higher-order)}
-= \left(\frac{1}{\sqrt{20}}\right)^{26} \!\times \sqrt{\frac{14}{5}} \times \frac{78}{79} \times \cdots
-\label{eq:reference-scale}
-\end{equation}
-where $\lambda^2 = K^2/(nL) = 4/80 = 1/20$, $\sqrt{14/5}$ is the
-link/boundary capacity ratio, and $78/79 = (nL - K)/(nL - 1)$ is the
-observer correction.
-
-Numerically: $v = 246.22\;\text{GeV}$, matching the measured
-value to $0.00014\%$.  All factors are BLD constants---zero free
-parameters.  The cascade exponent $n_c = 26$ is distinct from $n = 4$;
-it counts the forward modes ($B/2 = 28$) minus observation overhead ($K = 2$),
-and is the same 26 that appears in bosonic string theory as the
-critical dimension.
 
 
 % ═══════════════════════════════════════════════════════════════════
@@ -607,6 +503,126 @@ fundamental representation of $E_7$ has the same dimension as the BLD
 boundary count.  The $E_8$ self-duality
 ($\dim = \mathrm{fund} = 248$) corresponds to structure observing
 itself---$\texttt{traverse}(-B, B)$ at the algebraic level.
+
+
+% ═══════════════════════════════════════════════════════════════════
+\section{The Constant Derivation Chain}
+\label{sec:constants}
+% ═══════════════════════════════════════════════════════════════════
+
+All constants derive from a single integer: $K = 2$.
+
+\subsection{K = 2: The Killing Form}
+
+Observation requires bidirectional traversal: to observe a structure,
+you must link \emph{to} it (outbound) and receive a link \emph{back}
+(inbound).  This two-step composition is precisely the Killing form of
+Lie theory: $\kappa(X,Y) = \mathrm{tr}(\mathrm{ad}_X \circ
+\mathrm{ad}_Y)$, which composes two adjoint actions.  The Killing form
+is the unique (up to scalar) invariant bilinear form on a simple Lie
+algebra~\cite{Humphreys1972}, and its bilinearity forces $K = 2$.
+
+This is the single seed from which all constants grow.  The remainder of
+this section shows that $K = 2$ uniquely determines the full constant
+system, verified by exhaustive computation in Lean
+(Theorem~\ref{thm:K2-unique}).
+
+\subsection{The Derivation Chain}
+
+Each constant is \emph{derived} from the genesis closure requirement
+(\S\ref{sec:genesis}), not defined by algebraic identity.  The
+derivation path:
+
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{$K = 2$}: The Killing form (bidirectional observation, \S\ref{sec:constants}).
+\item \textbf{$B = 56$}: From genesis closure, $B = K \times \dim(\so(8)) = 2 \times 28$.  The factor $\dim(\so(8)) = 28$ is forced by triality (\S\ref{sec:lie}).
+\item \textbf{$n = 4$}: Octonion reference fixing yields $\mathfrak{sl}(2,\mathbb{C}) \subset \mathfrak{sl}(2,\mathbb{O})$, the Lorentz algebra in 4D (\S\ref{sec:genesis}).
+\item \textbf{$L = 20$}: The independent components of the Riemann curvature tensor in $n$ dimensions: $L = n^2(n^2-1)/12 = 16 \times 15/12 = 20$.  This is the unique gauge-invariant measure of how links (connections) vary across structure.
+\item \textbf{$S = 13$}: Structural intervals: $S = (B - n)/n = (56 - 4)/4 = 13$.
+\item \textbf{$\alpha\inv = 137$}: Mode budget: $nL + B + 1 = 80 + 56 + 1 = 137$ (geometry $+$ boundary $+$ observer).
+The $+1$ is the observer's irreducible contribution; the
+correction framework is developed in \S\ref{sec:observer}.
+\end{enumerate}
+
+\begin{table}[htbp]
+\centering
+\caption{The five BLD constants: derivation path and self-consistency checks.  All verified in Lean.}
+\label{tab:constants}
+\begin{tabular}{llllc}
+\toprule
+\textbf{Constant} & \textbf{Value} & \textbf{Derived From} & \textbf{Self-Consistency} & \textbf{Lean} \\
+\midrule
+$K$ & 2 & Killing form & --- & --- \\
+$B$ & 56 & $K \times \dim(\so(8))$ & $= n(S+1)$ & \texttt{B\_formula} \\
+$n$ & 4 & $\mathfrak{sl}(2,\mathbb{C}) \subset \mathfrak{sl}(2,\mathbb{O})$ & $= K^2$ & \texttt{K\_sq\_eq\_n} \\
+$L$ & 20 & $n^2(n^2-1)/12$ (Riemann) & $= n(n+1)$ & \texttt{L\_formula} \\
+$S$ & 13 & $(B-n)/n$ & $= K^2 + (n-1)^2$ & \texttt{S\_def} \\
+$\alpha\inv$ & 137 & $nL + B + 1$ & --- & \texttt{alpha\_inv} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{remark}[Self-Consistency]
+The five independently derived constants satisfy non-trivial algebraic
+relations: $n = K^2$, $S = K^2 + (n-1)^2$, $B = n(S+1)$, and $B/n - 1
+= S$.  These are not the \emph{definitions} of the constants---they are
+\emph{checks} that independently derived quantities are mutually
+consistent.  For example, $S = 13$ is derived as $(B-n)/n$, and
+separately satisfies $K^2 + (n-1)^2 = 4 + 9 = 13$.
+\end{remark}
+
+\subsection{K = 2 Uniqueness}
+
+\begin{theorem}[$K = 2$ Uniqueness]
+\label{thm:K2-unique}
+$K = 2$ is the unique integer in $\{1, 2, 3, 4, 5\}$ for which the identity chain produces $\alpha\inv = 137$.
+\end{theorem}
+\begin{proof}
+Define $\alpha\inv(K) = nL + B + 1$ where $n = K^2$, $L = n^2(n^2-1)/12$, $S = K^2 + (n-1)^2$, $B = n(S+1)$.  Then:
+\begin{align*}
+\alpha\inv(1) &= 3 \\
+\alpha\inv(2) &= 137 \\
+\alpha\inv(3) &= 5\,527 \\
+\alpha\inv(4) &= 90\,913 \\
+\alpha\inv(5) &= 827\,551
+\end{align*}
+Only $K = 2$ yields 137.  Lean: \texttt{K2\_unique}.
+\end{proof}
+
+
+
+\subsection{The Reference Scale}
+\label{sec:reference-scale}
+
+The Higgs vacuum expectation value $v = 246.22\;\text{GeV}$ is not an
+empirical input: it is derived as the unique fixed point of
+self-observation.
+
+The self-observation $\texttt{traverse}(-B, B)$ requires a reference
+scale.  At any scale, $B = 56$ modes must be resolved by $B$
+observers, each paying observation cost $K/B$.  The net capacity is
+$B(1 - K/B) = B - K = 54$ modes, leaving a gap of $K = 2$---the
+irreducible cost of self-observation.
+
+The cascade from the Planck scale $M_P$ down to $v$ proceeds in
+$n_c = B/2 - K = 28 - 2 = 26$ steps, each stepping by
+$\lambda^{-1} = \sqrt{L} = \sqrt{20}$:
+
+\begin{equation}
+\frac{v}{M_P} = \lambda^{26} \times \sqrt{\frac{S+1}{L/n}} \times \frac{nL - K}{nL - 1} \times \text{(higher-order)}
+= \left(\frac{1}{\sqrt{20}}\right)^{26} \!\times \sqrt{\frac{14}{5}} \times \frac{78}{79} \times \cdots
+\label{eq:reference-scale}
+\end{equation}
+where $\lambda^2 = K^2/(nL) = 4/80 = 1/20$, $\sqrt{14/5}$ is the
+link/boundary capacity ratio, and $78/79 = (nL - K)/(nL - 1)$ is the
+observer correction.
+
+Numerically: $v = 246.22\;\text{GeV}$, matching the measured
+value to $0.00014\%$.  All factors are BLD constants---zero free
+parameters.  The cascade exponent $n_c = 26$ is distinct from $n = 4$;
+it counts the forward modes ($B/2 = 28$) minus observation overhead ($K = 2$),
+and is the same 26 that appears in bosonic string theory as the
+critical dimension.
 
 
 % ═══════════════════════════════════════════════════════════════════
@@ -884,7 +900,7 @@ and $\mathrm{fund}(E_7) = 56 = B$.
 
 \begin{theorem}[Casimir--Curvature Bridge]
 \label{thm:casimir}
-Among all $\so(d)$ algebras, only $\so(8)$ satisfies $C_2(\text{vector})
+Among all $\so(d)$ for $d \geq 2$, only $\so(8)$ satisfies $C_2(\text{vector})
 = R$, where $C_2$ is the quadratic Casimir of the vector representation
 and $R$ is the scalar curvature of the bi-invariant metric on
 $\mathrm{SO}(d)$.
@@ -913,12 +929,12 @@ the boundary-to-spacetime ratio is twice the vector Casimir.
 The outer automorphism group $S_3$ of $D_4$ acts by triality on
 $\{\mathbf{8}_v, \mathbf{8}_s, \mathbf{8}_c\}$.  The maximal subgroup
 chain $S_3 \supset \mathbb{Z}_2 \supset 1$ produces two breaking steps
-and three mass scales, with primordial integer mass ratios:
+and three mass scales, with structural integer mass ratios:
 \begin{equation}
 \mu/e = n^2 S - 1 = 207, \qquad
 \tau/\mu = S + n = 17, \qquad
 \tau/e = 207 \times 17 = 3519.
-\label{eq:primordial-mass}
+\label{eq:structural-mass}
 \end{equation}
 The observed ratios (206.768, 16.817) differ from these integers by
 $K/X$ alignment gradients.
@@ -1056,8 +1072,8 @@ Combined (full geometry) & $nL$ & 80 & $1/40 = 0.0250$ \\
 \label{sec:detection}
 
 The detection channel $X$ is not chosen to fit data---it is
-\emph{computed} from the BLD structures of the detector and the
-particle.
+determined by the gauge couplings of detector and particle (physical
+identifications, not formal axioms; see \S\ref{sec:lean}, item~2).
 
 \begin{definition}[Detection]
 Let $T$ denote the traverser (detector) structure and $S$ denote the
@@ -1106,8 +1122,11 @@ X = X_{\mathrm{traverser}} + X_{\mathrm{escaped}}
 \end{equation}
 where $X_{\mathrm{escaped}}$ is the BLD value of the escaped particle's
 non-universal structure ($S_i - \{D\}$, since $D$ is shared by all
-particles and the traverser).  The sign is $+1$ if anything escapes
-detection and $-1$ if all particles are fully captured.
+particles and the traverser).  The sign is $+1$ when something \emph{escapes} detection (the
+undetected structure adds to the effective mode count that must
+be traversed) and $-1$ when the channel is \emph{fully captured}
+(the traversal cost is absorbed into the measurement, reducing the
+effective structure).
 
 \begin{example}[$W \to \ell\nu$]
 Consider $W \to \ell\nu$ in an electromagnetic detector ($T = \{B\}$).
@@ -1158,7 +1177,7 @@ alternative explanations.
 
 \subsection{\texorpdfstring{The \(\alpha\inv\) Correction}{The alpha inverse Correction}}
 
-The primordial value $\alpha\inv = 137$ receives four rational
+The structural value $\alpha\inv = 137$ receives four rational
 corrections:
 
 \begin{align}
@@ -1204,6 +1223,277 @@ of the observation process.
 
 
 % ═══════════════════════════════════════════════════════════════════
+\section{Physics Predictions}
+\label{sec:predictions}
+% ═══════════════════════════════════════════════════════════════════
+
+All predictions use only the five derived constants $(B, L, n, K, S) =
+(56, 20, 4, 2, 13)$.  No free parameters are fitted to data.
+
+\subsection{Master Prediction Table}
+
+Table~\ref{tab:predictions} collects the principal predictions.
+The rational parts of each formula are verified in Lean~4 via \texttt{norm\_num}.
+
+\begin{table}[htbp]
+\centering
+\caption{BLD predictions vs.\ experiment.  All formulas use only $(B, L, n, K, S)$.}
+\label{tab:predictions}
+\scriptsize
+\begin{tabular}{@{}llllll@{}}
+\toprule
+\textbf{Quantity} & \textbf{BLD Formula} & \textbf{Fraction} & \textbf{Predicted} & \textbf{Observed} & \textbf{Dev.} \\
+\midrule
+$\alpha\inv$ (structural) & $nL + B + 1$ & 137 & 137 & 137.036 & --- \\
+$\alpha\inv$ (full) & $137 + \text{corr.}$ & --- & 137.035999 & 137.035999 & 0.0$\sigma$ \\
+$\sin^2\!\theta_W$ & $\frac{3}{S} + \frac{K}{nLB}$ & $\frac{6733}{29120}$ & 0.23122 & 0.23121(4) & 0.03$\sigma$ \\
+$\sin^2\!\theta_{12}$ & $K^2/S$ & $\frac{4}{13}$ & 0.30769 & 0.307(12) & 0.06$\sigma$ \\
+$\sin^2\!\theta_{13}$ & $n^2/(n\!-\!1)^6$ & $\frac{16}{729}$ & 0.02195 & 0.02195(58) & 0.00$\sigma$ \\
+$\sin^2\!\theta_{23}$ & $(S\!+\!1)/(L\!+\!n\!+\!1)$ & $\frac{14}{25}$ & 0.560 & 0.561(15) & 0.07$\sigma$ \\
+$m_p/m_e$ & $(S\!+\!n)(B\!+\!nS) + K/S$ & $\frac{23870}{13}$ & 1836.154 & 1836.153 & 0.6\,ppm \\
+$m_H$\textsuperscript{\dag} & $\frac{v}{2}(1\!+\!\frac{1}{B})(1\!-\!\frac{1}{BL})$ & --- & 125.20\,GeV & 125.20\,GeV & 0.0$\sigma$ \\
+$\alpha_s\inv$ & $\frac{137}{n^2} - \frac{K}{n+L}$ & $\frac{407}{48}$ & 8.479 & 8.479 & 0.0$\sigma$ \\
+$\text{Re}_c(\text{pipe})$\textsuperscript{\ddag} & $\frac{nLB}{K} \cdot \frac{X\!+\!1}{X}$ & $\frac{85120}{37}$ & 2300.5 & 2300(1) & 0.0$\sigma$ \\
+$\delta$ (Feigenbaum)\textsuperscript{\ddag} & $\sqrt{L\!+\!K\!-\!K^2\!/L\!+\!e^{-X}}$ & --- & 4.66920 & 4.66920 & 0.0003\% \\
+$\mu/e$ (mass ratio) & $n^2 S$ (corrected)$^*$ & --- & 206.768 & 206.768 & $<0.01\sigma$ \\
+\midrule
+\multicolumn{6}{l}{\textit{Additional predictions (see text):}} \\
+$\alpha_F$ (Feigenbaum)\textsuperscript{\ddag} & $K + 1/K + \text{corr.}$ & --- & 2.50291 & 2.50291 & 0.0\% \\
+$H_0(\text{local})$ & $H_0^{\text{CMB}} \!\times\! 13/12$ & --- & 72.8 & 73.0(10) & 0.2$\sigma$ \\
+$\sigma_8(\text{CMB})$ & $\frac{L}{n+L}(1\!-\!\frac{K}{nL})$ & --- & 0.812 & 0.811(6) & 0.2$\sigma$ \\
+$v/M_P$ & $\lambda^{26}\!\times\!\text{corr.}$ & --- & $2.017\!\times\!10^{-17}$ & $2.017\!\times\!10^{-17}$ & 0.00014\% \\
+$\eta$ (baryon) & $(K/B)(1/L)^6 \!\cdot\! S/(S\!-\!1)$ & $\frac{13}{21.504\times 10^9}$ & $6.05\!\times\!10^{-10}$ & $6.10(6)\!\times\!10^{-10}$ & 1.0$\sigma$ \\
+$H_0$(CMB) & $v \cdot \lambda^{68}$ & --- & 67.2 & 67.4(5) & 0.4$\sigma$ \\
+$\delta_{\mathrm{CP}}$ & $3\pi/2$ & --- & $270^\circ$ & $274$--$285^\circ$ & within $3\sigma$ \\
+$|V_{us}|$ (Cabibbo) & $\sin(\arctan\frac{n-1}{S})$ & $\frac{3}{\sqrt{178}}$ & 0.2249 & 0.2243(5) & 1.2$\sigma$ \\
+$\Delta m^2_{32}/\Delta m^2_{21}$ & $L + S$ & 33 & 33 & $\approx 33.3$ & --- \\
+6 quark masses & See \S\ref{sec:quark-masses} & --- & --- & PDG 2024 & $<0.5\%$ each \\
+$\alpha\inv$(\text{GUT}) & $n + L + 1$ & 25 & 25 & $\approx 25 \pm 1.5$ & Matches SO(10) \\
+\bottomrule
+\end{tabular}
+
+\medskip
+{\footnotesize $^*$Lepton mass ratios and Feigenbaum constants involve
+$K/X$ corrections with transcendental functions; the remaining
+predictions are exact rational arithmetic.\\
+\textsuperscript{\dag}$v = 246.22$\,GeV (Higgs VEV) is itself derived from BLD
+constants (\S\ref{sec:reference-scale}); here it enters the Higgs mass
+formula.  See Appendix~\ref{app:alpha} for the $\alpha\inv$ correction
+details.\\
+\textsuperscript{\ddag}Cross-domain predictions; derivations in Appendix~\ref{app:turbulence}.}
+\end{table}
+
+\begin{remark}[Prediction Tiers]
+The predictions fall into three categories:
+(i)~\emph{Exact rational}: formulas involving only $(B, L, n, K, S)$
+and basic arithmetic ($\sin^2\!\theta_W$, $m_p/m_e$,
+$\alpha_s\inv$, PMNS angles, $\eta$, $\kappa_\lambda$, etc.);
+(ii)~\emph{Rational $+$ transcendental}: formulas additionally
+involving $e$ or $\pi$, which emerge as continuous limits of
+discrete BLD structure (``late emergence'': $e$ from sequential
+accumulation, $\pi$ from rotational closure---neither is a free
+parameter; see \S\ref{sec:reference-scale});
+(iii)~\emph{Structural identification}: quantities whose BLD
+formula is identified from the division algebra tower but whose
+assignment rule is not yet derived from a single principle (quark
+mass ratios, cosmological cascade exponents).  Category~(i) is the
+strongest; the ``zero free parameters'' claim applies to all three
+categories in that every numerical factor traces to BLD constants.
+\end{remark}
+
+\subsection{Electroweak Sector}
+
+\subsubsection{Fine Structure Constant}
+
+The structural value $\alpha\inv = nL + B + 1 = 137$ counts the total
+mode budget of the BLD type system: $nL = 80$ (how structure connects
+across dimensions), $B = 56$ (boundary modes), and $+1$ (the observer).
+The correction structure is given in Eq.~\eqref{eq:alpha-corrections}.
+
+\subsubsection{Weak Mixing Angle}
+
+\begin{equation}
+\sin^2\!\theta_W = \frac{3}{S} + \frac{K}{nLB} = \frac{3}{13} + \frac{2}{4480} = \frac{6733}{29120} \approx 0.23122
+\end{equation}
+The tree-level value $3/S = 3/13 \approx 0.2308$ is corrected by the
+small term $K/(nLB) \approx 0.00045$.  The observed value at the $Z$ pole (on-shell scheme) is
+$0.23121 \pm 0.00004$~\cite{PDG2024}, a deviation of 0.03$\sigma$.
+
+Lean: \texttt{sin2\_theta\_w}.
+
+\subsubsection{Strong Coupling}
+
+\begin{equation}
+\alpha_s\inv = \frac{\alpha\inv_{\text{base}}}{n^2} - \frac{K}{n+L} = \frac{137}{16} - \frac{2}{24} = \frac{407}{48} \approx 8.479
+\end{equation}
+giving $\alpha_s \approx 0.1179$, matching the PDG value $0.1179 \pm 0.0010$~\cite{PDG2024}.
+(The structural integer~$137$ is used because the $K/X$ corrections
+to $\alpha\inv$ are specific to the electromagnetic detection
+channel; the strong coupling sees only the structural base.)
+
+Lean: \texttt{alpha\_s\_inv}.
+
+\subsection{Neutrino Mixing Angles}
+
+The three PMNS mixing angles are exact rational functions of the
+BLD constants:
+
+\begin{align}
+\sin^2\!\theta_{12} &= \frac{K^2}{S} = \frac{4}{13} \approx 0.3077 \quad \text{(obs: } 0.307 \pm 0.012\text{)} \label{eq:theta12} \\
+\sin^2\!\theta_{13} &= \frac{n^2}{(n-1)^6} = \frac{16}{729} \approx 0.02195 \quad \text{(obs: } 0.02195 \pm 0.00058\text{)} \label{eq:theta13} \\
+\sin^2\!\theta_{23} &= \frac{S+1}{L+n+1} = \frac{14}{25} = 0.560 \quad \text{(obs: } 0.561 \pm 0.015\text{)} \label{eq:theta23}
+\end{align}
+
+The combined $\chi^2$ for three degrees of freedom is $0.008$,
+corresponding to $p = 0.9998$~\cite{NuFIT6}.
+
+Lean: \texttt{sin2\_theta\_12}, \texttt{sin2\_theta\_13}, \texttt{sin2\_theta\_23}.
+
+\begin{remark}
+Eq.~\eqref{eq:theta23} predicts $\sin^2\!\theta_{23} = 14/25 > 1/2$,
+placing $\theta_{23}$ in the \emph{upper octant}.  This is testable at
+Hyper-Kamiokande and DUNE (see \S\ref{sec:falsification}).
+\end{remark}
+
+The CP-violating phase is determined by the observation algebra
+($\mathbb{C}$, from $K = 2$): the unit $i$ introduces a $\pi/2$ phase
+per link, giving
+\begin{equation}
+\delta_{\mathrm{CP}} = \frac{3\pi}{2} = 270^\circ \quad
+(\sin\delta_{\mathrm{CP}} = -1, \text{ maximal CP violation})
+\end{equation}
+NuFIT~6.0 (inverted ordering): best fit $274$--$285^\circ$, $3\sigma$
+range includes $270^\circ$~\cite{NuFIT6}.
+
+The neutrino mass squared ratio is:
+\begin{equation}
+\frac{|\Delta m^2_{32}|}{|\Delta m^2_{21}|} = L + S = 33
+\end{equation}
+Observed: $\approx 33.3$ (NuFIT~6.0~\cite{NuFIT6}).  The absolute
+neutrino mass scale is not yet derived.
+
+\subsubsection{Cabibbo Angle}
+
+The quark mixing angle shares the structural ratio $(n-1)/S$ with the
+weak mixing angle:
+\begin{equation}
+\tan\theta_C = \frac{n - 1}{S} = \frac{3}{13}, \quad
+|V_{us}| = \sin\!\bigl(\arctan(3/13)\bigr) = 0.2249
+\end{equation}
+Observed: $0.2243 \pm 0.0005$~\cite{PDG2024} ($1.2\sigma$).  The full
+CKM matrix is not yet derived.
+
+\subsection{Mass Ratios}
+
+\subsubsection{Proton--Electron Mass Ratio}
+
+\begin{equation}
+\frac{m_p}{m_e} = (S + n)(B + nS) + \frac{K}{S} = 17 \times 108 + \frac{2}{13} = \frac{23870}{13} \approx 1836.154
+\end{equation}
+Observed: $1836.15267 \pm 0.00085$~\cite{CODATA2022}, a deviation of
+0.6\,ppm.
+
+Lean: \texttt{mp\_over\_me}.
+
+\subsubsection{Lepton Mass Ratios}
+
+The muon--electron mass ratio has structural value $n^2 S = 208$ with
+$K/X$ corrections:
+\begin{equation}
+\frac{m_\mu}{m_e} = (n^2 S - 1) \cdot \frac{nLS}{nLS + 1} \cdot \left(1 - \frac{1}{6452}\right)\left(1 - \frac{1}{250880}\right) \approx 206.768
+\end{equation}
+The tau--muon ratio has structural integer $S + n = 17$.  The factor
+$2\pi e \approx 17.079$ arises as the continuous limit: $\tau$ completes
+a full rotation ($2\pi$) through accumulated discrete structure
+($e = \lim_{m \to \infty}(1 + 1/m)^m$):
+\begin{equation}
+\frac{m_\tau}{m_\mu} = 2\pi e \cdot \frac{n^2 S - 1}{n^2 S} \cdot \frac{nL - 1}{nL} \cdot \frac{nLS + K}{nLS} = 2\pi e \cdot \frac{207}{208} \cdot \frac{79}{80} \cdot \frac{1042}{1040} \approx 16.817
+\end{equation}
+The three corrections are: phase mismatch between discrete and rotational
+structure ($207/208$), observer cost from the Killing form ($79/80$),
+and their coupling ($1042/1040$).
+Both lepton mass ratios match observed values to full precision.
+
+\subsubsection{Higgs Mass}
+
+\begin{equation}
+m_H = \frac{v}{2}\left(1 + \frac{1}{B}\right)\left(1 - \frac{1}{BL}\right) = \frac{v}{2} \cdot \frac{57}{56} \cdot \frac{1119}{1120} \approx 125.20\;\text{GeV}
+\end{equation}
+where $v \approx 246.22$\,GeV is the Higgs vacuum expectation value
+(derived from BLD constants, \S\ref{sec:reference-scale}).
+Observed: $125.20 \pm 0.11$\,GeV~\cite{PDG2024}.
+
+\subsection{Higgs Coupling Modifications}
+
+The $K/X$ framework predicts that all Higgs couplings deviate from
+Standard Model values by $K/X$ for the appropriate channel:
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+\textbf{Coupling} & \textbf{Formula} & \textbf{Predicted} & \textbf{Observed} \\
+\midrule
+$\kappa_\gamma = \kappa_Z$ & $1 + K/B = 29/28$ & 1.0357 & $1.05 \pm 0.09$ \\
+$\kappa_W$ & $1 + K/(B+L) = 39/38$ & 1.0263 & $1.04 \pm 0.08$ \\
+$\kappa_b$ & $1 + K/(n+L) = 13/12$ & 1.0833 & $0.98 \pm 0.13$ \\
+$\kappa_\lambda$ & $1 + K/(nL) = 41/40$ & \textbf{1.025} & \textit{not yet measured} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The Higgs self-coupling prediction $\kappa_\lambda = 41/40$ is a
+\emph{novel falsifiable prediction} testable at the HL-LHC
+(\S\ref{sec:falsification}).
+
+\subsection{Neutron Lifetime}
+
+The beam--bottle neutron lifetime discrepancy is:
+\begin{equation}
+\frac{\tau_{\text{beam}}}{\tau_{\text{bottle}}} = 1 + \frac{K}{S^2} = \frac{171}{169} \approx 1.01183
+\end{equation}
+giving $\tau_{\text{beam}} \approx 877.8 \times 171/169 \approx 888.2$\,s.
+Observed: $888.1 \pm 2.0$\,s~\cite{Yue2013}.
+
+Lean: \texttt{tau\_beam\_ratio}.
+
+\subsection{Quark Masses}
+\label{sec:quark-masses}
+
+All six quark masses are expressed as BLD arithmetic to sub-percent
+accuracy.  The structural ratios ($L$, $K$, $S$, $n\!-\!1$) are
+identified from the division algebra tower; the $K/X$ corrections
+follow from the observation framework.  A systematic derivation of
+which BLD constant governs each quark ratio---analogous to the
+Casimir bridge for leptons---remains open.  Quarks and leptons are the same underlying fermion structure
+in different alignment phases---like water and ice.  The quark masses
+use the same structural integers ($n^2 S$, $L$, $S$) as leptons,
+modified by a confinement barrier ($-L$) and $K/X$ observation
+gradients:
+
+\begin{center}
+\small
+\begin{tabular}{llllr}
+\toprule
+\textbf{Quark} & \textbf{Key Ratio} & \textbf{Predicted} & \textbf{Observed (PDG)} & \textbf{Error} \\
+\midrule
+$u$ & $m_u/m_d = 1/K$ & 2.16\,MeV & 2.16\,MeV & 0.0\% \\
+$d$ & $m_s/m_d = L$ & 4.65\,MeV & 4.67\,MeV & 0.4\% \\
+$s$ & $m_s/m_e = n^2 S - L - L/n$ & 93.5\,MeV & 93.4\,MeV & 0.1\% \\
+$c$ & $m_c/m_s = S$ & 1276\,MeV & 1270\,MeV & 0.5\% \\
+$b$ & $m_b/m_c = 3 + K/7$ & 4173\,MeV & 4180\,MeV & 0.2\% \\
+$t$ & $m_t = v/\sqrt{K}\,(1 - K/n^2 S)$ & 172.4\,GeV & 172.69\,GeV & 0.17\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The top quark is special: it decays before confinement and therefore
+couples directly to the Higgs field ($v/\sqrt{K}$), receiving only the
+weak $K/n^2 S = 2/208$ correction rather than the $-L$ confinement
+barrier.
+
+
+
+% ═══════════════════════════════════════════════════════════════════
 \section{Quantum Foundations}
 \label{sec:quantum}
 % ═══════════════════════════════════════════════════════════════════
@@ -1245,6 +1535,11 @@ $|\psi|^3$ violates unitarity at boundaries; $|\psi|^4$ overcounts
 bidirectionality ($K = 2$, not~4).  Only $|\psi|^2$ gives exactly
 $K = 2$ bidirectional factors.
 \end{proof}
+
+The bidirectional argument motivates the exponent~$2$;
+Theorem~\ref{thm:selection-rule} below provides a
+measure-theoretic proof that is independent of the $K/X$
+interpretation.
 
 The same $K = 2$ that forces the Born rule also appears as:
 $\hbar/2$ in the uncertainty principle, $2\sqrt{2}$ in the Bell
@@ -1494,252 +1789,6 @@ systems with weak decoherence---a falsifiable prediction unique to BLD.
 
 
 % ═══════════════════════════════════════════════════════════════════
-\section{Physics Predictions}
-\label{sec:predictions}
-% ═══════════════════════════════════════════════════════════════════
-
-All predictions use only the five derived constants $(B, L, n, K, S) =
-(56, 20, 4, 2, 13)$.  No free parameters are fitted to data.
-
-\subsection{Master Prediction Table}
-
-Table~\ref{tab:predictions} collects the principal predictions.
-The rational parts of each formula are verified in Lean~4 via \texttt{norm\_num}.
-
-\begin{table}[htbp]
-\centering
-\caption{BLD predictions vs.\ experiment.  All formulas use only $(B, L, n, K, S)$.}
-\label{tab:predictions}
-\scriptsize
-\begin{tabular}{@{}llllll@{}}
-\toprule
-\textbf{Quantity} & \textbf{BLD Formula} & \textbf{Fraction} & \textbf{Predicted} & \textbf{Observed} & \textbf{Dev.} \\
-\midrule
-$\alpha\inv$ (primordial) & $nL + B + 1$ & 137 & 137 & 137.036 & --- \\
-$\alpha\inv$ (full) & $137 + \text{corr.}$ & --- & 137.035999 & 137.035999 & 0.0$\sigma$ \\
-$\sin^2\!\theta_W$ & $\frac{3}{S} + \frac{K}{nLB}$ & $\frac{6733}{29120}$ & 0.23122 & 0.23121(4) & 0.03$\sigma$ \\
-$\sin^2\!\theta_{12}$ & $K^2/S$ & $\frac{4}{13}$ & 0.30769 & 0.307(12) & 0.06$\sigma$ \\
-$\sin^2\!\theta_{13}$ & $n^2/(n\!-\!1)^6$ & $\frac{16}{729}$ & 0.02195 & 0.02195(58) & 0.00$\sigma$ \\
-$\sin^2\!\theta_{23}$ & $(S\!+\!1)/(L\!+\!n\!+\!1)$ & $\frac{14}{25}$ & 0.560 & 0.561(15) & 0.07$\sigma$ \\
-$m_p/m_e$ & $(S\!+\!n)(B\!+\!nS) + K/S$ & $\frac{23870}{13}$ & 1836.154 & 1836.153 & 0.6\,ppm \\
-$m_H$\textsuperscript{\dag} & $\frac{v}{2}(1\!+\!\frac{1}{B})(1\!-\!\frac{1}{BL})$ & --- & 125.20\,GeV & 125.20\,GeV & 0.0$\sigma$ \\
-$\alpha_s\inv$ & $\frac{137}{n^2} - \frac{K}{n+L}$ & $\frac{407}{48}$ & 8.479 & 8.479 & 0.0$\sigma$ \\
-$\text{Re}_c(\text{pipe})$\textsuperscript{\ddag} & $\frac{nLB}{K} \cdot \frac{X\!+\!1}{X}$ & $\frac{85120}{37}$ & 2300.5 & 2300(1) & 0.0$\sigma$ \\
-$\delta$ (Feigenbaum)\textsuperscript{\ddag} & $\sqrt{L\!+\!K\!-\!K^2\!/L\!+\!e^{-X}}$ & --- & 4.66920 & 4.66920 & 0.0003\% \\
-$\mu/e$ (mass ratio) & $n^2 S$ (corrected)$^*$ & --- & 206.768 & 206.768 & $<0.01\sigma$ \\
-\midrule
-\multicolumn{6}{l}{\textit{Additional predictions (see text):}} \\
-$\alpha_F$ (Feigenbaum)\textsuperscript{\ddag} & $K + 1/K + \text{corr.}$ & --- & 2.50291 & 2.50291 & 0.0\% \\
-$H_0(\text{local})$ & $H_0^{\text{CMB}} \!\times\! 13/12$ & --- & 72.8 & 73.0(10) & 0.2$\sigma$ \\
-$\sigma_8(\text{CMB})$ & $\frac{L}{n+L}(1\!-\!\frac{K}{nL})$ & --- & 0.812 & 0.811(6) & 0.2$\sigma$ \\
-$v/M_P$ & $\lambda^{26}\!\times\!\text{corr.}$ & --- & $2.017\!\times\!10^{-17}$ & $2.017\!\times\!10^{-17}$ & 0.00014\% \\
-$\eta$ (baryon) & $(K/B)(1/L)^6 \!\cdot\! S/(S\!-\!1)$ & $\frac{13}{21.504\times 10^9}$ & $6.05\!\times\!10^{-10}$ & $6.10(6)\!\times\!10^{-10}$ & 1.0$\sigma$ \\
-$H_0$(CMB) & $v \cdot \lambda^{68}$ & --- & 67.2 & 67.4(5) & 0.4$\sigma$ \\
-$\delta_{\mathrm{CP}}$ & $3\pi/2$ & --- & $270^\circ$ & $274$--$285^\circ$ & within $3\sigma$ \\
-$|V_{us}|$ (Cabibbo) & $\sin(\arctan\frac{n-1}{S})$ & $\frac{3}{\sqrt{178}}$ & 0.2249 & 0.2243(5) & 1.2$\sigma$ \\
-$\Delta m^2_{32}/\Delta m^2_{21}$ & $L + S$ & 33 & 33 & $\approx 33.3$ & --- \\
-6 quark masses & See \S\ref{sec:quark-masses} & --- & --- & PDG 2024 & $<0.5\%$ each \\
-$\alpha\inv$(\text{GUT}) & $n + L + 1$ & 25 & 25 & $\approx 25 \pm 1.5$ & Matches SO(10) \\
-\bottomrule
-\end{tabular}
-
-\medskip
-{\footnotesize $^*$Lepton mass ratios and Feigenbaum constants involve
-$K/X$ corrections with transcendental functions; the remaining
-predictions are exact rational arithmetic.\\
-\textsuperscript{\dag}$v = 246.22$\,GeV (Higgs VEV) is itself derived from BLD
-constants (\S\ref{sec:reference-scale}); here it enters the Higgs mass
-formula.  See Appendix~\ref{app:alpha} for the $\alpha\inv$ correction
-details.\\
-\textsuperscript{\ddag}Cross-domain predictions; derivations in Appendix~\ref{app:turbulence}.}
-\end{table}
-
-\subsection{Electroweak Sector}
-
-\subsubsection{Fine Structure Constant}
-
-The primordial value $\alpha\inv = nL + B + 1 = 137$ counts the total
-mode budget of the BLD type system: $nL = 80$ (how structure connects
-across dimensions), $B = 56$ (boundary modes), and $+1$ (the observer).
-The correction structure is given in Eq.~\eqref{eq:alpha-corrections}.
-
-\subsubsection{Weak Mixing Angle}
-
-\begin{equation}
-\sin^2\!\theta_W = \frac{3}{S} + \frac{K}{nLB} = \frac{3}{13} + \frac{2}{4480} = \frac{6733}{29120} \approx 0.23122
-\end{equation}
-The tree-level value $3/S = 3/13 \approx 0.2308$ is corrected by the
-small term $K/(nLB) \approx 0.00045$.  The observed value at the $Z$ pole (on-shell scheme) is
-$0.23121 \pm 0.00004$~\cite{PDG2024}, a deviation of 0.03$\sigma$.
-
-Lean: \texttt{sin2\_theta\_w}.
-
-\subsubsection{Strong Coupling}
-
-\begin{equation}
-\alpha_s\inv = \frac{\alpha\inv_{\text{base}}}{n^2} - \frac{K}{n+L} = \frac{137}{16} - \frac{2}{24} = \frac{407}{48} \approx 8.479
-\end{equation}
-giving $\alpha_s \approx 0.1179$, matching the PDG value $0.1179 \pm 0.0010$~\cite{PDG2024}.
-
-Lean: \texttt{alpha\_s\_inv}.
-
-\subsection{Neutrino Mixing Angles}
-
-The three PMNS mixing angles are exact rational functions of the
-BLD constants:
-
-\begin{align}
-\sin^2\!\theta_{12} &= \frac{K^2}{S} = \frac{4}{13} \approx 0.3077 \quad \text{(obs: } 0.307 \pm 0.012\text{)} \label{eq:theta12} \\
-\sin^2\!\theta_{13} &= \frac{n^2}{(n-1)^6} = \frac{16}{729} \approx 0.02195 \quad \text{(obs: } 0.02195 \pm 0.00058\text{)} \label{eq:theta13} \\
-\sin^2\!\theta_{23} &= \frac{S+1}{L+n+1} = \frac{14}{25} = 0.560 \quad \text{(obs: } 0.561 \pm 0.015\text{)} \label{eq:theta23}
-\end{align}
-
-The combined $\chi^2$ for three degrees of freedom is $0.008$,
-corresponding to $p = 0.9998$~\cite{NuFIT6}.
-
-Lean: \texttt{sin2\_theta\_12}, \texttt{sin2\_theta\_13}, \texttt{sin2\_theta\_23}.
-
-\begin{remark}
-Eq.~\eqref{eq:theta23} predicts $\sin^2\!\theta_{23} = 14/25 > 1/2$,
-placing $\theta_{23}$ in the \emph{upper octant}.  This is testable at
-Hyper-Kamiokande and DUNE (see \S\ref{sec:falsification}).
-\end{remark}
-
-The CP-violating phase is determined by the observation algebra
-($\mathbb{C}$, from $K = 2$): the unit $i$ introduces a $\pi/2$ phase
-per link, giving
-\begin{equation}
-\delta_{\mathrm{CP}} = \frac{3\pi}{2} = 270^\circ \quad
-(\sin\delta_{\mathrm{CP}} = -1, \text{ maximal CP violation})
-\end{equation}
-NuFIT~6.0 (inverted ordering): best fit $274$--$285^\circ$, $3\sigma$
-range includes $270^\circ$~\cite{NuFIT6}.
-
-The neutrino mass squared ratio is:
-\begin{equation}
-\frac{|\Delta m^2_{32}|}{|\Delta m^2_{21}|} = L + S = 33
-\end{equation}
-Observed: $\approx 33.3$ (NuFIT~6.0~\cite{NuFIT6}).  The absolute
-neutrino mass scale is not yet derived.
-
-\subsubsection{Cabibbo Angle}
-
-The quark mixing angle shares the structural ratio $(n-1)/S$ with the
-weak mixing angle:
-\begin{equation}
-\tan\theta_C = \frac{n - 1}{S} = \frac{3}{13}, \quad
-|V_{us}| = \sin\!\bigl(\arctan(3/13)\bigr) = 0.2249
-\end{equation}
-Observed: $0.2243 \pm 0.0005$~\cite{PDG2024} ($1.2\sigma$).  The full
-CKM matrix is not yet derived.
-
-\subsection{Mass Ratios}
-
-\subsubsection{Proton--Electron Mass Ratio}
-
-\begin{equation}
-\frac{m_p}{m_e} = (S + n)(B + nS) + \frac{K}{S} = 17 \times 108 + \frac{2}{13} = \frac{23870}{13} \approx 1836.154
-\end{equation}
-Observed: $1836.15267 \pm 0.00085$~\cite{CODATA2022}, a deviation of
-0.6\,ppm.
-
-Lean: \texttt{mp\_over\_me}.
-
-\subsubsection{Lepton Mass Ratios}
-
-The muon--electron mass ratio has primordial value $n^2 S = 208$ with
-$K/X$ corrections:
-\begin{equation}
-\frac{m_\mu}{m_e} = (n^2 S - 1) \cdot \frac{nLS}{nLS + 1} \cdot \left(1 - \frac{1}{6452}\right)\left(1 - \frac{1}{250880}\right) \approx 206.768
-\end{equation}
-The tau--muon ratio has integer primordial $S + n = 17$.  The factor
-$2\pi e \approx 17.079$ arises as the continuous limit: $\tau$ completes
-a full rotation ($2\pi$) through accumulated discrete structure
-($e = \lim_{m \to \infty}(1 + 1/m)^m$):
-\begin{equation}
-\frac{m_\tau}{m_\mu} = 2\pi e \cdot \frac{n^2 S - 1}{n^2 S} \cdot \frac{nL - 1}{nL} \cdot \frac{nLS + K}{nLS} = 2\pi e \cdot \frac{207}{208} \cdot \frac{79}{80} \cdot \frac{1042}{1040} \approx 16.817
-\end{equation}
-The three corrections are: phase mismatch between discrete and rotational
-structure ($207/208$), observer cost from the Killing form ($79/80$),
-and their coupling ($1042/1040$).
-Both lepton mass ratios match observed values to full precision.
-
-\subsubsection{Higgs Mass}
-
-\begin{equation}
-m_H = \frac{v}{2}\left(1 + \frac{1}{B}\right)\left(1 - \frac{1}{BL}\right) = \frac{v}{2} \cdot \frac{57}{56} \cdot \frac{1119}{1120} \approx 125.20\;\text{GeV}
-\end{equation}
-where $v \approx 246.22$\,GeV is the Higgs vacuum expectation value
-(derived from BLD constants, \S\ref{sec:reference-scale}).
-Observed: $125.20 \pm 0.11$\,GeV~\cite{PDG2024}.
-
-\subsection{Higgs Coupling Modifications}
-
-The $K/X$ framework predicts that all Higgs couplings deviate from
-Standard Model values by $K/X$ for the appropriate channel:
-
-\begin{center}
-\begin{tabular}{llll}
-\toprule
-\textbf{Coupling} & \textbf{Formula} & \textbf{Predicted} & \textbf{Observed} \\
-\midrule
-$\kappa_\gamma = \kappa_Z$ & $1 + K/B = 29/28$ & 1.0357 & $1.05 \pm 0.09$ \\
-$\kappa_W$ & $1 + K/(B+L) = 39/38$ & 1.0263 & $1.04 \pm 0.08$ \\
-$\kappa_b$ & $1 + K/(n+L) = 13/12$ & 1.0833 & $0.98 \pm 0.13$ \\
-$\kappa_\lambda$ & $1 + K/(nL) = 41/40$ & \textbf{1.025} & \textit{not yet measured} \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-The Higgs self-coupling prediction $\kappa_\lambda = 41/40$ is a
-\emph{novel falsifiable prediction} testable at the HL-LHC
-(\S\ref{sec:falsification}).
-
-\subsection{Neutron Lifetime}
-
-The beam--bottle neutron lifetime discrepancy is:
-\begin{equation}
-\frac{\tau_{\text{beam}}}{\tau_{\text{bottle}}} = 1 + \frac{K}{S^2} = \frac{171}{169} \approx 1.01183
-\end{equation}
-giving $\tau_{\text{beam}} \approx 877.8 \times 171/169 \approx 888.2$\,s.
-Observed: $888.1 \pm 2.0$\,s~\cite{Yue2013}.
-
-Lean: \texttt{tau\_beam\_ratio}.
-
-\subsection{Quark Masses}
-\label{sec:quark-masses}
-
-All six quark masses are derived from BLD primitives to sub-percent
-accuracy.  Quarks and leptons are the same underlying fermion structure
-in different alignment phases---like water and ice.  The quark masses
-use the same primordial integers ($n^2 S$, $L$, $S$) as leptons,
-modified by a confinement barrier ($-L$) and $K/X$ observation
-gradients:
-
-\begin{center}
-\small
-\begin{tabular}{llllr}
-\toprule
-\textbf{Quark} & \textbf{Key Ratio} & \textbf{Predicted} & \textbf{Observed (PDG)} & \textbf{Error} \\
-\midrule
-$u$ & $m_u/m_d = 1/K$ & 2.16\,MeV & 2.16\,MeV & 0.0\% \\
-$d$ & $m_s/m_d = L$ & 4.65\,MeV & 4.67\,MeV & 0.4\% \\
-$s$ & $m_s/m_e = n^2 S - L - L/n$ & 93.5\,MeV & 93.4\,MeV & 0.1\% \\
-$c$ & $m_c/m_s = S$ & 1276\,MeV & 1270\,MeV & 0.5\% \\
-$b$ & $m_b/m_c = 3 + K/7$ & 4173\,MeV & 4180\,MeV & 0.2\% \\
-$t$ & $m_t = v/\sqrt{K}\,(1 - K/n^2 S)$ & 172.4\,GeV & 172.69\,GeV & 0.17\% \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-The top quark is special: it decays before confinement and therefore
-couples directly to the Higgs field ($v/\sqrt{K}$), receiving only the
-weak $K/n^2 S = 2/208$ correction rather than the $-L$ confinement
-barrier.
-
-
-
-% ═══════════════════════════════════════════════════════════════════
 \section{Cosmological Fractions}
 \label{sec:cosmology}
 % ═══════════════════════════════════════════════════════════════════
@@ -1818,6 +1867,10 @@ vacuum energy fraction is not $M_P^4$ but
 \Omega_\Lambda = 1 - \frac{n+L}{nL} - \frac{Kn}{L^2} = \frac{17}{25} = 68\%
 \end{equation}
 which is not a free parameter but a consequence of finite structure.
+BLD derives the \emph{fraction} ($68\%$) from finite structure.
+The \emph{magnitude} ($\Lambda \sim 10^{-122}\,M_P^4$) is
+addressed by the cosmological cascade (Eq.~\eqref{eq:h0-abs}),
+which determines $H_0$---and hence $\Lambda$---in absolute units.
 
 \subsection{Cosmological Tensions}
 \label{sec:tensions}
@@ -1832,7 +1885,7 @@ H_0(\text{local}) = H_0(\text{CMB}) \times \left(1 + \frac{K}{n + L}\right)
 \label{eq:hubble}
 \end{equation}
 where $X = n + L = 24$ is the observer structure (4 spacetime dimensions
-$+$ 20 curvature components).  The CMB measures primordial structure
+$+$ 20 curvature components).  The CMB measures structural values
 directly (no observation cost); local measurements traverse through the
 observer structure, paying $K/(n+L) = 1/12 \approx 8.3\%$.
 
@@ -1846,7 +1899,7 @@ Both measurements are correct---they measure different things.
 The same $K/X$ mechanism, with opposite sign, resolves the $\sigma_8$
 tension (observation smooths structure rather than boosting it):
 \begin{align}
-\sigma_8(\text{primordial}) &= \frac{L}{n + L} = \frac{20}{24} \approx 0.833 \\
+\sigma_8(\text{structural}) &= \frac{L}{n + L} = \frac{20}{24} \approx 0.833 \\
 \sigma_8(\text{CMB}) &= \frac{L}{n+L}\left(1 - \frac{K}{nL}\right) = 0.812 \quad (\text{obs: } 0.811 \pm 0.006) \\
 \sigma_8(\text{local}) &\approx 0.77 \quad (\text{obs: } {\sim}\,0.77\text{~\cite{DES2021}})
 \end{align}
@@ -1915,7 +1968,12 @@ per dimension.
 
 A theory with zero free parameters has zero room for adjustment.  Every
 prediction is exact: a single disagreement with experiment would refute
-the theory.  Table~\ref{tab:falsification} lists the most accessible
+the theory.  The predictions in Table~\ref{tab:predictions} are
+\emph{post-dictions}: the observed values were known before the BLD
+formulas were written.  The tests in
+Table~\ref{tab:falsification} are genuine \emph{predictions}:
+the BLD values were computed before experimental confirmation.
+Table~\ref{tab:falsification} lists the most accessible
 tests.
 
 \begin{table}[htbp]
@@ -2164,13 +2222,14 @@ Hubble tension & $>5\sigma$ discrepancy & Resolved ($K/(n\!+\!L) = 1/12$) \\
 \end{tabular}
 \end{table}
 
-\begin{remark}[BLD = Quantum Mechanics]
-BLD is not a theory \emph{about} quantum mechanics---it \emph{is}
-quantum mechanics in structural form.  The equivalence is transitive:
-BLD = Lie theory (proved, \S\ref{sec:lie}), Lie theory = QM structure
-(150 years of physics).  The Killing form $K = 2$ manifests throughout
-quantum mechanics as $\hbar/2$, $2\sqrt{2}$, $T_2 \leq 2T_1$,
-$|\psi|^2$, $S = 2L$, and $r_s = 2GM/c^2$.
+\begin{remark}[BLD and Quantum Mechanics]
+BLD reproduces the mathematical structure of quantum mechanics via
+a transitive chain: BLD $=$ Lie theory (proved, \S\ref{sec:lie}),
+and Lie theory provides the algebraic foundation of quantum
+mechanics.  The Killing form $K = 2$ manifests as
+$\hbar/2$, $2\sqrt{2}$, $S = 2L$, and $r_s = 2GM/c^2$.
+Whether this structural correspondence constitutes identity is
+a question the falsification tests are designed to settle.
 \end{remark}
 
 \subsection{Open Questions}
@@ -2404,7 +2463,9 @@ simplifies to $12 = n(n-1)$, which has the unique positive solution
 $n = 4$.  That is: $n = 4$ is the \emph{only} spacetime dimension in
 which the Riemann component count equals the amino acid count.  This
 structural constraint selects $n = 4$ independently of the Killing form
-argument.
+argument.  Whether this numerical coincidence reflects a structural constraint
+on self-replicating chemistry or is accidental remains open; a
+causal mechanism has not been established.
 
 The degeneracy modulus $n(n-1) = 12$ correctly predicts that no amino
 acid has exactly 5 synonymous codons (since $5 \nmid 12$), matching

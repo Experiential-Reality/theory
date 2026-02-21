@@ -21,7 +21,7 @@ depends_on:
 1. x = 1/L = 1/20: ordinary matter fraction derived from structural budget — [Derivation](#deriving-x--1l)
 2. L/D = 5: from 20 Riemann components / 4 dimensions — [Status Breakdown](#status-breakdown)
 3. Three exact rational fractions from BLD integers — [Exact Fractions](#exact-rational-fractions)
-4. Observer correction: 8x² = K×n×x² = 2% — [Observer Correction](#the-observer-correction-primordial-structure)
+4. Observer correction: 8x² = K×n×x² = 2% — [Observer Correction](#the-observer-correction-structural-integers)
 5. Result: 5%/27%/68% (0% error vs Planck 2018) — [Observed Values](#observed-values)
 6. Dissolves cosmological constant problem — [Cosmological Constant](#the-cosmological-constant-problem)
 7. Implication: no WIMPs (there are no particles to find) — [Implications](#implications)
@@ -115,19 +115,19 @@ With x = 1/L:
 | Dark matter | 1/n + Kn/L² | **27/100 = 27%** | [26.8%](https://arxiv.org/abs/1807.06209) | **~0.5σ** |
 | Dark energy | 1 - (n+L)/(nL) - Kn/L² | **17/25 = 68%** | [68.3%](https://arxiv.org/abs/1807.06209) | **~0.5σ** |
 
-### The Observer Correction (Primordial Structure)
+### The Observer Correction (Structural Integers)
 
-The correction factor **8 = K × n = 2 × 4** comes from primordial integers:
+The correction factor **8 = K × n = 2 × 4** comes from structural integers:
 - **K = 2**: The Killing form (bidirectional observation cost)
 - **n = 4**: Spacetime dimensions (from octonionic alignment)
 
 The 8x² = 2% correction is the **same phenomenon** as K/B in α⁻¹:
 - Observation requires participation (you must link to measure)
 - Participation creates structure (the measurement link adds to L)
-- The 8 = K×n is **primordial** — what the octonions computed first
+- The 8 = K×n is **structural** — what the octonions computed first
 
 See [Observer Corrections](observer-correction.md) for the unified framework.
-See [Integer Machine](../foundations/machine/integer-machine.md) for why all corrections use primordial integers.
+See [Integer Machine](../foundations/machine/integer-machine.md) for why all corrections use structural integers.
 
 ---
 

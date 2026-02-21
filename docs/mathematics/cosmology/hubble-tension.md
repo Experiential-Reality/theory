@@ -17,14 +17,14 @@ used_by:
 
 1. Formula: H₀(local) = H₀(CMB) × (1 + K/(n+L)) = 67.4 × 1.0833 = 73.0 — [The Formula](#the-formula)
 2. X = n+L = 24 (observer structure: 4 dimensions + 20 curvature components) — [Why X = n + L?](#why-x--n--l)
-3. CMB measures primordial cloth directly (no K/X cost) — [Ring/Cloth Interpretation](#ringcloth-interpretation)
+3. CMB measures structural values directly (no K/X cost) — [Ring/Cloth Interpretation](#ringcloth-interpretation)
 4. Local measures through the ring, paying K/(n+L) = 8.3% — [The Calculation](#the-calculation)
 5. Both measurements are correct — they measure different things — [Implications](#implications)
 6. Same physics as σ₈ tension (opposite sign) — [Related: σ₈ Tension](#related-σ₈-tension)
 
 | Measurement | Value (km/s/Mpc) | What It Measures |
 |-------------|------------------|------------------|
-| CMB (Planck) | 67.4 ± 0.5 | Primordial (no K/X) |
+| CMB (Planck) | 67.4 ± 0.5 | Structural (no K/X) |
 | Local (SH0ES) | 73.0 ± 1.0 | Through ring (K/X = 8.3%) |
 | Predicted | **73.0** | **0% error** |
 
@@ -81,7 +81,7 @@ The local measurement is made by an observer (us) embedded in the ring, measurin
 | **L = 20** | The Riemann components that define curvature |
 | **n + L = 24** | The full observer structure |
 
-When we measure locally, we pay K/X = 2/24 = 1/12 observation cost. The CMB measurement doesn't pay this cost because it measures the cloth as it was created — primordial structure before observation.
+When we measure locally, we pay K/X = 2/24 = 1/12 observation cost. The CMB measurement doesn't pay this cost because it measures the cloth as it was created — structural values before observation.
 
 ---
 
@@ -90,7 +90,7 @@ When we measure locally, we pay K/X = 2/24 = 1/12 observation cost. The CMB meas
 From the [ring/cloth model](genesis-function.md#the-ring-and-cloth-model):
 
 ```
-CMB:    Measures the cloth directly (primordial snapshot)
+CMB:    Measures the cloth directly (structural snapshot)
 Local:  Measures from inside the ring (pays traversal cost)
 ```
 
@@ -148,18 +148,18 @@ It's K/X — the standard BLD observation cost.
 ### 2. CMB and Local Are Both Correct
 
 Neither measurement is wrong. They measure different things:
-- CMB: primordial cloth
+- CMB: structural cloth
 - Local: cloth through ring
 
 The 8% difference is structural, not error.
 
 ### 3. Testable Prediction
 
-Any measurement method that observes "from inside the ring" should show the K/(n+L) correction. Methods that access primordial structure directly should not.
+Any measurement method that observes "from inside the ring" should show the K/(n+L) correction. Methods that access structural values directly should not.
 
 | Method | Expected H₀ | Reason |
 |--------|-------------|--------|
-| CMB | 67.4 | Primordial (no K/X) |
+| CMB | 67.4 | Structural (no K/X) |
 | Local distance ladder | 73.0 | Through ring (K/X = 1/12) |
 | Gravitational waves | ? | Depends on whether ring-embedded |
 | Time-delay cosmography | ? | Depends on observation structure |

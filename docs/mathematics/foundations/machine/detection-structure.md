@@ -13,6 +13,7 @@ used_by:
   - ../../particle-physics/boson-masses.md
   - ../../particle-physics/neutrino-masses.md
   - ../../cosmology/observer-correction.md
+  - integer-factorization.md
 ---
 
 ## Summary
@@ -381,6 +382,7 @@ The T ∩ S rule applies to **any** measurement:
 - **Cosmology**: Dark matter escapes EM detection (T_EM ∩ S_DM = {B} ∩ S_DM = ∅ if S_DM lacks B)
 - **Relativity**: Gravitational waves detected via L distortion, not B
 - **Quantum**: Measurement collapse = T ∩ S becoming non-empty
+- **Number theory**: Integer factoring uses coprime probes as the traverser (T = {Legendre symbol}) against factor structure (S = {factor}). T ∩ S is non-empty iff the probe reveals factor information, with K/X = 2/2 = 1 bit per probe. First concrete non-physics T ∩ S application. See [Integer Factorization](integer-factorization.md#the-probe-equation-kx--1).
 
 ### 7.2 Connection to Observer Corrections
 
@@ -440,3 +442,4 @@ There is no "view from nowhere." Every observation is T-relative.
 - [Higgs Couplings](../../particle-physics/higgs-couplings.md) — All κ values from T ∩ S
 - [Boson Masses](../../particle-physics/boson-masses.md) — W/Z sign differences
 - [Neutrino Masses](../../particle-physics/neutrino-masses.md) — Why always "+"
+- [Integer Factorization](integer-factorization.md) — First non-physics T ∩ S application; K/X = 1 bit per coprime probe

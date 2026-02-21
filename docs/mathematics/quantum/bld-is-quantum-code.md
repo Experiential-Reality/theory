@@ -5,6 +5,8 @@ depends_on:
   - ../lie-theory/lie-correspondence.md
   - ../lie-theory/killing-form.md
   - ../foundations/proofs/irreducibility-proof.md
+see_also:
+  - ../foundations/machine/integer-factorization.md
 ---
 
 # BLD IS Quantum Mechanics Code
@@ -208,6 +210,7 @@ The same BLD structures appear in:
 - **Markets**: Economic equilibria
 - **Particles**: Standard Model gauge groups
 - **Spacetime**: General relativity
+- **Number theory**: Factoring complexity hierarchy (D determines Work = N^{1/(2D)})
 
 Because all of these are Lie algebra configurations.
 
@@ -306,6 +309,8 @@ If BLD = QM language, then:
 - Quantum advantage comes from structure traversing itself
 - Circuit depth = L-cost of algorithm
 - Error correction = L compensating for broken L
+- Factoring complexity = D-hierarchy (same probe, same cost, only dimension varies)
+- Shor's speedup = quantum D providing 2^k simultaneous channels
 
 ### For AI
 

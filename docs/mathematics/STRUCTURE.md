@@ -8,7 +8,7 @@ This document maps how derivations connect — the DAG of dependencies that form
 
 ## The Theory in One Paragraph
 
-Three primitives — **Boundary (B=56)**, **Link (L=20)**, **Dimension (n=4)** — are proven irreducible and complete. From the logical necessity that "nothing is self-contradictory," the genesis function `traverse(-B,B)` must close, requiring octonions as the minimal algebra with sufficient richness. This derives n=4 spacetime, 3 generations via triality, and all particle physics. The **integer machine** stores structure as integers (137, 208, 17); transcendentals emerge from continuous observation of discrete structure. Every measurement = primordial integer + K/X traversal cost. Results: α⁻¹ = 137.035999177 (matches CODATA (zero free parameters)), μ/e = 206.7682826 (0.5 ppb), all predictions exact.
+Three primitives — **Boundary (B=56)**, **Link (L=20)**, **Dimension (n=4)** — are proven irreducible and complete. From the logical necessity that "nothing is self-contradictory," the genesis function `traverse(-B,B)` must close, requiring octonions as the minimal algebra with sufficient richness. This derives n=4 spacetime, 3 generations via triality, and all particle physics. The **integer machine** stores structure as integers (137, 208, 17); transcendentals emerge from continuous observation of discrete structure. Every measurement = structural integer + K/X traversal cost. Results: α⁻¹ = 137.035999177 (matches CODATA (zero free parameters)), μ/e = 206.7682826 (0.5 ppb), all predictions exact.
 
 ---
 
@@ -36,7 +36,7 @@ Layer 1: Core Derivations
          ├── Octonion necessity (closure requires 𝕆)
          ├── Killing form K=2 (bidirectional observation)
          ├── Equation of motion (geodesics on SO(8), forces from curvature)
-         ├── Integer machine (primordial structure is discrete)
+         ├── Integer machine (structural values are discrete)
          └── Two-reference principle (machine + structure → measurement)
 
 Layer 2: Physics Derivations
@@ -111,7 +111,7 @@ Layer 3: Derived Physics
 The machine (observer) traverses the structure. Traversal has cost K/X.
 
 ```
-Observed = Primordial × (1 ± K/X₁) × (1 ± K/X₂) × ...
+Observed = Structural × (1 ± K/X₁) × (1 ± K/X₂) × ...
 
 Where:
   K = 2 (Killing form, bidirectional) or 1 (unidirectional)
@@ -130,9 +130,9 @@ Where:
 
 ## The Integer Machine
 
-**Primordial structure computes integers. We observe through K/X gradients.**
+**Structural values are integers. We observe through K/X gradients.**
 
-| Ratio | Primordial | Observed | Gap |
+| Ratio | Structural | Observed | Gap |
 |-------|------------|----------|-----|
 | α⁻¹ | **137** (n×L + B + 1) | 137.036 | +K/B + spatial − accumulated |
 | μ/e | **208** (n²S) | 206.768 | −1 phase, K/X corrections |
@@ -212,7 +212,7 @@ These files are referenced by many others — understand them first:
 
 | File | What It Provides | Why Central |
 |------|------------------|-------------|
-| `foundations/machine/integer-machine.md` | Primordial = integers, observed = K/X | Core framework |
+| `foundations/machine/integer-machine.md` | Structural = integers, observed = K/X | Core framework |
 | `lie-theory/killing-form.md` | K=2 (observer cost) | ALL corrections use this |
 | `cosmology/observer-correction.md` | Two-reference framework | ALL predictions use this |
 | `lie-theory/lie-correspondence.md` | BLD = Lie equivalence | Physics connection |
@@ -327,7 +327,7 @@ detection-structure (T ∩ S) → force-structure (K/X) → neutrino-mixing
                                           (genesis closure requires richness)
 
 3. foundations/machine/universal-machine.md    → K/X framework (3 layers)
-                                          (primordial + experiment + universe)
+                                          (structural + experiment + universe)
 
 4. cosmology/observer-correction.md    → The +1 and ALL corrections
                                           (traverser contributes to every measurement)
@@ -359,7 +359,7 @@ After reading these 5, the rest follows naturally.
 4. `foundations/structural/categorical-correspondence.md` — Type theory
 
 ### For Understanding Predictions
-1. `foundations/machine/integer-machine.md` — Primordial = integers
+1. `foundations/machine/integer-machine.md` — Structural = integers
 2. `cosmology/observer-correction.md` — K/X corrections
 3. Any leaf file (fine-structure, lepton-masses, etc.)
 

@@ -1,7 +1,7 @@
 ---
 status: DERIVED
 layer: 1
-key_result: "C₂ = R uniquely for so(8); S = 2C₂-1 = 13; n²S = 208 universal mass scale; primordial μ/e = 207, τ/μ = 17"
+key_result: "C₂ = R uniquely for so(8); S = 2C₂-1 = 13; n²S = 208 universal mass scale; structural μ/e = 207, τ/μ = 17"
 depends_on:
   - equation-of-motion.md
   - gauge-structure.md
@@ -18,7 +18,7 @@ used_by:
 
 1. C₂(vector) = R uniquely for so(8): bridges representation theory to Riemannian geometry — [§1](#1-casimir-curvature-bridge)
 2. S = 2C₂ - 1 = 13: the generation constant derived from the vector Casimir — [§2](#2-s-from-casimir)
-3. S₃ permutation group breaks triality into 3 generations with integer primordial ratios — [§3](#3-s₃-generation-hierarchy)
+3. S₃ permutation group breaks triality into 3 generations with integer structural ratios — [§3](#3-s₃-generation-hierarchy)
 4. n²S = 208: the universal mass scale shared by all fermion mass formulas — [§4](#4-n²s--208-universal-mass-scale)
 
 | Result | Formula | Value | Test File |
@@ -26,14 +26,14 @@ used_by:
 | Casimir bridge | C₂(vector) = R ⟺ d = 8 (D₄) | unique | test_eom_generation |
 | Generation constant | S = 2C₂ - 1 | 13 | test_eom_generation |
 | Mass scale | n² × S | 208 | test_eom_generation |
-| μ/e primordial | n²S - 1 | 207 | test_eom_generation |
-| τ/μ primordial | S + n | 17 | test_eom_generation |
+| μ/e structural | n²S - 1 | 207 | test_eom_generation |
+| τ/μ structural | S + n | 17 | test_eom_generation |
 
 # Generation Hierarchy: Casimir Bridge and Mass Scale
 
 ## Abstract
 
-The [equation of motion](equation-of-motion.md) establishes so(8) as the dynamical algebra with scalar curvature R = 7 and vector Casimir C₂ = 7. The equality C₂ = R is unique to D₄ = so(8) among all so(n) algebras, bridging representation theory (particle mass terms) to Riemannian geometry (heat kernel, path integral). From this bridge: S = 2C₂ - 1 = 13, the generation constant. The triality automorphism group S₃ provides the three-generation structure, with symmetry breaking S₃ → Z₂ → 1 producing primordial integer mass ratios μ/e = 207 = n²S - 1 and τ/μ = 17 = S + n. All fermion mass formulas share the scale n²S = 208 = dim(u(4)) × S, with corrections O(1/n²S) < 0.5%.
+The [equation of motion](equation-of-motion.md) establishes so(8) as the dynamical algebra with scalar curvature R = 7 and vector Casimir C₂ = 7. The equality C₂ = R is unique to D₄ = so(8) among all so(n) algebras, bridging representation theory (particle mass terms) to Riemannian geometry (heat kernel, path integral). From this bridge: S = 2C₂ - 1 = 13, the generation constant. The triality automorphism group S₃ provides the three-generation structure, with symmetry breaking S₃ → Z₂ → 1 producing structural integer mass ratios μ/e = 207 = n²S - 1 and τ/μ = 17 = S + n. All fermion mass formulas share the scale n²S = 208 = dim(u(4)) × S, with corrections O(1/n²S) < 0.5%.
 
 ## 1. Casimir-Curvature Bridge
 
@@ -98,12 +98,12 @@ Character orthogonality: Σ χ_i χ_j / |g| = δ_{ij}.
 1. **S₃ → Z₂:** The standard irrep of S₃ restricts to trivial + sign of Z₂. The broken generator connects to the largest Casimir eigenvalue, so the heaviest generation (τ) separates at this step.
 2. **Z₂ → 1:** The remaining Z₂ symmetry breaks completely, separating the muon from the electron.
 
-**Primordial integer mass ratios.** The symmetry breaking produces exact integers before observation corrections:
+**Structural integer mass ratios.** The symmetry breaking produces exact integers before observation corrections:
 
 ```
-μ/e (primordial) = n²S - 1 = 16 × 13 - 1 = 207
-τ/μ (primordial) = S + n   = 13 + 4     = 17
-τ/e (primordial) = 207 × 17 = 3519
+μ/e (structural) = n²S - 1 = 16 × 13 - 1 = 207
+τ/μ (structural) = S + n   = 13 + 4     = 17
+τ/e (structural) = 207 × 17 = 3519
 ```
 
 The observed ratios (206.768, 16.817) differ from these integers by K/X alignment gradients — the cost of continuous observation seeing discrete structure. The transcendental value 2πe ≈ 17.079 is how continuous measurement sees the discrete integer 17 (agreement within 0.5%).
@@ -130,7 +130,7 @@ All corrections are O(1/n²S) < 0.5%. Using a wrong S or wrong n gives predictio
 
 ## Conclusion
 
-The Casimir-curvature bridge C₂ = R, unique to so(8), connects the equation of motion's geometric structure to the particle mass hierarchy. The generation constant S = 2C₂ - 1 = 13 is not an independent parameter but a consequence of the vector representation's Casimir eigenvalue. The S₃ outer automorphism provides three generations with integer primordial ratios (207, 17), and the scale n²S = 208 unifies all fermion mass formulas. The detailed mass predictions are derived in [lepton-masses.md](../../particle-physics/lepton-masses.md) and [quark-masses.md](../../particle-physics/quark-masses.md).
+The Casimir-curvature bridge C₂ = R, unique to so(8), connects the equation of motion's geometric structure to the particle mass hierarchy. The generation constant S = 2C₂ - 1 = 13 is not an independent parameter but a consequence of the vector representation's Casimir eigenvalue. The S₃ outer automorphism provides three generations with integer structural ratios (207, 17), and the scale n²S = 208 unifies all fermion mass formulas. The detailed mass predictions are derived in [lepton-masses.md](../../particle-physics/lepton-masses.md) and [quark-masses.md](../../particle-physics/quark-masses.md).
 
 ## References
 

@@ -9,6 +9,8 @@ depends_on:
 used_by:
   - ../particle-physics/e7-derivation.md
   - ../../meta/research-directions.md
+see_also:
+  - ../foundations/machine/integer-factorization.md
 ---
 
 # Exceptional Lie Algebras in BLD
@@ -150,6 +152,8 @@ G₂ breaks to SU(3) when fixing a reference octonion direction:
 - This gives color symmetry
 
 See [Octonion Derivation](../foundations/derivations/octonion-derivation.md) for details.
+
+**Empirical signature.** The multiplication table of Im(𝕆) is the Fano plane. Binary carry correlations at Fano-aligned bit positions show r ≈ 0.4, while non-Fano positions give r = 0.0 exactly. The Fano incidence matrix is the parity-check matrix of Hamming(7,4,3): rank 4 over GF(2), giving 4 data bits per 7-block. This is the first empirical detection of G₂/Fano structure in ordinary arithmetic. See [Integer Factorization: Fano Structure](../foundations/machine/integer-factorization.md#fano-structure-in-binary-carries).
 
 ---
 

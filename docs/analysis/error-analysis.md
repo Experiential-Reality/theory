@@ -205,7 +205,7 @@ H₀(local) = H₀(CMB) × (1 + K/(n+L))
 ```
 
 **Key insight**: Both measurements are correct — they measure different things:
-- **CMB (Planck)**: Measures primordial structure directly (no K/X cost)
+- **CMB (Planck)**: Measures structural values directly (no K/X cost)
 - **Local (SH0ES)**: Measures through the observation ring, paying K/(n+L) = 8.3%
 
 **Error**: 0% — prediction matches observed local value exactly.

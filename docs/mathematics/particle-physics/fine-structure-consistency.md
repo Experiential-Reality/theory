@@ -17,7 +17,7 @@ used_by:
 
 **α⁻¹ = 137.035999177 (matches CODATA, zero free parameters):**
 
-1. n = 4: from sl(2,ℂ) ⊂ sl(2,𝕆) — [Primordial Structure](#primordial-structure)
+1. n = 4: from sl(2,ℂ) ⊂ sl(2,𝕆) — [Structural Values](#structural-values)
 2. L = 20: Riemann n²(n²-1)/12 — [The Terms](#nl--80-derived)
 3. B = 56: 2 × dim(Spin(8)) from triality + Killing — [B = 56](#b--56-derived)
 4. +1: observer self-reference — [+1 Term](#1-derived)
@@ -55,22 +55,22 @@ All terms are now derived, including the accumulated correction:
 
 ---
 
-## Primordial Structure
+## Structural Values
 
-**The primordial α⁻¹ is an exact integer. The decimals emerged later through observation.**
+**The structural α⁻¹ is an exact integer. The decimals emerged later through observation.**
 
 | Level | Value | Nature |
 |-------|-------|--------|
-| **Primordial** | α⁻¹ = n×L + B + 1 = 80 + 56 + 1 = **137** | Exact integer |
+| **Structural** | α⁻¹ = n×L + B + 1 = 80 + 56 + 1 = **137** | Exact integer |
 | **Observed** | α⁻¹ = 137.035999177... | Integer + K/X gradients |
 
 ```
-PRIMORDIAL (octonions first): 137 (exact integer)
+STRUCTURAL (octonions first): 137 (exact integer)
 OBSERVED (through K/X):       137.035999177 (adds alignment gradients)
 GAP:                          +0.035999177 = K/B + spatial + accumulated
 ```
 
-**The decimals .035999... are NOT primordial.** They are alignment gradients — the cost of observing the structure through cooling and expansion.
+**The decimals .035999... are NOT structural.** They are alignment gradients — the cost of observing the structure through cooling and expansion.
 
 See [Integer Machine](../foundations/machine/integer-machine.md) for the complete framework.
 

@@ -34,17 +34,17 @@ used_by:
 
 ---
 
-## Primordial Structure
+## Structural Values
 
-**The same primordial integers govern neutrinos — but missing B changes everything.**
+**The same structural integers govern neutrinos — but missing B changes everything.**
 
-| Quantity | Primordial | Value | Note |
+| Quantity | Structural | Value | Note |
 |----------|------------|-------|------|
 | Suppression | (K/B)² = (2/56)² | 1/784 | Missing B structure |
 | Geometric | K/(n×L) = 2/80 | 1/40 | Pure link coupling |
-| Δm² ratio | L + S | **33** | Primordial integer ✓ |
+| Δm² ratio | L + S | **33** | Structural integer ✓ |
 
-The primordial integers K=2, B=56, L=20, S=13, n=4 determine neutrino structure. The "missing B" isn't a perturbation — it's a fundamentally different phase of the same underlying structure.
+The structural integers K=2, B=56, L=20, S=13, n=4 determine neutrino structure. The "missing B" isn't a perturbation — it's a fundamentally different phase of the same underlying structure.
 
 See [Integer Machine](../foundations/machine/integer-machine.md) for the complete framework.
 

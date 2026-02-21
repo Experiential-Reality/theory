@@ -15,7 +15,7 @@ used_by:
 
 **σ₈ tension resolved via K/X observation cost:**
 
-1. Primordial value σ₈ = L/(n+L) = 20/24 = 0.8333 (link density) — [The Primordial Value](#the-primordial-value)
+1. Structural value σ₈ = L/(n+L) = 20/24 = 0.8333 (link density) — [The Structural Value](#the-structural-value)
 2. CMB correction: σ₈(CMB) = 0.8333 × (1 - K/(n×L)) = 0.812 — [CMB Correction](#cmb-correction)
 3. Local correction: σ₈(local) = 0.812 × (1 - K/(2L)) = 0.77 — [Local Correction](#local-correction)
 4. Same physics as Hubble tension, opposite sign (observation smooths structure) — [Comparison with Hubble](#comparison-with-hubble-tension)
@@ -34,7 +34,7 @@ used_by:
 
 | Method | Value | Source |
 |--------|-------|--------|
-| **CMB** (Planck) | 0.811 ± 0.006 | Primordial structure |
+| **CMB** (Planck) | 0.811 ± 0.006 | Structural value |
 | **Local** (weak lensing) | ~0.77 | Current structure |
 
 The difference is ~5% and statistically significant. This is the "σ₈ tension" or "S₈ tension."
@@ -45,12 +45,12 @@ Standard cosmology has no explanation. Proposed solutions parallel Hubble tensio
 
 ## BLD Resolution
 
-### The Primordial Value
+### The Structural Value
 
 σ₈ measures link density — how much of observer structure is connections:
 
 ```
-σ₈(primordial) = L / (n + L)
+σ₈(structural) = L / (n + L)
                = 20 / 24
                = 0.8333
 ```
@@ -65,13 +65,13 @@ Where:
 The CMB measures structure from the primordial era, but still through observation:
 
 ```
-σ₈(CMB) = σ₈(primordial) × (1 - K/(n×L))
+σ₈(CMB) = σ₈(structural) × (1 - K/(n×L))
         = (20/24) × (1 - 2/80)
         = 0.8333 × 0.975
         = 0.8125
 ```
 
-Where K/(n×L) = 2/80 is the primordial observation cost.
+Where K/(n×L) = 2/80 is the structural observation cost.
 
 ### Local Correction
 
@@ -94,7 +94,7 @@ Where K/(2L) = 2/40 is the local observation cost.
 
 | Parameter | Hubble | σ₈ |
 |-----------|--------|-----|
-| Primordial | H₀(true) | σ₈ = L/(n+L) = 0.833 |
+| Structural | H₀(true) | σ₈ = L/(n+L) = 0.833 |
 | CMB | 67.4 km/s/Mpc | 0.812 |
 | Local | 73.0 km/s/Mpc | 0.77 |
 | Correction sign | **Positive** (+8.3%) | **Negative** (-5%) |
@@ -136,7 +136,7 @@ H₀: We're part of the expansion → see more
 - **n + L** = total observer structure (dimensions + connections)
 - **L/(n+L)** = connection fraction of observer structure
 
-This IS the primordial clustering amplitude: how much of what we observe is connection vs. dimension.
+This IS the structural clustering amplitude: how much of what we observe is connection vs. dimension.
 
 ---
 
@@ -153,7 +153,7 @@ The mechanism is unified — observers embedded in structure pay costs to measur
 ### 2. Both Measurements Are Correct
 
 Neither CMB nor local is "wrong":
-- CMB: measures with primordial observation cost
+- CMB: measures with structural observation cost
 - Local: measures with additional local cost
 - The difference is structural, not error
 
@@ -168,11 +168,11 @@ Any measurement of σ₈ should show consistent K/X corrections based on what st
 ```
 The σ₈ tension = K/X observation cost
 
-σ₈(primordial) = L/(n+L) = 0.833   (link density)
+σ₈(structural) = L/(n+L) = 0.833   (link density)
 σ₈(CMB)        = 0.833 × 0.975 = 0.812
 σ₈(local)      = 0.812 × 0.95  = 0.77
 
-X(CMB)   = n×L = 80  (primordial structure)
+X(CMB)   = n×L = 80  (structural value)
 X(local) = 2L  = 40  (local structure)
 K = 2 (Killing form)
 

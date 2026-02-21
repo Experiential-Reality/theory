@@ -34,16 +34,16 @@ used_by:
 
 ## Late Emergence
 
-**π emerged late — it's how continuous observation sees discrete primordial structure.**
+**π emerged late — it's how continuous observation sees discrete structural values.**
 
-The primordial structure is integers: B = 56, L = 20, n = 4. The transcendental π appears when continuous geometry accesses this discrete structure:
+The structural values are integers: B = 56, L = 20, n = 4. The transcendental π appears when continuous geometry accesses this discrete structure:
 
-| Primordial | Observed | Why |
+| Structural | Observed | Why |
 |------------|----------|-----|
 | 1 closed boundary | 2π radians | Continuous rotation around discrete closure |
 | Integer ratios | Circular areas | πr² from continuous limit |
 
-**π is not primordial.** It emerged when spacetime became continuous enough to rotate through discrete boundaries.
+**π is not structural.** It emerged when spacetime became continuous enough to rotate through discrete boundaries.
 
 See [Integer Machine](../mathematics/foundations/machine/integer-machine.md) for the complete framework.
 

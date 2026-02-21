@@ -168,9 +168,9 @@ Phase(γ) → e^{iS[γ]/ℏ}
 
 **BLD content**: This is the e-derivation operating on phase. BLD derives e from axioms T1-T5 (Markov, Homogeneity, Self-Reference, Natural Units, Identity) discovered via structural analysis — not postulated ([e from BLD](../../examples/e-from-bld.md)). The proof: T1-T5 uniquely imply dy/dt = y, whose solution is y = e^t. The definition e = lim(1+1/n)^n IS the discrete→continuous bridge: discrete compounding of N finite steps becomes continuous exponential accumulation.
 
-Here, the same mechanism operates on phase: N discrete phase increments e^{iL_kΔt/ℏ} compound to the continuous e^{iS/ℏ}. The primordial structure computes in discrete steps (integers); the transcendental e appears because observation takes the continuous limit. This is why the path integral's N→∞ limit works: it's the structural mechanism by which continuous traversal sees discrete structure.
+Here, the same mechanism operates on phase: N discrete phase increments e^{iL_kΔt/ℏ} compound to the continuous e^{iS/ℏ}. The structural values are discrete steps (integers); the transcendental e appears because observation takes the continuous limit. This is why the path integral's N→∞ limit works: it's the structural mechanism by which continuous traversal sees discrete structure.
 
-Compare: the primordial structure computes (1 + 1/B)^B = (57/56)^56 ≈ 2.70; we observe e ≈ 2.718 ([Integer Machine](../foundations/machine/integer-machine.md) §5.3). The gap is the observation cost K/X.
+Compare: the structural value is (1 + 1/B)^B = (57/56)^56 ≈ 2.70; we observe e ≈ 2.718 ([Integer Machine](../foundations/machine/integer-machine.md) §5.3). The gap is the observation cost K/X.
 
 ### The Result
 
@@ -492,7 +492,7 @@ Areas where the BLD framework for path integrals could generate new predictions:
 ### Internal BLD
 - [Schrödinger Derivation](schrodinger-derivation.md) — iℏ∂ψ/∂t = Ĥψ from BLD
 - [Born Rule](born-rule.md) — |ψ|² from bidirectional observation (K=2)
-- [Integer Machine](../foundations/machine/integer-machine.md) — i = observation unit (§10), discrete structure, primordial integers
+- [Integer Machine](../foundations/machine/integer-machine.md) — i = observation unit (§10), discrete structure, structural integers
 - [Killing Form](../lie-theory/killing-form.md) — K=2, 1-link vs 2-link
 - [e from BLD](../../examples/e-from-bld.md) — e = discrete→continuous limit (T1-T5 → e^t)
 - [π from BLD](../../examples/pi-from-bld.md) — π = closure constant, Euler unification

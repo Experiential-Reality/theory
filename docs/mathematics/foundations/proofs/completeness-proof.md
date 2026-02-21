@@ -9,6 +9,8 @@ depends_on:
   - ../../lie-theory/lie-correspondence.md
 used_by:
   - ../../../meta/proof-status.md
+see_also:
+  - ../machine/integer-factorization.md
 ---
 
 ## Summary
@@ -269,6 +271,8 @@ Beyond the theoretical proof, BLD completeness is supported by extensive empiric
 **Remark 7.5** (Discrete Symmetries). BLD also covers discrete symmetries. CPT invariance is derived from K = 2 (bidirectional observation): the requirement that observer ↔ observed be symmetric forces charge, parity, and time reversal to compose to identity. See [killing-form.md](../../lie-theory/killing-form.md).
 
 **Remark 7.6** (No Gauge Empirical Input). BLD has no empirical input for gauge structure. SU(3) is derived from genesis closure: the requirement that traverse(-B, B) close forces B = 56, which requires octonions, whose reference-fixing yields G₂ → SU(3). See [octonion-necessity.md](../derivations/octonion-necessity.md) Theorem 5.3 for the complete derivation.
+
+**Remark 7.7** (No Probe-Type Empirical Input). The "derived, not chosen" pattern extends beyond gauge groups. In integer factoring, all classical algorithms — from trial division through GNFS — use the same probe type: the Legendre symbol (coprime modular test). This universality is structural: the Legendre symbol is the unique L-type that partitions candidates into a binary boundary (K/X = 2/2 = 1 bit), just as SU(3) is the unique gauge group satisfying genesis closure. The factoring L-type is derived from the T ∩ S detection framework, not selected from alternatives. See [Integer Factorization: Same L-type](../machine/integer-factorization.md#same-l-type-proof).
 
 ## 8. Related Work
 

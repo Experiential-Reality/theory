@@ -14,6 +14,8 @@ used_by:
   - ../../../applications/physics/phase-transitions.md
   - ../../../applications/physics/fluids.md
   - ../../../examples/e-from-bld.md
+see_also:
+  - ../machine/integer-factorization.md
 ---
 
 # The Compensation Principle
@@ -275,6 +277,8 @@ This converts the compensation principle from a behavioral law into a **structur
 - **Global problems** (TSP, SAT) require global L
 - Local algorithms with sharp B cannot solve them efficiently
 - This is a structural statement, not a conjecture about cleverness
+
+Integer factoring exemplifies this precisely: the D-hierarchy (Work = N^{1/(2D)}) shows that D is the single lever controlling efficiency. Probes (L-type = Legendre symbol), readout (K/X = 1 bit), and total cost (C_total = k/2) are all structurally fixed. Increasing D amounts to L-to-B compensation — more dimensional channels approximate the sharp factor/non-factor boundary more efficiently. Six attempts to circumvent this by exploiting carries, backward channels, or Born ordering all failed, confirming D as the only lever. See [Integer Factorization: The Single Lever](../machine/integer-factorization.md#the-single-lever-d).
 
 ### For Understanding P vs NP
 

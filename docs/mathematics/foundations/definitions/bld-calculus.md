@@ -10,6 +10,7 @@ used_by:
   - ../proofs/irreducibility-categorical.md
   - ../proofs/why-exactly-three.md
   - ../structural/factorization-calculus.md
+  - ../machine/integer-factorization.md
 ---
 
 # The BLD Calculus: A Minimal Type System

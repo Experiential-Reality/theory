@@ -205,7 +205,7 @@ ALL SCALES DERIVED
 
 ## Key Relationships Discovered
 
-**All scale relationships derive from primordial integers — what the octonions computed first.**
+**All scale relationships derive from structural integers — what the octonions computed first.**
 
 See [Integer Machine](../foundations/machine/integer-machine.md) for the complete framework.
 

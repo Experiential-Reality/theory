@@ -13,6 +13,7 @@ see_also:
   - ../../particle-physics/lepton-masses.md
 used_by:
   - ../../../meta/proof-status.md
+  - integer-factorization.md
 ---
 
 ## Summary
@@ -22,7 +23,7 @@ used_by:
 1. Minimum structure = 7 = Im(O) = n + 3 — [Minimum Structure](#4-minimum-structure)
 2. Machine stores m^2 (integers); we observe sqrt (transcendentals) — [Observable vs Stored](#5-observable-vs-stored)
 3. (M_P/m_e)^2 x 7 = pure integer with octonionic signature — [The Integer Formula](#6-the-integer-formula)
-4. Primordial ratios are integer; observed include 2pi, e factors — [Primordial vs Observed](#7-primordial-vs-observed)
+4. Structural ratios are integer; observed include 2pi, e factors — [Structural vs Observed](#7-structural-vs-observed)
 5. Division algebra tower: C->K=2, H->n=4, O->7 — [The Algebra Tower](#9-the-algebra-tower)
 6. The imaginary unit i is the unit of observation — [The Imaginary Unit i](#10-the-imaginary-unit-i)
 
@@ -30,7 +31,7 @@ used_by:
 
 ## Abstract
 
-We develop the integer machine model: the universe computes in discrete boundary operations, with minimum structure 7 = dim(Im(𝕆)) and minimum observable √7. The fundamental computational unit is one boundary operation (0|1 distinction). Structure is inherently integer, with transcendentals appearing only through K/X observation gradients. We derive: (M_P/m_bare)² × 7 yields pure integers for all particles, and primordial mass ratios are integer (τ/μ = 17) while observed ratios include transcendental factors (τ/μ ≈ 2πe ≈ 16.817). The division algebra tower provides physical interpretation: ℂ→K=2 (observation unit), ℍ→n=4 (spacetime), 𝕆→7 (minimum structure). This framework connects discrete computation to continuous physics through the observation process.
+We develop the integer machine model: the universe computes in discrete boundary operations, with minimum structure 7 = dim(Im(𝕆)) and minimum observable √7. The fundamental computational unit is one boundary operation (0|1 distinction). Structure is inherently integer, with transcendentals appearing only through K/X observation gradients. We derive: (M_P/m_bare)² × 7 yields pure integers for all particles, and structural mass ratios are integer (τ/μ = 17) while observed ratios include transcendental factors (τ/μ ≈ 2πe ≈ 16.817). The division algebra tower provides physical interpretation: ℂ→K=2 (observation unit), ℍ→n=4 (spacetime), 𝕆→7 (minimum structure). This framework connects discrete computation to continuous physics through the observation process.
 
 ## 1. Introduction
 
@@ -41,7 +42,7 @@ The universal machine hypothesis (see [universal-machine.md](universal-machine.m
 **Key Results:**
 - Minimum structure = 7 = Im(𝕆)
 - Minimum observable = √7 (because m² is stored, m is observed)
-- Primordial mass ratios are integer; observed ratios include 2π, e factors
+- Structural mass ratios are integer; observed ratios include 2π, e factors
 
 **Outline.** Section 2 presents terminology. Section 3 derives minimum structure. Section 4 shows integer formulas. Section 5 explains transcendental factors.
 
@@ -49,19 +50,20 @@ The universal machine hypothesis (see [universal-machine.md](universal-machine.m
 |-------|----------|
 | 7 = Im(𝕆) = n + 3 | Derived in [Octonion Derivation](../derivations/octonion-derivation.md) |
 | (M_P/m_e)² × 7 = integer | 2^51 × 5^31 × 137^4 (pure integer) |
-| Primordial τ/μ = 17 | S + n = 13 + 4 (from [Lepton Masses](../../particle-physics/lepton-masses.md)) |
+| Structural τ/μ = 17 | S + n = 13 + 4 (from [Lepton Masses](../../particle-physics/lepton-masses.md)) |
 | K = 2 = dim(ℂ) | i is the unit of observation |
+| Fano carries: 7-periodic correlated triples | r≈0.4 Fano, r=0 non-Fano ([Integer Factorization](integer-factorization.md#fano-structure-in-binary-carries)) |
 
 ## 2. Terminology
 
 | Term | Meaning | Example |
 |------|---------|---------|
-| **Primordial** | What the octonions computed first (integer) | τ/μ = 17 |
+| **Structural** | What the octonions computed first (integer) | τ/μ = 17 |
 | **Observed** | What we measure through K/X gradients | τ/μ = 16.817 |
 | **K/X** | Alignment gradient (cooling + observation cost) | K/B = 2/56 |
 | **Late** | Transcendental emerging from continuous limit | 2πe from discrete 17 |
 
-**The octonions aligned first. Integers are primordial. Transcendentals came later.**
+**The octonions aligned first. Integers are structural. Transcendentals came later.**
 
 ```
 Sequence:
@@ -245,11 +247,11 @@ The 7 survives because:
 
 ---
 
-## 7. Primordial vs Observed
+## 7. Structural vs Observed
 
-### 5.1 Primordial Masses Are Integers
+### 5.1 Structural Masses Are Integers
 
-| Particle | Primordial Ratio to m_e | Integer? |
+| Particle | Structural Ratio to m_e | Integer? |
 |----------|-------------------------|----------|
 | μ | 207 = n²S - 1 | ✓ |
 | τ | 207 × 17 = 207 × (S+n) | ✓ |
@@ -257,26 +259,26 @@ The 7 survives because:
 | c | 183 × 13 = 183 × S | ✓ |
 | b | 183 × 13 × 3 = 183 × S × 3 | ✓ |
 
-All primordial mass ratios are **integer combinations of BLD primitives**.
+All structural mass ratios are **integer combinations of BLD primitives**.
 
 ### 5.2 Observed Masses Include Transcendentals
 
-| Ratio | Primordial | Observed | Gap |
+| Ratio | Structural | Observed | Gap |
 |-------|------------|----------|-----|
 | μ/e | 207 | 206.768 | K/X corrections |
 | τ/μ | 17 | 16.817 ≈ 2πe | continuous limit |
 
-The observed τ/μ ≈ 2πe appears transcendental. But the **primordial** τ/μ = S + n = 17 is integer.
+The observed τ/μ ≈ 2πe appears transcendental. But the **structural** τ/μ = S + n = 17 is integer.
 
 ### 5.3 Transcendentals Are Late
 
-The primordial structure doesn't "know" π or e. It knows 17 and 207.
+The structural integers don't "know" π or e. They know 17 and 207.
 
 We see transcendentals because observation is a **limit process**:
 ```
 e = lim_{n→∞} (1 + 1/n)^n
 
-The primordial structure computes (1 + 1/B)^B = (57/56)^56 ≈ 2.70
+The structural value is (1 + 1/B)^B = (57/56)^56 ≈ 2.70
 We observe the limit: e ≈ 2.718
 ```
 
@@ -284,7 +286,7 @@ We observe the limit: e ≈ 2.718
 
 ### 5.4 Universal K/X Corrections
 
-Every observed value = primordial integer × K/X corrections. The same pattern applies everywhere:
+Every observed value = structural integer × K/X corrections. The same pattern applies everywhere:
 
 | Domain | X (Structure Traversed) | K/X Value | Sign | Meaning |
 |--------|-------------------------|-----------|------|---------|
@@ -300,9 +302,9 @@ Every observed value = primordial integer × K/X corrections. The same pattern a
 - **+** = incomplete traversal (observer didn't finish; e.g., neutrino escapes)
 - **−** = complete traversal (observer finished; traversal cost subtracted)
 
-**The universal pattern**: `Observed = Primordial × (1 ± K/X₁) × (1 ± K/X₂) × ...`
+**The universal pattern**: `Observed = Structural × (1 ± K/X₁) × (1 ± K/X₂) × ...`
 
-All physics formulas follow this pattern. The integers are primordial. The decimals are observation costs.
+All physics formulas follow this pattern. The integers are structural. The decimals are observation costs.
 
 ---
 
@@ -333,6 +335,12 @@ All other particle masses are related to m_e by BLD-integer ratios. The electron
 **Prediction**: The gap between bare (17) and observed (16.817) equals accumulated K/X corrections.
 
 **Test**: Compute K/X corrections and verify they account for the 17 → 16.817 reduction.
+
+### 6.5 Fano Structure in Binary Multiplication
+
+**Prediction**: The Fano carry correlation (r ≈ 0.4 at Fano-aligned bit positions, r = 0.0 at non-Fano positions) is a universal property of binary multiplication, not specific to factoring. It should persist across all operand sizes and multiplication contexts.
+
+**Test**: Measure carry correlations in base-8 arithmetic (base = dim(𝕆) = 8). The Fano structure should be especially pronounced. See [Integer Factorization: Fano Carries](integer-factorization.md#fano-structure-in-binary-carries).
 
 ---
 

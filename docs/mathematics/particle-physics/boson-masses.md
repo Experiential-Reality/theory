@@ -38,25 +38,25 @@ used_by:
 
 ---
 
-## Primordial Structure
+## Structural Values
 
-**The octonions aligned first. These ratios are primordial integers.**
+**The octonions aligned first. These ratios are structural integers.**
 
-| Boson | Primordial | Observed Form | Note |
+| Boson | Structural | Observed Form | Note |
 |-------|------------|---------------|------|
 | H | v × 1/K = v/2 | v/2 × (1 + 1/B) | Boundary quantum adds |
 | Z | v × B/(B+1) | v/e ≈ v × 0.368 | e is continuous limit |
 | W | m_Z × √(S-3)/S | m_Z × cos(θ_W) × corrections | Weak mixing |
 
-**The e in v/e emerged late — it's the continuous limit of primordial integers:**
+**The e in v/e emerged late — it's the continuous limit of structural integers:**
 ```
-PRIMORDIAL: v × B/(B+1) = v × 56/57    [integers]
+STRUCTURAL: v × B/(B+1) = v × 56/57    [integers]
 OBSERVED:   v/e ≈ v × 0.368           [continuous limit]
 
 e = lim_{B→∞}(1 + 1/B)^B  [late emergence]
 ```
 
-The primordial structure is v × 56/57. We observe v/e through the continuous limit.
+The structural value is v × 56/57. We observe v/e through the continuous limit.
 
 See [Integer Machine](../foundations/machine/integer-machine.md) for the complete framework.
 
@@ -517,7 +517,7 @@ All three electroweak boson masses are derived to within experimental measuremen
 
 ## Why Observer Corrections Exist
 
-The BLD values (v/2, v/e, etc.) are the **primordial values** — what the octonions computed first. What we measure differs because **observation has a cost**. This isn't a flaw — it's fundamental to how observation works.
+The BLD values (v/2, v/e, etc.) are the **structural values** — what the octonions computed first. What we measure differs because **observation has a cost**. This isn't a flaw — it's fundamental to how observation works.
 
 ### The Core Insight: You Can't Observe for Free
 
@@ -566,9 +566,9 @@ The observation cost K/X appears because:
 
 ### Why BLD Numbers Are "Real"
 
-The primordial BLD values are what the octonions computed first:
-- v/2 = 123.11 GeV is the primordial Higgs mass
-- v/e = 90.58 GeV is the primordial Z mass (via continuous limit)
+The structural BLD values are what the octonions computed first:
+- v/2 = 123.11 GeV is the structural Higgs mass
+- v/e = 90.58 GeV is the structural Z mass (via continuous limit)
 
 What we **measure** includes observation cost:
 - m_H = (v/2) × (1 + 1/B) × (1 - 1/(B×L)) = 125.20 GeV
@@ -580,7 +580,7 @@ The difference isn't error — it's the **irreducible cost of measurement**. You
 
 When observer corrections are **fully accounted for**, predictions match observations exactly:
 
-| Quantity | Primordial | + Observer Corrections | = Observed | Δ |
+| Quantity | Structural | + Observer Corrections | = Observed | Δ |
 |----------|------------------|------------------------|------------|---|
 | m_H | v/2 = 123.11 | × (1 + 1/B)(1 - 1/(B×L)) | **125.20 GeV** | **0 MeV** ✓ |
 | m_Z | v/e = 90.58 | × (137/136)(1-K/B²) | 91.19 GeV | 0.5 MeV ✓ |

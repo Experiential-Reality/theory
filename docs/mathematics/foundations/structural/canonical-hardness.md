@@ -6,6 +6,7 @@ depends_on:
 used_by:
   - ../../derived/discovery-algorithm.md
   - ../../../paths/mathematician.md
+  - ../machine/integer-factorization.md
 ---
 
 ## Summary
@@ -362,6 +363,8 @@ In BLD terms:
 3. **Heuristics**: Greedy compression, local optimization may work well in practice
 
 4. **Structure of hardness**: The hardness comes from the global comparison, not from the structure itself
+
+5. **Concrete instance: the D-hierarchy of factoring.** Integer factoring provides the first worked example of canonical hardness applied to a real mathematical problem. The D-hierarchy (D = 1 trial division, D = 2 rho, D = π(B) GNFS, D = 2^k Shor) maps directly to the global-constraint structure: each increase in D accesses more of the candidate space simultaneously, but the total information budget C_total = k/2 bits is conserved. Finding the optimal D requires global comparison across all strategies — this mirrors the NP-completeness of CANONICAL-BLD. See [Integer Factorization: Master Formula](../machine/integer-factorization.md#the-master-formula-work--n1d).
 
 ---
 

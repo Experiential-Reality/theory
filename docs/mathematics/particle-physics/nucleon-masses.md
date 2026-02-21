@@ -17,7 +17,7 @@ used_by:
 
 **Proton and neutron masses derived exactly (errors at measurement precision):**
 
-1. Primordial: m_p/m_e = (S+n)(B+nS) = 1836 (clean integer) — [Primordial Structure](#primordial-structure)
+1. Structural: m_p/m_e = (S+n)(B+nS) = 1836 (clean integer) — [Structural Values](#structural-values)
 2. Observed: m_p/m_e = 1836 + K/S = 1836.1538 (0.6 ppm error) — [The Proton Mass](#the-proton-mass-derived)
 3. Interpretation: generation structure (S+n) × confinement depth (B+nS) — [Physical Interpretation](#physical-interpretation)
 4. Neutron: m_n = m_p + (quark difference) = 1838.68 m_e — [Neutron Mass](#neutron-mass)
@@ -30,20 +30,20 @@ used_by:
 
 ---
 
-## Primordial Structure
+## Structural Values
 
-**The proton mass ratio is a primordial integer.**
+**The proton mass ratio is a structural integer.**
 
 | Component | Formula | Value | Meaning |
 |-----------|---------|-------|---------|
-| Generation base | S + n | 17 | Same as τ/μ primordial |
+| Generation base | S + n | 17 | Same as τ/μ structural |
 | Confinement depth | B + n×S | 108 | Full boundary + interval structure |
-| **Primordial** | (S+n) × (B+nS) | **1836** | Clean integer |
+| **Structural** | (S+n) × (B+nS) | **1836** | Clean integer |
 
 **Key insight**: The proton uses the same generation structure (S+n = 17) as the tau lepton. The difference is phase: tau is free (uses S+n directly), proton is confined (multiplies by boundary depth B+nS).
 
 ```
-PRIMORDIAL (octonions first): m_p/m_e = 1836
+STRUCTURAL (octonions first): m_p/m_e = 1836
 OBSERVED (through K/X):       m_p/m_e = 1836.1527
 GAP:                          K/S = 0.1538 (observation correction)
 ```
@@ -67,7 +67,7 @@ Calculation:
   S + n = 13 + 4 = 17
   B + n×S = 56 + (4 × 13) = 56 + 52 = 108
 
-  Primordial: 17 × 108 = 1836
+  Structural: 17 × 108 = 1836
 
   Correction: K/S = 2/13 = 0.15385
 
@@ -95,7 +95,7 @@ Step 2: Confinement depth
   n × S = 4 × 13 = 52
   B + n×S = 56 + 52 = 108
 
-Step 3: Primordial ratio
+Step 3: Structural ratio
   17 × 108 = 1836
 
 Step 4: Observation correction
@@ -119,8 +119,8 @@ The proton mass formula has two factors:
 
 **Factor 1: (S+n) = 17 — Generation Structure**
 
-This is the same primordial base used for the tau lepton:
-- From [Lepton Masses](lepton-masses.md): τ/μ primordial = S + n = 17
+This is the same structural base used for the tau lepton:
+- From [Lepton Masses](lepton-masses.md): τ/μ structural = S + n = 17
 - The proton shares this generation-3 structure
 
 **Factor 2: (B+nS) = 108 — Confinement Depth**
@@ -145,7 +145,7 @@ The +K/S term is the observation cost:
 - K = 2: Killing form (bidirectional observation)
 - S = 13: Traversing through structural intervals
 
-This is the same correction pattern seen throughout BLD: primordial integer + K/X observation cost.
+This is the same correction pattern seen throughout BLD: structural integer + K/X observation cost.
 
 ---
 
@@ -197,7 +197,7 @@ m_n/m_e = m_p/m_e + (quark difference contribution)
 
 ### The Unification
 
-| Particle | Formula | Primordial | Phase |
+| Particle | Formula | Structural | Phase |
 |----------|---------|------------|-------|
 | Tau | τ/μ = S + n + corrections | 17 | Free |
 | Proton | m_p/m_e = (S+n)(B+nS) + K/S | 1836 | Confined |
@@ -240,7 +240,7 @@ BLD says:
 ```
 THE PROTON MASS IN BLD:
 
-Primordial: m_p/m_e = (S + n) × (B + n×S) = 17 × 108 = 1836
+Structural: m_p/m_e = (S + n) × (B + n×S) = 17 × 108 = 1836
 
 Correction: +K/S = +2/13 = +0.1538
 
@@ -273,9 +273,9 @@ NEUTRON:
 ## References
 
 ### Internal BLD References
-- [Lepton Masses](lepton-masses.md) — S+n = 17 as tau primordial, generation structure
+- [Lepton Masses](lepton-masses.md) — S+n = 17 as tau structural value, generation structure
 - [Quark Masses](quark-masses.md) — Phase transition model, u/d mass difference
-- [Integer Machine](../foundations/machine/integer-machine.md) — Primordial integers, K/X corrections
+- [Integer Machine](../foundations/machine/integer-machine.md) — Structural integers, K/X corrections
 - [Constants](../foundations/constants.md) — B, L, n, S, K definitions
 - [Killing Form](../lie-theory/killing-form.md) — K = 2 derivation
 

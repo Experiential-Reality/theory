@@ -25,7 +25,7 @@ prediction_date: 2026-01-27
 3. Second-order: α² × K²/((n×L)²×S) = 256×10⁻¹¹ base — [Derivation](#the-derivation)
 4. Detection: e detected (B), neutrinos escape (L) → 76/78 correction — [Detection Correction](#step-4-detection-structure-correction)
 5. Result: Δa_μ = 250×10⁻¹¹ (0.4% error) — [Physical Interpretation](#physical-interpretation)
-6. **J-PARC prediction: 250×10⁻¹¹ (same as Fermilab)** — [J-PARC Prediction](#j-parc-prediction-from-primordial-to-observed)
+6. **J-PARC prediction: 250×10⁻¹¹ (same as Fermilab)** — [J-PARC Prediction](#j-parc-prediction-from-structural-to-observed)
 
 | Quantity | BLD Prediction | Observed (2025) | Error |
 |----------|---------------|-----------------|-------|
@@ -112,7 +112,7 @@ The muon is a second-generation lepton. From [Lepton Masses](lepton-masses.md):
 |-----------|-------|---------|
 | **n²** | 16 | Lorentz symmetry (4×4 spacetime) |
 | **S** | 13 | Structural intervals = (B-n)/n |
-| **n²×S** | 208 | Generational structure positions (muon's primordial mass ratio) |
+| **n²×S** | 208 | Generational structure positions (muon's structural mass ratio) |
 | **n×L** | 80 | Geometric structure (spacetime × Riemann curvature) |
 | **(n×L)²** | 6400 | Geometric structure squared (loop goes out and back) |
 | **(n×L)²×S** | 83,200 | Second-order traversal structure |
@@ -315,7 +315,7 @@ The electron is at the "junction" — the reference point. It doesn't pay genera
 
 ### Tau g-2 Prediction
 
-The tau is third-generation, using **rotational mode** (2πe) rather than discrete mode (n²S). From [Lepton Masses](lepton-masses.md), the tau's primordial multiplier is S+n = 17, while muon uses n²S = 208.
+The tau is third-generation, using **rotational mode** (2πe) rather than discrete mode (n²S). From [Lepton Masses](lepton-masses.md), the tau's structural multiplier is S+n = 17, while muon uses n²S = 208.
 
 If measurable, the tau g-2 anomaly should follow a similar second-order pattern:
 
@@ -331,7 +331,7 @@ Estimate using generation ratio:
        = 256 × 10⁻¹¹ × (13/17)
        ≈ 196 × 10⁻¹¹
 
-Or using primordial ratio:
+Or using structural ratio:
   Δa_τ ≈ Δa_μ × (17/208)
        ≈ 21 × 10⁻¹¹
 ```
@@ -384,7 +384,7 @@ The muon's position in generational space is **already discrete** (n²×S = 208 
 From [Integer Machine](../foundations/machine/integer-machine.md):
 
 ```
-Primordial: μ/e = n²S = 208 (exact integer)
+Structural: μ/e = n²S = 208 (exact integer)
 Observed:   μ/e = 206.768... (includes K/X corrections)
 ```
 
@@ -499,18 +499,18 @@ Status:    PREDICTED
 
 ---
 
-## J-PARC Prediction: From Primordial to Observed
+## J-PARC Prediction: From Structural to Observed
 
 This section demonstrates how the detection correction is **exactly determined** by apparatus structure, not fitted. It provides an explicit prediction for J-PARC E34.
 
 ### The Full Derivation Chain
 
-**Step 1: Primordial value (apparatus-independent)**
+**Step 1: Structural value (apparatus-independent)**
 ```
 α = 1/137.036
 α² = (1/137.036)² = 5.324 × 10⁻⁵
 
-Δa_μ(primordial) = α² × K² / ((n×L)² × S)
+Δa_μ(structural) = α² × K² / ((n×L)² × S)
                  = (5.324 × 10⁻⁵) × 4 / (6400 × 13)
                  = 2.130 × 10⁻⁴ / 83,200
                  = 2.56 × 10⁻⁹
@@ -562,7 +562,7 @@ X_total = B + L = 76
 ```
 Correction = X/(X+K) = 76/(76+2) = 76/78 = 0.9744
 
-Δa_μ(observed) = Δa_μ(primordial) × correction
+Δa_μ(observed) = Δa_μ(structural) × correction
                = 256 × 10⁻¹¹ × 0.9744
                = 249.4 × 10⁻¹¹
                ≈ 250 × 10⁻¹¹
@@ -622,7 +622,7 @@ Despite these differences, BLD predicts the **same result** because:
 | J-PARC Result | Implication |
 |---------------|-------------|
 | **250 ± ~15 × 10⁻¹¹** | **T ∩ S VALIDATED** — apparatus independence confirmed |
-| 256 ± ~5 × 10⁻¹¹ | No detection correction → T formalism wrong (primordial = observed) |
+| 256 ± ~5 × 10⁻¹¹ | No detection correction → T formalism wrong (structural = observed) |
 | Differs from Fermilab > 3σ | Apparatus geometry affects X → refine T model |
 | Matches Fermilab, not BLD | Both wrong in same way → systematic error or new physics |
 
@@ -654,5 +654,5 @@ The T ∩ S formalism provides a **universal framework** for detection correctio
 - [Killing Form](../lie-theory/killing-form.md) — K = 2 derivation
 - [Lepton Masses](lepton-masses.md) — n²×S generational structure
 - [Fine Structure Consistency](fine-structure-consistency.md) — Accumulated corrections, α² terms
-- [Integer Machine](../foundations/machine/integer-machine.md) — Primordial integers, K/X corrections
+- [Integer Machine](../foundations/machine/integer-machine.md) — Structural integers, K/X corrections
 - [Detection Structure](../foundations/machine/detection-structure.md) — T ∩ S formalism, neutrino escape

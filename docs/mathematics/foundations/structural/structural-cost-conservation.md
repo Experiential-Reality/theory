@@ -11,6 +11,7 @@ used_by:
   - ../../derived/special-relativity.md
   - ../../derived/general-relativity.md
   - ../../../applications/code/refactoring.md
+  - ../machine/integer-factorization.md
 ---
 
 # Structural Cost Conservation
@@ -239,6 +240,22 @@ FACTOR: C_hidden → C_visible
         C_total unchanged
 ```
 
+### 3.4 Quantitative Verification: Integer Factoring
+
+The conservation theorem receives its first quantitative verification outside code refactoring through integer factoring. For a k-bit semiprime N = pq, the total information cost to determine a factor is C_total = k/2 bits (the Shannon entropy of the answer). Three algorithms with radically different strategies all obey this budget:
+
+```
+Algorithm        C_visible    C_hidden     C_total
+─────────────    ─────────    ─────────    ───────
+Trial division   k/2          0            k/2
+Pollard rho      k/4          k/4          k/2
+GNFS             sub-exp      exp          k/2
+```
+
+Each algorithm redistributes cost between visible probes and hidden structural pre-computation, but C_total = k/2 is invariant. GPU confirmation across bit sizes k = 20 to k = 44 shows each coprime probe contributes exactly 1 bit (K/X = 1), and k/2 probes always suffice.
+
+See [Integer Factorization: Cost Conservation](../machine/integer-factorization.md#cost-conservation-c_total--k2) for derivation and experimental data.
+
 ---
 
 ## 4. The Explicitness Metric
@@ -398,6 +415,8 @@ Track explicitness as a code quality metric.
 **Application Questions** (for practitioners):
 
 1. **Measurement**: How to precisely measure C_hidden in practice? (Currently requires factorization to discover)
+
+   *Partial answer*: For integer factoring, C_hidden = C_total − C_visible, where C_total = k/2 is known a priori (Shannon entropy) and C_visible is directly measurable as the number of explicit probes. Different algorithms make different fractions visible: trial division achieves full explicitness (C_hidden = 0), while GNFS hides exponential structure in the factor base. See [Integer Factorization](../machine/integer-factorization.md#cost-conservation-c_total--k2).
 
 2. **Partial factorization value**: At what explicitness threshold do benefits plateau?
 

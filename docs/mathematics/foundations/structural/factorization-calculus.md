@@ -10,6 +10,7 @@ used_by:
   - ../definitions/bld-calculus.md
   - ../../../applications/code/bld-driven-development.md
   - ../../../applications/code/refactoring.md
+  - ../machine/integer-factorization.md
 ---
 
 # Refactoring as Factorization (RF-Calculus)

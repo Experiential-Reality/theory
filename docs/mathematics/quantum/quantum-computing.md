@@ -4,6 +4,8 @@ depends_on:
   - quantum-mechanics.md
   - ../lie-theory/killing-form.md
   - ../foundations/structural/compensation-principle.md
+see_also:
+  - ../foundations/machine/integer-factorization.md
 ---
 
 # Quantum Computing: Structure Traversing Itself
@@ -382,6 +384,8 @@ Threshold value (~1%) may relate to:
   - Or code-specific geometric factors
 ```
 
+**Remark (Hamming structure in arithmetic).** The Fano incidence matrix — encoding the multiplication table of the 7 imaginary octonion units — is exactly the parity-check matrix of the Hamming(7,4,3) code: rank 4 over GF(2), 4 data bits, 3 parity bits per 7-block. This connects quantum error correction (syndrome measurement detects parity violations without collapsing data) to the carry structure of ordinary binary multiplication. In factoring, each 7-position carry block has only 4 degrees of freedom; the remaining 3 are determined by Fano parity constraints. See [Integer Factorization: Hamming Connection](../foundations/machine/integer-factorization.md#the-hamming-connection).
+
 ---
 
 ## Summary in BLD Notation
@@ -437,9 +441,11 @@ L error_correction: syndrome -> repair
    - Is it related to 2/(n×L) = 2.5%?
    - Or to code geometry?
 
-2. **What is the BLD structure of the QFT?**
-   - Shor's algorithm uses QFT to find periods
-   - Does QFT L-structure explain polynomial speedup?
+2. **What is the BLD structure of the QFT?** *(Partially resolved)*
+   - Shor's D = 2^k quantum parallelism places it at the top of the factoring D-hierarchy: Work = N^{1/(2D)} with D = 2^k gives poly(k) work.
+   - The QFT provides exponential D by operating on all 2^k superposition branches simultaneously — structure traverses itself across all D at once.
+   - The speedup comes from exponential dimension, not from the QFT's internal L-structure.
+   - See [Integer Factorization: Master Formula](../foundations/machine/integer-factorization.md#the-master-formula-work--n1d) for the complete D-hierarchy.
 
 3. **Is there a "quantum observer correction"?**
    - Classical: 8x² (cosmology), 2/(n×L) (particle)
@@ -457,3 +463,4 @@ L error_correction: syndrome -> repair
 - [Killing Form](../lie-theory/killing-form.md) — Why observation costs 2 links
 - [Compensation Principle](../foundations/structural/compensation-principle.md) — L compensates B
 - [Lie Correspondence](../lie-theory/lie-correspondence.md) — BLD = Lie theory
+- [Integer Factorization](../foundations/machine/integer-factorization.md) — Shor as D=2^k; Hamming(7,4,3) in carries

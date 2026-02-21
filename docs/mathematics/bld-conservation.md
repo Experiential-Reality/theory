@@ -2,6 +2,8 @@
 status: DERIVED
 depends_on:
   - lie-theory/lie-correspondence.md
+see_also:
+  - foundations/machine/integer-factorization.md
 ---
 
 # BLD Conservation via Noether's Theorem
@@ -226,6 +228,10 @@ Conservation:
 - Before: π⁰ has spin 0 (D = 0 for rotation)
 - After: Two photons with spin ±1, but total angular momentum = 0
 - **D conserved**: Total spin unchanged
+
+**Example: Algorithm choice in factoring**
+
+C_total = k/2 bits is conserved across all factoring algorithms for a k-bit semiprime. Trial division makes all k/2 bits visible as sequential probes (C_hidden = 0). Pollard rho hides k/4 bits in the group structure of ℤ/pℤ. GNFS hides an exponential amount in the factor base. The symmetry is "algorithm choice" — any strategy is valid — and the conserved quantity is C_total. This extends BLD conservation from physics (where conserved quantities are charges and momenta) to computation (where the conserved quantity is information). See [Integer Factorization: Cost Conservation](foundations/machine/integer-factorization.md#cost-conservation-c_total--k2).
 
 ---
 

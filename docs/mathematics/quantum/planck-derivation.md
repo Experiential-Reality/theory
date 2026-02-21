@@ -30,7 +30,7 @@ used_by:
 2. n_c = B/2 − K = 26 (cascade exponent) — [BLD Structure](#bld-structure-of-the-derivation)
 3. M_P = v × λ⁻²⁶ × √(5/14) × observer corrections — [Complete Formula](#the-complete-formula)
 4. First-order: ×(79/78), Second-order: ×(1 + 6/(n×L×B²)) — [Planck Mass Formula](#key-result-the-planck-mass-formula)
-5. Primordial vs observed: integer structure — [Primordial vs Observed](#primordial-vs-observed-the-key-insight)
+5. Structural vs observed: integer structure — [Structural vs Observed](#structural-vs-observed-the-key-insight)
 
 **Result**: ℏ = 1.0545717 × 10⁻³⁴ J·s
 
@@ -649,16 +649,16 @@ All predictions use the **same** structural constants (λ, B, n×L, K) with corr
 
 ---
 
-## Primordial vs Observed: The Key Insight
+## Structural vs Observed: The Key Insight
 
 The derivation reveals a fundamental distinction:
 
 | Type | Value | Nature |
 |------|-------|--------|
-| **Primordial** | λ² = 1/20, B = 56, n_c = 26 | What the octonions computed first |
-| **Observed** | ℏ_measured | Primordial × K/X observation gradients |
+| **Structural** | λ² = 1/20, B = 56, n_c = 26 | What the octonions computed first |
+| **Observed** | ℏ_measured | Structural × K/X observation gradients |
 
-**Note**: The factor √(5/14) comes from the primordial integer ratio L/B = 20/56 = 5/14. The square root emerges late — when observation accesses the underlying integer structure.
+**Note**: The factor √(5/14) comes from the structural integer ratio L/B = 20/56 = 5/14. The square root emerges late — when observation accesses the underlying integer structure.
 
 See [Integer Machine](../foundations/machine/integer-machine.md) for the complete framework.
 
@@ -684,10 +684,10 @@ M_P = v × L^13 × √(L/B) × corrections
 m_e = v / (5 × 137)² × corrections
 ```
 
-The primordial ratio (before K/X observation gradients):
+The structural ratio (before K/X observation gradients):
 
 ```
-(M_P / m_e)²_primordial = L^26 × (L/B) × (5 × 137)^4
+(M_P / m_e)²_structural = L^26 × (L/B) × (5 × 137)^4
                   = L^31 × 685^4 / B
                   = 20^31 × 685^4 / 56
 ```

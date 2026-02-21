@@ -4,6 +4,8 @@ key_result: "K=2 from bidirectional observation; appears in ℏ/2, Bell 2√2"
 depends_on:
   - ../foundations/proofs/irreducibility-proof.md
   - lie-correspondence.md
+used_by:
+  - ../foundations/machine/integer-factorization.md
 ---
 
 # The Killing Form in BLD
