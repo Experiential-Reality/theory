@@ -17,7 +17,7 @@ depends_on:
   - ../particle-physics/boson-masses.md
   - ../particle-physics/higgs-self-coupling.md
   - ../relativity/general-relativity.md
-  - ../../examples/physics-traverser.md
+  - ../../examples/physics-axioms-extended.md
   - planck-derivation.md
 used_by: []
 ---
@@ -405,7 +405,7 @@ BLD derives the gauge group from the division algebra tower ([Force Structure](.
 ℂ (complex)     → unit circle = U(1)                      [electromagnetic]
 ```
 
-**Yang-Mills uniqueness**: Given a compact gauge group G, 4D Lorentz invariance ([Octonion Derivation](../foundations/derivations/octonion-derivation.md) Theorem 6.2), and renormalizability ([physics-traverser.md](../../examples/physics-traverser.md) P20), the gauge-field Lagrangian is uniquely:
+**Yang-Mills uniqueness**: Given a compact gauge group G, 4D Lorentz invariance ([Octonion Derivation](../foundations/derivations/octonion-derivation.md) Theorem 6.2), and renormalizability ([physics-axioms-extended.md](../../examples/physics-axioms-extended.md) P20), the gauge-field Lagrangian is uniquely:
 
 ```
 ℒ_gauge = -(1/4) F^a_μν F^{aμν}

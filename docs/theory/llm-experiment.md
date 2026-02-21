@@ -22,7 +22,7 @@ used_by:
 3. Primary question: "What is it *like* to process?" (not correctness) — [Primary Prompt](#primary-prompt)
 4. Follow-up probes: cycles, completeness, dependency direction — [Follow-ups](#follow-up-cycles)
 5. Claude result: "glide" vs "friction", "complete" vs "gaps", "directional" vs "loops" — [Claude Opus 4.5](#claude-opus-45-anthropic)
-6. Prediction: different architectures should generate similar vocabulary — [Analysis](#analysis)
+6. Other models tested: consistent patterns, not yet formalized — [Claude Opus 4.5](#claude-opus-45-anthropic)
 
 | Clean Structure | Broken Structure |
 |-----------------|------------------|
@@ -115,82 +115,7 @@ When you trace through code where many things depend on many other things versus
 - Forward momentum / spinning
 - Shape closed / shape has holes
 
----
-
-### GPT-4o (OpenAI)
-
-**Date:**
-
-**Response to Primary Prompt:**
-
-> [pending]
-
-**Key Vocabulary Generated:**
--
-
----
-
-### Gemini (Google)
-
-**Date:**
-
-**Response to Primary Prompt:**
-
-> [pending]
-
-**Key Vocabulary Generated:**
--
-
----
-
-### Llama 3 405B (Meta)
-
-**Date:**
-
-**Response to Primary Prompt:**
-
-> [pending]
-
-**Key Vocabulary Generated:**
--
-
----
-
-### [Other Models]
-
-[Add sections as tested]
-
----
-
-## Analysis
-
-### Vocabulary Clusters
-
-| Concept | Model A | Model B | Model C | ... |
-|---------|---------|---------|---------|-----|
-| Clean structure | | | | |
-| Broken structure | | | | |
-| Cycles | | | | |
-| Completeness | | | | |
-| Dependencies | | | | |
-
-### Observations
-
-[To be filled after collecting results]
-
-### Conclusions
-
-[To be filled after analysis]
-
----
-
-## Methodological Notes
-
-- Each model should be tested in a fresh context with no prior conversation
-- Do not mention other models' responses before collecting a response
-- Record the exact model version and date
-- If a model refuses to introspect or claims no experience, record that as data
-- Follow-up prompts should only be used after the primary response is complete
+*Other models were tested. Results were qualitative — consistent patterns observed but not yet formalized.*
 
 ---
 

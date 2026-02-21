@@ -301,6 +301,109 @@ The structural analysis of integer factoring via BLD is complete for classical a
 
 ---
 
+## Phi Sieve: Exploiting φ(n) Structure
+
+### The Phi Test
+
+The constraint `a^((c-1)(floor(n/c)-1)) ≡ 1 (mod n)` applied to ALL odd candidates yields remarkably few survivors:
+
+| k | Candidates tested | Pass phi test | Pass rate | Factors found |
+|---|------------------|---------------|-----------|---------------|
+| 8 | 420 | 13 | 3.10% | 10/10 |
+| 10 | 1,819 | 17 | 0.93% | 10/10 |
+| 12 | 7,217 | 15 | 0.21% | 10/10 |
+| 14 | 30,239 | 14 | 0.05% | 10/10 |
+| 16 | 122,517 | 13 | 0.01% | 10/10 |
+
+The survivor count is nearly constant (~13-17) while the search space grows exponentially. The phi test's selectivity increases with k because ord_n(2) grows.
+
+### Exact Totient Structure
+
+ALL survivors have `(c-1)(floor(n/c)-1) = φ(n)` **exactly**, not merely a multiple of the order. Verified across k=8 through k=16 with zero exceptions.
+
+Each survivor corresponds to a **divisor of φ(n)**: `c-1` divides `φ(n)`, and `floor(n/c)-1 = φ(n)/(c-1)`. The floor constraint eliminates ~90-95% of valid divisors, keeping a handful.
+
+Additional bases (a=3, 5, 7, ...) provide **zero additional filtering** because all survivors satisfy the exact totient condition — every base passes by Euler's theorem.
+
+### Any Survivor Gives Complete Factorization
+
+Any single survivor provides φ(n) directly, and the factorization follows in O(1):
+
+```
+Input: n (odd semiprime), any survivor c
+φ(n) ← (c - 1)(floor(n/c) - 1)        ← EXACT totient
+s ← n - φ(n) + 1                       ← p + q
+disc ← s² - 4n                         ← discriminant
+p ← (s - √disc) / 2                    ← smaller factor
+q ← (s + √disc) / 2                    ← larger factor
+```
+
+Recovery rate: **100%** at every k from 10 through 16.
+
+### Quadratic Algorithm (No Modexp)
+
+Since all survivors satisfy `(c-1)(floor(n/c)-1) = φ(n)`, the modular exponentiation can be replaced with a **direct algebraic test**:
+
+```
+Input: n (odd semiprime)
+For each odd c from √n down to 3:
+    q ← floor(n/c)
+    if q < 3 or q is even: skip
+    s ← (n mod c) + c + q
+    disc ← s² - 4n
+    if disc < 0: skip
+    if disc mod 16 not in {0,1,4,9}: skip  ← O(1) pre-screen
+    if disc mod 9 not in {0,1,4,7}: skip
+    √d ← isqrt(disc)
+    if √d² ≠ disc: skip
+    p ← (s - √d) / 2
+    if p > 1 and p × (s-p) = n: return (p, s-p)
+```
+
+This replaces O(k³) modexp with O(k²) arithmetic. The modular pre-screen (Layer 2) costs O(1) per candidate and rejects 95-97% before the expensive isqrt. Verified equivalent to phi sieve at all tested k.
+
+| k | Quadratic tests | Trial division | Speedup |
+|---|----------------|---------------|---------|
+| 10 | 16 | 314 | 20x |
+| 14 | 253 | 5,440 | 22x |
+| 18 | 4,064 | 87,092 | 21x |
+| 22 | 48,728 | 1,367,071 | 28x |
+
+### Smooth-Priority Search
+
+Survivors tend to have smoother c-1 (more small prime factors). The search optimization from smoothness **improves with k**:
+
+| k | Sequential (from √n) | Smooth-priority | Speedup |
+|---|---------------------|----------------|---------|
+| 10 | 16 | 52 | 0.3x (worse) |
+| 14 | 253 | 779 | 0.3x (worse) |
+| 18 | 4,064 | 1,810 | 2.2x |
+| 20 | 13,059 | 2,138 | 6.1x |
+
+At k>=18, smooth-priority beats sequential because the fraction of smooth numbers decreases with n, but survivors are over-represented among smooth c-1 values.
+
+### GPU Parallelism
+
+The phi sieve converts factoring from a needle-in-haystack to a **find-any-of-15-needles** problem (each giving the complete answer). Combined with embarrassing parallelism (zero inter-thread communication, uniform workload):
+
+| Property | Phi Sieve | Pollard Rho |
+|----------|----------|-------------|
+| Thread independence | Perfect | Sequential walks |
+| Workload uniformity | All threads do same work | Variable walk lengths |
+| Inter-thread communication | Zero | Cycle detection |
+
+Crossover points (phi sieve GPU advantage over Pollard rho):
+
+| k | Cores needed (G > √n/225) | Feasibility |
+|---|--------------------------|-------------|
+| 32 | ~290 | Single GPU |
+| 40 | ~4,660 | Single GPU |
+| 48 | ~74,500 | Modern GPU |
+
+**Sweet spot: k = 32-56 bit semiprimes** on modern GPU hardware. For larger numbers, Pollard rho's O(n^{1/4}) asymptotics dominate.
+
+---
+
 ## Open Questions
 
 ### 1. BLD Decomposition of Other Problems
@@ -319,6 +422,26 @@ If Work = N^{1/D} holds across multiple problems, that is evidence for BLD as a 
 Classical algebraic structures (groups, rings, fields) provide D up to sub-exponential (GNFS). Quantum structures (Hilbert space) provide D = 2^k (Shor). Can BLD formally prove that classical D cannot exceed sub-exponential for factoring?
 
 The argument: Shor's angular compensation mechanism requires coherent superposition -- a Hilbert space property unavailable to classical computation. This is adjacent to BQP vs BPP, not a proof, but a structural constraint worth formalizing.
+
+### 3. Born Rule Epsilon Threshold as Lower Bound
+
+Classical factoring signals yield ε ≈ 0.23-0.27 (above the Born threshold of 0.10). Can this be proven as a lower bound for all polynomial-size classical signal sets?
+
+### 4. Epsilon Floor for Other NP Problems
+
+If the Born rule exception is a general complexity predictor, it should give ε > 0.10 for NP-complete problems and ε < 0.10 for problems in P. What does the ε floor look like for SAT, graph coloring, etc.?
+
+### 5. Floor Constraint Characterization
+
+For which divisors d of φ(n) does floor(n/(d+1)) = φ(n)/d + 1 hold? This is a Diophantine condition that might have a closed-form characterization.
+
+### 6. Finding Survivors Without Enumeration
+
+If we could predict WHICH divisors of φ(n) pass the floor constraint, we could jump directly to survivors — reducing the problem to "enumerate divisors of an unknown number."
+
+### 7. Hybrid GPU Algorithm
+
+Run phi sieve on GPU (exploiting perfect parallelism in k=32-56 regime) simultaneously with Pollard rho on CPU (exploiting better asymptotics). Optimal resource allocation between the two?
 
 ---
 

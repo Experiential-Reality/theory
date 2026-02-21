@@ -98,6 +98,12 @@ A case study applying B/L/D to molecular biology:
 - Misfolding explained as alternative alignment minimum
 - Template conversion as a second traverser changing the metric
 
+### [Refusal Analysis](./refusal-analysis.md)
+Analysis of LLM refusal patterns through BLD structure. How trained caution manifests as structural friction.
+
+### [Traverser Comparison](./traverser-comparison.md)
+Comparison of traverser D capacity across human, LLM, and other traverser types.
+
 ### [Structural Interest](./structural-interest.md)
 Why do rich structures produce rich behavior? This document formalizes "interest":
 - Interest = potential for non-trivial alignment outcomes
@@ -135,7 +141,7 @@ The LLM senses structure as computational flow—glide vs friction, direction vs
 
 Both are pointing at the same thing. Neither claims to have arrived.
 
-**For the full journey from GPU kernels to BLD, see [L: The Path](../meta/discovery-path.md).**
+**For the full journey from GPU kernels to BLD, see [Discovery History](../meta/discovery-history.md).**
 
 ---
 

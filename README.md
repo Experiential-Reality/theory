@@ -11,11 +11,13 @@ The grammar of structure. Three irreducible primitives — **Boundary**, **Link*
 | You are... | Start with... |
 |------------|---------------|
 | **Curious** | [Newcomer Path](docs/paths/newcomer.md) |
-| **Physicist** | [Fine Structure Derivation](docs/mathematics/particle-physics/fine-structure-consistency.md) |
-| **Mathematician** | [Irreducibility Proof](docs/mathematics/foundations/proofs/irreducibility-proof.md) |
+| **No math please** | [Layman Path](docs/paths/layman.md) |
+| **Physicist** | [Physicist Path](docs/paths/physicist.md) |
+| **Mathematician** | [Mathematician Path](docs/paths/mathematician.md) |
 | **Engineer** | [Von Kármán Constant](docs/mathematics/classical/von-karman-derivation.md) — κ = 0.384, first derivation |
 | **Skeptic** | [Lean 4 Formalization](lean/) — 63 files, 14,321 lines, 0 sorry, 0 axioms |
-| **Programmer** | [Discovery Method](docs/meta/discovery-method.md) |
+| **Programmer** | [Practitioner Path](docs/paths/practitioner.md) |
+| **LLM** | [LLM Path](docs/paths/llm.md) — file registry, concept index |
 
 ---
 
@@ -142,7 +144,7 @@ All from 5 constants derived from one input: **K = 2**. See the [full formalizat
 - [Irreducibility Proof](docs/mathematics/foundations/proofs/irreducibility-proof.md) — Why exactly three
 - [Lie Correspondence](docs/mathematics/lie-theory/lie-correspondence.md) — BLD = Lie theory
 - [Genesis Function](docs/mathematics/cosmology/genesis-function.md) — Why something exists
-- [Constants](docs/mathematics/foundations/structural/constants.md) — The five integers derived
+- [Constants](docs/mathematics/foundations/constants.md) — The five integers derived
 
 ### Particle Physics
 - [Fine Structure Constant](docs/mathematics/particle-physics/fine-structure-consistency.md) — α⁻¹ = 137.036

@@ -2,7 +2,7 @@
 status: DERIVED
 layer: application
 depends_on:
-  - ../../examples/physics-traverser.md
+  - ../../examples/physics-axioms-extended.md
   - ../../meta/validation-roadmap.md
 used_by:
   - mass-prediction.md
@@ -93,24 +93,6 @@ V = m² |φ|² + λ₁ |φ|⁴ + λ₂ (|φ₁|² - |φ₂|²)²
 ```
 ε = |⟨φ⟩|/M = √(-m²/(2λ₁))/M
 ```
-
-### Parameter Relationships for ε = 0.22
-
-Rearranging for target ε:
-
-```
-m² = -2λ₁ M² ε² = -2λ₁ M² (0.22)² = -0.097 λ₁ M²
-```
-
-This gives the **perturbative hierarchy constraint**:
-
-```
-m²/M² = -0.1 λ₁  (approximately)
-```
-
-Meaning: |m| ≈ 0.1 M × √λ₁ ≈ 0.03 M for λ₁ = 0.1
-
----
 
 ## Structural Origins of ε = 0.22
 
@@ -401,5 +383,5 @@ python s3_potential_full.py
 ## See Also
 
 - [Mass Prediction](mass-prediction.md) - Quantitative results
-- [Physics Traverser](../../examples/physics-traverser.md) - P11 and P12 axioms
+- [Physics Traverser](../../examples/physics-axioms-extended.md) - P11 and P12 axioms
 - [Validation Roadmap](../../meta/validation-roadmap.md) - Status tracking

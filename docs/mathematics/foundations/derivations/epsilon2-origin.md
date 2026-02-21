@@ -249,4 +249,4 @@ This is **structurally derived** from:
 
 - [Mass Prediction](../../../applications/physics/mass-prediction.md) — Up-quark anomaly details
 - [Validation Roadmap](../../../meta/validation-roadmap.md) — Status tracking
-- [Physics Traverser](../../../examples/physics-traverser.md) — P11 axiom
+- [Physics Traverser](../../../examples/physics-axioms-extended.md) — P11 axiom

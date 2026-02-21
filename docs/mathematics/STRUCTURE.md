@@ -4,6 +4,8 @@ This document maps how derivations connect — the DAG of dependencies that form
 
 **Status**: COMPLETE — All fundamental constants derived with exact accuracy (within measurement precision).
 
+**Quick reference**: [Digest](digest.md) — all formulas and predictions on one page.
+
 ---
 
 ## The Theory in One Paragraph

@@ -2,14 +2,14 @@
 status: MECHANISM
 layer: application
 depends_on:
-  - ../../examples/physics-traverser.md
+  - ../../examples/physics-axioms-extended.md
   - s3-vacuum.md
   - ../../meta/validation-roadmap.md
 used_by:
   - ../../mathematics/foundations/derivations/epsilon2-origin.md
   - s3-vacuum.md
   - scale-hierarchy.md
-  - ../../examples/physics-traverser.md
+  - ../../examples/physics-axioms-extended.md
 ---
 
 # Mass Prediction from S₃ Breaking
@@ -463,7 +463,7 @@ python lepton_mass_predictor.py
 
 ## References
 
-- [Physics Traverser](../../examples/physics-traverser.md) P11: Yukawa mechanism
+- [Physics Traverser](../../examples/physics-axioms-extended.md) P11: Yukawa mechanism
 - [Validation Roadmap](../../meta/validation-roadmap.md) P11 status
 - Froggatt, C. D., & Nielsen, H. B. (1979). Hierarchy of quark masses, Cabibbo angles and CP violation. *Nucl. Phys. B* 147, 277-298.
 

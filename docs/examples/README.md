@@ -6,7 +6,8 @@ Concrete examples showing BLD structure in various domains.
 
 | File | Domain | Description |
 |------|--------|-------------|
-| [physics-traverser.md](physics-traverser.md) | Physics | The physics traverser axioms |
+| [physics-traverser.md](physics-traverser.md) | Physics | Discovery narrative: Q1/Q2/Q3 → P1-P8 |
+| [physics-axioms-extended.md](physics-axioms-extended.md) | Physics | Extended derivations: P9-P20, epistemic status |
 | [lie-algebras.md](lie-algebras.md) | Mathematics | so(2), su(2), Heisenberg, Poincaré in BLD |
 | [e-from-bld.md](e-from-bld.md) | Mathematics | Euler's e from BLD structure |
 | [pi-from-bld.md](pi-from-bld.md) | Mathematics | Pi from BLD closure |

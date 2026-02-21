@@ -307,6 +307,9 @@ e7-derivation.md → force-structure.md → [all particle physics]
 | Understand observer corrections | `cosmology/observer-correction.md` |
 | See how this applies to LLMs | `theory/llm-experiment.md` |
 | Visual dependency graph | `mathematics/STRUCTURE.md` |
+| Guided physics tour | `paths/physicist.md` |
+| Plain-language overview | `paths/layman.md` |
+| Machine traverser guide | `paths/llm.md` |
 
 ---
 

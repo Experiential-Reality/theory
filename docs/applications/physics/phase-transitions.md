@@ -484,5 +484,5 @@ Compare systems with same (d, n) but different microscopic details:
 
 - [Thermodynamics](thermodynamics-validation.md) — Entropy dynamics
 - [Thermodynamics (Math)](../../mathematics/classical/thermodynamics.md) — Energy landscape
-- [Physics Traverser](../../examples/physics-traverser.md) — Symmetry breaking (P11, P16)
+- [Physics Traverser](../../examples/physics-axioms-extended.md) — Symmetry breaking (P11, P16)
 - [Compensation Principle](../../mathematics/foundations/structural/compensation-principle.md) — L→B compensation

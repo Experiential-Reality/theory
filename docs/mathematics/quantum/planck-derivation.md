@@ -684,3 +684,4 @@ For the complete integer machine framework, see [Integer Machine](../foundations
 - [Scale Hierarchy](../../applications/physics/scale-hierarchy.md) — λ power relationships
 - [Epsilon2 Origin](../foundations/derivations/epsilon2-origin.md) — λ = 1/√20 derivation
 - [Irreducibility Proof](../foundations/proofs/irreducibility-proof.md) — D-L coupling requirement, observer unavoidable
+- [Observer Corrections](../cosmology/observer-correction.md) — Unified K/X correction framework

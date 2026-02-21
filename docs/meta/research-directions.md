@@ -17,11 +17,9 @@ Open research directions for extending BLD.
 **Active research directions for BLD:**
 
 1. Validated methodology: three questions discover axioms — [Validated Methodology](#validated-methodology)
-2. Physics traverser: 20 axioms (P1-P20) derived — [Physics Traverser](#the-physics-traverser-deriving-the-standard-model)
-3. Key discoveries: triality (P9), topological closure (P10), S₃ breaking (P11) — [Triality](#the-triality-discovery)
-4. Extended axioms P14-P20: unification, gravity, neutrinos, inflation — [Extended Axioms](#extended-axioms-p14-p20)
-5. Exceptional algebras resolved: G₂, F₄, E₆, E₇, E₈ all have BLD formulas — [Exceptionals](#exceptional-lie-algebras-in-bld--resolved)
-6. Remaining open: specific numerical values require S₃ potential computation — [Success Criteria](#success-criteria--assessment)
+2. Physics traverser: 20 axioms (P1-P20) derived — [Results](#physics-traverser-results)
+3. Exceptional algebras resolved: G₂, F₄, E₆, E₇, E₈ all have BLD formulas — [Exceptionals](#exceptional-lie-algebras-in-bld--resolved)
+4. Remaining open: specific numerical values require S₃ potential computation — [Success Criteria](#success-criteria--assessment)
 
 ---
 
@@ -42,130 +40,20 @@ This validates BLD as a **discovery framework** — it can find structure that w
 
 ---
 
-## The Physics Traverser: Deriving the Standard Model
+## Physics Traverser Results
 
-Full analysis: [Physics Traverser](../examples/physics-traverser.md). Status: **CONDUCTED** — 20 axioms (P1-P20) derived.
+Full analysis: [Physics Traverser](../examples/physics-traverser.md) (P1-P8) and [Extended Axioms](../examples/physics-axioms-extended.md) (P9-P20).
 
-| Result | Status |
-|--------|--------|
-| SO(3,1), gauge principle, compact groups | DERIVED (P1-P6) |
-| 4D spacetime, 3 generations | DERIVED (P7, P9) |
-| SU(3)×SU(2)×U(1) | DERIVED (anomaly cancellation + confinement) |
-| θ_QCD = 0 | DERIVED (P10: topological closure) |
-| Mass hierarchy mechanism | Identified (broken S₃), specific values open |
-| Dark sector | Hypothesis (missing gauge L), needs verification |
+| Axioms | Status | Topic |
+|--------|--------|-------|
+| P1-P8 | DERIVED | Gauge structure, 4D spacetime, SU(3)×SU(2)×U(1) |
+| P9 | DERIVED | 3 generations (triality) |
+| P10 | DERIVED | Strong CP (topological closure) |
+| P11-P12 | MECHANISM | Mass hierarchy, mixing angles (S₃) |
+| P13-P16 | HYPOTHESIZED | Dark energy, gravity, EW scale |
+| P17-P20 | HYPOTHESIZED | Neutrinos, baryogenesis, inflation, QFT |
 
-### The Topological Closure Discovery
-
-The Strong CP problem (why θ_QCD < 10⁻¹⁰) has been resolved via BLD analysis:
-
-**Q1 applied to θ-vacuum**: Hidden boundary in topological sectors
-- QCD vacuum has winding number sectors (π₃(SU(3)) = ℤ)
-- These are topologically disconnected
-
-**Q2 applied to θ-vacuum**: Hidden link via instantons
-- Instantons tunnel between winding sectors
-- Carry topological charge
-
-**Q3 applied to θ-vacuum**: 2π periodicity enforces closure
-- Z(θ + 2π) = Z(θ)
-- D×L = 2π×B closure → θ_eff = 0 is structural
-
-**Axiom P10 (Topological Closure)**: Angular parameters with 2π-periodicity satisfy D×L = 2π×B closure, making θ = 0 the structural equilibrium.
-
-See [Physics Traverser - Strong CP Problem](../examples/physics-traverser.md#strong-cp-problem-topological-closure).
-
-### The Triality Discovery
-
-The generation mystery has been resolved by applying BLD methodology recursively:
-
-**Q1 applied to generations**: Hidden boundary discovered in algebra structure
-- Sedenions (16D) split into exactly 3 octonion sectors (8D each)
-- This partition IS the generation boundary
-
-**Q2 applied to generations**: Hidden link discovered
-- S₃ family permutation symmetry connects generations
-- Broken S₃ creates mass hierarchy
-
-**Q3 confirmed**: D = 3 from triality dimension
-- Triality is the 3-fold automorphism of Spin(8)
-- Only octonions (8D) have this structure
-- The number 3 is structurally determined
-
-**Axiom P9 (Triality)**: The physics traverser has triality structure inherited from the octonion algebra tower.
-
-See [Physics Traverser - Discovering Hidden Generation Structure](../examples/physics-traverser.md#discovering-the-hidden-generation-structure).
-
-### Key Insight
-
-The methodology is **significantly more successful than expected**:
-- Much of Standard Model structure IS derivable
-- The gauge groups are constrained, not arbitrary
-- Specific structure SO(3,1)×SU(3)×SU(2)×U(1) emerges
-- **3 generations explained** via triality (P9)
-- **Strong CP solved** via topological closure (P10)
-- **Mass hierarchy mechanism** via S₃ breaking cascade (P11)
-- **Mixing angle pattern** via tribimaximal limit (P12)
-- **Dark energy hypothesis** via de Sitter boundary (P13)
-
-**What remains**:
-- Specific mass values (mechanism P11 known, S₃ potential undetermined)
-- Specific mixing angles (pattern P12 known, breaking details needed)
-- Dark energy confirmation (P13 hypothesis needs testing)
-
-### Recent Discoveries: P11-P13
-
-**P11 (Yukawa Structure)**: Mass hierarchy emerges from S₃ breaking cascade.
-- Spurion fields break triality progressively
-- Different generation charges create hierarchy
-- See [Physics Traverser - Mass Hierarchy](../examples/physics-traverser.md#mass-hierarchy-s₃-breaking-cascade-p11)
-
-**P12 (Mixing Structure)**: Mixing matrices arise from broken S₃.
-- Tribimaximal mixing = S₃ symmetric limit
-- θ₁₃ ≈ 8.5° measures S₃ violation
-- See [Physics Traverser - Mixing Angles](../examples/physics-traverser.md#mixing-angles-tribimaximal-as-s₃-limit-p12)
-
-**P13 (Holographic Cosmology)**: Dark energy as de Sitter boundary.
-- Cosmological constant Λ from horizon structure
-- Not a field, but topological boundary
-- See [Physics Traverser - Dark Energy](../examples/physics-traverser.md#dark-energy-de-sitter-boundary-p13)
-
-### Extended Axioms: P14-P20
-
-**P14 (Conformal Unification)**: Gauge couplings as projections.
-- α₁, α₂, α₃ are projections of single GUT coupling
-- Weinberg angle from projection geometry
-- See [Physics Traverser - Coupling Unification](../examples/physics-traverser.md#coupling-constant-unification-conformal-projection-p14)
-
-**P15 (Diffeomorphism Boundary)**: Gravity as boundary enforcement.
-- Spin-2 gravity enforces light cone (P1) dynamically
-- Not a gauge force — topological B structure
-- See [Physics Traverser - Gravity](../examples/physics-traverser.md#gravity-as-diffeomorphism-boundary-p15)
-
-**P16 (Triality-Breaking Scale)**: Electroweak scale from S₃ cascade.
-- v = 246 GeV is second-level S₃ breaking
-- Hierarchy problem reframed as cascade structure
-- See [Physics Traverser - EW Scale](../examples/physics-traverser.md#electroweak-scale-triality-breaking-threshold-p16)
-
-**P17 (Majorana Boundary)**: Neutrino mass from topology.
-- Majorana character imposes topological constraint
-- Seesaw connects to GUT scale
-- See [Physics Traverser - Neutrino Mass](../examples/physics-traverser.md#neutrino-mass-majorana-topological-boundary-p17)
-
-**P18 (Baryogenesis Compensation)**: Matter asymmetry from S₃ phases.
-- CP phases from S₃ breaking (P11-P12)
-- L×D compensation creates observed asymmetry
-- See [Physics Traverser - Baryogenesis](../examples/physics-traverser.md#baryogenesis-s₃-phase-compensation-p18)
-
-**P19 (Symmetry Restoration)**: Inflation from GUT transition.
-- Phase transition boundary triggers slow roll
-- ~60 e-folds from boundary structure
-- See [Physics Traverser - Inflation](../examples/physics-traverser.md#inflation-symmetry-restoration-boundary-p19)
-
-**P20 (QFT Cost Minimization)**: QFT axioms from alignment.
-- Locality, unitarity, renormalizability from cost minimization
-- QFT is unique minimal-cost framework
-- See [Physics Traverser - QFT](../examples/physics-traverser.md#qft-axioms-cost-minimization-p20)
+What remains: specific numerical values require computing S₃ breaking potentials.
 
 ---
 

@@ -157,3 +157,4 @@ See [Compensation Principle](../mathematics/foundations/structural/compensation-
 - [Newcomer Path](./newcomer.md) — Conceptual background
 - [Mathematician Path](./mathematician.md) — Theoretical depth
 - [BLD-Driven Development](../applications/code/bld-driven-development.md) — Design methodology
+- [Lossless Translation](../applications/language/lossless-translation.md) — BLD applied to natural language translation

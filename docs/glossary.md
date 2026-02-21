@@ -848,7 +848,7 @@ When the Standard Model is embedded in this algebraic structure:
 - ℍ: SO(3) automorphisms, but not generation-like
 - 𝕆: **Triality S₃** — exactly 3
 
-See [Physics Traverser - Triality](examples/physics-traverser.md#the-generation-axiom) for the full discovery.
+See [Physics Traverser - Triality](examples/physics-axioms-extended.md#the-generation-axiom) for the full discovery.
 
 ---
 
@@ -879,7 +879,7 @@ where:
 
 **BLD Resolution (P10)**: θ = 0 is the structural equilibrium from topological closure, not fine-tuning. The 2π periodicity forces θ_eff → 0 as the stable configuration.
 
-See [Physics Traverser - Strong CP Problem](examples/physics-traverser.md#strong-cp-problem-topological-closure) for the full analysis.
+See [Physics Traverser - Strong CP Problem](examples/physics-axioms-extended.md#strong-cp-problem-topological-closure) for the full analysis.
 
 ---
 
@@ -907,7 +907,7 @@ Instanton properties:
 
 **In QCD**: Instantons generate the θ-dependence of the vacuum energy and are responsible for the U(1)_A anomaly (why the η' meson is heavy).
 
-See [Physics Traverser - Strong CP Problem](examples/physics-traverser.md#strong-cp-problem-topological-closure).
+See [Physics Traverser - Strong CP Problem](examples/physics-axioms-extended.md#strong-cp-problem-topological-closure).
 
 ---
 
@@ -945,7 +945,7 @@ Minimum at: θ_eff = 0
 
 **Connection to π**: Topological closure is another instance of the angular compensation principle. Just as π arises from D×L = 2π×B for circles, θ = 0 arises from the same closure in the vacuum angle space.
 
-See [Physics Traverser - Strong CP Problem](examples/physics-traverser.md#strong-cp-problem-topological-closure).
+See [Physics Traverser - Strong CP Problem](examples/physics-axioms-extended.md#strong-cp-problem-topological-closure).
 
 ---
 
@@ -977,7 +977,7 @@ The non-zero θ₁₃ measures the **S₃ violation strength** in the lepton sec
 
 **Axiom P12 (Mixing Structure)**: Mixing matrices are the residue of broken S₃. Tribimaximal is the S₃-symmetric limit; deviations measure breaking strength.
 
-See [Physics Traverser - Mixing Angles](examples/physics-traverser.md#mixing-angles-tribimaximal-as-s₃-limit-p12).
+See [Physics Traverser - Mixing Angles](examples/physics-axioms-extended.md#mixing-angles-tribimaximal-as-s₃-limit-p12).
 
 ---
 
@@ -1015,7 +1015,7 @@ analogous to how θ = 0 emerges from topological closure (P10).
 - Uniform throughout space (invariant under D)
 - Drives expansion via geometry, not force
 
-See [Physics Traverser - Dark Energy](examples/physics-traverser.md#dark-energy-de-sitter-boundary-p13).
+See [Physics Traverser - Dark Energy](examples/physics-axioms-extended.md#dark-energy-de-sitter-boundary-p13).
 
 ---
 
@@ -1046,9 +1046,9 @@ Different charges create different suppressions → hierarchy.
 
 **Axiom P11 (Yukawa Structure)**: Fermion masses arise from vacuum expectation values of spurion fields transforming under S₃ triality.
 
-See [Physics Traverser - Mass Hierarchy](examples/physics-traverser.md#mass-hierarchy-s₃-breaking-cascade-p11).
+See [Physics Traverser - Mass Hierarchy](examples/physics-axioms-extended.md#mass-hierarchy-s₃-breaking-cascade-p11).
 
-See [Physics Traverser - Strong CP Problem](examples/physics-traverser.md#strong-cp-problem-topological-closure).
+See [Physics Traverser - Strong CP Problem](examples/physics-axioms-extended.md#strong-cp-problem-topological-closure).
 
 ---
 
@@ -1076,7 +1076,7 @@ At GUT scale (~10¹⁶ GeV):
 
 **Axiom P14**: The gauge couplings α₁, α₂, α₃ are projections of a single conformal L structure.
 
-See [Physics Traverser - Coupling Unification](examples/physics-traverser.md#coupling-constant-unification-conformal-projection-p14).
+See [Physics Traverser - Coupling Unification](examples/physics-axioms-extended.md#coupling-constant-unification-conformal-projection-p14).
 
 ---
 
@@ -1102,7 +1102,7 @@ Gravity defines WHERE the light cone is:
 
 **Axiom P15**: Spin-2 gravity is the dynamical enforcement of the light-cone boundary (P1).
 
-See [Physics Traverser - Gravity](examples/physics-traverser.md#gravity-as-diffeomorphism-boundary-p15).
+See [Physics Traverser - Gravity](examples/physics-axioms-extended.md#gravity-as-diffeomorphism-boundary-p15).
 
 ---
 
@@ -1125,7 +1125,7 @@ Result: m_ν << m_Dirac (suppressed by M_R)
 
 **Axiom P17 (Majorana Boundary)**: Neutrino mass suppression arises from the Majorana topological boundary.
 
-See [Physics Traverser - Neutrino Mass](examples/physics-traverser.md#neutrino-mass-majorana-topological-boundary-p17).
+See [Physics Traverser - Neutrino Mass](examples/physics-axioms-extended.md#neutrino-mass-majorana-topological-boundary-p17).
 
 ---
 
@@ -1149,7 +1149,7 @@ Sakharov conditions:
 
 **Axiom P18 (Baryogenesis Compensation)**: Matter asymmetry arises from S₃-breaking CP phase compensation.
 
-See [Physics Traverser - Baryogenesis](examples/physics-traverser.md#baryogenesis-s₃-phase-compensation-p18).
+See [Physics Traverser - Baryogenesis](examples/physics-axioms-extended.md#baryogenesis-s₃-phase-compensation-p18).
 
 ---
 
@@ -1174,7 +1174,7 @@ Inflation properties:
 
 **Axiom P19 (Symmetry Restoration)**: Inflation is triggered by the GUT symmetry restoration phase transition.
 
-See [Physics Traverser - Inflation](examples/physics-traverser.md#inflation-symmetry-restoration-boundary-p19).
+See [Physics Traverser - Inflation](examples/physics-axioms-extended.md#inflation-symmetry-restoration-boundary-p19).
 
 ---
 
@@ -1200,7 +1200,7 @@ Locality, unitarity, and renormalizability are not arbitrary choices — they ar
 
 **Axiom P20**: QFT structure is alignment cost minimization between observable and theoretical structures.
 
-See [Physics Traverser - QFT](examples/physics-traverser.md#qft-axioms-cost-minimization-p20).
+See [Physics Traverser - QFT](examples/physics-axioms-extended.md#qft-axioms-cost-minimization-p20).
 
 ---
 
